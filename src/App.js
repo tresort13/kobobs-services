@@ -230,26 +230,26 @@ function App() {
     <BrowserRouter>
       <Routes >
         
-         <Route path="/"  element={<Login  setUsername = {setUsername} />} >
+         <Route path="/"  element={<Login   />} >
         </Route>
 
         
-        <Route path="/menu_envoie" element={username == "" ? <Navigate to ='/' /> :<MenuEnvoi username = {username}/>} >
+        <Route path="/menu_envoie" element={<MenuEnvoi />} >
         </Route>
 
        
 
-        <Route path="/form_envoie_client" element={username == "" ? <Navigate to ='/' /> :<FormEnvoiClient username = {username} dataEnvoie={dataEnvoie} envoie={envoie}/>}>
+        <Route path="/form_envoie_client" element={<FormEnvoiClient  dataEnvoie={dataEnvoie} envoie={envoie}/>}>
         </Route>
 
         
-        <Route path="/envoi_info" element={username == "" ? <Navigate to ='/' /> :<EnvoiInfo username = {username} dataEnvoie3={dataEnvoie3} envoie={envoie}/>} >
+        <Route path="/envoi_info" element={<EnvoiInfo  dataEnvoie3={dataEnvoie3} envoie={envoie}/>} >
         </Route>
 
        
 
 
-        <Route path="/confirmation_envoie_info" element={username == "" ? <Navigate to ='/' /> :<ConfirmationEnvoieInfo username = {username} envoie3={envoie3}/>} >
+        <Route path="/confirmation_envoie_info" element={<ConfirmationEnvoieInfo  envoie3={envoie3}/>} >
         </Route>
 
 

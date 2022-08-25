@@ -48,17 +48,17 @@ function Header(props)
     <Row>
         <Col xs={3} className="my-auto mx-auto text-start">
           <a href="#" style={{textDecoration:"none"}}>
-          <Image onClick={handleShow} src={require('./kobo_logo.JPG')}  className='rounded-pill ' style={{width:130}}></Image>
+          <Image  src={require('./kobo_logo.JPG')}  className='rounded-pill ' style={{width:130}}></Image>
           </a>
         </Col>
         <Col xs={5} className="my-auto mx-auto my-auto text-end">
-        <Link to="/home" style={{textDecoration:"none"}}>
+        <Link to="/menu_envoie" style={{textDecoration:"none"}}>
           <p className="display-6 text-secondary">KOBO BUSINESS SERVICES</p>
           </Link>
         </Col>
         <Col xs={4} className="my-auto mx-auto text-end ">
          <div>
-           <pre className="text-dark display-6" style={{fontSize: 20}}><Image className="navbar-brand rounded-circle" src={require('./login.jpeg')} type="button" alt="profil" style={{width:40}} ></Image><span ><i className="text-white"> Bonjour <b className="couleur2">{props.username}</b></i> </span><span className="separateur text-secondary"></span><a href="" style={{textDecoration:"none"}}><span className="text-danger"><i onClick={logout}> Logout </i> </span></a></pre>
+           <pre className="text-dark display-6" style={{fontSize: 20}}><Image className="navbar-brand rounded-circle" src={require('./login.jpeg')} type="button" alt="profil" style={{width:40}} ></Image><span ><i className="text-white"> Bienvenu(e)</i> </span><span className="separateur text-secondary"></span></pre>
            <i><pre className="couleur2 display-6 timing text-center" style={{fontSize: 15}}>{theTime}</pre></i>
         </div>  
         </Col>

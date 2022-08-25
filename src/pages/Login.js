@@ -85,13 +85,6 @@ yn
             } )
     }*/
 
-    const inputChanged = (event)=>
-    {
-         const cred = state.credentials;
-         cred[event.target.name] = event.target.value;
-         setState({credentials:cred})
-    }
-
    
 
     return (
@@ -111,8 +104,8 @@ yn
     <Row className='justify-content-center'>
     <Col xs ={4}>
         <Form.Group className="mb-3" >
-        <Form.Label value="Lingala" className='couleur2'>Langue</Form.Label>
-        <Form.Select name='pays_beneficiaire'  aria-label="Default select example" onChange={e=>inputChanged(e)} required>
+        <Form.Label  className='couleur2'>Langue</Form.Label>
+        <Form.Select name='pays_beneficiaire'  aria-label="Default select example" >
          <option value="Lingala">Lingala</option>
          </Form.Select>
          </Form.Group>

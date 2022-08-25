@@ -2,7 +2,6 @@ import React,{ useEffect } from 'react';
 import Login from "./pages/Login";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter,Routes,Route} from  'react-router-dom';
-import Homepage from './pages/Homepage';
 import {Navigate} from  'react-router-dom';
 import  './pages/Assets.css';
 import MenuEnvoi from './pages/MenuEnvoi';
@@ -235,10 +234,6 @@ function App() {
         </Route>
 
         
-
-        <Route path="/home"  element={username == "" ? <Navigate to ='/' /> : <Homepage username = {username} setUsername = {setUsername}/>} >
-        </Route>
-
         <Route path="/menu_envoie" element={username == "" ? <Navigate to ='/' /> :<MenuEnvoi username = {username}/>} >
         </Route>
 

@@ -35,7 +35,7 @@ function MenuEnvoi(props)
     <Row className='justify-content-center pb-3'>
         <Col xs = {"auto"}>
         <Link to="/form_envoie_client" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='light'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
+        <Button variant='light'  style={{width:450,height:80}} className='btn-lg rounded-pill zoom'>
         <b className='couleur2'><pre>Tinda Mbongo (nbamla nayo ya liboso)</pre></b>
         </Button>
         </Link>
@@ -57,20 +57,8 @@ function MenuEnvoi(props)
     <Row className='justify-content-center pb-3'>
         <Col xs = {"auto"}>
         <Link to="/form_envoie_client" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='light'  style={{width:300,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='couleur2'><i>Envoie Argent Client</i></b>
-        </Button>
-        </Link>
-        </Col>
-    </Row>
-  
-
-
-    <Row className='justify-content-center pb-3'>
-        <Col xs = {"auto"}>
-        <Link to="/form_envoie_abonne" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='light'  style={{width:300,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='couleur2'><i>Envoie Argent Abonné</i></b>
+        <Button variant='light'  style={{width:450,height:80}} className='btn-lg rounded-pill zoom'>
+        <b className='couleur2'><pre>Tinda Mbongo (nbamla nayo ya liboso)</pre></b>
         </Button>
         </Link>
         </Col>

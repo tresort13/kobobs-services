@@ -111,7 +111,7 @@ yn
     <Row className='justify-content-center'>
     <Col xs ={4}>
         <Form.Group className="mb-3" >
-        <Form.Label value="Lingala" className='couleur2'>Lingala</Form.Label>
+        <Form.Label value="Lingala" className='couleur2'>Langue</Form.Label>
         <Form.Select name='pays_beneficiaire'  aria-label="Default select example" onChange={e=>inputChanged(e)} required>
          <option value="Lingala">Lingala</option>
          </Form.Select>
@@ -123,9 +123,8 @@ yn
   
     <Row className='justify-content-center pb-3'>
         <Col  xs={12}>    
-        <Link to="menu_envoie" style={{color:'white',textDecorationLine:'none'}}> 
-        
-        <Button variant="outline-warning" type="submit" >
+        <Link to="/menu_envoie" style={{color:'white',textDecorationLine:'none'}}> 
+        <Button variant="outline-warning" >
         <b>Banda Opération</b>
         </Button>
         </Link>

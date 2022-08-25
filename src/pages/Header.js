@@ -90,12 +90,12 @@ function Header(props)
         
         <Col xs={"auto"} className="mx-auto my-auto text-start">
         <a href="#" style={{textDecoration:"none"}}>
-          <Image onClick={handleShow} src={require('./kobo_logo.JPG')}  className='rounded-pill ' style={{width:200}}></Image>
+          <Image  src={require('./kobo_logo.JPG')}  className='rounded-pill ' style={{width:200}}></Image>
           </a>
         </Col>
         <Col xs={"auto"} className=" mx-auto my-auto text-end ">
          <div>
-           <pre className="text-dark display-6 text-end" style={{fontSize: 20}}><span ><i className="couleur2"><b>{props.username}</b></i> </span><span className="separateur text-secondary"></span><a href="" style={{textDecoration:"none"}}><span className="text-danger"><i onClick={logout}> Logout </i> </span></a></pre>
+           <pre className="text-dark display-6 text-end" style={{fontSize: 20}}><span ><i className="couleur2">Bienvenu(e)</i> </span><span className="separateur text-secondary"></span></pre>
            <i><pre className="text-dark display-6 timing text-end" style={{fontSize: 15}}>{theTime}</pre></i>
         </div>  
         </Col>

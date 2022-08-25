@@ -35,7 +35,7 @@ function ConfirmationEnvoieInfo(props)
     return (
         
         <>
-        <Header username={props.username} />
+        <Header  />
 {isDesktop && <Container className='bg-dark justify-content-center text-center bordure mb-5' style={{marginTop:50,width:1000}} >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={6}>
@@ -65,7 +65,6 @@ function ConfirmationEnvoieInfo(props)
         <p className='text-light'>Mbongo yako Futa: <b className='couleur2'>{Number(props.envoie3.infoEnvoie.montant_total).toFixed(2)} £</b> </p>
         <p className='text-light'>Nzela yako zwa Mbongo : <b className='couleur2'>{props.envoie3.infoEnvoie.type_service}</b> </p>
         <p className='text-light'>Code Retrait : <b className='couleur2'> {props.envoie3.infoEnvoie.code_retrait} ({props.envoie3.infoEnvoie.status_retrait})</b></p>
-        <p className='text-light'>opération envoie fait par : <b className='couleur2'> {props.username}</b></p>
         <p className='text-light'>date et heure : <b className='couleur2'> {JSON.stringify(props.envoie3.infoEnvoie.date_heure_operation)}</b></p>
         </Col>
     </Row>
@@ -115,7 +114,6 @@ function ConfirmationEnvoieInfo(props)
         <p className='text-light'>Mbongo yako Futa: <b className='couleur2'>{Number(props.envoie3.infoEnvoie.montant_total).toFixed(2)} £</b> </p>
         <p className='text-light'>Nzela yako zwa Mbongo : <b className='couleur2'>{props.envoie3.infoEnvoie.type_service}</b> </p>
         <p className='text-light'>Code Retrait : <b className='couleur2'> {props.envoie3.infoEnvoie.code_retrait} ({props.envoie3.infoEnvoie.status_retrait})</b></p>
-        <p className='text-light'>opération envoie fait par : <b className='couleur2'> {props.username}</b></p>
         <p className='text-light'>date et heure : <b className='couleur2'> {JSON.stringify(props.envoie3.infoEnvoie.date_heure_operation)}</b></p>
         </Col>
     </Row>

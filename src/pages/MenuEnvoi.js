@@ -36,23 +36,12 @@ function MenuEnvoi(props)
         <Col xs = {"auto"}>
         <Link to="/form_envoie_client" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant='light'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='couleur2'><pre>Envoie Argent Client</pre></b>
+        <b className='couleur2'><pre>Tinda Mbongo (nbamla nayo liboso)</pre></b>
         </Button>
         </Link>
         </Col>
     </Row>
   
-
-
-    <Row className='justify-content-center pb-3'>
-        <Col xs = {"auto"}>
-        <Link to="/form_envoie_abonne_id" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='light'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='couleur2'><pre>Envoie Argent Abonné</pre></b>
-        </Button>
-        </Link>
-        </Col>
-    </Row>
   
 
 </Container>}

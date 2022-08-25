@@ -48,7 +48,7 @@ yn
    const navigate = useNavigate()
 
    
-
+/*
     const connection = (e)=>
     {
         fetch('https://kobobsapi.herokuapp.com/api/login/', {
@@ -83,7 +83,7 @@ yn
               setMessage("accès réfusé")
               navigate('/')
             } )
-    }
+    }*/
 
     const inputChanged = (event)=>
     {
@@ -109,41 +109,28 @@ yn
       
 <Form>
     <Row className='justify-content-center'>
-        <Col xs={6} >
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Control type="email" placeholder="nom d'utilisateur"  name="username"
-        value ={state.credentials.username} onChange={inputChanged} autoFocus/>
-        
+    <Col xs ={4}>
+        <Form.Group className="mb-3" >
+        <Form.Label value="Lingala" className='couleur2'>Lingala</Form.Label>
+        <Form.Select name='pays_beneficiaire'  aria-label="Default select example" onChange={e=>inputChanged(e)} required>
+         <option value="Lingala">Lingala</option>
+         </Form.Select>
          </Form.Group>
         </Col>
     </Row>
+    
   
-    <Row className='justify-content-center'>
-        <Col xs={6}>
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-         <Form.Control type="password" placeholder="mot de passe" name="password"
-         value ={state.credentials.password} onChange={inputChanged} />
-
-         </Form.Group>
-        </Col>
-    </Row>
   
     <Row className='justify-content-center pb-3'>
         <Col  xs={12}>    
-        <Link to="" style={{color:'white',textDecorationLine:'none'}}> 
+        <Link to="menu_envoie" style={{color:'white',textDecorationLine:'none'}}> 
         
-        <Button variant="outline-warning" type="submit" onClick={e=>connection(e)}>
-        <b>connexion</b>
+        <Button variant="outline-warning" type="submit" >
+        <b>Banda Opération</b>
         </Button>
         </Link>
         </Col>
     </Row>
-    <Row className='justify-content-center pb-3'>
-        <Col  xs={"auto"}>    
-        <p className='pt-3 text-danger'><b>{message}</b></p>
-        </Col>
-    </Row>
-  
 
 
 </Form>
@@ -161,43 +148,29 @@ yn
       
 <Form>
     <Row className='justify-content-center'>
-        <Col xs={"auto"} >
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Control type="email" placeholder="nom d'utilisateur"  name="username"
-        value ={state.credentials.username} onChange={inputChanged} autoFocus/>
-        
+    <Col xs ={4}>
+        <Form.Group className="mb-3" >
+        <Form.Label value="Lingala" className='couleur2'>Lingala</Form.Label>
+        <Form.Select name='pays_beneficiaire'  aria-label="Default select example" onChange={e=>inputChanged(e)} required>
+         <option value="Lingala">Lingala</option>
+         </Form.Select>
          </Form.Group>
         </Col>
     </Row>
   
-    <Row className='justify-content-center'>
-        <Col xs={"auto"}>
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-         <Form.Control type="password" placeholder="mot de passe" name="password"
-         value ={state.credentials.password} onChange={inputChanged} />
 
-         </Form.Group>
-        </Col>
-    </Row>
   
     <Row className='justify-content-center pb-3'>
-        <Col  xs={"auto"}>    
-        <Link to="" style={{color:'white',textDecorationLine:'none'}}> 
+    <Col  xs={"auto"}>    
+        <Link to="menu_envoie" style={{color:'white',textDecorationLine:'none'}}> 
         
         <Button variant="outline-warning" type="submit" >
-        connexion
+        <b>Banda Opération</b>
         </Button>
         </Link>
         </Col>
     </Row>
-
-    <Row className='justify-content-center pb-3'>
-        <Col  xs={"auto"}>    
-        <p className='pt-3 text-danger'><b>{message}</b></p>
-        </Col>
-    </Row>
   
-
 
 </Form>
 </Container> }

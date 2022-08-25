@@ -143,7 +143,7 @@ yn
     <Col xs ={4}>
         <Form.Group className="mb-3" >
         <Form.Label value="Lingala" className='couleur2'>Lingala</Form.Label>
-        <Form.Select name='pays_beneficiaire'  aria-label="Default select example" onChange={e=>inputChanged(e)} required>
+        <Form.Select name='pays_beneficiaire'  aria-label="Default select example">
          <option value="Lingala">Lingala</option>
          </Form.Select>
          </Form.Group>

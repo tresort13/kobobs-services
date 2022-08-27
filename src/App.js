@@ -300,10 +300,10 @@ function App() {
         <Route path="/form_envoie_client" element={<FormEnvoiClient  dataEnvoie={dataEnvoie} envoie={envoie}/>}>
         </Route>
 
-        <Route path="/form_envoie_abonne_id" element={username == "" ? <Navigate to ='/' /> :<FormEnvoiAbonneId username = {username} dataAbonne={dataAbonne} />} >
+        <Route path="/form_envoie_abonne_id" element={<FormEnvoiAbonneId username = {username} dataAbonne={dataAbonne} />} >
         </Route>
 
-        <Route path="/form_envoie_abonne" element={username == "" ? <Navigate to ='/' /> :<FormEnvoiAbonne username = {username} abonne={abonne} dataEnvoieAbonne={dataEnvoieAbonne}/>} >
+        <Route path="/form_envoie_abonne" element={<FormEnvoiAbonne username = {username} abonne={abonne} dataEnvoieAbonne={dataEnvoieAbonne}/>} >
         </Route>
 
         <Route path="/envoi_info" element={<EnvoiInfo  dataEnvoie3={dataEnvoie3} envoie={envoie}/>} >

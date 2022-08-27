@@ -35,7 +35,7 @@ function MenuEnvoi(props)
     <Row className='justify-content-center pb-3'>
         <Col xs = {"auto"}>
         <Link to="/form_envoie_client" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='light'  style={{width:500,height:80}} className='btn-lg rounded-pill zoom'>
+        <Button variant='light'  style={{width:550,height:80}} className='btn-lg rounded-pill zoom'>
         <b className='couleur2'><pre>nbamla na ngai ya liboso yako Tinda Mbongo awa</pre></b>
         </Button>
         </Link>
@@ -44,7 +44,7 @@ function MenuEnvoi(props)
     <Row className='justify-content-center pb-3'>
         <Col xs = {"auto"}>
         <Link to="/form_envoie_abonne_id" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='light'  style={{width:500,height:80}} className='btn-lg rounded-pill zoom'>
+        <Button variant='light'  style={{width:550,height:80}} className='btn-lg rounded-pill zoom'>
         <b className='couleur2'><pre>Esi na tindala mutu mbongo awa</pre></b>
         </Button>
         </Link>
@@ -66,7 +66,7 @@ function MenuEnvoi(props)
     <Row className='justify-content-center pb-3'>
         <Col xs = {"auto"}>
         <Link to="/form_envoie_client" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='light'  style={{width:500,height:80}} className='btn-lg rounded-pill zoom'>
+        <Button variant='light'  style={{width:550,height:80}} className='btn-lg rounded-pill zoom'>
         <b className='couleur2'><pre>nbamla na ngai ya liboso yako Tinda Mbongo awa</pre></b>
         </Button>
         </Link>
@@ -75,7 +75,7 @@ function MenuEnvoi(props)
     <Row className='justify-content-center pb-3'>
         <Col xs = {"auto"}>
         <Link to="/form_envoie_abonne_id" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='light'  style={{width:500,height:80}} className='btn-lg rounded-pill zoom'>
+        <Button variant='light'  style={{width:550,height:80}} className='btn-lg rounded-pill zoom'>
         <b className='couleur2'><pre>Esi na tindala mutu mbongo awa</pre></b>
         </Button>
         </Link>

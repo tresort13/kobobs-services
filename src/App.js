@@ -8,6 +8,8 @@ import MenuEnvoi from './pages/MenuEnvoi';
 import EnvoiInfo from './pages/EnvoiInfo';
 import ConfirmationEnvoieInfo from './pages/ConfirmationEnvoieInfo';
 import FormEnvoiClient from './pages/FormEnvoiClient';
+import FormEnvoiAbonneId from './pages/FormEnvoiAbonneId';
+import FormEnvoiAbonne from './pages/FormEnvoiAbonne';
 
 
 
@@ -211,6 +213,63 @@ function App() {
 
 
 
+  const [abonne,setAbonne] = useState(()=>
+  {
+    const localData = localStorage.getItem('abonne');
+    return localData ? JSON.parse(localData) : {infoAbonne :{
+      nom_expediteur : '',
+      postnom_expediteur : '',
+      prenom_expediteur : '',
+      adresse_expediteur : '',
+      email_expediteur : '',
+      numero_expediteur: '',
+      pays_expediteur : '',
+      code_abonne : ''
+      }};
+    })
+  
+  
+
+  useEffect(() => {
+    window.localStorage.setItem("abonne", JSON.stringify(abonne))
+  }, [abonne])
+
+  const dataAbonne = (donne)=>
+  {
+    setAbonne({infoAbonne : {
+      nom_expediteur : donne[0].nom_expediteur,
+      postnom_expediteur :donne[0].postnom_expediteur,
+      prenom_expediteur : donne[0].prenom_expediteur,
+      adresse_expediteur : donne[0].adresse_expediteur,
+      email_expediteur : donne[0].email_expediteur,
+      numero_expediteur: donne[0].numero_expediteur,
+      pays_expediteur : donne[0].pays_expediteur,
+      code_abonne : donne[0].code_abonne
+      }})
+  }
+
+  const dataEnvoieAbonne = (donne1,donne2)=>
+  {
+    setEnvoie({infoEnvoie :{
+      nom_expediteur : donne1.infoAbonne.nom_expediteur,
+      postnom_expediteur :donne1.infoAbonne.postnom_expediteur,
+      prenom_expediteur : donne1.infoAbonne.prenom_expediteur,
+      adresse_expediteur : donne1.infoAbonne.adresse_expediteur,
+      email_expediteur : donne1.infoAbonne.email_expediteur,
+      numero_expediteur: donne1.infoAbonne.numero_expediteur,
+      pays_expediteur : donne1.infoAbonne.pays_expediteur,
+      nom_beneficiaire : donne2.nom_beneficiaire,
+      postnom_beneficiaire : donne2.postnom_beneficiaire,
+      prenom_beneficiaire : donne2.prenom_beneficiaire,
+      adresse_beneficiaire :donne2.adresse_beneficiaire,
+      numero_beneficiaire : donne2.numero_beneficiaire,
+      pays_beneficiaire : donne2.pays_beneficiaire,
+      montant_beneficiaire : donne2.montant_beneficiaire,
+      type_service : donne2.type_service
+      }})
+  }
+
+
 
   const[temps,setTemps] = useState(()=>
     {
@@ -225,7 +284,6 @@ function App() {
     
     
   
-
   return ( 
     <BrowserRouter>
       <Routes >
@@ -242,11 +300,14 @@ function App() {
         <Route path="/form_envoie_client" element={<FormEnvoiClient  dataEnvoie={dataEnvoie} envoie={envoie}/>}>
         </Route>
 
-        
-        <Route path="/envoi_info" element={<EnvoiInfo  dataEnvoie3={dataEnvoie3} envoie={envoie}/>} >
+        <Route path="/form_envoie_abonne_id" element={username == "" ? <Navigate to ='/' /> :<FormEnvoiAbonneId username = {username} dataAbonne={dataAbonne} />} >
         </Route>
 
-       
+        <Route path="/form_envoie_abonne" element={username == "" ? <Navigate to ='/' /> :<FormEnvoiAbonne username = {username} abonne={abonne} dataEnvoieAbonne={dataEnvoieAbonne}/>} >
+        </Route>
+
+        <Route path="/envoi_info" element={<EnvoiInfo  dataEnvoie3={dataEnvoie3} envoie={envoie}/>} >
+        </Route>
 
 
         <Route path="/confirmation_envoie_info" element={<ConfirmationEnvoieInfo  envoie3={envoie3}/>} >

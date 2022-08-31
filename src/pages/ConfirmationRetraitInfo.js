@@ -78,7 +78,7 @@ function ConfirmationRetraitInfo(props)
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
         <Link to="/menu_envoie" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant="warning" type="submit" onClick={e=>payerRetrait(e)}> 
+        <Button variant="warning"> 
          ok
         </Button>
         </Link>
@@ -126,7 +126,7 @@ function ConfirmationRetraitInfo(props)
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
         <Link to="/menu_envoie" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant="warning" type="submit">
+        <Button variant="warning">
         ok
         </Button>
         </Link>

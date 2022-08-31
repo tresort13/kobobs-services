@@ -7,10 +7,12 @@ import  './pages/Assets.css';
 import MenuEnvoi from './pages/MenuEnvoi';
 import EnvoiInfo from './pages/EnvoiInfo';
 import ConfirmationEnvoieInfo from './pages/ConfirmationEnvoieInfo';
+import ConfirmationRetraitInfo from './pages/ConfirmationRetraitInfo';
 import FormEnvoiClient from './pages/FormEnvoiClient';
 import FormEnvoiAbonneId from './pages/FormEnvoiAbonneId';
 import FormEnvoiAbonne from './pages/FormEnvoiAbonne';
 import EnvoieAbonneInfo from './pages/EnvoieAbonneInfo';
+import FormRetrait from './pages/FormRetrait';
 
 
 
@@ -307,6 +309,9 @@ function App() {
         <Route path="/form_envoie_abonne" element={<FormEnvoiAbonne username = {username} abonne={abonne} dataEnvoieAbonne={dataEnvoieAbonne}/>} >
         </Route>
 
+        <Route path="/form_retrait" element={<FormRetrait username = {username} dataEnvoie2={dataEnvoie2}/>} >
+        </Route>
+
         <Route path="/envoi_info" element={<EnvoiInfo  dataEnvoie3={dataEnvoie3} envoie={envoie}/>} >
         </Route>
 
@@ -315,6 +320,9 @@ function App() {
 
 
         <Route path="/confirmation_envoie_info" element={<ConfirmationEnvoieInfo  envoie3={envoie3}/>} >
+        </Route>
+
+        <Route path="/retrait_info" element={<ConfirmationRetraitInfo  envoie2={envoie2}/>} >
         </Route>
 
 

@@ -41,11 +41,22 @@ function MenuEnvoi(props)
         </Link>
         </Col>
     </Row>
+
     <Row className='justify-content-center pb-3'>
         <Col xs = {"auto"}>
         <Link to="/form_envoie_abonne_id" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant='light'  style={{width:550,height:80}} className='btn-lg rounded-pill zoom'>
         <b className='couleur2'><pre>Esi na tindala mutu mbongo awa</pre></b>
+        </Button>
+        </Link>
+        </Col>
+    </Row>
+
+    <Row className='justify-content-center pb-3'>
+        <Col xs = {"auto"}>
+        <Link to="/form_retrait_info" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant='light'  style={{width:550,height:80}} className='btn-lg rounded-pill zoom'>
+        <b className='couleur2'><pre>Na Lingi na yeba status ya code retrait na ngai</pre></b>
         </Button>
         </Link>
         </Col>
@@ -77,6 +88,16 @@ function MenuEnvoi(props)
         <Link to="/form_envoie_abonne_id" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant='light'  style={{width:550,height:80}} className='btn-lg rounded-pill zoom'>
         <b className='couleur2'><pre>Esi na tindala mutu mbongo awa</pre></b>
+        </Button>
+        </Link>
+        </Col>
+    </Row>
+
+    <Row className='justify-content-center pb-3'>
+        <Col xs = {"auto"}>
+        <Link to="/form_retrait_info" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant='light'  style={{width:550,height:80}} className='btn-lg rounded-pill zoom'>
+        <b className='couleur2'><pre>Na Lingi na yeba status ya code retrait na ngai</pre></b>
         </Button>
         </Link>
         </Col>

@@ -309,7 +309,7 @@ function App() {
         <Route path="/form_envoie_abonne" element={<FormEnvoiAbonne username = {username} abonne={abonne} dataEnvoieAbonne={dataEnvoieAbonne}/>} >
         </Route>
 
-        <Route path="/form_retrait" element={<FormRetrait username = {username} dataEnvoie2={dataEnvoie2}/>} >
+        <Route path="/form_retrait_info" element={<FormRetrait username = {username} dataEnvoie2={dataEnvoie2}/>} >
         </Route>
 
         <Route path="/envoi_info" element={<EnvoiInfo  dataEnvoie3={dataEnvoie3} envoie={envoie}/>} >

@@ -10,6 +10,7 @@ import ConfirmationEnvoieInfo from './pages/ConfirmationEnvoieInfo';
 import FormEnvoiClient from './pages/FormEnvoiClient';
 import FormEnvoiAbonneId from './pages/FormEnvoiAbonneId';
 import FormEnvoiAbonne from './pages/FormEnvoiAbonne';
+import EnvoieAbonneInfo from './pages/EnvoieAbonneInfo';
 
 
 
@@ -307,6 +308,9 @@ function App() {
         </Route>
 
         <Route path="/envoi_info" element={<EnvoiInfo  dataEnvoie3={dataEnvoie3} envoie={envoie}/>} >
+        </Route>
+
+        <Route path="/envoi_abonne_info" element={<EnvoieAbonneInfo  dataEnvoie3={dataEnvoie3} envoie={envoie} />} >
         </Route>
 
 

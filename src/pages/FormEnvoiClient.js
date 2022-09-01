@@ -50,11 +50,29 @@ function FormEnvoiClient(props)
       });
     
   
-    
+    const tauxEchanger = ()=>
+    {
+      fetch('https://openexchangerates.org/api/latest.json?app_id=[[app:429df062186140dbb16cbd8bc1f75513]]&symbols=GBP', {
+                method:'GET',
+                headers: {'Content-Type': 'application/json'},
+               
+              })
+              .then( res => res.json())
+              .then(
+                res => {   
+                   console.log(res)
+                }
+              )
+              .catch( (error) =>
+                {
+                    console.log(error)
+                } )
+    }
 
 
     const submitFormulaire = (e)=>
-    {          
+    {  
+      tauxEchanger()        
       props.dataEnvoie(envoie.infoEnvoie)    
       setEnvoie({infoEnvoie:{}})
     }

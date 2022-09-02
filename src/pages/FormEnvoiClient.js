@@ -50,25 +50,25 @@ function FormEnvoiClient(props)
       });
     
   
-    const tauxEchanger = ()=>
-    {
-      fetch('https://openexchangerates.org/api/latest.json?app_id=[[app:429df062186140dbb16cbd8bc1f75513]]&symbols=GBP', {
-                method:'GET',
-                headers: {'Content-Type': 'application/json'},
-               
-              })
-              .then( res => res.json())
-              .then(
-                res => {   
-                   console.log(res)
-                }
-              )
-              .catch( (error) =>
-                {
-                    console.log(error)
-                } )
-    }
-
+      const tauxEchanger = ()=>
+      {
+        fetch('https://openexchangerates.org/api/latest.json?app_id=41351d88e53f4f0c89785fba9fc60ca0&symbols=GBP', {
+                  method:'GET',
+                  headers: {'Content-Type': 'application/json'},
+                 
+                })
+                .then( res => res.json())
+                .then(
+                  res => {  
+                    props.setTaux(res.rates.GBP) 
+                     console.log(res.rates.GBP)
+                  }
+                )
+                .catch( (error) =>
+                  {
+                      console.log(error)
+                  } )
+      }
 
     const submitFormulaire = (e)=>
     {  

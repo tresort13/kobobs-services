@@ -31,6 +31,17 @@ function App() {
     window.localStorage.setItem("username", JSON.stringify(username))
   }, [username])
 
+  const [taux,setTaux] = useState(()=>
+  {
+    const localData = localStorage.getItem('taux');
+    return localData ? JSON.parse(localData) : "";
+  });
+  
+  
+  useEffect(() => {
+    window.localStorage.setItem("taux", JSON.stringify(taux))
+  }, [taux])
+
   const [codeRetraitStatus,setCodeRetraitStatus] = useState(0)
 
 
@@ -52,7 +63,11 @@ function App() {
       numero_beneficiaire : '',
       pays_beneficiaire : '',
       montant_beneficiaire : '',
-      type_service : ''
+      montant_pour_payer :'',
+      frais_envoie : '',
+      frais_tva : '',
+      type_service : '',
+      code_abonne : ''
       }};
     })
   
@@ -79,7 +94,11 @@ function App() {
       numero_beneficiaire : donne.numero_beneficiaire,
       pays_beneficiaire : donne.pays_beneficiaire,
       montant_beneficiaire : donne.montant_beneficiaire,
-      type_service : donne.type_service
+      montant_pour_payer : (Number(donne.montant_beneficiaire).toFixed(2) * Number(taux).toFixed(2)) + ((Number(donne.montant_beneficiaire).toFixed(2) * Number(taux).toFixed(2)) * 5)/100 + ((Number(donne.montant_beneficiaire).toFixed(2) * Number(taux).toFixed(2)) * 1)/100,
+      frais_envoie : ((Number(donne.montant_beneficiaire).toFixed(2) * Number(taux).toFixed(2)) * 5)/100,
+      frais_tva : ((Number(donne.montant_beneficiaire).toFixed(2) * Number(taux).toFixed(2)) * 1)/100,
+      type_service : donne.type_service,
+      code_abonne : ''
       }})
   }
 
@@ -268,7 +287,48 @@ function App() {
       numero_beneficiaire : donne2.numero_beneficiaire,
       pays_beneficiaire : donne2.pays_beneficiaire,
       montant_beneficiaire : donne2.montant_beneficiaire,
-      type_service : donne2.type_service
+      montant_pour_payer : (Number(donne2.montant_beneficiaire).toFixed(2) * Number(taux).toFixed(2)) + ((Number(donne2.montant_beneficiaire).toFixed(2) * Number(taux).toFixed(2)) * 5)/100 + ((Number(donne2.montant_beneficiaire).toFixed(2) * Number(taux).toFixed(2)) * 1)/100,
+      frais_envoie : ((Number(donne2.montant_beneficiaire).toFixed(2) * Number(taux).toFixed(2)) * 5)/100,
+      frais_tva : ((Number(donne2.montant_beneficiaire).toFixed(2) * Number(taux).toFixed(2)) * 1)/100,
+      type_service : donne2.type_service,
+      code_abonne : donne1.infoAbonne.code_abonne
+      }})
+  }
+ 
+  
+
+  const [abonneInfo,setAbonneInfo] = useState(()=>
+  {
+    const localData = localStorage.getItem('abonneInfo');
+    return localData ? JSON.parse(localData) : {infoAbonne :{
+      nom_expediteur : '',
+      postnom_expediteur : '',
+      prenom_expediteur : '',
+      adresse_expediteur : '',
+      email_expediteur : '',
+      numero_expediteur: '',
+      pays_expediteur : '',
+      code_abonne : ''
+      }};
+    })
+  
+  
+
+  useEffect(() => {
+    window.localStorage.setItem("abonneInfo", JSON.stringify(abonneInfo))
+  }, [abonneInfo])
+
+  const dataAbonneInfo = (donne)=>
+  {
+    setAbonneInfo({infoAbonne : {
+      nom_expediteur : donne[0].nom_expediteur,
+      postnom_expediteur :donne[0].postnom_expediteur,
+      prenom_expediteur : donne[0].prenom_expediteur,
+      adresse_expediteur : donne[0].adresse_expediteur,
+      email_expediteur : donne[0].email_expediteur,
+      numero_expediteur: donne[0].numero_expediteur,
+      pays_expediteur : donne[0].pays_expediteur,
+      code_abonne : donne[0].code_abonne
       }})
   }
 
@@ -284,6 +344,8 @@ function App() {
   }, [temps])
 
 
+
+    
     
     
   
@@ -300,13 +362,13 @@ function App() {
 
        
 
-        <Route path="/form_envoie_client" element={<FormEnvoiClient  dataEnvoie={dataEnvoie} envoie={envoie}/>}>
+        <Route path="/form_envoie_client" element={<FormEnvoiClient  dataEnvoie={dataEnvoie} envoie={envoie} setTaux={setTaux}/>}>
         </Route>
 
         <Route path="/form_envoie_abonne_id" element={<FormEnvoiAbonneId username = {username} dataAbonne={dataAbonne} />} >
         </Route>
 
-        <Route path="/form_envoie_abonne" element={<FormEnvoiAbonne username = {username} abonne={abonne} dataEnvoieAbonne={dataEnvoieAbonne}/>} >
+        <Route path="/form_envoie_abonne" element={<FormEnvoiAbonne username = {username} abonne={abonne} dataEnvoieAbonne={dataEnvoieAbonne} setTaux={setTaux}/>} >
         </Route>
 
         <Route path="/form_retrait_info" element={<FormRetrait username = {username} dataEnvoie2={dataEnvoie2}/>} >

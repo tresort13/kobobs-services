@@ -65,7 +65,7 @@ function ConfirmationEnvoieInfo(props)
         <p className='text-light'>Mbongo yako Futa: <b className='bg-warning text-dark'>{Number(props.envoie3.infoEnvoie.montant_total).toFixed(2)} £</b> </p>
         <p className='text-light'>Nzela yako zwa Mbongo : <b className='couleur2'>{props.envoie3.infoEnvoie.type_service}</b> </p>
         <p className='text-light'>Code Retrait : <b className='bg-warning text-dark'> {props.envoie3.infoEnvoie.code_retrait} ({props.envoie3.infoEnvoie.status_retrait})</b></p>
-        <p className='text-light'>Code Nayo Ya Abonnement : <b className='bg-warning text-dark'>{props.envoie3.infoEnvoie.code_abonne} </b> </p>
+        <p className='text-light'>Code Nayo Ya Abonnement : <b className='bg-warning text-dark'>{props.envoie3.infoEnvoie.code_abonne} </b> (Batela Yango Pona kosalela na prochain envoie)</p>
         <p className='text-light'>date et heure : <b className='couleur2'> {JSON.stringify(props.envoie3.infoEnvoie.date_heure_operation)}</b></p>
         </Col>
     </Row>

@@ -132,13 +132,6 @@ console.log(props.envoie.infoEnvoie)
         </Link>
         </Col>
         
-        <Col xs={6}>
-        <Link to="/form_envoie_client" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant="outline-warning" type="submit">
-        Modifier 
-        </Button>
-        </Link>
-        </Col>
     </Row>
     
     

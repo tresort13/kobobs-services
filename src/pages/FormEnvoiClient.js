@@ -74,7 +74,7 @@ function FormEnvoiClient(props)
     {  
       tauxEchanger()        
       props.dataEnvoie(envoie.infoEnvoie)    
-      setEnvoie({infoEnvoie:{}})
+     // setEnvoie({infoEnvoie:{}})
     }
 
     const inputChanged = (event)=>

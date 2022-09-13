@@ -15,10 +15,10 @@ import Footer from './Footer';
 
 const useState = React.useState
 
-function ConfirmationRetraitInfo(props)
+function ConfirmationRetraitInfoEnglish(props)
 {
   const [modalShow, setModalShow] = React.useState(false);
-    const [message,setMessage] = useState("Status Ya Code Retrait Na Yo")
+    const [message,setMessage] = useState("Status of your tracking number")
     const [couleur,setCouleur] = useState("text-dark")
     const navigate = useNavigate()
     
@@ -57,14 +57,14 @@ function ConfirmationRetraitInfo(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={12}>
-        <p className='text-light'>Status : <b className='text-dark bg-warning'> {props.envoie2.infoEnvoie.code_retrait}  {props.envoie2.infoEnvoie.status_retrait}</b></p>
-        <p className='text-light'>Kombo Mobimba ya Motindi : <b className='couleur2'>{props.envoie2.infoEnvoie.nom_expediteur} {props.envoie2.infoEnvoie.postnom_expediteur} {props.envoie2.infoEnvoie.prenom_expediteur}</b> </p>
-        <p className='text-light'>Kombo Mobimba ya Mozui : <b className='couleur2'>{props.envoie2.infoEnvoie.nom_beneficiaire} {props.envoie2.infoEnvoie.postnom_beneficiaire} {props.envoie2.infoEnvoie.prenom_beneficiaire}</b> </p>
-        <p className='text-light'>Ekolo Motindi : <b className='couleur2'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
-        <p className='text-light'>Ekolo Mozui : <b className='couleur2'> {props.envoie2.infoEnvoie.pays_beneficiaire}</b></p>
-        <p className='text-light'>Mbongo ya kozwa epayi ya Motindi : <b className='couleur2'>{Number(props.envoie2.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
-        <p className='text-light'>Nzela yako zwa Mbongo : <b className='couleur2'>{props.envoie2.infoEnvoie.type_service}</b> </p>
-        <p className='text-light'>date et heure : <b className='couleur2'> {JSON.stringify(props.envoie2.infoEnvoie.date_heure_operation)}</b></p>
+        <p className='text-light'>Tracking Number Status : <b className='text-dark bg-warning'> {props.envoie2.infoEnvoie.code_retrait}  {props.envoie2.infoEnvoie.status_retrait}</b></p>
+        <p className='text-light'>Sender full name : <b className='couleur2'>{props.envoie2.infoEnvoie.nom_expediteur} {props.envoie2.infoEnvoie.postnom_expediteur} {props.envoie2.infoEnvoie.prenom_expediteur}</b> </p>
+        <p className='text-light'>Receiver full name : <b className='couleur2'>{props.envoie2.infoEnvoie.nom_beneficiaire} {props.envoie2.infoEnvoie.postnom_beneficiaire} {props.envoie2.infoEnvoie.prenom_beneficiaire}</b> </p>
+        <p className='text-light'>sender country   : <b className='couleur2'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
+        <p className='text-light'>receiver country : <b className='couleur2'> {props.envoie2.infoEnvoie.pays_beneficiaire}</b></p>
+        <p className='text-light'>amount to get by the receiver : <b className='couleur2'>{Number(props.envoie2.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
+        <p className='text-light'>Type of service : <b className='couleur2'>{props.envoie2.infoEnvoie.type_service}</b> </p>
+        <p className='text-light'>date and time : <b className='couleur2'> {JSON.stringify(props.envoie2.infoEnvoie.date_heure_operation)}</b></p>
         </Col>
     </Row>
 
@@ -74,7 +74,7 @@ function ConfirmationRetraitInfo(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <Link to="/menu_envoie" style={{color:'white',textDecorationLine:'none'}}>
+        <Link to="/menu_envoie_english" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant="warning"> 
          ok
         </Button>
@@ -144,4 +144,4 @@ function ConfirmationRetraitInfo(props)
 
 
 
-export default ConfirmationRetraitInfo;
+export default ConfirmationRetraitInfoEnglish;

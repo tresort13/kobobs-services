@@ -116,6 +116,7 @@ return (
         <Form.Label  className='couleur2'>Langue</Form.Label>
         <Form.Select name='language' value={langue.infoLangue.language} onChange={e=>inputChanged(e)}  aria-label="Default select example"  required>
          <option value="Lingala">Lingala</option>
+         <option value="English">English</option>
          </Form.Select>
          </Form.Group>
         </Col>

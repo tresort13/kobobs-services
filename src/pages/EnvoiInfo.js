@@ -46,6 +46,7 @@ console.log(props.envoie.infoEnvoie)
                   
                  props.dataEnvoie3(res)
                  console.log(res)
+                 navigate('/confirmation_envoie_info')
                  
                 }
               )

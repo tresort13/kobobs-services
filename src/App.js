@@ -31,6 +31,117 @@ function App() {
     window.localStorage.setItem("username", JSON.stringify(username))
   }, [username])
 
+  const [dateInfo,setDate] = useState(()=>
+  {
+    const localData = localStorage.getItem('dateInfo');
+    return localData ? JSON.parse(localData) : "";
+  });
+  
+  
+  useEffect(() => {
+    window.localStorage.setItem("dateInfo", JSON.stringify(dateInfo))
+  }, [dateInfo])
+
+  const [moisInfo,setMois] = useState(()=>
+  {
+    const localData = localStorage.getItem('moisInfo');
+    return localData ? JSON.parse(localData) : "";
+  });
+  
+  
+  useEffect(() => {
+    window.localStorage.setItem("moisInfo", JSON.stringify(moisInfo))
+  }, [moisInfo])
+
+
+  const [dailyRapport,setDailyRapport] = useState(()=>
+  {
+    const localData = localStorage.getItem('dailyRapport');
+    return localData ? JSON.parse(localData) :[];
+    })
+  
+  
+
+  useEffect(() => {
+    window.localStorage.setItem("dailyRapport", JSON.stringify(dailyRapport))
+  }, [dailyRapport])
+
+  const dataDailyRapport = (donne)=>
+  {
+    setDailyRapport(donne)
+  }
+
+
+  const [monthlyRapport,setMonthlyRapport] = useState(()=>
+  {
+    const localData = localStorage.getItem('monthlyRapport');
+    return localData ? JSON.parse(localData) :[];
+    })
+  
+  
+
+  useEffect(() => {
+    window.localStorage.setItem("monthlyRapport", JSON.stringify(monthlyRapport))
+  }, [monthlyRapport])
+
+  const dataMonthlyRapport = (donne)=>
+  {
+    setMonthlyRapport(donne)
+  }
+
+
+  const [detailEnvoieTotal,setDetailEnvoieTotal] = useState(()=>
+  {
+    const localData = localStorage.getItem('detailEnvoieTotal');
+    return localData ? JSON.parse(localData) :[];
+    })
+  
+  
+
+  useEffect(() => {
+    window.localStorage.setItem("detailEnvoieTotal", JSON.stringify(detailEnvoieTotal))
+  }, [detailEnvoieTotal])
+
+  const dataDetailEnvoieTotal = (donne)=>
+  {
+    setDetailEnvoieTotal(donne)
+  }
+
+
+  const [userInfo,setUserInfo] = useState(()=>
+  {
+    const localData = localStorage.getItem('userInfo');
+    return localData ? JSON.parse(localData) :[];
+  });
+  
+  
+  useEffect(() => {
+    window.localStorage.setItem("userInfo", JSON.stringify(userInfo))
+  }, [userInfo])
+
+  const dataUserInfo = (donne)=>
+  {
+    setUserInfo(donne)
+  }
+
+  /*const [detailEnvoieValide,setDetailEnvoieValide] = useState(()=>
+  {
+    const localData = localStorage.getItem('detailEnvoieValide');
+    return localData ? JSON.parse(localData) :[];
+    })
+  
+  
+
+  useEffect(() => {
+    window.localStorage.setItem("detailEnvoieValide", JSON.stringify(detailEnvoieValide))
+  }, [detailEnvoieValide])
+
+  const dataDetailEnvoieValide = (donne)=>
+  {
+    setDetailEnvoieValide(donne)
+  }
+*/
+
   const [taux,setTaux] = useState(()=>
   {
     const localData = localStorage.getItem('taux');
@@ -55,18 +166,18 @@ function App() {
       adresse_expediteur : '',
       email_expediteur : '',
       numero_expediteur: '',
-      pays_expediteur : '',
+      pays_expediteur : 'Angleterre',
       nom_beneficiaire : '',
       postnom_beneficiaire : '',
       prenom_beneficiaire : '',
       adresse_beneficiaire : '',
       numero_beneficiaire : '',
-      pays_beneficiaire : '',
+      pays_beneficiaire : 'RD Congo',
       montant_beneficiaire : '',
       montant_pour_payer :'',
       frais_envoie : '',
       frais_tva : '',
-      type_service : '',
+      type_service : 'Kozua na maboko (kozua na nzela ya agence)',
       code_abonne : ''
       }};
     })
@@ -113,15 +224,15 @@ function App() {
       adresse_expediteur : '',
       email_expediteur : '',
       numero_expediteur: '',
-      pays_expediteur : '',
+      pays_expediteur : 'Angleterre',
       nom_beneficiaire : '',
       postnom_beneficiaire : '',
       prenom_beneficiaire : '',
       adresse_beneficiaire : '',
       numero_beneficiaire : '',
-      pays_beneficiaire : '',
+      pays_beneficiaire : 'RD Congo',
       montant_beneficiaire : '',
-      type_service : '',
+      type_service : 'Kozua na maboko (kozua na nzela ya agence)',
       frais_envoie : '',
       montant_total : '',
       code_retrait : '',
@@ -178,16 +289,16 @@ function App() {
       adresse_expediteur : '',
       email_expediteur : '',
       numero_expediteur: '',
-      pays_expediteur : '',
+      pays_expediteur : 'Angleterre',
       nom_beneficiaire : '',
       postnom_beneficiaire : '',
       prenom_beneficiaire : '',
       adresse_beneficiaire : '',
       numero_beneficiaire : '',
-      pays_beneficiaire : '',
+      pays_beneficiaire : 'RD Congo',
       montant_envoie_sans_frais : '',
       montant_beneficiaire : '',
-      type_service : '',
+      type_service : 'Kozua na maboko (kozua na nzela ya agence)',
       frais_envoie : '',
       frais_tva : '',
       montant_total : '',
@@ -245,7 +356,7 @@ function App() {
       adresse_expediteur : '',
       email_expediteur : '',
       numero_expediteur: '',
-      pays_expediteur : '',
+      pays_expediteur : 'Angleterre',
       code_abonne : ''
       }};
     })
@@ -307,7 +418,7 @@ function App() {
       adresse_expediteur : '',
       email_expediteur : '',
       numero_expediteur: '',
-      pays_expediteur : '',
+      pays_expediteur : 'Angleterre',
       code_abonne : ''
       }};
     })
@@ -342,7 +453,6 @@ function App() {
    useEffect(() => {
     window.localStorage.setItem("temps", JSON.stringify(temps))
   }, [temps])
-
 
 
     

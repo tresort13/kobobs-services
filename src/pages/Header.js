@@ -6,7 +6,6 @@ import Image from 'react-bootstrap/Image';
 import 'bootstrap/dist/css/bootstrap.css';
 import  './Header.css';
 import {useEffect,useState} from 'react';
-import Offcanvas from 'react-bootstrap/Offcanvas';
 import Nav from 'react-bootstrap/Nav';
 import { useMediaQuery } from 'react-responsive';
 import Button from "react-bootstrap/Button";
@@ -25,10 +24,6 @@ function Header(props)
     });
 
     const navigate = useNavigate()
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
 
     useEffect(() => {
@@ -58,30 +53,13 @@ function Header(props)
         </Col>
         <Col xs={4} className="my-auto mx-auto text-end ">
          <div>
-           <pre className="text-dark display-6" style={{fontSize: 20}}><Image className="navbar-brand rounded-circle" src={require('./login.jpeg')} type="button" alt="profil" style={{width:40}} ></Image><span ><i className="text-white"> Mbote Na Yo</i> </span><span className="separateur text-secondary"></span></pre>
+           <pre className="text-dark display-6" style={{fontSize: 20}}><Image className="navbar-brand rounded-circle" src={require('./login.jpeg')} type="button" alt="profil" style={{width:40}} ></Image><span ><i className="text-white"> Mbote Na Yo</i> </span><span className="separateur text-secondary"></span><span className="couleur2">Lingala</span></pre>
            <i><pre className="couleur2 display-6 timing text-center" style={{fontSize: 15}}>{theTime}</pre></i>
         </div>  
         </Col>
     </Row>
    
-    <Offcanvas show={show} onHide={handleClose} className="bordure " style={{height:550}}>
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 text-secondary text-end"><b>Menu Navigation</b></i> </Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-        <Nav justify menuVariant="dark"  className="navbar justify-content-end flex-grow-1 pe-3 flex-column">
-        <Nav.Link href="/menu_envoie"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>Envoi Argent</i></Button></Nav.Link>
-        <Nav.Link href="/menu_retrait"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>Retrait Argent</i></Button></Nav.Link>
-        <Nav.Link href="/menu_gestion_abonne"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>Gestions Abonnes</i></Button></Nav.Link>
-        <Nav.Link href=""><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>Gestions Operations</i></Button></Nav.Link>
-        <Nav.Link href=""><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>Parametres</i></Button></Nav.Link>
-        <Nav.Link href=""><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>Gestion d'utilisateur</i></Button></Nav.Link>
-          
-                  
-                </Nav>
-
-        </Offcanvas.Body>
-      </Offcanvas>
+  
    </Container>}
 
 
@@ -101,22 +79,7 @@ function Header(props)
         </Col>
     </Row>
    
-    <Offcanvas show={show} onHide={handleClose} className="bordure " style={{height:550}}>
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title className="text-center"><i className="display-6 text-secondary text-center"><b>Menu Navigation</b></i> </Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-        <Nav justify menuVariant="dark"  className="navbar justify-content-end flex-grow-1 pe-3 flex-column">
-        <Nav.Link href="/menu_bagages"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-primary'><i>Tracer Bagages</i></Button></Nav.Link>
-        <Nav.Link href="/menu_passagers"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-primary'><i>Tracer Passagers</i></Button></Nav.Link>
-        <Nav.Link href="/menu_gestion_vols"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-primary'><i>Gestion vols</i></Button></Nav.Link>
-        <Nav.Link href="/menu_livraison"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-primary'><i>Gestion Livraison</i></Button></Nav.Link>
-        <Nav.Link href="/menu_audit"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-primary'><i>Audit</i></Button></Nav.Link>
-        <Nav.Link href="/menu_users"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-primary'><i>Gestion d'utilisateur</i></Button></Nav.Link>     
-        </Nav>
-
-        </Offcanvas.Body>
-      </Offcanvas>
+    
    </Container>}
    </div>
 

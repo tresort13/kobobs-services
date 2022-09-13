@@ -6,11 +6,11 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
-import {Link} from  'react-router-dom';
+import {Link,useNavigate} from  'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import Header from './Header';
 import Footer from './Footer';
-import InputGroup from 'react-bootstrap/InputGroup';
+import Modal from 'react-bootstrap/Modal';
 
 
 
@@ -21,6 +21,8 @@ function FormEnvoiAbonneId(props)
     const[codeAbonne,setCodeAbonne] = useState({infoCodeAbonne :{
         code_abonne :"",
     }})
+    const navigate = useNavigate()
+    const [modalShow, setModalShow] = React.useState(false);
 
     const [message,setMessage] = useState("Kota Code ya Abonnement nayo")
     const [couleur,setCouleur] = useState("text-dark")
@@ -36,7 +38,8 @@ function FormEnvoiAbonneId(props)
 
       const submitcodeAbonne = (e)=>
       {
-                
+        e.preventDefault()
+
           fetch('https://kobobsapi.herokuapp.com/api/getCodeAbonneInfo/'+codeAbonne.infoCodeAbonne.code_abonne+'/', {
                   method:'GET',
                   headers: {'Content-Type': 'application/json'},
@@ -47,6 +50,7 @@ function FormEnvoiAbonneId(props)
                   res => {   
                       console.log(res)
                      props.dataAbonne(res)
+                     navigate('/form_envoie_abonne')
                   }
                 )
                 .catch( (error) =>
@@ -89,7 +93,7 @@ function FormEnvoiAbonneId(props)
         </Col>
     </Row>
     
-<Form>
+<Form onSubmit={submitcodeAbonne}>
    
 
     <Row className='justify-content-center'>
@@ -104,11 +108,9 @@ function FormEnvoiAbonneId(props)
 
    <Row className='pb-3'>
        <Col>
-        <Link to="/form_envoie_abonne" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant="outline-warning" type="submit"  onClick={e=>submitcodeAbonne(e)}>
+        <Button variant="outline-warning" type="submit" >
         Valider 
         </Button>
-        </Link>
         </Col>
     </Row>
   
@@ -166,10 +168,37 @@ function FormEnvoiAbonneId(props)
             <p></p>
           </Col>
         </Row>
+ <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
 <Footer />
         </>
        
     )
 }
+
+function MyVerticallyCenteredModal(props) {
+    return (
+      <Modal
+        {...props}
+        size="md"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Code Eza Valide te
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <h4>Makomi : </h4>
+          <p className='text-danger'><b>Limbisa Code Okotisi eza Valide te !!!</b>   
+          </p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant='warning' onClick={props.onHide}>Fermer</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
+
 
 export default FormEnvoiAbonneId;

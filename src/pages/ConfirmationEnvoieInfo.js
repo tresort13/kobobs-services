@@ -10,7 +10,7 @@ import {Link} from  'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import Header from './Header';
 import Footer from './Footer';
-import InputGroup from 'react-bootstrap/InputGroup';
+import Modal from 'react-bootstrap/Modal';
 
 
 
@@ -21,6 +21,7 @@ function ConfirmationEnvoieInfo(props)
 
     const [message,setMessage] = useState("")
     const [couleur,setCouleur] = useState("text-dark")
+    const [modalShow, setModalShow] = React.useState(true);
 
     const isDesktop = useMediaQuery({
         query: "(min-width: 1224px)"
@@ -78,7 +79,7 @@ function ConfirmationEnvoieInfo(props)
         <Col xs={6}>
         <Link to="/menu_envoie" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant="warning" type="submit">
-        ok
+        fermer
         </Button>
         </Link>
         </Col>
@@ -138,10 +139,37 @@ function ConfirmationEnvoieInfo(props)
             <p></p>
           </Col>
         </Row>
+  <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
 <Footer />
         </>
        
     )
 }
+
+function MyVerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="md"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+        Kotinda Esimbi
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <h4>Makomi : </h4>
+        <p className='text-success'><b>Formulaire Na Yo etindami malamu</b>   
+        </p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant='warning' onClick={props.onHide}>Fermer</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
 
 export default ConfirmationEnvoieInfo;

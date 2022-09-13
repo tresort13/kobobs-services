@@ -64,7 +64,7 @@ console.log(props.envoie.infoEnvoie)
     return (
         
         <>
-        <Header username={props.username} />
+        <Header langue={props.langue} />
 {isDesktop && <Container className='bg-dark justify-content-center text-center bordure mb-5' style={{marginTop:50,width:1000}} >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={6}>

@@ -20,16 +20,16 @@ const useState = React.useState
 
 function App() {
 
-  const [username,setUsername] = useState(()=>
+  const [langue,setLangue] = useState(()=>
   {
-    const localData = localStorage.getItem('username');
+    const localData = localStorage.getItem('langue');
     return localData ? JSON.parse(localData) : "";
   });
   
   
   useEffect(() => {
-    window.localStorage.setItem("username", JSON.stringify(username))
-  }, [username])
+    window.localStorage.setItem("langue", JSON.stringify(langue))
+  }, [langue])
 
   const [dateInfo,setDate] = useState(()=>
   {
@@ -463,38 +463,38 @@ function App() {
     <BrowserRouter>
       <Routes >
         
-         <Route path="/"  element={<Login   />} >
+         <Route path="/"  element={<Login    setLangue={setLangue}/>} >
         </Route>
 
         
-        <Route path="/menu_envoie" element={<MenuEnvoi />} >
+        <Route path="/menu_envoie" element={<MenuEnvoi langue = {langue} />} >
         </Route>
 
        
 
-        <Route path="/form_envoie_client" element={<FormEnvoiClient  dataEnvoie={dataEnvoie} envoie={envoie} setTaux={setTaux}/>}>
+        <Route path="/form_envoie_client" element={<FormEnvoiClient langue = {langue}  dataEnvoie={dataEnvoie} envoie={envoie} setTaux={setTaux}/>}>
         </Route>
 
-        <Route path="/form_envoie_abonne_id" element={<FormEnvoiAbonneId username = {username} dataAbonne={dataAbonne} />} >
+        <Route path="/form_envoie_abonne_id" element={<FormEnvoiAbonneId langue = {langue} dataAbonne={dataAbonne} />} >
         </Route>
 
-        <Route path="/form_envoie_abonne" element={<FormEnvoiAbonne username = {username} abonne={abonne} dataEnvoieAbonne={dataEnvoieAbonne} setTaux={setTaux}/>} >
+        <Route path="/form_envoie_abonne" element={<FormEnvoiAbonne langue = {langue} abonne={abonne} dataEnvoieAbonne={dataEnvoieAbonne} setTaux={setTaux}/>} >
         </Route>
 
-        <Route path="/form_retrait_info" element={<FormRetrait username = {username} dataEnvoie2={dataEnvoie2}/>} >
+        <Route path="/form_retrait_info" element={<FormRetrait langue = {langue} dataEnvoie2={dataEnvoie2}/>} >
         </Route>
 
-        <Route path="/envoi_info" element={<EnvoiInfo  dataEnvoie3={dataEnvoie3} envoie={envoie}/>} >
+        <Route path="/envoi_info" element={<EnvoiInfo langue = {langue}  dataEnvoie3={dataEnvoie3} envoie={envoie}/>} >
         </Route>
 
-        <Route path="/envoi_abonne_info" element={<EnvoieAbonneInfo  dataEnvoie3={dataEnvoie3} envoie={envoie} />} >
+        <Route path="/envoi_abonne_info" element={<EnvoieAbonneInfo langue = {langue}  dataEnvoie3={dataEnvoie3} envoie={envoie} />} >
         </Route>
 
 
-        <Route path="/confirmation_envoie_info" element={<ConfirmationEnvoieInfo  envoie3={envoie3}/>} >
+        <Route path="/confirmation_envoie_info" element={<ConfirmationEnvoieInfo langue = {langue}  envoie3={envoie3}/>} >
         </Route>
 
-        <Route path="/retrait_info" element={<ConfirmationRetraitInfo  envoie2={envoie2}/>} >
+        <Route path="/retrait_info" element={<ConfirmationRetraitInfo langue = {langue}  envoie2={envoie2}/>} >
         </Route>
 
 

@@ -21,10 +21,9 @@ const useState = React.useState
 function Login(props)
 {
   
-   const [state,setState] = useState({
-        credentials :{
-            username : '',
-            password : ''
+   const [langue,setLangue] = useState({
+        infoLangue :{
+            language : ''
         }})
 
     const [message,setMessage] = useState("")
@@ -46,6 +45,20 @@ yn
        
           
    const navigate = useNavigate()
+
+   const connect = (e)=>
+   {
+     e.preventDefault()
+     props.setLangue(langue.infoLangue.language)
+     navigate('/menu_envoie')
+   }
+
+   const inputChanged = (event)=>
+   {
+       const cred = langue.infoLangue;
+       cred[event.target.name] = event.target.value;
+       setLangue({infoLangue:cred})
+   }
 
    
 /*
@@ -84,14 +97,9 @@ yn
               navigate('/')
             } )
     }*/
-
    
-
-    return (
-
-
+return (
 <>
-
 {isDesktop && <Container className='bg-dark justify-content-center text-center pt-2 bordure' style={{marginTop:100,backgroundColor:'grey',width:650}} >
 
     <Row className='justify-content-center mb-5 pt-3' >
@@ -100,27 +108,25 @@ yn
         </Col>
     </Row>
       
-<Form>
+  <Form>
     <Row className='justify-content-center'>
     <Col xs ={4}>
         <Form.Group className="mb-3" >
         <Form.Label  className='couleur2'>Langue</Form.Label>
-        <Form.Select name='pays_beneficiaire'  aria-label="Default select example" >
+        <Form.Select name='Lingala' value={langue.infoLangue.language} onChange={e=>inputChanged(e)}  aria-label="Default select example" >
          <option value="Lingala">Lingala</option>
          </Form.Select>
          </Form.Group>
         </Col>
     </Row>
+
     
   
-  
-    <Row className='justify-content-center pb-3'>
+  <Row className='justify-content-center pb-3'>
         <Col  xs={12}>    
-        <Link to="/menu_envoie" style={{color:'white',textDecorationLine:'none'}}> 
-        <Button variant="outline-warning" >
+        <Button variant="outline-warning" onClick={connect}>
         <b>Banda Opération</b>
         </Button>
-        </Link>
         </Col>
     </Row>
 

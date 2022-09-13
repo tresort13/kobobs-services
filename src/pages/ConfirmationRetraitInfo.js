@@ -10,7 +10,6 @@ import {Link,useNavigate} from  'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import Header from './Header';
 import Footer from './Footer';
-import Modal from 'react-bootstrap/Modal';
 
 
 
@@ -38,7 +37,7 @@ function ConfirmationRetraitInfo(props)
     return (
         
         <>
-        <Header username={props.username} />
+        <Header langue={props.langue} />
 {isDesktop && <Container className='bg-dark justify-content-center text-center bordure mb-5' style={{marginTop:50,width:1000}} >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={6}>

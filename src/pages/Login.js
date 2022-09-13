@@ -23,7 +23,7 @@ function Login(props)
   
    const [langue,setLangue] = useState({
         infoLangue :{
-            language : ''
+            language : 'Lingala'
         }})
 
     const [message,setMessage] = useState("")
@@ -49,6 +49,7 @@ yn
    const connect = (e)=>
    {
      e.preventDefault()
+     console.log(langue.infoLangue.language)
      props.setLangue(langue.infoLangue.language)
      navigate('/menu_envoie')
    }
@@ -113,7 +114,7 @@ return (
     <Col xs ={4}>
         <Form.Group className="mb-3" >
         <Form.Label  className='couleur2'>Langue</Form.Label>
-        <Form.Select name='Lingala' value={langue.infoLangue.language} onChange={e=>inputChanged(e)}  aria-label="Default select example" >
+        <Form.Select name='language' value={langue.infoLangue.language} onChange={e=>inputChanged(e)}  aria-label="Default select example"  required>
          <option value="Lingala">Lingala</option>
          </Form.Select>
          </Form.Group>
@@ -124,7 +125,7 @@ return (
   
   <Row className='justify-content-center pb-3'>
         <Col  xs={12}>    
-        <Button variant="outline-warning" onClick={connect}>
+        <Button variant="outline-warning" onClick={e=>connect(e)}>
         <b>Banda Opération</b>
         </Button>
         </Col>

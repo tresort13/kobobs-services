@@ -42,7 +42,7 @@ function Header(props)
     {isDesktop && <Container fluid className="bg-dark mx-auto">
     <Row>
         <Col xs={3} className="my-auto mx-auto text-start">
-          <a href="/" style={{textDecoration:"none"}}>
+          <a href="/home" style={{textDecoration:"none"}}>
           <Image  src={require('./kobo_logo.JPG')}  className='rounded-pill ' style={{width:130}}></Image>
           </a>
         </Col>

@@ -60,7 +60,7 @@ function MenuEnvoi(props)
 
 </Container>}
 
-{isMobileOrTablet &&  <Container className='bg-dark mx-auto justify-content-center text-center bordure' style={{marginTop:100}} >
+{isMobileOrTablet &&  <Container className='bg-dark mx-auto justify-content-center text-center bordure mt-5'  >
     
     <Row className='justify-content-center pb-3 pt-3'>
         <Col xs = {"auto"}>

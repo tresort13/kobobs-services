@@ -92,8 +92,8 @@ function Header(props)
         </Col>
         <Col xs={"auto"} className=" mx-auto my-auto text-end ">
          <div>
-           <pre className="text-dark display-6 text-end" style={{fontSize: 20}}><span ><i className="couleur2">Bienvenu(e)</i> </span><span className="separateur text-secondary"></span></pre>
-           <i><pre className="text-dark display-6 timing text-end" style={{fontSize: 15}}>{theTime}</pre></i>
+           <pre className="text-dark display-6 text-end" style={{fontSize: 20}}><span ><i className="couleur2">Mbote</i> </span><span className="separateur text-secondary"></span><a href="" style={{textDecoration:"none"}}><span className="couleur2"><i onClick={logout}>{props.langue}</i></span></a></pre>
+           <i><pre className="couleur display-6 timing text-end" style={{fontSize: 15}}>{theTime}</pre></i>
         </div>  
         </Col>
     </Row>

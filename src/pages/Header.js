@@ -48,7 +48,8 @@ function Header(props)
         </Col>
         <Col xs={5} className="my-auto mx-auto my-auto text-end">
         <Link to="/menu_envoie" style={{textDecoration:"none"}}>
-          <p className="display-6 text-secondary">KOBO BUSINESS SERVICES</p>
+          <p className="display-6 text-secondary">KOBO BUSINESS SERVICES</p><br></br>
+          <p className="couleur2"><b>Home</b></p>
           </Link>
         </Col>
         <Col xs={4} className="my-auto mx-auto text-end ">

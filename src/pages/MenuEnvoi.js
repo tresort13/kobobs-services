@@ -60,28 +60,23 @@ function MenuEnvoi(props)
 
 </Container>}
 
-{isMobileOrTablet && <Container className='bg-dark my-auto justify-content-center text-center bordure mb-5' style={{marginTop:30}} >
-    <Row className='justify-content-center mb-5 pt-3' >
-        <Col xs={"auto"}>
-            <Link to="/home">
-            <Image src={require('./kobo_logo.JPG')}  className='rounded-pill ' style={{width:130}}></Image>
-            </Link>
-        </Col>
-    </Row>
-    <Row className='justify-content-center pb-3'>
+{isMobileOrTablet &&  <Container className='bg-dark justify-content-center text-center bordure' style={{marginTop:100,width:750}} >
+    
+    <Row className='justify-content-center pb-3 pt-3'>
         <Col xs = {"auto"}>
         <Link to="/form_envoie_client" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='light'  style={{width:550,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='couleur2'><pre>nbamla na ngai ya liboso yako Tinda Mbongo awa</pre></b>
+        <Button variant='warning'  style={{width:300,height:40}} className='btn-lg rounded-pill zoom'>
+        <b className='text-dark'><pre>nbamla na ngai ya liboso yako Tinda Mbongo awa</pre></b>
         </Button>
         </Link>
         </Col>
     </Row>
+
     <Row className='justify-content-center pb-3'>
         <Col xs = {"auto"}>
         <Link to="/form_envoie_abonne_id" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='light'  style={{width:550,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='couleur2'><pre>Esi na tindala mutu mbongo awa</pre></b>
+        <Button variant='warning'  style={{width:300,height:40}} className='btn-lg rounded-pill zoom'>
+        <b className='text-dark'><pre>Esi na tindala mutu mbongo awa</pre></b>
         </Button>
         </Link>
         </Col>
@@ -90,12 +85,14 @@ function MenuEnvoi(props)
     <Row className='justify-content-center pb-3'>
         <Col xs = {"auto"}>
         <Link to="/form_retrait_info" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='light'  style={{width:550,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='couleur2'><pre>Na Lingi na yeba status ya code retrait na ngai</pre></b>
+        <Button variant='warning'  style={{width:300,height:40}} className='btn-lg rounded-pill zoom'>
+        <b className='text-dark'><pre>Na Lingi na yeba status ya code retrait na ngai</pre></b>
         </Button>
         </Link>
         </Col>
     </Row>
+  
+  
 
 </Container>}
 <Footer />

@@ -30,16 +30,16 @@ const useState = React.useState
 
 function App() {
 
-  const [langue,setLangue] = useState(()=>
+  const [username,setUsername] = useState(()=>
   {
-    const localData = localStorage.getItem('langue');
+    const localData = localStorage.getItem('username');
     return localData ? JSON.parse(localData) : "";
   });
   
   
   useEffect(() => {
-    window.localStorage.setItem("langue", JSON.stringify(langue))
-  }, [langue])
+    window.localStorage.setItem("username", JSON.stringify(username))
+  }, [username])
 
   const [dateInfo,setDate] = useState(()=>
   {
@@ -188,7 +188,8 @@ function App() {
       frais_envoie : '',
       frais_tva : '',
       type_service : 'Kozua na maboko (kozua na nzela ya agence)',
-      code_abonne : ''
+      code_abonne : '',
+      numero_transfer :''
       }};
     })
   
@@ -219,7 +220,8 @@ function App() {
       frais_envoie : ((Number(donne.montant_beneficiaire).toFixed(2) * Number(taux).toFixed(2)) * 5)/100,
       frais_tva : ((Number(donne.montant_beneficiaire).toFixed(2) * Number(taux).toFixed(2)) * 1)/100,
       type_service : donne.type_service,
-      code_abonne : ''
+      code_abonne : '',
+      numero_transfer :donne.numero_transfer
       }})
   }
 
@@ -249,7 +251,8 @@ function App() {
       data_operation : '',
       date_heure_operation : '',
       code_abonne : '',
-      status_retrait : ''
+      status_retrait : '',
+      numero_transfer :''
       }};
     })
   
@@ -285,7 +288,8 @@ function App() {
       data_operation : donne[0].date_operation,
       date_heure_operation : donne[0].date_heure_operation,
       code_abonne : donne[0].code_abonne,
-      status_retrait : donne[0].status_retrait
+      status_retrait : donne[0].status_retrait,
+      numero_transfer : donne[0].numero_transfer
       }})
   }
 
@@ -316,7 +320,8 @@ function App() {
       data_operation : '',
       date_heure_operation : '',
       code_abonne : '',
-      status_retrait : ''
+      status_retrait : '',
+      numero_transfer:''
       }};
     })
   
@@ -350,7 +355,8 @@ function App() {
       data_operation : donne.date_operation,
       date_heure_operation : donne.date_heure_operation,
       code_abonne : donne.code_abonne,
-      status_retrait : donne.status_retrait
+      status_retrait : donne.status_retrait,
+      numero_transfer: donne.numero_transfer
       }})
   }
 
@@ -412,7 +418,8 @@ function App() {
       frais_envoie : ((Number(donne2.montant_beneficiaire).toFixed(2) * Number(taux).toFixed(2)) * 5)/100,
       frais_tva : ((Number(donne2.montant_beneficiaire).toFixed(2) * Number(taux).toFixed(2)) * 1)/100,
       type_service : donne2.type_service,
-      code_abonne : donne1.infoAbonne.code_abonne
+      code_abonne : donne1.infoAbonne.code_abonne,
+      numero_transfer : donne2.infoAbonne.numero_transfer
       }})
   }
  
@@ -463,6 +470,7 @@ function App() {
    useEffect(() => {
     window.localStorage.setItem("temps", JSON.stringify(temps))
   }, [temps])
+
 
 
     

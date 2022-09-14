@@ -175,6 +175,14 @@ function FormEnvoiAbonneEnglish(props)
          </Form.Select>
          </Form.Group>
         </Col>
+
+        {envoie.infoEnvoie.type_service == "by mobile money tranfer(Mpesa,Orange Money,Airtel Money)" ? <Col xs = {12}>
+        <Form.Group className="mb-3" controlId="formBasicText" >
+        <Form.Label className='couleur2'>* Enter the mobile number for transfering the money  </Form.Label>
+        <Form.Control name="numero_transfer"  value={envoieAbonne.infoEnvoieAbonne.numero_transfer} onChange={e=>inputChanged(e)} type="text" placeholder='transfering mobile number'  required/>
+       
+         </Form.Group>
+        </Col> : <span></span>}
     </Row>
     <Row>
       <hr style={{color:"darkorange"}}></hr>

@@ -136,7 +136,7 @@ return (
 </Form>
 </Container> }
 
-{isMobileOrTablet &&  <Container className='bg-dark my-center mx-auto text-start bordure' style={{backgroundColor:'grey',height:600}} >
+{isMobileOrTablet &&  <Container className='bg-dark my-center mx-auto text-start bordure' style={{backgroundColor:'grey',height:700}} >
 
 <Row className='justify-content-center text-center mb-5 pt-5' >
     <Col>
@@ -148,7 +148,7 @@ return (
 <Row className='justify-content-center mt-5'>
 <Col xs ={4}>
     <Form.Group className="mb-3" >
-    <Form.Label  className='couleur2'>Langue</Form.Label>
+    <Form.Label  className='couleur2 text-center'>Langue</Form.Label>
     <Form.Select name='language' value={langue.infoLangue.language} onChange={e=>inputChanged(e)}  aria-label="Default select example"  required>
      <option value="Lingala">Lingala</option>
      <option value="English">English</option>
@@ -159,11 +159,9 @@ return (
 
 
 
-<Row className='justify-content-center text-center pb-3'>
+<Row className='justify-content-center text-center pb-3 mt-5'>
     <Col  xs={12}>    
-    <Button variant="outline-warning" onClick={e=>connect(e)}>
-    <b>Banda Opération</b>
-    </Button>
+    {langue.infoLangue.language == "Lingala" ? <Button variant="outline-warning" onClick={e=>connect(e)}><b>Banda Opération</b></Button> : <Button variant="outline-warning" onClick={e=>connect(e)}><b>Start Operation</b></Button>}
     </Col>
 </Row>
 

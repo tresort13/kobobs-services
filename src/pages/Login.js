@@ -136,11 +136,11 @@ return (
 </Form>
 </Container> }
 
-{isMobileOrTablet &&  <Container className='bg-dark my-auto mx-auto text-start bordure' style={{backgroundColor:'grey'}} >
+{isMobileOrTablet &&  <Container className='bg-dark my-auto mx-auto text-start bordure' style={{backgroundColor:'grey',height:400}} >
 
 <Row className='justify-content-center mb-5 pt-5' >
     <Col>
-    <Image src={require('./kobo_logo.JPG')}  className='rounded-pill ' style={{width:100}}></Image>
+    <Image src={require('./kobo_logo.JPG')}  className='rounded-pill ' style={{width:200}}></Image>
     </Col>
 </Row>
   
@@ -159,7 +159,7 @@ return (
 
 
 
-<Row className='justify-content-center pb-3'>
+<Row className='justify-content-center text-center pb-3'>
     <Col  xs={12}>    
     <Button variant="outline-warning" onClick={e=>connect(e)}>
     <b>Banda Opération</b>

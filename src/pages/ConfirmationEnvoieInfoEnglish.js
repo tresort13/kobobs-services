@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import {Link} from  'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
-import Header from './Header';
+import HeaderEnglish from './HeaderEnglish';
 import Footer from './Footer';
 import Modal from 'react-bootstrap/Modal';
 

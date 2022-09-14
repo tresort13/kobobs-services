@@ -65,6 +65,7 @@ function ConfirmationRetraitInfoEnglish(props)
         <p className='text-light'>receiver country : <b className='couleur2'> {props.envoie2.infoEnvoie.pays_beneficiaire}</b></p>
         <p className='text-light'>amount to get by the receiver : <b className='couleur2'>{Number(props.envoie2.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
         <p className='text-light'>Type of service : <b className='couleur2'>{props.envoie2.infoEnvoie.type_service}</b> </p>
+        <p className='text-light'>Numero ya téléphone pona kotinda mbongo : <b className='couleur2'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
         <p className='text-light'>date and time : <b className='couleur2'> {JSON.stringify(props.envoie2.infoEnvoie.date_heure_operation)}</b></p>
         </Col>
     </Row>

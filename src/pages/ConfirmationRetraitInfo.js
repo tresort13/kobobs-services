@@ -65,6 +65,7 @@ function ConfirmationRetraitInfo(props)
         <p className='text-light'>Ekolo Mozui : <b className='couleur2'> {props.envoie2.infoEnvoie.pays_beneficiaire}</b></p>
         <p className='text-light'>Mbongo ya kozwa epayi ya Motindi : <b className='couleur2'>{Number(props.envoie2.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
         <p className='text-light'>Nzela yako zwa Mbongo : <b className='couleur2'>{props.envoie2.infoEnvoie.type_service}</b> </p>
+        <p className='text-light'>Numero ya téléphone pona kotinda mbongo : <b className='couleur2'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
         <p className='text-light'>date na heure : <b className='couleur2'> {JSON.stringify(props.envoie2.infoEnvoie.date_heure_operation)}</b></p>
         </Col>
     </Row>

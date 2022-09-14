@@ -189,7 +189,7 @@ function App() {
       frais_tva : '',
       type_service : 'Kozua na maboko (kozua na nzela ya agence)',
       code_abonne : '',
-      numero_transfer :''
+      numero_transfer :'Kozua na maboko (kozua na nzela ya agence)'
       }};
     })
   
@@ -252,7 +252,7 @@ function App() {
       date_heure_operation : '',
       code_abonne : '',
       status_retrait : '',
-      numero_transfer :''
+      numero_transfer :'Kozua na maboko (kozua na nzela ya agence)'
       }};
     })
   
@@ -321,7 +321,7 @@ function App() {
       date_heure_operation : '',
       code_abonne : '',
       status_retrait : '',
-      numero_transfer:''
+      numero_transfer:'Kozua na maboko (kozua na nzela ya agence)'
       }};
     })
   

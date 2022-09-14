@@ -113,6 +113,7 @@ console.log(props.envoie.infoEnvoie)
         <Col xs={12}>
         <p className='text-light'>Amount to get by the receiver : <b className='couleur2'>{Number(props.envoie.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
         <p className='text-light'>Type of service : <b className='couleur2'>{props.envoie.infoEnvoie.type_service}</b> </p>
+        <p className='text-light'>Mobile number for transfering the money : <b className='couleur2'>{props.envoie.infoEnvoie.numero_transfer}</b> </p>
         <p className='text-light'>Total amount to pay for the transfer (all fees incl.): <b className='bg-warning text-dark'>{Number(props.envoie.infoEnvoie.montant_pour_payer).toFixed(2)} £</b> </p>
         </Col>
     </Row>

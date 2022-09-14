@@ -113,6 +113,7 @@ console.log(props.envoie.infoEnvoie)
         <Col xs={12}>
         <p className='text-light'>Mbongo ya kozwa epayi ya Mozui: <b className='couleur2'>{Number(props.envoie.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
         <p className='text-light'>Nzela yako zwa Mbongo: <b className='couleur2'>{props.envoie.infoEnvoie.type_service}</b> </p>
+        <p className='text-light'>Numero ya téléphone pona kotinda mbongo : <b className='couleur2'>{props.envoie.infoEnvoie.numero_transfer}</b> </p>
         <p className='text-light'>Mbongo Nionso Yako Futa Pona ko Tinda: <b className='bg-warning text-dark'>{Number(props.envoie.infoEnvoie.montant_pour_payer).toFixed(2)} £</b> </p>
         </Col>
     </Row>

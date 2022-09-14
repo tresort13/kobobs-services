@@ -27,7 +27,7 @@ function FormEnvoiAbonne(props)
         pays_beneficiaire : 'RD Congo',
         montant_beneficiaire : '',
         type_service : 'Kozua na maboko (kozua na nzela ya agence)',
-        numero_transfer : ''
+        numero_transfer :'Kozua na maboko (kozua na nzela ya agence)'
         }})
     
 
@@ -181,7 +181,7 @@ function FormEnvoiAbonne(props)
         {envoieAbonne.infoEnvoie.type_service == "Kozua na nzela ya tshombo(Mpesa,Orange Money,Airtel Money)" ? <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='couleur2'>* Kotisa Numero yako tinda mbongo </Form.Label>
-        <Form.Control name="numero_transfer"  value={envoieAbonne.infoEnvoieAbonne.numero_transfer} onChange={e=>inputChanged(e)} type="text" placeholder='numero ya transfer'  required/>
+        <Form.Control name="numero_transfer"   onChange={e=>inputChanged(e)} type="text" placeholder='numero ya transfer'  required/>
        
          </Form.Group>
         </Col> : <span></span>}

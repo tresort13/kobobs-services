@@ -136,9 +136,9 @@ return (
 </Form>
 </Container> }
 
-{isMobileOrTablet &&  <Container className='bg-dark my-auto mx-auto text-start bordure' style={{backgroundColor:'grey',height:400}} >
+{isMobileOrTablet &&  <Container className='bg-dark my-auto mx-auto text-start bordure' style={{backgroundColor:'grey',height:500}} >
 
-<Row className='justify-content-center mb-5 pt-5' >
+<Row className='justify-content-center text-center mb-5 pt-5' >
     <Col>
     <Image src={require('./kobo_logo.JPG')}  className='rounded-pill ' style={{width:200}}></Image>
     </Col>

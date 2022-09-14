@@ -93,13 +93,30 @@ function HeaderEnglish(props)
         </Col>
         <Col xs={"auto"} className=" mx-auto my-auto text-end ">
          <div>
-           <pre className="text-dark display-6 text-end" style={{fontSize: 20}}><span ><i className="couleur2">Bienvenu(e)</i> </span><span className="separateur text-secondary"></span></pre>
-           <i><pre className="text-dark display-6 timing text-end" style={{fontSize: 15}}>{theTime}</pre></i>
+           <pre className="text-dark display-6 text-end" style={{fontSize: 20}}><span ><i className="couleur2">Welcom</i> </span><span className="separateur couleur2"></span></pre>
+           <i><pre className="couleur2 display-6 text-end" style={{fontSize: 15}}>{theTime}</pre></i>
+        </div>  
+        </Col>
+
+        <Col xs={"auto"} className=" mx-auto my-auto text-end ">
+         <div>
+         <Button variant="warning" className="btn-lg rounded zoom " onClick={handleShow}><b className="text-dark"> Menu</b></Button>
         </div>  
         </Col>
     </Row>
    
-    
+    <Offcanvas show={show} onHide={handleClose} className="bordure " style={{height:300}}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 text-secondary text-end"><b><u>Menu</u></b></i> </Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+        <Nav justify menuVariant="dark"  className="navbar justify-content-end flex-grow-1 pe-3 flex-column">
+        <Nav.Link href="/menu_envoi_english"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>Home</i></Button></Nav.Link>
+        <Nav.Link href="/"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>Change the language</i></Button></Nav.Link>
+      </Nav>
+
+        </Offcanvas.Body>
+      </Offcanvas> 
    </Container>}
    </div>
 

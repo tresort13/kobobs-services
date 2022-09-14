@@ -65,8 +65,8 @@ function ConfirmationEnvoieInfoEnglish(props)
         <p className='text-light'>amount to get by the receiver: <b className='bg-warning text-dark'>{Number(props.envoie3.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
         <p className='text-light'>amount to pay for the transfer (including all fees): <b className='bg-warning text-dark'>{Number(props.envoie3.infoEnvoie.montant_total).toFixed(2)} £</b> </p>
         <p className='text-light'>Type of service : <b className='couleur2'>{props.envoie3.infoEnvoie.type_service}</b> </p>
-        <p className='text-light'>Tracking Number : <b className='bg-warning text-dark'> {props.envoie3.infoEnvoie.code_retrait} ({props.envoie3.infoEnvoie.status_retrait})</b></p>
-        <p className='text-light'>membership Number : <b className='bg-warning text-dark'>{props.envoie3.infoEnvoie.code_abonne} </b> (keep it secret and use it for your next transfer)</p>
+        <p className='text-light'>Tracking Number : <b className='bg-warning text-dark'> {props.envoie3.infoEnvoie.code_retrait} (this code will be valid only after the full payement of your transfer fees)</b></p>
+        <p className='text-light'>membership Number : <b className='bg-warning text-dark'>{props.envoie3.infoEnvoie.code_abonne} (keep it secret and use it for your next transfer)</b> </p>
         <p className='text-light'>date and time : <b className='couleur2'> {JSON.stringify(props.envoie3.infoEnvoie.date_heure_operation)}</b></p>
         </Col>
     </Row>
@@ -77,7 +77,7 @@ function ConfirmationEnvoieInfoEnglish(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <Link to="/menu_envoie_english" style={{color:'white',textDecorationLine:'none'}}>
+        <Link to="/menu_envoi_english" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant="warning" type="submit">
         close
         </Button>

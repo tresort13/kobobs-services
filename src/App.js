@@ -22,6 +22,7 @@ import FormEnvoiClientEnglish from './pages/FormEnvoiClientEnglish';
 import FormEnvoiAbonneIdEnglish from './pages/FormEnvoiAbonneIdEnglish';
 import EnvoieAbonneInfoEnglish from './pages/EnvoieAbonneInfoEnglish';
 import FormRetraitEnglish from './pages/FormRetraitEnglish';
+import FormEnvoiAbonneEnglish from './pages/FormEnvoiAbonneEnglish'
 
 
 
@@ -522,7 +523,7 @@ function App() {
         <Route path="/form_envoie_abonne_id_english" element={<FormEnvoiAbonneIdEnglish langue = {langue} dataAbonne={dataAbonne} />} >
         </Route>
 
-        <Route path="/form_envoie_abonne_english" element={<FormEnvoiAbonneIdEnglish langue = {langue} abonne={abonne} dataEnvoieAbonne={dataEnvoieAbonne} setTaux={setTaux}/>} >
+        <Route path="/form_envoie_abonne_english" element={<FormEnvoiAbonneEnglish langue = {langue} abonne={abonne} dataEnvoieAbonne={dataEnvoieAbonne} setTaux={setTaux}/>} >
         </Route>
 
         <Route path="/form_retrait_info_english" element={<FormRetraitEnglish langue = {langue} dataEnvoie2={dataEnvoie2}/>} >

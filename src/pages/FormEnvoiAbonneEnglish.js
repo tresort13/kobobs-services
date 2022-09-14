@@ -158,7 +158,7 @@ function FormEnvoiAbonneEnglish(props)
     <Row className='justify-content-center'>
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>Amount to get by the receiver </Form.Label>
+        <Form.Label className='couleur2'>which Amount do you want the receiver to get</Form.Label>
         <Form.Control name="montant_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.montant_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder="Mbongo"  required/>
          </Form.Group>
         </Col>

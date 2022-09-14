@@ -74,7 +74,7 @@ function ConfirmationRetraitInfoEnglish(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <Link to="/menu_envoie_english" style={{color:'white',textDecorationLine:'none'}}>
+        <Link to="/menu_envoi_english" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant="warning"> 
          ok
         </Button>

@@ -99,11 +99,23 @@ function Header(props)
 
         <Col xs={"auto"} className=" mx-auto my-auto text-end ">
          <div>
-         <Button variant="warning" className="btn-sm rounded-pill zoom " onClick={handleShow}><b className="text-dark"> Menu</b></Button>
+         <Button variant="warning" className="btn-lg rounded zoom " onClick={handleShow}><b className="text-dark"> Menu</b></Button>
         </div>  
         </Col>
     </Row>
    
+    <Offcanvas show={show} onHide={handleClose} className="bordure " style={{height:300}}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 text-secondary text-end"><b><u>Menu</u></b></i> </Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+        <Nav justify menuVariant="dark"  className="navbar justify-content-end flex-grow-1 pe-3 flex-column">
+        <Nav.Link href="/menu_envoie"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>Nzonga Na ebamdeli</i></Button></Nav.Link>
+        <Nav.Link href="/"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>Pona munoko mususu</i></Button></Nav.Link>
+      </Nav>
+
+        </Offcanvas.Body>
+      </Offcanvas>
     
    </Container>}
    </div>

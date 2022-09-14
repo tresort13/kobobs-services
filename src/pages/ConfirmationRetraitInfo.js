@@ -57,8 +57,8 @@ function ConfirmationRetraitInfo(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={12}>
-        <p className='text-light'>Tracking Number : <b className='text-dark bg-warning'> {props.envoie2.infoEnvoie.code_retrait}</b></p>
-        <p className='text-light'>Status : <b className='text-dark bg-warning'> {props.envoie2.infoEnvoie.status_retrait}</b><b className='couleur2'>(please follow the explaination below of your status)</b></p>
+        <p className='text-light'>Code nayo : <b className='text-dark bg-warning'> {props.envoie2.infoEnvoie.code_retrait}</b></p>
+        <p className='text-light'>Status ya code nayo : <b className='text-dark bg-warning'> {props.envoie2.infoEnvoie.status_retrait}</b><b className='couleur2'>(Yeba ko tala ba explications ya status nayo na sé ya page)</b></p>
         <p className='text-light'>Kombo Mobimba ya Motindi : <b className='couleur2'>{props.envoie2.infoEnvoie.nom_expediteur} {props.envoie2.infoEnvoie.postnom_expediteur} {props.envoie2.infoEnvoie.prenom_expediteur}</b> </p>
         <p className='text-light'>Kombo Mobimba ya Mozui : <b className='couleur2'>{props.envoie2.infoEnvoie.nom_beneficiaire} {props.envoie2.infoEnvoie.postnom_beneficiaire} {props.envoie2.infoEnvoie.prenom_beneficiaire}</b> </p>
         <p className='text-light'>Ekolo Motindi : <b className='couleur2'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>

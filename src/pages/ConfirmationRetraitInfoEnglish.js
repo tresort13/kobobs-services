@@ -35,7 +35,7 @@ function ConfirmationRetraitInfoEnglish(props)
     return (
         
         <>
-        <Header langue={props.langue} />
+        <HeaderEnglish langue={props.langue} />
 {isDesktop && <Container className='bg-dark justify-content-center text-center bordure mb-5' style={{marginTop:50,width:1000}} >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={6}>
@@ -57,7 +57,8 @@ function ConfirmationRetraitInfoEnglish(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={12}>
-        <p className='text-light'>Tracking Number Status : <b className='text-dark bg-warning'> {props.envoie2.infoEnvoie.code_retrait}  {props.envoie2.infoEnvoie.status_retrait} </b><b className='couleur2'>(sorry if the status info is in french... )</b></p>
+        <p className='text-light'>Tracking Number : <b className='text-dark bg-warning'> {props.envoie2.infoEnvoie.code_retrait}</b></p>
+        <p className='text-light'>Status of your tracking number : <b className='text-dark bg-warning'> {props.envoie2.infoEnvoie.status_retrait}</b><b className='couleur2'>(please follow the explaination below of your status)</b></p>
         <p className='text-light'>Sender full name : <b className='couleur2'>{props.envoie2.infoEnvoie.nom_expediteur} {props.envoie2.infoEnvoie.postnom_expediteur} {props.envoie2.infoEnvoie.prenom_expediteur}</b> </p>
         <p className='text-light'>Receiver full name : <b className='couleur2'>{props.envoie2.infoEnvoie.nom_beneficiaire} {props.envoie2.infoEnvoie.postnom_beneficiaire} {props.envoie2.infoEnvoie.prenom_beneficiaire}</b> </p>
         <p className='text-light'>sender country   : <b className='couleur2'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
@@ -74,9 +75,9 @@ function ConfirmationRetraitInfoEnglish(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={12}>
-        <p className='text-light'>Code Retrait en attente de validation : <b className='text-dark bg-warning'> That means your tracking number is pending to be validated until the full payement of the transfer fees</b></p>
-        <p className='text-light'>Code Retrait Valide : <b className='text-dark bg-warning'> That means your tracking number has been validated and the reciever cand pick up the money</b></p>
-        <p className='text-light'>Code Retrait Payé : <b className='couleur2'> That means the receiver has picked up the money </b> </p>
+        <p className='text-light'><b className='couleur2'>Code Retrait en attente de validation :</b> <b className='text-dark bg-warning'> That means your tracking number is pending to be validated until the full payement of the transfer fees</b></p>
+        <p className='text-light'><b className='couleur2'>Code Retrait Valide : </b><b className='text-dark bg-warning'> That means your tracking number has been validated and the reciever cand pick up the money</b></p>
+        <p className='text-light'><b className='couleur2'>Code Retrait Payé :</b> <b className='text-dark bg-warning'> That means the receiver has picked up the money </b> </p>
         </Col>
     </Row>
 

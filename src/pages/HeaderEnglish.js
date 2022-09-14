@@ -54,7 +54,7 @@ function HeaderEnglish(props)
         <Col xs={5} className="my-auto mx-auto my-auto text-end">
         <Link to="/menu_envoie" style={{textDecoration:"none"}}>
           <p className="display-6 text-secondary">KOBO BUSINESS SERVICES</p><br></br>
-          <div className="text-center justify-content-center"><Button variant="warning" className="btn-lg rounded-pill zoom " onClick={handleShow}><b className="text-dark">Navigation Menu</b></Button></div>
+          <div className="text-center justify-content-center"><Button variant="warning" className="btn-lg rounded-pill zoom pb-2" onClick={handleShow}><b className="text-dark">Navigation Menu</b></Button></div>
           </Link>
         </Col>
         <Col xs={4} className="my-auto mx-auto text-end ">
@@ -66,9 +66,9 @@ function HeaderEnglish(props)
     </Row>
    
   
-    <Offcanvas show={show} onHide={handleClose} className="bordure " style={{height:550}}>
+    <Offcanvas show={show} onHide={handleClose} className="bordure " style={{height:200}}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 text-secondary text-end"><b>Menu Navigation</b></i> </Offcanvas.Title>
+          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 text-secondary text-end"><b>Navigation</b></i> </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
         <Nav justify menuVariant="dark"  className="navbar justify-content-end flex-grow-1 pe-3 flex-column">

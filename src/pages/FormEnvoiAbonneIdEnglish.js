@@ -77,7 +77,7 @@ function FormEnvoiAbonneIdEnglish(props)
     return (
         
         <>
-        <Header langue={props.langue} />
+        <HeaderEnglish langue={props.langue} />
 {isDesktop &&<Container className='bg-dark justify-content-center text-center bordure mb-5' style={{marginTop:100,width:750}} >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={6}>

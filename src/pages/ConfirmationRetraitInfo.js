@@ -57,14 +57,28 @@ function ConfirmationRetraitInfo(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={12}>
-        <p className='text-light'>Status : <b className='text-dark bg-warning'> {props.envoie2.infoEnvoie.code_retrait}  {props.envoie2.infoEnvoie.status_retrait}</b></p>
+        <p className='text-light'>Tracking Number : <b className='text-dark bg-warning'> {props.envoie2.infoEnvoie.code_retrait}</b></p>
+        <p className='text-light'>Status : <b className='text-dark bg-warning'> {props.envoie2.infoEnvoie.status_retrait}</b><b className='couleur2'>(please follow the explaination below of your status)</b></p>
         <p className='text-light'>Kombo Mobimba ya Motindi : <b className='couleur2'>{props.envoie2.infoEnvoie.nom_expediteur} {props.envoie2.infoEnvoie.postnom_expediteur} {props.envoie2.infoEnvoie.prenom_expediteur}</b> </p>
         <p className='text-light'>Kombo Mobimba ya Mozui : <b className='couleur2'>{props.envoie2.infoEnvoie.nom_beneficiaire} {props.envoie2.infoEnvoie.postnom_beneficiaire} {props.envoie2.infoEnvoie.prenom_beneficiaire}</b> </p>
         <p className='text-light'>Ekolo Motindi : <b className='couleur2'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
         <p className='text-light'>Ekolo Mozui : <b className='couleur2'> {props.envoie2.infoEnvoie.pays_beneficiaire}</b></p>
         <p className='text-light'>Mbongo ya kozwa epayi ya Motindi : <b className='couleur2'>{Number(props.envoie2.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
         <p className='text-light'>Nzela yako zwa Mbongo : <b className='couleur2'>{props.envoie2.infoEnvoie.type_service}</b> </p>
-        <p className='text-light'>date et heure : <b className='couleur2'> {JSON.stringify(props.envoie2.infoEnvoie.date_heure_operation)}</b></p>
+        <p className='text-light'>date na heure : <b className='couleur2'> {JSON.stringify(props.envoie2.infoEnvoie.date_heure_operation)}</b></p>
+        </Col>
+    </Row>
+
+
+    <Row className='justify-content-center pb-3'>
+      <hr style={{color:"darkorange"}}></hr>
+      <p className='couleur2'><b><u>Explication ya status</u></b> </p>
+    </Row>
+    <Row className='justify-content-center pb-3' >
+        <Col xs={12}>
+        <p className='text-light'>Code Retrait en attente de validation : <b className='text-dark bg-warning'> Elingi ko loba nanu code nayo eza valide te pona nanu ofuti nbongo ya transfer te</b></p>
+        <p className='text-light'>Code Retrait Valide : <b className='text-dark bg-warning'> Elingi ko loba code nayo ekomi valide et que mozui akoki ko zwa nbongo</b></p>
+        <p className='text-light'>Code Retrait Payé : <b className='couleur2'> Elingi ko loba Mozui esi azwi nbongo oyo otindeli ye </b> </p>
         </Col>
     </Row>
 

@@ -14,7 +14,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 
 
 
-function Header(props)
+function HeaderEnglish(props)
 {
     const [theTime, setTheTime] = useState(new Date().toLocaleString())
     const isDesktop = useMediaQuery({
@@ -47,19 +47,19 @@ function Header(props)
     {isDesktop && <Container fluid className="bg-dark mx-auto">
     <Row>
         <Col xs={3} className="my-auto mx-auto text-start">
-          <a href="/menu_envoie" style={{textDecoration:"none"}}>
+          <a href="/home" style={{textDecoration:"none"}}>
           <Image  src={require('./kobo_logo.JPG')}  className='rounded-pill ' style={{width:130}}></Image>
           </a>
         </Col>
         <Col xs={5} className="my-auto mx-auto my-auto text-end">
         <Link to="/menu_envoie" style={{textDecoration:"none"}}>
           <p className="display-6 text-secondary">KOBO BUSINESS SERVICES</p><br></br>
-          <div className="text-center justify-content-center"><Button variant="warning" className="btn-lg rounded-pill zoom " onClick={handleShow}><b className="text-dark">Navigation Ya Menu</b></Button></div>
+          <div className="text-center justify-content-center"><Button variant="warning" className="btn-lg rounded-pill zoom " onClick={handleShow}><b className="text-dark">Navigation Menu</b></Button></div>
           </Link>
         </Col>
         <Col xs={4} className="my-auto mx-auto text-end ">
          <div>
-           <pre className="text-dark display-6" style={{fontSize: 20}}><Image className="navbar-brand rounded-circle" src={require('./login.jpeg')} type="button" alt="profil" style={{width:40}} ></Image><span ><i className="text-white"> Boyeyi Malamu </i> </span><span className="separateur text-secondary"></span> <a href="" style={{textDecoration:"none"}}><span className="couleur2"><i onClick={logout}>{props.langue}</i></span></a></pre>
+           <pre className="text-dark display-6" style={{fontSize: 20}}><Image className="navbar-brand rounded-circle" src={require('./login.jpeg')} type="button" alt="profil" style={{width:40}} ></Image><span ><i className="text-white"> Welcom </i> </span><span className="separateur text-secondary"></span> <a href="" style={{textDecoration:"none"}}><span className="couleur2"><i onClick={logout}>{props.langue}</i></span></a></pre>
            <i><pre className="couleur2 display-6 timing text-center" style={{fontSize: 15}}>{theTime}</pre></i>
         </div>  
         </Col>
@@ -68,12 +68,12 @@ function Header(props)
   
     <Offcanvas show={show} onHide={handleClose} className="bordure " style={{height:550}}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 text-secondary text-end"><b>Menu ya Navigation</b></i> </Offcanvas.Title>
+          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 text-secondary text-end"><b>Menu Navigation</b></i> </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
         <Nav justify menuVariant="dark"  className="navbar justify-content-end flex-grow-1 pe-3 flex-column">
-        <Nav.Link href="/menu_envoie"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>Nzonga Na ebamdeli</i></Button></Nav.Link>
-        <Nav.Link href="/"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>Pona munoko mususu</i></Button></Nav.Link>
+        <Nav.Link href="/menu_envoi_english"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>Home</i></Button></Nav.Link>
+        <Nav.Link href="/"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>Change the language</i></Button></Nav.Link>
       </Nav>
 
         </Offcanvas.Body>
@@ -104,4 +104,4 @@ function Header(props)
     )
 }
 
-export default Header;
+export default HeaderEnglish;

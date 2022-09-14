@@ -75,7 +75,7 @@ console.log(props.envoie.infoEnvoie)
 
     <Row className='justify-content-center pb-3'>
       <hr style={{color:"darkorange"}}></hr>
-      <p className='couleur2'><b><u>Motindi </u></b> </p>
+      <p className='couleur2'><b><u>Sender </u></b> </p>
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={12}>
@@ -91,7 +91,7 @@ console.log(props.envoie.infoEnvoie)
 
     <Row className='justify-content-center pb-3'>
       <hr style={{color:"darkorange"}}></hr>
-      <p className='couleur2'><b><u>Mozui</u></b> </p>
+      <p className='couleur2'><b><u>Receiver</u></b> </p>
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={12}>

@@ -85,14 +85,7 @@ function FormEnvoiAbonneId(props)
         </Col>
     </Row>
 
-    <Row className='justify-content-center pb-3' >
-        <Col xs={6}>
-            <Link to="">
-            <Image src={require('./kobo_logo.JPG')}  className='rounded-pill ' style={{width:130}}></Image>
-            </Link>
-        
-        </Col>
-    </Row>
+
     
 <Form onSubmit={submitcodeAbonne}>
    

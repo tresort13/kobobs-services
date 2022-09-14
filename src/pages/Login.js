@@ -136,41 +136,37 @@ return (
 </Form>
 </Container> }
 
-{isMobileOrTablet && <Container className='bg-dark my-auto mx-auto text-start bordure' style={{backgroundColor:'grey'}} >
-    
+{isMobileOrTablet &&  <Container className='bg-dark justify-content-center text-center pt-2 bordure' style={{marginTop:100,backgroundColor:'grey',width:650}} >
 
-
-    <Row className='justify-content-center text-center mb-5 pt-3' >
-        <Col xs={"12"}>
-        <Image src={require('./kobo_logo.JPG')}  className='rounded-pill ' style={{width:300}}></Image>
-        </Col>
-    </Row>
-      
+<Row className='justify-content-center mb-5 pt-3' >
+    <Col>
+    <Image src={require('./kobo_logo.JPG')}  className='rounded-pill ' style={{width:100}}></Image>
+    </Col>
+</Row>
+  
 <Form>
-    <Row className='justify-content-center'>
-    <Col xs ={4}>
-        <Form.Group className="mb-3" >
-        <Form.Label value="Lingala" className='couleur2'>Lingala</Form.Label>
-        <Form.Select name='pays_beneficiaire'  aria-label="Default select example">
-         <option value="Lingala">Lingala</option>
-         </Form.Select>
-         </Form.Group>
-        </Col>
-    </Row>
-  
+<Row className='justify-content-center mt-5'>
+<Col xs ={4}>
+    <Form.Group className="mb-3" >
+    <Form.Label  className='couleur2'>Langue</Form.Label>
+    <Form.Select name='language' value={langue.infoLangue.language} onChange={e=>inputChanged(e)}  aria-label="Default select example"  required>
+     <option value="Lingala">Lingala</option>
+     <option value="English">English</option>
+     </Form.Select>
+     </Form.Group>
+    </Col>
+</Row>
 
-  
-    <Row className='justify-content-center pb-3'>
-    <Col  xs={"auto"}>    
-        <Link to="menu_envoie" style={{color:'white',textDecorationLine:'none'}}> 
-        
-        <Button variant="outline-warning" type="submit" >
-        <b>Banda Opération</b>
-        </Button>
-        </Link>
-        </Col>
-    </Row>
-  
+
+
+<Row className='justify-content-center pb-3'>
+    <Col  xs={12}>    
+    <Button variant="outline-warning" onClick={e=>connect(e)}>
+    <b>Banda Opération</b>
+    </Button>
+    </Col>
+</Row>
+
 
 </Form>
 </Container> }

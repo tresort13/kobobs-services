@@ -43,14 +43,6 @@ function ConfirmationRetraitInfoEnglish(props)
         </Col>
     </Row>
 
-    <Row className='justify-content-center pb-3' >
-        <Col xs={6}>
-            <Link to="">
-            <Image src={require('./kobo_logo.JPG')}  className='rounded-pill ' style={{width:130}}></Image>
-            </Link>
-        
-        </Col>
-    </Row>
     <Row className='justify-content-center pb-3'>
       <p className='couleur2'><b className='couleur2'> please follow the explaination below about status </b> </p>
     </Row>

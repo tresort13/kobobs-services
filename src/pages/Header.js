@@ -67,9 +67,9 @@ function Header(props)
     </Row>
    
   
-    <Offcanvas show={show} onHide={handleClose} className="bordure " style={{height:200}}>
+    <Offcanvas show={show} onHide={handleClose} className="bordure " style={{height:300}}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 text-secondary text-end"><b>Menu ya Navigation</b></i> </Offcanvas.Title>
+          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 text-secondary text-end"><b><u>Menu</u></b></i> </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
         <Nav justify menuVariant="dark"  className="navbar justify-content-end flex-grow-1 pe-3 flex-column">

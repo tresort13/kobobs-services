@@ -45,9 +45,9 @@ function HeaderEnglish(props)
     return (
      <div>
     {isDesktop && <Container fluid className="bg-dark mx-auto">
-    <Row>
+    <Row>          
         <Col xs={3} className="my-auto mx-auto text-start">
-          <a href="/home" style={{textDecoration:"none"}}>
+          <a href="/menu_envoi_english" style={{textDecoration:"none"}}>
           <Image  src={require('./kobo_logo.JPG')}  className='rounded-pill ' style={{width:130}}></Image>
           </a>
         </Col>
@@ -68,9 +68,9 @@ function HeaderEnglish(props)
     </Row>
    
   
-    <Offcanvas show={show} onHide={handleClose} className="bordure " style={{height:200}}>
+    <Offcanvas show={show} onHide={handleClose} className="bordure " style={{height:300}}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 text-secondary text-end"><b>Navigation</b></i> </Offcanvas.Title>
+          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 text-secondary text-end"><b><u>Menu</u></b></i> </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
         <Nav justify menuVariant="dark"  className="navbar justify-content-end flex-grow-1 pe-3 flex-column">

@@ -52,13 +52,16 @@ function ConfirmationRetraitInfoEnglish(props)
         </Col>
     </Row>
     <Row className='justify-content-center pb-3'>
+      <p className='couleur2'><b className='couleur2'> please follow the explaination below about status </b> </p>
+    </Row>
+    <Row className='justify-content-center pb-3'>
       <hr style={{color:"darkorange"}}></hr>
       <p className='couleur2'><b><u></u></b> </p>
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={12}>
         <p className='text-light'>Tracking Number : <b className='text-dark bg-warning'> {props.envoie2.infoEnvoie.code_retrait}</b></p>
-        <p className='text-light'>Status of your tracking number : <b className='text-dark bg-warning'> {props.envoie2.infoEnvoie.status_retrait}</b><b className='couleur2'> (please follow the explaination below about status)</b></p>
+        <p className='text-light'>Status of your tracking number : <b className='text-dark bg-warning'> {props.envoie2.infoEnvoie.status_retrait}</b></p>
         <p className='text-light'>Sender full name : <b className='couleur2'>{props.envoie2.infoEnvoie.nom_expediteur} {props.envoie2.infoEnvoie.postnom_expediteur} {props.envoie2.infoEnvoie.prenom_expediteur}</b> </p>
         <p className='text-light'>Receiver full name : <b className='couleur2'>{props.envoie2.infoEnvoie.nom_beneficiaire} {props.envoie2.infoEnvoie.postnom_beneficiaire} {props.envoie2.infoEnvoie.prenom_beneficiaire}</b> </p>
         <p className='text-light'>sender country   : <b className='couleur2'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>

@@ -110,7 +110,7 @@ function FormEnvoiAbonneIdEnglish(props)
    <Row className='pb-3'>
        <Col>
         <Button variant="outline-warning" type="submit" >
-        validated
+        validate
         </Button>
         </Col>
     </Row>

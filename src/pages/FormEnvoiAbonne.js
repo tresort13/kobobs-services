@@ -66,8 +66,9 @@ function FormEnvoiAbonne(props)
     
 
 
-      const submitFormulaire = ()=>
+      const submitFormulaire = (e)=>
       {     
+        e.preventDefault()
         tauxEchanger()     
         props.dataEnvoieAbonne(props.abonne,envoieAbonne.infoEnvoieAbonne)   
         console.log(props.abonne) 

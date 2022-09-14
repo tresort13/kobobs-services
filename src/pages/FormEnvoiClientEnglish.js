@@ -73,9 +73,9 @@ function FormEnvoiClientEnglish(props)
     
 
 
-    const submitFormulaire = ()=>
+    const submitFormulaire = (e)=>
     {   
-    
+    e.preventDefault()
       tauxEchanger()      
         props.dataEnvoie(envoie.infoEnvoie)
         setEnvoie({infoEnvoie:{}})

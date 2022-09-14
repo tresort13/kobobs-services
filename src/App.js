@@ -22,7 +22,7 @@ import FormEnvoiClientEnglish from './pages/FormEnvoiClientEnglish';
 import FormEnvoiAbonneIdEnglish from './pages/FormEnvoiAbonneIdEnglish';
 import EnvoieAbonneInfoEnglish from './pages/EnvoieAbonneInfoEnglish';
 import FormRetraitEnglish from './pages/FormRetraitEnglish';
-import FormEnvoiAbonneEnglish from './pages/FormEnvoiAbonneEnglish'
+import FormEnvoiAbonneEnglish from './pages/form_envoie_abonne_id_english'
 
 
 
@@ -30,16 +30,16 @@ const useState = React.useState
 
 function App() {
 
-  const [username,setUsername] = useState(()=>
+  const [langue,setLangue] = useState(()=>
   {
-    const localData = localStorage.getItem('username');
+    const localData = localStorage.getItem('langue');
     return localData ? JSON.parse(localData) : "";
   });
   
   
   useEffect(() => {
-    window.localStorage.setItem("username", JSON.stringify(username))
-  }, [username])
+    window.localStorage.setItem("langue", JSON.stringify(langue))
+  }, [langue])
 
   const [dateInfo,setDate] = useState(()=>
   {
@@ -472,7 +472,8 @@ function App() {
   }, [temps])
 
 
-
+    
+    
     
     
     

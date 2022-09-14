@@ -419,7 +419,7 @@ function App() {
       frais_tva : ((Number(donne2.montant_beneficiaire).toFixed(2) * Number(taux).toFixed(2)) * 1)/100,
       type_service : donne2.type_service,
       code_abonne : donne1.infoAbonne.code_abonne,
-      numero_transfer : donne2.infoAbonne.numero_transfer
+      numero_transfer : donne2.numero_transfer
       }})
   }
  

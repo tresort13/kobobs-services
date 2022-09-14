@@ -66,7 +66,7 @@ function MenuEnvoi(props)
         <Col xs = {"auto"}>
         <Link to="/form_envoie_client" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant='warning'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='text-dark'><pre>nbamla na ngai ya liboso yako Tinda Mbongo awa</pre></b>
+        <b className='text-dark'><pre>nbamla liboso yako Tinda Mbongo</pre></b>
         </Button>
         </Link>
         </Col>
@@ -86,7 +86,7 @@ function MenuEnvoi(props)
         <Col xs = {"auto"}>
         <Link to="/form_retrait_info" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant='warning'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='text-dark'><pre>Na Lingi na yeba status ya code retrait na ngai</pre></b>
+        <b className='text-dark'><pre>Landela transfer nayo awa</pre></b>
         </Button>
         </Link>
         </Col>

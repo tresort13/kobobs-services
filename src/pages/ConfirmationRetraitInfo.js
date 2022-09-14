@@ -76,9 +76,9 @@ function ConfirmationRetraitInfo(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={12}>
-        <p className='text-light'>Code Retrait en attente de validation : <b className='text-dark bg-warning'> Elingi ko loba nanu code nayo eza valide te pona nanu ofuti nbongo ya transfer te</b></p>
-        <p className='text-light'>Code Retrait Valide : <b className='text-dark bg-warning'> Elingi ko loba code nayo ekomi valide et que mozui akoki ko zwa nbongo</b></p>
-        <p className='text-light'>Code Retrait Payé : <b className='couleur2'> Elingi ko loba Mozui esi azwi nbongo oyo otindeli ye </b> </p>
+        <p className='text-light'><b>Code Retrait en attente de validation :</b> <b className='text-dark bg-warning'> Elingi ko loba nanu code nayo eza valide te pona nanu ofuti nbongo ya transfer te</b></p>
+        <p className='text-light'><b>Code Retrait Valide : </b><b className='text-dark bg-warning'> Elingi ko loba code nayo ekomi valide et que mozui akoki ko zwa nbongo</b></p>
+        <p className='text-light'><b>Code Retrait Payé :</b> <b className='text-dark bg-warning'> Elingi ko loba Mozui esi azwi nbongo oyo otindeli ye </b> </p>
         </Col>
     </Row>
 

@@ -53,9 +53,11 @@ function HeaderEnglish(props)
         </Col>
         <Col xs={5} className="my-auto mx-auto my-auto text-end">
         <Link to="/menu_envoie" style={{textDecoration:"none"}}>
-          <p className="display-6 text-secondary">KOBO BUSINESS SERVICES</p><br></br>
-          <div className="text-center justify-content-center"><Button variant="warning" className="btn-lg rounded-pill zoom pb-2" onClick={handleShow}><b className="text-dark">Navigation Menu</b></Button></div>
-          </Link>
+          <p className="display-6 text-secondary">KOBO BUSINESS SERVICES</p>
+        </Link>
+
+          <div className="text-center justify-content-center"><Button variant="warning" className="btn-lg rounded-pill zoom mb-2" onClick={handleShow}><b className="text-dark">Menu</b></Button></div>
+
         </Col>
         <Col xs={4} className="my-auto mx-auto text-end ">
          <div>

@@ -52,10 +52,11 @@ function Header(props)
           </a>
         </Col>
         <Col xs={5} className="my-auto mx-auto my-auto text-end">
-        <Link to="/menu_envoie" style={{textDecoration:"none"}}>
-          <p className="display-6 text-secondary">KOBO BUSINESS SERVICES</p><br></br>
-          <div className="text-center justify-content-center"><Button variant="warning" className="btn-lg rounded-pill zoom " onClick={handleShow}><b className="text-dark">Navigation Ya Menu</b></Button></div>
+          <Link to="/menu_envoie" style={{textDecoration:"none"}}>
+          <p className="display-6 text-secondary">KOBO BUSINESS SERVICES</p>
           </Link>
+          <div className="text-center justify-content-center"><Button variant="warning" className="btn-lg rounded-pill zoom mb-3" onClick={handleShow}><b className="text-dark"> Menu</b></Button></div>
+          
         </Col>
         <Col xs={4} className="my-auto mx-auto text-end ">
          <div>
@@ -66,7 +67,7 @@ function Header(props)
     </Row>
    
   
-    <Offcanvas show={show} onHide={handleClose} className="bordure " style={{height:550}}>
+    <Offcanvas show={show} onHide={handleClose} className="bordure " style={{height:200}}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title className="text-end mx-auto"><i className="display-6 text-secondary text-end"><b>Menu ya Navigation</b></i> </Offcanvas.Title>
         </Offcanvas.Header>

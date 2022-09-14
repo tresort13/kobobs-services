@@ -148,7 +148,7 @@ return (
 <Row className='justify-content-center mt-5'>
 <Col xs ={4}>
     <Form.Group className="mb-3" >
-    <Form.Label  className='couleur2 text-center'>Langue</Form.Label>
+    {langue.infoLangue.language == "Lingala" ? <Form.Label  className='couleur2 text-center'>Munoko Yako solola</Form.Label> : <Form.Label  className='couleur2 text-center'>Language</Form.Label>}
     <Form.Select name='language' value={langue.infoLangue.language} onChange={e=>inputChanged(e)}  aria-label="Default select example"  required>
      <option value="Lingala">Lingala</option>
      <option value="English">English</option>
@@ -159,7 +159,7 @@ return (
 
 
 
-<Row className='justify-content-center text-center pb-3 mt-5'>
+<Row className='justify-content-center text-center pb-3 mt-3'>
     <Col  xs={12}>    
     {langue.infoLangue.language == "Lingala" ? <Button variant="outline-warning" onClick={e=>connect(e)}><b>Banda Opération</b></Button> : <Button variant="outline-warning" onClick={e=>connect(e)}><b>Start Operation</b></Button>}
     </Col>

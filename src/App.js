@@ -189,7 +189,7 @@ function App() {
       frais_tva : '',
       type_service : 'Kozua na maboko (kozua na nzela ya agence)',
       code_abonne : '',
-      numero_transfer :'Kozua na maboko (kozua na nzela ya agence)'
+      numero_transfer :'**********'
       }};
     })
   
@@ -252,7 +252,7 @@ function App() {
       date_heure_operation : '',
       code_abonne : '',
       status_retrait : '',
-      numero_transfer :'Kozua na maboko (kozua na nzela ya agence)'
+      numero_transfer :'**********'
       }};
     })
   
@@ -321,7 +321,7 @@ function App() {
       date_heure_operation : '',
       code_abonne : '',
       status_retrait : '',
-      numero_transfer:'Kozua na maboko (kozua na nzela ya agence)'
+      numero_transfer:'**********'
       }};
     })
   
@@ -497,13 +497,13 @@ function App() {
         <Route path="/form_envoie_abonne_id" element={langue == "English" ? <Navigate to ='/form_envoie_abonne_id_english' /> : <FormEnvoiAbonneId langue = {langue} dataAbonne={dataAbonne} />} >
         </Route>
 
-        <Route path="/form_envoie_abonne" element={langue == "English" ? <Navigate to ='/form_envoie_abonne_english' /> :  <FormEnvoiAbonne langue = {langue} abonne={abonne} dataEnvoieAbonne={dataEnvoieAbonne} setTaux={setTaux}/>} >
+        <Route path="/form_envoie_abonne" element={langue == "English" ? <Navigate to ='/form_envoie_abonne_english' /> :  <FormEnvoiAbonne langue = {langue} abonne={abonne} dataEnvoieAbonne={dataEnvoieAbonne} setTaux={setTaux} envoie={envoie}/>} >
         </Route>
 
         <Route path="/form_retrait_info" element={langue == "English" ? <Navigate to ='/form_retrait_info_english' /> : <FormRetrait langue = {langue} dataEnvoie2={dataEnvoie2}/>} >
         </Route>
 
-        <Route path="/envoi_info" element={langue == "English" ? <Navigate to ='/envoi_info_english' /> :  <EnvoiInfo langue = {langue}  dataEnvoie3={dataEnvoie3} envoie={envoie}/>} >
+        <Route path="/envoi_info" element={langue == "English" ? <Navigate to ='/envoi_info_english' /> :  <EnvoiInfo langue = {langue}  dataEnvoie3={dataEnvoie3} envoie={envoie} />} >
         </Route>
 
         <Route path="/envoi_abonne_info" element={langue == "English" ? <Navigate to ='/envoi_abonne_info_english' /> : <EnvoieAbonneInfo langue = {langue}  dataEnvoie3={dataEnvoie3} envoie={envoie} />} >
@@ -532,16 +532,16 @@ function App() {
         <Route path="/form_envoie_abonne_id_english" element={<FormEnvoiAbonneIdEnglish langue = {langue} dataAbonne={dataAbonne} />} >
         </Route>
 
-        <Route path="/form_envoie_abonne_english" element={<FormEnvoiAbonneEnglish langue = {langue} abonne={abonne} dataEnvoieAbonne={dataEnvoieAbonne} setTaux={setTaux}/>} >
+        <Route path="/form_envoie_abonne_english" element={<FormEnvoiAbonneEnglish langue = {langue} abonne={abonne} envoie={envoie} dataEnvoieAbonne={dataEnvoieAbonne} setTaux={setTaux}/>} >
         </Route>
 
         <Route path="/form_retrait_info_english" element={<FormRetraitEnglish langue = {langue} dataEnvoie2={dataEnvoie2}/>} >
         </Route>
 
-        <Route path="/envoi_info_english" element={<EnvoiInfoEnglish langue = {langue}  dataEnvoie3={dataEnvoie3} envoie={envoie}/>} >
+        <Route path="/envoi_info_english" element={<EnvoiInfoEnglish langue = {langue}  dataEnvoie3={dataEnvoie3} envoie={envoie} setEnvoie={setEnvoie}/>} >
         </Route>
 
-        <Route path="/envoi_abonne_info_english" element={<EnvoieAbonneInfoEnglish langue = {langue}  dataEnvoie3={dataEnvoie3} envoie={envoie} />} >
+        <Route path="/envoi_abonne_info_english" element={<EnvoieAbonneInfoEnglish langue = {langue}  dataEnvoie3={dataEnvoie3} envoie={envoie} setEnvoie={setEnvoie}/>} >
         </Route>
 
 

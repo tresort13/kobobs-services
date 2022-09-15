@@ -87,7 +87,7 @@ function Header(props)
         
         <Col xs={"auto"} className="mx-auto my-auto text-start">
         <a href="#" style={{textDecoration:"none"}}>
-          <Image  src={require('./kobo_logo.JPG')}  className='rounded-pill ' style={{width:200}}></Image>
+          <Image  src={require('./kobo_logo.JPG')}  className='rounded-pill ' style={{width:150}}></Image>
           </a>
         </Col>
         <Col xs={"auto"} className=" mx-auto my-auto text-end ">

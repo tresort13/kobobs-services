@@ -55,12 +55,12 @@ function HeaderHome(props)
           <Link to="/menu_envoie" style={{textDecoration:"none"}}>
           <p className="display-6 text-secondary">KOBO BUSINESS SERVICES</p>
           </Link>
-          <div className="text-center justify-content-center"><Button variant="warning" className="btn-lg rounded zoom mb-3" onClick={handleShow}><b className="text-dark"> Menu</b></Button></div>
+         
           
         </Col>
         <Col xs={4} className="my-auto mx-auto text-end ">
          <div>
-           <pre className="text-dark display-6" style={{fontSize: 20}}><Image className="navbar-brand rounded-circle" src={require('./login.jpeg')} type="button" alt="profil" style={{width:40}} ></Image><span ><i className="text-white"> Boyeyi Malamu </i> </span><span className="separateur text-secondary"></span> <a href="" style={{textDecoration:"none"}}><span className="couleur2"><i onClick={logout}>{props.langue}</i></span></a></pre>
+           <pre className="text-dark display-6" style={{fontSize: 20}}><Image className="navbar-brand rounded-circle" src={require('./login.jpeg')} type="button" alt="profil" style={{width:40}} ></Image><span ><i className="couleur"> Boyeyi Malamu </i> </span><span className="separateur text-white"></span> <a href="" style={{textDecoration:"none"}}><span className="couleur2"><i>Welcom</i></span></a></pre>
            <i><pre className="couleur2 display-6 timing text-center" style={{fontSize: 15}}>{theTime}</pre></i>
         </div>  
         </Col>

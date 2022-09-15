@@ -92,7 +92,7 @@ function Header(props)
         </Col>
      </Row>
 
-    <Row>
+    <Row className="mt-2">
         <Col xs={"auto"} className=" mx-auto my-auto text-start ">
          <div>
          <Button variant="warning" className="btn-lg rounded zoom " onClick={handleShow}><b className="text-dark"> Menu</b></Button>

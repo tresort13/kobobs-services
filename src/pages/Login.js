@@ -8,6 +8,8 @@ import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import {Link,useNavigate} from  'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
+import HeaderHome from './HeaderHome';
+import Footer from './Footer';
 
 
 
@@ -101,6 +103,7 @@ yn
    
 return (
 <>
+<HeaderHome />
 {isDesktop && <Container className='bg-dark justify-content-center text-center pt-2 bordure' style={{marginTop:100,backgroundColor:'grey',width:650}} >
 
     <Row className='justify-content-center mb-5 pt-3' >
@@ -168,6 +171,7 @@ return (
 
 </Form>
 </Container> }
+<Footer />
 </>
 
 )

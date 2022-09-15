@@ -14,7 +14,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 
 
 
-function HeaderEnglish(props)
+function HeaderHome(props)
 {
     const [theTime, setTheTime] = useState(new Date().toLocaleString())
     const isDesktop = useMediaQuery({
@@ -45,23 +45,22 @@ function HeaderEnglish(props)
     return (
      <div>
     {isDesktop && <Container fluid className="bg-dark mx-auto">
-    <Row>          
+    <Row>
         <Col xs={3} className="my-auto mx-auto text-start">
-          <a href="/menu_envoi_english" style={{textDecoration:"none"}}>
+          <a href="/menu_envoie" style={{textDecoration:"none"}}>
           <Image  src={require('./kobo_logo.JPG')}  className='rounded-pill ' style={{width:130}}></Image>
           </a>
         </Col>
         <Col xs={5} className="my-auto mx-auto my-auto text-end">
-        <Link to="/menu_envoie" style={{textDecoration:"none"}}>
+          <Link to="/menu_envoie" style={{textDecoration:"none"}}>
           <p className="display-6 text-secondary">KOBO BUSINESS SERVICES</p>
-        </Link>
-
-          <div className="text-center justify-content-center"><Button variant="warning" className="btn-lg rounded zoom mb-2" onClick={handleShow}><b className="text-dark">Menu</b></Button></div>
-
+          </Link>
+          <div className="text-center justify-content-center"><Button variant="warning" className="btn-lg rounded zoom mb-3" onClick={handleShow}><b className="text-dark"> Menu</b></Button></div>
+          
         </Col>
         <Col xs={4} className="my-auto mx-auto text-end ">
          <div>
-           <pre className="text-dark display-6" style={{fontSize: 20}}><Image className="navbar-brand rounded-circle" src={require('./login.jpeg')} type="button" alt="profil" style={{width:40}} ></Image><span ><i className="text-white"> Welcom </i> </span><span className="separateur text-secondary"></span> <a href="" style={{textDecoration:"none"}}><span className="couleur2"><i onClick={logout}>{props.langue}</i></span></a></pre>
+           <pre className="text-dark display-6" style={{fontSize: 20}}><Image className="navbar-brand rounded-circle" src={require('./login.jpeg')} type="button" alt="profil" style={{width:40}} ></Image><span ><i className="text-white"> Boyeyi Malamu </i> </span><span className="separateur text-secondary"></span> <a href="" style={{textDecoration:"none"}}><span className="couleur2"><i onClick={logout}>{props.langue}</i></span></a></pre>
            <i><pre className="couleur2 display-6 timing text-center" style={{fontSize: 15}}>{theTime}</pre></i>
         </div>  
         </Col>
@@ -74,8 +73,8 @@ function HeaderEnglish(props)
         </Offcanvas.Header>
         <Offcanvas.Body>
         <Nav justify menuVariant="dark"  className="navbar justify-content-end flex-grow-1 pe-3 flex-column">
-        <Nav.Link href="/menu_envoi_english"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>Home</i></Button></Nav.Link>
-        <Nav.Link href="/"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>Change the language</i></Button></Nav.Link>
+        <Nav.Link href="/menu_envoie"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>Nzonga Na ebamdeli</i></Button></Nav.Link>
+        <Nav.Link href="/"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>Pona munoko mususu</i></Button></Nav.Link>
       </Nav>
 
         </Offcanvas.Body>
@@ -86,26 +85,22 @@ function HeaderEnglish(props)
    {isMobileOrTablet && <Container className="pt-2 bg-dark" fluid >
     <Row>
         
-        <Col xs={"auto"} className="mx-auto my-auto text-start">
+        <Col xs={"auto"} className="mx-auto my-auto text-center">
         <a href="#" style={{textDecoration:"none"}}>
-          <Image  src={require('./kobo_logo.JPG')}  className='rounded-pill ' style={{width:200}}></Image>
+          <Image  src={require('./kobo_logo.JPG')}  className='rounded-pill ' style={{width:150}}></Image>
           </a>
         </Col>
-    </Row>
+     </Row>
 
     <Row className="mt-2">
-        <Col xs={"auto"} className=" mx-auto my-auto text-end ">
-         <div>
-           <pre className="text-dark display-6 text-start" style={{fontSize: 20}}><span ><i className="couleur2">Welcom</i> </span><span className="separateur couleur2"></span> <a href="" style={{textDecoration:"none"}}><span className="couleur2"><i onClick={logout}>{props.langue}</i></span></a></pre>
-           <i><pre className="couleur2 display-6 text-end" style={{fontSize: 15}}>{theTime}</pre></i>
-        </div>  
-        </Col>
+        
 
-        <Col xs={"auto"} className=" mx-auto my-auto text-end ">
+        <Col xs={"auto"} className=" mx-auto my-auto text-end">
          <div>
-         <Button variant="warning" className="btn-lg rounded zoom " onClick={handleShow}><b className="text-dark"> Menu</b></Button>
+           <pre className="text-dark display-6 text-end" style={{fontSize: 20}}><span ><i className="couleur2">Boyeyi Malamu</i> </span><span className="separateur couleur2"></span><a href="" style={{textDecoration:"none"}}><span className="couleur2"><i onClick={logout}> Welcom</i></span></a></pre>
+           <i><pre className="couleur2 display-6  text-end" style={{fontSize: 15}}>{theTime}</pre></i>
         </div>  
-        </Col>
+        </Col>  
     </Row>
    
     <Offcanvas show={show} onHide={handleClose} className="bordure " style={{height:300}}>
@@ -114,16 +109,17 @@ function HeaderEnglish(props)
         </Offcanvas.Header>
         <Offcanvas.Body>
         <Nav justify menuVariant="dark"  className="navbar justify-content-end flex-grow-1 pe-3 flex-column">
-        <Nav.Link href="/menu_envoi_english"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>Home</i></Button></Nav.Link>
-        <Nav.Link href="/"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>Change the language</i></Button></Nav.Link>
+        <Nav.Link href="/menu_envoie"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>Nzonga Na ebamdeli</i></Button></Nav.Link>
+        <Nav.Link href="/"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>Pona munoko mususu</i></Button></Nav.Link>
       </Nav>
 
         </Offcanvas.Body>
-      </Offcanvas> 
+      </Offcanvas>
+    
    </Container>}
    </div>
 
     )
 }
 
-export default HeaderEnglish;
+export default HeaderHome;

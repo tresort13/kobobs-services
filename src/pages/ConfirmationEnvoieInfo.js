@@ -81,26 +81,19 @@ function ConfirmationEnvoieInfo(props)
 </Container>
 }
 
-{isMobileOrTablet && <Container className='bg-dark justify-content-center text-center bordure mb-5' style={{marginTop:50,width:1000}} >
+{isMobileOrTablet && <Container className='bg-dark justify-content-center text-center bordure mx-auto my-auto'  >
 <Row className='justify-content-center mb-3 pt-3' >
-        <Col xs={6}>
+        <Col xs={12}>
         <p className='couleur2'><i><b>{message}</b></i></p>
         </Col>
     </Row>
 
-    <Row className='justify-content-center pb-3' >
-        <Col xs={6}>
-            <Link to="">
-            <Image src={require('./kobo_logo.JPG')}  className='rounded-pill ' style={{width:130}}></Image>
-            </Link>
-        
-        </Col>
-    </Row>
+  
     <Row className='justify-content-center pb-3'>
       <hr style={{color:"darkorange"}}></hr>
       <p className='couleur2'><b><u></u></b> </p>
     </Row>
-    <Row className='justify-content-center pb-3' >
+    <Row className='justify-content-start pb-3' >
         <Col xs={12}>
         <p className='text-light'>Kombo Mobimba ya Motindi: <b className='couleur2'>{props.envoie3.infoEnvoie.nom_expediteur} {props.envoie3.infoEnvoie.postnom_expediteur} {props.envoie3.infoEnvoie.prenom_expediteur}</b> </p>
         <p className='text-light'>Kombo Mobimba ya Mozui: <b className='couleur2'>{props.envoie3.infoEnvoie.nom_beneficiaire} {props.envoie3.infoEnvoie.postnom_beneficiaire} {props.envoie3.infoEnvoie.prenom_beneficiaire}</b> </p>
@@ -115,6 +108,7 @@ function ConfirmationEnvoieInfo(props)
         </Col>
     </Row>
 
+
     
     <Row className='justify-content-center pb-3'>
       <hr style={{color:"darkorange"}}></hr>
@@ -123,11 +117,11 @@ function ConfirmationEnvoieInfo(props)
         <Col xs={6}>
         <Link to="/menu_envoie" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant="warning" type="submit">
-        ok
+        fermer
         </Button>
         </Link>
         </Col>
-    </Row>
+    </Row>  
 </Container>}
 <Row className="mt-5">
           <Col md={12}>

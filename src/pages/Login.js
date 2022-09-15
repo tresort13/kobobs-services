@@ -147,7 +147,7 @@ return (
   
 <Form>
 <Row className='justify-content-center mt-5'>
-<Col xs ={12}>
+<Col xs ={4}>
     <Form.Group className="mb-3" >
     {langue.infoLangue.language == "Lingala" ? <Form.Label  className='couleur2 text-center'>Munoko Yako solola</Form.Label> : <Form.Label  className='couleur2 text-center'>Language</Form.Label>}
     <Form.Select name='language' value={langue.infoLangue.language} onChange={e=>inputChanged(e)}  aria-label="Default select example"  required>

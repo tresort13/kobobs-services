@@ -55,7 +55,7 @@ function Header(props)
           <Link to="/menu_envoie" style={{textDecoration:"none"}}>
           <p className="display-6 text-secondary">KOBO BUSINESS SERVICES</p>
           </Link>
-          <div className="text-center justify-content-center"><Button variant="warning" className="btn-lg rounded-pill zoom mb-3" onClick={handleShow}><b className="text-dark"> Menu</b></Button></div>
+          <div className="text-center justify-content-center"><Button variant="warning" className="btn-lg rounded zoom mb-3" onClick={handleShow}><b className="text-dark"> Menu</b></Button></div>
           
         </Col>
         <Col xs={4} className="my-auto mx-auto text-end ">

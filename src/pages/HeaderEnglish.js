@@ -56,7 +56,7 @@ function HeaderEnglish(props)
           <p className="display-6 text-secondary">KOBO BUSINESS SERVICES</p>
         </Link>
 
-          <div className="text-center justify-content-center"><Button variant="warning" className="btn-lg rounded-pill zoom mb-2" onClick={handleShow}><b className="text-dark">Menu</b></Button></div>
+          <div className="text-center justify-content-center"><Button variant="warning" className="btn-lg rounded zoom mb-2" onClick={handleShow}><b className="text-dark">Menu</b></Button></div>
 
         </Col>
         <Col xs={4} className="my-auto mx-auto text-end ">
@@ -93,7 +93,7 @@ function HeaderEnglish(props)
         </Col>
         <Col xs={"auto"} className=" mx-auto my-auto text-end ">
          <div>
-           <pre className="text-dark display-6 text-end" style={{fontSize: 20}}><span ><i className="couleur2">Welcom</i> </span><span className="separateur couleur2"></span></pre>
+           <pre className="text-dark display-6 text-end" style={{fontSize: 20}}><span ><i className="couleur2">Welcom</i> </span><span className="separateur couleur2"></span> <a href="" style={{textDecoration:"none"}}><span className="couleur2"><i onClick={logout}>{props.langue}</i></span></a></pre>
            <i><pre className="couleur2 display-6 text-end" style={{fontSize: 15}}>{theTime}</pre></i>
         </div>  
         </Col>

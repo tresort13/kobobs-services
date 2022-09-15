@@ -112,26 +112,30 @@ function FormEnvoiClientEnglish(props)
     </Row>
 
     <Row className='justify-content-center'>
+        
+
+       
+
+        <Col xs = {4}>
+        <Form.Group className="mb-3" controlId="formBasicText" >
+        <Form.Label className='couleur2'>* First Name </Form.Label>
+        <Form.Control name="prenom_expediteur" value={envoie.infoEnvoie.prenom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='First Name'  required/>
+       
+         </Form.Group>
+        </Col>
+
         <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='couleur2'>* Middle Name</Form.Label>
-        <Form.Control name="nom_expediteur" value={envoie.infoEnvoie.nom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya Libota'    required/>
+        <Form.Control name="nom_expediteur" value={envoie.infoEnvoie.nom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Middle Name'    required/>
          </Form.Group>
         </Col>
 
         <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='couleur2'>* Last Name </Form.Label>  
-        <Form.Control name="postnom_expediteur" value={envoie.infoEnvoie.postnom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya authenticité' required/>
+        <Form.Control name="postnom_expediteur" value={envoie.infoEnvoie.postnom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Last Name' required/>
         
-         </Form.Group>
-        </Col>
-
-        <Col xs = {4}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>* First Name </Form.Label>
-        <Form.Control name="prenom_expediteur" value={envoie.infoEnvoie.prenom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya Mukristu'  required/>
-       
          </Form.Group>
         </Col>
     </Row>
@@ -141,7 +145,7 @@ function FormEnvoiClientEnglish(props)
        <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='couleur2'>* Address</Form.Label>
-        <Form.Control name="adresse_expediteur" value={envoie.infoEnvoie.adresse_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya Mukristu'  required/>
+        <Form.Control name="adresse_expediteur" value={envoie.infoEnvoie.adresse_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Address'  required/>
 
          </Form.Group>
         </Col>
@@ -184,35 +188,38 @@ function FormEnvoiClientEnglish(props)
     </Row>
 
     <Row className='justify-content-center'>
+
+    <Col xs = {4}>
+        <Form.Group className="mb-3" controlId="formBasicText" >
+        <Form.Label className='couleur2'>* First Name</Form.Label>
+        <Form.Control name="prenom_beneficiaire" value={envoie.infoEnvoie.prenom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='First Name'  required/>
+
+         </Form.Group>
+        </Col>
+
     <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='couleur2'>* Middle Name</Form.Label>
-        <Form.Control name="nom_beneficiaire" value={envoie.infoEnvoie.nom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya Libota'    required/>
+        <Form.Control name="nom_beneficiaire" value={envoie.infoEnvoie.nom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Middle Name'    required/>
          </Form.Group>
         </Col>
 
         <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='couleur2'>* Last Name</Form.Label>  
-        <Form.Control name="postnom_beneficiaire" value={envoie.infoEnvoie.postnom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya authenticité' required/>
+        <Form.Control name="postnom_beneficiaire" value={envoie.infoEnvoie.postnom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Last Name' required/>
 
          </Form.Group>
         </Col>
 
-        <Col xs = {4}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>* First Name</Form.Label>
-        <Form.Control name="prenom_beneficiaire" value={envoie.infoEnvoie.prenom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya Mukristu'  required/>
-
-         </Form.Group>
-        </Col>
+        
     </Row>
 
     <Row className='justify-content-center'>
     <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='couleur2'>* Adresse</Form.Label>
-        <Form.Control name="adresse_beneficiaire" value={envoie.infoEnvoie.adresse_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya Mukristu'  required/>
+        <Form.Control name="adresse_beneficiaire" value={envoie.infoEnvoie.adresse_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Address'  required/>
        
          </Form.Group>
         </Col>
@@ -220,7 +227,7 @@ function FormEnvoiClientEnglish(props)
         <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='couleur2'>* Mobile Number </Form.Label>
-        <Form.Control name="numero_beneficiaire" value={envoie.infoEnvoie.numero_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Numéro ya Tshombo' required/>
+        <Form.Control name="numero_beneficiaire" value={envoie.infoEnvoie.numero_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Mobile Number' required/>
          </Form.Group>
         </Col>
 
@@ -243,7 +250,7 @@ function FormEnvoiClientEnglish(props)
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='couleur2'>* which Amount do you want the receiver to get</Form.Label>
-        <Form.Control name="montant_beneficiaire" value={envoie.infoEnvoie.montant_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder="Mbongo"  required/>
+        <Form.Control name="montant_beneficiaire" value={envoie.infoEnvoie.montant_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder="how much for the receiver to get"  required/>
 
          </Form.Group>
         </Col>
@@ -296,35 +303,37 @@ function FormEnvoiClientEnglish(props)
         </Col>
     </Row>
     
-<Form  onSubmit={submitFormulaire}>
+    <Form  onSubmit={submitFormulaire}>
     <Row>
       <hr style={{color:"darkorange"}}></hr>
       <p className='couleur2'><b><u>Sender</u></b> </p>
     </Row>
 
     <Row className='justify-content-center'>
+
+    <Col xs = {12}>
+        <Form.Group className="mb-3" controlId="formBasicText" >
+        <Form.Label className='couleur2'>* First Name </Form.Label>
+        <Form.Control name="prenom_expediteur" value={envoie.infoEnvoie.prenom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='First Name'  required/>
+       
+         </Form.Group>
+        </Col>
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='couleur2'>* Middle Name</Form.Label>
-        <Form.Control name="nom_expediteur" value={envoie.infoEnvoie.nom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya Libota'    required/>
+        <Form.Control name="nom_expediteur" value={envoie.infoEnvoie.nom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Middle Name'    required/>
          </Form.Group>
         </Col>
 
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='couleur2'>* Last Name </Form.Label>  
-        <Form.Control name="postnom_expediteur" value={envoie.infoEnvoie.postnom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya authenticité' required/>
+        <Form.Control name="postnom_expediteur" value={envoie.infoEnvoie.postnom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Last Name' required/>
         
          </Form.Group>
         </Col>
 
-        <Col xs = {12}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>* First Name </Form.Label>
-        <Form.Control name="prenom_expediteur" value={envoie.infoEnvoie.prenom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya Mukristu'  required/>
-       
-         </Form.Group>
-        </Col>
+        
     </Row>
 
     <Row className='justify-content-center'>
@@ -332,7 +341,7 @@ function FormEnvoiClientEnglish(props)
        <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='couleur2'>* Address</Form.Label>
-        <Form.Control name="adresse_expediteur" value={envoie.infoEnvoie.adresse_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya Mukristu'  required/>
+        <Form.Control name="adresse_expediteur" value={envoie.infoEnvoie.adresse_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Address'  required/>
 
          </Form.Group>
         </Col>
@@ -377,33 +386,35 @@ function FormEnvoiClientEnglish(props)
     <Row className='justify-content-center'>
     <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
+        <Form.Label className='couleur2'>* First Name</Form.Label>
+        <Form.Control name="prenom_beneficiaire" value={envoie.infoEnvoie.prenom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='First Name'  required/>
+
+         </Form.Group>
+        </Col>
+
+    <Col xs = {12}>
+        <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='couleur2'>* Middle Name</Form.Label>
-        <Form.Control name="nom_beneficiaire" value={envoie.infoEnvoie.nom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya Libota'    required/>
+        <Form.Control name="nom_beneficiaire" value={envoie.infoEnvoie.nom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Middle Name'    required/>
          </Form.Group>
         </Col>
 
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='couleur2'>* Last Name</Form.Label>  
-        <Form.Control name="postnom_beneficiaire" value={envoie.infoEnvoie.postnom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya authenticité' required/>
+        <Form.Control name="postnom_beneficiaire" value={envoie.infoEnvoie.postnom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Last Name' required/>
 
          </Form.Group>
         </Col>
 
-        <Col xs = {12}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>* First Name</Form.Label>
-        <Form.Control name="prenom_beneficiaire" value={envoie.infoEnvoie.prenom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya Mukristu'  required/>
 
-         </Form.Group>
-        </Col>
     </Row>
 
     <Row className='justify-content-center'>
     <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='couleur2'>* Adresse</Form.Label>
-        <Form.Control name="adresse_beneficiaire" value={envoie.infoEnvoie.adresse_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya Mukristu'  required/>
+        <Form.Control name="adresse_beneficiaire" value={envoie.infoEnvoie.adresse_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Address'  required/>
        
          </Form.Group>
         </Col>
@@ -411,7 +422,7 @@ function FormEnvoiClientEnglish(props)
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='couleur2'>* Mobile Number </Form.Label>
-        <Form.Control name="numero_beneficiaire" value={envoie.infoEnvoie.numero_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Numéro ya Tshombo' required/>
+        <Form.Control name="numero_beneficiaire" value={envoie.infoEnvoie.numero_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Mobile Number' required/>
          </Form.Group>
         </Col>
 
@@ -434,7 +445,7 @@ function FormEnvoiClientEnglish(props)
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='couleur2'>* which Amount do you want the receiver to get</Form.Label>
-        <Form.Control name="montant_beneficiaire" value={envoie.infoEnvoie.montant_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder="Mbongo"  required/>
+        <Form.Control name="montant_beneficiaire" value={envoie.infoEnvoie.montant_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder="how much for the receiver to get"  required/>
 
          </Form.Group>
         </Col>

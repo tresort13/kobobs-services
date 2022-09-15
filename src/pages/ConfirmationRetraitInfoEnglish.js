@@ -129,7 +129,7 @@ function ConfirmationRetraitInfoEnglish(props)
     <Row className='justify-content-center pb-3' >
         <Col xs={12}>
         <p className='text-light'><b className='couleur2'>Code Retrait en attente de validation :</b> <b className='text-dark bg-warning'> That means your tracking number is pending to be validated until the full payement of the transfer fees</b></p>
-        <p className='text-light'><b className='couleur2'>Code Retrait Valide : </b><b className='text-dark bg-warning'> That means your tracking number has been validated and the reciever cand pick up the money</b></p>
+        <p className='text-light'><b className='couleur2'>Code Retrait Valide : </b><b className='text-dark bg-warning'> That means your tracking number has been validated and the reciever can pick up the money</b></p>
         <p className='text-light'><b className='couleur2'>Code Retrait Payé :</b> <b className='text-dark bg-warning'> That means the receiver has picked up the money </b> </p>
         </Col>
     </Row>

@@ -143,7 +143,7 @@ return (
 
 <Row className='justify-content-center text-center mb-5 pt-5' >
     <Col>
-    <Image src={require('./kobo_logo.JPG')}  className='rounded-pill ' style={{width:200}}></Image>
+    <Image src={require('./kobo_logo.JPG')}  className='rounded ' style={{width:200}}></Image>
     </Col>
 </Row>
   

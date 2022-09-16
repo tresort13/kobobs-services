@@ -11,6 +11,8 @@ import { useMediaQuery } from 'react-responsive';
 import Header from './Header';
 import Footer from './Footer';
 import Modal from 'react-bootstrap/Modal';
+import ClipLoader from "react-spinners/ClipLoader";
+
 
 
 
@@ -30,6 +32,7 @@ function EnvoieAbonneInfo(props)
 
       const navigate = useNavigate()
     const [modalShow2, setModalShow2] = React.useState(false);
+    const [loading,setLoading] = useState(true)
     
   
     
@@ -38,6 +41,7 @@ console.log(props.envoie.infoEnvoie)
     const submitEnvoie = (e)=>
     {    
       e.preventDefault()  
+      setLoading(true)
         fetch('https://kobobsapi.herokuapp.com/api/envoieFormulaireAbonne/',{
                 method:'POST',
                 headers: {'Content-Type': 'application/json'},
@@ -251,6 +255,7 @@ console.log(props.envoie.infoEnvoie)
         </Row>
 
    <MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
+   <ClipLoader color={"#ff8c00"} loading={loading} size={300} />
 <Footer />
         </>
        

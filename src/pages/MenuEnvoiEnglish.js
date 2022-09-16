@@ -24,9 +24,9 @@ function MenuEnvoiEnglish(props)
     return (
 <>
 <HeaderEnglish  langue={props.langue}/>
-{isDesktop && <Container className='bg-dark justify-content-center text-center bordure mt-5' >
+{isDesktop && <Container>
     
-    <Row className='justify-content-center pb-3 pt-3'>
+    <Row className='justify-content-center pb-3 pt-3 mt-5'>
         <Col xs = {"auto"}>
         <Link to="/form_envoie_client_english" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant='warning'  style={{width:550,height:80}} className='btn-lg rounded-pill zoom'>
@@ -60,9 +60,9 @@ function MenuEnvoiEnglish(props)
 
 </Container>}
 
-{isMobileOrTablet && <Container className='bg-dark mx-auto justify-content-center text-center bordure mt-5' >
+{isMobileOrTablet && <Container>
     
-    <Row className='justify-content-center pb-3 pt-3'>
+    <Row className='justify-content-center pb-3 pt-3 mt-5'>
         <Col xs = {"auto"}>
         <Link to="/form_envoie_client_english" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant='warning'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>

@@ -24,9 +24,9 @@ function MenuEnvoi(props)
     return (
 <>
 <Header  langue={props.langue}/>
-{isDesktop && <Container className='bg-dark justify-content-center text-center bordure' style={{marginTop:100,width:750}} >
+{isDesktop && <Container>
     
-    <Row className='justify-content-center pb-3 pt-3'>
+    <Row className='justify-content-center pb-3 pt-3 mt-5'>
         <Col xs = {"auto"}>
         <Link to="/form_envoie_client" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant='warning'  style={{width:550,height:80}} className='btn-lg rounded-pill zoom'>
@@ -62,7 +62,7 @@ function MenuEnvoi(props)
 
 {isMobileOrTablet &&  <Container>
     
-    <Row className='justify-content-center pb-3 pt-3'>
+    <Row className='justify-content-center pb-3 pt-3 mt-5'>
         <Col xs = {"auto"}>
         <Link to="/form_envoie_client" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant='warning'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>

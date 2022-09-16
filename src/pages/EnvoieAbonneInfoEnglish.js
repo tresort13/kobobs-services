@@ -11,6 +11,9 @@ import { useMediaQuery } from 'react-responsive';
 import HeaderEnglish from './HeaderEnglish';
 import Footer from './Footer';
 import Modal from 'react-bootstrap/Modal';
+import ClipLoader from "react-spinners/ClipLoader";
+import  './Header.css';
+
 
 
 
@@ -30,6 +33,7 @@ function EnvoieAbonneInfoEnglish(props)
 
       const navigate = useNavigate()
     const [modalShow2, setModalShow2] = React.useState(false);
+    const [modalShow, setModalShow] = React.useState(false);
     
   
     
@@ -38,6 +42,7 @@ console.log(props.envoie.infoEnvoie)
     const submitEnvoie = (e)=>
     {    
       e.preventDefault()  
+      setModalShow(true)
         fetch('https://kobobsapi.herokuapp.com/api/envoieFormulaireAbonne/',{
                 method:'POST',
                 headers: {'Content-Type': 'application/json'},
@@ -251,6 +256,7 @@ console.log(props.envoie.infoEnvoie)
         </Row>
 
    <MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
+   <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
 <Footer />
         </>
        
@@ -269,16 +275,37 @@ function MyVerticallyCenteredModal2(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          KO Tinda Esimbi te 
+          Sending failed 
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body> 
+        <p className='text-danger'><b>Please try to fill up all the fields correctly!!!</b>   
+      </p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant='warning' onClick={props.onHide}>close</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
+function MyVerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="sm"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Please wait...
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h4>Makomi : </h4>
-        <p className='text-danger'><b>Bolimbisi Kotinda esimbi te... Bandela ko koma bien formulaire na yo!!!</b>   
-        </p>
+      <ClipLoader color={"#ff8c00"} loading={true} size={150} /> 
       </Modal.Body>
       <Modal.Footer>
-        <Button variant='warning' onClick={props.onHide}>Fermer</Button>
       </Modal.Footer>
     </Modal>
   );

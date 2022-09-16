@@ -34,7 +34,7 @@ function EnvoieAbonneInfo(props)
       const navigate = useNavigate()
     const [modalShow2, setModalShow2] = React.useState(false);
     const [modalShow, setModalShow] = React.useState(false);
-    const [loading,setLoading] = useState(true)
+    
     
   
     
@@ -303,7 +303,7 @@ function MyVerticallyCenteredModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Please wait...
+          Zela Mukie...
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>

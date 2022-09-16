@@ -503,10 +503,10 @@ function App() {
         <Route path="/form_retrait_info" element={langue == "English" ? <Navigate to ='/form_retrait_info_english' /> : <FormRetrait langue = {langue} dataEnvoie2={dataEnvoie2}/>} >
         </Route>
 
-        <Route path="/envoi_info" element={langue == "English" ? <Navigate to ='/envoi_info_english' /> :  <EnvoiInfo langue = {langue}  dataEnvoie3={dataEnvoie3} envoie={envoie} />} >
+        <Route path="/envoi_info" element={langue == "English" ? <Navigate to ='/envoi_info_english' /> :  <EnvoiInfo langue = {langue}  dataEnvoie3={dataEnvoie3} envoie={envoie} setEnvoie={setEnvoie}/>} >
         </Route>
 
-        <Route path="/envoi_abonne_info" element={langue == "English" ? <Navigate to ='/envoi_abonne_info_english' /> : <EnvoieAbonneInfo langue = {langue}  dataEnvoie3={dataEnvoie3} envoie={envoie} />} >
+        <Route path="/envoi_abonne_info" element={langue == "English" ? <Navigate to ='/envoi_abonne_info_english' /> : <EnvoieAbonneInfo langue = {langue}  dataEnvoie3={dataEnvoie3} envoie={envoie} setEnvoie={setEnvoie}/>} >
         </Route>
 
 

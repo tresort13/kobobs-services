@@ -33,7 +33,7 @@ function EnvoieAbonneInfo(props)
 
       const navigate = useNavigate()
     const [modalShow2, setModalShow2] = React.useState(false);
-    const [modalShow, setModalShow] = React.useState(true);
+    const [modalShow, setModalShow] = React.useState(false);
     const [loading,setLoading] = useState(true)
     
   
@@ -43,7 +43,7 @@ console.log(props.envoie.infoEnvoie)
     const submitEnvoie = (e)=>
     {    
       e.preventDefault()  
-      setLoading(true)
+      setModalShow(true)
         fetch('https://kobobsapi.herokuapp.com/api/envoieFormulaireAbonne/',{
                 method:'POST',
                 headers: {'Content-Type': 'application/json'},

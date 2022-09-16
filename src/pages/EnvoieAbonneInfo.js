@@ -12,6 +12,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Modal from 'react-bootstrap/Modal';
 import ClipLoader from "react-spinners/ClipLoader";
+import  './Header.css';
 
 
 
@@ -255,7 +256,10 @@ console.log(props.envoie.infoEnvoie)
         </Row>
 
    <MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
+   <div className='cadre'>
    <ClipLoader color={"#ff8c00"} loading={loading} size={150} />
+   </div>
+  
 <Footer />
         </>
        

@@ -255,7 +255,7 @@ console.log(props.envoie.infoEnvoie)
         </Row>
 
    <MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
-   <ClipLoader color={"#ff8c00"} loading={loading} size={300} />
+   <ClipLoader color={"#ff8c00"} loading={loading} size={150} />
 <Footer />
         </>
        

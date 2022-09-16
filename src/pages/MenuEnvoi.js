@@ -60,7 +60,7 @@ function MenuEnvoi(props)
 
 </Container>}
 
-{isMobileOrTablet &&  <Container className='bg-dark mx-auto justify-content-center text-center bordure mt-5'  >
+{isMobileOrTablet &&  <Container>
     
     <Row className='justify-content-center pb-3 pt-3'>
         <Col xs = {"auto"}>
@@ -91,10 +91,8 @@ function MenuEnvoi(props)
         </Link>
         </Col>
     </Row>
-  
-  
-
-</Container>}
+  </Container>
+  }
 <Footer />
 </>
     )

@@ -33,6 +33,7 @@ function EnvoieAbonneInfo(props)
 
       const navigate = useNavigate()
     const [modalShow2, setModalShow2] = React.useState(false);
+    const [modalShow, setModalShow] = React.useState(true);
     const [loading,setLoading] = useState(true)
     
   
@@ -256,9 +257,7 @@ console.log(props.envoie.infoEnvoie)
         </Row>
 
    <MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
-   <div className='cadre'>
-   <ClipLoader color={"#ff8c00"} loading={loading} size={150} />
-   </div>
+  
   
 <Footer />
         </>
@@ -285,6 +284,29 @@ function MyVerticallyCenteredModal2(props) {
         <h4>Makomi : </h4>
         <p className='text-danger'><b>Bolimbisi Kotinda esimbi te... Bandela ko koma bien formulaire na yo!!!</b>   
         </p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant='warning' onClick={props.onHide}>Fermer</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
+function MyVerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="md"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Please wait...
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+      <ClipLoader color={"#ff8c00"} loading={loading} size={150} /> 
       </Modal.Body>
       <Modal.Footer>
         <Button variant='warning' onClick={props.onHide}>Fermer</Button>

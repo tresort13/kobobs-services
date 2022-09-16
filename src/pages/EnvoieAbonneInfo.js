@@ -297,7 +297,7 @@ function MyVerticallyCenteredModal(props) {
   return (
     <Modal
       {...props}
-      size="md"
+      size="sm"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
@@ -310,7 +310,6 @@ function MyVerticallyCenteredModal(props) {
       <ClipLoader color={"#ff8c00"} loading={true} size={150} /> 
       </Modal.Body>
       <Modal.Footer>
-        <Button variant='warning' onClick={props.onHide}>Fermer</Button>
       </Modal.Footer>
     </Modal>
   );

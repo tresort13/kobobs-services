@@ -257,6 +257,7 @@ console.log(props.envoie.infoEnvoie)
         </Row>
 
    <MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
+   <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
   
   
 <Footer />
@@ -306,7 +307,7 @@ function MyVerticallyCenteredModal(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      <ClipLoader color={"#ff8c00"} loading={loading} size={150} /> 
+      <ClipLoader color={"#ff8c00"} loading={true} size={150} /> 
       </Modal.Body>
       <Modal.Footer>
         <Button variant='warning' onClick={props.onHide}>Fermer</Button>

@@ -26,71 +26,50 @@ function MenuEnvoi(props)
 <Header  langue={props.langue}/>
 {isDesktop && <Container>
     
-    <Row className='justify-content-center pb-3 pt-3 mt-5'>
-        <Col xs = {"auto"}>
-        <Link to="/form_envoie_client" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='warning'  style={{width:550,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='text-dark'><pre>nbamla na ngai ya liboso yako Tinda Mbongo awa</pre></b>
-        </Button>
-        </Link>
-        </Col>
-    </Row>
-
-    <Row className='justify-content-center pb-3'>
-        <Col xs = {"auto"}>
-        <Link to="/form_envoie_abonne_id" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='warning'  style={{width:550,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='text-dark'><pre>Esi na tindala mutu mbongo awa</pre></b>
-        </Button>
-        </Link>
-        </Col>
-    </Row>
-
-    <Row className='justify-content-center pb-3'>
-        <Col xs = {"auto"}>
-        <Link to="/form_retrait_info" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='warning'  style={{width:550,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='text-dark'><pre>Na Lingi na yeba status ya code retrait na ngai</pre></b>
-        </Button>
-        </Link>
-        </Col>
-    </Row>
+   
   
-  
+    <Row className="text-center justify-content-center">
+            <Col md={4} className="my-auto text-center">
+            <Link to="/form_envoie_client" style={{color:'white',textDecorationLine:'none'}}>
+            <Button variant="warning" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
+            <i className="text-secondary"><b>nbamla liboso yako Tinda Mbongo</b></i>
+            </Button>
+            </Link>    
+            </Col>
+
+            <Col mdmd={4} className="my-auto text-center">
+            <Link to="/form_envoie_abonne_id" style={{color:'white',textDecorationLine:'none'}}>
+            <Button variant="warning" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
+            <i className="text-secondary"><b>Esi na tindala mutu mbongo awa</b></i>
+           </Button>
+            </Link>            
+            </Col>
+
+            <Col md={4} className="my-auto text-center">
+            <Link to="/form_envoie_abonne_id" style={{color:'white',textDecorationLine:'none'}}>
+            <Button variant="warning" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
+            <i className="text-secondary"><b>Landela transfer nayo</b></i>
+            </Button>
+             </Link>     
+            </Col>
+
+           </Row>
+
 
 </Container>}
 
 {isMobileOrTablet &&  <Container>
     
-    <Row className='justify-content-center pb-3 pt-3 mt-5'>
-        <Col xs = {"auto"}>
-        <Link to="/form_envoie_client" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='warning'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='text-dark'><pre>nbamla liboso yako Tinda Mbongo</pre></b>
-        </Button>
-        </Link>
-        </Col>
-    </Row>
+    <Row className="text-center justify-content-center">
+            <Col md={12} className="my-auto text-center">
+            <Link to="" style={{color:'white',textDecorationLine:'none'}}>
+            <Button variant="warning" style={{width:350,height:300}} className='btn-lg rounded-pill zoom'>
+            <i className="couleur2"><b>MENU</b></i>
+            </Button>
+            </Link>    
+            </Col>
 
-    <Row className='justify-content-center pb-3'>
-        <Col xs = {"auto"}>
-        <Link to="/form_envoie_abonne_id" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='warning'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='text-dark'><pre>Esi na tindala mutu mbongo awa</pre></b>
-        </Button>
-        </Link>
-        </Col>
-    </Row>
-
-    <Row className='justify-content-center pb-3'>
-        <Col xs = {"auto"}>
-        <Link to="/form_retrait_info" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='warning'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='text-dark'><pre>Landela transfer nayo awa</pre></b>
-        </Button>
-        </Link>
-        </Col>
-    </Row>
+           </Row>
   </Container>
   }
 <Footer />

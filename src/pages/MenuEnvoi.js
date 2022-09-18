@@ -28,7 +28,7 @@ function MenuEnvoi(props)
     
    
   
-    <Row className="text-center justify-content-center">
+    <Row className="text-center justify-content-center pt-5 mt-5">
             <Col md={4} className="my-auto text-center">
             <Link to="/form_envoie_client" style={{color:'white',textDecorationLine:'none'}}>
             <Button variant="warning" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>

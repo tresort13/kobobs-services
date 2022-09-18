@@ -31,7 +31,7 @@ function MenuEnvoi(props)
     <Row className="text-center justify-content-center pt-5 mt-5">
             <Col md={4} className="my-auto text-center">
             <Link to="/form_envoie_client" style={{color:'white',textDecorationLine:'none'}}>
-            <Button variant="warning" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
+            <Button variant="outline-warning" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
             <i className="text-secondary"><b>nbamla liboso yako Tinda Mbongo</b></i>
             </Button>
             </Link>    
@@ -39,7 +39,7 @@ function MenuEnvoi(props)
 
             <Col mdmd={4} className="my-auto text-center">
             <Link to="/form_envoie_abonne_id" style={{color:'white',textDecorationLine:'none'}}>
-            <Button variant="warning" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
+            <Button variant="outline-warning" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
             <i className="text-secondary"><b>Esi na tindala mutu mbongo awa</b></i>
            </Button>
             </Link>            
@@ -47,7 +47,7 @@ function MenuEnvoi(props)
 
             <Col md={4} className="my-auto text-center">
             <Link to="/form_envoie_abonne_id" style={{color:'white',textDecorationLine:'none'}}>
-            <Button variant="warning" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
+            <Button variant="outline-warning" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
             <i className="text-secondary"><b>Landela transfer nayo</b></i>
             </Button>
              </Link>     
@@ -60,10 +60,10 @@ function MenuEnvoi(props)
 
 {isMobileOrTablet &&  <Container>
     
-    <Row className="text-center justify-content-center">
+    <Row className="text-center justify-content-center pt-5 mt-5">
             <Col md={12} className="my-auto text-center">
             <Link to="" style={{color:'white',textDecorationLine:'none'}}>
-            <Button variant="warning" style={{width:350,height:300}} className='btn-lg rounded-pill zoom'>
+            <Button variant="outline-warning" style={{width:350,height:300}} className='btn-lg rounded-pill zoom'>
             <i className="couleur2"><b>MENU</b></i>
             </Button>
             </Link>    

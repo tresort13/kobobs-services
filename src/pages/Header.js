@@ -110,7 +110,7 @@ function Header(props)
         
         <Col xs={4} className="my-auto mx-auto text-end ">
          <div className="text-center couleur2">
-          <Navbar><Container><Nav className="me-auto"><NavDropdown title={props.langue} id="basic-nav-dropdown"><NavDropdown.Item href="#action/3.1">English</NavDropdown.Item></NavDropdown></Nav></Container></Navbar>
+         <Navbar><Container><Nav className="me-auto"><NavDropdown className="couleur2" title={props.langue} id="basic-nav-dropdown"><NavDropdown.Item href="#action/3.1" className="couleur2">Lingala</NavDropdown.Item><NavDropdown.Item href="#action/3.1" className="couleur2">English</NavDropdown.Item></NavDropdown></Nav></Container></Navbar>
            <i><pre className="couleur2 display-6 timing text-center" style={{fontSize: 15}}>{theTime}</pre></i>
         </div>  
         </Col>
@@ -175,7 +175,7 @@ function Header(props)
 
         <Col xs={"auto"} className=" mx-auto my-auto text-end">
          <div>
-         <Navbar><Container><Nav className="me-auto"><NavDropdown title={props.langue} id="basic-nav-dropdown"><NavDropdown.Item href="#action/3.1">English</NavDropdown.Item></NavDropdown></Nav></Container></Navbar>
+         <Navbar><Container><Nav className="me-auto"><NavDropdown className="couleur2" title={props.langue} id="basic-nav-dropdown"><NavDropdown.Item href="#action/3.1" className="couleur2">Lingala</NavDropdown.Item><NavDropdown.Item href="#action/3.1" className="couleur2">English</NavDropdown.Item></NavDropdown></Nav></Container></Navbar>
            <i><pre className="couleur2 display-6  text-end" style={{fontSize: 15}}>{theTime}</pre></i>
         </div>  
         </Col>  

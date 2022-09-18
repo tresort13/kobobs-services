@@ -110,7 +110,7 @@ function Header(props)
         
         <Col xs={4} className="my-auto mx-auto text-end justify-content-center">
          <div className="text-center couleur2 justify-content-center">
-         <Navbar variant="couleur2"><Container><Nav className="me-auto"><NavDropdown className="couleur2" title={props.langue} id="basic-nav-dropdown"><NavDropdown.Item href="#action/3.1" className="couleur2">Lingala</NavDropdown.Item><NavDropdown.Item href="#action/3.1" className="couleur2">English</NavDropdown.Item></NavDropdown></Nav></Container></Navbar>
+         <div className="couleur2 text-center"><Navbar variant="couleur2"><Container><Nav className="me-auto"><NavDropdown variant="couleur2" title={props.langue} id="basic-nav-dropdown"><NavDropdown.Item href="#action/3.1" className="couleur2">Lingala</NavDropdown.Item><NavDropdown.Item href="#action/3.1" className="couleur2">English</NavDropdown.Item></NavDropdown></Nav></Container></Navbar></div>
            <i><pre className="couleur2 display-6 timing text-center" style={{fontSize: 15}}>{theTime}</pre></i>
         </div>  
         </Col>

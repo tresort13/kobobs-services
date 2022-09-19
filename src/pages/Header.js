@@ -26,8 +26,9 @@ function Header(props)
     const isMobileOrTablet = useMediaQuery({
       query: "(max-width: 1224px)"
     });
-const working = ()=>
+const working = (donne)=>
 {
+  props.changeVersion(donne)
   console.log(props.version)
 }
 
@@ -107,9 +108,9 @@ const working = ()=>
              </Dropdown.Toggle>
 
              <Dropdown.Menu>
-             <Dropdown.Item onClick={working}>Lingala</Dropdown.Item>
+             <Dropdown.Item onClick={working("Lingala")}>Lingala</Dropdown.Item>
              <Dropdown.Divider />
-            <Dropdown.Item >English</Dropdown.Item>
+            <Dropdown.Item onClick={working("English")}>English</Dropdown.Item>
              </Dropdown.Menu>
             </Dropdown>
            </Link>

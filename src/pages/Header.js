@@ -43,13 +43,6 @@ function Header(props)
         return () => clearInterval(interval)
       }, [])
 
-      const changeLanguage = (language)=>
-      {
-       console.log(props.langue)
-        props.setLangue(language)
-        navigate('/')
-      }
-
    
     return (
      <div>
@@ -119,9 +112,9 @@ function Header(props)
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <Dropdown.Item onClick={changeLanguage("Lingala")}>Lingala</Dropdown.Item>
+        <Dropdown.Item onClick={props.setLangue("Lingala")}>Lingala</Dropdown.Item>
         <Dropdown.Divider />
-        <Dropdown.Item onClick={changeLanguage("English")}>English</Dropdown.Item>
+        <Dropdown.Item onClick={props.setLangue("English")}>English</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
     </Link> 

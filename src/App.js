@@ -33,7 +33,7 @@ function App() {
   const [langue,setLangue] = useState(()=>
   {
     const localData = localStorage.getItem('langue');
-    return localData ? JSON.parse(localData) : "";
+    return localData ? JSON.parse(localData) : "Lingala";
   });
   
   
@@ -482,7 +482,7 @@ function App() {
     <BrowserRouter>
       <Routes >
         
-         <Route path="/"  element={<Login    setLangue={setLangue}/>} >
+         <Route path="/"  element={<MenuEnvoi    setLangue={setLangue}/>} >
         </Route>
 
         

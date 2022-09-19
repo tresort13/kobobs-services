@@ -43,6 +43,13 @@ function Header(props)
         return () => clearInterval(interval)
       }, [])
 
+      const changeLanguage = (language)=>
+      {
+        e.preventDefault()
+        props.setLangue(language)
+        navigate('/')
+      }
+
     const logout = ()=>
     {
       window.localStorage.setItem("username", JSON.stringify(""))
@@ -116,9 +123,9 @@ function Header(props)
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <Dropdown.Item href="#/action-1">Lingala</Dropdown.Item>
+        <Dropdown.Item onClick={changeLanguage("Lingala")}>Lingala</Dropdown.Item>
         <Dropdown.Divider />
-        <Dropdown.Item href="#/action-2">English</Dropdown.Item>
+        <Dropdown.Item onClick={changeLanguage("English")}>English</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
     </Link>

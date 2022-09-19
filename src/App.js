@@ -30,17 +30,7 @@ const useState = React.useState
 
 function App() {
 
-  const [language,setLanguage] = useState(()=>
-  {
-    const localData = localStorage.getItem('language');
-    return localData ? JSON.parse(localData) :"Lingala";
-  });
-  
-  
-  useEffect(() => {
-    window.localStorage.setItem("language", JSON.stringify(language))
-  }, [language])
-
+  const [language,setLanguage] = useState("Lingala")
  
 
   const [dateInfo,setDate] = useState(()=>

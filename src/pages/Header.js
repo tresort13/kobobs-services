@@ -116,9 +116,7 @@ const working = (donne)=>
            </Link>
            </div>
 
-          <div>
-          <i><pre className="couleur2 display-6  text-end" style={{fontSize: 15}}>{theTime}</pre></i>
-          </div>
+
         </Col>
     </Row>
    
@@ -196,9 +194,7 @@ const working = (donne)=>
            </Link>
            </div>
 
-          <div>
-          <i><pre className="couleur2 display-6  text-end" style={{fontSize: 15}}>{theTime}</pre></i>
-          </div>
+
              
         </Col>  
     </Row>

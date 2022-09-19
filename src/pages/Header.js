@@ -28,7 +28,7 @@ function Header(props)
     });
 const working = ()=>
 {
-  props.version
+  console.log(props.version)
 }
 
     useEffect(() => {

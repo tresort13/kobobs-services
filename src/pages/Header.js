@@ -30,7 +30,7 @@ function Header(props)
       query: "(max-width: 1224px)"
     });
 
-    const navigate = useNavigate()
+    console.log(props.language)
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -43,7 +43,7 @@ function Header(props)
         return () => clearInterval(interval)
       }, [])
 
-      console.log(props.langue.infoLanguage.language)
+      
    
     return (
      <div>
@@ -109,13 +109,13 @@ function Header(props)
         <Link to="" style={{textDecoration:"none"}}>
         <Dropdown>
       <Dropdown.Toggle as={"p"} className="couleur2" id="dropdown-basic">
-        {props.langue.infoLanguage.language}
+        {props.language}
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <Dropdown.Item onClick={props.dataLangue("Lingala")}>Lingala</Dropdown.Item>
+        <Dropdown.Item onClick={props.setLanguage("Lingala")}>Lingala</Dropdown.Item>
         <Dropdown.Divider />
-        <Dropdown.Item onClick={props.dataLangue("English")}>English</Dropdown.Item>
+        <Dropdown.Item onClick={props.setLanguage("English")}>English</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
     </Link> 

@@ -12,7 +12,7 @@ import { useMediaQuery } from 'react-responsive';
 
 
 
-function MenuEnvoi(props)
+function Home(props)
 {
 
     const isDesktop = useMediaQuery({
@@ -23,7 +23,7 @@ function MenuEnvoi(props)
       });    
     return (
 <>
-<Header langue={props.langue}  dataLangue={props.dataLangue}/>
+<Header language={props.language}  setLanguage={props.setLanguage}/>
 {isDesktop && <Container>  
     <Row className="text-center justify-content-center pt-5 mt-5">
             <Col md={4} className="my-auto text-center">
@@ -90,4 +90,4 @@ function MenuEnvoi(props)
     )
 }
 
-export default MenuEnvoi;
+export default Home;

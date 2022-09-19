@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter,Routes,Route} from  'react-router-dom';
 import {Navigate} from  'react-router-dom';
 import  './pages/Assets.css';
-import MenuEnvoi from './pages/MenuEnvoi';
 import EnvoiInfo from './pages/EnvoiInfo';
 import ConfirmationEnvoieInfo from './pages/ConfirmationEnvoieInfo';
 import ConfirmationRetraitInfo from './pages/ConfirmationRetraitInfo';
@@ -23,6 +22,7 @@ import FormEnvoiAbonneIdEnglish from './pages/FormEnvoiAbonneIdEnglish';
 import EnvoieAbonneInfoEnglish from './pages/EnvoieAbonneInfoEnglish';
 import FormRetraitEnglish from './pages/FormRetraitEnglish';
 import FormEnvoiAbonneEnglish from './pages/FormEnvoiAbonneEnglish'
+import Home from './pages/Home';
 
 
 
@@ -30,25 +30,18 @@ const useState = React.useState
 
 function App() {
 
-  const [langue,setLangue] = useState(()=>
+  const [language,setLanguage] = useState(()=>
   {
-    const localData = localStorage.getItem('langue');
-    return localData ? JSON.parse(localData) :{infoLanguage:{
-      language:"Lingala"
-    }};
+    const localData = localStorage.getItem('language');
+    return localData ? JSON.parse(localData) :"Lingala"
   });
   
   
   useEffect(() => {
-    window.localStorage.setItem("langue", JSON.stringify(langue))
-  }, [langue])
+    window.localStorage.setItem("language", JSON.stringify(language))
+  }, [language])
 
-  const dataLangue = (donne)=>
-  {
-    setLangue({infoLanguage : {
-      language:donne
-    }})
-  }
+ 
 
   const [dateInfo,setDate] = useState(()=>
   {
@@ -491,7 +484,7 @@ function App() {
     <BrowserRouter>
       <Routes >
         
-         <Route path="/"  element={<MenuEnvoi  langue = {langue} dataLangue = {dataLangue}/>} >
+         <Route path="/"  element={<Home  language={language} setLanguage={setLanguage}/>} >
         </Route>
        
 

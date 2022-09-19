@@ -27,7 +27,7 @@ function Home(props)
 {isDesktop && <Container>  
     <Row className="text-center justify-content-center pt-5 mt-5">
             <Col md={4} className="my-auto text-center">
-          { props.language =="Lingala" ? <Link to="/form_envoie_client" style={{color:'white',textDecorationLine:'none'}}>
+          { props.language == "Lingala" ? <Link to="/form_envoie_client" style={{color:'white',textDecorationLine:'none'}}>
             <Button variant="outline-light" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
             <i className="couleur2"><b>Nbamla liboso Na Tinda Mbongo</b></i>
             </Button>
@@ -40,7 +40,7 @@ function Home(props)
             </Col>
 
             <Col mdmd={4} className="my-auto text-center">
-            {props.language =="Lingala" ? <Link to="/form_envoie_abonne_id" style={{color:'white',textDecorationLine:'none'}}>
+            {props.language == "Lingala" ? <Link to="/form_envoie_abonne_id" style={{color:'white',textDecorationLine:'none'}}>
             <Button variant="outline-light" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
             <i className="couleur2"><b>Esi na tindala mutu mbongo </b></i>
            </Button>
@@ -54,7 +54,7 @@ function Home(props)
             </Col>
 
             <Col md={4} className="my-auto text-center">
-            {props.language =="Lingala" ? <Link to="/form_envoie_abonne_id" style={{color:'white',textDecorationLine:'none'}}>
+            {props.language == "Lingala" ? <Link to="/form_envoie_abonne_id" style={{color:'white',textDecorationLine:'none'}}>
             <Button variant="outline-light" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
             <i className="couleur2"><b>Landela transfer nayo</b></i>
             </Button>

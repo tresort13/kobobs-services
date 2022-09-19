@@ -26,11 +26,6 @@ function Header(props)
     const isMobileOrTablet = useMediaQuery({
       query: "(max-width: 1224px)"
     });
-const working = (donne)=>
-{
-  props.changeVersion(donne)
-  console.log(props.version)
-}
 
     useEffect(() => {
         const interval = setInterval(() => setTheTime(new Date().toLocaleString()), 1000)
@@ -45,7 +40,7 @@ const working = (donne)=>
     {isDesktop && <Container fluid className="bg-dark mx-auto" >
     <Row>
     <Col xs={2} className="my-auto mx-auto text-center justify-content-center">
-          <Link to="/home" style={{textDecoration:"none"}}>
+          <Link to="/" style={{textDecoration:"none"}}>
           <Image  src={require('./kobo_logo.JPG')}  className='rounded-pill ' style={{width:130}}></Image>
           </Link>
         </Col>
@@ -104,19 +99,19 @@ const working = (donne)=>
            <Link to="" style={{textDecoration:"none"}}>
             <Dropdown>
              <Dropdown.Toggle as={"p"} className="couleur2" id="dropdown-basic">
-                {props.version}
+                Lingala
              </Dropdown.Toggle>
 
              <Dropdown.Menu>
-             <Dropdown.Item onClick={working("Lingala")}>Lingala</Dropdown.Item>
-             <Dropdown.Divider />
-            <Dropdown.Item onClick={working("English")}>English</Dropdown.Item>
+            <Dropdown.Item href="/home_english">English</Dropdown.Item>
              </Dropdown.Menu>
             </Dropdown>
            </Link>
            </div>
 
-
+          <div>
+          <i><pre className="couleur2 display-6  text-end" style={{fontSize: 15}}>{theTime}</pre></i>
+          </div>
         </Col>
     </Row>
    
@@ -182,19 +177,20 @@ const working = (donne)=>
            <Link to="" style={{textDecoration:"none"}}>
             <Dropdown>
              <Dropdown.Toggle as={"p"} className="couleur2" id="dropdown-basic">
-                {props.version}
+                Lingala
              </Dropdown.Toggle>
 
              <Dropdown.Menu>
-             <Dropdown.Item >Lingala</Dropdown.Item>
-             <Dropdown.Divider />
-            <Dropdown.Item >English</Dropdown.Item>
+            
+            <Dropdown.Item href="/home_english">English</Dropdown.Item>
              </Dropdown.Menu>
             </Dropdown>
            </Link>
            </div>
 
-
+          <div>
+          <i><pre className="couleur2 display-6  text-end" style={{fontSize: 15}}>{theTime}</pre></i>
+          </div>
              
         </Col>  
     </Row>

@@ -23,6 +23,7 @@ import EnvoieAbonneInfoEnglish from './pages/EnvoieAbonneInfoEnglish';
 import FormRetraitEnglish from './pages/FormRetraitEnglish';
 import FormEnvoiAbonneEnglish from './pages/FormEnvoiAbonneEnglish'
 import Home from './pages/Home';
+import HomeEnglish from './pages/HomeEnglish';
 
 
 
@@ -30,24 +31,7 @@ const useState = React.useState
 
 function App() {
 
-  const [version,setVersion] = useState(()=>
-  {
-    const localData = localStorage.getItem('version');
-    return localData ? JSON.parse(localData) :"Lingala";
-    })
   
-  
-
-  useEffect(() => {
-    window.localStorage.setItem("version", JSON.stringify(version))
-  }, [version])
-
-  const changeVersion = (donneVersion)=>
-  {
-    setVersion(donneVersion)
-  }
- 
-
   const [dateInfo,setDate] = useState(()=>
   {
     const localData = localStorage.getItem('dateInfo');
@@ -489,9 +473,13 @@ function App() {
     <BrowserRouter>
       <Routes >
         
-         <Route path="/"  element={<Home version={version} changeVersion={changeVersion}/>} >
+         <Route path="/"  element={<Home />} >
         </Route>
        
+        <Route path="/home_engligh"  element={<HomeEnglish />} >
+        </Route>
+       
+
 
         <Route path="/form_envoie_client" element={<FormEnvoiClient  dataEnvoie={dataEnvoie} envoie={envoie} setTaux={setTaux}/>}>
         </Route>

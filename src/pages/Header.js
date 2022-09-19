@@ -43,7 +43,7 @@ function Header(props)
         return () => clearInterval(interval)
       }, [])
 
-      console.log(props.langue)
+      console.log(props.langue.infoLangue.language)
    
     return (
      <div>
@@ -109,7 +109,7 @@ function Header(props)
         <Link to="" style={{textDecoration:"none"}}>
         <Dropdown>
       <Dropdown.Toggle as={"p"} className="couleur2" id="dropdown-basic">
-        {props.langue}
+        {props.langue.infoLangue.language}
       </Dropdown.Toggle>
 
       <Dropdown.Menu>

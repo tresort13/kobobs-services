@@ -33,7 +33,9 @@ function App() {
   const [langue,setLangue] = useState(()=>
   {
     const localData = localStorage.getItem('langue');
-    return localData ? JSON.parse(localData) :"Lingala";
+    return localData ? JSON.parse(localData) :{infoLanguage:{
+      language:"Lingala"
+    }};
   });
   
   
@@ -43,7 +45,9 @@ function App() {
 
   const dataLangue = (donne)=>
   {
-    setLangue(donne)
+    setLangue({infoLanguage : {
+      language:donne
+    }})
   }
 
   const [dateInfo,setDate] = useState(()=>

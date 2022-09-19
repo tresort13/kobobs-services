@@ -45,7 +45,7 @@ function Header(props)
 
       const changeLanguage = (language)=>
       {
-        e.preventDefault()
+       console.log(props.langue)
         props.setLangue(language)
         navigate('/')
       }

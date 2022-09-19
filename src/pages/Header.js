@@ -103,6 +103,7 @@ function Header(props)
              </Dropdown.Toggle>
 
              <Dropdown.Menu>
+             <Dropdown.Item href="/">Lingala</Dropdown.Item>
             <Dropdown.Item href="/home_english">English</Dropdown.Item>
              </Dropdown.Menu>
             </Dropdown>
@@ -181,7 +182,7 @@ function Header(props)
              </Dropdown.Toggle>
 
              <Dropdown.Menu>
-            
+             <Dropdown.Item href="/">Lingala</Dropdown.Item>
             <Dropdown.Item href="/home_english">English</Dropdown.Item>
              </Dropdown.Menu>
             </Dropdown>

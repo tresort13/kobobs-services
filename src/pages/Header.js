@@ -27,7 +27,7 @@ function Header(props)
       query: "(max-width: 1224px)"
     });
 
-    
+    const [language2,setLanguage2] = useState("Lingala")
 
     const [show, setShow] = useState(false);
 
@@ -107,13 +107,13 @@ function Header(props)
         <Link to="" style={{textDecoration:"none"}}>
         <Dropdown>
       <Dropdown.Toggle as={"p"} className="couleur2" id="dropdown-basic">
-        Lingala
+        {language2}
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <Dropdown.Item onClick={props.setLanguage("Lingala")}>Lingala</Dropdown.Item>
+        <Dropdown.Item onClick={setLanguage2("Lingala")}>Lingala</Dropdown.Item>
         <Dropdown.Divider />
-        <Dropdown.Item onClick={props.setLanguage("English")}>English</Dropdown.Item>
+        <Dropdown.Item onClick={setLanguage2("English")}>English</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
     </Link> 

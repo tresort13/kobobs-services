@@ -17,9 +17,6 @@ import Dropdown from "react-bootstrap/esm/Dropdown";
 
 
 
-
-
-
 function Header(props)
 {
     const [theTime, setTheTime] = useState(new Date().toLocaleString())
@@ -30,7 +27,8 @@ function Header(props)
       query: "(max-width: 1224px)"
     });
 
-    console.log(props.language)
+    
+
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);

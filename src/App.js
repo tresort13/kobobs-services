@@ -488,29 +488,29 @@ function App() {
         </Route>
        
 
-        <Route path="/form_envoie_client" element={language == "English" ? <Navigate to ='/form_envoie_client_english' /> : <FormEnvoiClient langue = {langue}  dataEnvoie={dataEnvoie} envoie={envoie} setTaux={setTaux}/>}>
+        <Route path="/form_envoie_client" element={language == "English" ? <Navigate to ='/form_envoie_client_english' /> : <FormEnvoiClient language = {language}  dataEnvoie={dataEnvoie} envoie={envoie} setTaux={setTaux}/>}>
         </Route>
 
-        <Route path="/form_envoie_abonne_id" element={language == "English" ? <Navigate to ='/form_envoie_abonne_id_english' /> : <FormEnvoiAbonneId langue = {langue} dataAbonne={dataAbonne} />} >
+        <Route path="/form_envoie_abonne_id" element={language == "English" ? <Navigate to ='/form_envoie_abonne_id_english' /> : <FormEnvoiAbonneId language = {language} dataAbonne={dataAbonne} />} >
         </Route>
 
-        <Route path="/form_envoie_abonne" element={language == "English" ? <Navigate to ='/form_envoie_abonne_english' /> :  <FormEnvoiAbonne langue = {langue} abonne={abonne} dataEnvoieAbonne={dataEnvoieAbonne} setTaux={setTaux} envoie={envoie}/>} >
+        <Route path="/form_envoie_abonne" element={language == "English" ? <Navigate to ='/form_envoie_abonne_english' /> :  <FormEnvoiAbonne language = {language} abonne={abonne} dataEnvoieAbonne={dataEnvoieAbonne} setTaux={setTaux} envoie={envoie}/>} >
         </Route>
 
-        <Route path="/form_retrait_info" element={language == "English" ? <Navigate to ='/form_retrait_info_english' /> : <FormRetrait langue = {langue} dataEnvoie2={dataEnvoie2}/>} >
+        <Route path="/form_retrait_info" element={language == "English" ? <Navigate to ='/form_retrait_info_english' /> : <FormRetrait language = {language} dataEnvoie2={dataEnvoie2}/>} >
         </Route>
 
-        <Route path="/envoi_info" element={language == "English" ? <Navigate to ='/envoi_info_english' /> :  <EnvoiInfo langue = {langue}  dataEnvoie3={dataEnvoie3} envoie={envoie} setEnvoie={setEnvoie}/>} >
+        <Route path="/envoi_info" element={language == "English" ? <Navigate to ='/envoi_info_english' /> :  <EnvoiInfo language = {language}  dataEnvoie3={dataEnvoie3} envoie={envoie} setEnvoie={setEnvoie}/>} >
         </Route>
 
-        <Route path="/envoi_abonne_info" element={language == "English" ? <Navigate to ='/envoi_abonne_info_english' /> : <EnvoieAbonneInfo langue = {langue}  dataEnvoie3={dataEnvoie3} envoie={envoie} setEnvoie={setEnvoie}/>} >
+        <Route path="/envoi_abonne_info" element={language == "English" ? <Navigate to ='/envoi_abonne_info_english' /> : <EnvoieAbonneInfo language = {language}  dataEnvoie3={dataEnvoie3} envoie={envoie} setEnvoie={setEnvoie}/>} >
         </Route>
 
 
-        <Route path="/confirmation_envoie_info" element={language == "English" ? <Navigate to ='/confirmation_envoie_info_english' /> :  <ConfirmationEnvoieInfo langue = {langue}  envoie3={envoie3}/>} >
+        <Route path="/confirmation_envoie_info" element={language == "English" ? <Navigate to ='/confirmation_envoie_info_english' /> :  <ConfirmationEnvoieInfo language = {language}  envoie3={envoie3}/>} >
         </Route>
 
-        <Route path="/retrait_info" element={language == "English" ? <Navigate to ='/retrait_info_english' /> :  <ConfirmationRetraitInfo langue = {langue}  envoie2={envoie2}/>} >
+        <Route path="/retrait_info" element={language == "English" ? <Navigate to ='/retrait_info_english' /> :  <ConfirmationRetraitInfo language = {language}  envoie2={envoie2}/>} >
         </Route>
 
 

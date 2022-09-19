@@ -26,14 +26,10 @@ function Header(props)
     const isMobileOrTablet = useMediaQuery({
       query: "(max-width: 1224px)"
     });
-
-    const [language2,setLanguage2] = useState("Lingala")
-
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
+const working = ()=>
+{
+  console.log("onclick is working fine")
+}
 
     useEffect(() => {
         const interval = setInterval(() => setTheTime(new Date().toLocaleString()), 1000)
@@ -107,13 +103,13 @@ function Header(props)
         <Link to="" style={{textDecoration:"none"}}>
         <Dropdown>
       <Dropdown.Toggle as={"p"} className="couleur2" id="dropdown-basic">
-        {language2}
+        {props.version}
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <Dropdown.Item onClick={setLanguage2("Lingala")}>Lingala</Dropdown.Item>
+        <Dropdown.Item onClick={working}>Lingala</Dropdown.Item>
         <Dropdown.Divider />
-        <Dropdown.Item onClick={setLanguage2("English")}>English</Dropdown.Item>
+        <Dropdown.Item >English</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
     </Link> 
@@ -184,7 +180,7 @@ function Header(props)
           <Link to="" style={{textDecoration:"none"}}>
             <Dropdown>
              <Dropdown.Toggle as={"p"} className="couleur2" id="dropdown-basic">
-                {props.language}
+                {props.version}
              </Dropdown.Toggle>
 
              <Dropdown.Menu>
@@ -199,22 +195,6 @@ function Header(props)
         </Col>  
     </Row>
    
-    <Offcanvas show={show} onHide={handleClose} className="bordure " style={{height:550}}>
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 text-secondary text-end"><b><u>Menu</u></b></i> </Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-        <Nav justify menuVariant="dark"  className="navbar justify-content-end flex-grow-1 pe-3 flex-column">
-        <Nav.Link href="/menu_envoie"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>Envoi Argent</i></Button></Nav.Link>
-        <Nav.Link href="/form_retrait"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>Retrait Argent</i></Button></Nav.Link>
-        <Nav.Link href="/menu_gestion_abonne"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>Service Clients</i></Button></Nav.Link>
-        <Nav.Link href="/menu_gestion_operation"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>Gestion Operations</i></Button></Nav.Link>
-        <Nav.Link href="/menu_gestion_recettes"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>Gestion Recettes</i></Button></Nav.Link>
-        <Nav.Link href="/menu_users"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>Gestion Utilisateurs</i></Button></Nav.Link> 
-      </Nav>
-
-        </Offcanvas.Body>
-      </Offcanvas>
     
    </Container>}
    </div>

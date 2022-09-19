@@ -43,6 +43,7 @@ function Header(props)
         return () => clearInterval(interval)
       }, [])
 
+      console.log(props.langue)
    
     return (
      <div>
@@ -112,9 +113,9 @@ function Header(props)
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <Dropdown.Item onClick={props.setLangue("Lingala")}>Lingala</Dropdown.Item>
+        <Dropdown.Item onClick={props.dataLangue("Lingala")}>Lingala</Dropdown.Item>
         <Dropdown.Divider />
-        <Dropdown.Item onClick={props.setLangue("English")}>English</Dropdown.Item>
+        <Dropdown.Item onClick={props.dataLangue("English")}>English</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
     </Link> 

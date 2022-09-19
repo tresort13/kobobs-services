@@ -41,6 +41,11 @@ function App() {
     window.localStorage.setItem("langue", JSON.stringify(langue))
   }, [langue])
 
+  const dataLangue = (donne)=>
+  {
+    setLangue(donne)
+  }
+
   const [dateInfo,setDate] = useState(()=>
   {
     const localData = localStorage.getItem('dateInfo');
@@ -482,13 +487,8 @@ function App() {
     <BrowserRouter>
       <Routes >
         
-         <Route path="/"  element={<MenuEnvoi  langue={langue} setLangue={setLangue}/>} >
+         <Route path="/"  element={<MenuEnvoi  langue = {langue} dataLangue = {dataLangue}/>} >
         </Route>
-
-        
-        <Route path="/menu_envoie" element={ langue == "English" ? <Navigate to ='/menu_envoi_english' /> : < MenuEnvoi langue = {langue} />} >
-        </Route>
-
        
 
         <Route path="/form_envoie_client" element={langue == "English" ? <Navigate to ='/form_envoie_client_english' /> : <FormEnvoiClient langue = {langue}  dataEnvoie={dataEnvoie} envoie={envoie} setTaux={setTaux}/>}>

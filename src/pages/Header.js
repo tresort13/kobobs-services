@@ -11,7 +11,6 @@ import Nav from 'react-bootstrap/Nav';
 import { useMediaQuery } from 'react-responsive';
 import Button from "react-bootstrap/Button";
 import Navbar from 'react-bootstrap/Navbar';
-import Form from 'react-bootstrap/Form';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Dropdown from "react-bootstrap/esm/Dropdown";
 
@@ -118,6 +117,7 @@ function Header(props)
 
       <Dropdown.Menu>
         <Dropdown.Item href="#/action-1">Lingala</Dropdown.Item>
+        <Dropdown.Divider />
         <Dropdown.Item href="#/action-2">English</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
@@ -186,8 +186,20 @@ function Header(props)
         </Col>
 
         <Col xs={"auto"} className=" mx-auto my-auto text-end">
-         <div>
-         <Navbar><Container><Nav className="me-auto"><NavDropdown className="couleur2" title={props.langue} id="basic-nav-dropdown"><NavDropdown.Item href="#action/3.1" className="couleur2">Lingala</NavDropdown.Item><NavDropdown.Item href="#action/3.1" className="couleur2">English</NavDropdown.Item></NavDropdown></Nav></Container></Navbar>
+         <div className="text-end couleur2">
+          <Link to="" style={{textDecoration:"none"}}>
+            <Dropdown>
+             <Dropdown.Toggle as={"p"} className="couleur2" id="dropdown-basic">
+                {props.langue}
+             </Dropdown.Toggle>
+
+             <Dropdown.Menu>
+             <Dropdown.Item href="#/action-1">Lingala</Dropdown.Item>
+             <Dropdown.Divider />
+            <Dropdown.Item href="#/action-2">English</Dropdown.Item>
+             </Dropdown.Menu>
+            </Dropdown>
+           </Link>
            <i><pre className="couleur2 display-6  text-end" style={{fontSize: 15}}>{theTime}</pre></i>
         </div>  
         </Col>  

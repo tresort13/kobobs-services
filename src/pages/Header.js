@@ -107,7 +107,7 @@ function Header(props)
         <Link to="" style={{textDecoration:"none"}}>
         <Dropdown>
       <Dropdown.Toggle as={"p"} className="couleur2" id="dropdown-basic">
-        {props.language}
+        Lingala
       </Dropdown.Toggle>
 
       <Dropdown.Menu>

@@ -41,6 +41,11 @@ function App() {
   useEffect(() => {
     window.localStorage.setItem("version", JSON.stringify(version))
   }, [version])
+
+  const changeVersion = (donneVersion)=>
+  {
+    setVersion(donneVersion)
+  }
  
 
   const [dateInfo,setDate] = useState(()=>
@@ -484,7 +489,7 @@ function App() {
     <BrowserRouter>
       <Routes >
         
-         <Route path="/"  element={<Home version={version} />} >
+         <Route path="/"  element={<Home version={version} changeVersion={changeVersion}/>} >
         </Route>
        
 

@@ -23,7 +23,7 @@ function Home(props)
       });    
     return (
 <>
-<Header version={props.version} />
+<Header version={props.version} changeVersion={props.changeVersion}/>
 {isDesktop && <Container>  
     <Row className="text-center justify-content-center pt-5 mt-5">
             <Col md={4} className="my-auto text-center">

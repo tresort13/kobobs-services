@@ -104,13 +104,13 @@ function Header(props)
 
         <Col xs={6} className="my-auto mx-auto my-auto text-center">
           <Link to="/home" style={{textDecoration:"none"}}>
-          <p className="display-6 text-secondary">KOBOBS</p>
+          <p className="display-6 text-secondary">KOBO BUSINESS SERVICES</p>
           </Link>
         </Col>
         
         <Col xs={2} className="my-auto mx-auto text-end justify-content-center">
          <div className="text-end couleur2 justify-content-center">
-         <p className="couleur2 text-center"><Navbar><Container><Nav className="couleu2 me-auto"><NavDropdown style={{color:"darkorange"}} className="couleur2" color="darkorange" title={props.langue} id="basic-nav-dropdown"><NavDropdown.Item href="#action/3.1" className="couleur2">Lingala</NavDropdown.Item><NavDropdown.Item href="#action/3.1" className="couleur2">English</NavDropdown.Item></NavDropdown></Nav></Container></Navbar></p>
+         <p className="couleur2 text-center"><Navbar><Container><Nav className="couleu2 me-auto"><NavDropdown style={{textDecorationColor:"darkorange"}} className="couleur2" color="darkorange" title={props.langue} id="basic-nav-dropdown"><NavDropdown.Item href="#action/3.1" className="couleur2">Lingala</NavDropdown.Item><NavDropdown.Item href="#action/3.1" className="couleur2">English</NavDropdown.Item></NavDropdown></Nav></Container></Navbar></p>
            <i><pre className="couleur2 display-6 timing text-center" style={{fontSize: 15}}>{theTime}</pre></i>
         </div>  
         </Col>

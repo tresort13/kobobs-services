@@ -23,7 +23,7 @@ function MenuEnvoi(props)
       });    
     return (
 <>
-<Header  langue={props.langue}/>
+<Header langue={props.langue}  setLangue={props.setLangue}/>
 {isDesktop && <Container>
     
    

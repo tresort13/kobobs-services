@@ -482,7 +482,7 @@ function App() {
     <BrowserRouter>
       <Routes >
         
-         <Route path="/"  element={<MenuEnvoi    setLangue={setLangue}/>} >
+         <Route path="/"  element={<MenuEnvoi  langue={langue}   setLangue={setLangue}/>} >
         </Route>
 
         

@@ -476,7 +476,7 @@ function App() {
          <Route path="/"  element={<Home />} >
         </Route>
        
-        <Route path="/home_engligh"  element={<HomeEnglish />} >
+        <Route path="/home_english"  element={<HomeEnglish />} >
         </Route>
        
 

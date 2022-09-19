@@ -104,7 +104,7 @@ function HeaderEnglish(props)
 
              <Dropdown.Menu>
              <Dropdown.Item href="/home_english">English</Dropdown.Item>
-            <Dropdown.Item href="/">Lingala</Dropdown.Item>
+             <Dropdown.Item href="/">Lingala</Dropdown.Item>
              </Dropdown.Menu>
             </Dropdown>
            </Link>
@@ -182,7 +182,7 @@ function HeaderEnglish(props)
              </Dropdown.Toggle>
 
              <Dropdown.Menu>
-             <Dropdown.Item href="/home_english">English</Dropdown.Item>
+             <Dropdown.Item href="/home_english" >English</Dropdown.Item>
             <Dropdown.Item href="/">Lingala</Dropdown.Item>
              </Dropdown.Menu>
             </Dropdown>

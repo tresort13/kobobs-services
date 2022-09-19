@@ -89,7 +89,7 @@ function HeaderEnglish(props)
         </Col>
 
         <Col xs={6} className="my-auto mx-auto my-auto text-start">
-          <Link to="/" style={{textDecoration:"none"}}>
+          <Link to="" style={{textDecoration:"none"}}>
           <p className="display-6 text-secondary">KOBO BUSINESS SERVICES</p>
           </Link>
         </Col>
@@ -103,7 +103,7 @@ function HeaderEnglish(props)
              </Dropdown.Toggle>
 
              <Dropdown.Menu>
-             <Dropdown.Item href="#">English</Dropdown.Item>
+             <Dropdown.Item href="/home_english">English</Dropdown.Item>
              <Dropdown.Item href="/">Lingala</Dropdown.Item>
              </Dropdown.Menu>
             </Dropdown>
@@ -175,14 +175,14 @@ function HeaderEnglish(props)
         <Col xs={"auto"} className=" mx-auto my-auto text-end">
          
            <div className="text-end couleur2">
-           <Link to="/" style={{textDecoration:"none"}}>
+           <Link to="" style={{textDecoration:"none"}}>
             <Dropdown>
              <Dropdown.Toggle as={"p"} className="couleur2" id="dropdown-basic">
                 English
              </Dropdown.Toggle>
 
              <Dropdown.Menu>
-             <Dropdown.Item href="#" >English</Dropdown.Item>
+             <Dropdown.Item href="/home_english" >English</Dropdown.Item>
             <Dropdown.Item href="/">Lingala</Dropdown.Item>
              </Dropdown.Menu>
             </Dropdown>

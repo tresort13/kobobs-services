@@ -176,8 +176,9 @@ const working = ()=>
         </Col>
 
         <Col xs={"auto"} className=" mx-auto my-auto text-end">
-         <div className="text-end couleur2">
-          <Link to="" style={{textDecoration:"none"}}>
+         
+           <div className="text-end couleur2">
+           <Link to="" style={{textDecoration:"none"}}>
             <Dropdown>
              <Dropdown.Toggle as={"p"} className="couleur2" id="dropdown-basic">
                 {props.version}
@@ -190,8 +191,12 @@ const working = ()=>
              </Dropdown.Menu>
             </Dropdown>
            </Link>
-           <i><pre className="couleur2 display-6  text-end" style={{fontSize: 15}}>{theTime}</pre></i>
-        </div>  
+           </div>
+
+          <div>
+          <i><pre className="couleur2 display-6  text-end" style={{fontSize: 15}}>{theTime}</pre></i>
+          </div>
+             
         </Col>  
     </Row>
    

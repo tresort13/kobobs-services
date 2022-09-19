@@ -99,23 +99,25 @@ const working = ()=>
         </Col>
         
         <Col xs={2} className="my-auto mx-auto text-end justify-content-center">
-        <div className="text-center couleur2 justify-content-center">
-        <Link to="" style={{textDecoration:"none"}}>
-        <Dropdown>
-      <Dropdown.Toggle as={"p"} className="couleur2" id="dropdown-basic">
-        {props.version}
-      </Dropdown.Toggle>
+        <div className="text-end couleur2">
+           <Link to="" style={{textDecoration:"none"}}>
+            <Dropdown>
+             <Dropdown.Toggle as={"p"} className="couleur2" id="dropdown-basic">
+                {props.version}
+             </Dropdown.Toggle>
 
-      <Dropdown.Menu>
-        <Dropdown.Item onClick={working()}>Lingala</Dropdown.Item>
-        <Dropdown.Divider />
-        <Dropdown.Item onClick={working()}>English</Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
-    </Link> 
+             <Dropdown.Menu>
+             <Dropdown.Item onClick={working}>Lingala</Dropdown.Item>
+             <Dropdown.Divider />
+            <Dropdown.Item >English</Dropdown.Item>
+             </Dropdown.Menu>
+            </Dropdown>
+           </Link>
+           </div>
 
-           <i><pre className="couleur2 display-6 timing text-center" style={{fontSize: 15}}>{theTime}</pre></i>
-        </div>  
+          <div>
+          <i><pre className="couleur2 display-6  text-end" style={{fontSize: 15}}>{theTime}</pre></i>
+          </div>
         </Col>
     </Row>
    
@@ -185,9 +187,9 @@ const working = ()=>
              </Dropdown.Toggle>
 
              <Dropdown.Menu>
-             <Dropdown.Item onClick={working("")}>Lingala</Dropdown.Item>
+             <Dropdown.Item >Lingala</Dropdown.Item>
              <Dropdown.Divider />
-            <Dropdown.Item onClick={working("")}>English</Dropdown.Item>
+            <Dropdown.Item >English</Dropdown.Item>
              </Dropdown.Menu>
             </Dropdown>
            </Link>

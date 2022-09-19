@@ -111,7 +111,7 @@ function Header(props)
         <Col xs={2} className="my-auto mx-auto text-end justify-content-center">
          <div className="text-end couleur2 justify-content-center">
          <Dropdown>
-      <Dropdown.Toggle variant="success" id="dropdown-basic">
+      <Dropdown.Toggle type="text" variant="success" id="dropdown-basic">
         {props.langue}
       </Dropdown.Toggle>
 

@@ -33,7 +33,7 @@ function App() {
   const [langue,setLangue] = useState(()=>
   {
     const localData = localStorage.getItem('langue');
-    return localData ? JSON.parse(localData) : "Lingala";
+    return localData ? JSON.parse(localData) :"Lingala";
   });
   
   

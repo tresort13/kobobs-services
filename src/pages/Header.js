@@ -50,11 +50,7 @@ function Header(props)
         navigate('/')
       }
 
-    const logout = ()=>
-    {
-      window.localStorage.setItem("username", JSON.stringify(""))
-      navigate('/')
-    }
+   
     return (
      <div>
     {isDesktop && <Container fluid className="bg-dark mx-auto" >
@@ -109,14 +105,14 @@ function Header(props)
         </Col>
 
         <Col xs={6} className="my-auto mx-auto my-auto text-start">
-          <Link to="/home" style={{textDecoration:"none"}}>
+          <Link to="/" style={{textDecoration:"none"}}>
           <p className="display-6 text-secondary">KOBO BUSINESS SERVICES</p>
           </Link>
         </Col>
         
         <Col xs={2} className="my-auto mx-auto text-end justify-content-center">
         <div className="text-center couleur2 justify-content-center">
-          <Link to="" style={{textDecoration:"none"}}>
+        <Link to="" style={{textDecoration:"none"}}>
         <Dropdown>
       <Dropdown.Toggle as={"p"} className="couleur2" id="dropdown-basic">
         {props.langue}
@@ -128,7 +124,7 @@ function Header(props)
         <Dropdown.Item onClick={changeLanguage("English")}>English</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
-    </Link>
+    </Link> 
 
            <i><pre className="couleur2 display-6 timing text-center" style={{fontSize: 15}}>{theTime}</pre></i>
         </div>  

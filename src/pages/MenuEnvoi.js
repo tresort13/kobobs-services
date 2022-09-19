@@ -24,10 +24,7 @@ function MenuEnvoi(props)
     return (
 <>
 <Header langue={props.langue}  setLangue={props.setLangue}/>
-{isDesktop && <Container>
-    
-   
-  
+{isDesktop && <Container>  
     <Row className="text-center justify-content-center pt-5 mt-5">
             <Col md={4} className="my-auto text-center">
           { props.langue == "Lingala" ? <Link to="/form_envoie_client" style={{color:'white',textDecorationLine:'none'}}>

@@ -90,10 +90,10 @@ function FormEnvoiAbonneEnglish(props)
 {isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
 <Row className='justify-content-center mb-3 pt-3' >
 <Col xs={6}>
-        <p ><i><b className='text-light'>Subscriber ID : </b><b className='couleur2'>{props.abonne.infoAbonne.code_abonne}</b></i></p>
+        <p ><i><b className='text-dark'>Subscriber ID : </b><b className='couleur2'>{props.abonne.infoAbonne.code_abonne}</b></i></p>
         </Col>
         <Col xs={6}>
-        <p ><i><b className='text-light'>Subscriber full name : </b><b className='couleur2'>{props.abonne.infoAbonne.prenom_expediteur} {props.abonne.infoAbonne.nom_expediteur} {props.abonne.infoAbonne.postnom_expediteur}</b></i></p>
+        <p ><i><b className='text-dark'>Subscriber full name : </b><b className='couleur2'>{props.abonne.infoAbonne.prenom_expediteur} {props.abonne.infoAbonne.nom_expediteur} {props.abonne.infoAbonne.postnom_expediteur}</b></i></p>
         </Col>
     </Row>
 
@@ -194,7 +194,7 @@ function FormEnvoiAbonneEnglish(props)
   
     <Row className='justify-content-center pb-3'>
         <Col xs ={4}> 
-        <Button variant="outline-warning" type="submit">
+        <Button variant="warning" type="submit">
         Validate
         </Button>
         </Col>
@@ -210,10 +210,10 @@ function FormEnvoiAbonneEnglish(props)
 {isMobileOrTablet &&   <Container className='bg-light justify-content-center text-center  mb-auto my-auto' >
 <Row className='justify-content-center mb-3 pt-3' >
 <Col xs={12}>
-        <p ><i><b className='text-light'>Subscriber ID : </b><b className='couleur2'>{props.abonne.infoAbonne.code_abonne}</b></i></p>
+        <p ><i><b className='text-dark'>Subscriber ID : </b><b className='couleur2'>{props.abonne.infoAbonne.code_abonne}</b></i></p>
         </Col>
         <Col xs={12}>
-        <p ><i><b className='text-light'>Subscriber full name : </b><b className='couleur2'>{props.abonne.infoAbonne.prenom_expediteur} {props.abonne.infoAbonne.nom_expediteur} {props.abonne.infoAbonne.postnom_expediteur}</b></i></p>
+        <p ><i><b className='text-dark'>Subscriber full name : </b><b className='couleur2'>{props.abonne.infoAbonne.prenom_expediteur} {props.abonne.infoAbonne.nom_expediteur} {props.abonne.infoAbonne.postnom_expediteur}</b></i></p>
         </Col>
     </Row>
 
@@ -314,7 +314,7 @@ function FormEnvoiAbonneEnglish(props)
   
     <Row className='justify-content-center pb-3'>
         <Col xs ={4}> 
-        <Button variant="outline-warning" type="submit">
+        <Button variant="warning" type="submit">
         Validate
         </Button>
         </Col>

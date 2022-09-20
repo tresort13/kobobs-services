@@ -96,7 +96,7 @@ function FormEnvoiAbonneIdEnglish(props)
     <Row className='justify-content-center'>
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>Subscriber Id</Form.Label>
+        <Form.Label className='text-dark'>Subscriber Id</Form.Label>
         <Form.Control name="code_abonne" value={codeAbonne.infoCodeAbonne.code_abonne} onChange={e=>inputChanged(e)} type="text" placeholder='Kota  code abonné nayo' autoFocus  required/>
          </Form.Group>
         </Col>
@@ -132,7 +132,7 @@ function FormEnvoiAbonneIdEnglish(props)
     <Row className='justify-content-center'>
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>Subscriber Id</Form.Label>
+        <Form.Label className='text-dark'>Subscriber Id</Form.Label>
         <Form.Control name="code_abonne" value={codeAbonne.infoCodeAbonne.code_abonne} onChange={e=>inputChanged(e)} type="text" placeholder='Kota  code abonné nayo' autoFocus  required/>
          </Form.Group>
         </Col>

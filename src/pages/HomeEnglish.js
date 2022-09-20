@@ -61,8 +61,8 @@ function HomeEnglish()
     <Row className="text-center justify-content-center pt-5 mt-5">
             <Col md={12} className="my-auto text-center">
             <Link to="" style={{color:'white',textDecorationLine:'none'}}>
-            <Button variant="outline-light" style={{width:350,height:300}} className='btn-lg rounded-pill zoom'>
-            <i className="couleur2"><b>Tinda Mbongo</b></i>
+            <Button variant="outline-dark" style={{width:350,height:300}} className='btn-lg rounded-pill zoom'>
+            <b className="text-light">Tinda Mbongo</b>
             </Button>
             </Link>    
             </Col>

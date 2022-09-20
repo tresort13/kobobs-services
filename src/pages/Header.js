@@ -175,7 +175,7 @@ function Header(props)
         <Col xs={"auto"} className=" mx-auto my-auto text-end">
          
            <div className="text-end couleur2">
-           <Link to="" style={{textDecoration:"none"}}>
+           <a href="#" style={{textDecoration:"none",textDecorationColor:"none"}}>
             <Dropdown>
              <Dropdown.Toggle as={"p"} className="couleur2" id="dropdown-basic">
                 Lingala
@@ -186,7 +186,7 @@ function Header(props)
             <Dropdown.Item href="/home_english">English</Dropdown.Item>
              </Dropdown.Menu>
             </Dropdown>
-           </Link>
+            </a>
            </div>
 
           <div>

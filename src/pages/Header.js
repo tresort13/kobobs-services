@@ -103,8 +103,11 @@ function Header(props)
              </Dropdown.Toggle>
 
              <Dropdown.Menu>
-             <Dropdown.Item href="/">Lingala</Dropdown.Item>
-            <Dropdown.Item href="/home_english">English</Dropdown.Item>
+             <Dropdown.Item href="/home_lingala">Lingala</Dropdown.Item>
+             <NavDropdown.Divider />
+            <Dropdown.Item href="/">English</Dropdown.Item>
+            <NavDropdown.Divider />
+            <Dropdown.Item href="/home_french">Français</Dropdown.Item>
              </Dropdown.Menu>
             </Dropdown>
             </a>
@@ -182,8 +185,11 @@ function Header(props)
              </Dropdown.Toggle>
 
              <Dropdown.Menu>
-             <Dropdown.Item href="/">Lingala</Dropdown.Item>
-            <Dropdown.Item href="/home_english">English</Dropdown.Item>
+             <Dropdown.Item href="/home_lingala">Lingala</Dropdown.Item>
+             <NavDropdown.Divider />
+            <Dropdown.Item href="/">English</Dropdown.Item>
+            <NavDropdown.Divider />
+            <Dropdown.Item href="/home_french">Français</Dropdown.Item>
              </Dropdown.Menu>
             </Dropdown>
             </a>

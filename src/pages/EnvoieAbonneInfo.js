@@ -62,12 +62,10 @@ console.log(props.envoie.infoEnvoie)
                   adresse_expediteur : '',
                   email_expediteur : '',
                   numero_expediteur: '',
-                  pays_expediteur : 'Angleterre',
+                  pays_expediteur : 'UK',
                   nom_beneficiaire : '',
                   postnom_beneficiaire : '',
                   prenom_beneficiaire : '',
-                  adresse_beneficiaire : '',
-                  numero_beneficiaire : '',
                   pays_beneficiaire : 'RD Congo',
                   montant_envoie_sans_frais : '',
                   montant_beneficiaire : '',
@@ -150,13 +148,11 @@ console.log(props.envoie.infoEnvoie)
     <Row className='justify-content-center pb-3' >
         <Col xs={6} className="text-start">
         <p className='text-dark'>Kombo Ya Libota:<b className='text-dark'>{props.envoie.infoEnvoie.nom_beneficiaire}</b>  </p>
-        <p className='text-dark'>Kombo Ya Authenticité: <b className='text-dark'>{props.envoie.infoEnvoie.postnom_beneficiaire}</b> </p>
         <p className='text-dark'>Kombo Ya Mukristu: <b className='text-dark'>{props.envoie.infoEnvoie.prenom_beneficiaire} </b> </p>
         </Col>
 
         <Col xs={6} className="text-start">
-        <p className='text-dark'>Adresse: <b className='text-dark'> {props.envoie.infoEnvoie.adresse_beneficiaire}</b></p>
-        <p className='text-dark'>Téléphone: <b className='text-dark'>{props.envoie.infoEnvoie.numero_beneficiaire}</b>  </p>
+        <p className='text-dark'>Kombo Ya Authenticité: <b className='text-dark'>{props.envoie.infoEnvoie.postnom_beneficiaire}</b> </p>
         <p className='text-dark'>Ekolo Ya Mozui: <b className='text-dark'>{props.envoie.infoEnvoie.pays_beneficiaire}</b> </p>
         </Col>
     </Row>
@@ -242,8 +238,6 @@ console.log(props.envoie.infoEnvoie)
         </Col>
 
         <Col xs={12} className="text-start">
-        <p className='text-dark'>Adresse: <b className='text-dark'> {props.envoie.infoEnvoie.adresse_beneficiaire}</b></p>
-        <p className='text-dark'>Téléphone: <b className='text-dark'>{props.envoie.infoEnvoie.numero_beneficiaire}</b>  </p>
         <p className='text-dark'>Ekolo Ya Mozui: <b className='text-dark'>{props.envoie.infoEnvoie.pays_beneficiaire}</b> </p>
         </Col>
     </Row>

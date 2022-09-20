@@ -21,8 +21,6 @@ function FormEnvoiAbonneFrench(props)
       nom_beneficiaire : props.envoie.infoEnvoie.nom_beneficiaire,
       postnom_beneficiaire : props.envoie.infoEnvoie.postnom_beneficiaire,
       prenom_beneficiaire : props.envoie.infoEnvoie.prenom_beneficiaire,
-      adresse_beneficiaire : props.envoie.infoEnvoie.adresse_beneficiaire,
-      numero_beneficiaire : props.envoie.infoEnvoie.numero_beneficiaire,
       pays_beneficiaire : props.envoie.infoEnvoie.pays_beneficiaire,
       montant_beneficiaire : props.envoie.infoEnvoie.montant_beneficiaire,
       type_service : props.envoie.infoEnvoie.type_service,
@@ -126,21 +124,9 @@ function FormEnvoiAbonneFrench(props)
     </Row>
 
     <Row className='justify-content-center'>
-    <Col xs = {4}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className='text-danger'>*</span> Adresse</Form.Label>
-        <Form.Control name="adresse_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.adresse_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Adresse'  required/>
-         </Form.Group>
-        </Col>
 
-        <Col xs = {4}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className='text-danger'>*</span> Numéro Téléphone</Form.Label>
-        <Form.Control name="numero_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.numero_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Numéro Téléphone' required/>
-         </Form.Group>
-        </Col>
 
-        <Col xs ={4}>
+        <Col xs ={12}>
         <Form.Group className="mb-3" >
         <Form.Label className='text-dark'>Pays</Form.Label>
         <Form.Select name='pays_beneficiaire' value={envoieAbonne.infoEnvoieAbonne.pays_beneficiaire} aria-label="Default select example" onChange={e=>inputChanged(e)} required>
@@ -244,19 +230,7 @@ function FormEnvoiAbonneFrench(props)
     </Row>
 
     <Row className='justify-content-center'>
-    <Col xs = {12}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className='text-danger'>*</span> Adresse</Form.Label>
-        <Form.Control name="adresse_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.adresse_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Adresse'  required/>
-         </Form.Group>
-        </Col>
-
-        <Col xs = {12}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className='text-danger'>*</span> Numéro Téléphone</Form.Label>
-        <Form.Control name="numero_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.numero_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Numéro Téléphone' required/>
-         </Form.Group>
-        </Col>
+   
 
         <Col xs ={12}>
         <Form.Group className="mb-3" >

@@ -59,9 +59,9 @@ function ConfirmationRetraitInfoFrench(props)
         <Col xs={6}>
         <p className='text-dark'>Noms Expediteur: <b className='text-dark'>{props.envoie2.infoEnvoie.nom_expediteur} {props.envoie2.infoEnvoie.postnom_expediteur} {props.envoie2.infoEnvoie.prenom_expediteur}</b> </p>
         <p className='text-dark'>Pays Expediteur: <b className='text-dark'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
-        <p className='text-dark'>Numéro à transferer de l'argent: <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
+        <p className='text-dark'>Mobile Money Numéro: <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
         <p className='text-dark'>date et heure : <b className='text-dark'> {JSON.stringify(props.envoie2.infoEnvoie.date_heure_operation)}</b></p>
-        <p className='text-dark'>Mobile Money: <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
+        
         </Col>
     </Row>
 
@@ -102,7 +102,7 @@ function ConfirmationRetraitInfoFrench(props)
         <p className='text-dark'>Type de retrait: <b className='text-dark'>{props.envoie2.infoEnvoie.type_service}</b> </p>
         <p className='text-dark'>Noms Expediteur: <b className='text-dark'>{props.envoie2.infoEnvoie.nom_expediteur} {props.envoie2.infoEnvoie.postnom_expediteur} {props.envoie2.infoEnvoie.prenom_expediteur}</b> </p>
         <p className='text-dark'>Pays Expediteur: <b className='text-dark'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
-        <p className='text-dark'>Mobile Money: <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
+        <p className='text-dark'>Mobile Money Numéro: <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
         <p className='text-dark'>date et heure : <b className='text-dark'> {JSON.stringify(props.envoie2.infoEnvoie.date_heure_operation)}</b></p>
         </Col>
     </Row>

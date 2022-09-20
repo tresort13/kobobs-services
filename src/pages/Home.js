@@ -28,24 +28,24 @@ function Home()
     <Row className="text-center justify-content-center pt-5 mt-5">
             <Col md={4} className="my-auto text-center">
           <Link to="/form_envoie_client" style={{color:'white',textDecorationLine:'none'}}>
-            <Button variant="outline-light" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
-            <i className="couleur2"><b>Nbamla liboso Na Tinda Mbongo</b></i>
+            <Button variant="outline-dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
+            <b className="text-light">Nbamla liboso Na Tinda Mbongo</b>
             </Button>
           </Link>
             </Col>
 
             <Col mdmd={4} className="my-auto text-center">
             <Link to="/form_envoie_abonne_id" style={{color:'white',textDecorationLine:'none'}}>
-            <Button variant="outline-light" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
-            <i className="couleur2"><b>Esi na tindala mutu mbongo </b></i>
+            <Button variant="outline-dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
+            <b className="text-light">Esi na tindala mutu mbongo </b>
            </Button>
             </Link>  
             </Col>
 
             <Col md={4} className="my-auto text-center">
             <Link to="/form_envoie_abonne_id" style={{color:'white',textDecorationLine:'none'}}>
-            <Button variant="outline-light" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
-            <i className="couleur2"><b>Landela transfer nayo</b></i>
+            <Button variant="outline-dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
+            <b className="text-light">Landela transfer nayo</b>
             </Button>
              </Link>
             </Col>

@@ -96,7 +96,7 @@ function Header(props)
         
         <Col xs={2} className="my-auto mx-auto text-end justify-content-center">
         <div className="text-end couleur2">
-           <Link to="" style={{textDecoration:"none"}}>
+           
             <Dropdown>
              <Dropdown.Toggle as={"p"} className="couleur2" id="dropdown-basic">
                 Lingala
@@ -107,7 +107,7 @@ function Header(props)
             <Dropdown.Item href="/home_english">English</Dropdown.Item>
              </Dropdown.Menu>
             </Dropdown>
-           </Link>
+          
            </div>
 
           <div>

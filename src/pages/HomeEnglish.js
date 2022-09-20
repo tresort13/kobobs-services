@@ -29,24 +29,24 @@ function HomeEnglish()
     <Row className="text-center justify-content-center pt-5 mt-5">
             <Col md={4} className="my-auto text-center">
           <Link to="/form_envoie_client_english" style={{color:'white',textDecorationLine:'none'}}>
-            <Button variant="outline-light" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
-            <i className="couleur2"><b>First time to send money</b></i>
+            <Button variant="outline-dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
+            <b className="text-light">First time to send money</b>
             </Button>
           </Link>
             </Col>
 
             <Col mdmd={4} className="my-auto text-center">
             <Link to="/form_envoie_abonne_id_english" style={{color:'white',textDecorationLine:'none'}}>
-            <Button variant="outline-light" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
-            <i className="couleur2"><b>I have alreday sent </b></i>
+            <Button variant="outline-dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
+            <b className="text-light">I have alreday sent </b>
            </Button>
             </Link>  
             </Col>
 
             <Col md={4} className="my-auto text-center">
             <Link to="/form_envoie_abonne_id_english" style={{color:'white',textDecorationLine:'none'}}>
-            <Button variant="outline-light" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
-            <i className="couleur2"><b>Track your transfer</b></i>
+            <Button variant="outline-dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
+            <b className="text-light">Track your transfer</b>
             </Button>
              </Link>
             </Col>

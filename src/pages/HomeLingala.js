@@ -9,11 +9,10 @@ import Header from './Header';
 import Footer from './Footer';
 import './Header.css'
 import { useMediaQuery } from 'react-responsive';
-import HeaderEnglish from './HeaderEnglish';
 
 
 
-function HomeEnglish()
+function HomeLingala()
 {
 
     const isDesktop = useMediaQuery({
@@ -24,29 +23,29 @@ function HomeEnglish()
       });    
     return (
 <>
-<HeaderEnglish />
+<Header />
 {isDesktop && <Container>  
     <Row className="text-center justify-content-center pt-5 mt-5">
             <Col md={4} className="my-auto text-center">
-          <Link to="/form_envoie_client_english" style={{color:'white',textDecorationLine:'none'}}>
+          <Link to="/form_envoie_client" style={{color:'white',textDecorationLine:'none'}}>
             <Button variant="outline-dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
-            <b className="text-light">First time to send money</b>
+            <b className="text-light">Nbamla liboso Na Tinda Mbongo</b>
             </Button>
           </Link>
             </Col>
 
             <Col mdmd={4} className="my-auto text-center">
-            <Link to="/form_envoie_abonne_id_english" style={{color:'white',textDecorationLine:'none'}}>
+            <Link to="/form_envoie_abonne_id" style={{color:'white',textDecorationLine:'none'}}>
             <Button variant="outline-dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
-            <b className="text-light">I have alreday sent </b>
+            <b className="text-light">Esi na tindala mutu mbongo </b>
            </Button>
             </Link>  
             </Col>
 
             <Col md={4} className="my-auto text-center">
-            <Link to="/form_envoie_abonne_id_english" style={{color:'white',textDecorationLine:'none'}}>
+            <Link to="/form_envoie_abonne_id" style={{color:'white',textDecorationLine:'none'}}>
             <Button variant="outline-dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
-            <b className="text-light">Track your transfer</b>
+            <b className="text-light">Landela transfer nayo</b>
             </Button>
              </Link>
             </Col>
@@ -62,7 +61,7 @@ function HomeEnglish()
             <Col md={12} className="my-auto text-center">
             <Link to="" style={{color:'white',textDecorationLine:'none'}}>
             <Button variant="outline-dark" style={{width:350,height:300}} className='btn-lg rounded-pill zoom'>
-            <b className="text-light">Send Money</b>
+            <b className="text-light">Tinda Mbongo</b>
             </Button>
             </Link>    
             </Col>
@@ -75,4 +74,4 @@ function HomeEnglish()
     )
 }
 
-export default HomeEnglish;
+export default HomeLingala;

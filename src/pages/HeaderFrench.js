@@ -17,7 +17,7 @@ import Dropdown from "react-bootstrap/esm/Dropdown";
 
 
 
-function HeaderEnglish(props)
+function HeaderFrench(props)
 {
     const [theTime, setTheTime] = useState(new Date().toLocaleString())
     const isDesktop = useMediaQuery({
@@ -99,13 +99,15 @@ function HeaderEnglish(props)
           <a href="#" style={{textDecoration:"none",textDecorationColor:"none"}}>
             <Dropdown>
              <Dropdown.Toggle as={"p"} className="couleur2" id="dropdown-basic">
-                English
+                Français
              </Dropdown.Toggle>
 
              <Dropdown.Menu>
-             <Dropdown.Item href="/">English</Dropdown.Item>
-             <Dropdown.Item href="/home_lingala">Lingala</Dropdown.Item>
              <Dropdown.Item href="/home_french">Français</Dropdown.Item>
+             <NavDropdown.Divider />
+             <Dropdown.Item href="/">English</Dropdown.Item>
+             <NavDropdown.Divider />
+             <Dropdown.Item href="/home_lingala">Lingala</Dropdown.Item>
              </Dropdown.Menu>
             </Dropdown>
             </a>
@@ -179,13 +181,15 @@ function HeaderEnglish(props)
            <a href="#" style={{textDecoration:"none",textDecorationColor:"none"}}>
             <Dropdown>
              <Dropdown.Toggle as={"p"} className="couleur2" id="dropdown-basic">
-                English
+             Français
              </Dropdown.Toggle>
 
              <Dropdown.Menu>
-             <Dropdown.Item href="/">English</Dropdown.Item>
-             <Dropdown.Item href="/home_lingala">Lingala</Dropdown.Item>
              <Dropdown.Item href="/home_french">Français</Dropdown.Item>
+             <NavDropdown.Divider />
+             <Dropdown.Item href="/">English</Dropdown.Item>
+             <NavDropdown.Divider />
+             <Dropdown.Item href="/home_lingala">Lingala</Dropdown.Item>
              </Dropdown.Menu>
             </Dropdown>
             </a>
@@ -205,4 +209,4 @@ function HeaderEnglish(props)
     )
 }
 
-export default HeaderEnglish;
+export default HeaderFrench;

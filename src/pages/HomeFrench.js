@@ -3,16 +3,15 @@ import Button from "react-bootstrap/Button";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Image from 'react-bootstrap/Image';
 import {Link} from  'react-router-dom';
-import Header from './Header';
 import Footer from './Footer';
 import './Header.css'
 import { useMediaQuery } from 'react-responsive';
+import HeaderFrench from './HeaderFrench';
 
 
 
-function Home()
+function HomeFrench()
 {
 
     const isDesktop = useMediaQuery({
@@ -23,29 +22,29 @@ function Home()
       });    
     return (
 <>
-<Header />
+<HeaderFrench />
 {isDesktop && <Container>  
     <Row className="text-center justify-content-center pt-5 mt-5">
             <Col md={4} className="my-auto text-center">
-          <Link to="/form_envoie_client" style={{color:'white',textDecorationLine:'none'}}>
+          <Link to="/form_envoie_client_french" style={{color:'white',textDecorationLine:'none'}}>
             <Button variant="outline-dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
-            <b className="text-light">Nbamla liboso Na Tinda Mbongo</b>
+            <b className="text-light">Nouveau client</b>
             </Button>
           </Link>
             </Col>
 
             <Col mdmd={4} className="my-auto text-center">
-            <Link to="/form_envoie_abonne_id" style={{color:'white',textDecorationLine:'none'}}>
+            <Link to="/form_envoie_abonne_id_french" style={{color:'white',textDecorationLine:'none'}}>
             <Button variant="outline-dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
-            <b className="text-light">Esi na tindala mutu mbongo </b>
+            <b className="text-light">Je suis déjà abonné</b>
            </Button>
             </Link>  
             </Col>
 
             <Col md={4} className="my-auto text-center">
-            <Link to="/form_envoie_abonne_id" style={{color:'white',textDecorationLine:'none'}}>
+            <Link to="/form_envoie_abonne_id_french" style={{color:'white',textDecorationLine:'none'}}>
             <Button variant="outline-dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
-            <b className="text-light">Landela transfer nayo</b>
+            <b className="text-light">Suivre mon transfert</b>
             </Button>
              </Link>
             </Col>
@@ -61,7 +60,7 @@ function Home()
             <Col md={12} className="my-auto text-center">
             <Link to="" style={{color:'white',textDecorationLine:'none'}}>
             <Button variant="outline-dark" style={{width:350,height:300}} className='btn-lg rounded-pill zoom'>
-            <b className="text-light">Tinda Mbongo</b>
+            <b className="text-light">Envoyer l'argent</b>
             </Button>
             </Link>    
             </Col>
@@ -74,4 +73,4 @@ function Home()
     )
 }
 
-export default Home;
+export default HomeFrench;

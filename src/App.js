@@ -22,8 +22,9 @@ import FormEnvoiAbonneIdEnglish from './pages/FormEnvoiAbonneIdEnglish';
 import EnvoieAbonneInfoEnglish from './pages/EnvoieAbonneInfoEnglish';
 import FormRetraitEnglish from './pages/FormRetraitEnglish';
 import FormEnvoiAbonneEnglish from './pages/FormEnvoiAbonneEnglish'
-import Home from './pages/Home';
 import HomeEnglish from './pages/HomeEnglish';
+import HomeLingala from './pages/HomeLingala';
+import HomeFrench from './pages/HomeFrench';
 
 
 
@@ -473,14 +474,15 @@ function App() {
     <BrowserRouter>
       <Routes >
         
-         <Route path="/"  element={<Home />} >
+         <Route path="/"  element={<HomeEnglish />} >
         </Route>
        
-        <Route path="/home_english"  element={<HomeEnglish />} >
+        <Route path="/home_lingala"  element={<HomeLingala />} >
+        </Route>
+
+        <Route path="/home_french"  element={<HomeFrench />} >
         </Route>
        
-
-
         <Route path="/form_envoie_client" element={<FormEnvoiClient  dataEnvoie={dataEnvoie} envoie={envoie} setTaux={setTaux}/>}>
         </Route>
 

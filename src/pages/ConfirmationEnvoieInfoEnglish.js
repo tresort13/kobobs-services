@@ -73,7 +73,7 @@ function ConfirmationEnvoieInfoEnglish(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <Link to="/menu_envoi_english" style={{color:'white',textDecorationLine:'none'}}>
+        <Link to="/" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant="warning" type="submit">
         close
         </Button>
@@ -117,7 +117,7 @@ function ConfirmationEnvoieInfoEnglish(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <Link to="/menu_envoi_english" style={{color:'white',textDecorationLine:'none'}}>
+        <Link to="/" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant="warning" type="submit">
         close
         </Button>

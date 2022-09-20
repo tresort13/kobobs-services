@@ -172,7 +172,7 @@ console.log(props.envoie.infoEnvoie)
         </Col>
 
         <Col xs={6}>
-        <Link to="/form_envoie_client_french">
+        <Link to="/form_envoie_client_lingala">
          <Button variant="secondary" type="submit">
         Bongisa formulaire
         </Button>
@@ -259,7 +259,7 @@ console.log(props.envoie.infoEnvoie)
         </Col>
 
         <Col xs={6}>
-        <Link to="/form_envoie_client_french">
+        <Link to="/form_envoie_client_lingala">
          <Button variant="secondary" type="submit">
         Bongisa formulaire
         </Button>

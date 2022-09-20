@@ -9,8 +9,6 @@ import {Link,useNavigate} from  'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import HeaderFrench from './HeaderFrench';
 import Footer from './Footer';
-import Modal from 'react-bootstrap/Modal';
-import ClipLoader from "react-spinners/ClipLoader";
 import  './Header.css';
 
 
@@ -19,13 +17,8 @@ const useState = React.useState
 
 function ConfirmationRetraitInfoFrench(props)
 {
-  const [modalShow, setModalShow] = React.useState(false);
-  const [modalShow2,setModalShow2] = React.useState(false);
-    
     const [message,setMessage] = useState("Informations du transfert")
-    const [couleur,setCouleur] = useState("text-dark")
-    const navigate = useNavigate()
-    
+   
 
 
     const isDesktop = useMediaQuery({
@@ -37,33 +30,7 @@ function ConfirmationRetraitInfoFrench(props)
 
       
   
-      const payerRetrait = (e)=>
-      {  
-        e.preventDefault()  
-        setModalShow2(true)  
-        fetch('https://kobobsapi.herokuapp.com/api/payerCodeRetrait/'+props.envoie2.infoEnvoie.code_retrait+'/', {
-                method: 'PUT',
-                 headers: {'Content-Type': 'application/json'},
-                  //body: JSON.stringify(props.envoie2.infoEnvoie)
-                })
-                .then( res => res.json())
-                .then(
-                  res => {    
-                    setModalShow(true)     
-
-                    navigate('/confirmation_retrait_info_french')
-
-                  }
-                )
-                .catch( (error) =>
-                  {          
-                     console.log(error)
-                  } )
-  
-      }
-  
-    
-   
+     
     return (
         
         <>
@@ -104,9 +71,9 @@ function ConfirmationRetraitInfoFrench(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={12}>
-        <Link to="" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant="warning" type="submit" onClick={e=>payerRetrait(e)}> 
-        Payé Beneficiaire
+        <Link to="/home_french" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant="warning" type="submit" > 
+        ok
         </Button>
         </Link>
         </Col>
@@ -146,9 +113,9 @@ function ConfirmationRetraitInfoFrench(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={12}>
-        <Link to="" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant="warning" type="submit" onClick={e=>payerRetrait(e)}> 
-        Payé Beneficiaire
+        <Link to="/home_french" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant="warning" type="submit"> 
+        ok
         </Button>
         </Link>
         </Col>
@@ -159,61 +126,14 @@ function ConfirmationRetraitInfoFrench(props)
             <p></p>
           </Col>
         </Row>
-<MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
-<MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
+
 <Footer />
         </>
        
     )
 }
 
-function MyVerticallyCenteredModal(props) {
-  return (
-    <Modal
-      {...props}
-      size="sm"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Paiement Reussi
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <p className='text-success'><b>le code de retrait a été payé avec success </b>   
-        </p>
-      </Modal.Body>
-      <Modal.Footer>
-        <Link to="/home_french">
-        <Button variant='warning' onClick={props.onHide}>Fermer</Button>
-        </Link>
-      </Modal.Footer>
-    </Modal>
-  );
-}
 
-function MyVerticallyCenteredModal2(props) {
-  return (
-    <Modal
-      {...props}
-      size="sm"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Veuillez Patienter...
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-      <ClipLoader color={"#ff8c00"} loading={true} size={150} /> 
-      </Modal.Body>
-      <Modal.Footer>
-      </Modal.Footer>
-    </Modal>
-  );
-}
 
 
 export default ConfirmationRetraitInfoFrench;

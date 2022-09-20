@@ -72,7 +72,7 @@ function ConfirmationEnvoieInfo(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <Link to="/home_french" style={{color:'white',textDecorationLine:'none'}}>
+        <Link to="/home_lingala" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant="warning" type="submit">
         kanga page
         </Button>
@@ -114,7 +114,7 @@ function ConfirmationEnvoieInfo(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <Link to="/home_french" style={{color:'white',textDecorationLine:'none'}}>
+        <Link to="/home_lingala" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant="warning" type="submit">
         kanga page
         </Button>

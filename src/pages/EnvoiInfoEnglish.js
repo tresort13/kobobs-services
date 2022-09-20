@@ -98,7 +98,7 @@ console.log(props.envoie.infoEnvoie)
     return (
         
         <>
-        <HeaderEnglish langue={props.langue} />
+        <HeaderEnglish />
 {isDesktop && <Container className='bg-dark justify-content-center text-center bordure mx-auto my-auto' >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={6}>

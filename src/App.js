@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter,Routes,Route} from  'react-router-dom';
 import {Navigate} from  'react-router-dom';
 import  './pages/Assets.css';
+
+import HomeLingala from './pages/HomeLingala';
 import EnvoiInfo from './pages/EnvoiInfo';
 import ConfirmationEnvoieInfo from './pages/ConfirmationEnvoieInfo';
 import ConfirmationRetraitInfo from './pages/ConfirmationRetraitInfo';
@@ -13,7 +15,7 @@ import FormEnvoiAbonne from './pages/FormEnvoiAbonne';
 import EnvoieAbonneInfo from './pages/EnvoieAbonneInfo';
 import FormRetrait from './pages/FormRetrait';
 
-import MenuEnvoiEnglish from './pages/MenuEnvoiEnglish';
+import HomeEnglish from './pages/HomeEnglish';
 import EnvoiInfoEnglish from './pages/EnvoiInfoEnglish';
 import ConfirmationEnvoieInfoEnglish from './pages/ConfirmationEnvoieInfoEnglish';
 import ConfirmationRetraitInfoEnglish from './pages/ConfirmationRetraitInfoEnglish';
@@ -22,10 +24,18 @@ import FormEnvoiAbonneIdEnglish from './pages/FormEnvoiAbonneIdEnglish';
 import EnvoieAbonneInfoEnglish from './pages/EnvoieAbonneInfoEnglish';
 import FormRetraitEnglish from './pages/FormRetraitEnglish';
 import FormEnvoiAbonneEnglish from './pages/FormEnvoiAbonneEnglish'
-import HomeEnglish from './pages/HomeEnglish';
-import HomeLingala from './pages/HomeLingala';
-import HomeFrench from './pages/HomeFrench';
 
+
+
+import HomeFrench from './pages/HomeFrench';
+import EnvoiInfoFrench from './pages/EnvoiInfoFrench';
+import ConfirmationEnvoieInfoFrench from './pages/ConfirmationEnvoieInfoFrench';
+import ConfirmationRetraitInfoFrench from './pages/ConfirmationRetraitInfoFrench';
+import FormEnvoiClientFrench from './pages/FormEnvoiClientFrench';
+import FormEnvoiAbonneIdFrench from './pages/FormEnvoiAbonneIdFrench';
+import FormEnvoiAbonneFrench from './pages/FormEnvoiAbonneFrench';
+import EnvoieAbonneInfoFrench from './pages/EnvoieAbonneInfoFrench';
+import FormRetraitFrench from './pages/FormRetraitFrench';
 
 
 const useState = React.useState
@@ -474,13 +484,39 @@ function App() {
     <BrowserRouter>
       <Routes >
         
-         <Route path="/"  element={<HomeEnglish />} >
-        </Route>
-       
-        <Route path="/home_lingala"  element={<HomeLingala />} >
+        <Route path="/"  element={<HomeEnglish />} >
         </Route>
 
-        <Route path="/home_french"  element={<HomeFrench />} >
+        <Route path="/form_envoie_client_english" element={<FormEnvoiClientEnglish   dataEnvoie={dataEnvoie} envoie={envoie} setTaux={setTaux}/>}>
+        </Route>
+
+        <Route path="/form_envoie_abonne_id_english" element={<FormEnvoiAbonneIdEnglish  dataAbonne={dataAbonne} />} >
+        </Route>
+
+        <Route path="/form_envoie_abonne_english" element={<FormEnvoiAbonneEnglish  abonne={abonne} envoie={envoie} dataEnvoieAbonne={dataEnvoieAbonne} setTaux={setTaux}/>} >
+        </Route>
+
+        <Route path="/form_retrait_info_english" element={<FormRetraitEnglish  dataEnvoie2={dataEnvoie2}/>} >
+        </Route>
+
+        <Route path="/envoi_info_english" element={<EnvoiInfoEnglish  dataEnvoie3={dataEnvoie3} envoie={envoie} setEnvoie={setEnvoie}/>} >
+        </Route>
+
+        <Route path="/envoi_abonne_info_english" element={<EnvoieAbonneInfoEnglish   dataEnvoie3={dataEnvoie3} envoie={envoie} setEnvoie={setEnvoie}/>} >
+        </Route>
+
+
+        <Route path="/confirmation_envoie_info_english" element={<ConfirmationEnvoieInfoEnglish  envoie3={envoie3}/>} >
+        </Route>
+
+        <Route path="/retrait_info_english" element={<ConfirmationRetraitInfoEnglish  envoie2={envoie2}/>} >
+        </Route>
+
+
+
+
+
+        <Route path="/home_lingala"  element={<HomeLingala />} >
         </Route>
        
         <Route path="/form_envoie_client" element={<FormEnvoiClient  dataEnvoie={dataEnvoie} envoie={envoie} setTaux={setTaux}/>}>
@@ -511,36 +547,32 @@ function App() {
 
 
 
-
-
-        <Route path="/menu_envoi_english" element={< MenuEnvoiEnglish />} >
+        <Route path="/home_french"  element={<HomeFrench />} >
         </Route>
-
        
-
-        <Route path="/form_envoie_client_english" element={<FormEnvoiClientEnglish   dataEnvoie={dataEnvoie} envoie={envoie} setTaux={setTaux}/>}>
+        <Route path="/form_envoie_client_french" element={<FormEnvoiClientFrench  dataEnvoie={dataEnvoie} envoie={envoie} setTaux={setTaux}/>}>
         </Route>
 
-        <Route path="/form_envoie_abonne_id_english" element={<FormEnvoiAbonneIdEnglish  dataAbonne={dataAbonne} />} >
+        <Route path="/form_envoie_abonne_id_french" element={<FormEnvoiAbonneIdFrench dataAbonne={dataAbonne} />} >
         </Route>
 
-        <Route path="/form_envoie_abonne_english" element={<FormEnvoiAbonneEnglish  abonne={abonne} envoie={envoie} dataEnvoieAbonne={dataEnvoieAbonne} setTaux={setTaux}/>} >
+        <Route path="/form_envoie_abonne_french" element={<FormEnvoiAbonneFrench  abonne={abonne} dataEnvoieAbonne={dataEnvoieAbonne} setTaux={setTaux} envoie={envoie}/>} >
         </Route>
 
-        <Route path="/form_retrait_info_english" element={<FormRetraitEnglish  dataEnvoie2={dataEnvoie2}/>} >
+        <Route path="/form_retrait_info_french" element={<FormRetraitFrench  dataEnvoie2={dataEnvoie2}/>} >
         </Route>
 
-        <Route path="/envoi_info_english" element={<EnvoiInfoEnglish  dataEnvoie3={dataEnvoie3} envoie={envoie} setEnvoie={setEnvoie}/>} >
+        <Route path="/envoi_info_french" element={<EnvoiInfoFrench   dataEnvoie3={dataEnvoie3} envoie={envoie} setEnvoie={setEnvoie}/>} >
         </Route>
 
-        <Route path="/envoi_abonne_info_english" element={<EnvoieAbonneInfoEnglish   dataEnvoie3={dataEnvoie3} envoie={envoie} setEnvoie={setEnvoie}/>} >
+        <Route path="/envoi_abonne_info_french" element={<EnvoieAbonneInfoFrench   dataEnvoie3={dataEnvoie3} envoie={envoie} setEnvoie={setEnvoie}/>} >
         </Route>
 
 
-        <Route path="/confirmation_envoie_info_english" element={<ConfirmationEnvoieInfoEnglish  envoie3={envoie3}/>} >
+        <Route path="/confirmation_envoie_info_french" element={ <ConfirmationEnvoieInfoFrench   envoie3={envoie3}/>} >
         </Route>
 
-        <Route path="/retrait_info_english" element={<ConfirmationRetraitInfoEnglish  envoie2={envoie2}/>} >
+        <Route path="/retrait_info_french" element={ <ConfirmationRetraitInfoFrench   envoie2={envoie2}/>} >
         </Route>
 
 

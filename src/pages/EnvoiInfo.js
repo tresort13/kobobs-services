@@ -82,7 +82,7 @@ console.log(props.envoie.infoEnvoie)
                   status_retrait : '',
                   numero_transfer: '**********'
                  }})
-                 navigate('/confirmation_envoie_info_lingala')
+                 navigate('/confirmation_envoie_info')
                 }
               )
               .catch( (error) =>
@@ -172,7 +172,7 @@ console.log(props.envoie.infoEnvoie)
         </Col>
 
         <Col xs={6}>
-        <Link to="/form_envoie_client_lingala">
+        <Link to="/form_envoie_client">
          <Button variant="secondary" type="submit">
         Bongisa formulaire
         </Button>
@@ -259,7 +259,7 @@ console.log(props.envoie.infoEnvoie)
         </Col>
 
         <Col xs={6}>
-        <Link to="/form_envoie_client_lingala">
+        <Link to="/form_envoie_client">
          <Button variant="secondary" type="submit">
         Bongisa formulaire
         </Button>

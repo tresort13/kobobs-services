@@ -29,7 +29,7 @@ function HomeLingala()
             <Col md={4} className="my-auto text-center">
           <Link to="/form_envoie_client" style={{color:'white',textDecorationLine:'none'}}>
             <Button variant="outline-dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
-            <b className="text-light">Nbamla liboso Na Tinda Mbongo</b>
+            <b className="text-light">Nbamla Liboso Na Tinda Mbongo</b>
             </Button>
           </Link>
             </Col>
@@ -37,7 +37,7 @@ function HomeLingala()
             <Col mdmd={4} className="my-auto text-center">
             <Link to="/form_envoie_abonne_id" style={{color:'white',textDecorationLine:'none'}}>
             <Button variant="outline-dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
-            <b className="text-light">Esi na tindala mutu mbongo </b>
+            <b className="text-light">Naza déjà Abonné </b>
            </Button>
             </Link>  
             </Col>
@@ -45,7 +45,7 @@ function HomeLingala()
             <Col md={4} className="my-auto text-center">
             <Link to="/form_envoie_abonne_id" style={{color:'white',textDecorationLine:'none'}}>
             <Button variant="outline-dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
-            <b className="text-light">Landela transfer nayo</b>
+            <b className="text-light">Landela transfert nayo</b>
             </Button>
              </Link>
             </Col>

@@ -275,7 +275,7 @@ function FormEnvoiClient(props)
         <Col xs ={4}>
         
         
-        <Button variant="outline-warning" type="submit">
+        <Button variant="warning" type="submit">
         Valider Makomi
         </Button>
 
@@ -466,7 +466,7 @@ function FormEnvoiClient(props)
         <Col xs ={4}>
         
         
-        <Button variant="outline-warning" type="submit">
+        <Button variant="warning" type="submit">
         Valider Makomi
         </Button>
 

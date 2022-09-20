@@ -59,6 +59,7 @@ function FormRetraitFrench(props)
               )
               .catch( (error) =>
                 {
+                  setModalShow2(false)
                     setModalShow(true)
                     console.log(error)
                 } )

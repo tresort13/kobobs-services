@@ -26,7 +26,7 @@ function FormRetrait(props)
     const [modalShow, setModalShow] = React.useState(false);
     const [modalShow2, setModalShow2] = React.useState(false);
 
-    const [message,setMessage] = useState("Kotisa Code retrait nayo Pona ko yeba status yako tinda nayo")
+    const [message,setMessage] = useState("Kotisa Code retrait nayo Pona ko yeba status ya transfert nayo")
     const [couleur,setCouleur] = useState("text-dark")
 
     const isDesktop = useMediaQuery({
@@ -58,6 +58,7 @@ function FormRetrait(props)
               )
               .catch( (error) =>
                 {
+                  setModalShow2(false)
                     setModalShow(true)
                     console.log(error)
                 } )
@@ -105,7 +106,7 @@ function FormRetrait(props)
 
    <Row className='pb-3'>
        <Col>
-        <Button variant="outline" type="submit" >
+        <Button variant="warning" type="submit" >
         Valider 
         </Button>
         </Col>

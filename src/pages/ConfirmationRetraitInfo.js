@@ -70,7 +70,7 @@ function ConfirmationRetraitInfo(props)
         <Col xs={12}>
         <Link to="/home_lingala" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant="warning" type="submit" > 
-        
+        ok
         </Button>
         </Link>
         </Col>

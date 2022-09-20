@@ -86,6 +86,7 @@ console.log(props.envoie.infoEnvoie)
               )
               .catch( (error) =>
                 {
+                  setModalShow(false)
                   setModalShow2(true)  
                    console.log(error)
                 } )

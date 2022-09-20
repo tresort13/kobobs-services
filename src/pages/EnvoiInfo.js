@@ -44,7 +44,7 @@ console.log(props.envoie.infoEnvoie)
     {    
       e.preventDefault()  
       setModalShow3(true)
-        fetch('https://kobobsapi.herokuapp.com/api/envoieFormulaireAbonne/',{
+        fetch('https://kobobsapi.herokuapp.com/api/envoieFormulaire/',{
                 method:'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(props.envoie.infoEnvoie)
@@ -87,6 +87,7 @@ console.log(props.envoie.infoEnvoie)
               )
               .catch( (error) =>
                 {
+                  setModalShow3(false)
                   setModalShow2(true)  
                    console.log(error)
                 } )

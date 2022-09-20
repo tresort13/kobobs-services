@@ -83,6 +83,7 @@ console.log(props.envoie.infoEnvoie)
               )
               .catch( (error) =>
                 {
+                  setModalShow2(false)
                   setModalShow(true)  
                    console.log(error)
                    navigate('/envoi_info_french')

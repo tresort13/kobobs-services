@@ -87,6 +87,7 @@ console.log(props.envoie.infoEnvoie)
               )
               .catch( (error) =>
                 {
+                  setModalShow3(false)
                   setModalShow2(true)  
                    console.log(error)
                 } )
@@ -289,7 +290,7 @@ function MyVerticallyCenteredModal(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h4>Message : </h4>
+        
         <p className='text-success'><b>Votre formulaire a été envoyé avec succès</b>   
         </p>
       </Modal.Body>

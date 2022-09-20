@@ -22,7 +22,7 @@ function ConfirmationRetraitInfoFrench(props)
   const [modalShow, setModalShow] = React.useState(false);
   const [modalShow2,setModalShow2] = React.useState(false);
     
-    const [message,setMessage] = useState("Page de confirmation Retrait")
+    const [message,setMessage] = useState("Informations du transfert")
     const [couleur,setCouleur] = useState("text-dark")
     const navigate = useNavigate()
     
@@ -71,7 +71,7 @@ function ConfirmationRetraitInfoFrench(props)
 {isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={12}>
-        <p className='couleur2'><i><b>{message}</b></i></p>
+        <p className='display-6 couleur2'><i><b>{message}</b></i></p>
         </Col>
     </Row>
 
@@ -117,7 +117,7 @@ function ConfirmationRetraitInfoFrench(props)
 {isMobileOrTablet && <Container className='bg-light justify-content-center text-center mx-auto my-auto'>
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={12}>
-        <p className='couleur2'><i><b>{message}</b></i></p>
+        <p className='display-6 couleur2'><i><b>{message}</b></i></p>
         </Col>
     </Row>
 

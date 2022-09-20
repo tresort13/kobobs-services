@@ -98,27 +98,26 @@ function FormEnvoiClientEnglish(props)
         
         <>
         <HeaderEnglish />
-{isDesktop && <Container className='bg-dark justify-content-center text-center bordure mb-5' style={{marginTop:50,width:1000}} >
+{isDesktop && <Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:50,width:1000}} >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={6}>
-        <p className='couleur2'><i><b>{message}</b></i></p>
+        <p className='display-6 couleur2'><i><b>{message}</b></i></p>
         </Col>
     </Row>
     
 <Form  onSubmit={submitFormulaire}>
     <Row>
       <hr style={{color:"darkorange"}}></hr>
-      <p className='couleur2'><b><u>Sender</u></b> </p>
+      <p className='couleur2'><b><u>Sender Informations</u></b> </p>
     </Row>
 
     <Row className='justify-content-center'>
         
 
-       
 
         <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>* First Name </Form.Label>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> First Name </Form.Label>
         <Form.Control name="prenom_expediteur" value={envoie.infoEnvoie.prenom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='First Name'  required/>
        
          </Form.Group>
@@ -126,14 +125,14 @@ function FormEnvoiClientEnglish(props)
 
         <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>* Middle Name</Form.Label>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Middle Name</Form.Label>
         <Form.Control name="nom_expediteur" value={envoie.infoEnvoie.nom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Middle Name'    required/>
          </Form.Group>
         </Col>
 
         <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>* Last Name </Form.Label>  
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Last Name </Form.Label>  
         <Form.Control name="postnom_expediteur" value={envoie.infoEnvoie.postnom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Last Name' required/>
         
          </Form.Group>
@@ -144,14 +143,14 @@ function FormEnvoiClientEnglish(props)
     
        <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>* Address</Form.Label>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Address</Form.Label>
         <Form.Control name="adresse_expediteur" value={envoie.infoEnvoie.adresse_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Address'  required/>
 
          </Form.Group>
         </Col>
 
         <Col xs = {4}>
-        <Form.Label className='couleur2'>* Email</Form.Label>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Email</Form.Label>
         <InputGroup className="mb-3">
         <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
         <Form.Control name="email_expediteur" value={envoie.infoEnvoie.email_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Email' required/>
@@ -161,7 +160,7 @@ function FormEnvoiClientEnglish(props)
 
         <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>* Mobile Number</Form.Label>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Mobile Number</Form.Label>
         <Form.Control name="numero_expediteur" value={envoie.infoEnvoie.numero_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Numéro ya Tshombo' required/>
          </Form.Group>
         </Col>
@@ -172,7 +171,7 @@ function FormEnvoiClientEnglish(props)
         
         <Col xs ={12}>
         <Form.Group className="mb-3" >
-        <Form.Label className='couleur2'>Country</Form.Label>
+        <Form.Label className='text-dark'>Country</Form.Label>
         <Form.Select name='pays_expediteur' value={envoie.infoEnvoie.pays_expediteur} aria-label="Default select example" onChange={e=>inputChanged(e)} required>
          <option value="England">England</option>
          <option value="RD Congo">RD Congo</option> 
@@ -184,14 +183,14 @@ function FormEnvoiClientEnglish(props)
 
     <Row>
       <hr style={{color:"darkorange"}}></hr>
-      <p className='couleur2'><b><u>Receiver</u></b> </p>
+      <p className='couleur2'><b><u>Receiver Informations</u></b> </p>
     </Row>
 
     <Row className='justify-content-center'>
 
     <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>* First Name</Form.Label>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> First Name</Form.Label>
         <Form.Control name="prenom_beneficiaire" value={envoie.infoEnvoie.prenom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='First Name'  required/>
 
          </Form.Group>
@@ -199,14 +198,14 @@ function FormEnvoiClientEnglish(props)
 
     <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>* Middle Name</Form.Label>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Middle Name</Form.Label>
         <Form.Control name="nom_beneficiaire" value={envoie.infoEnvoie.nom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Middle Name'    required/>
          </Form.Group>
         </Col>
 
         <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>* Last Name</Form.Label>  
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Last Name</Form.Label>  
         <Form.Control name="postnom_beneficiaire" value={envoie.infoEnvoie.postnom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Last Name' required/>
 
          </Form.Group>
@@ -218,7 +217,7 @@ function FormEnvoiClientEnglish(props)
     <Row className='justify-content-center'>
     <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>* Adresse</Form.Label>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Adresse</Form.Label>
         <Form.Control name="adresse_beneficiaire" value={envoie.infoEnvoie.adresse_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Address'  required/>
        
          </Form.Group>
@@ -226,14 +225,14 @@ function FormEnvoiClientEnglish(props)
 
         <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>* Mobile Number </Form.Label>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Mobile Number </Form.Label>
         <Form.Control name="numero_beneficiaire" value={envoie.infoEnvoie.numero_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Mobile Number' required/>
          </Form.Group>
         </Col>
 
         <Col xs ={4}>
         <Form.Group className="mb-3" >
-        <Form.Label className='couleur2'>Country</Form.Label>
+        <Form.Label className='text-dark'>Country</Form.Label>
         <Form.Select name='pays_beneficiaire' value={envoie.infoEnvoie.pays_beneficiaire} aria-label="Default select example" onChange={e=>inputChanged(e)} required>
          <option value="RD Congo">RD Congo</option>
          <option value="England">England</option>
@@ -249,7 +248,7 @@ function FormEnvoiClientEnglish(props)
     <Row className='justify-content-center'>
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>* which Amount do you want the receiver to get</Form.Label>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> which Amount do you want the receiver to get</Form.Label>
         <Form.Control name="montant_beneficiaire" value={envoie.infoEnvoie.montant_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder="how much for the receiver to get"  required/>
 
          </Form.Group>
@@ -259,7 +258,7 @@ function FormEnvoiClientEnglish(props)
 
         <Col xs ={6}>
         <Form.Group className="mb-3" >
-        <Form.Label className='couleur2'>Type of service  </Form.Label>
+        <Form.Label className='text-dark'>Type of service  </Form.Label>
         <Form.Select name="type_service" value={envoie.infoEnvoie.type_service} aria-label="Default select example" onChange={e=>inputChanged(e)} required>
         <option value="By Cash (at the agency)">By Cash (at the agency)</option>
          <option value="by mobile money tranfer(Mpesa,Orange Money,Airtel Money)">by mobile money tranfer(Mpesa,Orange Money,Airtel Money) </option> 
@@ -269,7 +268,7 @@ function FormEnvoiClientEnglish(props)
 
         {envoie.infoEnvoie.type_service == "by mobile money tranfer(Mpesa,Orange Money,Airtel Money)" ? <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>* Enter the mobile number for transfering the money  </Form.Label>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Enter the mobile number for transfering the money  </Form.Label>
         <Form.Control name="numero_transfer"  onChange={e=>inputChanged(e)} type="text" placeholder='transfering mobile number'  required/>
        
          </Form.Group>
@@ -283,7 +282,7 @@ function FormEnvoiClientEnglish(props)
         <Col xs ={4}>
         
         
-        <Button variant="outline-warning" type="submit">
+        <Button variant="warning" type="submit">
         Validate
         </Button>
 
@@ -296,58 +295,59 @@ function FormEnvoiClientEnglish(props)
 </Container>
 }
 
-{isMobileOrTablet && <Container className='bg-dark justify-content-center text-center bordure mx-auto my-auto' >
+{isMobileOrTablet && <Container className='bg-light justify-content-center text-center  mx-auto my-auto' >
 <Row className='justify-content-center mb-3 pt-3' >
-        <Col xs={6}>
-        <p className='couleur2'><i><b>{message}</b></i></p>
+        <Col xs={12}>
+        <p className='display-6 couleur2'><i><b>{message}</b></i></p>
         </Col>
     </Row>
     
-    <Form  onSubmit={submitFormulaire}>
+<Form  onSubmit={submitFormulaire}>
     <Row>
       <hr style={{color:"darkorange"}}></hr>
-      <p className='couleur2'><b><u>Sender</u></b> </p>
+      <p className='couleur2'><b><u>Sender Informations</u></b> </p>
     </Row>
 
     <Row className='justify-content-center'>
+        
 
-    <Col xs = {12}>
+
+        <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>* First Name </Form.Label>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> First Name </Form.Label>
         <Form.Control name="prenom_expediteur" value={envoie.infoEnvoie.prenom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='First Name'  required/>
        
          </Form.Group>
         </Col>
+
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>* Middle Name</Form.Label>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Middle Name</Form.Label>
         <Form.Control name="nom_expediteur" value={envoie.infoEnvoie.nom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Middle Name'    required/>
          </Form.Group>
         </Col>
 
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>* Last Name </Form.Label>  
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Last Name </Form.Label>  
         <Form.Control name="postnom_expediteur" value={envoie.infoEnvoie.postnom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Last Name' required/>
         
          </Form.Group>
         </Col>
-
-        
     </Row>
 
     <Row className='justify-content-center'>
     
        <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>* Address</Form.Label>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Address</Form.Label>
         <Form.Control name="adresse_expediteur" value={envoie.infoEnvoie.adresse_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Address'  required/>
 
          </Form.Group>
         </Col>
 
         <Col xs = {12}>
-        <Form.Label className='couleur2'>* Email</Form.Label>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Email</Form.Label>
         <InputGroup className="mb-3">
         <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
         <Form.Control name="email_expediteur" value={envoie.infoEnvoie.email_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Email' required/>
@@ -357,7 +357,7 @@ function FormEnvoiClientEnglish(props)
 
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>* Mobile Number</Form.Label>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Mobile Number</Form.Label>
         <Form.Control name="numero_expediteur" value={envoie.infoEnvoie.numero_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Numéro ya Tshombo' required/>
          </Form.Group>
         </Col>
@@ -368,7 +368,7 @@ function FormEnvoiClientEnglish(props)
         
         <Col xs ={12}>
         <Form.Group className="mb-3" >
-        <Form.Label className='couleur2'>Country</Form.Label>
+        <Form.Label className='text-dark'>Country</Form.Label>
         <Form.Select name='pays_expediteur' value={envoie.infoEnvoie.pays_expediteur} aria-label="Default select example" onChange={e=>inputChanged(e)} required>
          <option value="England">England</option>
          <option value="RD Congo">RD Congo</option> 
@@ -380,13 +380,14 @@ function FormEnvoiClientEnglish(props)
 
     <Row>
       <hr style={{color:"darkorange"}}></hr>
-      <p className='couleur2'><b><u>Receiver</u></b> </p>
+      <p className='couleur2'><b><u>Receiver Informations</u></b> </p>
     </Row>
 
     <Row className='justify-content-center'>
+
     <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>* First Name</Form.Label>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> First Name</Form.Label>
         <Form.Control name="prenom_beneficiaire" value={envoie.infoEnvoie.prenom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='First Name'  required/>
 
          </Form.Group>
@@ -394,26 +395,26 @@ function FormEnvoiClientEnglish(props)
 
     <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>* Middle Name</Form.Label>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Middle Name</Form.Label>
         <Form.Control name="nom_beneficiaire" value={envoie.infoEnvoie.nom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Middle Name'    required/>
          </Form.Group>
         </Col>
 
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>* Last Name</Form.Label>  
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Last Name</Form.Label>  
         <Form.Control name="postnom_beneficiaire" value={envoie.infoEnvoie.postnom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Last Name' required/>
 
          </Form.Group>
         </Col>
 
-
+        
     </Row>
 
     <Row className='justify-content-center'>
     <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>* Adresse</Form.Label>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Adresse</Form.Label>
         <Form.Control name="adresse_beneficiaire" value={envoie.infoEnvoie.adresse_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Address'  required/>
        
          </Form.Group>
@@ -421,14 +422,14 @@ function FormEnvoiClientEnglish(props)
 
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>* Mobile Number </Form.Label>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Mobile Number </Form.Label>
         <Form.Control name="numero_beneficiaire" value={envoie.infoEnvoie.numero_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Mobile Number' required/>
          </Form.Group>
         </Col>
 
         <Col xs ={12}>
         <Form.Group className="mb-3" >
-        <Form.Label className='couleur2'>Country</Form.Label>
+        <Form.Label className='text-dark'>Country</Form.Label>
         <Form.Select name='pays_beneficiaire' value={envoie.infoEnvoie.pays_beneficiaire} aria-label="Default select example" onChange={e=>inputChanged(e)} required>
          <option value="RD Congo">RD Congo</option>
          <option value="England">England</option>
@@ -444,7 +445,7 @@ function FormEnvoiClientEnglish(props)
     <Row className='justify-content-center'>
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>* which Amount do you want the receiver to get</Form.Label>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> which Amount do you want the receiver to get</Form.Label>
         <Form.Control name="montant_beneficiaire" value={envoie.infoEnvoie.montant_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder="how much for the receiver to get"  required/>
 
          </Form.Group>
@@ -454,7 +455,7 @@ function FormEnvoiClientEnglish(props)
 
         <Col xs ={12}>
         <Form.Group className="mb-3" >
-        <Form.Label className='couleur2'>Type of service  </Form.Label>
+        <Form.Label className='text-dark'>Type of service  </Form.Label>
         <Form.Select name="type_service" value={envoie.infoEnvoie.type_service} aria-label="Default select example" onChange={e=>inputChanged(e)} required>
         <option value="By Cash (at the agency)">By Cash (at the agency)</option>
          <option value="by mobile money tranfer(Mpesa,Orange Money,Airtel Money)">by mobile money tranfer(Mpesa,Orange Money,Airtel Money) </option> 
@@ -464,7 +465,7 @@ function FormEnvoiClientEnglish(props)
 
         {envoie.infoEnvoie.type_service == "by mobile money tranfer(Mpesa,Orange Money,Airtel Money)" ? <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>* Enter the mobile number for transfering the money  </Form.Label>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Enter the mobile number for transfering the money  </Form.Label>
         <Form.Control name="numero_transfer"  onChange={e=>inputChanged(e)} type="text" placeholder='transfering mobile number'  required/>
        
          </Form.Group>
@@ -478,7 +479,7 @@ function FormEnvoiClientEnglish(props)
         <Col xs ={4}>
         
         
-        <Button variant="outline-warning" type="submit">
+        <Button variant="warning" type="submit">
         Validate
         </Button>
 

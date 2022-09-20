@@ -36,10 +36,10 @@ function ConfirmationEnvoieInfoEnglish(props)
         
         <>
         <HeaderEnglish  />
-{isDesktop && <Container className='bg-dark justify-content-center text-center bordure mb-5' style={{marginTop:50,width:1000}} >
+{isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={6}>
-        <p className='couleur2'><i><b>{message}</b></i></p>
+        <p className='couleur2 display-6'><i><b>{message}</b></i></p>
         </Col>
     </Row>
 
@@ -49,18 +49,21 @@ function ConfirmationEnvoieInfoEnglish(props)
       <p className='couleur2'><b><u></u></b> </p>
     </Row>
     <Row className='justify-content-center pb-3' >
-        <Col xs={12}>
-        <p className='text-light'>Sender full name: <b className='couleur2'>{props.envoie3.infoEnvoie.nom_expediteur} {props.envoie3.infoEnvoie.postnom_expediteur} {props.envoie3.infoEnvoie.prenom_expediteur}</b> </p>
-        <p className='text-light'>Receiver full name: <b className='couleur2'>{props.envoie3.infoEnvoie.nom_beneficiaire} {props.envoie3.infoEnvoie.postnom_beneficiaire} {props.envoie3.infoEnvoie.prenom_beneficiaire}</b> </p>
-        <p className='text-light'>sender country  : <b className='couleur2'> {props.envoie3.infoEnvoie.pays_expediteur}</b></p>
-        <p className='text-light'>receiver country : <b className='couleur2'> {props.envoie3.infoEnvoie.pays_beneficiaire}</b></p>
-        <p className='text-light'>amount to get by the receiver: <b className='bg-warning text-dark'>{Number(props.envoie3.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
-        <p className='text-light'>amount to pay for the transfer (including all fees): <b className='bg-warning text-dark'>{Number(props.envoie3.infoEnvoie.montant_total).toFixed(2)} £</b> </p>
-        <p className='text-light'>Type of service : <b className='couleur2'>{props.envoie3.infoEnvoie.type_service}</b> </p>
-        <p className='text-light'>Mobile number for transfering the money : <b className='couleur2'>{props.envoie3.infoEnvoie.numero_transfer}</b> </p>
-        <p className='text-light'>Tracking Number : <b className='bg-warning text-dark'> {props.envoie3.infoEnvoie.code_retrait} </b><b className='couleur2'>(this code will be valid only after the full payement of your transfer fees)</b></p>
-        <p className='text-light'>membership Number : <b className='bg-warning text-dark'>{props.envoie3.infoEnvoie.code_abonne} </b> </p>
-        <p className='text-light'>date and time : <b className='couleur2'> {JSON.stringify(props.envoie3.infoEnvoie.date_heure_operation)}</b></p>
+        <Col xs={6}>
+        <p className='text-light'>Tracking Number : <b className='text-danger'> {props.envoie3.infoEnvoie.code_retrait} </b><b className='text-dark'>(this code will be valid only after the full payement of your transfer fees)</b></p>
+        <p className='text-light'>Subscriber ID : <b className='text-danger'>{props.envoie3.infoEnvoie.code_abonne} </b> </p>
+        <p className='text-light'>Sender full name: <b className='text-dark'>{props.envoie3.infoEnvoie.nom_expediteur} {props.envoie3.infoEnvoie.postnom_expediteur} {props.envoie3.infoEnvoie.prenom_expediteur}</b> </p>
+        <p className='text-light'>amount to get by the receiver: <b className='text-dark'>{Number(props.envoie3.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
+        <p className='text-light'>amount to pay for the transfer (including all fees): <b className='text-danger'>{Number(props.envoie3.infoEnvoie.montant_total).toFixed(2)} £</b> </p>
+        <p className='text-light'>sender country  : <b className='text-dark'> {props.envoie3.infoEnvoie.pays_expediteur}</b></p>
+        </Col>
+
+        <Col xs={6}>
+        <p className='text-light'>Receiver full name: <b className='text-dark'>{props.envoie3.infoEnvoie.nom_beneficiaire} {props.envoie3.infoEnvoie.postnom_beneficiaire} {props.envoie3.infoEnvoie.prenom_beneficiaire}</b> </p> 
+        <p className='text-light'>receiver country : <b className='text-dark'> {props.envoie3.infoEnvoie.pays_beneficiaire}</b></p>
+        <p className='text-light'>Type of service : <b className='text-dark'>{props.envoie3.infoEnvoie.type_service}</b> </p>
+        <p className='text-light'>Mobile Money Number : <b className='text-dark'>{props.envoie3.infoEnvoie.numero_transfer}</b> </p>
+        <p className='text-light'>date and time : <b className='text-dark'> {JSON.stringify(props.envoie3.infoEnvoie.date_heure_operation)}</b></p>
         </Col>
     </Row>
 
@@ -80,7 +83,7 @@ function ConfirmationEnvoieInfoEnglish(props)
 </Container>
 }
 
-{isMobileOrTablet && <Container className='bg-dark justify-content-center text-center bordure mx-auto my-auto'>
+{isMobileOrTablet && <Container className='bg-light justify-content-center text-center  mx-auto my-auto'>
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={12}>
         <p className='couleur2'><i><b>{message}</b></i></p>
@@ -93,18 +96,18 @@ function ConfirmationEnvoieInfoEnglish(props)
       <p className='couleur2'><b><u></u></b> </p>
     </Row>
     <Row className='justify-content-start pb-3' >
-        <Col xs={12}>
-        <p className='text-light'>Sender full name: <b className='couleur2'>{props.envoie3.infoEnvoie.nom_expediteur} {props.envoie3.infoEnvoie.postnom_expediteur} {props.envoie3.infoEnvoie.prenom_expediteur}</b> </p>
-        <p className='text-light'>Receiver full name: <b className='couleur2'>{props.envoie3.infoEnvoie.nom_beneficiaire} {props.envoie3.infoEnvoie.postnom_beneficiaire} {props.envoie3.infoEnvoie.prenom_beneficiaire}</b> </p>
-        <p className='text-light'>sender country  : <b className='couleur2'> {props.envoie3.infoEnvoie.pays_expediteur}</b></p>
-        <p className='text-light'>receiver country : <b className='couleur2'> {props.envoie3.infoEnvoie.pays_beneficiaire}</b></p>
-        <p className='text-light'>amount to get by the receiver: <b className='bg-warning text-dark'>{Number(props.envoie3.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
-        <p className='text-light'>amount to pay for the transfer (including all fees): <b className='bg-warning text-dark'>{Number(props.envoie3.infoEnvoie.montant_total).toFixed(2)} £</b> </p>
-        <p className='text-light'>Type of service : <b className='couleur2'>{props.envoie3.infoEnvoie.type_service}</b> </p>
-        <p className='text-light'>Mobile number for transfering the money : <b className='couleur2'>{props.envoie3.infoEnvoie.numero_transfer}</b> </p>
-        <p className='text-light'>Tracking Number : <b className='bg-warning text-dark'> {props.envoie3.infoEnvoie.code_retrait} </b><b className='couleur2'>(this code will be valid only after the full payement of your transfer fees)</b></p>
-        <p className='text-light'>membership Number : <b className='bg-warning text-dark'>{props.envoie3.infoEnvoie.code_abonne} </b> </p>
-        <p className='text-light'>date and time : <b className='couleur2'> {JSON.stringify(props.envoie3.infoEnvoie.date_heure_operation)}</b></p>
+    <Col xs={12}>
+        <p className='text-light'>Tracking Number : <b className='text-danger'> {props.envoie3.infoEnvoie.code_retrait} </b><b className='text-dark'>(this code will be valid only after the full payement of your transfer fees)</b></p>
+        <p className='text-light'>Subscriber ID : <b className='text-danger'>{props.envoie3.infoEnvoie.code_abonne} </b> </p>
+        <p className='text-light'>Sender full name: <b className='text-dark'>{props.envoie3.infoEnvoie.nom_expediteur} {props.envoie3.infoEnvoie.postnom_expediteur} {props.envoie3.infoEnvoie.prenom_expediteur}</b> </p>
+        <p className='text-light'>amount to get by the receiver: <b className='text-dark'>{Number(props.envoie3.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
+        <p className='text-light'>amount to pay for the transfer (including all fees): <b className='text-danger'>{Number(props.envoie3.infoEnvoie.montant_total).toFixed(2)} £</b> </p>
+        <p className='text-light'>sender country  : <b className='text-dark'> {props.envoie3.infoEnvoie.pays_expediteur}</b></p>
+        <p className='text-light'>Receiver full name: <b className='text-dark'>{props.envoie3.infoEnvoie.nom_beneficiaire} {props.envoie3.infoEnvoie.postnom_beneficiaire} {props.envoie3.infoEnvoie.prenom_beneficiaire}</b> </p> 
+        <p className='text-light'>receiver country : <b className='text-dark'> {props.envoie3.infoEnvoie.pays_beneficiaire}</b></p>
+        <p className='text-light'>Type of service : <b className='text-dark'>{props.envoie3.infoEnvoie.type_service}</b> </p>
+        <p className='text-light'>Mobile Money Number : <b className='text-dark'>{props.envoie3.infoEnvoie.numero_transfer}</b> </p>
+        <p className='text-light'>date and time : <b className='text-dark'> {JSON.stringify(props.envoie3.infoEnvoie.date_heure_operation)}</b></p>
         </Col>
     </Row>
 
@@ -138,7 +141,7 @@ function MyVerticallyCenteredModal(props) {
   return (
     <Modal
       {...props}
-      size="md"
+      size="sm"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
@@ -148,7 +151,6 @@ function MyVerticallyCenteredModal(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h4>Message : </h4>
         <p className='text-success'><b>form submission successfully</b>   
         </p>
       </Modal.Body>

@@ -5,9 +5,10 @@ import Button from "react-bootstrap/Button";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Image from 'react-bootstrap/Image';
 import {Link} from  'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
-import Header from './Header';
+import HeaderFrench from './HeaderFrench';
 import Footer from './Footer';
 import Modal from 'react-bootstrap/Modal';
 
@@ -18,7 +19,7 @@ const useState = React.useState
 function ConfirmationEnvoieInfo(props)
 {
 
-    const [message,setMessage] = useState("")
+    const [message,setMessage] = useState("Code retrait nayo eko zala valide kaka na sima yako futa mbongo ya transfert")
     const [couleur,setCouleur] = useState("text-dark")
     const [modalShow, setModalShow] = React.useState(true);
 
@@ -30,50 +31,50 @@ function ConfirmationEnvoieInfo(props)
       });
     
   
-    
+    console.log(props.envoie3)
    
     return (
         
         <>
-        <Header />
-{isDesktop && <Container className='bg-dark justify-content-center text-center bordure mb-5' style={{marginTop:50,width:1000}} >
+        <HeaderFrench username={props.username} />
+{isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
 <Row className='justify-content-center mb-3 pt-3' >
-        <Col xs={6}>
-        <p className='couleur2'><i><b>{message}</b></i></p>
+        <Col xs={12}>
+        <p className='couleur2 display-6'><i><b>{message}</b></i></p>
         </Col>
     </Row>
 
-  
+   
     <Row className='justify-content-center pb-3'>
       <hr style={{color:"darkorange"}}></hr>
-      <p className='couleur2'><b><u></u></b> </p>
     </Row>
     <Row className='justify-content-center pb-3' >
-        <Col xs={12}>
-        <p className='text-light'>Kombo Mobimba ya Motindi: <b className='couleur2'>{props.envoie3.infoEnvoie.nom_expediteur} {props.envoie3.infoEnvoie.postnom_expediteur} {props.envoie3.infoEnvoie.prenom_expediteur}</b> </p>
-        <p className='text-light'>Kombo Mobimba ya Mozui: <b className='couleur2'>{props.envoie3.infoEnvoie.nom_beneficiaire} {props.envoie3.infoEnvoie.postnom_beneficiaire} {props.envoie3.infoEnvoie.prenom_beneficiaire}</b> </p>
-        <p className='text-light'>Ekolo Motindi  : <b className='couleur2'> {props.envoie3.infoEnvoie.pays_expediteur}</b></p>
-        <p className='text-light'>Ekolo Mozui : <b className='couleur2'> {props.envoie3.infoEnvoie.pays_beneficiaire}</b></p>
-        <p className='text-light'>Mbongo ya kozwa epayi ya Motindi: <b className='bg-warning text-dark'>{Number(props.envoie3.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
-        <p className='text-light'>Mbongo yako Futa: <b className='bg-warning text-dark'>{Number(props.envoie3.infoEnvoie.montant_total).toFixed(2)} £</b> </p>
-        <p className='text-light'>Nzela yako zwa Mbongo : <b className='couleur2'>{props.envoie3.infoEnvoie.type_service}</b> </p>
-        <p className='text-light'>Numero ya téléphone pona kotinda mbongo : <b className='couleur2'>{props.envoie3.infoEnvoie.numero_transfer}</b> </p>
-        <p className='text-light'>Code Retrait : <b className='bg-warning text-dark'> {props.envoie3.infoEnvoie.code_retrait} (code oyo ekozala valid kaka soki ofuti mbongo ya transfer)</b></p>
-        <p className='text-light'>code nayo ya abonnement : <b className='bg-warning text-dark'>{props.envoie3.infoEnvoie.code_abonne} </b> </p>
-        <p className='text-light'>date et heure : <b className='couleur2'> {JSON.stringify(props.envoie3.infoEnvoie.date_heure_operation)}</b></p>
+        <Col xs={6} className="text-start">
+        <p className='text-dark'>Code Retrait : <b className='text-danger'> {props.envoie3.infoEnvoie.code_retrait} </b></p>
+        <p className='text-dark'>Code Abonné : <b className='text-danger'> {props.envoie3.infoEnvoie.code_abonne} (à retenir)</b></p>
+        <p className='text-dark'>Mbongo Yako Zwa: <b className='text-dark'>{Number(props.envoie3.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
+        <p className='text-dark'>Mbongo Yako Futa: <b className='text-dark'>{Number(props.envoie3.infoEnvoie.montant_total).toFixed(2)} £</b> </p>
+        <p className='text-dark'>Kombo Ya Motindi: <b className='text-dark'>{props.envoie3.infoEnvoie.nom_expediteur} {props.envoie3.infoEnvoie.postnom_expediteur} {props.envoie3.infoEnvoie.prenom_expediteur}</b> </p>
+        <p className='text-dark'>Ekolo Ya Motindi: <b className='text-dark'> {props.envoie3.infoEnvoie.pays_expediteur}</b></p>
+        </Col>
+
+        <Col xs={6} className="text-start">
+        <p className='text-dark'>Kombo Ya Mozui: <b className='text-dark'>{props.envoie3.infoEnvoie.nom_beneficiaire} {props.envoie3.infoEnvoie.postnom_beneficiaire} {props.envoie3.infoEnvoie.prenom_beneficiaire}</b> </p>   
+        <p className='text-dark'>Ekolo Ya Mozui: <b className='text-dark'> {props.envoie3.infoEnvoie.pays_beneficiaire}</b></p>
+        <p className='text-dark'>Nzela Yako Zwa Mbongo: <b className='text-dark'>{props.envoie3.infoEnvoie.type_service}</b> </p>
+        <p className='text-dark'>Numéro Ya Mobile money:  <b className='text-dark'>{props.envoie3.infoEnvoie.numero_transfer}</b> </p>
+        <p className='text-dark'>date na heure : <b className='text-dark'> {JSON.stringify(props.envoie3.infoEnvoie.date_heure_operation)}</b></p>
         </Col>
     </Row>
-
-
     
     <Row className='justify-content-center pb-3'>
       <hr style={{color:"darkorange"}}></hr>
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <Link to="/menu_envoie" style={{color:'white',textDecorationLine:'none'}}>
+        <Link to="/home_french" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant="warning" type="submit">
-        fermer
+        kanga page
         </Button>
         </Link>
         </Col>
@@ -81,44 +82,41 @@ function ConfirmationEnvoieInfo(props)
 </Container>
 }
 
-{isMobileOrTablet && <Container className='bg-dark justify-content-center text-center bordure mx-auto my-auto'  >
+{isMobileOrTablet && <Container className='bg-light justify-content-center text-center mx-auto my-auto'>
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={12}>
-        <p className='couleur2'><i><b>{message}</b></i></p>
+        <p className='couleur2 display-6'><i><b>{message}</b></i></p>
         </Col>
     </Row>
 
-  
+   
     <Row className='justify-content-center pb-3'>
       <hr style={{color:"darkorange"}}></hr>
-      <p className='couleur2'><b><u></u></b> </p>
     </Row>
-    <Row className='justify-content-start pb-3' >
-        <Col xs={12}>
-        <p className='text-light'>Kombo Mobimba ya Motindi: <b className='couleur2'>{props.envoie3.infoEnvoie.nom_expediteur} {props.envoie3.infoEnvoie.postnom_expediteur} {props.envoie3.infoEnvoie.prenom_expediteur}</b> </p>
-        <p className='text-light'>Kombo Mobimba ya Mozui: <b className='couleur2'>{props.envoie3.infoEnvoie.nom_beneficiaire} {props.envoie3.infoEnvoie.postnom_beneficiaire} {props.envoie3.infoEnvoie.prenom_beneficiaire}</b> </p>
-        <p className='text-light'>Ekolo Motindi  : <b className='couleur2'> {props.envoie3.infoEnvoie.pays_expediteur}</b></p>
-        <p className='text-light'>Ekolo Mozui : <b className='couleur2'> {props.envoie3.infoEnvoie.pays_beneficiaire}</b></p>
-        <p className='text-light'>Mbongo ya kozwa epayi ya Motindi: <b className='bg-warning text-dark'>{Number(props.envoie3.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
-        <p className='text-light'>Mbongo yako Futa: <b className='bg-warning text-dark'>{Number(props.envoie3.infoEnvoie.montant_total).toFixed(2)} £</b> </p>
-        <p className='text-light'>Nzela yako zwa Mbongo : <b className='couleur2'>{props.envoie3.infoEnvoie.type_service}</b> </p>
-        <p className='text-light'>Numero ya téléphone pona kotinda mbongo : <b className='couleur2'>{props.envoie3.infoEnvoie.numero_transfer}</b> </p>
-        <p className='text-light'>code nayo ya abonnement : <b className='bg-warning text-dark'>{props.envoie3.infoEnvoie.code_abonne} </b> </p>
-        <p className='text-light'>Code Retrait : <b className='bg-warning text-dark'> {props.envoie3.infoEnvoie.code_retrait} (code oyo ekozala valid kaka soki ofuti mbongo ya transfer)</b></p>
-        <p className='text-light'>date et heure : <b className='couleur2'> {JSON.stringify(props.envoie3.infoEnvoie.date_heure_operation)}</b></p>
+    <Row className='justify-content-center pb-3' >
+    <Col xs={6} className="text-start">
+        <p className='text-dark'>Code Retrait : <b className='text-danger'> {props.envoie3.infoEnvoie.code_retrait} </b></p>
+        <p className='text-dark'>Code Abonné : <b className='text-danger'> {props.envoie3.infoEnvoie.code_abonne} (à retenir)</b></p>
+        <p className='text-dark'>Mbongo Yako Zwa: <b className='text-dark'>{Number(props.envoie3.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
+        <p className='text-dark'>Mbongo Yako Futa: <b className='text-dark'>{Number(props.envoie3.infoEnvoie.montant_total).toFixed(2)} £</b> </p>
+        <p className='text-dark'>Kombo Ya Motindi: <b className='text-dark'>{props.envoie3.infoEnvoie.nom_expediteur} {props.envoie3.infoEnvoie.postnom_expediteur} {props.envoie3.infoEnvoie.prenom_expediteur}</b> </p>
+        <p className='text-dark'>Ekolo Ya Motindi: <b className='text-dark'> {props.envoie3.infoEnvoie.pays_expediteur}</b></p>
+        <p className='text-dark'>Kombo Ya Mozui: <b className='text-dark'>{props.envoie3.infoEnvoie.nom_beneficiaire} {props.envoie3.infoEnvoie.postnom_beneficiaire} {props.envoie3.infoEnvoie.prenom_beneficiaire}</b> </p>   
+        <p className='text-dark'>Ekolo Ya Mozui: <b className='text-dark'> {props.envoie3.infoEnvoie.pays_beneficiaire}</b></p>
+        <p className='text-dark'>Nzela Yako Zwa Mbongo: <b className='text-dark'>{props.envoie3.infoEnvoie.type_service}</b> </p>
+        <p className='text-dark'>Mobile money Numéro: <b className='text-dark'>{props.envoie3.infoEnvoie.numero_transfer}</b> </p>
+        <p className='text-dark'>date na heure : <b className='text-dark'> {JSON.stringify(props.envoie3.infoEnvoie.date_heure_operation)}</b></p>
         </Col>
     </Row>
-
-
     
     <Row className='justify-content-center pb-3'>
       <hr style={{color:"darkorange"}}></hr>
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <Link to="/menu_envoie" style={{color:'white',textDecorationLine:'none'}}>
+        <Link to="/home_french" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant="warning" type="submit">
-        fermer
+        kanga page
         </Button>
         </Link>
         </Col>
@@ -140,7 +138,7 @@ function MyVerticallyCenteredModal(props) {
   return (
     <Modal
       {...props}
-      size="md"
+      size="sm"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
@@ -150,16 +148,14 @@ function MyVerticallyCenteredModal(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h4>Makomi : </h4>
-        <p className='text-success'><b>Formulaire Na Yo etindami malamu</b>   
+        <p className='text-success'><b>Makomi nayo ya transfer etindami malamu</b>   
         </p>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant='warning' onClick={props.onHide}>Fermer</Button>
+        <Button variant='warning' onClick={props.onHide}>kanga page</Button>
       </Modal.Footer>
     </Modal>
   );
 }
-
 
 export default ConfirmationEnvoieInfo;

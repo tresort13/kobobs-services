@@ -5,11 +5,13 @@ import Button from "react-bootstrap/Button";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Image from 'react-bootstrap/Image';
 import {Link,useNavigate} from  'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
-import Header from './Header';
+import HeaderFrench from './HeaderFrench';
 import Footer from './Footer';
+import Modal from 'react-bootstrap/Modal';
+import ClipLoader from "react-spinners/ClipLoader";
+import  './Header.css';
 
 
 
@@ -17,13 +19,9 @@ const useState = React.useState
 
 function ConfirmationRetraitInfo(props)
 {
-  const [modalShow, setModalShow] = React.useState(false);
-    const [message,setMessage] = useState("Status Ya Code Retrait Na Yo")
-    const [couleur,setCouleur] = useState("text-dark")
-    const navigate = useNavigate()
     
-
-
+    const [message,setMessage] = useState("Informations Ya transfert Na Yo")
+    
     const isDesktop = useMediaQuery({
         query: "(min-width: 1224px)"
       });
@@ -35,47 +33,34 @@ function ConfirmationRetraitInfo(props)
     return (
         
         <>
-        <Header  />
-{isDesktop && <Container className='bg-dark justify-content-center text-center bordure mb-5' style={{marginTop:50,width:1000}} >
+        <HeaderFrench  />
+{isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
 <Row className='justify-content-center mb-3 pt-3' >
+        <Col xs={12}>
+        <p className='display-6 couleur2'><i><b>{message}</b></i></p>
+        </Col>
+    </Row>
+
+
+    <Row className='justify-content-center pb-3'>
+      <hr style={{color:"darkorange"}}></hr>
+    </Row>
+    <Row className='justify-content-start pb-3' >
         <Col xs={6}>
-        <p className='couleur2'><i><b>{message}</b></i></p>
+        <p className='text-dark'>Code Retrait : <b className='text-danger'> {props.envoie2.infoEnvoie.code_retrait}</b></p>
+        <p className='text-dark'>Mbongo Yako Zwa: <b className='text-danger'>{Number(props.envoie2.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
+        <p className='text-dark'>Kombo Ya Mozui: <b className='text-dark'>{props.envoie2.infoEnvoie.nom_beneficiaire} {props.envoie2.infoEnvoie.postnom_beneficiaire} {props.envoie2.infoEnvoie.prenom_beneficiaire}</b> </p>
+        <p className='text-dark'>Ekolo Ya Mozui: <b className='text-dark'> {props.envoie2.infoEnvoie.pays_beneficiaire}</b></p>
+        <p className='text-dark'>Nzela Yako Zwa Mbongo: <b className='text-dark'>{props.envoie2.infoEnvoie.type_service}</b> </p>
+       
         </Col>
-    </Row>
 
-    
-    <Row className='justify-content-center pb-3'>
-      <p className='couleur2'><b className='couleur2'> Yeba ko tala ba explications ya status nayo na sé ya page </b> </p>
-    </Row>
-    <Row className='justify-content-center pb-3'>
-      <hr style={{color:"darkorange"}}></hr>
-      <p className='couleur2'><b><u></u></b> </p>
-    </Row>
-    <Row className='justify-content-center pb-3' >
-        <Col xs={12}>
-        <p className='text-light'>Code nayo : <b className='text-dark bg-warning'> {props.envoie2.infoEnvoie.code_retrait}</b></p>
-        <p className='text-light'>Status ya code nayo : <b className='text-dark bg-warning'> {props.envoie2.infoEnvoie.status_retrait}</b></p>
-        <p className='text-light'>Kombo Mobimba ya Motindi : <b className='couleur2'>{props.envoie2.infoEnvoie.nom_expediteur} {props.envoie2.infoEnvoie.postnom_expediteur} {props.envoie2.infoEnvoie.prenom_expediteur}</b> </p>
-        <p className='text-light'>Kombo Mobimba ya Mozui : <b className='couleur2'>{props.envoie2.infoEnvoie.nom_beneficiaire} {props.envoie2.infoEnvoie.postnom_beneficiaire} {props.envoie2.infoEnvoie.prenom_beneficiaire}</b> </p>
-        <p className='text-light'>Ekolo Motindi : <b className='couleur2'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
-        <p className='text-light'>Ekolo Mozui : <b className='couleur2'> {props.envoie2.infoEnvoie.pays_beneficiaire}</b></p>
-        <p className='text-light'>Mbongo ya kozwa epayi ya Motindi : <b className='couleur2'>{Number(props.envoie2.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
-        <p className='text-light'>Nzela yako zwa Mbongo : <b className='couleur2'>{props.envoie2.infoEnvoie.type_service}</b> </p>
-        <p className='text-light'>Numero ya téléphone pona kotinda mbongo : <b className='couleur2'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
-        <p className='text-light'>date na heure : <b className='couleur2'> {JSON.stringify(props.envoie2.infoEnvoie.date_heure_operation)}</b></p>
-        </Col>
-    </Row>
-
-
-    <Row className='justify-content-center pb-3'>
-      <hr style={{color:"darkorange"}}></hr>
-      <p className='couleur2'><b><u>Explication ya status</u></b> </p>
-    </Row>
-    <Row className='justify-content-center pb-3' >
-        <Col xs={12}>
-        <p className='text-light'><b>Code Retrait en attente de validation :</b> <b className='text-dark bg-warning'> Elingi ko loba nanu code nayo eza valide te pona nanu ofuti nbongo ya transfer te</b></p>
-        <p className='text-light'><b>Code Retrait Valide : </b><b className='text-dark bg-warning'> Elingi ko loba code nayo ekomi valide et que mozui akoki ko zwa nbongo</b></p>
-        <p className='text-light'><b>Code Retrait Payé :</b> <b className='text-dark bg-warning'> Elingi ko loba Mozui esi azwi nbongo oyo otindeli ye </b> </p>
+        <Col xs={6}>
+        <p className='text-dark'>Kombo Ya Motindi: <b className='text-dark'>{props.envoie2.infoEnvoie.nom_expediteur} {props.envoie2.infoEnvoie.postnom_expediteur} {props.envoie2.infoEnvoie.prenom_expediteur}</b> </p>
+        <p className='text-dark'>Ekolo Ya Motindi: <b className='text-dark'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
+        <p className='text-dark'>Numéro Ya Mobile money : <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
+        <p className='text-dark'>date na heure : <b className='text-dark'> {JSON.stringify(props.envoie2.infoEnvoie.date_heure_operation)}</b></p>
+        
         </Col>
     </Row>
 
@@ -84,10 +69,10 @@ function ConfirmationRetraitInfo(props)
       <hr style={{color:"darkorange"}}></hr>
     </Row>
     <Row className='justify-content-center pb-3' >
-        <Col xs={6}>
-        <Link to="/menu_envoie" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant="warning"> 
-         ok
+        <Col xs={12}>
+        <Link to="/home_lingala" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant="warning" type="submit" > 
+        
         </Button>
         </Link>
         </Col>
@@ -95,46 +80,29 @@ function ConfirmationRetraitInfo(props)
 </Container>
 }
 
-{isMobileOrTablet && <Container className='bg-dark justify-content-center text-center bordure mx-auto my-auto' >
+{isMobileOrTablet && <Container className='bg-light justify-content-center text-center mx-auto my-auto'>
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={12}>
-        <p className='couleur2'><i><b>{message}</b></i></p>
+        <p className='display-6 couleur2'><i><b>{message}</b></i></p>
         </Col>
     </Row>
 
-    
-    <Row className='justify-content-center pb-3'>
-      <p className='couleur2'><b className='couleur2'> Yeba ko tala ba explications ya status nayo na sé ya page </b> </p>
-    </Row>
-    <Row className='justify-content-center pb-3'>
+
+    <Row className='justify-content-start pb-3'>
       <hr style={{color:"darkorange"}}></hr>
-      <p className='couleur2'><b><u></u></b> </p>
+      <p className='couleur2'><b><u>Page de confirmation de rétrait</u></b> </p>
     </Row>
     <Row className='justify-content-start pb-3' >
-        <Col xs={12}>
-        <p className='text-light'>Code nayo : <b className='text-dark bg-warning'> {props.envoie2.infoEnvoie.code_retrait}</b></p>
-        <p className='text-light'>Status ya code nayo : <b className='text-dark bg-warning'> {props.envoie2.infoEnvoie.status_retrait}</b></p>
-        <p className='text-light'>Kombo Mobimba ya Motindi : <b className='couleur2'>{props.envoie2.infoEnvoie.nom_expediteur} {props.envoie2.infoEnvoie.postnom_expediteur} {props.envoie2.infoEnvoie.prenom_expediteur}</b> </p>
-        <p className='text-light'>Kombo Mobimba ya Mozui : <b className='couleur2'>{props.envoie2.infoEnvoie.nom_beneficiaire} {props.envoie2.infoEnvoie.postnom_beneficiaire} {props.envoie2.infoEnvoie.prenom_beneficiaire}</b> </p>
-        <p className='text-light'>Ekolo Motindi : <b className='couleur2'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
-        <p className='text-light'>Ekolo Mozui : <b className='couleur2'> {props.envoie2.infoEnvoie.pays_beneficiaire}</b></p>
-        <p className='text-light'>Mbongo ya kozwa epayi ya Motindi : <b className='couleur2'>{Number(props.envoie2.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
-        <p className='text-light'>Nzela yako zwa Mbongo : <b className='couleur2'>{props.envoie2.infoEnvoie.type_service}</b> </p>
-        <p className='text-light'>Numero ya téléphone pona kotinda mbongo : <b className='couleur2'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
-        <p className='text-light'>date na heure : <b className='couleur2'> {JSON.stringify(props.envoie2.infoEnvoie.date_heure_operation)}</b></p>
-        </Col>
-    </Row>
-
-
-    <Row className='justify-content-center pb-3'>
-      <hr style={{color:"darkorange"}}></hr>
-      <p className='couleur2'><b><u>Explication ya status</u></b> </p>
-    </Row>
-    <Row className='justify-content-center pb-3' >
-        <Col xs={12}>
-        <p className='text-light'><b>Code Retrait en attente de validation :</b> <b className='text-dark bg-warning'> Elingi ko loba nanu code nayo eza valide te pona nanu ofuti nbongo ya transfer te</b></p>
-        <p className='text-light'><b>Code Retrait Valide : </b><b className='text-dark bg-warning'> Elingi ko loba code nayo ekomi valide et que mozui akoki ko zwa nbongo</b></p>
-        <p className='text-light'><b>Code Retrait Payé :</b> <b className='text-dark bg-warning'> Elingi ko loba Mozui esi azwi nbongo oyo otindeli ye </b> </p>
+    <Col xs={12}>
+        <p className='text-dark'>Code Retrait : <b className='text-danger'> {props.envoie2.infoEnvoie.code_retrait}</b></p>
+        <p className='text-dark'>Montant à récupérer: <b className='text-danger'>{Number(props.envoie2.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
+        <p className='text-dark'>Noms Beneficiare: <b className='text-dark'>{props.envoie2.infoEnvoie.nom_beneficiaire} {props.envoie2.infoEnvoie.postnom_beneficiaire} {props.envoie2.infoEnvoie.prenom_beneficiaire}</b> </p>
+        <p className='text-dark'>Pays Beneficiare: <b className='text-dark'> {props.envoie2.infoEnvoie.pays_beneficiaire}</b></p>
+        <p className='text-dark'>Type de retrait: <b className='text-dark'>{props.envoie2.infoEnvoie.type_service}</b> </p>
+        <p className='text-dark'>Noms Expediteur: <b className='text-dark'>{props.envoie2.infoEnvoie.nom_expediteur} {props.envoie2.infoEnvoie.postnom_expediteur} {props.envoie2.infoEnvoie.prenom_expediteur}</b> </p>
+        <p className='text-dark'>Pays Expediteur: <b className='text-dark'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
+        <p className='text-dark'>Mobile Money: <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
+        <p className='text-dark'>date et heure : <b className='text-dark'> {JSON.stringify(props.envoie2.infoEnvoie.date_heure_operation)}</b></p>
         </Col>
     </Row>
 
@@ -143,10 +111,10 @@ function ConfirmationRetraitInfo(props)
       <hr style={{color:"darkorange"}}></hr>
     </Row>
     <Row className='justify-content-center pb-3' >
-        <Col xs={6}>
-        <Link to="/menu_envoie" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant="warning"> 
-         ok
+        <Col xs={12}>
+        <Link to="/home_lingala" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant="warning" type="submit" > 
+        ok
         </Button>
         </Link>
         </Col>
@@ -157,12 +125,12 @@ function ConfirmationRetraitInfo(props)
             <p></p>
           </Col>
         </Row>
+
 <Footer />
         </>
        
     )
 }
-
 
 
 

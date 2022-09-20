@@ -83,10 +83,10 @@ function FormRetraitEnglish(props)
         
         <>
         <HeaderEnglish />
-{isDesktop && <Container className='bg-dark justify-content-center text-center bordure mb-5' style={{marginTop:100,width:750}} >
+{isDesktop && <Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:100,width:750}} >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={6}>
-        <p className='couleur2'><i><b>{message}</b></i></p>
+        <p className='text-dark'><i><b>{message}</b></i></p>
         </Col>
     </Row>
 
@@ -98,8 +98,8 @@ function FormRetraitEnglish(props)
     <Row className='justify-content-center'>
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>Tracking Number</Form.Label>
-        <Form.Control name="code_retrait" value={codeRetrait.infoCodeRetrait.code_retrait} onChange={e=>inputChanged(e)} type="text" placeholder='Veuillez entrer code retrait' autoFocus   required/>
+        <Form.Label className='text-dark'>Tracking Number</Form.Label>
+        <Form.Control name="code_retrait" value={codeRetrait.infoCodeRetrait.code_retrait} onChange={e=>inputChanged(e)} type="text" placeholder='Please enter your tracking number' autoFocus   required/>
          </Form.Group>
         </Col>
     </Row>
@@ -107,7 +107,7 @@ function FormRetraitEnglish(props)
 
    <Row className='pb-3'>
        <Col>
-        <Button variant="outline-warning" type="submit" >
+        <Button variant="warning" type="submit" >
         Validate
         </Button>
         </Col>
@@ -119,10 +119,10 @@ function FormRetraitEnglish(props)
 </Container>
 }
 
-{isMobileOrTablet && <Container className='bg-dark justify-content-center text-center bordure mx-auto mt-5'>
+{isMobileOrTablet && <Container className='bg-light justify-content-center text-center  mx-auto mt-5'>
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={12}>
-        <p className='couleur2'><i><b>{message}</b></i></p>
+        <p className='text-dark'><i><b>{message}</b></i></p>
         </Col>
     </Row>
 
@@ -134,8 +134,8 @@ function FormRetraitEnglish(props)
     <Row className='justify-content-center'>
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>Tracking Number</Form.Label>
-        <Form.Control name="code_retrait" value={codeRetrait.infoCodeRetrait.code_retrait} onChange={e=>inputChanged(e)} type="text" placeholder='Veuillez entrer code retrait' autoFocus   required/>
+        <Form.Label className='text-dark'>Tracking Number</Form.Label>
+        <Form.Control name="code_retrait" value={codeRetrait.infoCodeRetrait.code_retrait} onChange={e=>inputChanged(e)} type="text" placeholder='Please enter your tracking number' autoFocus   required/>
          </Form.Group>
         </Col>
     </Row>
@@ -143,7 +143,7 @@ function FormRetraitEnglish(props)
 
    <Row className='pb-3'>
        <Col>
-        <Button variant="outline-warning" type="submit" >
+        <Button variant="warning" type="submit" >
         Validate
         </Button>
         </Col>

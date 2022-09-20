@@ -81,10 +81,10 @@ function FormRetrait(props)
         
         <>
         <Header />
-{isDesktop && <Container className='bg-dark justify-content-center text-center bordure mb-5' style={{marginTop:100,width:750}} >
+{isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:100,width:750}} >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={6}>
-        <p className='couleur2'><i><b>{message}</b></i></p>
+        <p className='text-dark'><i><b>{message}</b></i></p>
         </Col>
     </Row>
 
@@ -96,7 +96,7 @@ function FormRetrait(props)
     <Row className='justify-content-center'>
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>Code Retrait</Form.Label>
+        <Form.Label className='text-dark'>Code Retrait</Form.Label>
         <Form.Control name="code_retrait" value={codeRetrait.infoCodeRetrait.code_retrait} onChange={e=>inputChanged(e)} type="text" placeholder='Veuillez entrer code retrait' autoFocus   required/>
          </Form.Group>
         </Col>
@@ -105,7 +105,7 @@ function FormRetrait(props)
 
    <Row className='pb-3'>
        <Col>
-        <Button variant="outline-warning" type="submit" >
+        <Button variant="outline" type="submit" >
         Valider 
         </Button>
         </Col>
@@ -117,10 +117,10 @@ function FormRetrait(props)
 </Container>
 }
 
-{isMobileOrTablet && <Container className='bg-dark justify-content-center text-center bordure mx-auto mt-5' >
+{isMobileOrTablet && <Container className='bg-light justify-content-center text-center  mx-auto mt-5' >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={12}>
-        <p className='couleur2'><i><b>{message}</b></i></p>
+        <p className='text-dark'><i><b>{message}</b></i></p>
         </Col>
     </Row>
 
@@ -132,7 +132,7 @@ function FormRetrait(props)
     <Row className='justify-content-center'>
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>Code Retrait</Form.Label>
+        <Form.Label className='text-dark'>Code Retrait</Form.Label>
         <Form.Control name="code_retrait" value={codeRetrait.infoCodeRetrait.code_retrait} onChange={e=>inputChanged(e)} type="text" placeholder='Veuillez entrer code retrait' autoFocus   required/>
          </Form.Group>
         </Col>
@@ -141,7 +141,7 @@ function FormRetrait(props)
 
    <Row className='pb-3'>
        <Col>
-        <Button variant="outline-warning" type="submit" >
+        <Button variant="warning" type="submit" >
         Valider 
         </Button>
         </Col>
@@ -168,7 +168,7 @@ function MyVerticallyCenteredModal(props) {
     return (
       <Modal
         {...props}
-        size="md"
+        size="sm"
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
@@ -178,12 +178,11 @@ function MyVerticallyCenteredModal(props) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Makomi : </h4>
           <p className='text-danger'><b>Limbisa Code Okotisi eza Valide te !!!</b>   
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant='warning' onClick={props.onHide}>Fermer</Button>
+          <Button variant='warning' onClick={props.onHide}>kanga page</Button>
         </Modal.Footer>
       </Modal>
     );

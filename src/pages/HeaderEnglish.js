@@ -184,7 +184,9 @@ function HeaderEnglish(props)
 
              <Dropdown.Menu>
              <Dropdown.Item href="/">English</Dropdown.Item>
+             <NavDropdown.Divider />
              <Dropdown.Item href="/home_lingala">Lingala</Dropdown.Item>
+             <NavDropdown.Divider />
              <Dropdown.Item href="/home_french">Français</Dropdown.Item>
              </Dropdown.Menu>
             </Dropdown>

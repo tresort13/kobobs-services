@@ -43,7 +43,7 @@ function HomeLingala()
             </Col>
 
             <Col md={4} className="my-auto text-center">
-            <Link to="/form_envoie_abonne_id" style={{color:'white',textDecorationLine:'none'}}>
+            <Link to="/form_retrait_info" style={{color:'white',textDecorationLine:'none'}}>
             <Button variant="outline-dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
             <b className="text-light">Landela transfert nayo</b>
             </Button>

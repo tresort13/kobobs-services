@@ -38,13 +38,13 @@ function HomeEnglish()
             <Col mdmd={4} className="my-auto text-center">
             <Link to="/form_envoie_abonne_id_english" style={{color:'white',textDecorationLine:'none'}}>
             <Button variant="outline-dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
-            <b className="text-light">I am alreday a subscriber </b>
+            <b className="text-light">I am already a subscriber </b>
            </Button>
             </Link>  
             </Col>
 
             <Col md={4} className="my-auto text-center">
-            <Link to="/form_envoie_abonne_id_english" style={{color:'white',textDecorationLine:'none'}}>
+            <Link to="/form_retrait_info_english" style={{color:'white',textDecorationLine:'none'}}>
             <Button variant="outline-dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
             <b className="text-light">Track your transfer</b>
             </Button>

@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import {Link} from  'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
-import HeaderFrench from './HeaderFrench';
+import Header from './Header';
 import Footer from './Footer';
 import Modal from 'react-bootstrap/Modal';
 
@@ -36,7 +36,7 @@ function ConfirmationEnvoieInfo(props)
     return (
         
         <>
-        <HeaderFrench username={props.username} />
+        <Header />
 {isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={12}>

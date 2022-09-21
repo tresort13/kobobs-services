@@ -56,7 +56,8 @@ function FormCodeAbonneFrench(props)
               })
               .then( res => res.json())
               .then(
-                res => {   
+                res => {  
+                  setModalShow2(false) 
                     console.log(res)
                    setCodeAbonne(res[0].code_abonne)
                    setModalShow3(true)
@@ -230,7 +231,7 @@ function MyVerticallyCenteredModal(props) {
         <p ><b className='text-success'>{props.codeAbonne}</b></p>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant='warning' onClick={props.onHide}>ok j'ai récuperé</Button>
+          <Link to="/form_envoie_abonne_id_french"><Button variant='warning' onClick={props.onHide}>ok j'ai récuperé</Button></Link>
         </Modal.Footer>
       </Modal>
     );

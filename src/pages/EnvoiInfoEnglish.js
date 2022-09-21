@@ -56,14 +56,11 @@ console.log(props.envoie.infoEnvoie)
                  console.log(res)
                  props.setEnvoie({infoEnvoie:{
                   nom_expediteur : '',
-                  postnom_expediteur : '***',
                   prenom_expediteur : '',
                   adresse_expediteur : '',
-                  email_expediteur : '***',
                   numero_expediteur: '',
                   pays_expediteur : 'UK',
                   nom_beneficiaire : '',
-                  postnom_beneficiaire : '***',
                   prenom_beneficiaire : '',
                   pays_beneficiaire : 'RD Congo',
                   montant_envoie_sans_frais : '',
@@ -131,12 +128,12 @@ console.log(props.envoie.infoEnvoie)
         <p className='text-dark'>First Name : <b className='text-dark'>{props.envoie.infoEnvoie.prenom_expediteur}</b> </p>
 
         <p className='text-dark'>Last Name : <b className='text-dark'>{props.envoie.infoEnvoie.nom_expediteur}</b>  </p>
-        <p className='text-dark'>Middle Name : <b className='text-dark'>{props.envoie.infoEnvoie.postnom_expediteur}</b> </p>
+
         <p className='text-dark'>Adress : <b className='text-dark'>{props.envoie.infoEnvoie.adresse_expediteur}</b> </p> 
         </Col>
 
         <Col xs={6} className="text-start">
-        <p className='text-dark'>Email : <b className='text-dark'>{props.envoie.infoEnvoie.email_expediteur}</b> </p>
+
         <p className='text-dark'>Mobile Number :<b className='text-dark'> {props.envoie.infoEnvoie.numero_expediteur} </b></p>
         <p className='text-dark'>country : <b className='text-dark'> {props.envoie.infoEnvoie.pays_expediteur}</b></p>
         </Col>
@@ -156,7 +153,7 @@ console.log(props.envoie.infoEnvoie)
         </Col>
 
         <Col xs={6} className="text-start">
-        <p className='text-dark'>Middle Name : <b className='text-dark'>{props.envoie.infoEnvoie.postnom_beneficiaire}</b>  </p>
+
         <p className='text-dark'>country : <b className='text-dark'>{props.envoie.infoEnvoie.pays_beneficiaire}</b> </p>
         </Col>
     </Row>
@@ -221,10 +218,10 @@ console.log(props.envoie.infoEnvoie)
         <p className='text-dark'>First Name : <b className='text-dark'>{props.envoie.infoEnvoie.prenom_expediteur}</b> </p>
 
         <p className='text-dark'>Last Name : <b className='text-dark'>{props.envoie.infoEnvoie.nom_expediteur}</b>  </p>
-        <p className='text-dark'>Middle Name : <b className='text-dark'>{props.envoie.infoEnvoie.postnom_expediteur}</b> </p>
+
         <p className='text-dark'>Adress : <b className='text-dark'>{props.envoie.infoEnvoie.adresse_expediteur}</b> </p> 
 
-        <p className='text-dark'>Email : <b className='text-dark'>{props.envoie.infoEnvoie.email_expediteur}</b> </p>
+
         <p className='text-dark'>Mobile Number :<b className='text-dark'> {props.envoie.infoEnvoie.numero_expediteur} </b></p>
         <p className='text-dark'>country : <b className='text-dark'> {props.envoie.infoEnvoie.pays_expediteur}</b></p>
         </Col>
@@ -240,8 +237,8 @@ console.log(props.envoie.infoEnvoie)
         <Col xs={12} className="text-start">
         <p className='text-dark'>First Name : <b className='text-dark'>{props.envoie.infoEnvoie.prenom_beneficiaire} </b> </p>
         
-        <p className='text-dark'>Last Name :<b className='text-dark'>{props.envoie.infoEnvoie.postnom_beneficiaire}</b> </p>
-        <p className='text-dark'>Middle Name : <b className='text-dark'>{props.envoie.infoEnvoie.nom_beneficiaire}</b>  </p>
+        <p className='text-dark'>Last Name :<b className='text-dark'>{props.envoie.infoEnvoie.nom_beneficiaire}</b> </p>
+
         <p className='text-dark'>country : <b className='text-dark'>{props.envoie.infoEnvoie.pays_beneficiaire}</b> </p>
         </Col>
     </Row>

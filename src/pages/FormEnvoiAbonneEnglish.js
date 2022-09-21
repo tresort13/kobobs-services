@@ -20,7 +20,6 @@ function FormEnvoiAbonneEnglish(props)
 
     const[envoieAbonne,setEnvoieAbonne] = useState({infoEnvoieAbonne :{
       nom_beneficiaire : props.envoie.infoEnvoie.nom_beneficiaire,
-      postnom_beneficiaire : props.envoie.infoEnvoie.postnom_beneficiaire,
       prenom_beneficiaire : props.envoie.infoEnvoie.prenom_beneficiaire,
       pays_beneficiaire : props.envoie.infoEnvoie.pays_beneficiaire,
       montant_beneficiaire : props.envoie.infoEnvoie.montant_beneficiaire,
@@ -91,7 +90,7 @@ function FormEnvoiAbonneEnglish(props)
         <p ><i><b className='text-dark'>Subscriber ID : </b><b className='couleur2'>{props.abonne.infoAbonne.code_abonne}</b></i></p>
         </Col>
         <Col xs={6}>
-        <p ><i><b className='text-dark'>Subscriber full name : </b><b className='couleur2'>{props.abonne.infoAbonne.prenom_expediteur} {props.abonne.infoAbonne.nom_expediteur} {props.abonne.infoAbonne.postnom_expediteur}</b></i></p>
+        <p ><i><b className='text-dark'>Subscriber full name : </b><b className='couleur2'>{props.abonne.infoAbonne.prenom_expediteur} {props.abonne.infoAbonne.nom_expediteur} </b></i></p>
         </Col>
     </Row>
 
@@ -102,26 +101,21 @@ function FormEnvoiAbonneEnglish(props)
       <p className='couleur2'><b><u>Receiver </u></b></p>
     </Row>
     <Row className='justify-content-center'>
-    <Col xs = {4}>
+    <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'><span className='text-danger'>*</span> First Name </Form.Label>
         <Form.Control name="prenom_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.prenom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='First Name'  required/>
          </Form.Group>
         </Col>
 
-        <Col xs = {4}>
+        <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'><span className='text-danger'>*</span> Last Name </Form.Label>  
         <Form.Control name="nom_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.nom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Last Name' required/>
          </Form.Group>
         </Col>
 
-    <Col xs = {4}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'> Middle Name (optional)</Form.Label>
-        <Form.Control name="postnom_beneficiaire"  onChange={e=>inputChanged(e)} type="text" placeholder='Middle Name' />
-         </Form.Group>
-        </Col>
+    
 
         
 
@@ -226,12 +220,7 @@ function FormEnvoiAbonneEnglish(props)
          </Form.Group>
         </Col>
 
-        <Col xs = {12}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'> Middle Name (optional)</Form.Label>  
-        <Form.Control name="postnom_beneficiaire" onChange={e=>inputChanged(e)} type="text" placeholder='Last Name' />
-         </Form.Group>
-        </Col>
+        
 
         
     </Row>

@@ -19,7 +19,6 @@ function FormEnvoiAbonneFrench(props)
 
     const[envoieAbonne,setEnvoieAbonne] = useState({infoEnvoieAbonne :{
       nom_beneficiaire : props.envoie.infoEnvoie.nom_beneficiaire,
-      postnom_beneficiaire : props.envoie.infoEnvoie.postnom_beneficiaire,
       prenom_beneficiaire : props.envoie.infoEnvoie.prenom_beneficiaire,
       pays_beneficiaire : props.envoie.infoEnvoie.pays_beneficiaire,
       montant_beneficiaire : props.envoie.infoEnvoie.montant_beneficiaire,
@@ -101,26 +100,21 @@ function FormEnvoiAbonneFrench(props)
       <p className='couleur2'><b><u> Beneficiare Informations</u></b></p>
     </Row>
     <Row className='justify-content-center'>
-    <Col xs = {4}>
+    <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='couleur2'><span className='text-danger'>*</span> Prénom</Form.Label>
         <Form.Control name="prenom_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.prenom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Prénom'  required/>
          </Form.Group>
         </Col>
 
-    <Col xs = {4}>
+    <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'><span className='text-danger'>*</span> Nom</Form.Label>
         <Form.Control name="nom_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.nom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Nom'  required/>
          </Form.Group>
         </Col>
 
-        <Col xs = {4}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'> Postnom (optional)</Form.Label>  
-        <Form.Control name="postnom_beneficiaire"  onChange={e=>inputChanged(e)} type="text" placeholder='Postnom' />
-         </Form.Group>
-        </Col>
+
 
         
     </Row>
@@ -198,7 +192,7 @@ function FormEnvoiAbonneFrench(props)
         <p ><i><b className='text-light'>Code Abonné : </b><b className='couleur2'>{props.abonne.infoAbonne.code_abonne}</b></i></p>
         </Col>
         <Col xs={6}>
-        <p ><i><b className='text-light'>Noms Abonné : </b><b className='couleur2'>{props.abonne.infoAbonne.prenom_expediteur} {props.abonne.infoAbonne.nom_expediteur} {props.abonne.infoAbonne.postnom_expediteur}</b></i></p>
+        <p ><i><b className='text-light'>Noms Abonné : </b><b className='couleur2'>{props.abonne.infoAbonne.prenom_expediteur} {props.abonne.infoAbonne.nom_expediteur}</b></i></p>
         </Col>
     </Row>
 

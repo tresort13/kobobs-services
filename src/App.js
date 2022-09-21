@@ -173,14 +173,11 @@ function App() {
     const localData = localStorage.getItem('envoie');
     return localData ? JSON.parse(localData) : {infoEnvoie :{
       nom_expediteur : '',
-      postnom_expediteur : '***',
       prenom_expediteur : '',
       adresse_expediteur : '',
-      email_expediteur : '***',
       numero_expediteur: '',
       pays_expediteur : 'UK',
       nom_beneficiaire : '',
-      postnom_beneficiaire : '***',
       prenom_beneficiaire : '',
       pays_beneficiaire : 'RD Congo',
       montant_beneficiaire : '',
@@ -203,14 +200,11 @@ function App() {
   {
     setEnvoie({infoEnvoie :{
       nom_expediteur : donne.nom_expediteur,
-      postnom_expediteur :donne.postnom_expediteur,
       prenom_expediteur : donne.prenom_expediteur,
       adresse_expediteur : donne.adresse_expediteur,
-      email_expediteur : donne.email_expediteur,
       numero_expediteur: donne.numero_expediteur,
       pays_expediteur : donne.pays_expediteur,
       nom_beneficiaire : donne.nom_beneficiaire,
-      postnom_beneficiaire : donne.postnom_beneficiaire,
       prenom_beneficiaire : donne.prenom_beneficiaire,
       pays_beneficiaire : donne.pays_beneficiaire,
       montant_beneficiaire : donne.montant_beneficiaire,
@@ -229,14 +223,11 @@ function App() {
     const localData = localStorage.getItem('envoie2');
     return localData ? JSON.parse(localData) : {infoEnvoie :{
       nom_expediteur : '',
-      postnom_expediteur : '***',
       prenom_expediteur : '',
       adresse_expediteur : '',
-      email_expediteur : '***',
       numero_expediteur: '',
       pays_expediteur : 'UK',
       nom_beneficiaire : '',
-      postnom_beneficiaire : '***',
       prenom_beneficiaire : '',
       pays_beneficiaire : 'RD Congo',
       montant_beneficiaire : '',
@@ -262,14 +253,11 @@ function App() {
   {
     setEnvoie2({infoEnvoie :{
       nom_expediteur : donne[0].nom_expediteur,
-      postnom_expediteur :donne[0].postnom_expediteur,
       prenom_expediteur : donne[0].prenom_expediteur,
       adresse_expediteur : donne[0].adresse_expediteur,
-      email_expediteur : donne[0].email_expediteur,
       numero_expediteur: donne[0].numero_expediteur,
       pays_expediteur : donne[0].pays_expediteur,
       nom_beneficiaire : donne[0].nom_beneficiaire,
-      postnom_beneficiaire : donne[0].postnom_beneficiaire,
       prenom_beneficiaire : donne[0].prenom_beneficiaire,
       pays_beneficiaire : donne[0].pays_beneficiaire,
       montant_envoie_sans_frais : donne[0].montant_envoie_sans_frais,
@@ -292,14 +280,11 @@ function App() {
     const localData = localStorage.getItem('envoie3');
     return localData ? JSON.parse(localData) : {infoEnvoie :{
       nom_expediteur : '',
-      postnom_expediteur : '***',
       prenom_expediteur : '',
       adresse_expediteur : '',
-      email_expediteur : '***',
       numero_expediteur: '',
       pays_expediteur : 'UK',
       nom_beneficiaire : '',
-      postnom_beneficiaire : '***',
       prenom_beneficiaire : '',
       pays_beneficiaire : 'RD Congo',
       montant_envoie_sans_frais : '',
@@ -327,14 +312,11 @@ function App() {
   {
     setEnvoie3({infoEnvoie :{
       nom_expediteur : donne.nom_expediteur,
-      postnom_expediteur :donne.postnom_expediteur,
       prenom_expediteur : donne.prenom_expediteur,
       adresse_expediteur : donne.adresse_expediteur,
-      email_expediteur : donne.email_expediteur,
       numero_expediteur: donne.numero_expediteur,
       pays_expediteur : donne.pays_expediteur,
       nom_beneficiaire : donne.nom_beneficiaire,
-      postnom_beneficiaire : donne.postnom_beneficiaire,
       prenom_beneficiaire : donne.prenom_beneficiaire,
       pays_beneficiaire : donne.pays_beneficiaire,
       montant_beneficiaire : donne.montant_beneficiaire,
@@ -357,10 +339,8 @@ function App() {
     const localData = localStorage.getItem('abonne');
     return localData ? JSON.parse(localData) : {infoAbonne :{
       nom_expediteur : '',
-      postnom_expediteur : '***',
       prenom_expediteur : '',
       adresse_expediteur : '',
-      email_expediteur : '***',
       numero_expediteur: '',
       pays_expediteur : 'UK',
       code_abonne : ''
@@ -377,10 +357,8 @@ function App() {
   {
     setAbonne({infoAbonne : {
       nom_expediteur : donne[0].nom_expediteur,
-      postnom_expediteur :donne[0].postnom_expediteur,
       prenom_expediteur : donne[0].prenom_expediteur,
       adresse_expediteur : donne[0].adresse_expediteur,
-      email_expediteur : donne[0].email_expediteur,
       numero_expediteur: donne[0].numero_expediteur,
       pays_expediteur : donne[0].pays_expediteur,
       code_abonne : donne[0].code_abonne
@@ -391,14 +369,11 @@ function App() {
   {
     setEnvoie({infoEnvoie :{
       nom_expediteur : donne1.infoAbonne.nom_expediteur,
-      postnom_expediteur :donne1.infoAbonne.postnom_expediteur,
       prenom_expediteur : donne1.infoAbonne.prenom_expediteur,
       adresse_expediteur : donne1.infoAbonne.adresse_expediteur,
-      email_expediteur : donne1.infoAbonne.email_expediteur,
       numero_expediteur: donne1.infoAbonne.numero_expediteur,
       pays_expediteur : donne1.infoAbonne.pays_expediteur,
       nom_beneficiaire : donne2.nom_beneficiaire,
-      postnom_beneficiaire : donne2.postnom_beneficiaire,
       prenom_beneficiaire : donne2.prenom_beneficiaire,
       pays_beneficiaire : donne2.pays_beneficiaire,
       montant_beneficiaire : donne2.montant_beneficiaire,
@@ -418,10 +393,8 @@ function App() {
     const localData = localStorage.getItem('abonneInfo');
     return localData ? JSON.parse(localData) : {infoAbonne :{
       nom_expediteur : '',
-      postnom_expediteur : '***',
       prenom_expediteur : '',
       adresse_expediteur : '',
-      email_expediteur : '***',
       numero_expediteur: '',
       pays_expediteur : 'UK',
       code_abonne : ''
@@ -438,10 +411,8 @@ function App() {
   {
     setAbonneInfo({infoAbonne : {
       nom_expediteur : donne[0].nom_expediteur,
-      postnom_expediteur :donne[0].postnom_expediteur,
       prenom_expediteur : donne[0].prenom_expediteur,
       adresse_expediteur : donne[0].adresse_expediteur,
-      email_expediteur : donne[0].email_expediteur,
       numero_expediteur: donne[0].numero_expediteur,
       pays_expediteur : donne[0].pays_expediteur,
       code_abonne : donne[0].code_abonne

@@ -22,7 +22,6 @@ function FormEnvoiAbonne(props)
 
     const[envoieAbonne,setEnvoieAbonne] = useState({infoEnvoieAbonne :{
       nom_beneficiaire : props.envoie.infoEnvoie.nom_beneficiaire,
-      postnom_beneficiaire : props.envoie.infoEnvoie.postnom_beneficiaire,
       prenom_beneficiaire : props.envoie.infoEnvoie.prenom_beneficiaire,
       pays_beneficiaire : props.envoie.infoEnvoie.pays_beneficiaire,
       montant_beneficiaire : props.envoie.infoEnvoie.montant_beneficiaire,
@@ -93,7 +92,7 @@ function FormEnvoiAbonne(props)
         <p ><i><b className='text-dark'>Code Ya Abonné : </b><b className='couleur2'>{props.abonne.infoAbonne.code_abonne}</b></i></p>
         </Col>
         <Col xs={6}>
-        <p ><i><b className='text-dark'>Kombo Ya Abonné : </b><b className='couleur2'>{props.abonne.infoAbonne.prenom_expediteur} {props.abonne.infoAbonne.nom_expediteur} {props.abonne.infoAbonne.postnom_expediteur}</b></i></p>
+        <p ><i><b className='text-dark'>Kombo Ya Abonné : </b><b className='couleur2'>{props.abonne.infoAbonne.prenom_expediteur} {props.abonne.infoAbonne.nom_expediteur} </b></i></p>
         </Col>
     </Row>
 
@@ -105,27 +104,21 @@ function FormEnvoiAbonne(props)
     </Row>
     <Row className='justify-content-center'>
 
-    <Col xs = {4}>
+    <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'><span className='text-danger'>*</span> Kombo ya Mukristu </Form.Label>
         <Form.Control name="prenom_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.prenom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya Mukristu'  required/>
          </Form.Group>
         </Col>
 
-    <Col xs = {4}>
+    <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'><span className='text-danger'>*</span> Kombo Ya Libota</Form.Label>
         <Form.Control name="nom_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.nom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya Libota'  required/>
          </Form.Group>
         </Col>
 
-        <Col xs = {4}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'> Kombo ya authenticité (eza obligatoire te)</Form.Label>  
-        <Form.Control name="postnom_beneficiaire"  onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya authenticité' />
-         </Form.Group>
-        </Col>
-
+       
         
     </Row>
 
@@ -225,12 +218,7 @@ function FormEnvoiAbonne(props)
          </Form.Group>
         </Col>
 
-        <Col xs = {12}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'> Kombo ya authenticité (eza obligatoire te)</Form.Label>  
-        <Form.Control name="postnom_beneficiaire"  onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya authenticité' />
-         </Form.Group>
-        </Col>
+      
 
        
     </Row>

@@ -109,19 +109,21 @@ function FormEnvoiAbonneEnglish(props)
          </Form.Group>
         </Col>
 
-    <Col xs = {4}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className='text-danger'>*</span> Middle Name</Form.Label>
-        <Form.Control name="nom_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.nom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Middle Name'  required/>
-         </Form.Group>
-        </Col>
-
         <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'><span className='text-danger'>*</span> Last Name </Form.Label>  
-        <Form.Control name="postnom_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.postnom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Last Name' required/>
+        <Form.Control name="nom_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.nom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Last Name' required/>
          </Form.Group>
         </Col>
+
+    <Col xs = {4}>
+        <Form.Group className="mb-3" controlId="formBasicText" >
+        <Form.Label className='text-dark'> Middle Name (optional)</Form.Label>
+        <Form.Control name="postnom_beneficiaire"  onChange={e=>inputChanged(e)} type="text" placeholder='Middle Name' />
+         </Form.Group>
+        </Col>
+
+        
 
         
     </Row>
@@ -219,15 +221,15 @@ function FormEnvoiAbonneEnglish(props)
 
     <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className='text-danger'>*</span> Middle Name</Form.Label>
+        <Form.Label className='text-dark'><span className='text-danger'>*</span>Last Name </Form.Label>
         <Form.Control name="nom_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.nom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Middle Name'  required/>
          </Form.Group>
         </Col>
 
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className='text-danger'>*</span> Last Name </Form.Label>  
-        <Form.Control name="postnom_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.postnom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Last Name' required/>
+        <Form.Label className='text-dark'> Middle Name (optional)</Form.Label>  
+        <Form.Control name="postnom_beneficiaire" onChange={e=>inputChanged(e)} type="text" placeholder='Last Name' />
          </Form.Group>
         </Col>
 

@@ -173,14 +173,14 @@ function App() {
     const localData = localStorage.getItem('envoie');
     return localData ? JSON.parse(localData) : {infoEnvoie :{
       nom_expediteur : '',
-      postnom_expediteur : '',
+      postnom_expediteur : '***',
       prenom_expediteur : '',
       adresse_expediteur : '',
-      email_expediteur : '',
+      email_expediteur : '***',
       numero_expediteur: '',
       pays_expediteur : 'UK',
       nom_beneficiaire : '',
-      postnom_beneficiaire : '',
+      postnom_beneficiaire : '***',
       prenom_beneficiaire : '',
       pays_beneficiaire : 'RD Congo',
       montant_beneficiaire : '',
@@ -229,14 +229,14 @@ function App() {
     const localData = localStorage.getItem('envoie2');
     return localData ? JSON.parse(localData) : {infoEnvoie :{
       nom_expediteur : '',
-      postnom_expediteur : '',
+      postnom_expediteur : '***',
       prenom_expediteur : '',
       adresse_expediteur : '',
-      email_expediteur : '',
+      email_expediteur : '***',
       numero_expediteur: '',
       pays_expediteur : 'UK',
       nom_beneficiaire : '',
-      postnom_beneficiaire : '',
+      postnom_beneficiaire : '***',
       prenom_beneficiaire : '',
       pays_beneficiaire : 'RD Congo',
       montant_beneficiaire : '',
@@ -292,14 +292,14 @@ function App() {
     const localData = localStorage.getItem('envoie3');
     return localData ? JSON.parse(localData) : {infoEnvoie :{
       nom_expediteur : '',
-      postnom_expediteur : '',
+      postnom_expediteur : '***',
       prenom_expediteur : '',
       adresse_expediteur : '',
-      email_expediteur : '',
+      email_expediteur : '***',
       numero_expediteur: '',
       pays_expediteur : 'UK',
       nom_beneficiaire : '',
-      postnom_beneficiaire : '',
+      postnom_beneficiaire : '***',
       prenom_beneficiaire : '',
       pays_beneficiaire : 'RD Congo',
       montant_envoie_sans_frais : '',
@@ -357,10 +357,10 @@ function App() {
     const localData = localStorage.getItem('abonne');
     return localData ? JSON.parse(localData) : {infoAbonne :{
       nom_expediteur : '',
-      postnom_expediteur : '',
+      postnom_expediteur : '***',
       prenom_expediteur : '',
       adresse_expediteur : '',
-      email_expediteur : '',
+      email_expediteur : '***',
       numero_expediteur: '',
       pays_expediteur : 'UK',
       code_abonne : ''
@@ -418,10 +418,10 @@ function App() {
     const localData = localStorage.getItem('abonneInfo');
     return localData ? JSON.parse(localData) : {infoAbonne :{
       nom_expediteur : '',
-      postnom_expediteur : '',
+      postnom_expediteur : '***',
       prenom_expediteur : '',
       adresse_expediteur : '',
-      email_expediteur : '',
+      email_expediteur : '***',
       numero_expediteur: '',
       pays_expediteur : 'UK',
       code_abonne : ''

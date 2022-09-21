@@ -16,11 +16,28 @@ const useState = React.useState
 
 function ConfirmationRetraitInfoEnglish(props)
 {
-  const [modalShow, setModalShow] = React.useState(false);
+  
     const [message,setMessage] = useState("Status of your tracking number")
     const [couleur,setCouleur] = useState("text-dark")
     const navigate = useNavigate()
     
+    const [statusTransfert,setStatusTransfert] = useState("")
+    const [statusColor,setStatusColor] = useState("")
+
+    if(props.envoie2.infoEnvoie.status_retrait === "code retrait en attente de validation")
+    {
+      setStatusTransfert("your tracking number validation is still pending...")
+      setStatusColor("text-danger")
+    }
+    else if(props.envoie2.infoEnvoie.status_retrait === "Code Retrait Valide")
+    {
+      setStatusTransfert("your tracking number has been validated")
+      setStatusColor("text-success")
+    }
+    else{
+      setStatusTransfert("your receiver has picked up the money")
+      setStatusColor("text-success")
+    }
 
 
     const isDesktop = useMediaQuery({
@@ -42,23 +59,23 @@ function ConfirmationRetraitInfoEnglish(props)
         </Col>
     </Row>
 
-    <Row className='justify-content-center pb-3'>
+    <Row className='justify-content-start pb-3'>
       <hr style={{color:"darkorange"}}></hr>
-      <p className='couleur2'><b><u></u></b> </p>
+      <p className='text-dark'>your transfer status : <b className={statusColor}>{statusTransfert}</b> </p>
     </Row>
     <Row className='justify-content-center pb-3' >
 
     <Col xs={6}>
         <p className='text-dark'>Tracking Number : <b className='text-danger'> {props.envoie2.infoEnvoie.code_retrait}</b></p>
         <p className='text-dark'>amount to get by the receiver : <b className='text-danger'>{Number(props.envoie2.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
-        <p className='text-dark'>Receiver full name : <b className='text-dark'>{props.envoie2.infoEnvoie.nom_beneficiaire} {props.envoie2.infoEnvoie.postnom_beneficiaire} {props.envoie2.infoEnvoie.prenom_beneficiaire}</b> </p>
+        <p className='text-dark'>Receiver full name : <b className='text-dark'>{props.envoie2.infoEnvoie.prenom_beneficiaire} {props.envoie2.infoEnvoie.nom_beneficiaire} {props.envoie2.infoEnvoie.postnom_beneficiaire} </b> </p>
         <p className='text-dark'>receiver country : <b className='text-dark'> {props.envoie2.infoEnvoie.pays_beneficiaire}</b></p>
         <p className='text-dark'>Type of service : <b className='text-dark'>{props.envoie2.infoEnvoie.type_service}</b> </p>
        
         </Col>
 
         <Col xs={6}>
-        <p className='text-dark'>Sender full name : <b className='text-dark'>{props.envoie2.infoEnvoie.nom_expediteur} {props.envoie2.infoEnvoie.postnom_expediteur} {props.envoie2.infoEnvoie.prenom_expediteur}</b> </p>
+        <p className='text-dark'>Sender full name : <b className='text-dark'>{props.envoie2.infoEnvoie.prenom_expediteur} {props.envoie2.infoEnvoie.nom_expediteur} {props.envoie2.infoEnvoie.postnom_expediteur} </b> </p>
         <p className='text-dark'>sender country : <b className='text-dark'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
         <p className='text-dark'>Mobile Money Number: <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
         <p className='text-dark'>date and time : <b className='text-dark'> {JSON.stringify(props.envoie2.infoEnvoie.date_heure_operation)}</b></p>
@@ -92,18 +109,18 @@ function ConfirmationRetraitInfoEnglish(props)
         </Col>
     </Row>
 
-    <Row className='justify-content-center pb-3'>
+    <Row className='justify-content-start pb-3'>
       <hr style={{color:"darkorange"}}></hr>
-      <p className='couleur2'><b><u></u></b> </p>
+      <p className='text-dark'>your transfer status : <b className={statusColor}>{statusTransfert}</b> </p>
     </Row>
     <Row className='justify-content-start pb-3' >
     <Col xs={12}>
         <p className='text-dark'>Tracking Number : <b className='text-danger'> {props.envoie2.infoEnvoie.code_retrait}</b></p>
         <p className='text-dark'>amount to get by the receiver : <b className='text-danger'>{Number(props.envoie2.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
-        <p className='text-dark'>Receiver full name : <b className='text-dark'>{props.envoie2.infoEnvoie.nom_beneficiaire} {props.envoie2.infoEnvoie.postnom_beneficiaire} {props.envoie2.infoEnvoie.prenom_beneficiaire}</b> </p>
+        <p className='text-dark'>Receiver full name : <b className='text-dark'>{props.envoie2.infoEnvoie.prenom_beneficiaire} {props.envoie2.infoEnvoie.nom_beneficiaire} {props.envoie2.infoEnvoie.postnom_beneficiaire} </b> </p>
         <p className='text-dark'>receiver country : <b className='text-dark'> {props.envoie2.infoEnvoie.pays_beneficiaire}</b></p>
         <p className='text-dark'>Type of service : <b className='text-dark'>{props.envoie2.infoEnvoie.type_service}</b> </p>
-        <p className='text-dark'>Sender full name : <b className='text-dark'>{props.envoie2.infoEnvoie.nom_expediteur} {props.envoie2.infoEnvoie.postnom_expediteur} {props.envoie2.infoEnvoie.prenom_expediteur}</b> </p>
+        <p className='text-dark'>Sender full name : <b className='text-dark'>{props.envoie2.infoEnvoie.prenom_expediteur} {props.envoie2.infoEnvoie.nom_expediteur} {props.envoie2.infoEnvoie.postnom_expediteur} </b> </p>
         <p className='text-dark'>sender country : <b className='text-dark'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
         <p className='text-dark'>Mobile Money Number: <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
         <p className='text-dark'>date and time : <b className='text-dark'> {JSON.stringify(props.envoie2.infoEnvoie.date_heure_operation)}</b></p>

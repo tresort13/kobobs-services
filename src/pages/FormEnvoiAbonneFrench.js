@@ -103,6 +103,13 @@ function FormEnvoiAbonneFrench(props)
     <Row className='justify-content-center'>
     <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
+        <Form.Label className='couleur2'><span className='text-danger'>*</span> Prénom</Form.Label>
+        <Form.Control name="prenom_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.prenom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Prénom'  required/>
+         </Form.Group>
+        </Col>
+
+    <Col xs = {4}>
+        <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'><span className='text-danger'>*</span> Nom</Form.Label>
         <Form.Control name="nom_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.nom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Nom'  required/>
          </Form.Group>
@@ -110,17 +117,12 @@ function FormEnvoiAbonneFrench(props)
 
         <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className='text-danger'>*</span> Postnom</Form.Label>  
-        <Form.Control name="postnom_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.postnom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Postnom' required/>
+        <Form.Label className='text-dark'> Postnom (optional)</Form.Label>  
+        <Form.Control name="postnom_beneficiaire"  onChange={e=>inputChanged(e)} type="text" placeholder='Postnom' />
          </Form.Group>
         </Col>
 
-        <Col xs = {4}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'><span className='text-danger'>*</span> Prénom</Form.Label>
-        <Form.Control name="prenom_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.prenom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Prénom'  required/>
-         </Form.Group>
-        </Col>
+        
     </Row>
 
     <Row className='justify-content-center'>
@@ -209,6 +211,13 @@ function FormEnvoiAbonneFrench(props)
     <Row className='justify-content-center'>
     <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
+        <Form.Label className='text-dark'><span className='text-danger'>*</span> Prénom</Form.Label>
+        <Form.Control name="prenom_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.prenom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Prénom'  required/>
+         </Form.Group>
+        </Col>
+
+    <Col xs = {12}>
+        <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'><span className='text-danger'>*</span> Nom</Form.Label>
         <Form.Control name="nom_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.nom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Nom'  required/>
          </Form.Group>
@@ -216,17 +225,12 @@ function FormEnvoiAbonneFrench(props)
 
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className='text-danger'>*</span> Postnom</Form.Label>  
-        <Form.Control name="postnom_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.postnom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Postnom' required/>
+        <Form.Label className='text-dark'> Postnom (optional)</Form.Label>  
+        <Form.Control name="postnom_beneficiaire"  onChange={e=>inputChanged(e)} type="text" placeholder='Postnom' />
          </Form.Group>
         </Col>
 
-        <Col xs = {12}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className='text-danger'>*</span> Prénom</Form.Label>
-        <Form.Control name="prenom_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.prenom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Prénom'  required/>
-         </Form.Group>
-        </Col>
+       
     </Row>
 
     <Row className='justify-content-center'>

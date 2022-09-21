@@ -104,6 +104,14 @@ function FormEnvoiAbonne(props)
       <p className='couleur2'><b><u>Mozui </u></b></p>
     </Row>
     <Row className='justify-content-center'>
+
+    <Col xs = {4}>
+        <Form.Group className="mb-3" controlId="formBasicText" >
+        <Form.Label className='text-dark'><span className='text-danger'>*</span> Kombo ya Mukristu </Form.Label>
+        <Form.Control name="prenom_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.prenom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya Mukristu'  required/>
+         </Form.Group>
+        </Col>
+
     <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'><span className='text-danger'>*</span> Kombo Ya Libota</Form.Label>
@@ -113,17 +121,12 @@ function FormEnvoiAbonne(props)
 
         <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className='text-danger'>*</span> Kombo ya authenticité </Form.Label>  
-        <Form.Control name="postnom_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.postnom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya authenticité' required/>
+        <Form.Label className='text-dark'> Kombo ya authenticité (eza obligatoire te)</Form.Label>  
+        <Form.Control name="postnom_beneficiaire"  onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya authenticité' />
          </Form.Group>
         </Col>
 
-        <Col xs = {4}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className='text-danger'>*</span> Kombo ya Mukristu </Form.Label>
-        <Form.Control name="prenom_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.prenom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya Mukristu'  required/>
-         </Form.Group>
-        </Col>
+        
     </Row>
 
     <Row className='justify-content-center'>
@@ -210,6 +213,13 @@ function FormEnvoiAbonne(props)
     <Row className='justify-content-center'>
     <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
+        <Form.Label className='text-dark'><span className='text-danger'>*</span> Kombo ya Mukristu </Form.Label>
+        <Form.Control name="prenom_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.prenom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya Mukristu'  required/>
+         </Form.Group>
+        </Col>
+
+    <Col xs = {12}>
+        <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'><span className='text-danger'>*</span> Kombo Ya Libota</Form.Label>
         <Form.Control name="nom_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.nom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya Libota'  required/>
          </Form.Group>
@@ -217,17 +227,12 @@ function FormEnvoiAbonne(props)
 
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className='text-danger'>*</span> Kombo ya authenticité </Form.Label>  
-        <Form.Control name="postnom_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.postnom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya authenticité' required/>
+        <Form.Label className='text-dark'> Kombo ya authenticité (eza obligatoire te)</Form.Label>  
+        <Form.Control name="postnom_beneficiaire"  onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya authenticité' />
          </Form.Group>
         </Col>
 
-        <Col xs = {12}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className='text-danger'>*</span> Kombo ya Mukristu </Form.Label>
-        <Form.Control name="prenom_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.prenom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya Mukristu'  required/>
-         </Form.Group>
-        </Col>
+       
     </Row>
 
     <Row className='justify-content-center'>

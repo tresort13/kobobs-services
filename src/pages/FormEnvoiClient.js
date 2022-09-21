@@ -5,7 +5,6 @@ import Button from "react-bootstrap/Button";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Image from 'react-bootstrap/Image';
 import {Link,useNavigate} from  'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import Header from './Header';
@@ -109,6 +108,14 @@ function FormEnvoiClient(props)
     </Row>
 
     <Row className='justify-content-center'>
+    <Col xs = {4}>
+        <Form.Group className="mb-3" controlId="formBasicText" >
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Kombo ya Mukristu </Form.Label>
+        <Form.Control name="prenom_expediteur" value={envoie.infoEnvoie.prenom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya Mukristu'  required/>
+       
+         </Form.Group>
+        </Col>
+        
         <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'><span className="text-danger">*</span> Kombo Ya Libota</Form.Label>
@@ -118,19 +125,12 @@ function FormEnvoiClient(props)
 
         <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Kombo ya authenticite</Form.Label>  
-        <Form.Control name="postnom_expediteur" value={envoie.infoEnvoie.postnom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya authenticité' required/>
+        <Form.Label className='text-dark'> Kombo ya authenticité (eza obligatoire te)</Form.Label>  
+        <Form.Control name="postnom_expediteur" onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya authenticité' />
         
          </Form.Group>
         </Col>
 
-        <Col xs = {4}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Kombo ya Mukristu </Form.Label>
-        <Form.Control name="prenom_expediteur" value={envoie.infoEnvoie.prenom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya Mukristu'  required/>
-       
-         </Form.Group>
-        </Col>
     </Row>
 
     <Row className='justify-content-center'>
@@ -144,10 +144,10 @@ function FormEnvoiClient(props)
         </Col>
 
         <Col xs = {4}>
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Email</Form.Label>
+        <Form.Label className='text-dark'> Email (eza obligatoire te)</Form.Label>
         <InputGroup className="mb-3">
         <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
-        <Form.Control name="email_expediteur" value={envoie.infoEnvoie.email_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Email' required/>
+        <Form.Control name="email_expediteur"  onChange={e=>inputChanged(e)} type="text" placeholder='Email' />
 
       </InputGroup>
         </Col>
@@ -182,6 +182,14 @@ function FormEnvoiClient(props)
     <Row className='justify-content-center'>
     <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Kombo ya Mukristu</Form.Label>
+        <Form.Control name="prenom_beneficiaire" value={envoie.infoEnvoie.prenom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya Mukristu'  required/>
+
+         </Form.Group>
+        </Col>
+
+    <Col xs = {4}>
+        <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'><span className="text-danger">*</span> Kombo Ya Libota</Form.Label>
         <Form.Control name="nom_beneficiaire" value={envoie.infoEnvoie.nom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya Libota'    required/>
          </Form.Group>
@@ -189,19 +197,13 @@ function FormEnvoiClient(props)
 
         <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Kombo ya authenticite</Form.Label>  
-        <Form.Control name="postnom_beneficiaire" value={envoie.infoEnvoie.postnom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya authenticité' required/>
+        <Form.Label className='text-dark'> Kombo ya authenticité (eza obligatoire te)</Form.Label>  
+        <Form.Control name="postnom_beneficiaire" onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya authenticité' />
 
          </Form.Group>
         </Col>
 
-        <Col xs = {4}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Kombo ya Mukristu</Form.Label>
-        <Form.Control name="prenom_beneficiaire" value={envoie.infoEnvoie.prenom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya Mukristu'  required/>
 
-         </Form.Group>
-        </Col>
     </Row>
 
     <Row className='justify-content-center'>
@@ -285,6 +287,14 @@ function FormEnvoiClient(props)
     </Row>
 
     <Row className='justify-content-center'>
+    <Col xs = {12}>
+        <Form.Group className="mb-3" controlId="formBasicText" >
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Kombo ya Mukristu </Form.Label>
+        <Form.Control name="prenom_expediteur" value={envoie.infoEnvoie.prenom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya Mukristu'  required/>
+       
+         </Form.Group>
+        </Col>
+
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'><span className="text-danger">*</span> Kombo Ya Libota</Form.Label>
@@ -294,19 +304,13 @@ function FormEnvoiClient(props)
 
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Kombo ya authenticite</Form.Label>  
-        <Form.Control name="postnom_expediteur" value={envoie.infoEnvoie.postnom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya authenticité' required/>
+        <Form.Label className='text-dark'> Kombo ya authenticite (eza obligatoire te)</Form.Label>  
+        <Form.Control name="postnom_expediteur"  onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya authenticité' />
         
          </Form.Group>
         </Col>
 
-        <Col xs = {12}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Kombo ya Mukristu </Form.Label>
-        <Form.Control name="prenom_expediteur" value={envoie.infoEnvoie.prenom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya Mukristu'  required/>
-       
-         </Form.Group>
-        </Col>
+        
     </Row>
 
     <Row className='justify-content-center'>
@@ -320,10 +324,10 @@ function FormEnvoiClient(props)
         </Col>
 
         <Col xs = {12}>
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Email</Form.Label>
+        <Form.Label className='text-dark'> Email (eza obligatoire te)</Form.Label>
         <InputGroup className="mb-3">
         <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
-        <Form.Control name="email_expediteur" value={envoie.infoEnvoie.email_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Email' required/>
+        <Form.Control name="email_expediteur"  onChange={e=>inputChanged(e)} type="text" placeholder='Email' />
 
       </InputGroup>
         </Col>
@@ -357,6 +361,14 @@ function FormEnvoiClient(props)
     </Row>
 
     <Row className='justify-content-center'>
+    
+    <Col xs = {12}>
+        <Form.Group className="mb-3" controlId="formBasicText" >
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Kombo ya Mukristu</Form.Label>
+        <Form.Control name="prenom_beneficiaire" value={envoie.infoEnvoie.prenom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya Mukristu'  required/>
+
+         </Form.Group>
+        </Col>
     <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'><span className="text-danger">*</span> Kombo Ya Libota</Form.Label>
@@ -366,19 +378,13 @@ function FormEnvoiClient(props)
 
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Kombo ya authenticite</Form.Label>  
-        <Form.Control name="postnom_beneficiaire" value={envoie.infoEnvoie.postnom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya authenticité' required/>
+        <Form.Label className='text-dark'> Kombo ya authenticite (eza obligatoire te)</Form.Label>  
+        <Form.Control name="postnom_beneficiaire"  onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya authenticité' />
 
          </Form.Group>
         </Col>
 
-        <Col xs = {12}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Kombo ya Mukristu</Form.Label>
-        <Form.Control name="prenom_beneficiaire" value={envoie.infoEnvoie.prenom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Kombo ya Mukristu'  required/>
-
-         </Form.Group>
-        </Col>
+       
     </Row>
 
     <Row className='justify-content-center'>

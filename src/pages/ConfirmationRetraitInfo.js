@@ -19,6 +19,23 @@ function ConfirmationRetraitInfo(props)
 {
     
     const [message,setMessage] = useState("Informations Ya transfert Na Yo")
+    const [statusTransfert,setStatusTransfert] = useState("")
+    const [statusColor,setStatusColor] = useState("")
+
+    if(props.envoie2.infoEnvoie.status_retrait === "code retrait en attente de validation")
+    {
+      setStatusTransfert("Code ya retrait nayo eza  nanu validé te")
+      setStatusColor("text-danger")
+    }
+    else if(props.envoie2.infoEnvoie.status_retrait === "Code Retrait Valide")
+    {
+      setStatusTransfert("Code ya retrait nayo ekomi valide")
+      setStatusColor("text-success")
+    }
+    else{
+      setStatusTransfert("Motindi nayo esi azui mbongo ")
+      setStatusColor("text-success")
+    }
     
     const isDesktop = useMediaQuery({
         query: "(min-width: 1224px)"
@@ -39,6 +56,10 @@ function ConfirmationRetraitInfo(props)
         </Col>
     </Row>
 
+    <Row className='justify-content-start pb-3'>
+      <hr style={{color:"darkorange"}}></hr>
+      <p className='text-dark'>status ya transfert nayo : <b className={statusColor}>{statusTransfert}</b> </p>
+    </Row>
 
     <Row className='justify-content-center pb-3'>
       <hr style={{color:"darkorange"}}></hr>
@@ -54,7 +75,7 @@ function ConfirmationRetraitInfo(props)
         </Col>
 
         <Col xs={6}>
-        <p className='text-dark'>Kombo Ya Motindi: <b className='text-dark'>{props.envoie2.infoEnvoie.nom_expediteur} {props.envoie2.infoEnvoie.postnom_expediteur} {props.envoie2.infoEnvoie.prenom_expediteur}</b> </p>
+        <p className='text-dark'>Kombo Ya Motindi: <b className='text-dark'>{props.envoie2.infoEnvoie.prenom_expediteur} {props.envoie2.infoEnvoie.nom_expediteur} {props.envoie2.infoEnvoie.postnom_expediteur} </b> </p>
         <p className='text-dark'>Ekolo Ya Motindi: <b className='text-dark'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
         <p className='text-dark'>Numéro Ya Mobile money : <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
         <p className='text-dark'>date na heure : <b className='text-dark'> {JSON.stringify(props.envoie2.infoEnvoie.date_heure_operation)}</b></p>
@@ -88,16 +109,16 @@ function ConfirmationRetraitInfo(props)
 
     <Row className='justify-content-start pb-3'>
       <hr style={{color:"darkorange"}}></hr>
-      <p className='couleur2'><b><u>Page de confirmation de rétrait</u></b> </p>
+      <p className='text-dark'>status ya transfert nayo : <b className={statusColor}><u>{statusTransfert}</u></b> </p>
     </Row>
     <Row className='justify-content-start pb-3' >
     <Col xs={12}>
         <p className='text-dark'>Code Retrait : <b className='text-danger'> {props.envoie2.infoEnvoie.code_retrait}</b></p>
         <p className='text-dark'>Montant à récupérer: <b className='text-danger'>{Number(props.envoie2.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
-        <p className='text-dark'>Noms Beneficiare: <b className='text-dark'>{props.envoie2.infoEnvoie.nom_beneficiaire} {props.envoie2.infoEnvoie.postnom_beneficiaire} {props.envoie2.infoEnvoie.prenom_beneficiaire}</b> </p>
+        <p className='text-dark'>Noms Beneficiare: <b className='text-dark'>{props.envoie2.infoEnvoie.prenom_beneficiaire} {props.envoie2.infoEnvoie.nom_beneficiaire} {props.envoie2.infoEnvoie.postnom_beneficiaire} </b> </p>
         <p className='text-dark'>Pays Beneficiare: <b className='text-dark'> {props.envoie2.infoEnvoie.pays_beneficiaire}</b></p>
         <p className='text-dark'>Type de retrait: <b className='text-dark'>{props.envoie2.infoEnvoie.type_service}</b> </p>
-        <p className='text-dark'>Noms Expediteur: <b className='text-dark'>{props.envoie2.infoEnvoie.nom_expediteur} {props.envoie2.infoEnvoie.postnom_expediteur} {props.envoie2.infoEnvoie.prenom_expediteur}</b> </p>
+        <p className='text-dark'>Noms Expediteur: <b className='text-dark'>{props.envoie2.infoEnvoie.prenom_expediteur} {props.envoie2.infoEnvoie.nom_expediteur} {props.envoie2.infoEnvoie.postnom_expediteur} </b> </p>
         <p className='text-dark'>Pays Expediteur: <b className='text-dark'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
         <p className='text-dark'>Mobile Money: <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
         <p className='text-dark'>date et heure : <b className='text-dark'> {JSON.stringify(props.envoie2.infoEnvoie.date_heure_operation)}</b></p>

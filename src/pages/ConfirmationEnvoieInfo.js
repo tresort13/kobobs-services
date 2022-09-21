@@ -54,12 +54,12 @@ function ConfirmationEnvoieInfo(props)
         <p className='text-dark'>Code Abonné : <b className='text-danger'> {props.envoie3.infoEnvoie.code_abonne} (à retenir)</b></p>
         <p className='text-dark'>Mbongo Yako Zwa: <b className='text-dark'>{Number(props.envoie3.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
         <p className='text-dark'>Mbongo Yako Futa: <b className='text-dark'>{Number(props.envoie3.infoEnvoie.montant_total).toFixed(2)} £</b> </p>
-        <p className='text-dark'>Kombo Ya Motindi: <b className='text-dark'>{props.envoie3.infoEnvoie.nom_expediteur} {props.envoie3.infoEnvoie.postnom_expediteur} {props.envoie3.infoEnvoie.prenom_expediteur}</b> </p>
+        <p className='text-dark'>Kombo Ya Motindi: <b className='text-dark'>{props.envoie3.infoEnvoie.prenom_expediteur}  {props.envoie3.infoEnvoie.nom_expediteur} {props.envoie3.infoEnvoie.postnom_expediteur} </b> </p>
         <p className='text-dark'>Ekolo Ya Motindi: <b className='text-dark'> {props.envoie3.infoEnvoie.pays_expediteur}</b></p>
         </Col>
 
         <Col xs={6} className="text-start">
-        <p className='text-dark'>Kombo Ya Mozui: <b className='text-dark'>{props.envoie3.infoEnvoie.nom_beneficiaire} {props.envoie3.infoEnvoie.postnom_beneficiaire} {props.envoie3.infoEnvoie.prenom_beneficiaire}</b> </p>   
+        <p className='text-dark'>Kombo Ya Mozui: <b className='text-dark'>{props.envoie3.infoEnvoie.prenom_beneficiaire} {props.envoie3.infoEnvoie.nom_beneficiaire} {props.envoie3.infoEnvoie.postnom_beneficiaire} </b> </p>   
         <p className='text-dark'>Ekolo Ya Mozui: <b className='text-dark'> {props.envoie3.infoEnvoie.pays_beneficiaire}</b></p>
         <p className='text-dark'>Nzela Yako Zwa Mbongo: <b className='text-dark'>{props.envoie3.infoEnvoie.type_service}</b> </p>
         <p className='text-dark'>Numéro Ya Mobile money:  <b className='text-dark'>{props.envoie3.infoEnvoie.numero_transfer}</b> </p>
@@ -96,12 +96,12 @@ function ConfirmationEnvoieInfo(props)
     <Row className='justify-content-center pb-3' >
     <Col xs={6} className="text-start">
         <p className='text-dark'>Code Retrait : <b className='text-danger'> {props.envoie3.infoEnvoie.code_retrait} </b></p>
-        <p className='text-dark'>Code Abonné : <b className='text-danger'> {props.envoie3.infoEnvoie.code_abonne} (à retenir)</b></p>
+        <p className='text-dark'>Code Abonné : <b className='text-danger'> {props.envoie3.infoEnvoie.code_abonne} </b></p>
         <p className='text-dark'>Mbongo Yako Zwa: <b className='text-dark'>{Number(props.envoie3.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
         <p className='text-dark'>Mbongo Yako Futa: <b className='text-dark'>{Number(props.envoie3.infoEnvoie.montant_total).toFixed(2)} £</b> </p>
-        <p className='text-dark'>Kombo Ya Motindi: <b className='text-dark'>{props.envoie3.infoEnvoie.nom_expediteur} {props.envoie3.infoEnvoie.postnom_expediteur} {props.envoie3.infoEnvoie.prenom_expediteur}</b> </p>
+        <p className='text-dark'>Kombo Ya Motindi: <b className='text-dark'>{props.envoie3.infoEnvoie.prenom_expediteur} {props.envoie3.infoEnvoie.nom_expediteur} {props.envoie3.infoEnvoie.postnom_expediteur} </b> </p>
         <p className='text-dark'>Ekolo Ya Motindi: <b className='text-dark'> {props.envoie3.infoEnvoie.pays_expediteur}</b></p>
-        <p className='text-dark'>Kombo Ya Mozui: <b className='text-dark'>{props.envoie3.infoEnvoie.nom_beneficiaire} {props.envoie3.infoEnvoie.postnom_beneficiaire} {props.envoie3.infoEnvoie.prenom_beneficiaire}</b> </p>   
+        <p className='text-dark'>Kombo Ya Mozui: <b className='text-dark'>{props.envoie3.infoEnvoie.prenom_beneficiaire} {props.envoie3.infoEnvoie.nom_beneficiaire} {props.envoie3.infoEnvoie.postnom_beneficiaire} </b> </p>   
         <p className='text-dark'>Ekolo Ya Mozui: <b className='text-dark'> {props.envoie3.infoEnvoie.pays_beneficiaire}</b></p>
         <p className='text-dark'>Nzela Yako Zwa Mbongo: <b className='text-dark'>{props.envoie3.infoEnvoie.type_service}</b> </p>
         <p className='text-dark'>Mobile money Numéro: <b className='text-dark'>{props.envoie3.infoEnvoie.numero_transfer}</b> </p>
@@ -144,15 +144,14 @@ function MyVerticallyCenteredModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-        Kotinda Esimbi
+        <p >code ya abonnement : <b className='text-success'>{props.envoie3.infoEnvoie.code_abonne}</b></p>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p className='text-success'><b>Makomi nayo ya transfer etindami malamu</b>   
-        </p>
+        <p >code ya retrait : <b className='text-danger'>{props.envoie3.infoEnvoie.code_retrait}</b></p>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant='warning' onClick={props.onHide}>kanga page</Button>
+        <Button variant='warning' onClick={props.onHide}>ok nazui yango</Button>
       </Modal.Footer>
     </Modal>
   );

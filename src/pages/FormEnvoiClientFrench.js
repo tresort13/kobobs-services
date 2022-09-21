@@ -110,6 +110,14 @@ function FormEnvoiClientFrench(props)
     </Row>
 
     <Row className='justify-content-center'>
+    <Col xs = {4}>
+        <Form.Group className="mb-3" controlId="formBasicText" >
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Prénom</Form.Label>
+        <Form.Control name="prenom_expediteur" value={envoie.infoEnvoie.prenom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Prenom'  required/>
+
+         </Form.Group>
+        </Col>
+
         <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'><span className="text-danger">*</span> Nom</Form.Label>
@@ -119,19 +127,13 @@ function FormEnvoiClientFrench(props)
 
         <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Postnom</Form.Label>  
-        <Form.Control name="postnom_expediteur" value={envoie.infoEnvoie.postnom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Postnom' required/>
+        <Form.Label className='text-dark'> Postnom (optionel)</Form.Label>  
+        <Form.Control name="postnom_expediteur"  onChange={e=>inputChanged(e)} type="text" placeholder='Postnom' />
        
          </Form.Group>
         </Col>
 
-        <Col xs = {4}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Prénom</Form.Label>
-        <Form.Control name="prenom_expediteur" value={envoie.infoEnvoie.prenom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Prenom'  required/>
-
-         </Form.Group>
-        </Col>
+       
     </Row>
 
     <Row className='justify-content-center'>
@@ -145,10 +147,10 @@ function FormEnvoiClientFrench(props)
         </Col>
 
         <Col xs = {4}>
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Email</Form.Label>
+        <Form.Label className='text-dark'> Email (optionel)</Form.Label>
         <InputGroup className="mb-3">
         <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
-        <Form.Control name="email_expediteur" value={envoie.infoEnvoie.email_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Email' required/>
+        <Form.Control name="email_expediteur"  onChange={e=>inputChanged(e)} type="text" placeholder='Email' />
         
       </InputGroup>
         </Col>
@@ -185,6 +187,14 @@ function FormEnvoiClientFrench(props)
     <Row className='justify-content-center'>
     <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Prénom</Form.Label>
+        <Form.Control name="prenom_beneficiaire" value={envoie.infoEnvoie.prenom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Prénom'  required/>
+       
+         </Form.Group>
+        </Col>
+
+    <Col xs = {4}>
+        <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'><span className="text-danger">*</span> Nom</Form.Label>
         <Form.Control name="nom_beneficiaire" value={envoie.infoEnvoie.nom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Nom'    required/>
         
@@ -193,19 +203,13 @@ function FormEnvoiClientFrench(props)
 
         <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Postnom</Form.Label>  
-        <Form.Control name="postnom_beneficiaire" value={envoie.infoEnvoie.postnom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Postnom' required/>
+        <Form.Label className='text-dark'> Postnom (optionel)</Form.Label>  
+        <Form.Control name="postnom_beneficiaire"  onChange={e=>inputChanged(e)} type="text" placeholder='Postnom' />
         
          </Form.Group>
         </Col>
 
-        <Col xs = {4}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Prénom</Form.Label>
-        <Form.Control name="prenom_beneficiaire" value={envoie.infoEnvoie.prenom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Prénom'  required/>
-       
-         </Form.Group>
-        </Col>
+        
     </Row>
 
     <Row className='justify-content-center'>
@@ -290,6 +294,14 @@ function FormEnvoiClientFrench(props)
     </Row>
 
     <Row className='justify-content-center'>
+    <Col xs = {12}>
+        <Form.Group className="mb-3" controlId="formBasicText" >
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Prénom</Form.Label>
+        <Form.Control name="prenom_expediteur" value={envoie.infoEnvoie.prenom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Prenom'  required/>
+
+         </Form.Group>
+        </Col>
+
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'><span className="text-danger">*</span> Nom</Form.Label>
@@ -299,19 +311,13 @@ function FormEnvoiClientFrench(props)
 
         <Col xs =  {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Postnom</Form.Label>  
-        <Form.Control name="postnom_expediteur" value={envoie.infoEnvoie.postnom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Postnom' required/>
+        <Form.Label className='text-dark'> Postnom (optionel)</Form.Label>  
+        <Form.Control name="postnom_expediteur"  onChange={e=>inputChanged(e)} type="text" placeholder='Postnom' />
        
          </Form.Group>
         </Col>
 
-        <Col xs = {12}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Prénom</Form.Label>
-        <Form.Control name="prenom_expediteur" value={envoie.infoEnvoie.prenom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Prenom'  required/>
-
-         </Form.Group>
-        </Col>
+        
     </Row>
 
     <Row className='justify-content-center'>
@@ -325,10 +331,10 @@ function FormEnvoiClientFrench(props)
         </Col>
 
         <Col xs = {12}>
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Email</Form.Label>
+        <Form.Label className='text-dark'> Email (optionel)</Form.Label>
         <InputGroup className="mb-3">
         <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
-        <Form.Control name="email_expediteur" value={envoie.infoEnvoie.email_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Email' required/>
+        <Form.Control name="email_expediteur"  onChange={e=>inputChanged(e)} type="text" placeholder='Email' />
         
       </InputGroup>
         </Col>
@@ -365,6 +371,15 @@ function FormEnvoiClientFrench(props)
     <Row className='justify-content-center'>
     <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Prénom</Form.Label>
+        <Form.Control name="prenom_beneficiaire" value={envoie.infoEnvoie.prenom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Prénom'  required/>
+       
+         </Form.Group>
+        </Col>
+
+
+    <Col xs = {12}>
+        <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'><span className="text-danger">*</span> Nom</Form.Label>
         <Form.Control name="nom_beneficiaire" value={envoie.infoEnvoie.nom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Nom'    required/>
         
@@ -373,19 +388,13 @@ function FormEnvoiClientFrench(props)
 
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Postnom</Form.Label>  
-        <Form.Control name="postnom_beneficiaire" value={envoie.infoEnvoie.postnom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Postnom' required/>
+        <Form.Label className='text-dark'> Postnom (optionel)</Form.Label>  
+        <Form.Control name="postnom_beneficiaire"  onChange={e=>inputChanged(e)} type="text" placeholder='Postnom' />
         
          </Form.Group>
         </Col>
 
-        <Col xs = {12}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Prénom</Form.Label>
-        <Form.Control name="prenom_beneficiaire" value={envoie.infoEnvoie.prenom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Prénom'  required/>
-       
-         </Form.Group>
-        </Col>
+        
     </Row>
 
     <Row className='justify-content-center'>

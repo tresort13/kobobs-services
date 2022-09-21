@@ -40,7 +40,7 @@ function HeaderFrench(props)
     {isDesktop && <Container fluid className="bg-dark mx-auto" >
     <Row>
     <Col xs={2} className="my-auto mx-auto text-center justify-content-center">
-          <Link to="/" style={{textDecoration:"none"}}>
+          <Link to="/home_french" style={{textDecoration:"none"}}>
           <Image  src={require('./kobo_logo.JPG')}  className='rounded-pill ' style={{width:130}}></Image>
           </Link>
         </Col>
@@ -74,7 +74,7 @@ function HeaderFrench(props)
         </Col>
 
         <Col xs={6} className="my-auto mx-auto my-auto text-start">
-          <Link to="/" style={{textDecoration:"none"}}>
+          <Link to="/home_french" style={{textDecoration:"none"}}>
           <p className="display-6 text-secondary">KOBO BUSINESS SERVICES</p>
           </Link>
         </Col>
@@ -112,7 +112,7 @@ function HeaderFrench(props)
     <Row>
         
         <Col xs={"auto"} className="mx-auto my-auto text-center">
-        <a href="/" style={{textDecoration:"none"}}>
+        <a href="/home_french" style={{textDecoration:"none"}}>
           <Image  src={require('./kobo_logo.JPG')}  className='rounded-pill ' style={{width:80}}></Image>
           </a>
         </Col>

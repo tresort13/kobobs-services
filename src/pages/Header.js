@@ -40,7 +40,7 @@ function Header(props)
     {isDesktop && <Container fluid className="bg-dark mx-auto" >
     <Row>
     <Col xs={2} className="my-auto mx-auto text-center justify-content-center">
-          <Link to="/" style={{textDecoration:"none"}}>
+          <Link to="/home_lingala" style={{textDecoration:"none"}}>
           <Image  src={require('./kobo_logo.JPG')}  className='rounded-pill ' style={{width:130}}></Image>
           </Link>
         </Col>
@@ -74,7 +74,7 @@ function Header(props)
         </Col>
 
         <Col xs={6} className="my-auto mx-auto my-auto text-start">
-          <Link to="/" style={{textDecoration:"none"}}>
+          <Link to="/home_lingala" style={{textDecoration:"none"}}>
           <p className="display-6 text-secondary">KOBO BUSINESS SERVICES</p>
           </Link>
         </Col>

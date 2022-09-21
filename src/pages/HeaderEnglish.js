@@ -22,11 +22,16 @@ import Modal from 'react-bootstrap/Modal';
 function HeaderEnglish(props)
 {
     const [theTime, setTheTime] = useState(new Date().toLocaleString())
-    const [show, setShow] = useState(false);
 
+    const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const [modalShow, setModalShow] = React.useState(false);
+
+
+    const [show2, setShow2] = useState(false);
+    const handleClose2 = () => setShow2(false);
+    const handleShow2 = () => setShow2(true);
+    
 
     const isDesktop = useMediaQuery({
       query: "(min-width: 1224px)"
@@ -74,7 +79,7 @@ function HeaderEnglish(props)
                   <NavDropdown.Divider />
                   <Nav.Link ><b onClick={handleShow}>Send Money</b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link ><b >Contact us</b></Nav.Link>
+                  <Nav.Link ><b onClick={handleShow2} >Contact us</b></Nav.Link>
                 </Nav>
                
               </Offcanvas.Body>
@@ -115,14 +120,28 @@ function HeaderEnglish(props)
         </Col>
     </Row>
    
-    <Offcanvas show={show} onHide={handleClose}  style={{height:550}}>
+    <Offcanvas show={show} onHide={handleClose}  style={{height:300}}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 text-secondary text-end"><b><u>Sending money option</u></b></i> </Offcanvas.Title>
+          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 text-secondary text-center"><b><u>Sending money </u></b></i> </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
         <Nav justify menuVariant="dark"  className="navbar justify-content-end flex-grow-1 pe-3 flex-column">
-        <Nav.Link href="/form_envoie_client_english"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>First time to send money</i></Button></Nav.Link>
-        <Nav.Link href="/form_envoie_abonne_english"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>I am already a subscriber</i></Button></Nav.Link>
+        <Nav.Link href="/form_envoie_client_english"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-dark'><i className='text-light'>First time to send money</i></Button></Nav.Link>
+        <Nav.Link href="/form_envoie_abonne_english"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-dark'><i className='text-light'>I am already a subscriber</i></Button></Nav.Link>
+         </Nav>
+        </Offcanvas.Body>
+         </Offcanvas>
+
+         <Offcanvas show={show2} onHide={handleClose2}  style={{height:300}}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 text-secondary text-center"><b><u>Contact us </u></b></i> </Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+        <Nav justify menuVariant="dark"  className="navbar justify-content-end flex-grow-1 pe-3 flex-column">
+        <p className='text-dark'>mobile : <b>00447417588363</b>   
+        </p>
+        <p className='text-dark'>email : <b>gisele.makaba@kobobs.com</b>   
+        </p>
          </Nav>
         </Offcanvas.Body>
          </Offcanvas>

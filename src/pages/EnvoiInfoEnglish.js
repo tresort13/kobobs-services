@@ -130,8 +130,8 @@ console.log(props.envoie.infoEnvoie)
         <Col xs={6} className="text-start">
         <p className='text-dark'>First Name : <b className='text-dark'>{props.envoie.infoEnvoie.prenom_expediteur}</b> </p>
 
-        <p className='text-dark'>Last Name : <b className='text-dark'>{props.envoie.infoEnvoie.postnom_expediteur}</b>  </p>
-        <p className='text-dark'>Middle Name : <b className='text-dark'>{props.envoie.infoEnvoie.nom_expediteur}</b> </p>
+        <p className='text-dark'>Last Name : <b className='text-dark'>{props.envoie.infoEnvoie.nom_expediteur}</b>  </p>
+        <p className='text-dark'>Middle Name : <b className='text-dark'>{props.envoie.infoEnvoie.postnom_expediteur}</b> </p>
         <p className='text-dark'>Adress : <b className='text-dark'>{props.envoie.infoEnvoie.adresse_expediteur}</b> </p> 
         </Col>
 
@@ -151,12 +151,12 @@ console.log(props.envoie.infoEnvoie)
 
         <Col xs={6} className="text-start">
         <p className='text-dark'>First Name : <b className='text-dark'>{props.envoie.infoEnvoie.prenom_beneficiaire} </b> </p>
-        <p className='text-dark'>Last Name :<b className='text-dark'>{props.envoie.infoEnvoie.postnom_beneficiaire}</b> </p>
+        <p className='text-dark'>Last Name :<b className='text-dark'>{props.envoie.infoEnvoie.nom_beneficiaire}</b> </p>
 
         </Col>
 
         <Col xs={6} className="text-start">
-        <p className='text-dark'>Middle Name : <b className='text-dark'>{props.envoie.infoEnvoie.nom_beneficiaire}</b>  </p>
+        <p className='text-dark'>Middle Name : <b className='text-dark'>{props.envoie.infoEnvoie.postnom_beneficiaire}</b>  </p>
         <p className='text-dark'>country : <b className='text-dark'>{props.envoie.infoEnvoie.pays_beneficiaire}</b> </p>
         </Col>
     </Row>
@@ -220,8 +220,8 @@ console.log(props.envoie.infoEnvoie)
         <Col xs={12} className="text-start">
         <p className='text-dark'>First Name : <b className='text-dark'>{props.envoie.infoEnvoie.prenom_expediteur}</b> </p>
 
-        <p className='text-dark'>Last Name : <b className='text-dark'>{props.envoie.infoEnvoie.postnom_expediteur}</b>  </p>
-        <p className='text-dark'>Middle Name : <b className='text-dark'>{props.envoie.infoEnvoie.nom_expediteur}</b> </p>
+        <p className='text-dark'>Last Name : <b className='text-dark'>{props.envoie.infoEnvoie.nom_expediteur}</b>  </p>
+        <p className='text-dark'>Middle Name : <b className='text-dark'>{props.envoie.infoEnvoie.postnom_expediteur}</b> </p>
         <p className='text-dark'>Adress : <b className='text-dark'>{props.envoie.infoEnvoie.adresse_expediteur}</b> </p> 
 
         <p className='text-dark'>Email : <b className='text-dark'>{props.envoie.infoEnvoie.email_expediteur}</b> </p>

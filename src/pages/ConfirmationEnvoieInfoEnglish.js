@@ -130,7 +130,7 @@ function ConfirmationEnvoieInfoEnglish(props)
             <p></p>
           </Col>
         </Row>
-  <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
+  <MyVerticallyCenteredModal envoie3={props.envoie3} show={modalShow} onHide={() => setModalShow(false)} />
 <Footer />
         </>
        

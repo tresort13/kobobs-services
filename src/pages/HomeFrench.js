@@ -35,7 +35,7 @@ function HomeFrench()
 
             <Col mdmd={4} className="my-auto text-center">
             <Link to="/form_envoie_abonne_id_french" style={{color:'white',textDecorationLine:'none'}}>
-            <Button  style={{width:300,height:300}} className='btn-lg rounded-pill zoom couleur'>
+            <Button variant="outlet"  style={{width:300,height:300}} className='btn-lg rounded-pill zoom couleur'>
             <b className="text-light">Je suis déjà abonné</b>
            </Button>
             </Link>  

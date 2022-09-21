@@ -125,7 +125,7 @@ function FormEnvoiClientEnglish(props)
         <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'><span className="text-danger">*</span> Last Name </Form.Label>  
-        <Form.Control name="postnom_expediteur" value={envoie.infoEnvoie.postnom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Last Name' required/>
+        <Form.Control name="nom_expediteur" value={envoie.infoEnvoie.nom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Last Name' required/>
         
          </Form.Group>
         </Col>
@@ -133,7 +133,7 @@ function FormEnvoiClientEnglish(props)
         <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'> Middle Name (optional)</Form.Label>
-        <Form.Control name="nom_expediteur"  onChange={e=>inputChanged(e)} type="text" placeholder='Middle Name'  />
+        <Form.Control name="postnom_expediteur"  onChange={e=>inputChanged(e)} type="text" placeholder='Middle Name'  />
          </Form.Group>
         </Col>
     </Row>

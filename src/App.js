@@ -14,6 +14,7 @@ import FormEnvoiAbonneId from './pages/FormEnvoiAbonneId';
 import FormEnvoiAbonne from './pages/FormEnvoiAbonne';
 import EnvoieAbonneInfo from './pages/EnvoieAbonneInfo';
 import FormRetrait from './pages/FormRetrait';
+import FormCodeAbonneLingala from  './pages/FormCodeAbonneLingala';
 
 import HomeEnglish from './pages/HomeEnglish';
 import EnvoiInfoEnglish from './pages/EnvoiInfoEnglish';
@@ -24,6 +25,7 @@ import FormEnvoiAbonneIdEnglish from './pages/FormEnvoiAbonneIdEnglish';
 import EnvoieAbonneInfoEnglish from './pages/EnvoieAbonneInfoEnglish';
 import FormRetraitEnglish from './pages/FormRetraitEnglish';
 import FormEnvoiAbonneEnglish from './pages/FormEnvoiAbonneEnglish'
+import FormCodeAbonneEnglish from  './pages/FormCodeAbonneEnglish'
 
 
 
@@ -36,6 +38,8 @@ import FormEnvoiAbonneIdFrench from './pages/FormEnvoiAbonneIdFrench';
 import FormEnvoiAbonneFrench from './pages/FormEnvoiAbonneFrench';
 import EnvoieAbonneInfoFrench from './pages/EnvoieAbonneInfoFrench';
 import FormRetraitFrench from './pages/FormRetraitFrench';
+import FormCodeAbonneFrench from  './pages/FormCodeAbonneFrench'
+
 
 
 const useState = React.useState
@@ -467,6 +471,9 @@ function App() {
         <Route path="/form_retrait_info_english" element={<FormRetraitEnglish  dataEnvoie2={dataEnvoie2}/>} >
         </Route>
 
+        <Route path="/form_code_abonne_english" element={<FormCodeAbonneEnglish />} >
+        </Route>
+
         <Route path="/envoi_info_english" element={<EnvoiInfoEnglish  dataEnvoie3={dataEnvoie3} envoie={envoie} setEnvoie={setEnvoie}/>} >
         </Route>
 
@@ -499,6 +506,9 @@ function App() {
         <Route path="/form_retrait_info" element={<FormRetrait  dataEnvoie2={dataEnvoie2}/>} >
         </Route>
 
+        <Route path="/form_code_abonne_lingala" element={<FormCodeAbonneLingala />} >
+        </Route>
+        
         <Route path="/envoi_info" element={<EnvoiInfo   dataEnvoie3={dataEnvoie3} envoie={envoie} setEnvoie={setEnvoie}/>} >
         </Route>
 
@@ -530,6 +540,9 @@ function App() {
         <Route path="/form_retrait_info_french" element={<FormRetraitFrench  dataEnvoie2={dataEnvoie2}/>} >
         </Route>
 
+        <Route path="/form_code_abonne_french" element={<FormCodeAbonneFrench />} >
+        </Route>
+        
         <Route path="/envoi_info_french" element={<EnvoiInfoFrench   dataEnvoie3={dataEnvoie3} envoie={envoie} setEnvoie={setEnvoie}/>} >
         </Route>
 

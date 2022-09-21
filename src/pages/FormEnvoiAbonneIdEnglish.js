@@ -112,7 +112,13 @@ function FormEnvoiAbonneIdEnglish(props)
         </Col>
     </Row>
   
-
+    <Row className='pb-3'>
+       <Col>
+       <Link to="form_code_abonne_english">
+       <p ><b className='couleur2'>I forgot my subscriber ID ?</b></p>
+       </Link>
+        </Col>
+    </Row>
 
 </Form>
 </Container>
@@ -148,6 +154,13 @@ function FormEnvoiAbonneIdEnglish(props)
         </Col>
     </Row>
   
+    <Row className='pb-3'>
+       <Col>
+       <Link to="form_code_abonne_english">
+       <p ><b className='couleur2'>I forgot my subscriber ID ?</b></p>
+       </Link>
+        </Col>
+    </Row>
 
 
 </Form>

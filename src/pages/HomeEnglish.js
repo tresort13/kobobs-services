@@ -37,8 +37,8 @@ function HomeEnglish()
 
             <Col mdmd={4} className="my-auto text-center">
             <Link to="/form_envoie_abonne_id_english" style={{color:'white',textDecorationLine:'none'}}>
-            <Button   style={{width:300,height:300}} className="couleur2 btn-lg rounded-pill zoom ">
-            <b className="text-light">I am already a subscriber </b>
+            <Button variant="light"  style={{width:300,height:300}} className=" btn-lg rounded-pill zoom ">
+            <b className="couleur2">I am already a subscriber </b>
            </Button>
             </Link>  
             </Col>

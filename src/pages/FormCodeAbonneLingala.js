@@ -102,7 +102,8 @@ function FormCodeAbonneLingala(props)
     <Row className='justify-content-center'>
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Control name="numero" value={numeroAbonne.infoNumeroAbonne.numero} onChange={e=>inputChanged(e)} type="text" placeholder="entrer le code abonné ou téléphone de l'abonné" autoFocus   required/>
+        <Form.Label className='text-dark'>Téléphone ou email nayo</Form.Label>
+        <Form.Control name="numero" value={numeroAbonne.infoNumeroAbonne.numero} onChange={e=>inputChanged(e)} type="text" placeholder="Téléphone ou email nayo" autoFocus   required/>
          </Form.Group>
         </Col>
     </Row>
@@ -134,8 +135,8 @@ function FormCodeAbonneLingala(props)
     <Row className='justify-content-center'>
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>Téléphone ou email</Form.Label>
-        <Form.Control name="numero" value={numeroAbonne.infoNumeroAbonne.numero} onChange={e=>inputChanged(e)} type="text" placeholder="entrer le code abonné ou téléphone de l'abonné" autoFocus   required/>
+        <Form.Label className='text-dark'>Téléphone ou email nayo</Form.Label>
+        <Form.Control name="numero" value={numeroAbonne.infoNumeroAbonne.numero} onChange={e=>inputChanged(e)} type="text" placeholder="Téléphone ou email nayo" autoFocus   required/>
          </Form.Group>
         </Col>
     </Row>

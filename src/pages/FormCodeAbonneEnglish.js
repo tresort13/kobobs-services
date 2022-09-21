@@ -102,7 +102,8 @@ function FormCodeAbonneEnglish(props)
     <Row className='justify-content-center'>
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Control name="numero" value={numeroAbonne.infoNumeroAbonne.numero} onChange={e=>inputChanged(e)} type="text" placeholder="entrer le code abonné ou téléphone de l'abonné" autoFocus   required/>
+        <Form.Label className='text-dark'>Mobile number or email</Form.Label>
+        <Form.Control name="numero" value={numeroAbonne.infoNumeroAbonne.numero} onChange={e=>inputChanged(e)} type="text" placeholder="Mobile number or email" autoFocus   required/>
          </Form.Group>
         </Col>
     </Row>
@@ -134,8 +135,8 @@ function FormCodeAbonneEnglish(props)
     <Row className='justify-content-center'>
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='couleur2'>Mobile number or email</Form.Label>
-        <Form.Control name="numero" value={numeroAbonne.infoNumeroAbonne.numero} onChange={e=>inputChanged(e)} type="text" placeholder="entrer le code abonné ou téléphone de l'abonné" autoFocus   required/>
+        <Form.Label className='text-dark'>Mobile number or email</Form.Label>
+        <Form.Control name="numero" value={numeroAbonne.infoNumeroAbonne.numero} onChange={e=>inputChanged(e)} type="text" placeholder="Mobile number or email" autoFocus   required/>
          </Form.Group>
         </Col>
     </Row>

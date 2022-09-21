@@ -97,7 +97,8 @@ function FormEnvoiAbonneIdFrench(props)
     <Row className='justify-content-center'>
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Control name="code_abonne" value={codeAbonne.infoCodeAbonne.code_abonne} onChange={e=>inputChanged(e)} type="text" placeholder='Veuillez entrer le code abonné' autoFocus  required/>
+        <Form.Label className='text-dark'>Code Abonné</Form.Label>
+        <Form.Control name="code_abonne" value={codeAbonne.infoCodeAbonne.code_abonne} onChange={e=>inputChanged(e)} type="text" placeholder='Code Abonné' autoFocus  required/>
          </Form.Group>
         </Col>
     </Row>
@@ -137,8 +138,8 @@ function FormEnvoiAbonneIdFrench(props)
     <Row className='justify-content-center'>
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-       
-        <Form.Control name="code_abonne" value={codeAbonne.infoCodeAbonne.code_abonne} onChange={e=>inputChanged(e)} type="text" placeholder='Veuillez entrer le code abonné' autoFocus  required/>
+        <Form.Label className='text-dark'>Code Abonné</Form.Label>
+        <Form.Control name="code_abonne" value={codeAbonne.infoCodeAbonne.code_abonne} onChange={e=>inputChanged(e)} type="text" placeholder='Code Abonné' autoFocus  required/>
          </Form.Group>
         </Col>
     </Row>

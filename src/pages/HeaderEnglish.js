@@ -20,6 +20,12 @@ import Dropdown from "react-bootstrap/esm/Dropdown";
 function HeaderEnglish(props)
 {
     const [theTime, setTheTime] = useState(new Date().toLocaleString())
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    const [modalShow, setModalShow] = React.useState(false);
+
     const isDesktop = useMediaQuery({
       query: "(min-width: 1224px)"
     });
@@ -64,6 +70,9 @@ function HeaderEnglish(props)
                 <NavDropdown.Divider />
                   <Nav.Link href="/"><b>Home</b></Nav.Link>
                   <NavDropdown.Divider />
+                  <Nav.Link onClick={handleShow}><b>Send Money</b></Nav.Link>
+                  <NavDropdown.Divider />
+                  <Nav.Link onClick={setModalShow(true)}><b>Contact us</b></Nav.Link>
                 </Nav>
                
               </Offcanvas.Body>
@@ -104,7 +113,17 @@ function HeaderEnglish(props)
         </Col>
     </Row>
    
-    
+    <Offcanvas show={show} onHide={handleClose}  style={{height:550}}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 text-secondary text-end"><b><u>Sending money option</u></b></i> </Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+        <Nav justify menuVariant="dark"  className="navbar justify-content-end flex-grow-1 pe-3 flex-column">
+        <Nav.Link href="/form_envoie_client_english"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>First time to send money</i></Button></Nav.Link>
+        <Nav.Link href="/form_envoie_abonne_english"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>I am already a subscriber</i></Button></Nav.Link>
+         </Nav>
+        </Offcanvas.Body>
+         </Offcanvas>
    </Container>}
 
 
@@ -136,8 +155,11 @@ function HeaderEnglish(props)
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                 <NavDropdown.Divider />
-                  <Nav.Link href="/"><b>Home</b></Nav.Link>
+                <Nav.Link href="/"><b>Home</b></Nav.Link>
                   <NavDropdown.Divider />
+                  <Nav.Link onClick={handleShow}><b>Send Money</b></Nav.Link>
+                  <NavDropdown.Divider />
+                  <Nav.Link onClick={setModalShow(true)}><b>Contact us</b></Nav.Link>
                 </Nav>
                
               </Offcanvas.Body>
@@ -174,11 +196,50 @@ function HeaderEnglish(props)
         </Col>  
     </Row>
    
+    <Offcanvas show={show} onHide={handleClose}  style={{height:550}}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 text-secondary text-end"><b><u>Sending money option</u></b></i> </Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+        <Nav justify menuVariant="dark"  className="navbar justify-content-end flex-grow-1 pe-3 flex-column">
+        <Nav.Link href="/form_envoie_client_english"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>First time to send money</i></Button></Nav.Link>
+        <Nav.Link href="/form_envoie_abonne_english"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-warning'><i>I am already a subscriber</i></Button></Nav.Link>
+         </Nav>
+        </Offcanvas.Body>
+         </Offcanvas>
     
    </Container>}
+   <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
    </div>
 
     )
+}
+
+function MyVerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="sm"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Contact us :
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+
+        <p className='text-dark'>mobile : <b>00447417588363</b>   
+        </p>
+        <p className='text-dark'>email : <b>gisele.makaba@kobobs.com</b>   
+        </p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant='warning' onClick={props.onHide}>close</Button>
+      </Modal.Footer>
+    </Modal>
+  );
 }
 
 export default HeaderEnglish;

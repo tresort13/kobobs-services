@@ -1,3 +1,4 @@
+import React from 'react';
 import Container from "react-bootstrap/esm/Container";
 import { Link,useNavigate} from "react-router-dom";
 import Row from 'react-bootstrap/Row';
@@ -13,6 +14,7 @@ import Button from "react-bootstrap/Button";
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Dropdown from "react-bootstrap/esm/Dropdown";
+import Modal from 'react-bootstrap/Modal';
 
 
 

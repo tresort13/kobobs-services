@@ -47,7 +47,15 @@ function ConfirmationRetraitInfoFrench(props)
      <p className='text-dark'><b>status de votre transfert :</b> <b className="text-success">votre code de retrait a été validé</b> </p> }
     </Row>
 
+    <Row className='justify-content-start pb-3'>
+      <hr style={{color:"darkorange"}}></hr>
+      {props.envoie2.infoEnvoie.status_retrait == "Code Retrait Payé" ? <p className='text-dark'><b className="text-success">Votre bénéficiare a déjà réçu de l'argent</b> </p> :
+     <p></p> }
+    </Row>
 
+    <Row className='justify-content-center pb-3'>
+      <hr style={{color:"darkorange"}}></hr>
+    </Row>
 
     <Row className='justify-content-start pb-3' >
         <Col xs={6}>
@@ -96,6 +104,16 @@ function ConfirmationRetraitInfoFrench(props)
       <hr style={{color:"darkorange"}}></hr>
       {props.envoie2.infoEnvoie.status_retrait == "code retrait en attente de validation" ? <p className='text-dark'>status de votre transfert : <b className="text-danger"></b> votre code de retrait est encore en attente de validation...</p> :
      <p className='text-dark'><b>status de votre transfert :</b> <b className="text-success">votre code de retrait a été validé</b> </p> }
+    </Row>
+
+    <Row className='justify-content-start pb-3'>
+      <hr style={{color:"darkorange"}}></hr>
+      {props.envoie2.infoEnvoie.status_retrait == "Code Retrait Payé" ? <p className='text-dark'><b className="text-success">Votre bénéficiare a déjà réçu de l'argent</b> </p> :
+     <p></p> }
+    </Row>
+
+    <Row className='justify-content-center pb-3'>
+      <hr style={{color:"darkorange"}}></hr>
     </Row>
 
     <Row className='justify-content-start pb-3' >

@@ -46,6 +46,12 @@ function ConfirmationRetraitInfo(props)
      <p className='text-dark'><b>status ya transfert nayo :</b> <b className="text-success">Code ya retrait nayo ekomi valide</b> </p> }
     </Row>
 
+    <Row className='justify-content-start pb-3'>
+      <hr style={{color:"darkorange"}}></hr>
+      {props.envoie2.infoEnvoie.status_retrait == "Code Retrait Payé" ? <p className='text-dark'><b className="text-success">Mozui azui déjà Mbongo</b> </p> :
+     <p></p> }
+    </Row>
+
 
     <Row className='justify-content-center pb-3'>
       <hr style={{color:"darkorange"}}></hr>
@@ -98,7 +104,17 @@ function ConfirmationRetraitInfo(props)
       {props.envoie2.infoEnvoie.status_retrait == "code retrait en attente de validation" ? <p className='text-dark'>status ya transfert nayo : <b className="text-danger"></b> Code ya retrait nayo eza  nanu validé te...</p> :
      <p className='text-dark'><b>status ya transfert nayo :</b> <b className="text-success">Code ya retrait nayo ekomi valide</b> </p> }
     </Row>
-    
+
+    <Row className='justify-content-start pb-3'>
+      <hr style={{color:"darkorange"}}></hr>
+      {props.envoie2.infoEnvoie.status_retrait == "Code Retrait Payé" ? <p className='text-dark'><b className="text-success">Mozui azui déjà Mbongo</b> </p> :
+     <p></p> }
+    </Row>
+
+    <Row className='justify-content-center pb-3'>
+      <hr style={{color:"darkorange"}}></hr>
+    </Row>
+
     <Row className='justify-content-start pb-3' >
     <Col xs={12}>
         <p className='text-dark'>Code Retrait : <b className='text-danger'> {props.envoie2.infoEnvoie.code_retrait}</b></p>

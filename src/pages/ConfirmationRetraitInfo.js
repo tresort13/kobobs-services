@@ -19,41 +19,7 @@ function ConfirmationRetraitInfo(props)
 {
     
     const [message,setMessage] = useState("Informations Ya transfert Na Yo")
-    const [statusTransfert,setStatusTransfert] = useState("")
-    const [statusColor,setStatusColor] = useState("")
-
-    const nonValide = ()=>
-    {
-      setStatusTransfert("Code ya retrait nayo eza  nanu validé te")
-      setStatusColor("text-danger")
-    }
-
-    const valide = ()=>
-    {
-      setStatusTransfert("Code ya retrait nayo ekomi valide")
-      setStatusColor("text-success")
-    }
-
-    const paye = ()=>
-    {
-      setStatusTransfert("Motindi nayo esi azui mbongo ")
-      setStatusColor("text-success")
-    }
-
-
-
-    if (props.envoie2.infoEnvoie.status_retrait == "code retrait en attente de validation")
-    {
-      nonValide()  
-    }
-    else if (props.envoie2.infoEnvoie.status_retrait == "Code Retrait Valide")
-    {
-      valide()
-    }
-    else 
-    {
-      paye()
-    }
+    
     
     const isDesktop = useMediaQuery({
         query: "(min-width: 1224px)"
@@ -76,8 +42,10 @@ function ConfirmationRetraitInfo(props)
 
     <Row className='justify-content-start pb-3'>
       <hr style={{color:"darkorange"}}></hr>
-      <p className='text-dark'>status ya transfert nayo : <b className={statusColor}>{statusTransfert}</b> </p>
+      {props.envoie2.infoEnvoie.status_retrait == "code retrait en attente de validation" ? <p className='text-dark'>status ya transfert nayo : <b className="text-danger"></b> Code ya retrait nayo eza  nanu validé te...</p> :
+     <p className='text-dark'><b>status ya transfert nayo :</b> <b className="text-success">Code ya retrait nayo ekomi valide</b> </p> }
     </Row>
+
 
     <Row className='justify-content-center pb-3'>
       <hr style={{color:"darkorange"}}></hr>

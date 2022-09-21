@@ -18,8 +18,6 @@ const useState = React.useState
 function ConfirmationRetraitInfoFrench(props)
 {
     const [message,setMessage] = useState("Informations du transfert")
-    const [statusTransfert,setStatusTransfert] = useState("")
-    const [statusColor,setStatusColor] = useState("")
 
 
     const isDesktop = useMediaQuery({
@@ -29,23 +27,7 @@ function ConfirmationRetraitInfoFrench(props)
         query: "(max-width: 1224px)"
       });
 
-    if (props.envoie2.infoEnvoie.status_retrait == "code retrait en attente de validation")
-    {
-      setStatusTransfert("votre code de retrait est encore en attente de validation")
-      setStatusColor("text-danger")
-    }
-
-    else if (props.envoie2.infoEnvoie.status_retrait == "Code Retrait Valide")
-    {
-      setStatusTransfert("votre code de retrait a été validé")
-      setStatusColor("text-success")
-    }
-    else
-    {
-      setStatusTransfert("votre bénéficiaire a déjà récuperé l'argent")
-      setStatusColor("text-success")
-    }
-  
+   
      
     return (
         
@@ -61,8 +43,12 @@ function ConfirmationRetraitInfoFrench(props)
 
     <Row className='justify-content-start pb-3'>
       <hr style={{color:"darkorange"}}></hr>
-      <p className='text-dark'>status de votre transfert : <b className={statusColor}>{statusTransfert}</b> </p>
+      {props.envoie2.infoEnvoie.status_retrait == "code retrait en attente de validation" ? <p className='text-dark'>status de votre transfert : <b className="text-danger"></b> votre code de retrait est encore en attente de validation...</p> :
+     <p className='text-dark'><b>status de votre transfert :</b> <b className="text-success">votre code de retrait a été validé</b> </p> }
     </Row>
+
+
+
     <Row className='justify-content-start pb-3' >
         <Col xs={6}>
         <p className='text-dark'>Code Retrait : <b className='text-danger'> {props.envoie2.infoEnvoie.code_retrait}</b></p>
@@ -108,8 +94,10 @@ function ConfirmationRetraitInfoFrench(props)
 
     <Row className='justify-content-start pb-3'>
       <hr style={{color:"darkorange"}}></hr>
-      <p className='text-dark'>status de votre transfert : <b className={statusColor}>{statusTransfert}</b> </p>
+      {props.envoie2.infoEnvoie.status_retrait == "code retrait en attente de validation" ? <p className='text-dark'>status de votre transfert : <b className="text-danger"></b> votre code de retrait est encore en attente de validation...</p> :
+     <p className='text-dark'><b>status de votre transfert :</b> <b className="text-success">votre code de retrait a été validé</b> </p> }
     </Row>
+
     <Row className='justify-content-start pb-3' >
     <Col xs={12}>
         <p className='text-dark'>Code Retrait : <b className='text-danger'> {props.envoie2.infoEnvoie.code_retrait}</b></p>

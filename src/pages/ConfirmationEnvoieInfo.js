@@ -127,7 +127,7 @@ function ConfirmationEnvoieInfo(props)
             <p></p>
           </Col>
         </Row>
-  <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
+  <MyVerticallyCenteredModal envoie3={props.envoie3} show={modalShow} onHide={() => setModalShow(false)} />
 <Footer />
         </>
        
@@ -144,11 +144,11 @@ function MyVerticallyCenteredModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-        <p >code ya abonnement : <b className='text-success'>{props.envoie3.infoEnvoie.code_abonne}</b></p>
+        <p >code ya retrait : <b className='text-danger'>{props.envoie3.infoEnvoie.code_retrait}</b></p>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p >code ya retrait : <b className='text-danger'>{props.envoie3.infoEnvoie.code_retrait}</b></p>
+      <p >code ya abonnement : <b className='text-success'>{props.envoie3.infoEnvoie.code_abonne}</b></p>
       </Modal.Body>
       <Modal.Footer>
         <Button variant='warning' onClick={props.onHide}>ok nazui yango</Button>

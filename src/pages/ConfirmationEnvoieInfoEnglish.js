@@ -147,11 +147,11 @@ function MyVerticallyCenteredModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-        <p >Your Subscriber ID : <b className='text-success'> {props.envoie3.infoEnvoie.code_retrait}</b> ()  </p>
+        <p >Your Tracking Number : <b className='text-danger'> {props.envoie3.infoEnvoie.code_retrait}</b></p>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p >Your Tracking Number : <b className='text-danger'> {props.envoie3.infoEnvoie.code_retrait}</b>   </p>
+        <p >Your Subscriber ID : <b className='text-success'> {props.envoie3.infoEnvoie.code_abonne}</b></p>
       </Modal.Body>
       <Modal.Footer>
         <Button variant='warning' onClick={props.onHide}>ok i got it</Button>

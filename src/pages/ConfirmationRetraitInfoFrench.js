@@ -43,7 +43,7 @@ function ConfirmationRetraitInfoFrench(props)
 
     <Row className='justify-content-start pb-3'>
       <hr style={{color:"darkorange"}}></hr>
-      {props.envoie2.infoEnvoie.status_retrait == "code retrait en attente de validation" ? <p className='text-dark'>status de votre transfert : <b className="text-danger"></b> votre code de retrait est encore en attente de validation...</p> :
+      {props.envoie2.infoEnvoie.status_retrait == "code retrait en attente de validation" ? <p className='text-dark'>status de votre transfert : <b className="text-danger">votre code de retrait est encore en attente de validation...</b> </p> :
      <p className='text-dark'><b>status de votre transfert :</b> <b className="text-success">votre code de retrait a été validé</b> </p> }
     </Row>
 
@@ -101,7 +101,7 @@ function ConfirmationRetraitInfoFrench(props)
 
     <Row className='justify-content-start pb-3'>
       <hr style={{color:"darkorange"}}></hr>
-      {props.envoie2.infoEnvoie.status_retrait == "code retrait en attente de validation" ? <p className='text-dark'>status de votre transfert : <b className="text-danger"></b> votre code de retrait est encore en attente de validation...</p> :
+      {props.envoie2.infoEnvoie.status_retrait == "code retrait en attente de validation" ? <p className='text-dark'>status de votre transfert : <b className="text-danger">votre code de retrait est encore en attente de validation...</b> </p> :
      <p className='text-dark'><b>status de votre transfert :</b> <b className="text-success">votre code de retrait a été validé</b> </p> }
     </Row>
 

@@ -44,7 +44,7 @@ function ConfirmationRetraitInfoEnglish(props)
 
     <Row className='justify-content-start pb-3'>
       <hr style={{color:"darkorange"}}></hr>
-      {props.envoie2.infoEnvoie.status_retrait == "code retrait en attente de validation" ? <p className='text-dark'>your transfer status : <b className="text-danger"></b> your tracking number validation is still pending...</p> :
+      {props.envoie2.infoEnvoie.status_retrait == "code retrait en attente de validation" ? <p className='text-dark'>your transfer status : <b className="text-danger">your tracking number validation is still pending...</b> </p> :
      <p className='text-dark'><b>your transfer status :</b> <b className="text-success">Your tracking number has been validated</b> </p> }
     </Row>
 
@@ -105,7 +105,7 @@ function ConfirmationRetraitInfoEnglish(props)
 
     <Row className='justify-content-start pb-3'>
       <hr style={{color:"darkorange"}}></hr>
-      {props.envoie2.infoEnvoie.status_retrait == "code retrait en attente de validation" ? <p className='text-dark'>your transfer status : <b className="text-danger"></b> your tracking number validation is still pending...</p> :
+      {props.envoie2.infoEnvoie.status_retrait == "code retrait en attente de validation" ? <p className='text-dark'>your transfer status : <b className="text-danger">your tracking number validation is still pending...</b> </p> :
      <p className='text-dark'><b>your transfer status :</b> <b className="text-success">Your tracking number has been validated</b> </p> }
     </Row>
 

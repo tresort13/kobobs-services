@@ -49,7 +49,6 @@ function ConfirmationRetraitInfoEnglish(props)
     </Row>
 
     <Row className='justify-content-start pb-3'>
-      <hr style={{color:"darkorange"}}></hr>
       {props.envoie2.infoEnvoie.status_retrait == "Code Retrait Payé" ? <p className='text-dark'><b className="text-success">Your receiver has picked up the money</b> </p> :
      <p></p> }
     </Row>
@@ -111,7 +110,6 @@ function ConfirmationRetraitInfoEnglish(props)
     </Row>
 
     <Row className='justify-content-start pb-3'>
-      <hr style={{color:"darkorange"}}></hr>
       {props.envoie2.infoEnvoie.status_retrait == "Code Retrait Payé" ? <p className='text-dark'><b className="text-success">Your receiver has picked up the money</b> </p> :
      <p></p> }
     </Row>

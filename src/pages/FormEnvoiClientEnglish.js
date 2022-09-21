@@ -133,7 +133,7 @@ function FormEnvoiClientEnglish(props)
         <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'> Middle Name (optional)</Form.Label>
-        <Form.Control name="nom_expediteur" value={envoie.infoEnvoie.nom_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Middle Name'  />
+        <Form.Control name="nom_expediteur"  onChange={e=>inputChanged(e)} type="text" placeholder='Middle Name'  />
          </Form.Group>
         </Col>
     </Row>
@@ -152,7 +152,7 @@ function FormEnvoiClientEnglish(props)
         <Form.Label className='text-dark'> Email (optional)</Form.Label>
         <InputGroup className="mb-3">
         <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
-        <Form.Control name="email_expediteur" value={envoie.infoEnvoie.email_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Email' />
+        <Form.Control name="email_expediteur"  onChange={e=>inputChanged(e)} type="text" placeholder='Email' />
 
       </InputGroup>
         </Col>
@@ -207,7 +207,7 @@ function FormEnvoiClientEnglish(props)
         <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'> Middle Name (optional)</Form.Label>
-        <Form.Control name="postnom_beneficiaire" value={envoie.infoEnvoie.nom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Middle Name' />
+        <Form.Control name="postnom_beneficiaire"  onChange={e=>inputChanged(e)} type="text" placeholder='Middle Name' />
          </Form.Group>
         </Col>
     </Row>

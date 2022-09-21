@@ -113,7 +113,7 @@ function FormEnvoiAbonneIdFrench(props)
 
     <Row className='pb-3'>
        <Col>
-       <Link to="form_code_abonne_french">
+       <Link to="/form_code_abonne_french" style={{textDecoration:"none"}}>
        <p ><b className='couleur2'>J'ai oublié mon code abonné ?</b></p>
        </Link>
         </Col>
@@ -154,7 +154,7 @@ function FormEnvoiAbonneIdFrench(props)
 
     <Row className='pb-3'>
        <Col>
-       <Link to="form_code_abonne_french">
+       <Link to="/form_code_abonne_french" style={{textDecoration:"none"}}>
        <p ><b className='couleur2'>J'ai oublié mon code abonné ?</b></p>
        </Link>
         </Col>

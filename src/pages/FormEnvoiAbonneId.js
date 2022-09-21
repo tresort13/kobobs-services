@@ -116,7 +116,7 @@ function FormEnvoiAbonneId(props)
 
     <Row className='pb-3'>
        <Col>
-       <Link to="form_code_abonne_lingala">
+       <Link to="/form_code_abonne_lingala" style={{textDecoration:"none"}}>
        <p ><b className='couleur2'>Na bosani code abonné na ngai ?</b></p>
        </Link>
         </Col>
@@ -160,7 +160,7 @@ function FormEnvoiAbonneId(props)
   
     <Row className='pb-3'>
        <Col>
-       <Link to="form_code_abonne_lingala">
+       <Link to="/form_code_abonne_lingala" style={{textDecoration:"none"}}>
        <p ><b className='couleur2'>Na bosani code abonné na ngai ?</b></p>
        </Link>
         </Col>

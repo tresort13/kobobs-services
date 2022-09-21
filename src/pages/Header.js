@@ -62,23 +62,8 @@ function Header(props)
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                 <NavDropdown.Divider />
-                  <Nav.Link href="/home"><b>Home</b></Nav.Link>
-                  <NavDropdown.Divider />
-                  <Nav.Link href="/menu_envoie"><b>Envoi Argent</b></Nav.Link>
-                  <NavDropdown.Divider />
-                  <Nav.Link href="/form_retrait"><b>Retrait Argent</b></Nav.Link>
-                  <NavDropdown.Divider />
-                  <Nav.Link href="/menu_gestion_abonne"><b>Gestion Client</b></Nav.Link>
-                  <NavDropdown.Divider />
-                  <Nav.Link href="/menu_gestion_operation"><b>Gestion Operations</b></Nav.Link>
-                  <NavDropdown.Divider />
-                  <Nav.Link href="/menu_gestion_recettes"><b>Gestion Recettes</b></Nav.Link>
-                  <NavDropdown.Divider />
-                  <Nav.Link href="/menu_users"><b>Gestion Utilisateurs</b></Nav.Link>
-                  <NavDropdown.Divider />
-
-
-                 
+                  <Nav.Link href="/home_lingala"><b>Home</b></Nav.Link>
+                  <NavDropdown.Divider />                 
                 </Nav>
                
               </Offcanvas.Body>
@@ -151,21 +136,8 @@ function Header(props)
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                 <NavDropdown.Divider />
-                  <Nav.Link href="/home"><b>Home</b></Nav.Link>
+                  <Nav.Link href="/home_french"><b>Home</b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link href="/menu_envoie"><b>Envoi Argent</b></Nav.Link>
-                  <NavDropdown.Divider />
-                  <Nav.Link href="/form_retrait"><b>Retrait Argent</b></Nav.Link>
-                  <NavDropdown.Divider />
-                  <Nav.Link href="/menu_gestion_abonne"><b>Gestion Client</b></Nav.Link>
-                  <NavDropdown.Divider />
-                  <Nav.Link href="/menu_gestion_operation"><b>Gestion Operations</b></Nav.Link>
-                  <NavDropdown.Divider />
-                  <Nav.Link href="/menu_gestion_recettes"><b>Gestion Recettes</b></Nav.Link>
-                  <NavDropdown.Divider />
-                  <Nav.Link href="/menu_users"><b>Gestion Utilisateurs</b></Nav.Link>
-                  <NavDropdown.Divider />
-                
                 </Nav>
                
               </Offcanvas.Body>

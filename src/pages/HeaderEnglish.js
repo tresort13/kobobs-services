@@ -62,23 +62,8 @@ function HeaderEnglish(props)
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                 <NavDropdown.Divider />
-                  <Nav.Link href="/home"><b>Home</b></Nav.Link>
+                  <Nav.Link href="/"><b>Home</b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link href="/menu_envoie"><b>Envoi Argent</b></Nav.Link>
-                  <NavDropdown.Divider />
-                  <Nav.Link href="/form_retrait"><b>Retrait Argent</b></Nav.Link>
-                  <NavDropdown.Divider />
-                  <Nav.Link href="/menu_gestion_abonne"><b>Gestion Client</b></Nav.Link>
-                  <NavDropdown.Divider />
-                  <Nav.Link href="/menu_gestion_operation"><b>Gestion Operations</b></Nav.Link>
-                  <NavDropdown.Divider />
-                  <Nav.Link href="/menu_gestion_recettes"><b>Gestion Recettes</b></Nav.Link>
-                  <NavDropdown.Divider />
-                  <Nav.Link href="/menu_users"><b>Gestion Utilisateurs</b></Nav.Link>
-                  <NavDropdown.Divider />
-
-
-                 
                 </Nav>
                
               </Offcanvas.Body>
@@ -89,7 +74,7 @@ function HeaderEnglish(props)
         </Col>
 
         <Col xs={6} className="my-auto mx-auto my-auto text-start">
-          <Link to="" style={{textDecoration:"none"}}>
+          <Link to="/" style={{textDecoration:"none"}}>
           <p className="display-6 text-secondary">KOBO BUSINESS SERVICES</p>
           </Link>
         </Col>
@@ -127,7 +112,7 @@ function HeaderEnglish(props)
     <Row>
         
         <Col xs={"auto"} className="mx-auto my-auto text-center">
-        <a href="#" style={{textDecoration:"none"}}>
+        <a href="/" style={{textDecoration:"none"}}>
           <Image  src={require('./kobo_logo.JPG')}  className='rounded-pill ' style={{width:80}}></Image>
           </a>
         </Col>
@@ -151,21 +136,8 @@ function HeaderEnglish(props)
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                 <NavDropdown.Divider />
-                  <Nav.Link href="/home"><b>Home</b></Nav.Link>
+                  <Nav.Link href="/"><b>Home</b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link href="/menu_envoie"><b>Envoi Argent</b></Nav.Link>
-                  <NavDropdown.Divider />
-                  <Nav.Link href="/form_retrait"><b>Retrait Argent</b></Nav.Link>
-                  <NavDropdown.Divider />
-                  <Nav.Link href="/menu_gestion_abonne"><b>Gestion Client</b></Nav.Link>
-                  <NavDropdown.Divider />
-                  <Nav.Link href="/menu_gestion_operation"><b>Gestion Operations</b></Nav.Link>
-                  <NavDropdown.Divider />
-                  <Nav.Link href="/menu_gestion_recettes"><b>Gestion Recettes</b></Nav.Link>
-                  <NavDropdown.Divider />
-                  <Nav.Link href="/menu_users"><b>Gestion Utilisateurs</b></Nav.Link>
-                  <NavDropdown.Divider />
-                
                 </Nav>
                
               </Offcanvas.Body>

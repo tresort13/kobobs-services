@@ -22,6 +22,7 @@ function FormEnvoiClientFrench(props)
     nom_expediteur : props.envoie.infoEnvoie.nom_expediteur,
     prenom_expediteur : props.envoie.infoEnvoie.prenom_expediteur,
     adresse_expediteur : props.envoie.infoEnvoie.adresse_expediteur,
+    email_expediteur : props.envoie.infoEnvoie.email_expediteur,
     numero_expediteur: props.envoie.infoEnvoie.numero_expediteur,
     pays_expediteur : props.envoie.infoEnvoie.pays_expediteur,
     nom_beneficiaire : props.envoie.infoEnvoie.nom_beneficiaire,
@@ -129,7 +130,7 @@ function FormEnvoiClientFrench(props)
 
     <Row className='justify-content-center'>
     
-       <Col xs = {6}>
+       <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'><span className="text-danger">*</span> Adresse</Form.Label>
         <Form.Control name="adresse_expediteur" value={envoie.infoEnvoie.adresse_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Adresse'  required/>
@@ -138,8 +139,16 @@ function FormEnvoiClientFrench(props)
         </Col>
 
 
+        <Col xs = {4}>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Email</Form.Label>
+        <InputGroup className="mb-3">
+        <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
+        <Form.Control name="email_expediteur" value={envoie.infoEnvoie.email_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Email' required/>
+        
+      </InputGroup>
+        </Col>
 
-        <Col xs = {6}>
+        <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'><span className="text-danger">*</span> Numéro Téléphone</Form.Label>
         <Form.Control name="numero_expediteur" value={envoie.infoEnvoie.numero_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Numéro ya Tshombo' required/>
@@ -300,7 +309,14 @@ function FormEnvoiClientFrench(props)
          </Form.Group>
         </Col>
 
-
+        <Col xs = {12}>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Email</Form.Label>
+        <InputGroup className="mb-3">
+        <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
+        <Form.Control name="email_expediteur" value={envoie.infoEnvoie.email_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Email' required/>
+        
+      </InputGroup>
+        </Col>
 
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >

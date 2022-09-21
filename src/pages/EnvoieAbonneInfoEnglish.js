@@ -58,6 +58,7 @@ console.log(props.envoie.infoEnvoie)
                   nom_expediteur : '',
                   prenom_expediteur : '',
                   adresse_expediteur : '',
+                  email_expediteur : '',
                   numero_expediteur: '',
                   pays_expediteur : 'UK',
                   nom_beneficiaire : '',
@@ -131,6 +132,7 @@ console.log(props.envoie.infoEnvoie)
         </Col>
 
         <Col xs={6} className="text-start">
+        <p className='text-dark'>Email: <b className='text-dark'>{props.envoie.infoEnvoie.email_expediteur}</b> </p>
         <p className='text-dark'>Mobile Number :<b className='text-dark'> {props.envoie.infoEnvoie.numero_expediteur} </b></p>
         <p className='text-dark'>country : <b className='text-dark'> {props.envoie.infoEnvoie.pays_expediteur}</b></p>
         </Col>
@@ -215,7 +217,7 @@ console.log(props.envoie.infoEnvoie)
         <p className='text-dark'>Last Name : <b className='text-dark'>{props.envoie.infoEnvoie.nom_expediteur}</b>  </p>
   
         <p className='text-dark'>Adress : <b className='text-dark'>{props.envoie.infoEnvoie.adresse_expediteur}</b> </p> 
-
+        <p className='text-dark'>Email: <b className='text-dark'>{props.envoie.infoEnvoie.email_expediteur}</b> </p>
 
         <p className='text-dark'>Mobile Number :<b className='text-dark'> {props.envoie.infoEnvoie.numero_expediteur} </b></p>
         <p className='text-dark'>country : <b className='text-dark'> {props.envoie.infoEnvoie.pays_expediteur}</b></p>

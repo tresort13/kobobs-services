@@ -18,7 +18,8 @@ const useState = React.useState
 function ConfirmationRetraitInfoFrench(props)
 {
     const [message,setMessage] = useState("Informations du transfert")
-   
+    const [statusTransfert,setStatusTransfert] = useState("")
+    const [statusColor,setStatusColor] = useState("")
 
 
     const isDesktop = useMediaQuery({

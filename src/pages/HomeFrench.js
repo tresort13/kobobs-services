@@ -27,7 +27,7 @@ function HomeFrench()
     <Row className="text-center justify-content-center pt-5 mt-5">
             <Col md={4} className="my-auto text-center">
           <Link to="/form_envoie_client_french" style={{color:'white',textDecorationLine:'none'}}>
-            <Button variant="outline-dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
+            <Button variant="dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
             <b className="text-light">Nouveau client</b>
             </Button>
           </Link>
@@ -35,7 +35,7 @@ function HomeFrench()
 
             <Col mdmd={4} className="my-auto text-center">
             <Link to="/form_envoie_abonne_id_french" style={{color:'white',textDecorationLine:'none'}}>
-            <Button variant="outline-dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
+            <Button variant="dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
             <b className="text-light">Je suis déjà abonné</b>
            </Button>
             </Link>  
@@ -43,7 +43,7 @@ function HomeFrench()
 
             <Col md={4} className="my-auto text-center">
             <Link to="/form_retrait_info_french" style={{color:'white',textDecorationLine:'none'}}>
-            <Button variant="outline-dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
+            <Button variant="dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
             <b className="text-light">Suivre mon transfert</b>
             </Button>
              </Link>
@@ -59,7 +59,7 @@ function HomeFrench()
     <Row className="text-center justify-content-center pt-5 mt-5">
             <Col md={12} className="my-auto text-center">
             <Link to="" style={{color:'white',textDecorationLine:'none'}}>
-            <Button variant="outline-dark" style={{width:350,height:300}} className='btn-lg rounded-pill zoom'>
+            <Button variant="dark" style={{width:350,height:300}} className='btn-lg rounded-pill zoom'>
             <b className="text-light">Envoyer l'argent</b>
             </Button>
             </Link>    

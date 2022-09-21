@@ -29,7 +29,7 @@ function HomeEnglish()
     <Row className="text-center justify-content-center pt-5 mt-5">
             <Col md={4} className="my-auto text-center">
           <Link to="/form_envoie_client_english" style={{color:'white',textDecorationLine:'none'}}>
-            <Button variant="outline-dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
+            <Button variant="dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
             <b className="text-light">First time to send money</b>
             </Button>
           </Link>
@@ -37,7 +37,7 @@ function HomeEnglish()
 
             <Col mdmd={4} className="my-auto text-center">
             <Link to="/form_envoie_abonne_id_english" style={{color:'white',textDecorationLine:'none'}}>
-            <Button variant="outline-dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
+            <Button variant="dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
             <b className="text-light">I am already a subscriber </b>
            </Button>
             </Link>  
@@ -45,7 +45,7 @@ function HomeEnglish()
 
             <Col md={4} className="my-auto text-center">
             <Link to="/form_retrait_info_english" style={{color:'white',textDecorationLine:'none'}}>
-            <Button variant="outline-dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
+            <Button variant="dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
             <b className="text-light">Track your transfer</b>
             </Button>
              </Link>
@@ -61,7 +61,7 @@ function HomeEnglish()
     <Row className="text-center justify-content-center pt-5 mt-5">
             <Col md={12} className="my-auto text-center">
             <Link to="" style={{color:'white',textDecorationLine:'none'}}>
-            <Button variant="outline-dark" style={{width:350,height:300}} className='btn-lg rounded-pill zoom'>
+            <Button variant="dark" style={{width:350,height:300}} className='btn-lg rounded-pill zoom'>
             <b className="text-light">Send Money</b>
             </Button>
             </Link>    

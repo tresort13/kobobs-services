@@ -28,7 +28,7 @@ function HomeLingala()
     <Row className="text-center justify-content-center pt-5 mt-5">
             <Col md={4} className="my-auto text-center">
           <Link to="/form_envoie_client" style={{color:'white',textDecorationLine:'none'}}>
-            <Button variant="outline-dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
+            <Button variant="dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
             <b className="text-light">Nbamla Liboso Na Tinda Mbongo</b>
             </Button>
           </Link>
@@ -36,7 +36,7 @@ function HomeLingala()
 
             <Col mdmd={4} className="my-auto text-center">
             <Link to="/form_envoie_abonne_id" style={{color:'white',textDecorationLine:'none'}}>
-            <Button variant="outline-dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
+            <Button variant="dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
             <b className="text-light">Naza déjà Abonné </b>
            </Button>
             </Link>  
@@ -44,7 +44,7 @@ function HomeLingala()
 
             <Col md={4} className="my-auto text-center">
             <Link to="/form_retrait_info" style={{color:'white',textDecorationLine:'none'}}>
-            <Button variant="outline-dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
+            <Button variant="dark" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
             <b className="text-light">Landela transfert nayo</b>
             </Button>
              </Link>
@@ -60,7 +60,7 @@ function HomeLingala()
     <Row className="text-center justify-content-center pt-5 mt-5">
             <Col md={12} className="my-auto text-center">
             <Link to="" style={{color:'white',textDecorationLine:'none'}}>
-            <Button variant="outline-dark" style={{width:350,height:300}} className='btn-lg rounded-pill zoom'>
+            <Button variant="dark" style={{width:350,height:300}} className='btn-lg rounded-pill zoom'>
             <b className="text-light">Tinda Mbongo</b>
             </Button>
             </Link>    

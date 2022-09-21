@@ -36,7 +36,7 @@ function HomeLingala()
 
             <Col mdmd={4} className="my-auto text-center">
             <Link to="/form_envoie_abonne_id" style={{color:'white',textDecorationLine:'none'}}>
-            <Button style={{width:300,height:300}} className='btn-lg rounded-pill zoom couleur'>
+            <Button style={{width:300,height:300}} className='couleur2 btn-lg rounded-pill zoom '>
             <b variant="outlet" className="text-light">Naza déjà Abonné </b>
            </Button>
             </Link>  

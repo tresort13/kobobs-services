@@ -74,7 +74,7 @@ function HeaderEnglish(props)
                   <NavDropdown.Divider />
                   <Nav.Link ><b>Send Money</b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link ><b>Contact us</b></Nav.Link>
+                  <Nav.Link ><b onClick={setModalShow(true)}>Contact us</b></Nav.Link>
                 </Nav>
                
               </Offcanvas.Body>

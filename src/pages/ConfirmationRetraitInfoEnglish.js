@@ -21,25 +21,7 @@ function ConfirmationRetraitInfoEnglish(props)
     const [couleur,setCouleur] = useState("text-dark")
     const navigate = useNavigate()
     
-    const [statusTransfert,setStatusTransfert] = useState("")
-    const [statusColor,setStatusColor] = useState("")
-
-    if (props.envoie2.infoEnvoie.status_retrait === "code retrait en attente de validation")
-    {
-      setStatusTransfert("your tracking number validation is still pending...")
-      setStatusColor("text-danger")
-    }
-    else if (props.envoie2.infoEnvoie.status_retrait === "Code Retrait Valide")
-    {
-      setStatusTransfert("your tracking number has been validated")
-      setStatusColor("text-success")
-    }
-    else
-    {
-      setStatusTransfert("your receiver has picked up the money")
-      setStatusColor("text-success")
-    }
-
+    
 
     const isDesktop = useMediaQuery({
         query: "(min-width: 1224px)"
@@ -62,7 +44,8 @@ function ConfirmationRetraitInfoEnglish(props)
 
     <Row className='justify-content-start pb-3'>
       <hr style={{color:"darkorange"}}></hr>
-      <p className='text-dark'>your transfer status : <b className={statusColor}>{statusTransfert}</b> </p>
+      {props.envoie2.infoEnvoie.status_retrait == "code retrait en attente de validation" ? <p className='text-dark'>your transfer status : <b className="text-danger"></b> your tracking number validation is still pending...</p> :
+     <p className='text-dark'>your transfer status : <b className="text-success"></b> your tracking number has been activated</p> }
     </Row>
     <Row className='justify-content-center pb-3' >
 
@@ -112,7 +95,8 @@ function ConfirmationRetraitInfoEnglish(props)
 
     <Row className='justify-content-start pb-3'>
       <hr style={{color:"darkorange"}}></hr>
-      <p className='text-dark'>your transfer status : <b className={statusColor}>{statusTransfert}</b> </p>
+      {props.envoie2.infoEnvoie.status_retrait == "code retrait en attente de validation" ? <p className='text-dark'>your transfer status : <b className="text-danger"></b> your tracking number validation is still pending...</p> :
+     <p className='text-dark'>your transfer status : <b className="text-success"></b> your tracking number has been activated</p> }
     </Row>
     <Row className='justify-content-start pb-3' >
     <Col xs={12}>

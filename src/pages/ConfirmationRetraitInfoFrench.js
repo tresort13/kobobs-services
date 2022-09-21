@@ -29,18 +29,20 @@ function ConfirmationRetraitInfoFrench(props)
         query: "(max-width: 1224px)"
       });
 
-      if(props.envoie2.infoEnvoie.status_retrait === "code retrait en attente de validation")
+    if (props.envoie2.infoEnvoie.status_retrait == "code retrait en attente de validation")
     {
       setStatusTransfert("votre code de retrait est encore en attente de validation")
       setStatusColor("text-danger")
     }
-    else if(props.envoie2.infoEnvoie.status_retrait === "Code Retrait Valide")
+
+    else if (props.envoie2.infoEnvoie.status_retrait == "Code Retrait Valide")
     {
       setStatusTransfert("votre code de retrait a été validé")
       setStatusColor("text-success")
     }
-    else{
-      setStatusTransfert("votre bénéficiaire a déjà récuperé l'argent ")
+    else
+    {
+      setStatusTransfert("votre bénéficiaire a déjà récuperé l'argent")
       setStatusColor("text-success")
     }
   

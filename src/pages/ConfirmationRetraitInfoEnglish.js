@@ -24,17 +24,18 @@ function ConfirmationRetraitInfoEnglish(props)
     const [statusTransfert,setStatusTransfert] = useState("")
     const [statusColor,setStatusColor] = useState("")
 
-    if(props.envoie2.infoEnvoie.status_retrait === "code retrait en attente de validation")
+    if (props.envoie2.infoEnvoie.status_retrait === "code retrait en attente de validation")
     {
       setStatusTransfert("your tracking number validation is still pending...")
       setStatusColor("text-danger")
     }
-    else if(props.envoie2.infoEnvoie.status_retrait === "Code Retrait Valide")
+    else if (props.envoie2.infoEnvoie.status_retrait === "Code Retrait Valide")
     {
       setStatusTransfert("your tracking number has been validated")
       setStatusColor("text-success")
     }
-    else{
+    else
+    {
       setStatusTransfert("your receiver has picked up the money")
       setStatusColor("text-success")
     }

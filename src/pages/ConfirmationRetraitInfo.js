@@ -22,19 +22,37 @@ function ConfirmationRetraitInfo(props)
     const [statusTransfert,setStatusTransfert] = useState("")
     const [statusColor,setStatusColor] = useState("")
 
-    if(props.envoie2.infoEnvoie.status_retrait === "code retrait en attente de validation")
+    const nonValide = ()=>
     {
       setStatusTransfert("Code ya retrait nayo eza  nanu validé te")
       setStatusColor("text-danger")
     }
-    else if(props.envoie2.infoEnvoie.status_retrait === "Code Retrait Valide")
+
+    const valide = ()=>
     {
       setStatusTransfert("Code ya retrait nayo ekomi valide")
       setStatusColor("text-success")
     }
-    else{
+
+    const paye = ()=>
+    {
       setStatusTransfert("Motindi nayo esi azui mbongo ")
       setStatusColor("text-success")
+    }
+
+
+
+    if (props.envoie2.infoEnvoie.status_retrait == "code retrait en attente de validation")
+    {
+      nonValide()  
+    }
+    else if (props.envoie2.infoEnvoie.status_retrait == "Code Retrait Valide")
+    {
+      valide()
+    }
+    else 
+    {
+      paye()
     }
     
     const isDesktop = useMediaQuery({

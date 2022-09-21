@@ -230,37 +230,11 @@ function HeaderEnglish(props)
          </Offcanvas>
     
    </Container>}
-   <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
    </div>
 
     )
 }
 
-function MyVerticallyCenteredModal(props) {
-  return (
-    <Modal
-      {...props}
-      size="sm"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Contact us :
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
 
-        <p className='text-dark'>mobile : <b>00447417588363</b>   
-        </p>
-        <p className='text-dark'>email : <b>gisele.makaba@kobobs.com</b>   
-        </p>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant='warning' onClick={props.onHide}>close</Button>
-      </Modal.Footer>
-    </Modal>
-  );
-}
 
 export default HeaderEnglish;

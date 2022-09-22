@@ -111,6 +111,14 @@ function FormRetrait(props)
         </Button>
         </Col>
     </Row>
+
+    <Row className='pb-3'>
+       <Col>
+       <Link to="/form_find_code_retrait_lingala" style={{textDecoration:"none"}}>
+       <p ><b className='couleur2'>Na bosani code retrait na ngai ?</b></p>
+       </Link>
+        </Col>
+    </Row>
   
 
 
@@ -148,6 +156,13 @@ function FormRetrait(props)
         </Col>
     </Row>
   
+    <Row className='pb-3'>
+       <Col>
+       <Link to="//form_find_code_retrait_lingala" style={{textDecoration:"none"}}>
+       <p ><b className='couleur2'>Na bosani code retrait na ngai ?</b></p>
+       </Link>
+        </Col>
+    </Row>
 
 
 </Form>

@@ -146,17 +146,17 @@ function FormEnvoiClientEnglish(props)
         <Form.Label className='text-dark'><span className="text-danger">*</span> Email</Form.Label>
         <InputGroup className="mb-3">
         <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
-        <Form.Control name="email_expediteur" value={envoie.infoEnvoie.email_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Email' required/>
-        
+        <Form.Control name="email_expediteur" value={envoie.infoEnvoie.email_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Email' required/> 
       </InputGroup>
         </Col>
 
         <Col xs = {4}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <InputGroup.Text id="basic-addon1">+44</InputGroup.Text>
         <Form.Label className='text-dark'><span className="text-danger">*</span> Mobile Number</Form.Label>
+        <InputGroup className="mb-3">
+        <InputGroup.Text id="basic-addon1">+44</InputGroup.Text>
+        
         <Form.Control name="numero_expediteur" value={envoie.infoEnvoie.numero_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Numéro ya Tshombo' required/>
-         </Form.Group>
+        </InputGroup>
         </Col>
 
         

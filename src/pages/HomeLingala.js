@@ -69,7 +69,7 @@ function HomeLingala()
   <Row className='justify-content-center pb-3 pt-5 mt-5'>
         <Col xs = {"auto"}>
         <Link to="/form_envoie_client_lingala" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='dark'  style={{width:400,height:40}} className='btn-lg rounded-pill zoom'>
+        <Button variant='dark'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
         <b className='text-light'><pre>Nbamla Liboso Na Tinda Mbongo</pre></b>
         </Button>
         </Link>
@@ -81,7 +81,7 @@ function HomeLingala()
     <Row className='justify-content-center pb-3'>
         <Col xs = {"auto"}>
         <Link to="/form_envoie_abonne_id_lingala" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='light'  style={{width:400,height:40}} className='btn-lg rounded-pill zoom'>
+        <Button variant='light'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
         <b className='couleur2'><pre>Naza déjà Abonné</pre></b>
         </Button>
         </Link>

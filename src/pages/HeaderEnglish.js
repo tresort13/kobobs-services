@@ -118,7 +118,7 @@ function HeaderEnglish(props)
     </Row>
    
 
-    <Offcanvas show={show} onHide={handleClose}  style={{height:200}}>
+    <Offcanvas show={show} onHide={handleClose}  style={{height:300}}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title className="text-end mx-auto"><i className="display-6 couleur2 text-center"><b><u>Send money </u></b></i> </Offcanvas.Title>
         </Offcanvas.Header>
@@ -216,7 +216,7 @@ function HeaderEnglish(props)
         </Col>  
     </Row>
    
-    <Offcanvas show={show} onHide={handleClose}  style={{height:200}}>
+    <Offcanvas show={show} onHide={handleClose}  style={{height:300}}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title className="text-end mx-auto"><i className="display-6 couleur2 text-center"><b><u>Send money </u></b></i> </Offcanvas.Title>
         </Offcanvas.Header>

@@ -18,21 +18,23 @@ import  './Header.css';
 
 
 const useState = React.useState
-function FormCodeAbonneEnglish(props)
+function FormFindCodeRetraitFrench(props)
 {
 
-    const[numeroAbonne,setNumeroAbonne] = useState({infoNumeroAbonne :{
-        numero :"",
+    const [retrait,setRetrait] = useState({infoRetrait :{
+        codeAbonne :"",
+        beneficiaire :"",
+        dateInfo :""
     }})
+
+    const [codeRetrait,setCodeRetrait] = useState("")
 
     const navigate = useNavigate()
     const [modalShow, setModalShow] = React.useState(false);
     const [modalShow2, setModalShow2] = React.useState(false);
     const [modalShow3, setModalShow3] = React.useState(false);
 
-    const [message,setMessage] = useState("Please enter your mobile number or email")
-    const [codeAbonne,setCodeAbonne] = useState("")
-    const [couleur,setCouleur] = useState("text-dark")
+    const [message,setMessage] = useState("Kotisa ba informations oyo esengami")
 
     const isDesktop = useMediaQuery({
         query: "(min-width: 1224px)"
@@ -49,7 +51,7 @@ function FormCodeAbonneEnglish(props)
     {
           e.preventDefault()
           setModalShow2(true)
-        fetch('https://kobobsapi.herokuapp.com/api/getAbonneInfo/'+numeroAbonne.infoNumeroAbonne.numero+'/', {
+        fetch('https://kobobsapi.herokuapp.com/api/getCodeRetraitInfo/'+retrait.infoRetrait.codeAbonne+'/'+retrait.infoRetrait.beneficiaire+'/'+retrait.infoRetrait.dateInfo+'/', {
                 method:'GET',
                 headers: {'Content-Type': 'application/json'},
                // body: JSON.stringify(codeRetrait.infoCodeRetrait)
@@ -59,7 +61,7 @@ function FormCodeAbonneEnglish(props)
                 res => {   
                   setModalShow2(false)
                     console.log(res)
-                   setCodeAbonne(res[0].code_abonne)
+                   setCodeRetrait(res[0].code_retrait)
                    setModalShow3(true)
                    
                 }
@@ -73,14 +75,14 @@ function FormCodeAbonneEnglish(props)
 
                 
 
-                setNumeroAbonne({infoNumeroAbonne:{numero:""}})
+                setRetrait({infoRetrait:{codeAbonne:"",beneficiaire:"",dateInfo:""}})
     }
 
     const inputChanged = (event)=>
     {
-        const cred = numeroAbonne.infoNumeroAbonne;
+        const cred = retrait.infoRetrait;
         cred[event.target.name] = event.target.value;
-        setNumeroAbonne({infoNumeroAbonne:cred})
+        setRetrait({infoRetrait:cred})
     }
 
 
@@ -89,8 +91,8 @@ function FormCodeAbonneEnglish(props)
     return (
         
         <>
-        <Header username={props.username} />
-{isDesktop && <Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:100,width:750}} >
+        <Header  />
+{isDesktop && <Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:100,width:1000}} >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={6}>
         <p className='text-dark'><i><b>{message}</b></i></p>
@@ -100,10 +102,24 @@ function FormCodeAbonneEnglish(props)
     
 <Form onSubmit={submitNumero}>
     <Row className='justify-content-center'>
-        <Col xs = {6}>
+        <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'>Email</Form.Label>
-        <Form.Control name="numero" value={numeroAbonne.infoNumeroAbonne.numero} onChange={e=>inputChanged(e)} type="text" placeholder="Email" autoFocus   required/>
+        <Form.Label className='text-dark'>Code Abonné</Form.Label>
+        <Form.Control name="codeAbonne" value={retrait.infoRetrait.codeAbonne} onChange={e=>inputChanged(e)} type="text" placeholder="Code Abonné" autoFocus   required/>
+         </Form.Group>
+        </Col>
+
+        <Col xs = {4}>
+        <Form.Group className="mb-3" controlId="formBasicText" >
+        <Form.Label className='text-dark'>Nome bénéficiaire</Form.Label>
+        <Form.Control name="montantEnvoi" value={retrait.infoRetrait.beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder="Nome bénéficiaire" autoFocus   required/>
+         </Form.Group>
+        </Col>
+
+        <Col xs = {4}>
+        <Form.Group className="mb-3" controlId="formBasicText" >
+        <Form.Label className='text-dark'>date de votre transfert</Form.Label>
+        <Form.Control name="dateInfo" type="date" value={retrait.infoRetrait.dateInfo} onChange={e=>inputChanged(e)}  placeholder="date de votre transfert" autoFocus   required/>
          </Form.Group>
         </Col>
     </Row>
@@ -132,15 +148,28 @@ function FormCodeAbonneEnglish(props)
 
     
 <Form onSubmit={submitNumero}>
-    <Row className='justify-content-center'>
+<Row className='justify-content-center'>
+<Col xs = {12}>
+        <Form.Group className="mb-3" controlId="formBasicText" >
+        <Form.Label className='text-dark'>Code Abonné</Form.Label>
+        <Form.Control name="codeAbonne" value={retrait.infoRetrait.codeAbonne} onChange={e=>inputChanged(e)} type="text" placeholder="Code Abonné" autoFocus   required/>
+         </Form.Group>
+        </Col>
+
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'>Email</Form.Label>
-        <Form.Control name="numero" value={numeroAbonne.infoNumeroAbonne.numero} onChange={e=>inputChanged(e)} type="text" placeholder="Email" autoFocus   required/>
+        <Form.Label className='text-dark'>Nome bénéficiaire</Form.Label>
+        <Form.Control name="montantEnvoi" value={retrait.infoRetrait.beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder="Nome bénéficiaire" autoFocus   required/>
+         </Form.Group>
+        </Col>
+
+        <Col xs = {12}>
+        <Form.Group className="mb-3" controlId="formBasicText" >
+        <Form.Label className='text-dark'>date de votre transfert</Form.Label>
+        <Form.Control name="dateInfo" type="date" value={retrait.infoRetrait.dateInfo} onChange={e=>inputChanged(e)}  placeholder="date de votre transfert" autoFocus   required/>
          </Form.Group>
         </Col>
     </Row>
-
 
    <Row className='pb-3'>
        <Col>
@@ -161,7 +190,7 @@ function FormCodeAbonneEnglish(props)
         </Row>
 <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
 <MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
-<MyVerticallyCenteredModal3 codeAbonne={codeAbonne} show={modalShow3} onHide={() => setModalShow3(false)} />
+<MyVerticallyCenteredModal3 codeRetrait={codeRetrait} show={modalShow3} onHide={() => setModalShow3(false)} />
 <Footer />
         </>
        
@@ -183,11 +212,36 @@ function MyVerticallyCenteredModal(props) {
         </Modal.Header>
         <Modal.Body>
 
-          <p className='text-danger'><b>Email not valid  </b>   
+          <p className='text-danger'><b>Sorry we did not find a tracking number with your entered informations</b>   
           </p>
         </Modal.Body>
         <Modal.Footer>
           <Button variant='warning' onClick={props.onHide}>close</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
+
+  function MyVerticallyCenteredModal(props) {
+    return (
+      <Modal
+        {...props}
+        size="sm"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Echec de Validation
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+
+          <p className='text-danger'><b>Désolé nous n'avons pas pu trouvé un code de retrait relié à ces informations </b>   
+          </p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant='warning' onClick={props.onHide}>Fermer</Button>
         </Modal.Footer>
       </Modal>
     );
@@ -203,7 +257,7 @@ function MyVerticallyCenteredModal(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Please wait...
+            Veuillez Patienter...
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -225,18 +279,16 @@ function MyVerticallyCenteredModal(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-          <p ><b className='text-dark'>Your subscriber ID</b></p>
+          <p ><b className='text-dark'>Votre Code Retrait</b></p>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <p ><b className='text-success'>{props.codeAbonne}</b></p>
+        <p ><b className='text-success'>{props.codeRetrait}</b></p>
         </Modal.Body>
         <Modal.Footer>
-          <Link to="/form_envoie_abonne_id_english"><Button variant='warning' onClick={props.onHide}>ok i got it</Button></Link>
+          <Link to="/form_envoie_abonne_id_french"><Button variant='warning' onClick={props.onHide}>ok j'ai récuperé</Button></Link>
         </Modal.Footer>
       </Modal>
     );
   }
-  
-
-export default FormCodeAbonneEnglish;
+export default FormFindCodeRetraitFrench;

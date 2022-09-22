@@ -240,11 +240,11 @@ function FormEnvoiClientEnglish(props)
         </Col>
 
         {envoie.infoEnvoie.type_service == "by mobile money tranfer(Mpesa,Orange Money,Airtel Money)" ? <Col xs = {12}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'><span className="text-danger">*</span> Enter the mobile number for transfering the money  </Form.Label>
+        <InputGroup className="mb-3">
+        <InputGroup.Text id="basic-addon1">+243</InputGroup.Text>
         <Form.Control name="numero_transfer"  onChange={e=>inputChanged(e)} type="text" placeholder='transfering mobile number'  required/>
-       
-         </Form.Group>
+        </InputGroup>
         </Col> : <span></span>}
     </Row>
     <Row>
@@ -324,12 +324,12 @@ function FormEnvoiClientEnglish(props)
 
 
         <Col xs = {12}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'><span className="text-danger">*</span> Mobile Number</Form.Label>
+        <InputGroup className="mb-3">
+        <InputGroup.Text id="basic-addon1">+44</InputGroup.Text>
         <Form.Control name="numero_expediteur" value={envoie.infoEnvoie.numero_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Numéro ya Tshombo' required/>
-         </Form.Group>
+        </InputGroup>
         </Col>
-
         
     </Row>
     <Row className='justify-content-center'>
@@ -409,11 +409,11 @@ function FormEnvoiClientEnglish(props)
         </Col>
 
         {envoie.infoEnvoie.type_service == "by mobile money tranfer(Mpesa,Orange Money,Airtel Money)" ? <Col xs = {12}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'><span className="text-danger">*</span> Enter the mobile number for transfering the money  </Form.Label>
+        <InputGroup className="mb-3">
+        <InputGroup.Text id="basic-addon1">+243</InputGroup.Text>
         <Form.Control name="numero_transfer"  onChange={e=>inputChanged(e)} type="text" placeholder='transfering mobile number'  required/>
-       
-         </Form.Group>
+        </InputGroup>
         </Col> : <span></span>}
     </Row>
     <Row>

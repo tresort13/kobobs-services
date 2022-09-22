@@ -144,14 +144,14 @@ function FormEnvoiClient(props)
       </InputGroup>
         </Col>
 
-        <Col xs = {4}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <InputGroup.Text id="basic-addon1">+44</InputGroup.Text>
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Numéro ya Tshombo</Form.Label>
-        <Form.Control name="numero_expediteur" value={envoie.infoEnvoie.numero_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Numéro ya Tshombo' required/>
-         </Form.Group>
-        </Col>
 
+        <Col xs = {4}>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Numéro ya Tshombo</Form.Label>
+        <InputGroup className="mb-3">
+        <InputGroup.Text id="basic-addon1">+44</InputGroup.Text>  
+        <Form.Control name="numero_expediteur" value={envoie.infoEnvoie.numero_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Numéro ya Tshombo' required/>
+        </InputGroup>
+        </Col>
         
     </Row>
     <Row className='justify-content-center'>
@@ -232,11 +232,11 @@ function FormEnvoiClient(props)
         </Col>
 
         {envoie.infoEnvoie.type_service == "Kozua na nzela ya tshombo(Mpesa,Orange Money,Airtel Money)" ? <Col xs = {12}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Kotisa Numero yako tinda mbongo </Form.Label>
-        <Form.Control name="numero_transfer"   onChange={e=>inputChanged(e)} type="text" placeholder='numero ya transfer'  required/>
-       
-         </Form.Group>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Kotisa Numéro yako tinda mbongo  </Form.Label>
+        <InputGroup className="mb-3">
+        <InputGroup.Text id="basic-addon1">+243</InputGroup.Text>
+        <Form.Control name="numero_transfer"  onChange={e=>inputChanged(e)} type="text" placeholder='Kotisa Numéro yako tinda mbongo'  required/>
+        </InputGroup>
         </Col> : <span></span>}
     </Row>
     <Row>
@@ -315,10 +315,11 @@ function FormEnvoiClient(props)
 
 
         <Col xs = {12}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'><span className="text-danger">*</span> Numéro ya Tshombo</Form.Label>
+        <InputGroup className="mb-3">
+        <InputGroup.Text id="basic-addon1">+44</InputGroup.Text>  
         <Form.Control name="numero_expediteur" value={envoie.infoEnvoie.numero_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Numéro ya Tshombo' required/>
-         </Form.Group>
+        </InputGroup>
         </Col>
 
         
@@ -402,11 +403,11 @@ function FormEnvoiClient(props)
         </Col>
 
         {envoie.infoEnvoie.type_service == "Kozua na nzela ya tshombo(Mpesa,Orange Money,Airtel Money)" ? <Col xs = {12}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Kotisa Numero yako tinda mbongo </Form.Label>
-        <Form.Control name="numero_transfer"   onChange={e=>inputChanged(e)} type="text" placeholder='numero ya transfer'  required/>
-       
-         </Form.Group>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Kotisa Numéro yako tinda mbongo  </Form.Label>
+        <InputGroup className="mb-3">
+        <InputGroup.Text id="basic-addon1">+243</InputGroup.Text>
+        <Form.Control name="numero_transfer"  onChange={e=>inputChanged(e)} type="text" placeholder='Kotisa Numéro yako tinda mbongo'  required/>
+        </InputGroup>
         </Col> : <span></span>}
     </Row>
     <Row>

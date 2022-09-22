@@ -102,8 +102,8 @@ function FormCodeAbonneFrench(props)
     <Row className='justify-content-center'>
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'>Téléphone ou email</Form.Label>
-        <Form.Control name="numero" value={numeroAbonne.infoNumeroAbonne.numero} onChange={e=>inputChanged(e)} type="text" placeholder="Téléphone ou email" autoFocus   required/>
+        <Form.Label className='text-dark'>Email</Form.Label>
+        <Form.Control name="numero" value={numeroAbonne.infoNumeroAbonne.numero} onChange={e=>inputChanged(e)} type="text" placeholder="Email" autoFocus   required/>
          </Form.Group>
         </Col>
     </Row>
@@ -135,8 +135,8 @@ function FormCodeAbonneFrench(props)
     <Row className='justify-content-center'>
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'>Téléphone ou email</Form.Label>
-        <Form.Control name="numero" value={numeroAbonne.infoNumeroAbonne.numero} onChange={e=>inputChanged(e)} type="text" placeholder="Téléphone ou email" autoFocus   required/>
+        <Form.Label className='text-dark'>Email</Form.Label>
+        <Form.Control name="numero" value={numeroAbonne.infoNumeroAbonne.numero} onChange={e=>inputChanged(e)} type="text" placeholder="Email" autoFocus   required/>
          </Form.Group>
         </Col>
     </Row>
@@ -183,7 +183,7 @@ function MyVerticallyCenteredModal(props) {
         </Modal.Header>
         <Modal.Body>
 
-          <p className='text-danger'><b>Désolé numéro de téléphone ou email n'est pas valide </b>   
+          <p className='text-danger'><b>Désolé Email n'est pas valide </b>   
           </p>
         </Modal.Body>
         <Modal.Footer>

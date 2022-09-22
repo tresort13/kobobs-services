@@ -23,7 +23,7 @@ function FormFindCodeRetraitLingala(props)
 
     const [retrait,setRetrait] = useState({infoRetrait :{
         codeAbonne :"",
-        montantEnvoi :"",
+        beneficiaire :"",
         dateInfo :""
     }})
 
@@ -51,7 +51,7 @@ function FormFindCodeRetraitLingala(props)
     {
           e.preventDefault()
           setModalShow2(true)
-        fetch('https://kobobsapi.herokuapp.com/api/getCodeRetraitInfo/'+retrait.infoRetrait.codeAbonne+'/'+retrait.infoRetrait.montantEnvoi+'/'+retrait.infoRetrait.dateInfo+'/', {
+        fetch('https://kobobsapi.herokuapp.com/api/getCodeRetraitInfo/'+retrait.infoRetrait.codeAbonne+'/'+retrait.infoRetrait.beneficiaire+'/'+retrait.infoRetrait.dateInfo+'/', {
                 method:'GET',
                 headers: {'Content-Type': 'application/json'},
                // body: JSON.stringify(codeRetrait.infoCodeRetrait)
@@ -75,7 +75,7 @@ function FormFindCodeRetraitLingala(props)
 
                 
 
-                setRetrait({infoRetrait:{codeAbonne:"",montantEnvoi:"",dateInfo:""}})
+                setRetrait({infoRetrait:{codeAbonne:"",beneficiaire:"",dateInfo:""}})
     }
 
     const inputChanged = (event)=>
@@ -92,7 +92,7 @@ function FormFindCodeRetraitLingala(props)
         
         <>
         <Header  />
-{isDesktop && <Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:100,width:750}} >
+{isDesktop && <Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:100,width:1000}} >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={6}>
         <p className='text-dark'><i><b>{message}</b></i></p>
@@ -111,8 +111,8 @@ function FormFindCodeRetraitLingala(props)
 
         <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'>mbongo yako zwa epayi ya mozui</Form.Label>
-        <Form.Control name="montantEnvoi" value={retrait.infoRetrait.montantEnvoi} onChange={e=>inputChanged(e)} type="text" placeholder="mbongo yako zwa epayi ya mozui" autoFocus   required/>
+        <Form.Label className='text-dark'>Kombo Ya Libota Ya Mozui</Form.Label>
+        <Form.Control name="montantEnvoi" value={retrait.infoRetrait.beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder="Kombo Ya Libota Ya Mozui" autoFocus   required/>
          </Form.Group>
         </Col>
 
@@ -158,8 +158,8 @@ function FormFindCodeRetraitLingala(props)
 
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'>mbongo yako zwa epayi ya mozui</Form.Label>
-        <Form.Control name="montantEnvoi" value={retrait.infoRetrait.montantEnvoi} onChange={e=>inputChanged(e)} type="text" placeholder="mbongo yako zwa epayi ya mozui" autoFocus   required/>
+        <Form.Label className='text-dark'>Kombo Ya Libota Ya Mozui</Form.Label>
+        <Form.Control name="montantEnvoi" value={retrait.infoRetrait.beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder="Kombo Ya Libota Ya Mozui" autoFocus   required/>
          </Form.Group>
         </Col>
 
@@ -261,7 +261,7 @@ function MyVerticallyCenteredModal(props) {
         <p ><b className='text-success'>{props.codeRetrait}</b></p>
         </Modal.Body>
         <Modal.Footer>
-          <Link to="/form_envoie_abonne_id"><Button variant='warning' onClick={props.onHide}>ok nazwi yango</Button></Link>
+          <Link to="/form_retrait_info"><Button variant='warning' onClick={props.onHide}>ok nazwi yango</Button></Link>
         </Modal.Footer>
       </Modal>
     );

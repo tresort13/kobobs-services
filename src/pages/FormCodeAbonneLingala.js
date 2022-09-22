@@ -102,8 +102,8 @@ function FormCodeAbonneLingala(props)
     <Row className='justify-content-center'>
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'>Téléphone ou email nayo</Form.Label>
-        <Form.Control name="numero" value={numeroAbonne.infoNumeroAbonne.numero} onChange={e=>inputChanged(e)} type="text" placeholder="Téléphone ou email nayo" autoFocus   required/>
+        <Form.Label className='text-dark'>Email nayo</Form.Label>
+        <Form.Control name="numero" value={numeroAbonne.infoNumeroAbonne.numero} onChange={e=>inputChanged(e)} type="text" placeholder="Email nayo" autoFocus   required/>
          </Form.Group>
         </Col>
     </Row>
@@ -135,8 +135,8 @@ function FormCodeAbonneLingala(props)
     <Row className='justify-content-center'>
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'>Téléphone ou email nayo</Form.Label>
-        <Form.Control name="numero" value={numeroAbonne.infoNumeroAbonne.numero} onChange={e=>inputChanged(e)} type="text" placeholder="Téléphone ou email nayo" autoFocus   required/>
+        <Form.Label className='text-dark'>Email nayo</Form.Label>
+        <Form.Control name="numero" value={numeroAbonne.infoNumeroAbonne.numero} onChange={e=>inputChanged(e)} type="text" placeholder="Email nayo" autoFocus   required/>
          </Form.Group>
         </Col>
     </Row>
@@ -183,7 +183,7 @@ function MyVerticallyCenteredModal(props) {
         </Modal.Header>
         <Modal.Body>
 
-          <p className='text-danger'><b>Bolimbisi numéro ya téléphone nayo ou email eza valid te</b>   
+          <p className='text-danger'><b>Bolimbisi Email eza valid te</b>   
           </p>
         </Modal.Body>
         <Modal.Footer>

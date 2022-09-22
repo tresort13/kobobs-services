@@ -112,7 +112,7 @@ function FormFindCodeRetraitLingala(props)
         <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'>Kombo Ya Libota Ya Mozui</Form.Label>
-        <Form.Control name="montantEnvoi" value={retrait.infoRetrait.beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder="Kombo Ya Libota Ya Mozui" autoFocus   required/>
+        <Form.Control name="beneficiaire" value={retrait.infoRetrait.beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder="Kombo Ya Libota Ya Mozui" autoFocus   required/>
          </Form.Group>
         </Col>
 
@@ -159,7 +159,7 @@ function FormFindCodeRetraitLingala(props)
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'>Kombo Ya Libota Ya Mozui</Form.Label>
-        <Form.Control name="montantEnvoi" value={retrait.infoRetrait.beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder="Kombo Ya Libota Ya Mozui" autoFocus   required/>
+        <Form.Control name="beneficiaire" value={retrait.infoRetrait.beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder="Kombo Ya Libota Ya Mozui" autoFocus   required/>
          </Form.Group>
         </Col>
 

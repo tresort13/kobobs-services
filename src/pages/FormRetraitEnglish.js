@@ -114,7 +114,13 @@ function FormRetraitEnglish(props)
         </Col>
     </Row>
   
-
+    <Row className='pb-3'>
+       <Col>
+       <Link to="/form_find_code_retrait_english" style={{textDecoration:"none"}}>
+       <p ><b className='couleur2'>I forgot my subscriber ID ?</b></p>
+       </Link>
+        </Col>
+    </Row>
 
 </Form>
 </Container>
@@ -150,6 +156,13 @@ function FormRetraitEnglish(props)
         </Col>
     </Row>
   
+    <Row className='pb-3'>
+       <Col>
+       <Link to="/form_find_code_retrait_english" style={{textDecoration:"none"}}>
+       <p ><b className='couleur2'>I forgot my subscriber ID ?</b></p>
+       </Link>
+        </Col>
+    </Row>
 
 
 </Form>

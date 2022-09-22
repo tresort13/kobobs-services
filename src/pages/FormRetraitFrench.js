@@ -112,7 +112,13 @@ function FormRetraitFrench(props)
         </Col>
     </Row>
   
-
+    <Row className='pb-3'>
+       <Col>
+       <Link to="/form_find_code_retrait_french" style={{textDecoration:"none"}}>
+       <p ><b className='couleur2'>J'ai oublié mon code de retrait ?</b></p>
+       </Link>
+        </Col>
+    </Row>
 
 </Form>
 </Container>
@@ -144,6 +150,14 @@ function FormRetraitFrench(props)
         <Button variant="warning" type="submit" >
         Valider 
         </Button>
+        </Col>
+    </Row>
+
+    <Row className='pb-3'>
+       <Col>
+       <Link to="/form_find_code_retrait_french" style={{textDecoration:"none"}}>
+       <p ><b className='couleur2'>J'ai oublié mon code de retrait ?</b></p>
+       </Link>
         </Col>
     </Row>
   

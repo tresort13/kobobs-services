@@ -15,6 +15,7 @@ import FormEnvoiAbonne from './pages/FormEnvoiAbonne';
 import EnvoieAbonneInfo from './pages/EnvoieAbonneInfo';
 import FormRetrait from './pages/FormRetrait';
 import FormCodeAbonneLingala from  './pages/FormCodeAbonneLingala';
+import FormFindCodeRetraitLingala from './pages/FormFindCodeRetraitLingala';
 
 import HomeEnglish from './pages/HomeEnglish';
 import EnvoiInfoEnglish from './pages/EnvoiInfoEnglish';
@@ -26,6 +27,7 @@ import EnvoieAbonneInfoEnglish from './pages/EnvoieAbonneInfoEnglish';
 import FormRetraitEnglish from './pages/FormRetraitEnglish';
 import FormEnvoiAbonneEnglish from './pages/FormEnvoiAbonneEnglish'
 import FormCodeAbonneEnglish from  './pages/FormCodeAbonneEnglish'
+import FormFindCodeRetraitEnglish from './pages/FormFindCodeRetraitEnglish';
 
 
 
@@ -39,7 +41,8 @@ import FormEnvoiAbonneFrench from './pages/FormEnvoiAbonneFrench';
 import EnvoieAbonneInfoFrench from './pages/EnvoieAbonneInfoFrench';
 import FormRetraitFrench from './pages/FormRetraitFrench';
 import FormCodeAbonneFrench from  './pages/FormCodeAbonneFrench'
-import FormFindCodeRetraitLingala from './pages/FormFindCodeRetraitLingala';
+import FormFindCodeRetraitFrench from './pages/FormFindCodeRetraitFrench';
+
 
 
 
@@ -475,6 +478,9 @@ function App() {
         <Route path="/form_code_abonne_english" element={<FormCodeAbonneEnglish />} >
         </Route>
 
+        <Route path="/form_find_code_retrait_english" element={<FormFindCodeRetraitEnglish  />} >
+        </Route>
+        
         <Route path="/envoi_info_english" element={<EnvoiInfoEnglish  dataEnvoie3={dataEnvoie3} envoie={envoie} setEnvoie={setEnvoie}/>} >
         </Route>
 
@@ -546,6 +552,9 @@ function App() {
         </Route>
 
         <Route path="/form_code_abonne_french" element={<FormCodeAbonneFrench />} >
+        </Route>
+        
+        <Route path="/form_find_code_retrait_lingala" element={<FormFindCodeRetraitFrench  />} >
         </Route>
         
         <Route path="/envoi_info_french" element={<EnvoiInfoFrench   dataEnvoie3={dataEnvoie3} envoie={envoie} setEnvoie={setEnvoie}/>} >

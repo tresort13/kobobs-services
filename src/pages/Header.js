@@ -32,7 +32,15 @@ function Header(props)
         
         return () => clearInterval(interval)
       }, [])
+      const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
+
+    const [show2, setShow2] = useState(false);
+    const handleClose2 = () => setShow2(false);
+    const handleShow2 = () => setShow2(true); 
+   
       
    
     return (

@@ -14,6 +14,14 @@ import { useMediaQuery } from 'react-responsive';
 
 function HomeLingala()
 {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+
+  const [show2, setShow2] = useState(false);
+  const handleClose2 = () => setShow2(false);
+  const handleShow2 = () => setShow2(true);
 
     const isDesktop = useMediaQuery({
         query: "(min-width: 1224px)"
@@ -82,8 +90,8 @@ function HomeLingala()
     <Row className='justify-content-center pb-3'>
         <Col xs = {"auto"}>
         <Link to="/form_retrait_info_lingala" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='light'  style={{width:400,height:40}} className='btn-lg rounded-pill zoom'>
-        <b className='text-dark'><pre>Landela transfert nayo</pre></b>
+        <Button variant='dark'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
+        <b className='text-light'><pre>Landela transfert nayo</pre></b>
         </Button>
         </Link>
         </Col>

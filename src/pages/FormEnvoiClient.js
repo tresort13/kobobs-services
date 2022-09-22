@@ -146,6 +146,7 @@ function FormEnvoiClient(props)
 
         <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
+        <InputGroup.Text id="basic-addon1">+44</InputGroup.Text>
         <Form.Label className='text-dark'><span className="text-danger">*</span> Numéro ya Tshombo</Form.Label>
         <Form.Control name="numero_expediteur" value={envoie.infoEnvoie.numero_expediteur} onChange={e=>inputChanged(e)} type="text" placeholder='Numéro ya Tshombo' required/>
          </Form.Group>

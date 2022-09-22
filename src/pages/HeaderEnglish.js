@@ -127,7 +127,7 @@ function HeaderEnglish(props)
         <Offcanvas.Body>
         <Nav justify menuVariant="dark"  className="navbar justify-content-end flex-grow-1 pe-3 flex-column">
         <Nav.Link href="/form_envoie_client_english"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-dark'><i className='text-light'>First time to send money</i></Button></Nav.Link>
-        <Nav.Link href="/form_envoie_abonne_english"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-dark'><i className='text-light'>I am already a subscriber</i></Button></Nav.Link>
+        <Nav.Link href="/form_envoie_abonne_id_english"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-dark'><i className='text-light'>I am already a subscriber</i></Button></Nav.Link>
          </Nav>
         </Offcanvas.Body>
          </Offcanvas>
@@ -224,7 +224,7 @@ function HeaderEnglish(props)
         <Offcanvas.Body>
         <Nav justify menuVariant="dark"  className="navbar justify-content-end flex-grow-1 pe-3 flex-column">
         <Nav.Link href="/form_envoie_client_english"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-dark'><i className='text-light'>First time to send money</i></Button></Nav.Link>
-        <Nav.Link href="/form_envoie_abonne_english"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-dark'><i className='text-light'>I am already a subscriber</i></Button></Nav.Link>
+        <Nav.Link href="/form_envoie_abonne_id_english"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-dark'><i className='text-light'>I am already a subscriber</i></Button></Nav.Link>
          </Nav>
         </Offcanvas.Body>
          </Offcanvas>
@@ -235,9 +235,9 @@ function HeaderEnglish(props)
         </Offcanvas.Header>
         <Offcanvas.Body>
         <Nav justify menuVariant="dark"  className="navbar justify-content-end flex-grow-1 pe-3 flex-column">
-        <p className='couleur2'>Mobile number : <b className='text-dark'>00447417588363</b>   
+        <p className='couleur2'><b>Mobile number :</b> <b className='text-dark'>00447417588363</b>   
         </p>
-        <p className='couleur2'>Email : <b className='text-dark'>gisele.makaba@kobobs.com</b>   
+        <p className='couleur2'><b>Email :</b> <b className='text-dark'>gisele.makaba@kobobs.com</b>   
         </p>
          </Nav>
         </Offcanvas.Body>

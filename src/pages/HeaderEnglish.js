@@ -117,9 +117,10 @@ function HeaderEnglish(props)
         </Col>
     </Row>
    
-    <Offcanvas show={show} onHide={handleClose}  style={{height:300}}>
+
+    <Offcanvas show={show} onHide={handleClose}  style={{height:200}}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 couleur2 text-center"><b><u>Sending money </u></b></i> </Offcanvas.Title>
+          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 couleur2 text-center"><b><u>Send money </u></b></i> </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
         <Nav justify menuVariant="dark"  className="navbar justify-content-end flex-grow-1 pe-3 flex-column">
@@ -142,6 +143,7 @@ function HeaderEnglish(props)
          </Nav>
         </Offcanvas.Body>
          </Offcanvas>
+
    </Container>}
 
 
@@ -177,7 +179,7 @@ function HeaderEnglish(props)
                   <NavDropdown.Divider />
                   <Nav.Link href="/form_retrait_info_english"><b>Track your transfer</b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link ><b>Contact us</b></Nav.Link>
+                  <Nav.Link onClick={handleShow2} ><b>Contact us</b></Nav.Link>
                 </Nav>
                
               </Offcanvas.Body>
@@ -214,14 +216,14 @@ function HeaderEnglish(props)
         </Col>  
     </Row>
    
-    <Offcanvas show={show} onHide={handleClose}  style={{height:300}}>
+    <Offcanvas show={show} onHide={handleClose}  style={{height:200}}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 couleur2 text-center"><b><u>Sending money </u></b></i> </Offcanvas.Title>
+          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 couleur2 text-center"><b><u>Send money </u></b></i> </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
         <Nav justify menuVariant="dark"  className="navbar justify-content-end flex-grow-1 pe-3 flex-column">
-        <Nav.Link href="/form_envoie_client_english"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-dark'><i className='text-light'>First time to send money</i></Button></Nav.Link>
-        <Nav.Link href="/form_envoie_abonne_id_english"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-dark'><i className='text-light'>I am already a subscriber</i></Button></Nav.Link>
+        <Nav.Link href="/form_envoie_client_lingala"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-dark'><i className='text-light'>First time to send money</i></Button></Nav.Link>
+        <Nav.Link href="/form_envoie_abonne_id_lingala"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-dark'><i className='text-light'>I am already a subscriber</i></Button></Nav.Link>
          </Nav>
         </Offcanvas.Body>
          </Offcanvas>

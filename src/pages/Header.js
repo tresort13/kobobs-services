@@ -60,11 +60,14 @@ function Header(props)
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
-                <Nav className="justify-content-end flex-grow-1 pe-3">
+              <Nav className="justify-content-end flex-grow-1 pe-3">  
                 <NavDropdown.Divider />
-                  <Nav.Link href="/home_lingala"><b>Home</b></Nav.Link>
-                  <NavDropdown.Divider />                 
-                </Nav>
+                  <Nav.Link href="/"><b>Zonga na ebandeli</b></Nav.Link>
+                  <NavDropdown.Divider />
+                  <Nav.Link ><b onClick={handleShow}>Tinda Mbongo</b></Nav.Link>
+                  <NavDropdown.Divider />
+                  <Nav.Link ><b onClick={handleShow2} >Contacter biso</b></Nav.Link>
+                </Nav>     
                
               </Offcanvas.Body>
             </Navbar.Offcanvas>
@@ -104,6 +107,32 @@ function Header(props)
         </Col>
     </Row>
    
+
+    <Offcanvas show={show} onHide={handleClose}  style={{height:300}}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 couleur2 text-center"><b><u>envoyer l'argent </u></b></i> </Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+        <Nav justify menuVariant="dark"  className="navbar justify-content-end flex-grow-1 pe-3 flex-column">
+        <Nav.Link href="/form_envoie_client_lingala"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-dark'><i className='text-light'>Mbala libiso na tinda Mbongo</i></Button></Nav.Link>
+        <Nav.Link href="/form_envoie_abonne_id_lingala"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-dark'><i className='text-light'>Naza déjà abonné</i></Button></Nav.Link>
+         </Nav>
+        </Offcanvas.Body>
+         </Offcanvas>
+
+         <Offcanvas show={show2} onHide={handleClose2}  style={{height:300}}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 text-secondary text-center"><b><u>Contacter nous </u></b></i> </Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+        <Nav justify menuVariant="dark"  className="navbar justify-content-end flex-grow-1 pe-3 flex-column">
+        <p className='couleur2'><b>Numéro ya téléphone : </b> <b className='text-dark'>00447417588363</b>   
+        </p>
+        <p className='couleur2'><b>Email : </b> <b className='text-dark'>gisele.makaba@kobobs.com</b>   
+        </p>
+         </Nav>
+        </Offcanvas.Body>
+         </Offcanvas>
     
    </Container>}
 
@@ -134,11 +163,14 @@ function Header(props)
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
-                <Nav className="justify-content-end flex-grow-1 pe-3">
+              <Nav className="justify-content-end flex-grow-1 pe-3">  
                 <NavDropdown.Divider />
-                  <Nav.Link href="/home_french"><b>Home</b></Nav.Link>
+                  <Nav.Link href="/"><b>Zonga na ebandeli</b></Nav.Link>
                   <NavDropdown.Divider />
-                </Nav>
+                  <Nav.Link ><b onClick={handleShow}>Tinda Mbongo</b></Nav.Link>
+                  <NavDropdown.Divider />
+                  <Nav.Link ><b onClick={handleShow2} >Contacter biso</b></Nav.Link>
+                </Nav>     
                
               </Offcanvas.Body>
             </Navbar.Offcanvas>
@@ -174,6 +206,32 @@ function Header(props)
         </Col>  
     </Row>
    
+    <Offcanvas show={show} onHide={handleClose}  style={{height:300}}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 couleur2 text-center"><b><u>envoyer l'argent </u></b></i> </Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+        <Nav justify menuVariant="dark"  className="navbar justify-content-end flex-grow-1 pe-3 flex-column">
+        <Nav.Link href="/form_envoie_client_lingala"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-dark'><i className='text-light'>Mbala libiso na tinda Mbongo</i></Button></Nav.Link>
+        <Nav.Link href="/form_envoie_abonne_id_lingala"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-dark'><i className='text-light'>Naza déjà abonné</i></Button></Nav.Link>
+         </Nav>
+        </Offcanvas.Body>
+         </Offcanvas>
+
+         <Offcanvas show={show2} onHide={handleClose2}  style={{height:300}}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 text-secondary text-center"><b><u>Contacter nous </u></b></i> </Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+        <Nav justify menuVariant="dark"  className="navbar justify-content-end flex-grow-1 pe-3 flex-column">
+        <p className='couleur2'><b>Numéro ya téléphone : </b> <b className='text-dark'>00447417588363</b>   
+        </p>
+        <p className='couleur2'><b>Email : </b> <b className='text-dark'>gisele.makaba@kobobs.com</b>   
+        </p>
+         </Nav>
+        </Offcanvas.Body>
+         </Offcanvas>
+    
     
    </Container>}
    </div>

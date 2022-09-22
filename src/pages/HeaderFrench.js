@@ -118,23 +118,23 @@ function HeaderFrench(props)
 
     <Offcanvas show={show} onHide={handleClose}  style={{height:300}}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 couleur2 text-center"><b><u>Sending money </u></b></i> </Offcanvas.Title>
+          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 couleur2 text-center"><b><u>envoyer l'argent </u></b></i> </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
         <Nav justify menuVariant="dark"  className="navbar justify-content-end flex-grow-1 pe-3 flex-column">
-        <Nav.Link href="/form_envoie_client_english"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-dark'><i className='text-light'>First time to send money</i></Button></Nav.Link>
-        <Nav.Link href="/form_envoie_abonne_id_english"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-dark'><i className='text-light'>I am already a subscriber</i></Button></Nav.Link>
+        <Nav.Link href="/form_envoie_client_french"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-dark'><i className='text-light'>Nouveau client</i></Button></Nav.Link>
+        <Nav.Link href="/form_envoie_abonne_id_french"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-dark'><i className='text-light'>Je suis déjà abonné</i></Button></Nav.Link>
          </Nav>
         </Offcanvas.Body>
          </Offcanvas>
 
          <Offcanvas show={show2} onHide={handleClose2}  style={{height:300}}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 text-secondary text-center"><b><u>Contact us </u></b></i> </Offcanvas.Title>
+          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 text-secondary text-center"><b><u>Contacter nous </u></b></i> </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
         <Nav justify menuVariant="dark"  className="navbar justify-content-end flex-grow-1 pe-3 flex-column">
-        <p className='couleur2'><b>Mobile number : </b> <b className='text-dark'>00447417588363</b>   
+        <p className='couleur2'><b>Numéro de téléphone : </b> <b className='text-dark'>00447417588363</b>   
         </p>
         <p className='couleur2'><b>Email : </b> <b className='text-dark'>gisele.makaba@kobobs.com</b>   
         </p>
@@ -171,11 +171,14 @@ function HeaderFrench(props)
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
-                <Nav className="justify-content-end flex-grow-1 pe-3">
+              <Nav className="justify-content-end flex-grow-1 pe-3">  
                 <NavDropdown.Divider />
-                  <Nav.Link href="/home_french"><b>Home</b></Nav.Link>
+                  <Nav.Link href="/home_french"><b>Accueil</b></Nav.Link>
                   <NavDropdown.Divider />
-                </Nav>
+                  <Nav.Link ><b onClick={handleShow}>envoyer l'argent</b></Nav.Link>
+                  <NavDropdown.Divider />
+                  <Nav.Link ><b onClick={handleShow2} >Contacter nous</b></Nav.Link>
+                </Nav>     
                
               </Offcanvas.Body>
             </Navbar.Offcanvas>
@@ -212,28 +215,28 @@ function HeaderFrench(props)
     </Row>
    
 
-   
+
     <Offcanvas show={show} onHide={handleClose}  style={{height:300}}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 couleur2 text-center"><b><u>Sending money </u></b></i> </Offcanvas.Title>
+          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 couleur2 text-center"><b><u>envoyer l'argent </u></b></i> </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
         <Nav justify menuVariant="dark"  className="navbar justify-content-end flex-grow-1 pe-3 flex-column">
-        <Nav.Link href="/form_envoie_client_english"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-dark'><i className='text-light'>First time to send money</i></Button></Nav.Link>
-        <Nav.Link href="/form_envoie_abonne_id_english"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-dark'><i className='text-light'>I am already a subscriber</i></Button></Nav.Link>
+        <Nav.Link href="/form_envoie_client_french"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-dark'><i className='text-light'>Nouveau client</i></Button></Nav.Link>
+        <Nav.Link href="/form_envoie_abonne_id_french"><Button style={{width:300,height:50}} className='btn-lg rounded-pill zoom btn-dark'><i className='text-light'>Je suis déjà abonné</i></Button></Nav.Link>
          </Nav>
         </Offcanvas.Body>
          </Offcanvas>
 
          <Offcanvas show={show2} onHide={handleClose2}  style={{height:300}}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 text-secondary text-center"><b><u>Contact us </u></b></i> </Offcanvas.Title>
+          <Offcanvas.Title className="text-end mx-auto"><i className="display-6 text-secondary text-center"><b><u>Contacter nous </u></b></i> </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
         <Nav justify menuVariant="dark"  className="navbar justify-content-end flex-grow-1 pe-3 flex-column">
-        <p className='couleur2'><b>Mobile number :</b> <b className='text-dark'>00447417588363</b>   
+        <p className='couleur2'><b>Numéro de téléphone : </b> <b className='text-dark'>00447417588363</b>   
         </p>
-        <p className='couleur2'><b>Email :</b> <b className='text-dark'>gisele.makaba@kobobs.com</b>   
+        <p className='couleur2'><b>Email : </b> <b className='text-dark'>gisele.makaba@kobobs.com</b>   
         </p>
          </Nav>
         </Offcanvas.Body>

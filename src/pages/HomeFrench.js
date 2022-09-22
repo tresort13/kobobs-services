@@ -56,16 +56,38 @@ function HomeFrench()
 
 {isMobileOrTablet &&  <Container>
     
-    <Row className="text-center justify-content-center pt-5 mt-5">
-            <Col md={12} className="my-auto text-center">
-            <Link to="" style={{color:'white',textDecorationLine:'none'}}>
-            <Button variant="dark" style={{width:350,height:300}} className='btn-lg rounded-pill zoom'>
-            <b className="text-light">Envoyer l'argent</b>
-            </Button>
-            </Link>    
-            </Col>
+  <Row className='justify-content-center pb-3 pt-5 mt-5'>
+        <Col xs = {"auto"}>
+        <Link to="/form_envoie_client_french" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant='dark'  style={{width:400,height:40}} className='btn-lg rounded-pill zoom'>
+        <b className='text-light'><pre>Nouveau client</pre></b>
+        </Button>
+        </Link>
+        </Col>
+    </Row>
+  
 
-           </Row>
+
+    <Row className='justify-content-center pb-3'>
+        <Col xs = {"auto"}>
+        <Link to="/form_envoie_abonne_id_french" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant='light'  style={{width:400,height:40}} className='btn-lg rounded-pill zoom'>
+        <b className='couleur2'><pre>Je suis déjà abonné</pre></b>
+        </Button>
+        </Link>
+        </Col>
+    </Row>
+
+    <Row className='justify-content-center pb-3'>
+        <Col xs = {"auto"}>
+        <Link to="/form_retrait_info_french" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant='light'  style={{width:400,height:40}} className='btn-lg rounded-pill zoom'>
+        <b className='text-dark'><pre>Suivre mon transfert</pre></b>
+        </Button>
+        </Link>
+        </Col>
+    </Row>
+
   </Container>
   }
 <Footer />

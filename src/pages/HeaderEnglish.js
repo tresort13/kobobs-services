@@ -14,9 +14,6 @@ import Button from "react-bootstrap/Button";
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Dropdown from "react-bootstrap/esm/Dropdown";
-import Modal from 'react-bootstrap/Modal';
-
-
 
 
 function HeaderEnglish(props)
@@ -138,9 +135,9 @@ function HeaderEnglish(props)
         </Offcanvas.Header>
         <Offcanvas.Body>
         <Nav justify menuVariant="dark"  className="navbar justify-content-end flex-grow-1 pe-3 flex-column">
-        <p className='couleur2'>Mobile number : <b className='text-dark'>00447417588363</b>   
+        <p className='couleur2'><b>Mobile number : </b> <b className='text-dark'>00447417588363</b>   
         </p>
-        <p className='couleur2'>Email : <b className='text-dark'>gisele.makaba@kobobs.com</b>   
+        <p className='couleur2'><b>Email : </b> <b className='text-dark'>gisele.makaba@kobobs.com</b>   
         </p>
          </Nav>
         </Offcanvas.Body>

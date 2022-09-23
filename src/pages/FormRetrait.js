@@ -98,7 +98,7 @@ function FormRetrait(props)
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'>Code Retrait</Form.Label>
-        <Form.Control name="code_retrait" value={codeRetrait.infoCodeRetrait.code_retrait} onChange={e=>inputChanged(e)} type="text" placeholder='Veuillez entrer code retrait' autoFocus   required/>
+        <Form.Control name="code_retrait" value={codeRetrait.infoCodeRetrait.code_retrait} onChange={e=>inputChanged(e)} type="text" placeholder='code retrait' autoFocus   required/>
          </Form.Group>
         </Col>
     </Row>
@@ -158,7 +158,7 @@ function FormRetrait(props)
   
     <Row className='pb-3'>
        <Col>
-       <Link to="//form_find_code_retrait_lingala" style={{textDecoration:"none"}}>
+       <Link to="/form_find_code_retrait_lingala" style={{textDecoration:"none"}}>
        <p ><b className='couleur2'>Na bosani code retrait na ngai ?</b></p>
        </Link>
         </Col>

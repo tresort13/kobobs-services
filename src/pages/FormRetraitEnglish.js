@@ -117,7 +117,7 @@ function FormRetraitEnglish(props)
     <Row className='pb-3'>
        <Col>
        <Link to="/form_find_code_retrait_english" style={{textDecoration:"none"}}>
-       <p ><b className='couleur2'>I forgot my subscriber ID ?</b></p>
+       <p ><b className='couleur2'>I forgot my Tracking Number ?</b></p>
        </Link>
         </Col>
     </Row>
@@ -159,7 +159,7 @@ function FormRetraitEnglish(props)
     <Row className='pb-3'>
        <Col>
        <Link to="/form_find_code_retrait_english" style={{textDecoration:"none"}}>
-       <p ><b className='couleur2'>I forgot my subscriber ID ?</b></p>
+       <p ><b className='couleur2'>I forgot my Tracking Number ?</b></p>
        </Link>
         </Col>
     </Row>

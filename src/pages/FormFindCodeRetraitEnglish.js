@@ -262,7 +262,7 @@ function MyVerticallyCenteredModal(props) {
         <p ><b className='text-success'>{props.codeRetrait}</b></p>
         </Modal.Body>
         <Modal.Footer>
-          <Link to="/form_envoie_abonne_id_english"><Button variant='warning' onClick={props.onHide}>ok i got it</Button></Link>
+          <Link to="/form_find_code_retrait_english"><Button variant='warning' onClick={props.onHide}>ok i got it</Button></Link>
         </Modal.Footer>
       </Modal>
     );

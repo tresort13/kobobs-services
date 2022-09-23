@@ -197,30 +197,7 @@ function FormFindCodeRetraitFrench(props)
     )
 }
 
-function MyVerticallyCenteredModal(props) {
-    return (
-      <Modal
-        {...props}
-        size="sm"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Validation failed
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
 
-          <p className='text-danger'><b>Sorry we did not find a tracking number with your entered informations</b>   
-          </p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant='warning' onClick={props.onHide}>close</Button>
-        </Modal.Footer>
-      </Modal>
-    );
-  }
 
   function MyVerticallyCenteredModal(props) {
     return (

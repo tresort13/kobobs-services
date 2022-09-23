@@ -101,7 +101,7 @@ function FormEnvoiClientEnglish(props)
         </Col>
     </Row>
     
-<Form  onSubmit={submitFormulaire}>
+<Form  onSubmit={submitFormulaire} target="_self">
     <Row>
       <hr style={{color:"darkorange"}}></hr>
       <p className='couleur2'><b><u>Sender Informations</u></b> </p>

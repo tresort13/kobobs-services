@@ -175,7 +175,7 @@ console.log(props.envoie.infoEnvoie)
 
         <Col xs={6}>
         <Link to="/form_envoie_client_english">
-         <Button variant="outline-warning" type="submit">
+         <Button variant="secondary" type="submit">
          Modify Form
         </Button>
         </Link>
@@ -260,7 +260,7 @@ console.log(props.envoie.infoEnvoie)
 
         <Col xs={6}>
         <Link to="/form_envoie_client_english">
-         <Button variant="outline-warning" type="submit">
+         <Button variant="secondary" type="submit">
          Modify Form
         </Button>
         </Link>

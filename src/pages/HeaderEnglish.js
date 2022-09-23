@@ -78,7 +78,7 @@ function HeaderEnglish(props)
                   <NavDropdown.Divider />
                   <Nav.Link href="/form_envoie_abonne_id_english"><b><pre>Find your subscriber ID</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link ><b href="/form_find_code_retrait_english"><pre>Find your tracking number</pre></b></Nav.Link>
+                  <Nav.Link  href="/form_find_code_retrait_english"><b><pre>Find your tracking number</pre></b></Nav.Link>
                   <NavDropdown.Divider />
                   <Nav.Link ><b onClick={handleShow2} ><pre>Contact us</pre></b></Nav.Link>
                 </Nav>
@@ -185,7 +185,7 @@ function HeaderEnglish(props)
                   <NavDropdown.Divider />
                   <Nav.Link href="/form_envoie_abonne_id_english"><b><pre> I forgot my subscriber ID ?</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link ><b href="/form_find_code_retrait_english"><pre> I forgot tracking number ?</pre></b></Nav.Link>
+                  <Nav.Link  href="/form_find_code_retrait_english"><b><pre> I forgot tracking number ?</pre></b></Nav.Link>
                   <NavDropdown.Divider />
                   <Nav.Link ><b onClick={handleShow2} ><pre>Contact us</pre></b></Nav.Link>
                 </Nav>

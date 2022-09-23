@@ -75,7 +75,7 @@ function HeaderFrench(props)
                   <NavDropdown.Divider />
                   <Nav.Link href="/form_envoie_abonne_id_french"><b> <pre>J'ai oublié mon code abonné ?</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link ><b href="/form_find_code_retrait_french"> <pre>J'ai oublié mon code de retrait ?</pre></b></Nav.Link>
+                  <Nav.Link  href="/form_find_code_retrait_french"> <b><pre>J'ai oublié mon code de retrait ?</pre></b></Nav.Link>
                   <NavDropdown.Divider />
                   <Nav.Link ><b onClick={handleShow2} > <pre>Contacter nous</pre></b></Nav.Link>
                 </Nav>     
@@ -183,7 +183,7 @@ function HeaderFrench(props)
                   <NavDropdown.Divider />
                   <Nav.Link href="/form_envoie_abonne_id_french"><b> <pre>J'ai oublié mon code abonné ?</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link ><b href="/form_find_code_retrait_french"> <pre>J'ai oublié mon code de retrait ?</pre></b></Nav.Link>
+                  <Nav.Link href="/form_find_code_retrait_french"><b><pre>J'ai oublié mon code de retrait ?</pre></b></Nav.Link>
                   <NavDropdown.Divider />
                   <Nav.Link ><b onClick={handleShow2} > <pre>Contacter nous</pre></b></Nav.Link>
                 </Nav>     

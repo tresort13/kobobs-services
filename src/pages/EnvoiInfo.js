@@ -52,7 +52,6 @@ console.log(props.envoie.infoEnvoie)
               .then( res => res.json())
               .then(
                 res => {  
-                 setModalShow(true) 
                  props.dataEnvoie3(res)
                  console.log(res)
                  props.envoie3.infoEnvoie.code_retrait == "" ? setModalShow4(true) : 

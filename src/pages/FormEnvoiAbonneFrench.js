@@ -9,6 +9,7 @@ import {Link,useNavigate} from  'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import HeaderFrench from './HeaderFrench';
 import Footer from './Footer';
+import InputGroup from 'react-bootstrap/InputGroup';
 
 
 

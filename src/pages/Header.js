@@ -76,7 +76,7 @@ function Header(props)
                   <NavDropdown.Divider />
                   <Nav.Link href="/form_envoie_abonne_id"><b><pre>Na bosani code abonné na ngai ?</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link href="/form_find_code_retrait_french"><b><pre>Na bosani code retrait na ngai ?</pre></b></Nav.Link>
+                  <Nav.Link href="/form_find_code_retrait_lingala"><b><pre>Na bosani code retrait na ngai ?</pre></b></Nav.Link>
                   <NavDropdown.Divider />
                   <Nav.Link ><b onClick={handleShow2} ><pre>Contacter biso</pre></b></Nav.Link>
                 </Nav>     
@@ -183,7 +183,7 @@ function Header(props)
                   <NavDropdown.Divider />
                   <Nav.Link href="/form_envoie_abonne_id"><b><pre>Na bosani code abonné na ngai ?</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link href="/form_find_code_retrait_french"><b><pre>Na bosani code retrait na ngai ?</pre></b></Nav.Link>
+                  <Nav.Link href="/form_find_code_retrait_lingala"><b><pre>Na bosani code retrait na ngai ?</pre></b></Nav.Link>
                   <NavDropdown.Divider />
                   <Nav.Link ><b onClick={handleShow2} ><pre>Contacter biso</pre></b></Nav.Link>
                 </Nav>     

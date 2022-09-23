@@ -99,6 +99,7 @@ function FormFindCodeRetraitEnglish(props)
         </Col>
     </Row>
 
+    <hr style={{color:"darkorange"}}></hr>
     
 <Form onSubmit={submitNumero}>
     <Row className='justify-content-center'>
@@ -124,7 +125,7 @@ function FormFindCodeRetraitEnglish(props)
         </Col>
     </Row>
 
-
+    <hr style={{color:"darkorange"}}></hr>
    <Row className='pb-3'>
        <Col>
         <Button variant="warning" type="submit">

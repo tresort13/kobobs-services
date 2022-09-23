@@ -99,7 +99,8 @@ function FormFindCodeRetraitLingala(props)
         </Col>
     </Row>
 
-    
+    <hr style={{color:"darkorange"}}></hr>
+
 <Form onSubmit={submitNumero}>
     <Row className='justify-content-center'>
         <Col xs = {4}>
@@ -123,7 +124,7 @@ function FormFindCodeRetraitLingala(props)
          </Form.Group>
         </Col>
     </Row>
-
+<hr style={{color:"darkorange"}}></hr>
 
    <Row className='pb-3'>
        <Col>
@@ -146,7 +147,8 @@ function FormFindCodeRetraitLingala(props)
         </Col>
     </Row>
 
-    
+    <hr style={{color:"darkorange"}}></hr>
+
 <Form onSubmit={submitNumero}>
 <Row className='justify-content-center'>
         <Col xs = {12}>
@@ -170,6 +172,8 @@ function FormFindCodeRetraitLingala(props)
          </Form.Group>
         </Col>
     </Row>
+
+    <hr style={{color:"darkorange"}}></hr>
 
    <Row className='pb-3'>
        <Col>

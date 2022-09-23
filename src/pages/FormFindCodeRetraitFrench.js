@@ -198,7 +198,6 @@ function FormFindCodeRetraitFrench(props)
 }
 
 
-
   function MyVerticallyCenteredModal(props) {
     return (
       <Modal

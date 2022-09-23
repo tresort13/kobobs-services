@@ -554,7 +554,7 @@ function App() {
         <Route path="/form_code_abonne_french" element={<FormCodeAbonneFrench />} >
         </Route>
         
-        <Route path="/form_find_code_retrait_lingala" element={<FormFindCodeRetraitFrench  />} >
+        <Route path="/form_find_code_retrait_french" element={<FormFindCodeRetraitFrench />} >
         </Route>
         
         <Route path="/envoi_info_french" element={<EnvoiInfoFrench   dataEnvoie3={dataEnvoie3} envoie={envoie} setEnvoie={setEnvoie}/>} >

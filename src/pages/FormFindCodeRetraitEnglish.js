@@ -34,7 +34,7 @@ function FormFindCodeRetraitEnglish(props)
     const [modalShow2, setModalShow2] = React.useState(false);
     const [modalShow3, setModalShow3] = React.useState(false);
 
-    const [message,setMessage] = useState("Kotisa ba informations oyo esengami")
+    const [message,setMessage] = useState("Please enter the informations below")
 
     const isDesktop = useMediaQuery({
         query: "(min-width: 1224px)"
@@ -145,7 +145,7 @@ function FormFindCodeRetraitEnglish(props)
         <p className='text-dark'><i><b>{message}</b></i></p>
         </Col>
     </Row>
-
+    <hr style={{color:"darkorange"}}></hr>
     
 <Form onSubmit={submitNumero}>
 <Row className='justify-content-center'>
@@ -170,7 +170,7 @@ function FormFindCodeRetraitEnglish(props)
          </Form.Group>
         </Col>
     </Row>
-
+    <hr style={{color:"darkorange"}}></hr>
    <Row className='pb-3'>
        <Col>
         <Button variant="warning" type="submit">

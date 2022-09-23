@@ -35,6 +35,7 @@ function EnvoieAbonneInfoFrench(props)
     const [modalShow, setModalShow] = React.useState(false);
     const [modalShow2, setModalShow2] = React.useState(false);
     const [modalShow3, setModalShow3] = React.useState(false);
+    const [modalShow4, setModalShow4] = React.useState(false);
     
   
     
@@ -52,31 +53,31 @@ console.log(props.envoie.infoEnvoie)
               .then( res => res.json())
               .then(
                 res => {  
-                 setModalShow(true) 
-                 props.dataEnvoie3(res)
-                 console.log(res)
-                 props.setEnvoie({infoEnvoie:{
-                  nom_expediteur : '',
-                  prenom_expediteur : '',
-                  adresse_expediteur : '',
-                  email_expediteur : '',
-                  numero_expediteur: '',
-                  pays_expediteur : 'UK',
-                  nom_beneficiaire : '',
-                  prenom_beneficiaire : '',
-                  pays_beneficiaire : 'RD Congo',
-                  montant_envoie_sans_frais : '',
-                  montant_beneficiaire : '',
-                  type_service : 'Kozua na maboko (kozua na nzela ya agence)',
-                  frais_envoie : '',
-                  frais_tva : '',
-                  montant_total : '',
-                  code_retrait : '',
-                  data_operation : '',
-                  date_heure_operation : '',
-                  code_abonne : '',
-                  status_retrait : '',
-                  numero_transfer: '**********'
+                  props.dataEnvoie3(res)
+                  console.log(res)
+                  props.envoie3.infoEnvoie.code_retrait == "" ? setModalShow4(true) : 
+                  props.setEnvoie({infoEnvoie:{
+                   nom_expediteur : '',
+                   prenom_expediteur : '',
+                   adresse_expediteur : '',
+                   email_expediteur : '',
+                   numero_expediteur: '',
+                   pays_expediteur : 'UK',
+                   nom_beneficiaire : '',
+                   prenom_beneficiaire : '',
+                   pays_beneficiaire : 'RD Congo',
+                   montant_envoie_sans_frais : '',
+                   montant_beneficiaire : '',
+                   type_service : 'Kozua na maboko (kozua na nzela ya agence)',
+                   frais_envoie : '',
+                   frais_tva : '',
+                   montant_total : '',
+                   code_retrait : '',
+                   data_operation : '',
+                   date_heure_operation : '',
+                   code_abonne : '',
+                   status_retrait : '',
+                   numero_transfer: '**********'
                  }})
                  navigate('/confirmation_envoie_info_french')
                 }
@@ -263,6 +264,7 @@ console.log(props.envoie.infoEnvoie)
    <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
    <MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
    <MyVerticallyCenteredModal3 show={modalShow3} onHide={() => setModalShow3(false)} />
+   <MyVerticallyCenteredModal4 show={modalShow4} onHide={() => setModalShow4(false)} />
 <Footer />
         </>
        
@@ -335,6 +337,30 @@ function MyVerticallyCenteredModal3(props) {
       <ClipLoader color={"#ff8c00"} loading={true} size={150} /> 
       </Modal.Body>
       <Modal.Footer>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
+function MyVerticallyCenteredModal4(props) {
+  return (
+    <Modal
+      {...props}
+      size="sm"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Echec Envoi 
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <p className='text-danger'><b>Désolé veuillez verifier que vous avez renseigner tous les champs !!!</b>   
+        </p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant='warning' onClick={props.onHide}>Fermer</Button>
       </Modal.Footer>
     </Modal>
   );

@@ -63,17 +63,21 @@ function HeaderFrench(props)
               placement="start" style={{height:550}} >
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                  <pre className="display-6">Menu</pre>
+                  <pre className="display-6 couleur2">Menu</pre>
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">  
                 <NavDropdown.Divider />
-                  <Nav.Link href="/"><b>Home</b></Nav.Link>
+                <Nav.Link href="/home_french"><b> <pre>Accueil</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link ><b onClick={handleShow}>envoyer l'argent</b></Nav.Link>
+                  <Nav.Link ><b onClick={handleShow}> <pre>envoyer l'argent</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link ><b onClick={handleShow2} >Contacter nous</b></Nav.Link>
+                  <Nav.Link href="/form_envoie_abonne_id_french"><b> <pre>J'ai oublié mon code abonné ?</pre></b></Nav.Link>
+                  <NavDropdown.Divider />
+                  <Nav.Link ><b href="/form_find_code_retrait_french"> <pre>J'ai oublié mon code de retrait ?</pre></b></Nav.Link>
+                  <NavDropdown.Divider />
+                  <Nav.Link ><b onClick={handleShow2} > <pre>Contacter nous</pre></b></Nav.Link>
                 </Nav>     
               </Offcanvas.Body>
             </Navbar.Offcanvas>
@@ -167,17 +171,21 @@ function HeaderFrench(props)
               placement="start" style={{height:550}} >
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                  <pre className="display-6">Menu</pre>
+                  <pre className="display-6 couleur2">Menu</pre>
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">  
                 <NavDropdown.Divider />
-                  <Nav.Link href="/home_french"><b>Accueil</b></Nav.Link>
+                  <Nav.Link href="/home_french"><b> <pre>Accueil</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link ><b onClick={handleShow}>envoyer l'argent</b></Nav.Link>
+                  <Nav.Link ><b onClick={handleShow}> <pre>envoyer l'argent</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link ><b onClick={handleShow2} >Contacter nous</b></Nav.Link>
+                  <Nav.Link href="/form_envoie_abonne_id_french"><b> <pre>J'ai oublié mon code abonné ?</pre></b></Nav.Link>
+                  <NavDropdown.Divider />
+                  <Nav.Link ><b href="/form_find_code_retrait_french"> <pre>J'ai oublié mon code de retrait ?</pre></b></Nav.Link>
+                  <NavDropdown.Divider />
+                  <Nav.Link ><b onClick={handleShow2} > <pre>Contacter nous</pre></b></Nav.Link>
                 </Nav>     
                
               </Offcanvas.Body>

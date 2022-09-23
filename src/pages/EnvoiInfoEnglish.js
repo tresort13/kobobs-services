@@ -34,6 +34,7 @@ function EnvoiInfoEnglish(props)
       const navigate = useNavigate()
     const [modalShow2, setModalShow2] = React.useState(false);
     const [modalShow, setModalShow] = React.useState(false);
+    const [modalShow4, setModalShow4] = React.useState(false);
     
   
     
@@ -52,32 +53,33 @@ console.log(props.envoie.infoEnvoie)
               .then(
                 res => {  
 
-                 props.dataEnvoie3(res)
-                 console.log(res)
-                 props.setEnvoie({infoEnvoie:{
-                  nom_expediteur : '',
-                  prenom_expediteur : '',
-                  adresse_expediteur : '',
-                  email_expediteur : '',
-                  numero_expediteur: '',
-                  pays_expediteur : 'UK',
-                  nom_beneficiaire : '',
-                  prenom_beneficiaire : '',
-                  pays_beneficiaire : 'RD Congo',
-                  montant_envoie_sans_frais : '',
-                  montant_beneficiaire : '',
-                  type_service : 'Kozua na maboko (kozua na nzela ya agence)',
-                  frais_envoie : '',
-                  frais_tva : '',
-                  montant_total : '',
-                  code_retrait : '',
-                  data_operation : '',
-                  date_heure_operation : '',
-                  code_abonne : '',
-                  status_retrait : '',
-                  numero_transfer: '**********'
-                 }})
-                 navigate('/confirmation_envoie_info_english')
+                  props.dataEnvoie3(res)
+                  console.log(res)
+                  props.envoie3.infoEnvoie.code_retrait == "" ? setModalShow4(true) : 
+                  props.setEnvoie({infoEnvoie:{
+                   nom_expediteur : '',
+                   prenom_expediteur : '',
+                   adresse_expediteur : '',
+                   email_expediteur : '',
+                   numero_expediteur: '',
+                   pays_expediteur : 'UK',
+                   nom_beneficiaire : '',
+                   prenom_beneficiaire : '',
+                   pays_beneficiaire : 'RD Congo',
+                   montant_envoie_sans_frais : '',
+                   montant_beneficiaire : '',
+                   type_service : 'Kozua na maboko (kozua na nzela ya agence)',
+                   frais_envoie : '',
+                   frais_tva : '',
+                   montant_total : '',
+                   code_retrait : '',
+                   data_operation : '',
+                   date_heure_operation : '',
+                   code_abonne : '',
+                   status_retrait : '',
+                   numero_transfer: '**********'
+                  }})
+                  navigate('/confirmation_envoie_info_english')
                 }
               )
               .catch( (error) =>
@@ -278,6 +280,7 @@ console.log(props.envoie.infoEnvoie)
 
    <MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
    <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
+   <MyVerticallyCenteredModal4 show={modalShow4} onHide={() => setModalShow4(false)} />
 <Footer />
         </>
        
@@ -327,6 +330,30 @@ function MyVerticallyCenteredModal(props) {
       <ClipLoader color={"#ff8c00"} loading={true} size={150} /> 
       </Modal.Body>
       <Modal.Footer>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
+function MyVerticallyCenteredModal4(props) {
+  return (
+    <Modal
+      {...props}
+      size="sm"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Sending failed 
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body> 
+        <p className='text-danger'><b>Please try to fill up all the fields correctly!!!</b>   
+      </p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant='warning' onClick={props.onHide}>close</Button>
       </Modal.Footer>
     </Modal>
   );

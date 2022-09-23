@@ -64,17 +64,21 @@ function Header(props)
               placement="start" style={{height:550}} >
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                  <pre className="display-6">Menu</pre>
+                  <pre className="display-6 couleur2">Menu</pre>
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">  
                 <NavDropdown.Divider />
-                  <Nav.Link href="/home_lingala"><b>Zonga na ebandeli</b></Nav.Link>
+                  <Nav.Link href="/home_lingala"><b><pre>Zonga na ebandeli</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link ><b onClick={handleShow}>Tinda Mbongo</b></Nav.Link>
+                  <Nav.Link ><b onClick={handleShow}><pre>Tinda Mbongo</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link ><b onClick={handleShow2} >Contacter biso</b></Nav.Link>
+                  <Nav.Link href="/form_envoie_abonne_id"><b><pre>Na bosani code abonné na ngai ?</pre></b></Nav.Link>
+                  <NavDropdown.Divider />
+                  <Nav.Link ><b href="/form_find_code_retrait_french"><pre>Na bosani code retrait na ngai ?</pre></b></Nav.Link>
+                  <NavDropdown.Divider />
+                  <Nav.Link ><b onClick={handleShow2} ><pre>Contacter biso</pre></b></Nav.Link>
                 </Nav>     
                
               </Offcanvas.Body>
@@ -167,17 +171,21 @@ function Header(props)
               placement="start" style={{height:550}} >
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                  <pre className="display-6">Menu</pre>
+                  <pre className="display-6 couleur2">Menu</pre>
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">  
                 <NavDropdown.Divider />
-                  <Nav.Link href="/"><b>Zonga na ebandeli</b></Nav.Link>
+                <Nav.Link href="/home_lingala"><b><pre>Zonga na ebandeli</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link ><b onClick={handleShow}>Tinda Mbongo</b></Nav.Link>
+                  <Nav.Link ><b onClick={handleShow}><pre>Tinda Mbongo</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link ><b onClick={handleShow2} >Contacter biso</b></Nav.Link>
+                  <Nav.Link href="/form_envoie_abonne_id"><b><pre>Na bosani code abonné na ngai ?</pre></b></Nav.Link>
+                  <NavDropdown.Divider />
+                  <Nav.Link ><b href="/form_find_code_retrait_french"><pre>Na bosani code retrait na ngai ?</pre></b></Nav.Link>
+                  <NavDropdown.Divider />
+                  <Nav.Link ><b onClick={handleShow2} ><pre>Contacter biso</pre></b></Nav.Link>
                 </Nav>     
                
               </Offcanvas.Body>

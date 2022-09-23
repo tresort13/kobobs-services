@@ -66,17 +66,21 @@ function HeaderEnglish(props)
               placement="start" style={{height:550}} >
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                  <pre className="display-6">Menu</pre>
+                  <pre className="display-6 couleur2">Menu</pre>
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                 <NavDropdown.Divider />
-                  <Nav.Link href="/"><b>Home</b></Nav.Link>
+                  <Nav.Link href="/"><b><pre>Home</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link ><b onClick={handleShow}>Send Money</b></Nav.Link>
+                  <Nav.Link ><b onClick={handleShow}><pre>Send Money</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link ><b onClick={handleShow2} >Contact us</b></Nav.Link>
+                  <Nav.Link href="/form_envoie_abonne_id_english"><b><pre>Find your subscriber ID</pre></b></Nav.Link>
+                  <NavDropdown.Divider />
+                  <Nav.Link ><b href="/form_find_code_retrait_english"><pre>Find your tracking number</pre></b></Nav.Link>
+                  <NavDropdown.Divider />
+                  <Nav.Link ><b onClick={handleShow2} ><pre>Contact us</pre></b></Nav.Link>
                 </Nav>
                
               </Offcanvas.Body>
@@ -169,17 +173,21 @@ function HeaderEnglish(props)
               placement="start" style={{height:550}} >
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                  <pre className="display-6">Menu</pre>
+                  <pre className="display-6 couleur2">Menu</pre>
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                 <NavDropdown.Divider />
-                <Nav.Link href="/"><b>Home</b></Nav.Link>
+                <Nav.Link href="/"><b><pre>Home</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link href="/form_retrait_info_english"><b>Track your transfer</b></Nav.Link>
+                  <Nav.Link ><b onClick={handleShow}><pre>Send Money</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link onClick={handleShow2} ><b>Contact us</b></Nav.Link>
+                  <Nav.Link href="/form_envoie_abonne_id_english"><b><pre> I forgot my subscriber ID ?</pre></b></Nav.Link>
+                  <NavDropdown.Divider />
+                  <Nav.Link ><b href="/form_find_code_retrait_english"><pre> I forgot tracking number ?</pre></b></Nav.Link>
+                  <NavDropdown.Divider />
+                  <Nav.Link ><b onClick={handleShow2} ><pre>Contact us</pre></b></Nav.Link>
                 </Nav>
                
               </Offcanvas.Body>

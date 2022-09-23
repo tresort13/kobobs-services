@@ -34,6 +34,7 @@ function EnvoiInfo(props)
     const [modalShow, setModalShow] = React.useState(false);
     const [modalShow2, setModalShow2] = React.useState(false);
     const [modalShow3, setModalShow3] = React.useState(false);
+    const [modalShow4, setModalShow4] = React.useState(false);
     
   
     
@@ -54,6 +55,7 @@ console.log(props.envoie.infoEnvoie)
                  setModalShow(true) 
                  props.dataEnvoie3(res)
                  console.log(res)
+                 props.envoie3.infoEnvoie.code_retrait == "" ? setModalShow4(true) : 
                  props.setEnvoie({infoEnvoie:{
                   nom_expediteur : '',
                   prenom_expediteur : '',
@@ -274,6 +276,7 @@ console.log(props.envoie.infoEnvoie)
    <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
    <MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
    <MyVerticallyCenteredModal3 show={modalShow3} onHide={() => setModalShow3(false)} />
+   <MyVerticallyCenteredModal3 show={modalShow4} onHide={() => setModalShow4(false)} />
 <Footer />
         </>
        
@@ -345,6 +348,30 @@ function MyVerticallyCenteredModal3(props) {
       <ClipLoader color={"#ff8c00"} loading={true} size={150} /> 
       </Modal.Body>
       <Modal.Footer>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
+function MyVerticallyCenteredModal4(props) {
+  return (
+    <Modal
+      {...props}
+      size="sm"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Kotinda esimbi te 
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <p className='text-danger'><b>Bolimbisi kotisa ba informations nayo nionso  bien !!!</b>   
+        </p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant='warning' onClick={props.onHide}>kanga page</Button>
       </Modal.Footer>
     </Modal>
   );

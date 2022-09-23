@@ -262,7 +262,7 @@ function FormFindCodeRetraitFrench(props)
         <p ><b className='text-success'>{props.codeRetrait}</b></p>
         </Modal.Body>
         <Modal.Footer>
-          <Link to="/form_envoie_abonne_id_french"><Button variant='warning' onClick={props.onHide}>ok j'ai récuperé</Button></Link>
+          <Link to="/form_retrait_info_french"><Button variant='warning' onClick={props.onHide}>ok j'ai récuperé</Button></Link>
         </Modal.Footer>
       </Modal>
     );

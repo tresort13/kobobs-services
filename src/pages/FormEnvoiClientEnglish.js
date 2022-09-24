@@ -75,7 +75,7 @@ function FormEnvoiClientEnglish(props)
       tauxEchanger()      
         props.dataEnvoie(envoie.infoEnvoie)
         setEnvoie({infoEnvoie:{}})
-         navigate('/envoi_info_english')
+         window.open('/envoi_info_english','_blank')
       
     }
 

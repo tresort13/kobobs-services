@@ -63,7 +63,7 @@ function ConfirmationEnvoieInfo(props)
         <p className='text-dark'>Ekolo Ya Mozui: <b className='text-dark'> {props.envoie3.infoEnvoie.pays_beneficiaire}</b></p>
         <p className='text-dark'>Nzela Yako Zwa Mbongo: <b className='text-dark'>{props.envoie3.infoEnvoie.type_service}</b> </p>
         <p className='text-dark'>Numéro Ya Mobile money:  <b className='text-dark'>{props.envoie3.infoEnvoie.numero_transfer}</b> </p>
-        <p className='text-dark'>date na heure : <b className='text-dark'> {JSON.stringify(props.envoie3.infoEnvoie.date_heure_operation)}</b></p>
+        <p className='text-dark'>date : <b className='text-dark'> {JSON.stringify(props.envoie3.infoEnvoie.data_operation)}</b></p>
         </Col>
     </Row>
     
@@ -105,7 +105,7 @@ function ConfirmationEnvoieInfo(props)
         <p className='text-dark'>Ekolo Ya Mozui: <b className='text-dark'> {props.envoie3.infoEnvoie.pays_beneficiaire}</b></p>
         <p className='text-dark'>Nzela Yako Zwa Mbongo: <b className='text-dark'>{props.envoie3.infoEnvoie.type_service}</b> </p>
         <p className='text-dark'>Mobile money Numéro: <b className='text-dark'>{props.envoie3.infoEnvoie.numero_transfer}</b> </p>
-        <p className='text-dark'>date na heure : <b className='text-dark'> {JSON.stringify(props.envoie3.infoEnvoie.date_heure_operation)}</b></p>
+        <p className='text-dark'>date : <b className='text-dark'> {JSON.stringify(props.envoie3.infoEnvoie.data_operation)}</b></p>
         </Col>
     </Row>
     

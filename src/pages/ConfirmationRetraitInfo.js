@@ -69,7 +69,7 @@ function ConfirmationRetraitInfo(props)
         <p className='text-dark'>Kombo Ya Motindi: <b className='text-dark'>{props.envoie2.infoEnvoie.prenom_expediteur} {props.envoie2.infoEnvoie.nom_expediteur}  </b> </p>
         <p className='text-dark'>Ekolo Ya Motindi: <b className='text-dark'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
         <p className='text-dark'>Numéro Ya Mobile money : <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
-        <p className='text-dark'>date na heure : <b className='text-dark'> {JSON.stringify(props.envoie2.infoEnvoie.date_heure_operation)}</b></p>
+        <p className='text-dark'>date : <b className='text-dark'> {JSON.stringify(props.envoie2.infoEnvoie.data_operation)}</b></p>
         
         </Col>
     </Row>
@@ -123,7 +123,7 @@ function ConfirmationRetraitInfo(props)
         <p className='text-dark'>Noms Expediteur: <b className='text-dark'>{props.envoie2.infoEnvoie.prenom_expediteur} {props.envoie2.infoEnvoie.nom_expediteur} </b> </p>
         <p className='text-dark'>Pays Expediteur: <b className='text-dark'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
         <p className='text-dark'>Mobile Money: <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
-        <p className='text-dark'>date et heure : <b className='text-dark'> {JSON.stringify(props.envoie2.infoEnvoie.date_heure_operation)}</b></p>
+        <p className='text-dark'>date : <b className='text-dark'> {JSON.stringify(props.envoie2.infoEnvoie.data_operation)}</b></p>
         </Col>
     </Row>
 

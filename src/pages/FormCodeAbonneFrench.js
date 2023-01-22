@@ -30,7 +30,7 @@ function FormCodeAbonneFrench(props)
     const [modalShow2, setModalShow2] = React.useState(false);
     const [modalShow3, setModalShow3] = React.useState(false);
 
-    const [message,setMessage] = useState("Veuillez entrer votre  téléphone ou email")
+    const [message,setMessage] = useState("Veuillez entrer votre email")
     const [codeAbonne,setCodeAbonne] = useState("")
     const [couleur,setCouleur] = useState("text-dark")
 

@@ -30,7 +30,7 @@ function FormCodeAbonneLingala(props)
     const [modalShow2, setModalShow2] = React.useState(false);
     const [modalShow3, setModalShow3] = React.useState(false);
 
-    const [message,setMessage] = useState("Kotisa  téléphone ou email nayo")
+    const [message,setMessage] = useState("Kotisa  email nayo")
     const [codeAbonne,setCodeAbonne] = useState("")
     const [couleur,setCouleur] = useState("text-dark")
 

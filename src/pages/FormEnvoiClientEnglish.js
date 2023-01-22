@@ -75,7 +75,7 @@ function FormEnvoiClientEnglish(props)
       tauxEchanger()      
         props.dataEnvoie(envoie.infoEnvoie)
         setEnvoie({infoEnvoie:{}})
-         window.open('/envoi_info_english','_blank')
+         navigate('/envoi_info_english')
       
     }
 
@@ -101,7 +101,7 @@ function FormEnvoiClientEnglish(props)
         </Col>
     </Row>
     
-<Form  onSubmit={submitFormulaire} target="_blank">
+<Form  onSubmit={submitFormulaire} >
     <Row>
       <hr style={{color:"darkorange"}}></hr>
       <p className='couleur2'><b><u>Sender Informations</u></b> </p>

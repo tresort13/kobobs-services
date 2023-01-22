@@ -36,7 +36,7 @@ function ConfirmationEnvoieInfoFrench(props)
     return (
         
         <>
-        <HeaderFrench username={props.username} />
+        <HeaderFrench />
 {isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={12}>

@@ -54,6 +54,7 @@ function FormRetraitEnglish(props)
               .then( res => res.json())
               .then(
                 res => {   
+                  console.log(res)
                    props.dataEnvoie2(res)
                    navigate('/retrait_info_english')
                 }

@@ -21,6 +21,7 @@ function ConfirmationRetraitInfoEnglish(props)
     const [couleur,setCouleur] = useState("text-dark")
     const navigate = useNavigate()
     
+    console.log(props.envoie2)
     
 
     const isDesktop = useMediaQuery({

@@ -72,7 +72,7 @@ function ConfirmationRetraitInfoEnglish(props)
         <p className='text-dark'>Sender full name : <b className='text-dark'>{props.envoie2.infoEnvoie.prenom_expediteur} {props.envoie2.infoEnvoie.nom_expediteur}  </b> </p>
         <p className='text-dark'>sender country : <b className='text-dark'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
         <p className='text-dark'>Mobile Money Number: <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
-        <p className='text-dark'>date : <b className='text-dark'> {JSON.stringify(props.envoie2.infoEnvoie.data_operation)}</b></p>
+        <p className='text-dark'>date : <b className='text-dark'> {(props.envoie2.infoEnvoie.data_operation)}</b></p>
         
         </Col>
         

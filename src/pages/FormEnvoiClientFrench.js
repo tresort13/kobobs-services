@@ -221,7 +221,7 @@ function FormEnvoiClientFrench(props)
     <Row className='justify-content-center'>
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Montant à récuperer</Form.Label>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Montant à récuperer en dollars par le bénéficiaire </Form.Label>
         <Form.Control name="montant_beneficiaire" value={envoie.infoEnvoie.montant_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder="Montant à récuperer"  required/>
 
          </Form.Group>
@@ -404,7 +404,7 @@ function FormEnvoiClientFrench(props)
     <Row className='justify-content-center'>
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Montant à récuperer</Form.Label>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Montant à récuperer en dollars par le bénéficiaire </Form.Label>
         <Form.Control name="montant_beneficiaire" value={envoie.infoEnvoie.montant_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder="Montant à récuperer"  required/>
 
          </Form.Group>

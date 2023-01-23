@@ -221,7 +221,7 @@ function FormEnvoiClientEnglish(props)
     <Row className='justify-content-center'>
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className="text-danger">*</span> which Amount do you want the receiver to get</Form.Label>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> which Amount do you want the receiver to get in US dollars ($) </Form.Label>
         <Form.Control name="montant_beneficiaire" value={envoie.infoEnvoie.montant_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder="how much for the receiver to get"  required/>
 
          </Form.Group>
@@ -390,7 +390,7 @@ function FormEnvoiClientEnglish(props)
     <Row className='justify-content-center'>
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className="text-danger">*</span> which Amount do you want the receiver to get</Form.Label>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> which Amount do you want the receiver to get in US dollars ($) </Form.Label>
         <Form.Control name="montant_beneficiaire" value={envoie.infoEnvoie.montant_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder="how much for the receiver to get"  required/>
 
          </Form.Group>

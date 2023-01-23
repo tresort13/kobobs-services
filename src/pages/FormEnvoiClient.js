@@ -213,7 +213,7 @@ function FormEnvoiClient(props)
     <Row className='justify-content-center'>
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Mbongo Mozui akozwa</Form.Label>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Mbongo oyo olingi Mozui azwa na dollars ($) </Form.Label>
         <Form.Control name="montant_beneficiaire" value={envoie.infoEnvoie.montant_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder="Mbongo"  required/>
 
          </Form.Group>
@@ -384,7 +384,7 @@ function FormEnvoiClient(props)
     <Row className='justify-content-center'>
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Mbongo Mozui akozwa</Form.Label>
+        <Form.Label className='text-dark'><span className="text-danger">*</span> Mbongo oyo olingi Mozui azwa na dollars ($) </Form.Label>
         <Form.Control name="montant_beneficiaire" value={envoie.infoEnvoie.montant_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder="Mbongo"  required/>
 
          </Form.Group>

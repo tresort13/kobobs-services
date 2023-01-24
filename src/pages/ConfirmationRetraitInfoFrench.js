@@ -49,7 +49,7 @@ function ConfirmationRetraitInfoFrench(props)
 
     <Row className='justify-content-start pb-3'>
       {props.envoie2.infoEnvoie.status_retrait == "Code Retrait Payé" ? <p className='text-dark'><b className="text-success">Votre bénéficiare a déjà réçu de l'argent</b> </p> :
-     <p></p> }
+     <p>l'argent est disponible pour être récupérer</p> }
     </Row>
 
     <Row className='justify-content-center pb-3'>
@@ -107,7 +107,7 @@ function ConfirmationRetraitInfoFrench(props)
 
     <Row className='justify-content-start pb-3'>
       {props.envoie2.infoEnvoie.status_retrait == "Code Retrait Payé" ? <p className='text-dark'><b className="text-success">Votre bénéficiare a déjà réçu de l'argent</b> </p> :
-     <p></p> }
+     <p>l'argent est disponible pour être récupérer</p> }
     </Row>
 
     <Row className='justify-content-center pb-3'>

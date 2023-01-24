@@ -48,7 +48,7 @@ function ConfirmationRetraitInfo(props)
 
     <Row className='justify-content-start pb-3'>
       {props.envoie2.infoEnvoie.status_retrait == "Code Retrait Payé" ? <p className='text-dark'><b className="text-success">Mozui azui déjà Mbongo</b> </p> :
-     <p></p> }
+     <p>Mbongo ezali disponible pona kozwa</p> }
     </Row>
 
 
@@ -106,7 +106,7 @@ function ConfirmationRetraitInfo(props)
 
     <Row className='justify-content-start pb-3'>
       {props.envoie2.infoEnvoie.status_retrait == "Code Retrait Payé" ? <p className='text-dark'><b className="text-success">Mozui azui déjà Mbongo</b> </p> :
-     <p></p> }
+     <p>Mbongo ezali disponible pona kozwa</p> }
     </Row>
 
     <Row className='justify-content-center pb-3'>

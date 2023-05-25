@@ -24,7 +24,7 @@ function HomeEnglish(props)
       });    
     return (
 <>
-<HeaderEnglish setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged}/> 
+<HeaderEnglish setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged}/> 
 {isDesktop && <Container > 
   <Row className="text-center justify-content-center  mt-3">
     <Col md={1}>

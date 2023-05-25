@@ -109,20 +109,15 @@ function HeaderEnglish(props)
       ))}
         </Col>
 
-        <Col xs={3} className="my-auto mx-auto my-auto text-start">
-          <Link to="/" style={{textDecoration:"none"}}>
-          <p className="display-6 text-secondary"></p>
-          </Link>
+        <Col xs={3}>
         </Col>
         
         { props.isLogged == true ? <Col xs={3} className="my-auto  my-auto text-end">
          
-        <Link to=""  style={{textDecoration:"none"}}>
           <Button variant='outline-light'  className='btn btn-outline-light'>{props.username}</Button>
-        </Link>
-          <Link to="" onClick={logout} style={{textDecoration:"none",marginLeft:10}}>
-          <Button  className='btn--dark-orange btn2 rounded zoom btn-lg'>Logout</Button>
-          </Link></Col>
+          
+          <Button onClick={logout} style={{marginLeft:10}}  className='btn--dark-orange btn2 rounded zoom btn-lg'>Logout</Button>
+          </Col>
              :
             <Col xs={3} className="my-auto  my-auto text-end">
          

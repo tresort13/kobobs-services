@@ -504,7 +504,7 @@ function App() {
     <BrowserRouter>
       <Routes >
         
-        <Route path="/"  element={<HomeEnglish setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged}/>} >
+        <Route path="/"  element={<HomeEnglish setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username}/>} >
         </Route>
 
         <Route path="/login_english"  element={<Login />} >

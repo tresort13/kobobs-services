@@ -325,7 +325,7 @@ function HeaderEnglish(props)
          </Offcanvas>
     
    </Container>}
-   <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} setModalShow2={setModalShow2} setModalShow3={setModalShow3}  />
+   <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} setModalShow2={setModalShow2} setModalShow3={setModalShow3}  setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged}/>
    <MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
    <MyVerticallyCenteredModal3 show={modalShow3} onHide={() => setModalShow3(false)} />
    </div>
@@ -346,6 +346,7 @@ function MyVerticallyCenteredModal(props) {
     
      const connection = (e)=>
      {
+       console.log(state.credentials)
         props.setModalShow2(true)
          fetch('https://kobobsapi.herokuapp.com/api/login/', {
              method: 'POST',

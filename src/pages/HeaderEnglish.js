@@ -27,6 +27,7 @@ function HeaderEnglish(props)
   const [modalShow2, setModalShow2] = React.useState(false);
   const [modalShow3, setModalShow3] = React.useState(false);
   const [theTime, setTheTime] = useState(new Date().toLocaleString())
+  const navigate = useNavigate()
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -48,6 +49,8 @@ function HeaderEnglish(props)
       window.localStorage.setItem("isAdmin", false)
       window.localStorage.setItem("isLogged", false)
       window.localStorage.setItem("isStaff", false)
+      navigate('/')
+      
     }
 
     const isDesktop = useMediaQuery({
@@ -114,7 +117,7 @@ function HeaderEnglish(props)
         
         { props.isLogged == true ? <Col xs={3} className="my-auto  my-auto text-end">
          
-          <Button variant='outline-light'  className='btn btn-outline-light'>{props.username}</Button>
+          <Button variant='outline-light'  className='btn btn-outline-light btn-lg'>{props.username}</Button>
           
           <Button onClick={logout} style={{marginLeft:10}}  className='btn--dark-orange btn2 rounded zoom btn-lg'>Logout</Button>
           </Col>

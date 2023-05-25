@@ -46,6 +46,8 @@ function HeaderEnglish(props)
     {
       window.localStorage.setItem("username", JSON.stringify(""))
       window.localStorage.setItem("isAdmin", false)
+      window.localStorage.setItem("isLogged", false)
+      window.localStorage.setItem("isStaff", false)
     }
 
     const isDesktop = useMediaQuery({

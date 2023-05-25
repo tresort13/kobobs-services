@@ -354,7 +354,9 @@ function MyVerticallyCenteredModal(props) {
            })
            .then( data => data.json())
            .then(
-             data => {  
+             data => {
+              console.log('you are connected') 
+               console.log(data) 
                if (data.username == state.credentials.username)
                {
  

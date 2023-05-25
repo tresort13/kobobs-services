@@ -1,5 +1,4 @@
 import React,{ useEffect } from 'react';
-import Login from "./pages/Login";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter,Routes,Route} from  'react-router-dom';
 import {Navigate} from  'react-router-dom';
@@ -28,6 +27,7 @@ import FormRetraitEnglish from './pages/FormRetraitEnglish';
 import FormEnvoiAbonneEnglish from './pages/FormEnvoiAbonneEnglish'
 import FormCodeAbonneEnglish from  './pages/FormCodeAbonneEnglish'
 import FormFindCodeRetraitEnglish from './pages/FormFindCodeRetraitEnglish';
+import Login from './pages/Login';
 
 
 
@@ -49,6 +49,50 @@ import FormFindCodeRetraitFrench from './pages/FormFindCodeRetraitFrench';
 const useState = React.useState
 
 function App() {
+
+  const [username,setUsername] = useState(()=>
+  {
+    const localData = localStorage.getItem('username');
+    return localData ? JSON.parse(localData) : "";
+  });
+  
+  
+  useEffect(() => {
+    window.localStorage.setItem("username", JSON.stringify(username))
+  }, [username])
+
+  const [isAdmin,setIsadmin] = useState(()=>
+  {
+    const localData = localStorage.getItem('isAdmin');
+    return localData ? JSON.parse(localData) : false;
+  });
+  
+  
+  useEffect(() => {
+    window.localStorage.setItem("isAdmin", JSON.stringify(isAdmin))
+  }, [isAdmin])
+
+  const [isStaff,setIsStaff] = useState(()=>
+  {
+    const localData = localStorage.getItem('isStaff');
+    return localData ? JSON.parse(localData) : false;
+  });
+  
+  
+  useEffect(() => {
+    window.localStorage.setItem("isStaff", JSON.stringify(isStaff))
+  }, [isStaff])
+
+  const [isLogged,setIsLogged] = useState(()=>
+  {
+    const localData = localStorage.getItem('isLogged');
+    return localData ? JSON.parse(localData) : false;
+  });
+  
+  
+  useEffect(() => {
+    window.localStorage.setItem("isLogged", JSON.stringify(isLogged))
+  }, [isLogged])
 
   
   const [dateInfo,setDate] = useState(()=>
@@ -460,7 +504,10 @@ function App() {
     <BrowserRouter>
       <Routes >
         
-        <Route path="/"  element={<HomeEnglish />} >
+        <Route path="/"  element={<HomeEnglish setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged}/>} >
+        </Route>
+
+        <Route path="/login_english"  element={<Login />} >
         </Route>
 
         <Route path="/form_envoie_client_english" element={<FormEnvoiClientEnglish   dataEnvoie={dataEnvoie} envoie={envoie} setTaux={setTaux}/>}>

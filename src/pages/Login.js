@@ -10,10 +10,10 @@ import {Link,useNavigate} from  'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import HeaderHome from './HeaderHome';
 import Footer from './Footer';
-
-
-
-
+import Modal from 'react-bootstrap/Modal';
+import ClipLoader from "react-spinners/ClipLoader";
+import Header from './Header';
+import HeaderEnglish from './HeaderEnglish';
 
 
 
@@ -23,9 +23,10 @@ const useState = React.useState
 function Login(props)
 {
   
-   const [langue,setLangue] = useState({
-        infoLangue :{
-            language : 'Lingala'
+   const [state,setState] = useState({
+        credentials :{
+            username : '',
+            password : ''
         }})
 
     const [message,setMessage] = useState("")
@@ -47,26 +48,13 @@ yn
        
           
    const navigate = useNavigate()
-
-   const connect = (e)=>
-   {
-     e.preventDefault()
-     console.log(langue.infoLangue.language)
-     props.setLangue(langue.infoLangue.language)
-     navigate('/menu_envoie')
-   }
-
-   const inputChanged = (event)=>
-   {
-       const cred = langue.infoLangue;
-       cred[event.target.name] = event.target.value;
-       setLangue({infoLangue:cred})
-   }
-
+   const [modalShow, setModalShow] = React.useState(false);
+   const [modalShow2, setModalShow2] = React.useState(false);
    
-/*
+
     const connection = (e)=>
     {
+      setModalShow2(true)
         fetch('https://kobobsapi.herokuapp.com/api/login/', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -79,14 +67,16 @@ yn
               {
 
                 props.setUsername(data.username)
+                props.setIsadmin(data.is_superuser)
+                console.log(data.is_superuser)
                 setState({credentials:{username :data.username}})
                  
                 navigate('/home')
               } 
               else
               {
-               
-                setMessage("accès réfusé")
+                setModalShow2(false)
+                setModalShow(true)
                navigate('/')
               }
               
@@ -99,12 +89,23 @@ yn
               setMessage("accès réfusé")
               navigate('/')
             } )
-    }*/
+    }
+
+    const inputChanged = (event)=>
+    {
+         const cred = state.credentials;
+         cred[event.target.name] = event.target.value;
+         setState({credentials:cred})
+    }
+
    
-return (
+
+    return (
+
+
 <>
-<HeaderHome />
-{isDesktop && <Container className='bg-dark justify-content-center text-center pt-2 bordure' style={{marginTop:100,backgroundColor:'grey',width:650}} >
+<HeaderEnglish />
+{isDesktop && <Container className='bg-dark justify-content-center text-center pt-2 bordure' style={{marginTop:50,backgroundColor:'grey',width:650}} >
 
     <Row className='justify-content-center mb-5 pt-3' >
         <Col>
@@ -112,67 +113,141 @@ return (
         </Col>
     </Row>
       
-  <Form>
+<Form>
     <Row className='justify-content-center'>
-    <Col xs ={4}>
-    <Form.Group className="mb-3" >
-    {langue.infoLangue.language == "Lingala" ? <Form.Label  className='couleur2 text-center'>Munoko Yako salela</Form.Label> : <Form.Label  className='couleur2 text-center'>Language to use</Form.Label>}
-    <Form.Select name='language' value={langue.infoLangue.language} onChange={e=>inputChanged(e)}  aria-label="Default select example"  required>
-     <option value="Lingala">Lingala</option>
-     <option value="English">English</option>
-     </Form.Select>
-     </Form.Group>
-    </Col>
+        <Col xs={6} >
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Control type="email" placeholder="nom d'utilisateur"  name="username"
+        value ={state.credentials.username} onChange={inputChanged} autoFocus/>
+        
+         </Form.Group>
+        </Col>
     </Row>
-
-    
   
-<Row className='justify-content-center text-center pb-3 mt-3'>
-    <Col  xs={12}>    
-    {langue.infoLangue.language == "Lingala" ? <Button variant="outline-warning" onClick={e=>connect(e)}><b>Banda Opération</b></Button> : <Button variant="outline-warning" onClick={e=>connect(e)}><b>Start Operation</b></Button>}
-    </Col>
-</Row>
+    <Row className='justify-content-center'>
+        <Col xs={6}>
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+         <Form.Control type="password" placeholder="mot de passe" name="password"
+         value ={state.credentials.password} onChange={inputChanged} />
+
+         </Form.Group>
+        </Col>
+    </Row>
+  
+    <Row className='justify-content-center pb-3'>
+        <Col  xs={12}>    
+        <Link to="" style={{color:'white',textDecorationLine:'none'}}> 
+        
+        <Button variant="outline-warning" type="submit" onClick={e=>connection(e)}>
+        <b>connexion</b>
+        </Button>
+        </Link>
+        </Col>
+    </Row>
+  
+  
 
 
 </Form>
 </Container> }
 
-{isMobileOrTablet &&  <Container className='bg-dark my-center mx-auto text-start bordure' style={{backgroundColor:'grey',height:450}} >
+{isMobileOrTablet && <Container className='bg-dark justify-content-center text-center pt-2 bordure mx-auto' style={{backgroundColor:'grey',height:450}} >
 
-<Row className='justify-content-center text-center mb-5 pt-5' >
+<Row className='justify-content-center mb-5 pt-3' >
     <Col>
-    <Image src={require('./kobo_logo.JPG')}  className='rounded ' style={{width:200}}></Image>
+    <Image src={require('./kobo_logo.JPG')}  className='rounded ' style={{width:300}}></Image>
     </Col>
 </Row>
   
 <Form>
-<Row className='justify-content-center mt-5'>
-<Col xs ={4}>
-    <Form.Group className="mb-3" >
-    {langue.infoLangue.language == "Lingala" ? <Form.Label  className='couleur2 text-center'>Munoko Yako solola</Form.Label> : <Form.Label  className='couleur2 text-center'>Language</Form.Label>}
-    <Form.Select name='language' value={langue.infoLangue.language} onChange={e=>inputChanged(e)}  aria-label="Default select example"  required>
-     <option value="Lingala">Lingala</option>
-     <option value="English">English</option>
-     </Form.Select>
+<Row className='justify-content-center'>
+    <Col xs={12} >
+    <Form.Group className="mb-3" controlId="formBasicEmail">
+    <Form.Control type="email" placeholder="nom d'utilisateur"  name="username"
+    value ={state.credentials.username} onChange={inputChanged} autoFocus/>
+    
      </Form.Group>
     </Col>
 </Row>
 
+<Row className='justify-content-center'>
+    <Col xs={12}>
+    <Form.Group className="mb-3" controlId="formBasicPassword">
+     <Form.Control type="password" placeholder="mot de passe" name="password"
+     value ={state.credentials.password} onChange={inputChanged} />
 
+     </Form.Group>
+    </Col>
+</Row>
 
-<Row className='justify-content-center text-center pb-3 mt-3'>
+<Row className='justify-content-center pb-3'>
     <Col  xs={12}>    
-    {langue.infoLangue.language == "Lingala" ? <Button variant="outline-warning" onClick={e=>connect(e)}><b>Banda Opération</b></Button> : <Button variant="outline-warning" onClick={e=>connect(e)}><b>Start Operation</b></Button>}
+    <Link to="" style={{color:'white',textDecorationLine:'none'}}> 
+    
+    <Button variant="outline-warning" type="submit" onClick={e=>connection(e)}>
+    <b>connexion</b>
+    </Button>
+    </Link>
     </Col>
 </Row>
 
 
+
 </Form>
 </Container> }
+<MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
+<MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
 <Footer />
 </>
 
 )
+}
+
+function MyVerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="md"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Echec connexion
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <h4>Message : </h4>
+        <p className='text-danger'><b>Désolé le mot de passe ou nom d'utilisateur est incorrect!!!</b>   
+        </p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant='warning' onClick={props.onHide}>ok</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
+function MyVerticallyCenteredModal2(props) {
+  return (
+    <Modal
+      {...props}
+      size="sm"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Veuillez Patienter...
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+      <ClipLoader color={"#ff8c00"} loading={true} size={150} /> 
+      </Modal.Body>
+      <Modal.Footer>
+      </Modal.Footer>
+    </Modal>
+  );
 }
 
 export default Login;

@@ -34,7 +34,7 @@ function HomeFrench()
       <h1 className='display-6  couleur2' >
       
       <strong><b> Avec KBSTrans  ,<br></br>
-          vos proches récevrons toujours de l'argent rapidement
+          vos proches récevrons toujours de l'argent rapidement.
           </b></strong>
       </h1>
 
@@ -137,7 +137,7 @@ function HomeFrench()
       <h1 className='display-6  couleur2' >
       
       <strong><b> Avec KBSTrans,<br></br>
-          vos proches récevrons toujours<br></br> de l'argent rapidement
+          vos proches récevrons toujours<br></br> de l'argent rapidement.
           </b></strong>
       </h1>
 

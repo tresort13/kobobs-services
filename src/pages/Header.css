@@ -3,6 +3,10 @@ p {
   
 }
 
+.textUpper {
+  text-transform: capitalize;
+}
+
 p,
 li {
   line-height: 1.65;
@@ -87,6 +91,10 @@ li {
     padding: 12px 24px;
     border: none;
     outline: none;
+  }
+
+  .btn--orange {
+    background-color: #EE964B;
   }
 
   

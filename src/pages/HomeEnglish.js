@@ -35,7 +35,7 @@ function HomeEnglish(props)
       <h1 className='display-6  couleur2' >
       
       <strong><b> With  KBSTrans  ,<br></br>
-          your loved ones will always get your money  quickly
+          your loved ones will always get your money  quickly.
           </b></strong>
       </h1>
 
@@ -136,7 +136,7 @@ function HomeEnglish(props)
       <h1 className='display-6  couleur2' >
       
       <strong><b> With  KBSTrans  ,<br></br>
-          your loved ones will always <br></br>get your money  quickly
+          your loved ones will always <br></br>get your money  quickly.
           </b></strong>
       </h1>
 

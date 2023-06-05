@@ -43,7 +43,7 @@ function HomeLingala()
       <h1 className='display-6  couleur2' >
       
       <strong><b>Na KBSTrans  ,<br></br>
-      ba oyo yayo bako zwaka kaka mbongo okotinda na lobango
+      ba oyo yayo bako zwaka kaka mbongo okotinda na lobango.
           </b></strong>
       </h1>
 
@@ -145,7 +145,7 @@ function HomeLingala()
       <h1 className='display-6  couleur2' >
       
       <strong><b> Na KBSTrans,<br></br>
-          ba oyo yayo bako zwaka kaka <br></br> mbongo okotinda na lobango
+          ba oyo yayo bako zwaka kaka <br></br> mbongo okotinda na lobango.
           </b></strong>
       </h1>
 

@@ -11,7 +11,7 @@ import HeaderFrench from './HeaderFrench';
 
 
 
-function HomeFrench()
+function HomeFrench(props)
 {
 
     const isDesktop = useMediaQuery({
@@ -22,7 +22,7 @@ function HomeFrench()
       });    
     return (
 <>
-<HeaderFrench />
+<HeaderFrench setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username}/>
 {isDesktop && <Container>  
 
   <Row className="text-center justify-content-center  mt-3">

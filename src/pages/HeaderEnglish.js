@@ -29,10 +29,7 @@ function HeaderEnglish(props)
   const [modalShow4, setModalShow4] = React.useState(false);
   const [modalShow5, setModalShow5] = React.useState(false);
   const [modalShow6, setModalShow6] = React.useState(false);
-  const [modalShow7, setModalShow7] = React.useState(false);
-  const [modalShow8, setModalShow8] = React.useState(false);
-  const [modalShow9, setModalShow9] = React.useState(false);
-
+  
   const [theTime, setTheTime] = useState(new Date().toLocaleString())
   const navigate = useNavigate()
 
@@ -338,15 +335,12 @@ function HeaderEnglish(props)
          </Offcanvas>
     
    </Container>}
-   <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} setModalShow={setModalShow} setModalShow2={setModalShow2} setModalShow3={setModalShow3}  setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} openRegister={openRegister} setModalShow7={setModalShow7}/>
+   <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} setModalShow={setModalShow} setModalShow2={setModalShow2} setModalShow3={setModalShow3}  setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} openRegister={openRegister} />
    <MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
    <MyVerticallyCenteredModal3 show={modalShow3} onHide={() => setModalShow3(false)} />
    <MyVerticallyCenteredModal4 show={modalShow4} onHide={() => setModalShow4(false)} setModalShow2={setModalShow2} setModalShow4={setModalShow4} setModalShow5={setModalShow5} setModalShow6={setModalShow6}/>
    <MyVerticallyCenteredModal5 show={modalShow5} onHide={() => setModalShow5(false)} setModalShow={setModalShow} setModalShow5={setModalShow5}/>
    <MyVerticallyCenteredModal6 show={modalShow6} onHide={() => setModalShow6(false)} />
-   <MyVerticallyCenteredModal7 show={modalShow7} onHide={() => setModalShow7(false)} setModalShow2={setModalShow2} setModalShow7={setModalShow7} setModalShow8={setModalShow8} setModalShow9={setModalShow9}/>
-   <MyVerticallyCenteredModal8 show={modalShow8} onHide={() => setModalShow8(false)} />
-   <MyVerticallyCenteredModal9 show={modalShow9} onHide={() => setModalShow9(false)} />
    </div>
 
     )
@@ -496,7 +490,7 @@ function MyVerticallyCenteredModal(props) {
         <Link to="" style={{color:'white',textDecorationLine:'none'}}> 
         
         <Button variant="outline-warning" type="submit" onClick={e=>connection(e)}>
-        <b>connexion</b>
+        <b>login</b>
         </Button>
         </Link>
         </Col>
@@ -789,158 +783,6 @@ function MyVerticallyCenteredModal6(props) {
   );
 }
 
-function MyVerticallyCenteredModal7(props) {
-
-  const [state,setState] = useState({
-    emailInfo :{
-        email:''
-    }})
-
-    
-     const sendLink = (e)=>
-     {
-       console.log(state.emailInfo)
-        props.setModalShow2(true)
-         fetch('https://kobobsapi.herokuapp.com/api/resetPassword/', {
-             method: 'POST',
-             headers: {'Content-Type': 'application/json'},
-             body: JSON.stringify(state.emailInfo)
-           })
-           .then( data => data.json())
-           .then(
-             data => {
-               if(data.confirmMessage ==="success")
-               {
-                console.log(data) 
-                props.setModalShow2(false)
-                 props.setModalShow7(false)
-                 props.setModalShow8(true)
-                console.log('we have sent you a link sucessfully !!')   
-
-               }
-               else{
-                props.setModalShow2(false)
-                props.setModalShow8(false)
-                props.setModalShow9(true)
-               }
-              
-             }
-           )
-           .catch( (error) =>
-             {
-              props.setModalShow2(false)
-              props.setModalShow9(true)
-               //setMessage("accès réfusé")
-             //  navigate('/')
-             } )
-     }
- 
-     const inputChanged = (event)=>
-     {
-          const cred = state.emailInfo;
-          cred[event.target.name] = event.target.value;
-          setState({emailInfo:cred})
-     }
- 
-    
-  return (
-    <Modal
-      {...props}
-      size="md"
-      aria-labelledby="contained-modal-title-vcenter"
-      backdrop="static"
-      centered
-
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-        reset password
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-      <Form>
-    <Row className='justify-content-start'>
-       <p>Enter your email address below and we will send you a link to reset your password.</p>
-        <Col xs={7} >
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Control type="email" placeholder="Please enter your Email"  name="email"
-        value ={state.emailInfo.email} onChange={inputChanged} autoFocus/>
-        
-         </Form.Group>
-        </Col>
-    </Row>
-
-    
-
-
-    <Row className='justify-content-start pb-3'>
-        <Col  xs={6}>    
-        <Link to="" style={{color:'white',textDecorationLine:'none'}}> 
-        
-        <Button variant="success" type="submit" onClick={e=>sendLink(e)}>
-        <b>send link</b>
-        </Button>
-        </Link>
-        </Col>
-    </Row>
-</Form>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant='warning' onClick={props.onHide}>Close</Button>
-      </Modal.Footer>
-    </Modal>
-  );
-}
-
-function MyVerticallyCenteredModal8(props) {
-
-  return (
-    <Modal
-      {...props}
-      size="sm"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-         we have sent you a link
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <p className='text-success mt-3'><b>Please check the link in your email to reset your password</b>   
-        </p>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant='danger' onClick={props.onHide}>close</Button>
-      </Modal.Footer>
-    </Modal>
-  );
-}
-
-function MyVerticallyCenteredModal9(props) {
-
-  return (
-    <Modal
-      {...props}
-      size="sm"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-         sorry something went wrong
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <p className='text-success mt-3'><b>Please try again by entering your valid email otherwise contact the customer support service</b>   
-        </p>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant='danger' onClick={props.onHide}>close</Button>
-      </Modal.Footer>
-    </Modal>
-  );
-}
 
 
 

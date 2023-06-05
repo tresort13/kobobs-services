@@ -583,7 +583,7 @@ function App() {
 
 
 
-        <Route path="/home_french"  element={<HomeFrench />} >
+        <Route path="/home_french"  element={<HomeFrench setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username}/>} >
         </Route>
        
         <Route path="/form_envoie_client_french" element={<FormEnvoiClientFrench  dataEnvoie={dataEnvoie} envoie={envoie} setTaux={setTaux}/>}>

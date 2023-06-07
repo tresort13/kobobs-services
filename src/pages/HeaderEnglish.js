@@ -516,7 +516,7 @@ function MyVerticallyCenteredModal2(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Veuillez Patienter...
+          Please wait...
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -712,7 +712,7 @@ function MyVerticallyCenteredModal4(props) {
         <Link to="" style={{color:'white',textDecorationLine:'none'}}> 
         
         <Button variant="warning" type="submit" onClick={e=>registration(e)}>
-        <b>register</b>
+        <b>sign up</b>
         </Button>
         </Link>
         </Col>

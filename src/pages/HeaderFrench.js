@@ -126,10 +126,10 @@ function HeaderFrench(props)
         </Col>
 
         { props.isLogged === true ?  <Col xs={4} className="my-auto  my-auto text-end">
-        <Link to="/" style={{textDecoration:"none"}}>
+        <Link to="" style={{textDecoration:"none"}}>
         <Button variant='outline-light'  className='btn btn-outline-light btn-lg'>Bonjour, <strong className='textUpper'>{props.username}</strong></Button>
           </Link>
-          <Link to="/" style={{textDecoration:"none",marginLeft:10}}>
+          <Link to="" style={{textDecoration:"none",marginLeft:10}}>
           <Button onClick={logout} style={{marginLeft:10}}  className='btn--dark-orange btn2 rounded zoom btn-lg'>Deconnexion</Button>
           </Link>
         </Col> :
@@ -738,11 +738,11 @@ function MyVerticallyCenteredModal6(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-           echec enregistrement
+        échec enregistrement
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p className='text-danger'><b>désolé votre a enregistrement a échoué Veuillez récommencer en rempliçant correctement !! </b>   
+        <p className='text-danger'><b>désolé votre l'enregistrement a échoué Veuillez récommencer en remplissant correctement!! </b>   
         </p>
       </Modal.Body>
       <Modal.Footer>

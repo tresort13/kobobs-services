@@ -13,7 +13,7 @@ import {useEffect,useState} from 'react';
 
 
 
-function HomeLingala()
+function HomeLingala(props)
 {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -32,7 +32,7 @@ function HomeLingala()
       });    
     return (
 <>
-<Header />
+<Header setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username}/>
 {isDesktop && <Container>  
   <Row className="text-center justify-content-center  mt-3">
     <Col md={1}>

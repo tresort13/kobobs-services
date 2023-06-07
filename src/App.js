@@ -545,7 +545,7 @@ function App() {
 
 
 
-        <Route path="/home_lingala"  element={<HomeLingala />} >
+        <Route path="/home_lingala"  element={<HomeLingala  setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username}/>} >
         </Route>
        
         <Route path="/form_envoie_client" element={<FormEnvoiClient  dataEnvoie={dataEnvoie} envoie={envoie} setTaux={setTaux}/>}>

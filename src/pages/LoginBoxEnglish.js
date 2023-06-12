@@ -40,21 +40,21 @@ function LoginBoxEnglish(props)
     return (
    <>
    {isDesktop && <div>
-  <MyVerticallyCenteredModal show={props.modalShow} onHide={() => props.setModalShow(false)} setModalShow={props.setModalShow} setModalShow2={setModalShow2} setModalShow3={setModalShow3} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber}  setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} openRegister={openRegister} />
+  <MyVerticallyCenteredModal show={props.modalShow} onHide={() => props.setModalShow(false)} setModalShow={props.setModalShow} setModalShow2={setModalShow2} setModalShow3={setModalShow3} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber}  setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} openRegister={openRegister} language={props.language}/>
   <MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
   <MyVerticallyCenteredModal3 show={modalShow3} onHide={() => setModalShow3(false)} />
-  <MyVerticallyCenteredModal4 show={props.modalShow4} onHide={() => props.setModalShow4(false)} setModalShow2={setModalShow2} setModalShow4={props.setModalShow4} setModalShow5={setModalShow5} setModalShow6={setModalShow6}/>
+  <MyVerticallyCenteredModal4 show={props.modalShow4} onHide={() => props.setModalShow4(false)} language2={props.language2} setLanguage2={props.setLanguage2} setModalShow2={setModalShow2} setModalShow4={props.setModalShow4} setModalShow5={setModalShow5} setModalShow6={setModalShow6} language={props.language}/>
   <MyVerticallyCenteredModal5 show={modalShow5} onHide={() => setModalShow5(false)} setModalShow={props.setModalShow} setModalShow5={setModalShow5}/>
   <MyVerticallyCenteredModal6 show={modalShow6} onHide={() => setModalShow6(false)} />
   </div>
    } 
 
 {isMobileOrTablet && <div>
-   <MyVerticallyCenteredModal show={props.modalShow} onHide={() => props.setModalShow(false)} setModalShow={props.setModalShow} setModalShow2={setModalShow2} setModalShow3={setModalShow3} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber}  setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} openRegister={openRegister} />
+   <MyVerticallyCenteredModal show={props.modalShow} onHide={() => props.setModalShow(false)} setModalShow={props.setModalShow} setModalShow2={setModalShow2} setModalShow3={setModalShow3} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber}  setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} openRegister={openRegister} language={props.language}/>
   <MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
   <MyVerticallyCenteredModal3 show={modalShow3} onHide={() => setModalShow3(false)} />
-  <MyVerticallyCenteredModal4 show={props.modalShow4} onHide={() => props.setModalShow4(false)} setModalShow2={setModalShow2} setModalShow4={props.setModalShow4} setModalShow5={setModalShow5} setModalShow6={setModalShow6}/>
-  <MyVerticallyCenteredModal5 show={modalShow5} onHide={() => setModalShow5(false)} setModalShow={props.setModalShow} setModalShow5={setModalShow5}/>
+  <MyVerticallyCenteredModal4 show={props.modalShow4} onHide={() => props.setModalShow4(false)} language2={props.language2} setLanguage2={props.setLanguage2} setModalShow2={setModalShow2} setModalShow4={props.setModalShow4} setModalShow5={setModalShow5} setModalShow6={setModalShow6} language={props.language}/>
+  <MyVerticallyCenteredModal5 show={modalShow5} onHide={() => setModalShow5(false)} setModalShow={props.setModalShow} setModalShow5={setModalShow5} />
   <MyVerticallyCenteredModal6 show={modalShow6} onHide={() => setModalShow6(false)} />
   </div>
    } 
@@ -279,9 +279,10 @@ function MyVerticallyCenteredModal(props) {
           last_name:'',
           email:'',
           phone:'',
-          password : ''
+          password : '',
+          language2 : props.language2
       }})
-  
+  console.log(state.registrationInfo.language2)
     const [visible,setVisible] = useState(false)
   
       

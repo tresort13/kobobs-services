@@ -14,7 +14,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 
 
 
-function ChangePasswordBoxEnglish(props)
+function ChangePasswordBoxFrench(props)
 {
  // const [modalShow, setModalShow] = React.useState(props.modalShow);
   const [modalShowPasswordChange2, setModalShowPasswordChange2] = React.useState(false);
@@ -43,7 +43,7 @@ function ChangePasswordBoxEnglish(props)
    } 
 
 {isMobileOrTablet && <div>
-  <MyVerticallyCenteredModal show={props.modalShowPasswordChange} onHide={() => props.setModalShowPasswordChange(false)} setModalShowPasswordChange={props.setModalShowPasswordChange} setModalShowPasswordChange2={setModalShowPasswordChange2} setModalShowPasswordChange3={setModalShowPasswordChange3} setModalShowPasswordChange4={setModalShowPasswordChange4}  setModalShowPasswordChange5={setModalShowPasswordChange5} uniqueNumber={props.uniqueNumber} />
+    <MyVerticallyCenteredModal show={props.modalShowPasswordChange} onHide={() => props.setModalShowPasswordChange(false)} setModalShowPasswordChange={props.setModalShowPasswordChange} setModalShowPasswordChange2={setModalShowPasswordChange2} setModalShowPasswordChange3={setModalShowPasswordChange3} setModalShowPasswordChange4={setModalShowPasswordChange4}  setModalShowPasswordChange5={setModalShowPasswordChange5} uniqueNumber={props.uniqueNumber} />
   <MyVerticallyCenteredModal2 show={modalShowPasswordChange2} onHide={() => setModalShowPasswordChange2(false)} />
   <MyVerticallyCenteredModal3 show={modalShowPasswordChange3} onHide={() => setModalShowPasswordChange3(false)} />
   <MyVerticallyCenteredModal4 show={modalShowPasswordChange4} onHide={() => setModalShowPasswordChange4(false)} setModalShowPasswordChange2={setModalShowPasswordChange2} setModalShowPasswordChange4={setModalShowPasswordChange4} />
@@ -130,23 +130,22 @@ function MyVerticallyCenteredModal(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-           Change Password
+          Changer le mot de passe
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <Form>
-      
-
+     
       <Row className='justify-content-start'>
          {visible2===false ? <Col xs={7} >
           <Form.Group className="mb-3" controlId="formBasicPassword">
-           <Form.Control type="password" placeholder="New Password" name="new_password"
+           <Form.Control type="password" placeholder="nouveau mot de passe" name="new_password"
            value ={state.credentials.new_password} onChange={inputChanged} /> 
            </Form.Group>
           </Col> :
           <Col xs={7} >
           <Form.Group className="mb-3" controlId="formBasicPassword">
-           <Form.Control type="text" placeholder="New Password" name="new_password"
+           <Form.Control type="text" placeholder="nouveau mot de passe" name="new_password"
            value ={state.credentials.new_password} onChange={inputChanged} /> 
            </Form.Group>
           </Col>
@@ -178,13 +177,13 @@ function MyVerticallyCenteredModal(props) {
       <Row className='justify-content-start'>
          {visible3===false ? <Col xs={7} >
           <Form.Group className="mb-3" controlId="formBasicPassword">
-           <Form.Control type="password" placeholder="Confirm New Password" name="confirm_password"
+           <Form.Control type="password" placeholder="Confirmer le nouveau mot de passe" name="confirm_password"
            value ={state.credentials.confirm_password} onChange={inputChanged} /> 
            </Form.Group>
           </Col> :
           <Col xs={7} >
           <Form.Group className="mb-3" controlId="formBasicPassword">
-           <Form.Control type="text" placeholder="Confirm New Password" name="confirm_password"
+           <Form.Control type="text" placeholder="Confirmer le nouveau mot de passe" name="confirm_password"
            value ={state.credentials.confirm_password} onChange={inputChanged} /> 
            </Form.Group>
           </Col>
@@ -217,7 +216,7 @@ function MyVerticallyCenteredModal(props) {
           <Col  xs={6}>    
           <Link to="" style={{color:'white',textDecorationLine:'none'}}>      
           <Button variant="outline-warning" type="submit" onClick={e=>connection(e)}>
-          <b>Submit</b>
+          <b>Soumettre</b>
           </Button>
           </Link>
           </Col>
@@ -226,7 +225,7 @@ function MyVerticallyCenteredModal(props) {
  
         </Modal.Body>
         <Modal.Footer>
-          <Button variant='warning' onClick={props.onHide}>Close</Button>
+          <Button variant='warning' onClick={props.onHide}>Fermer</Button>
         </Modal.Footer>
       </Modal>
     );
@@ -242,7 +241,7 @@ function MyVerticallyCenteredModal(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Please wait...
+            Veuillez Patienter...
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -264,7 +263,7 @@ function MyVerticallyCenteredModal(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-           Your password has been changed successfully
+          Votre mot de passe a été changé avec succès
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -274,7 +273,7 @@ function MyVerticallyCenteredModal(props) {
           
         </Modal.Body>
         <Modal.Footer>
-          <Button variant='danger' onClick={props.onHide}>close</Button>
+          <Button variant='danger' onClick={props.onHide}>fermer</Button>
         </Modal.Footer>
       </Modal>
     );
@@ -290,15 +289,15 @@ function MyVerticallyCenteredModal(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            changing password failed !
+          le changement de mot de passe a échoué !
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p className='text-danger'><b>sorry something went wrong,try again by entering all informations required properly !!</b>   
+          <p className='text-danger'><b>désolé quelque chose s'est mal passé, réessayez en saisissant correctement toutes les informations requises !!</b>   
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant='danger' onClick={props.onHide}>close</Button>
+          <Button variant='danger' onClick={props.onHide}>fermer</Button>
         </Modal.Footer>
       </Modal>
     );
@@ -314,20 +313,19 @@ function MyVerticallyCenteredModal(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-          Passwords mismatch !
+          incompatibilité des mots de passe !
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p className='text-danger'><b>the passwords you entered do not match! !!</b>   
+          <p className='text-danger'><b>les mots de passe que vous avez saisis ne correspondent pas! !!</b>   
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant='danger' onClick={props.onHide}>close</Button>
+          <Button variant='danger' onClick={props.onHide}>fermer</Button>
         </Modal.Footer>
       </Modal>
     );
   }
   
-  
  
-export default ChangePasswordBoxEnglish;
+export default ChangePasswordBoxFrench;

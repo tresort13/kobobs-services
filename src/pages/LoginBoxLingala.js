@@ -40,20 +40,20 @@ function LoginBoxLingala(props)
     return (
    <>
    {isDesktop && <div>
-  <MyVerticallyCenteredModal show={props.modalShow} onHide={() => props.setModalShow(false)} setModalShow={props.setModalShow} setModalShow2={setModalShow2} setModalShow3={setModalShow3}  setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} openRegister={openRegister} />
+    <MyVerticallyCenteredModal show={props.modalShow} onHide={() => props.setModalShow(false)} setModalShow={props.setModalShow} setModalShow2={setModalShow2} setModalShow3={setModalShow3} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber}  setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} openRegister={openRegister} language={props.language}/>
   <MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
   <MyVerticallyCenteredModal3 show={modalShow3} onHide={() => setModalShow3(false)} />
-  <MyVerticallyCenteredModal4 show={props.modalShow4} onHide={() => props.setModalShow4(false)} setModalShow2={setModalShow2} setModalShow4={props.setModalShow4} setModalShow5={setModalShow5} setModalShow6={setModalShow6}/>
+  <MyVerticallyCenteredModal4 show={props.modalShow4} onHide={() => props.setModalShow4(false)} language2={props.language2} setLanguage2={props.setLanguage2} setModalShow2={setModalShow2} setModalShow4={props.setModalShow4} setModalShow5={setModalShow5} setModalShow6={setModalShow6} language={props.language}/>
   <MyVerticallyCenteredModal5 show={modalShow5} onHide={() => setModalShow5(false)} setModalShow={props.setModalShow} setModalShow5={setModalShow5}/>
   <MyVerticallyCenteredModal6 show={modalShow6} onHide={() => setModalShow6(false)} />
   </div>
    } 
 
 {isMobileOrTablet && <div>
-   <MyVerticallyCenteredModal show={props.modalShow} onHide={() => props.setModalShow(false)} setModalShow={props.setModalShow} setModalShow2={setModalShow2} setModalShow3={setModalShow3}  setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} openRegister={openRegister} />
+  <MyVerticallyCenteredModal show={props.modalShow} onHide={() => props.setModalShow(false)} setModalShow={props.setModalShow} setModalShow2={setModalShow2} setModalShow3={setModalShow3} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber}  setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} openRegister={openRegister} language={props.language}/>
   <MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
   <MyVerticallyCenteredModal3 show={modalShow3} onHide={() => setModalShow3(false)} />
-  <MyVerticallyCenteredModal4 show={props.modalShow4} onHide={() => props.setModalShow4(false)} setModalShow2={setModalShow2} setModalShow4={props.setModalShow4} setModalShow5={setModalShow5} setModalShow6={setModalShow6}/>
+  <MyVerticallyCenteredModal4 show={props.modalShow4} onHide={() => props.setModalShow4(false)} language2={props.language2} setLanguage2={props.setLanguage2} setModalShow2={setModalShow2} setModalShow4={props.setModalShow4} setModalShow5={setModalShow5} setModalShow6={setModalShow6} language={props.language}/>
   <MyVerticallyCenteredModal5 show={modalShow5} onHide={() => setModalShow5(false)} setModalShow={props.setModalShow} setModalShow5={setModalShow5}/>
   <MyVerticallyCenteredModal6 show={modalShow6} onHide={() => setModalShow6(false)} />
   </div>
@@ -97,7 +97,8 @@ function MyVerticallyCenteredModal(props) {
                  
                  if (data.username === state.credentials.username)
                  {
-                   props.setUserId(data.user_id)
+                   console.log(props.uniqueNumber)
+                  props.setUniqueNumber(data.user_id)
                    props.setUsername(data.first_name)
                    props.setIsadmin(data.is_superuser)
                    props.setIsStaff(data.is_staff)
@@ -105,7 +106,7 @@ function MyVerticallyCenteredModal(props) {
                    console.log(data.is_superuser)
                    setState({credentials:{username :data.username}})
                     
-                   navigate('/home_lingala')
+                   navigate('/')
                    console.log('you are connected')
                  } 
                  else
@@ -113,7 +114,7 @@ function MyVerticallyCenteredModal(props) {
                   props.setModalShow(true)
                   props.setModalShow2(false)
                   props.setModalShow3(true)
-                  navigate('/home_lingala')
+                  navigate('/')
                  }
                  
                  
@@ -122,6 +123,7 @@ function MyVerticallyCenteredModal(props) {
              )
              .catch( (error) =>
                {
+                 console.log(error)
                 props.setModalShow2(false)
                 props.setModalShow3(true)
                  //setMessage("accès réfusé")
@@ -277,7 +279,8 @@ function MyVerticallyCenteredModal(props) {
           last_name:'',
           email:'',
           phone:'',
-          password : ''
+          password : '',
+          language2 : props.language2
       }})
   
     const [visible,setVisible] = useState(false)
@@ -317,6 +320,7 @@ function MyVerticallyCenteredModal(props) {
              )
              .catch( (error) =>
                {
+                 console.log(error)
                 props.setModalShow2(false)
                 props.setModalShow6(true)
                  //setMessage("accès réfusé")
@@ -464,7 +468,7 @@ function MyVerticallyCenteredModal(props) {
         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"  className="bi bi-check-circle-fill text-success" viewBox="0 0 16 16">
     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
   </svg>
-          <p className='text-success mt-3'><b>Matondo mingi mpo na kopona bisoi</b>   
+          <p className='text-success mt-3'><b>Matondo mingi mpo na kopona biso</b>   
           </p>
           <Link to=''><strong onClick={()=>showLogin2()}>mikonecter</strong></Link>
         </Modal.Body>

@@ -97,11 +97,11 @@ function HeaderEnglish(props)
                 <NavDropdown.Divider />
                   <Nav.Link href="/"><b><pre>Home</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link href="/form_envoie_abonne_english"><b><pre>Send Money</pre></b></Nav.Link>
+                  <Nav.Link href="#"><b><pre>Send Money</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link href="/form_retrait_info_english"><b><pre>track your transfer status</pre></b></Nav.Link>
+                  <Nav.Link href="#"><b><pre>track your transfer status</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link  href="/form_find_code_retrait_english"><b><pre>lost your tracking number ?</pre></b></Nav.Link>
+                  <Nav.Link  href="#"><b><pre>lost your tracking number ?</pre></b></Nav.Link>
                   <NavDropdown.Divider />
                   <Nav.Link ><b onClick={contactUs} ><pre>Contact us</pre></b></Nav.Link>
                 </Nav>
@@ -144,10 +144,17 @@ function HeaderEnglish(props)
         </Col>
 }
 
-        <Col xs={2}>
-        </Col>
+
         
-        { props.isLogged === true ? <Col xs={4} className="my-auto  my-auto text-end">
+        { props.isLogged === true ? <Col xs={6} className="my-auto  my-auto text-end">
+        {props.isAdmin ?
+         <Link to=""><span><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="text-light bi bi-bell-fill mt-2 mx-2" viewBox="0 0 16 16">
+        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+        </svg></span></Link>
+         :
+        <span>
+        </span>
+         }
          
           <Button variant='outline-light' onClick={()=>handleShow2()}  className='btn btn-outline-light btn-lg'>Hello, <strong  className='textUpper'>{props.username}</strong> <span><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
@@ -157,7 +164,7 @@ function HeaderEnglish(props)
           <Button onClick={logout} style={{marginLeft:10}}  className='btn--dark-orange btn2 rounded zoom btn-lg'>Logout</Button>
           </Col>
              :
-            <Col xs={4} className="my-auto  my-auto text-end">
+            <Col xs={6} className="my-auto  my-auto text-end">
          
             <Link to="" onClick={showLogin} style={{textDecoration:"none"}}>
               <Button  className='btn2 btn--blue rounded zoom btn-lg '>Login</Button>
@@ -180,11 +187,11 @@ function HeaderEnglish(props)
              </Dropdown.Toggle>
 
              <Dropdown.Menu>
-             <Dropdown.Item onClick={()=>props.setLanguage("english")}>English</Dropdown.Item>
+             <Dropdown.Item onClick={()=>props.setLanguage2("english")}>English</Dropdown.Item>
              <NavDropdown.Divider />
-             <Dropdown.Item onClick={()=>props.setLanguage("lingala")}>Lingala</Dropdown.Item>
+             <Dropdown.Item onClick={()=>props.setLanguage2("lingala")}>Lingala</Dropdown.Item>
              <NavDropdown.Divider />
-             <Dropdown.Item onClick={()=>props.setLanguage("french")}>Français</Dropdown.Item>
+             <Dropdown.Item onClick={()=>props.setLanguage2("french")}>Français</Dropdown.Item>
              </Dropdown.Menu>
             </Dropdown>
             </a>
@@ -237,11 +244,11 @@ function HeaderEnglish(props)
              </Dropdown.Toggle>
 
              <Dropdown.Menu>
-             <Dropdown.Item onClick={()=>props.setLanguage("english")}>English</Dropdown.Item>
+             <Dropdown.Item onClick={()=>props.setLanguage2("english")}>English</Dropdown.Item>
              <NavDropdown.Divider />
-             <Dropdown.Item onClick={()=>props.setLanguage("lingala")}>Lingala</Dropdown.Item>
+             <Dropdown.Item onClick={()=>props.setLanguage2("lingala")}>Lingala</Dropdown.Item>
              <NavDropdown.Divider />
-             <Dropdown.Item onClick={()=>props.setLanguage("french")}>Français</Dropdown.Item>
+             <Dropdown.Item onClick={()=>props.setLanguage2("french")}>Français</Dropdown.Item>
              </Dropdown.Menu>
             </Dropdown>
             </a>
@@ -267,11 +274,11 @@ function HeaderEnglish(props)
                 <NavDropdown.Divider />
                 <Nav.Link href="/"><b><pre>Home</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link href="/form_envoie_abonne_english"><b><pre>Send Money</pre></b></Nav.Link>
+                  <Nav.Link href="#"><b><pre>Send Money</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link href="/form_retrait_info_english"><b><pre>track your transfer status</pre></b></Nav.Link>
+                  <Nav.Link href="#"><b><pre>track your transfer status</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link  href="/form_find_code_retrait_english"><b><pre>lost your tracking number ?</pre></b></Nav.Link>
+                  <Nav.Link  href="#"><b><pre>lost your tracking number ?</pre></b></Nav.Link>
                   <NavDropdown.Divider />
                   <Nav.Link ><b onClick={contactUs} ><pre>Contact us</pre></b></Nav.Link>
                 </Nav>
@@ -305,11 +312,11 @@ function HeaderEnglish(props)
      </Dropdown.Toggle>
 
      <Dropdown.Menu>
-     <Dropdown.Item onClick={()=>props.setLanguage("english")}>English</Dropdown.Item>
+     <Dropdown.Item onClick={()=>props.setLanguage2("english")}>English</Dropdown.Item>
              <NavDropdown.Divider />
-             <Dropdown.Item onClick={()=>props.setLanguage("lingala")}>Lingala</Dropdown.Item>
+             <Dropdown.Item onClick={()=>props.setLanguage2("lingala")}>Lingala</Dropdown.Item>
              <NavDropdown.Divider />
-             <Dropdown.Item onClick={()=>props.setLanguage("french")}>Français</Dropdown.Item>
+             <Dropdown.Item onClick={()=>props.setLanguage2("french")}>Français</Dropdown.Item>
      </Dropdown.Menu>
     </Dropdown>
     </a>
@@ -397,8 +404,8 @@ function HeaderEnglish(props)
            </Offcanvas.Body>
       </Offcanvas>
     <ChangePasswordBoxEnglish modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} userID={props.userID} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber}/>
-   <ContactBoxEnglish modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} />
-   <LoginBoxEnglish setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} modalShow={props.modalShow} modalShow4={props.modalShow4} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username}/>
+   <ContactBoxEnglish language2={props.language2} setLanguage2={props.setLanguage2} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} language={props.language}/>
+   <LoginBoxEnglish language2={props.language2} setLanguage2={props.setLanguage2} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} modalShow={props.modalShow} modalShow4={props.modalShow4} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
    </div>
 
     )

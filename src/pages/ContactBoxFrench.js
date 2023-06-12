@@ -14,7 +14,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 
 
 
-function ContactBoxEnglish(props)
+function ContactBoxFrench(props)
 {
  // const [modalShow, setModalShow] = React.useState(props.modalShow);
   const [modalShowContact2, setModalShowContact2] = React.useState(false);
@@ -131,7 +131,7 @@ function MyVerticallyCenteredModal(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-           contact us 
+           contacter nous 
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -139,7 +139,7 @@ function MyVerticallyCenteredModal(props) {
         <Row className='justify-content-start'>
           <Col xs={7} >
           <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Control type="text" placeholder="Firstname"  name="firstname"
+          <Form.Control type="text" placeholder="nom"  name="firstname"
           value ={state.credentials.firstname} onChange={inputChanged} autoFocus/>
           
            </Form.Group>
@@ -149,7 +149,7 @@ function MyVerticallyCenteredModal(props) {
       <Row className='justify-content-start'>
           <Col xs={7} >
           <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Control type="email" placeholder="Email"  name="email"
+          <Form.Control type="email" placeholder="votre email"  name="email"
           value ={state.credentials.email} onChange={inputChanged} />
           
            </Form.Group>
@@ -169,7 +169,7 @@ function MyVerticallyCenteredModal(props) {
           <Col  xs={6}>    
           <Link to="" style={{color:'white',textDecorationLine:'none'}}>      
           <Button variant="outline-warning" type="submit" onClick={e=>connection(e)}>
-          <b>Send</b>
+          <b>envoyer</b>
           </Button>
           </Link>
           </Col>
@@ -181,7 +181,7 @@ function MyVerticallyCenteredModal(props) {
         <span class="mx-5 px-5"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
 </svg> <b>+447417588363</b></span> 
-          <Button variant='warning' onClick={props.onHide}>Close</Button>
+          <Button variant='warning' onClick={props.onHide}>fermer</Button>
         </Modal.Footer>
       </Modal>
     );
@@ -197,7 +197,7 @@ function MyVerticallyCenteredModal(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Please wait...
+            Veuillez Patienter...
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -219,18 +219,18 @@ function MyVerticallyCenteredModal(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-           your message has sent been successfully
+          votre message a été envoyé avec succès
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"  className="bi bi-check-circle-fill text-success" viewBox="0 0 16 16">
     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
   </svg>
-          <p className='text-success mt-3'><b>Thank for contacting us</b>   
+          <p className='text-success mt-3'><b>Merci de nous avoir contacté</b>   
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant='danger' onClick={props.onHide}>close</Button>
+          <Button variant='danger' onClick={props.onHide}>fermer</Button>
         </Modal.Footer>
       </Modal>
     );
@@ -246,19 +246,19 @@ function MyVerticallyCenteredModal(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            sending failed !
+          Envoi échoué !
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p className='text-danger'><b>sorry something went wrong, try again or contact the customers services directly on 00447417588363 !! </b>   
+          <p className='text-danger'><b>désolé quelque chose s'est mal passé, réessayez ou contactez directement le service clients au 00447417588363 !! </b>   
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant='danger' onClick={props.onHide}>close</Button>
+          <Button variant='danger' onClick={props.onHide}>fermer</Button>
         </Modal.Footer>
       </Modal>
     );
   }
   
  
-export default ContactBoxEnglish;
+export default ContactBoxFrench;

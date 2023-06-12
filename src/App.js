@@ -71,6 +71,17 @@ function App() {
     window.localStorage.setItem("language", JSON.stringify(language))
   }, [language])
 
+  const [language2,setLanguage2] = useState(()=>
+  {
+    const localData = localStorage.getItem('language2');
+    return localData ? JSON.parse(localData) : "english";
+  });
+  
+  
+  useEffect(() => {
+    window.localStorage.setItem("language2", JSON.stringify(language2))
+  }, [language2])
+
   const [modalShow, setModalShow] = useState(()=>
   {
     const localData = localStorage.getItem('modalShow');
@@ -581,7 +592,7 @@ function App() {
     <BrowserRouter>
       <Routes >
         
-        <Route path="/"  element={language === "english" ? <HomeEnglish modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username}/> : language === "lingala" ? <Navigate to='/home_lingala' /> : <Navigate to='/home_french' />} >
+        <Route path="/"  element={language2 === "english" ? <HomeEnglish isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/> : language2 === "lingala" ? <Navigate to='/home_lingala' /> : <Navigate to='/home_french' />} >
         </Route>
 
         <Route path="/login_english"  element={<Login />} >
@@ -622,7 +633,7 @@ function App() {
 
 
 
-        <Route path="/home_lingala"  element={language === "lingala" ? <HomeLingala modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber}  setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username}/> : language === "english" ? <Navigate to='/' /> : <Navigate to='/home_french' />} >
+        <Route path="/home_lingala"  element={language2 === "lingala" ? <HomeLingala isAdmin={isAdmin} isStaff={isStaff} language2={language2} setLanguage2={setLanguage2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/> : language2 === "english" ? <Navigate to='/' /> : <Navigate to='/home_french' />} >
         </Route>
        
         <Route path="/form_envoie_client" element={<FormEnvoiClient  dataEnvoie={dataEnvoie} envoie={envoie} setTaux={setTaux}/>}>
@@ -660,7 +671,7 @@ function App() {
 
 
 
-        <Route path="/home_french"  element={language === "french" ? <HomeFrench modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username}/> : language === "english" ? <Navigate to='/' /> : <Navigate to='/home_lingala' />} >
+        <Route path="/home_french"  element={language2 === "french" ? <HomeFrench isAdmin={isAdmin} isStaff={isStaff} language2={language2} setLanguage2={setLanguage2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/> : language2 === "english" ? <Navigate to='/' /> : <Navigate to='/home_lingala' />} >
         </Route>
        
         <Route path="/form_envoie_client_french" element={<FormEnvoiClientFrench  dataEnvoie={dataEnvoie} envoie={envoie} setTaux={setTaux}/>}>

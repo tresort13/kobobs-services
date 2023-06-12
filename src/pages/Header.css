@@ -93,6 +93,19 @@ li {
     outline: none;
   }
 
+  .btn3 {
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 4px;
+    overflow: hidden;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1rem;
+    padding: 5px 24px;
+    border: none;
+    outline: none;
+  }
+
   .btn--orange {
     background-color: #EE964B;
   }

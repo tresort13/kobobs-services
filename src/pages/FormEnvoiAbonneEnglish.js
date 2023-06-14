@@ -11,6 +11,7 @@ import { useMediaQuery } from 'react-responsive';
 import HeaderEnglish from './HeaderEnglish';
 import Footer from './Footer';
 import InputGroup from 'react-bootstrap/InputGroup';
+import FormSelect from 'react-bootstrap/FormSelect'
 
 
 
@@ -85,21 +86,27 @@ function FormEnvoiAbonneEnglish(props)
         
         <>
         <HeaderEnglish />
-{isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
-<Row className='justify-content-center mb-3 pt-3' >
-<Col xs={6}>
-        <p ><i><b className='text-dark'>Subscriber ID : </b><b className='couleur2'>{props.abonne.infoAbonne.code_abonne}</b></i></p>
-        </Col>
-        <Col xs={6}>
-        <p ><i><b className='text-dark'>Subscriber full name : </b><b className='couleur2'>{props.abonne.infoAbonne.prenom_expediteur} {props.abonne.infoAbonne.nom_expediteur} </b></i></p>
-        </Col>
+{isDesktop && <Container className='bg-light justify-content-center text-center  mb-5 mt-3' style={{width:1000}} >
+<Row className='justify-content-start py-2' >
+<Col xs={3}>
+        <i><b className='text-dark'>List of previous receiver(s) : </b></i>
+  </Col>
+  <Col xs={6} >
+  <div><Form.Select aria-label="Default select example">
+      <option>select a receiver</option>
+      <option value="1">felly ngoy</option>
+      <option value="2">shaloom bowa</option>
+      <option value="3">lionel mbunga</option>
+    </Form.Select>
+    </div> 
+    </Col>
     </Row>
 
     
 <Form onSubmit={submitFormulaire}>
       <Row>
       <hr style={{color:"darkorange"}}></hr>
-      <p className='couleur2'><b><u>Receiver </u></b></p>
+      <p className='couleur2'><b><u>New Receiver informations </u></b></p>
     </Row>
     <Row className='justify-content-center'>
     <Col xs = {6}>

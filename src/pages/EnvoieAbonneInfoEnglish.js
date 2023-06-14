@@ -21,7 +21,7 @@ const useState = React.useState
 function EnvoieAbonneInfoEnglish(props)
 {
 
-    const [message,setMessage] = useState("Please check well all your informations before sending")
+    const [message,setMessage] = useState("Please make sure everything is correct")
     const [couleur,setCouleur] = useState("text-dark")
 
     const isDesktop = useMediaQuery({
@@ -97,21 +97,18 @@ console.log(props.envoie.infoEnvoie)
         <>
         <HeaderEnglish />
 {isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
-<Row className='justify-content-center mb-3 pt-3' >
+<Row className='justify-content-center  pt-3' >
         <Col xs={6}>
-        <p className='couleur2 display-6'><i><b>{message}</b></i></p>
+        <p className='text-danger '><i><b>{message} !</b></i></p>
+        <hr style={{color:"darkorange"}}></hr>
         </Col>
     </Row>
 
-    <Row className='justify-content-center pb-3'>
-      <hr style={{color:"darkorange"}}></hr>
-      <p className='couleur2'><b><u>Money </u></b> </p>
-    </Row>
     <Row className='justify-content-center pb-3' >
 
         <Col xs={6} className="text-start">
-        <p className='text-dark'>Total amount to pay for the transfer (all fees incl.): <b className='text-danger'>{Number(props.envoie.infoEnvoie.montant_pour_payer).toFixed(2)} £</b> </p>
-        <p className='text-dark'>Amount to get by the receiver : <b className='text-dark'>{Number(props.envoie.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p> 
+        <p className='text-dark'>Total amount to pay for the transfer (all fees incl.): <b className='text-dark bg-warning p-2' style={{border:"2px solid black"}}>{Number(props.envoie.infoEnvoie.montant_pour_payer).toFixed(2)} £</b> </p>
+        <p className='text-dark'>Amount to get by the receiver : <b className='text-dark p-2' style={{border:"2px solid black"}}>{Number(props.envoie.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p> 
         </Col>
 
         <Col xs={6} className="text-start">
@@ -119,46 +116,24 @@ console.log(props.envoie.infoEnvoie)
         <p className='text-dark'>Mobile Money Number: <b className='text-dark'>{props.envoie.infoEnvoie.numero_transfer}</b> </p>
         </Col>
     </Row>
-
-    <Row className='justify-content-center pb-3'>
-      <hr style={{color:"darkorange"}}></hr>
-      <p className='couleur2'><b><u>Sender </u></b> </p>
-    </Row>
+    <hr style={{color:"darkorange"}}></hr>
     <Row className='justify-content-center pb-3' >
        
 
-        <Col xs={6} className="text-start">
-        <p className='text-dark'>First Name : <b className='text-dark'>{props.envoie.infoEnvoie.prenom_expediteur}</b> </p>
-        <p className='text-dark'>Last Name : <b className='text-dark'>{props.envoie.infoEnvoie.nom_expediteur}</b>  </p>
-        <p className='text-dark'>Adress : <b className='text-dark'>{props.envoie.infoEnvoie.adresse_expediteur}</b> </p> 
-        </Col>
-
-        <Col xs={6} className="text-start">
-        <p className='text-dark'>Email: <b className='text-dark'>{props.envoie.infoEnvoie.email_expediteur}</b> </p>
+        <Col xs={6} className="text-start " style={{borderRight:"2px solid black"}}>
+        <p className='couleur2 text-center'><b><u>Sender </u></b> </p>
+        <p className='text-dark'>Name : <b className='text-dark'>{props.envoie.infoEnvoie.prenom_expediteur} {props.envoie.infoEnvoie.nom_expediteur}</b> </p>
         <p className='text-dark'>Mobile Number :<b className='text-dark'> {props.envoie.infoEnvoie.numero_expediteur} </b></p>
         <p className='text-dark'>country : <b className='text-dark'> {props.envoie.infoEnvoie.pays_expediteur}</b></p>
         </Col>
-  
-    </Row>
-
-    <Row className='justify-content-center pb-3'>
-      <hr style={{color:"darkorange"}}></hr>
-      <p className='couleur2'><b><u>Receiver</u></b> </p>
-    </Row>
-    <Row className='justify-content-center pb-3' >
 
         <Col xs={6} className="text-start">
-        <p className='text-dark'>First Name : <b className='text-dark'>{props.envoie.infoEnvoie.prenom_beneficiaire} </b> </p>
-        <p className='text-dark'>Last Name :<b className='text-dark'>{props.envoie.infoEnvoie.nom_beneficiaire}</b> </p>
-       
-        </Col>
-
-        <Col xs={6} className="text-start">
+        <p className='couleur2 text-center'><b><u>Receiver </u></b> </p>
+        <p className='text-dark'>Name : <b className='text-dark'>{props.envoie.infoEnvoie.prenom_beneficiaire} {props.envoie.infoEnvoie.nom_beneficiaire}</b> </p>
         <p className='text-dark'>country : <b className='text-dark'>{props.envoie.infoEnvoie.pays_beneficiaire}</b> </p>
         </Col>
-    </Row>
-
   
+    </Row>
 
     <Row className='justify-content-center pb-3'>
       <hr style={{color:"darkorange"}}></hr>

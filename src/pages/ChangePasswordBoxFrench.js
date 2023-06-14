@@ -77,7 +77,7 @@ function MyVerticallyCenteredModal(props) {
        {
          console.log(state.credentials)
           
-          if(state.credentials.new_password === state.credentials.confirm_password)
+          if ((state.credentials.new_password.trim.length > 0) && (state.credentials.new_password === state.credentials.confirm_password))
           {
             props.setModalShowPasswordChange2(true)
            fetch('https://kobobsapi.herokuapp.com/api/changePassword/'+props.uniqueNumber+'/', {

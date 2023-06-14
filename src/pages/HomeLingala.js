@@ -65,7 +65,7 @@ function HomeLingala(props)
 
   </Row>
   
-  {props.setIsStaff ? <Row className="text-center justify-content-center mt-2 mb-5">
+  {props.setIsStaff === true ? <Row className="text-center justify-content-center mt-2 mb-5">
 
          <Col md={4} className="my-auto text-center">
             <Button  variant="outline-light" style={{width:300,height:300,border:'4px solid white'}} className='btn-lg rounded-pill zoom'>

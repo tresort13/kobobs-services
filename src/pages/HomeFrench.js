@@ -66,7 +66,7 @@ function HomeFrench(props)
 
   </Row>
 
-  {props.setIsStaff ? <Row className="text-center justify-content-center mt-2 mb-5">
+  {props.setIsStaff === true ? <Row className="text-center justify-content-center mt-2 mb-5">
 
            
            <Col md={4} className="my-auto text-center">

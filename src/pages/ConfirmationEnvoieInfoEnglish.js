@@ -51,7 +51,7 @@ function ConfirmationEnvoieInfoEnglish(props)
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
         <p className='text-dark'>Tracking Number : <b className='text-danger'> {props.envoie3.infoEnvoie.code_retrait} </b></p>
-        <p className='text-dark'>Subscriber ID : <b className='text-danger'>{props.envoie3.infoEnvoie.code_abonne} </b> </p>
+     
         <p className='text-dark'>Sender full name: <b className='text-dark'>{props.envoie3.infoEnvoie.prenom_expediteur} {props.envoie3.infoEnvoie.nom_expediteur}  </b> </p>
         <p className='text-dark'>amount to get by the receiver: <b className='text-dark'>{Number(props.envoie3.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
         <p className='text-dark'>amount to pay for the transfer (including all fees): <b className='text-danger'>{Number(props.envoie3.infoEnvoie.montant_total).toFixed(2)} £</b> </p>
@@ -98,7 +98,7 @@ function ConfirmationEnvoieInfoEnglish(props)
     <Row className='justify-content-start pb-3' >
     <Col xs={12}>
         <p className='text-dark'>Tracking Number : <b className='text-danger'> {props.envoie3.infoEnvoie.code_retrait} </b><b className='text-dark'>(this code will be valid only after the full payement of your transfer fees)</b></p>
-        <p className='text-dark'>Subscriber ID : <b className='text-danger'>{props.envoie3.infoEnvoie.code_abonne} </b> </p>
+
         <p className='text-dark'>Sender full name: <b className='text-dark'>{props.envoie3.infoEnvoie.prenom_expediteur} {props.envoie3.infoEnvoie.nom_expediteur} </b> </p>
         <p className='text-dark'>amount to get by the receiver: <b className='text-dark'>{Number(props.envoie3.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
         <p className='text-dark'>amount to pay for the transfer (including all fees): <b className='text-danger'>{Number(props.envoie3.infoEnvoie.montant_total).toFixed(2)} £</b> </p>

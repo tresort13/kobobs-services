@@ -110,4 +110,12 @@ li {
     background-color: #EE964B;
   }
 
+  .bg--style {
+    background-color: black;
+    backface-visibility: hidden;
+  }
+  .radius {
+    border-radius: 10%;
+  }
+
   

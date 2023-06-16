@@ -10,6 +10,8 @@ import './Header.css'
 import { useMediaQuery } from 'react-responsive';
 import HeaderEnglish from './HeaderEnglish';
 import LoginBoxEnglish from './LoginBoxEnglish';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
 
 
 
@@ -50,11 +52,44 @@ const establishedUserStatus = ()=>
     return (
 <>
 <HeaderEnglish dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
-{isDesktop && <Container > 
-  <Row className="text-center justify-content-center  mt-3">
-    <Col md={1}>
-    </Col>
-    <Col md={6}>
+{isDesktop && <Container className='mb-5'> 
+  <Row className="text-center justify-content-center  mt-3 mb-5">
+    <col md={2}>
+    </col>
+    <Col md={5} className="" >
+    <div className=" radius" style={{width:"350px",border:"3px solid white"}}>
+    <Form>
+   
+
+   <Row className='justify-content-center'>
+       <Col xs = {6}>
+       <Form.Label htmlFor="basic-url" className='text-light'><strong>How much do you want to send ?</strong></Form.Label>
+
+       <InputGroup className="mb-3 mt-1">     
+        <Form.Control aria-label="Amount (to the nearest dollar)" />
+        <InputGroup.Text>£</InputGroup.Text>
+      </InputGroup>
+       </Col>
+   </Row>
+
+
+  <Row className='pb-3'>
+      <Col>
+       <Button variant="warning" type="submit" >
+Estimate fees
+       </Button>
+       </Col>
+   </Row>
+ 
+  {/*  <Row className='pb-3'>
+      <Col>
+      <Link to="/form_code_abonne_english" style={{textDecoration:"none"}}>
+      <p ><b className='couleur2'>I forgot my subscriber ID ?</b></p>
+      </Link>
+       </Col>
+   </Row>*/}
+</Form>
+</div>
     </Col>
     <Col md={5} className="my-auto text-start">
       <h1 className='display-6  couleur2' >
@@ -67,11 +102,11 @@ const establishedUserStatus = ()=>
     </Col >
 
   </Row>
-   {props.setIsStaff === true ? <Row className="text-center justify-content-center mt-2 mb-5">
+   {props.isStaff === true ? <Row className="text-center justify-content-center mt-2 mb-5">
 
          <Col md={4} className="my-auto text-center">
           
-            <Button  onClick={establishedUserStatus} variant="outline-light" style={{width:300,height:300,border:'4px solid white'}} className='btn-lg rounded zoom'>
+            <Button  onClick={establishedUserStatus} variant="outline-light" style={{width:300,height:300,border:'4px solid white'}} className='btn-lg rounded-pill zoom'>
             <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" fill="currentColor" className="bi bi-send-fill" viewBox="0 0 16 16">
            <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
             </svg><br></br>
@@ -79,7 +114,7 @@ const establishedUserStatus = ()=>
             </Button>
           </Col>
 
-        {/*    <Col mdmd={4} className="my-auto text-center">  
+          <Col mdmd={4} className="my-auto text-center">  
             <Button  variant="outline-light" style={{width:300,height:300,border:'4px solid white'}}  className=" btn-lg rounded-pill zoom ">
             <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
@@ -87,23 +122,25 @@ const establishedUserStatus = ()=>
             <b className=" display-6"><strong>Track your transfer</strong></b>
            </Button>
             </Col>
-          */}
+          
             <Col mdmd={4} className="my-auto text-center">  
-            <Button  variant="outline-light" style={{width:300,height:300,border:'4px solid white'}}  className=" btn-lg rounded zoom ">
+            <Button  variant="outline-light" style={{width:300,height:300,border:'4px solid white'}}  className=" btn-lg rounded-pill zoom ">
             <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" fill="currentColor" className="bi bi-gear-fill" viewBox="0 0 16 16">
-  <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
-</svg><br></br>
+           <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+             </svg><br></br>
             <b className=" display-6"><strong>operations management</strong></b>
            </Button>
             </Col>
-
-           </Row> :
+            <div className='mt-5 mb-5'>
+            </div>
+           </Row>
+            :
 
 <Row className="text-center justify-content-center mt-2 mb-5">
 
 <Col md={6} className="my-auto text-center">
  
-   <Button onClick={establishedUserStatus}  variant="outline-light" style={{width:300,height:300,border:'4px solid white'}} className='btn-lg rounded zoom'>
+   <Button onClick={establishedUserStatus}  variant="outline-light" style={{width:300,height:300,border:'4px solid white'}} className='btn-lg rounded-pill zoom'>
    <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" fill="currentColor" className="bi bi-send-fill" viewBox="0 0 16 16">
   <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
    </svg><br></br>
@@ -111,8 +148,8 @@ const establishedUserStatus = ()=>
    </Button>
  </Col>
 
-   <Col md={6} className="my-auto text-center">  
-   <Button  variant="outline-light" style={{width:300,height:300,border:'4px solid white'}}  className=" btn-lg rounded zoom ">
+   <Col md={6} className="my-auto text-center ">  
+   <Button  variant="outline-light" style={{width:300,height:300,border:'4px solid white'}}  className=" btn-lg rounded-pill zoom ">
    <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
    </svg><br></br>
@@ -120,11 +157,14 @@ const establishedUserStatus = ()=>
   </Button>
    </Col>
 
+<div className='mt-5 mb-5'>
+            </div>
   </Row>
 }
 
 
-</Container>}
+</Container>
+}
 
 {isMobileOrTablet &&  <Container>
     
@@ -192,6 +232,7 @@ const establishedUserStatus = ()=>
 
   </Container>
   }
+ 
  <LoginBoxEnglish dataAbonne={props.dataAbonne} language2={props.language2} setLanguage2={props.setLanguage2} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} modalShow={props.modalShow} modalShow4={props.modalShow4} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
 <Footer />
 </>

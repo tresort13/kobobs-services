@@ -326,7 +326,6 @@ function App() {
       frais_envoie : '',
       frais_tva : '',
       type_service : 'Kozua na maboko (kozua na nzela ya agence)',
-      code_abonne : '',
       numero_transfer :'**********'
       }};
     })
@@ -354,7 +353,6 @@ function App() {
       frais_envoie : ((Number(donne.montant_beneficiaire).toFixed(2) * Number(taux).toFixed(2)) * 5)/100,
       frais_tva : ((Number(donne.montant_beneficiaire).toFixed(2) * Number(taux).toFixed(2)) * 1)/100,
       type_service : donne.type_service,
-      code_abonne : '',
       numero_transfer :donne.numero_transfer
       }})
   }

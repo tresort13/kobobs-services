@@ -59,7 +59,6 @@ console.log(props.envoie.infoEnvoie)
                   props.setEnvoie({infoEnvoie:{
                    nom_expediteur : '',
                    prenom_expediteur : '',
-                   adresse_expediteur : '',
                    email_expediteur : '',
                    numero_expediteur: '',
                    pays_expediteur : 'UK',
@@ -75,7 +74,6 @@ console.log(props.envoie.infoEnvoie)
                    code_retrait : '',
                    data_operation : '',
                    date_heure_operation : '',
-                   code_abonne : '',
                    status_retrait : '',
                    numero_transfer: '**********'
                   }})

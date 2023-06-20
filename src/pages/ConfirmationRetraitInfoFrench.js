@@ -43,14 +43,11 @@ function ConfirmationRetraitInfoFrench(props)
 
     <Row className='justify-content-start pb-3'>
       <hr style={{color:"darkorange"}}></hr>
-      {props.envoie2.infoEnvoie.status_retrait == "code retrait en attente de validation" ? <p className='text-dark'>status de votre transfert : <b className="text-danger">votre code de retrait est encore en attente de validation...</b> </p> :
-     <p className='text-dark'><b>status de votre transfert :</b> <b className="text-success">votre code de retrait a été validé</b> </p> }
+      {props.envoie2.infoEnvoie.status_retrait == "code retrait en attente de validation" ? <p className='text-dark'>votre statut de transfert : <b className="text-danger">la validation de votre code  est toujours en attente...</b> </p> :
+     props.envoie2.infoEnvoie.status_retrait == "Code Retrait Valide" ? <p className='text-dark'><b>votre statut de transfert :</b> <b className="text-success">Votre code a été validé et l'argent est prêt à être récupéré</b> </p> : 
+     <p className='text-dark'><b>votre statut de transfert :</b> <b className="text-success">Votre Bénéficiare a ramassé l'argent</b> </p> }
     </Row>
 
-    <Row className='justify-content-start pb-3'>
-      {props.envoie2.infoEnvoie.status_retrait == "Code Retrait Payé" ? <p className='text-dark'><b className="text-success">Votre bénéficiare a déjà réçu de l'argent</b> </p> :
-     <p>l'argent est disponible pour être récupérer</p> }
-    </Row>
 
     <Row className='justify-content-center pb-3'>
       <hr style={{color:"darkorange"}}></hr>
@@ -70,7 +67,7 @@ function ConfirmationRetraitInfoFrench(props)
         <p className='text-dark'>Noms Expediteur: <b className='text-dark'>{props.envoie2.infoEnvoie.prenom_expediteur} {props.envoie2.infoEnvoie.nom_expediteur}  </b> </p>
         <p className='text-dark'>Pays Expediteur: <b className='text-dark'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
         <p className='text-dark'>Mobile Money Numéro: <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
-        <p className='text-dark'>date : <b className='text-dark'> {JSON.stringify(props.envoie2.infoEnvoie.data_operation)}</b></p>
+        <p className='text-dark'>date : <b className='text-dark'> {JSON.stringify(props.envoie2.infoEnvoie.date_heure_operation)}</b></p>
         
         </Col>
     </Row>

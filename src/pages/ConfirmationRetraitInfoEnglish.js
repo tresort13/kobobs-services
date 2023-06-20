@@ -37,22 +37,19 @@ function ConfirmationRetraitInfoEnglish(props)
         <>
         <HeaderEnglish />
 {isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
-<Row className='justify-content-center mb-3 pt-3' >
+<Row className='justify-content-center  pt-3' >
         <Col xs={6}>
-        <p className='display-6 couleur2'><i><b>{message}</b></i></p>
+        <p className='couleur2 display-6'><i><b>{message}</b></i></p>
         </Col>
     </Row>
 
     <Row className='justify-content-start pb-3'>
       <hr style={{color:"darkorange"}}></hr>
       {props.envoie2.infoEnvoie.status_retrait == "code retrait en attente de validation" ? <p className='text-dark'>your transfer status : <b className="text-danger">your tracking number validation is still pending...</b> </p> :
-     <p className='text-dark'><b>your transfer status :</b> <b className="text-success">Your tracking number has been validated</b> </p> }
+     props.envoie2.infoEnvoie.status_retrait == "Code Retrait Valide" ? <p className='text-dark'><b>your transfer status :</b> <b className="text-success">Your tracking number has been validated and Money is ready to be picked up</b> </p> : 
+     <p className='text-dark'><b>your transfer status :</b> <b className="text-success">Your receiver has picked up the money</b> </p> }
     </Row>
 
-    <Row className='justify-content-start pb-3'>
-      {props.envoie2.infoEnvoie.status_retrait == "Code Retrait Payé" ? <p className='text-dark'><b className="text-success">Your receiver has picked up the money</b> </p> :
-     <p>Money is ready to be picked up</p> }
-    </Row>
 
     <Row className='justify-content-center pb-3'>
       <hr style={{color:"darkorange"}}></hr>
@@ -73,7 +70,7 @@ function ConfirmationRetraitInfoEnglish(props)
         <p className='text-dark'>Sender full name : <b className='text-dark'>{props.envoie2.infoEnvoie.prenom_expediteur} {props.envoie2.infoEnvoie.nom_expediteur}  </b> </p>
         <p className='text-dark'>sender country : <b className='text-dark'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
         <p className='text-dark'>Mobile Money Number: <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
-        <p className='text-dark'>date : <b className='text-dark'> {props.envoie2.infoEnvoie.data_operation}</b></p>
+        <p className='text-dark'>date : <b className='text-dark'> {props.envoie2.infoEnvoie.date_heure_operation}</b></p>
         
         </Col>
         

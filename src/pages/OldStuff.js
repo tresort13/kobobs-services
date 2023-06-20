@@ -20,7 +20,7 @@ import * as yup from 'yup';
 
 
 
-function FormEnvoiAbonneEnglish(props)
+function OldStuff(props)
 {
   
   const [modalShow, setModalShow] = useState(false);
@@ -34,11 +34,15 @@ function FormEnvoiAbonneEnglish(props)
         }})
     const { Formik } = formik;
 
-    const testValidation = yup.object().shape({
-      nom_beneficiaire: yup.string().required('required field'),
-      prenom_beneficiaire: yup.string().required('required field'),
-      montant_beneficiaire : yup.string().required('required field'),
-      numero_transfer : yup.string().required('required field'),
+    const testValidation = yup.object({
+   
+      nom_beneficiaire: yup.string().required('champs obligatoire'),
+      prenom_beneficiaire: yup.string().required('champs obligatoire'),
+      montant_beneficiaire: yup.string().required('champs obligatoire'),
+      numero_transfer: yup.string().required('champs obligatoire'),
+       description_situation: yup.string().required('champs obligatoire'),
+       localisation_decharge: yup.string().required('champs obligatoire'),
+       observation: yup.string().required('champs obligatoire')
     });
    
     const navigate = useNavigate()
@@ -52,9 +56,8 @@ function FormEnvoiAbonneEnglish(props)
     
       
     
-      const tauxEchanger = (values)=>
+     /* const tauxEchanger = ()=>
       {
-        console.log(values)
         setModalShow(true)
         fetch('https://openexchangerates.org/api/latest.json?app_id=41351d88e53f4f0c89785fba9fc60ca0&symbols=GBP', {
                   method:'GET',
@@ -72,15 +75,15 @@ function FormEnvoiAbonneEnglish(props)
                       email_expediteur : props.abonne.infoAbonne.email_expediteur,
                       numero_expediteur: props.abonne.infoAbonne.numero_expediteur,
                       pays_expediteur : props.abonne.infoAbonne.pays_expediteur,
-                      nom_beneficiaire : values.nom_beneficiaire,
-                      prenom_beneficiaire : values.prenom_beneficiaire,
-                      pays_beneficiaire : values.pays_beneficiaire,
-                      montant_beneficiaire : values.montant_beneficiaire,
-                      montant_pour_payer : (Number(values.montant_beneficiaire).toFixed(2) * Number(res.rates.GBP).toFixed(2)) + ((Number(values.montant_beneficiaire).toFixed(2) * Number(res.rates.GBP).toFixed(2)) * 5)/100 + ((Number(values.montant_beneficiaire).toFixed(2) * Number(res.rates.GBP).toFixed(2)) * 1)/100,
-                      frais_envoie : ((Number(values.montant_beneficiaire).toFixed(2) * Number(res.rates.GBP).toFixed(2)) * 5)/100,
-                      frais_tva : ((Number(values.montant_beneficiaire).toFixed(2) * Number(res.rates.GBP).toFixed(2)) * 1)/100,
-                      type_service : values.type_service,
-                      numero_transfer : values.numero_transfer,
+                      nom_beneficiaire : envoieAbonne.infoEnvoieAbonne.nom_beneficiaire,
+                      prenom_beneficiaire : envoieAbonne.infoEnvoieAbonne.prenom_beneficiaire,
+                      pays_beneficiaire : envoieAbonne.infoEnvoieAbonne.pays_beneficiaire,
+                      montant_beneficiaire : envoieAbonne.infoEnvoieAbonne.montant_beneficiaire,
+                      montant_pour_payer : (Number(envoieAbonne.infoEnvoieAbonne.montant_beneficiaire).toFixed(2) * Number(res.rates.GBP).toFixed(2)) + ((Number(envoieAbonne.infoEnvoieAbonne.montant_beneficiaire).toFixed(2) * Number(res.rates.GBP).toFixed(2)) * 5)/100 + ((Number(envoieAbonne.infoEnvoieAbonne.montant_beneficiaire).toFixed(2) * Number(res.rates.GBP).toFixed(2)) * 1)/100,
+                      frais_envoie : ((Number(envoieAbonne.infoEnvoieAbonne.montant_beneficiaire).toFixed(2) * Number(res.rates.GBP).toFixed(2)) * 5)/100,
+                      frais_tva : ((Number(envoieAbonne.infoEnvoieAbonne.montant_beneficiaire).toFixed(2) * Number(res.rates.GBP).toFixed(2)) * 1)/100,
+                      type_service : envoieAbonne.infoEnvoieAbonne.type_service,
+                      numero_transfer : envoieAbonne.infoEnvoieAbonne.numero_transfer,
                       date_operation : new Date().toLocaleString().slice(0,10),
                       date_heure_operation :new Date().toLocaleString(),
                       month_year_operation : new Date().toLocaleString().slice(3,10)
@@ -95,7 +98,7 @@ function FormEnvoiAbonneEnglish(props)
                   } )
       }
     
-  
+  */
 
       const submitFormulaire = ()=>
       {  
@@ -120,9 +123,9 @@ function FormEnvoiAbonneEnglish(props)
     return (
         
         <>
-<HeaderEnglish dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
+        <HeaderEnglish />
 {isDesktop && <Container className='bg-light justify-content-center text-center  mb-5 mt-3' style={{width:1000}} >
-<Row className='justify-content-start py-2' >
+{/*<Row className='justify-content-start py-2' >
 <Col xs={3}>
         <i><b className='text-dark'>List of previous receiver(s) : </b></i>
   </Col>
@@ -135,69 +138,61 @@ function FormEnvoiAbonneEnglish(props)
     </Form.Select>
     </div> 
     </Col>
-    </Row>
+    </Row>*/}
 
-<Formik
-      validationSchema={testValidation}
-      onSubmit={(values)=>{
-        tauxEchanger(values)
+    <Formik
+    onSubmit = {console.log}
+    validationSchema={testValidation}
+     initialValues = {{
+      nom_beneficiaire : props.envoie.infoEnvoie.nom_beneficiaire,
+      prenom_beneficiaire : props.envoie.infoEnvoie.prenom_beneficiaire,
+      pays_beneficiaire : props.envoie.infoEnvoie.pays_beneficiaire,
+      montant_beneficiaire : props.envoie.infoEnvoie.montant_beneficiaire,
+      type_service : 'By Cash (at the agency)',
+      numero_transfer : ''
+
       }}
-      initialValues={{
-        nom_beneficiaire : props.envoie.infoEnvoie.nom_beneficiaire,
-        prenom_beneficiaire : props.envoie.infoEnvoie.prenom_beneficiaire,
-        pays_beneficiaire : props.envoie.infoEnvoie.pays_beneficiaire,
-        montant_beneficiaire : props.envoie.infoEnvoie.montant_beneficiaire,
-        type_service :'By Cash (at the agency)',
-        numero_transfer:props.envoie.infoEnvoie.numero_transfer,
-    
-      }}
-    >
+      
+     >
      {({handleSubmit, handleChange,handleBlur, values, touched, errors
          })=>(
-          <Form noValidate onSubmit={handleSubmit}>
-             <Row>
+<Form noValidate onSubmit={handleSubmit}>
+      <Row>
       <hr style={{color:"darkorange"}}></hr>
       <p className='couleur2'><b><u>New Receiver informations </u></b></p>
     </Row>
-          <Row className="mb-3">
-            <Form.Group as={Col} md="6" controlId="validationFormik01">
-              <Form.Label>First name</Form.Label>
-              <Form.Control
-                type="text"
-                name="prenom_beneficiaire"
-                value={values.prenom_beneficiaire}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-              <p className='text-danger'>{touched.prenom_beneficiaire && errors.prenom_beneficiaire}</p>
-            </Form.Group>
-            <Form.Group as={Col} md="6" controlId="validationFormik02">
-              <Form.Label>Last name</Form.Label>
-              <Form.Control
-                type="text"
-                name="nom_beneficiaire"
-                value={values.nom_beneficiaire}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-                       <p className='text-danger'>{touched.nom_beneficiaire && errors.nom_beneficiaire}</p>
-            </Form.Group>
-             </Row>
+    <Row className='justify-content-center'>
+    <Col xs = {6}>
+        <Form.Group className="mb-3" controlId="validationFormik01" >
+        <Form.Label className='text-dark'><span className='text-danger'>*</span> First Name </Form.Label>
+        <Form.Control name="prenom_beneficiaire" id='val1' onBlur={handleBlur} value={values.prenom_beneficiaire} onChange={handleChange} type="text" placeholder='First Name'  />
+         </Form.Group>
+         <p className='text-danger'>{touched.prenom_beneficiaire && errors.prenom_beneficiaire}</p>
+        </Col>
 
-             <Row className='justify-content-center'>
+        <Col xs = {6}>
+        <Form.Group className="mb-3" controlId="validationFormik02" >
+        <Form.Label className='text-dark'><span className='text-danger'>*</span> Last Name </Form.Label>  
+        <Form.Control name="nom_beneficiaire" id='val2' onBlur={handleBlur} value={values.nom_beneficiaire} onChange={handleChange} type="text" placeholder='Last Name' />
+        <p className='text-danger'>{touched.nom_beneficiaire && errors.nom_beneficiaire}</p>
+         </Form.Group>
+        </Col>        
+    </Row>
+
+    <Row className='justify-content-center'>
    
-   <Col xs ={12}>
-   <Form.Group className="mb-3" controlId="validationFormik03">
-   <Form.Label className='text-dark'>Country </Form.Label>
-   <Form.Select name='pays_beneficiaire'   value={values.pays_beneficiaire} aria-label="Default select example" onChange={handleChange} >
-    <option value='RD Congo' >RD Congo</option> 
-    </Form.Select>
-    
-    </Form.Group>
-   </Col>
-</Row>
-
-<Row>
+        <Col xs ={12}>
+        <Form.Group className="mb-3" controlId="validationFormik03">
+        <Form.Label className='text-dark'>Country </Form.Label>
+        <Form.Select name='pays_beneficiaire' id='val3'  value={values.pays_beneficiaire} aria-label="Default select example" onChange={handleChange} >
+         <option value='RD Congo'>RD Congo</option> 
+         </Form.Select>
+         
+         </Form.Group>
+        </Col>
+    </Row>
+  
+    <Row>
       <hr style={{color:"darkorange"}}></hr>
       <p className='couleur2'><b><u> Money</u></b> </p>
     </Row>
@@ -205,7 +200,7 @@ function FormEnvoiAbonneEnglish(props)
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="validationFormik04" >
         <Form.Label className='text-dark'><span className='text-danger'>*</span> which Amount do you want the receiver to get in US dollars ($)</Form.Label>
-        <Form.Control name="montant_beneficiaire"  value={values.montant_beneficiaire} onBlur={handleBlur} onChange={handleChange} type="text" placeholder="Amount to send for the receiver"  />
+        <Form.Control name="montant_beneficiaire" id='val4' value={values.montant_beneficiaire} onBlur={handleBlur} onChange={handleChange} type="text" placeholder="Amount to send for the receiver"  />
         <p className='text-danger'>{touched.montant_beneficiaire && errors.montant_beneficiaire}</p>
          </Form.Group>
         </Col>
@@ -215,33 +210,36 @@ function FormEnvoiAbonneEnglish(props)
         <Col xs ={6}>
         <Form.Group className="mb-3" controlId="validationFormik05">
         <Form.Label className='text-dark'>Type of service </Form.Label>
-        <Form.Select name="type_service"  value={values.type_service} aria-label="Default select example" onChange={handleChange} >
+        <Form.Select name="type_service" id='val5' value={values.type_service} aria-label="Default select example" onChange={handleChange} >
         <option value='By Cash (at the agency)'>By Cash (at the agency)</option>
-         <option value="by mobile money tranfer(Mpesa,Orange Money,Airtel Money)">by mobile money tranfer(Mpesa,Orange Money,Airtel Money) </option> 
+         <option value="by mobile money tranfer(Mpesa,Orange Money,Airtel Money)">by mobile money tranfer(Mpesa,Orange Money,Airtel Money) </option>
+         
          </Form.Select>
          </Form.Group>
         </Col>
-      
+
         {values.type_service === "by mobile money tranfer(Mpesa,Orange Money,Airtel Money)" ? <Col xs = {12}>
         <Form.Label className='text-dark'><span className="text-danger">*</span> Enter the mobile number for transfering the money  </Form.Label>
         <InputGroup className="mb-3" controlId="validationFormik06">
         <InputGroup.Text id="basic-addon1">+243</InputGroup.Text>
-        <Form.Control name="numero_transfer"   onBlur={handleBlur}  onChange={handleChange} type="text" placeholder='transfering mobile number'  />
+        <Form.Control name="numero_transfer" id='val6' onBlur={handleBlur}  onChange={handleChange} type="text" placeholder='transfering mobile number'  />
         </InputGroup>
         <p className='text-danger'>{touched.numero_transfer && errors.numero_transfer}</p>
         </Col> : <span></span>}
-         
     </Row>
-
-          <Row className='justify-content-center pb-3'>
+    <Row>
+      <hr style={{color:"darkorange"}}></hr>
+    </Row>
+  
+    <Row className='justify-content-center pb-3'>
         <Col xs ={4}> 
         <Button variant="warning" type="submit" >
         Validate
         </Button>
         </Col>
-        </Row>
-        
-        </Form>
+    </Row>
+  
+</Form>
 )
 }
 </Formik>
@@ -383,4 +381,4 @@ function MyVerticallyCenteredModal(props) {
 }
 
 
-export default FormEnvoiAbonneEnglish;
+export default OldStuff;

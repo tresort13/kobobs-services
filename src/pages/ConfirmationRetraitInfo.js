@@ -42,13 +42,9 @@ function ConfirmationRetraitInfo(props)
 
     <Row className='justify-content-start pb-3'>
       <hr style={{color:"darkorange"}}></hr>
-      {props.envoie2.infoEnvoie.status_retrait == "code retrait en attente de validation" ? <p className='text-dark'>status ya transfert nayo : <b className="text-danger">Code ya retrait nayo eza  nanu validé te...</b> </p> :
-     <p className='text-dark'><b>status ya transfert nayo :</b> <b className="text-success">Code ya retrait nayo ekomi valide</b> </p> }
-    </Row>
-
-    <Row className='justify-content-start pb-3'>
-      {props.envoie2.infoEnvoie.status_retrait == "Code Retrait Payé" ? <p className='text-dark'><b className="text-success">Mozui azui déjà Mbongo</b> </p> :
-     <p>Mbongo ezali disponible pona kozwa</p> }
+      {props.envoie2.infoEnvoie.status_retrait == "code retrait en attente de validation" ? <p className='text-dark'>status ya transfer nayo: <b className="text-danger">validation ya code ya transfer na yo ezali kaka en attente...</b> </p> :
+     props.envoie2.infoEnvoie.status_retrait == "Code Retrait Valide" ? <p className='text-dark'><b>status ya transfer nayo :</b> <b className="text-success">Numéro na yo ya code eza validé mpe Mbongo ezali prêt ya kozuama</b> </p> : 
+     <p className='text-dark'><b>status ya transfer nayo :</b> <b className="text-success">Mozui na yo esi azui mbongo</b> </p> }
     </Row>
 
 
@@ -69,7 +65,7 @@ function ConfirmationRetraitInfo(props)
         <p className='text-dark'>Kombo Ya Motindi: <b className='text-dark'>{props.envoie2.infoEnvoie.prenom_expediteur} {props.envoie2.infoEnvoie.nom_expediteur}  </b> </p>
         <p className='text-dark'>Ekolo Ya Motindi: <b className='text-dark'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
         <p className='text-dark'>Numéro Ya Mobile money : <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
-        <p className='text-dark'>date : <b className='text-dark'> {JSON.stringify(props.envoie2.infoEnvoie.data_operation)}</b></p>
+        <p className='text-dark'>date : <b className='text-dark'> {JSON.stringify(props.envoie2.infoEnvoie.date_heure_operation)}</b></p>
         
         </Col>
     </Row>

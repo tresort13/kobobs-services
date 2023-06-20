@@ -23,19 +23,19 @@ function EnvoieAbonneInfoEnglish(props)
 
     const [message,setMessage] = useState("Please make sure everything is correct")
     const [couleur,setCouleur] = useState("text-dark")
-
-    const isDesktop = useMediaQuery({
-        query: "(min-width: 1224px)"
-      });
-      const isMobileOrTablet = useMediaQuery({
-        query: "(max-width: 1224px)"
-      });
-
-      const navigate = useNavigate()
     const [modalShow2, setModalShow2] = React.useState(false);
     const [modalShow, setModalShow] = React.useState(false);
     const [modalShow4, setModalShow4] = React.useState(false);
+
+    const navigate = useNavigate()
     
+    props.setForceUpdate(true)
+    const isDesktop = useMediaQuery({
+      query: "(min-width: 1224px)"
+    });
+    const isMobileOrTablet = useMediaQuery({
+      query: "(max-width: 1224px)"
+    });
   
     
 console.log(props.envoie.infoEnvoie)
@@ -52,33 +52,34 @@ console.log(props.envoie.infoEnvoie)
               .then( res => res.json())
               .then(
                 res => {  
-
+                   
                   props.dataEnvoie3(res)
                   console.log(res)
-                  props.envoie3.infoEnvoie.code_retrait == "" ? setModalShow4(true) : 
-                  props.setEnvoie({infoEnvoie:{
-                   nom_expediteur : '',
-                   prenom_expediteur : '',
-                   email_expediteur : '',
-                   numero_expediteur: '',
-                   pays_expediteur : 'UK',
-                   nom_beneficiaire : '',
-                   prenom_beneficiaire : '',
-                   pays_beneficiaire : 'RD Congo',
-                   montant_envoie_sans_frais : '',
-                   montant_beneficiaire : '',
-                   type_service : 'Kozua na maboko (kozua na nzela ya agence)',
-                   frais_envoie : '',
-                   frais_tva : '',
-                   montant_total : '',
-                   code_retrait : '',
-                   data_operation : '',
-                   date_heure_operation : '',
-                   status_retrait : '',
-                   numero_transfer: '**********'
-                  }})
-                  navigate('/confirmation_envoie_info_english')
-                }
+                  console.log(props.envoie3.infoEnvoie.code_retrait)
+                    setModalShow(false)
+                    props.setEnvoie({infoEnvoie:{
+                      agent_id:'',
+                      nom_expediteur : '',
+                      prenom_expediteur : '',
+                      adresse_expediteur : '',
+                      email_expediteur : '',
+                      numero_expediteur: '',
+                      pays_expediteur : 'UK',
+                      nom_beneficiaire : '',
+                      prenom_beneficiaire : '',
+                      pays_beneficiaire : 'RD Congo',
+                      montant_beneficiaire : '',
+                      montant_pour_payer :'',
+                      frais_envoie : '',
+                      frais_tva : '',
+                      type_service : '',
+                      numero_transfer :'**********',
+                      date_operation : '',
+                      date_heure_operation : '',
+                      month_year_operation:''
+                    }})
+                    navigate('/confirmation_envoie_info_english')
+                  }
               )
               .catch( (error) =>
                 {
@@ -93,7 +94,7 @@ console.log(props.envoie.infoEnvoie)
     return (
         
         <>
-        <HeaderEnglish />
+<HeaderEnglish dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
 {isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
 <Row className='justify-content-center  pt-3' >
         <Col xs={6}>

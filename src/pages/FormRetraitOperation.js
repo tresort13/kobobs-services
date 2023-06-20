@@ -8,16 +8,18 @@ import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import {Link,useNavigate} from  'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
-import HeaderEnglish from './HeaderEnglish';
+import Header from './Header';
 import Footer from './Footer';
 import Modal from 'react-bootstrap/Modal';
 import ClipLoader from "react-spinners/ClipLoader";
 import  './Header.css';
-
+import HeaderFrench from './HeaderFrench';
+import HeaderEnglish from './HeaderEnglish';
+// import SessionOut from './SessionOut';
 
 
 const useState = React.useState
-function FormRetraitEnglish(props)
+function FormRetraitOperation(props)
 {
 
     const[codeRetrait,setCodeRetrait] = useState({infoCodeRetrait :{
@@ -28,7 +30,8 @@ function FormRetraitEnglish(props)
     const [modalShow, setModalShow] = React.useState(false);
     const [modalShow2, setModalShow2] = React.useState(false);
 
-    const [message,setMessage] = useState("Please enter your tracking number")
+
+    const [message,setMessage] = useState("Veuillez entrer le code de retrait")
     const [couleur,setCouleur] = useState("text-dark")
 
     const isDesktop = useMediaQuery({
@@ -54,14 +57,12 @@ function FormRetraitEnglish(props)
               .then( res => res.json())
               .then(
                 res => {   
-                  console.log(res)
                    props.dataEnvoie2(res)
-                   navigate('/retrait_info_english')
+                   navigate('/retrait_info_operation')
                 }
               )
               .catch( (error) =>
                 {
-                  setModalShow2(false)  
                     setModalShow(true)
                     console.log(error)
                 } )
@@ -84,10 +85,10 @@ function FormRetraitEnglish(props)
     return (
         
         <>
-        <HeaderEnglish />
-{isDesktop && <Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:100,width:750}} >
+<HeaderEnglish dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
+{isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:100,width:750}} >
 <Row className='justify-content-center mb-3 pt-3' >
-        <Col xs={6}>
+        <Col xs={12}>
         <p className='text-dark'><i><b>{message}</b></i></p>
         </Col>
     </Row>
@@ -100,8 +101,7 @@ function FormRetraitEnglish(props)
     <Row className='justify-content-center'>
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'>Tracking Number</Form.Label>
-        <Form.Control name="code_retrait" value={codeRetrait.infoCodeRetrait.code_retrait} onChange={e=>inputChanged(e)} type="text" placeholder='Please enter your tracking number' autoFocus   required/>
+        <Form.Control name="code_retrait" value={codeRetrait.infoCodeRetrait.code_retrait} onChange={e=>inputChanged(e)} type="text" placeholder='Veuillez entrer code retrait' autoFocus   required/>
          </Form.Group>
         </Col>
     </Row>
@@ -110,18 +110,12 @@ function FormRetraitEnglish(props)
    <Row className='pb-3'>
        <Col>
         <Button variant="warning" type="submit" >
-        Validate
+        Valider 
         </Button>
         </Col>
     </Row>
   
-    <Row className='pb-3'>
-       <Col>
-       <Link to="" style={{textDecoration:"none"}}>
-       <p ><b className='couleur2'>I forgot my Tracking Number ?</b></p>
-       </Link>
-        </Col>
-    </Row>
+
 
 </Form>
 </Container>
@@ -142,8 +136,7 @@ function FormRetraitEnglish(props)
     <Row className='justify-content-center'>
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'>Tracking Number</Form.Label>
-        <Form.Control name="code_retrait" value={codeRetrait.infoCodeRetrait.code_retrait} onChange={e=>inputChanged(e)} type="text" placeholder='Please enter your tracking number' autoFocus   required/>
+        <Form.Control name="code_retrait" value={codeRetrait.infoCodeRetrait.code_retrait} onChange={e=>inputChanged(e)} type="text" placeholder='Veuillez entrer code retrait' autoFocus   required/>
          </Form.Group>
         </Col>
     </Row>
@@ -152,22 +145,15 @@ function FormRetraitEnglish(props)
    <Row className='pb-3'>
        <Col>
         <Button variant="warning" type="submit" >
-        Validate
+        Valider 
         </Button>
         </Col>
     </Row>
   
-    <Row className='pb-3'>
-       <Col>
-       <Link to="/form_find_code_retrait_english" style={{textDecoration:"none"}}>
-       <p ><b className='couleur2'>I forgot my Tracking Number ?</b></p>
-       </Link>
-        </Col>
-    </Row>
 
 
 </Form>
-</Container>}
+</Container> }
 <Row className="mt-5">
           <Col md={12}>
             <p></p>
@@ -175,6 +161,7 @@ function FormRetraitEnglish(props)
         </Row>
 <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
 <MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
+{/*<SessionOut setIsadmin={props.setIsadmin}/>*/}
 <Footer />
         </>
        
@@ -185,22 +172,21 @@ function MyVerticallyCenteredModal(props) {
     return (
       <Modal
         {...props}
-        size="md"
+        size="sm"
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            this code does not exist
+            Echec de Validation
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>message : </h4>
-          <p className='text-danger'><b>Sorry the code entered is not valid!!!</b>   
+          <p className='text-danger'><b>Désolé ce code de retrait n'existe pas !!!</b>   
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant='warning' onClick={props.onHide}>close</Button>
+          <Button variant='warning' onClick={props.onHide}>Fermer</Button>
         </Modal.Footer>
       </Modal>
     );
@@ -216,7 +202,7 @@ function MyVerticallyCenteredModal(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Please wait...
+            Veuillez Patienter...
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -227,5 +213,6 @@ function MyVerticallyCenteredModal(props) {
       </Modal>
     );
   }
+  
 
-export default FormRetraitEnglish;
+export default FormRetraitOperation;

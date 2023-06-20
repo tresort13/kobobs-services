@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from "react-bootstrap/Button";
 import Container from 'react-bootstrap/Container';
@@ -12,6 +12,7 @@ import HeaderEnglish from './HeaderEnglish';
 import LoginBoxEnglish from './LoginBoxEnglish';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
+import ClipLoader from "react-spinners/ClipLoader";
 
 
 
@@ -19,7 +20,11 @@ import InputGroup from 'react-bootstrap/InputGroup';
 function HomeEnglish(props)
 {
   
-
+  const[montant,setMontant] = useState({infoMontant :{
+    montantTopay:''
+      }})
+  const[load,setLoad] = useState(false)
+  const[resultMontant,setResultMontant] = useState("")
 const navigate = useNavigate()
 
 const establishedUserStatus = ()=>
@@ -43,6 +48,47 @@ const establishedUserStatus = ()=>
     props.setModalShow(true)
   }
  }
+
+ const establishedUserStatus3 = ()=>
+{
+  if(props.isLogged && props.isStaff)
+  {
+    navigate('/menu_management')  
+  }
+  else{
+    props.setModalShow(true)
+  }
+ }
+ const tauxEchanger = (e)=>
+      {
+        e.preventDefault()
+        setLoad(true)
+        fetch('https://openexchangerates.org/api/latest.json?app_id=41351d88e53f4f0c89785fba9fc60ca0&symbols=GBP', {
+                  method:'GET',
+                  headers: {'Content-Type': 'application/json'},
+                 
+                })
+                .then( res => res.json())
+                .then(
+                  res => {  
+                    
+                    setResultMontant((Number(montant.infoMontant.montantTopay).toFixed(2) * Number(res.rates.GBP).toFixed(2)) + ((Number(montant.infoMontant.montantTopay).toFixed(2) * Number(res.rates.GBP).toFixed(2)) * 5)/100 + ((Number(montant.infoMontant.montantTopay).toFixed(2) * Number(res.rates.GBP).toFixed(2)) * 1)/100)
+                    setLoad(false) 
+                  }
+                )
+                .catch( (error) =>
+                  {
+                      console.log(error)
+                  } )
+      }
+
+      const inputChanged = (event)=>
+      {
+          const cred = montant.infoMontant;
+          cred[event.target.name] = event.target.value;
+          setMontant({infoMontant:cred})
+      }
+    
     const isDesktop = useMediaQuery({
         query: "(min-width: 1224px)"
       });
@@ -58,25 +104,24 @@ const establishedUserStatus = ()=>
     </col>
     <Col md={5} className="" >
     <div className=" radius" style={{width:"350px",border:"3px solid white"}}>
-    <Form>
-   
-
+    <Form onSubmit={(e)=>tauxEchanger(e)}>
    <Row className='justify-content-center'>
        <Col xs = {6}>
-       <Form.Label htmlFor="basic-url" className='text-light'><strong>How much do you want to send ?</strong></Form.Label>
+       <Form.Label htmlFor="basic-url" className='text-light'><strong>How much for the receiver to pick up ?</strong></Form.Label>
 
        <InputGroup className="mb-3 mt-1">     
-        <Form.Control aria-label="Amount (to the nearest dollar)" />
-        <InputGroup.Text>£</InputGroup.Text>
+        <Form.Control aria-label="Amount (to the nearest dollar)" name='montantTopay' value={montant.infoMontant.montantTopay} type="text" onChange={e=>inputChanged(e)} required/>
+        <InputGroup.Text>$</InputGroup.Text>
       </InputGroup>
        </Col>
    </Row>
-
-
+   <ClipLoader color={"#ff8c00"} loading={load} size={50} /> 
+   {resultMontant !== "" ? <p className='text-center'><b className='couleur2   p-2 rounded' style={{border:"2px solid white",fontSize:20}}>{resultMontant} £</b> </p>:
+   <span></span>}
   <Row className='pb-3'>
       <Col>
-       <Button variant="warning" type="submit" >
-Estimate fees
+       <Button variant="warning" type='submit'  >
+          Estimate fees
        </Button>
        </Col>
    </Row>
@@ -115,7 +160,7 @@ Estimate fees
           </Col>
 
           <Col mdmd={4} className="my-auto text-center">  
-            <Button  variant="outline-light" style={{width:300,height:300,border:'4px solid white'}}  className=" btn-lg rounded-pill zoom ">
+            <Button onClick={establishedUserStatus2}  variant="outline-light" style={{width:300,height:300,border:'4px solid white'}}  className=" btn-lg rounded-pill zoom ">
             <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
             </svg><br></br>
@@ -124,7 +169,7 @@ Estimate fees
             </Col>
           
             <Col mdmd={4} className="my-auto text-center">  
-            <Button  variant="outline-light" style={{width:300,height:300,border:'4px solid white'}}  className=" btn-lg rounded-pill zoom ">
+            <Button onClick={establishedUserStatus3}  variant="outline-light" style={{width:300,height:300,border:'4px solid white'}}  className=" btn-lg rounded-pill zoom ">
             <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" fill="currentColor" className="bi bi-gear-fill" viewBox="0 0 16 16">
            <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
              </svg><br></br>
@@ -149,7 +194,7 @@ Estimate fees
  </Col>
 
    <Col md={6} className="my-auto text-center ">  
-   <Button  variant="outline-light" style={{width:300,height:300,border:'4px solid white'}}  className=" btn-lg rounded-pill zoom ">
+   <Button onClick={establishedUserStatus2}  variant="outline-light" style={{width:300,height:300,border:'4px solid white'}}  className=" btn-lg rounded-pill zoom ">
    <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
    </svg><br></br>

@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter,Routes,Route} from  'react-router-dom';
 import {Navigate} from  'react-router-dom';
 import  './pages/Assets.css';
+import useForceUpdate from 'use-force-update';
 
 import HomeLingala from './pages/HomeLingala';
 import EnvoiInfo from './pages/EnvoiInfo';
@@ -42,7 +43,8 @@ import EnvoieAbonneInfoFrench from './pages/EnvoieAbonneInfoFrench';
 import FormRetraitFrench from './pages/FormRetraitFrench';
 import FormCodeAbonneFrench from  './pages/FormCodeAbonneFrench'
 import FormFindCodeRetraitFrench from './pages/FormFindCodeRetraitFrench';
-
+import HomeManagement from './pages/HomeManagement';
+import RetraitInfo from './pages/RetraitInfo';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import ClipLoader from "react-spinners/ClipLoader";
@@ -51,6 +53,10 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from "react-bootstrap/Button";
 import LoginBoxEnglish from './pages/LoginBoxEnglish';
+import MenuGestionOperationsRetrait from './pages/MenuGestionOperationsRetrait';
+import FormRetraitOperation from './pages/FormRetraitOperation';
+import ConfirmationRetraitInfoOperation from './pages/ConfirmationRetraitInfoOperation';
+import AbonneFormNonValideInfo from './pages/AbonneFormNonValideInfo';
 
 
 
@@ -59,11 +65,20 @@ const useState = React.useState
 function App() {
 
   
-
+  const [forceUpdate, setForceUpdate] = useState(()=>
+  {
+    const localData = localStorage.getItem('forceUpdate');
+    return localData ? JSON.parse(localData) : false;
+  });
+  
+  
+  useEffect(() => {
+    window.localStorage.setItem("forceUpdate", JSON.stringify(forceUpdate))
+  }, [forceUpdate])
   const [language,setLanguage] = useState(()=>
   {
     const localData = localStorage.getItem('language');
-    return localData ? JSON.parse(localData) : "lingala";
+    return localData ? JSON.parse(localData) : "english";
   });
   
   
@@ -104,6 +119,17 @@ function App() {
     window.localStorage.setItem("modalShow4", JSON.stringify(modalShow4))
   }, [modalShow4])
 
+  const [modalShowRetrait, setModalShowRetrait] = useState(()=>
+  {
+    const localData = localStorage.getItem('modalShowRetrait');
+    return localData ? JSON.parse(localData) : false;
+  });
+  
+  
+  useEffect(() => {
+    window.localStorage.setItem("modalShowRetrait", JSON.stringify(modalShowRetrait))
+  }, [modalShowRetrait])
+  
 
   const [modalShowContact, setModalShowContact] = useState(()=>
   {
@@ -312,6 +338,7 @@ function App() {
   {
     const localData = localStorage.getItem('envoie');
     return localData ? JSON.parse(localData) : {infoEnvoie :{
+      agent_id:'',
       nom_expediteur : '',
       prenom_expediteur : '',
       adresse_expediteur : '',
@@ -326,7 +353,10 @@ function App() {
       frais_envoie : '',
       frais_tva : '',
       type_service : 'Kozua na maboko (kozua na nzela ya agence)',
-      numero_transfer :'**********'
+      numero_transfer :'**********',
+      date_operation : '',
+      date_heure_operation : '',
+      month_year_operation :''
       }};
     })
   
@@ -336,9 +366,10 @@ function App() {
     window.localStorage.setItem("envoie", JSON.stringify(envoie))
   }, [envoie])
 
-  const dataEnvoie = (donne)=>
+  const dataEnvoie =  (donne)=>
   {
     setEnvoie({infoEnvoie :{
+      agent_id : donne.agent_id,
       nom_expediteur : donne.nom_expediteur,
       prenom_expediteur : donne.prenom_expediteur,
       adresse_expediteur : donne.adresse_expediteur,
@@ -355,6 +386,7 @@ function App() {
       type_service : donne.type_service,
       numero_transfer :donne.numero_transfer
       }})
+
   }
 
 
@@ -409,7 +441,7 @@ function App() {
       frais_tva : donne[0].frais_tva,
       montant_total : donne[0].montant_total,
       code_retrait : donne[0].code_retrait,
-      data_operation : donne[0].data_operation,
+      date_operation : donne[0].date_operation,
       date_heure_operation : donne[0].date_heure_operation,
       code_abonne : donne[0].code_abonne,
       status_retrait : donne[0].status_retrait,
@@ -439,7 +471,6 @@ function App() {
       code_retrait : '',
       data_operation : '',
       date_heure_operation : '',
-      code_abonne : '',
       status_retrait : '',
       numero_transfer:'**********'
       }};
@@ -468,9 +499,8 @@ function App() {
       frais_envoie : donne.frais_envoie,
       montant_total : donne.montant_total,
       code_retrait : donne.code_retrait,
-      data_operation : donne.data_operation,
+      date_operation : donne.date_operation,
       date_heure_operation : donne.date_heure_operation,
-      code_abonne : donne.code_abonne,
       status_retrait : donne.status_retrait,
       numero_transfer: donne.numero_transfer
       }})
@@ -482,6 +512,7 @@ function App() {
   {
     const localData = localStorage.getItem('abonne');
     return localData ? JSON.parse(localData) : {infoAbonne :{
+      agent_id:'',
       nom_expediteur : '',
       prenom_expediteur : '',
       email_expediteur : '',
@@ -499,6 +530,7 @@ function App() {
   const dataAbonne = (donne)=>
   {
     setAbonne({infoAbonne : {
+      agent_id : donne.user_id,
       nom_expediteur : donne.last_name,
       prenom_expediteur : donne.first_name,
       email_expediteur : donne.email,
@@ -507,9 +539,11 @@ function App() {
       }})
   }
 
-  const dataEnvoieAbonne = (donne1,donne2)=>
+  const dataEnvoieAbonne =  (donne1,donne2)=>
   {
+    console.log(taux)
     setEnvoie({infoEnvoie :{
+      agent_id : donne1.infoAbonne.agent_id,
       nom_expediteur : donne1.infoAbonne.nom_expediteur,
       prenom_expediteur : donne1.infoAbonne.prenom_expediteur,
       email_expediteur : donne1.infoAbonne.email_expediteur,
@@ -523,9 +557,9 @@ function App() {
       frais_envoie : ((Number(donne2.montant_beneficiaire).toFixed(2) * Number(taux).toFixed(2)) * 5)/100,
       frais_tva : ((Number(donne2.montant_beneficiaire).toFixed(2) * Number(taux).toFixed(2)) * 1)/100,
       type_service : donne2.type_service,
-      code_abonne : donne1.infoAbonne.code_abonne,
       numero_transfer : donne2.numero_transfer
       }})
+
   }
  
   
@@ -594,13 +628,13 @@ function App() {
         <Route path="/form_envoie_client_english" element={<FormEnvoiClientEnglish   dataEnvoie={dataEnvoie} envoie={envoie} setTaux={setTaux}/>}>
         </Route>
 
-        <Route path="/form_envoie_abonne_id_english" element={<FormEnvoiAbonneIdEnglish  dataAbonne={dataAbonne} />} >
+        <Route path="/form_envoie_abonne_id_english" element={<FormEnvoiAbonneIdEnglish  dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language} />} >
         </Route>
 
-        <Route path="/form_envoie_abonne_english" element={<FormEnvoiAbonneEnglish  abonne={abonne} envoie={envoie} dataEnvoieAbonne={dataEnvoieAbonne} setTaux={setTaux}/>} >
+        <Route path="/form_envoie_abonne_english" element={<FormEnvoiAbonneEnglish  abonne={abonne} envoie={envoie} setEnvoie={setEnvoie} dataEnvoieAbonne={dataEnvoieAbonne} taux={taux} setTaux={setTaux} dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/>} >
         </Route>
 
-        <Route path="/form_retrait_info_english" element={<FormRetraitEnglish  dataEnvoie2={dataEnvoie2}/>} >
+        <Route path="/form_retrait_info_english" element={<FormRetraitEnglish  dataEnvoie2={dataEnvoie2} dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/>} >
         </Route>
 
         <Route path="/form_code_abonne_english" element={<FormCodeAbonneEnglish />} >
@@ -612,14 +646,14 @@ function App() {
         <Route path="/envoi_info_english" element={<EnvoiInfoEnglish  dataEnvoie3={dataEnvoie3} envoie={envoie} setEnvoie={setEnvoie} envoie3={envoie3}/>} >
         </Route>
 
-        <Route path="/envoi_abonne_info_english" element={<EnvoieAbonneInfoEnglish   dataEnvoie3={dataEnvoie3} envoie={envoie} setEnvoie={setEnvoie} envoie3={envoie3}/>} >
+        <Route path="/envoi_abonne_info_english" element={<EnvoieAbonneInfoEnglish setForceUpdate={setForceUpdate}   dataEnvoie3={dataEnvoie3} envoie={envoie} setEnvoie={setEnvoie} envoie3={envoie3} dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/>} >
         </Route>
 
 
-        <Route path="/confirmation_envoie_info_english" element={<ConfirmationEnvoieInfoEnglish  envoie3={envoie3}/>} >
+        <Route path="/confirmation_envoie_info_english" element={<ConfirmationEnvoieInfoEnglish  envoie3={envoie3} dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/>} >
         </Route>
 
-        <Route path="/retrait_info_english" element={<ConfirmationRetraitInfoEnglish  envoie2={envoie2}/>} >
+        <Route path="/retrait_info_english" element={<ConfirmationRetraitInfoEnglish  envoie2={envoie2} dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/>} >
         </Route>
 
 
@@ -696,6 +730,28 @@ function App() {
         </Route>
 
         <Route path="/retrait_info_french" element={ <ConfirmationRetraitInfoFrench   envoie2={envoie2}/>} >
+        </Route>
+
+
+        <Route path="/menu_management"  element={<HomeManagement dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language} modalShowRetrait={modalShowRetrait} setModalShowRetrait={setModalShowRetrait}/>} >
+        </Route>
+
+        <Route path="/menu_operation_retrait"  element={<MenuGestionOperationsRetrait dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/>} >
+        </Route>
+
+        <Route path="/form_retrait_operation" element={username == "" ? <Navigate to='/' /> : <FormRetraitOperation username={username} dataEnvoie2={dataEnvoie2} dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} language={language}/>}>
+        </Route>
+
+        <Route path="/form_retrait_operation" element={username == "" ? <Navigate to='/' /> : <FormRetraitOperation  dataEnvoie2={dataEnvoie2} dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/>}>
+        </Route>
+        
+        <Route path="/retrait_info_operation" element={username == "" ? <Navigate to='/' /> : <RetraitInfo username={username} envoie2={envoie2} dataEnvoie2={dataEnvoie2} dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged}  language={language}/>}>
+        </Route>
+
+        <Route path="/confirmation_retrait_info_operation" element={username == "" ? <Navigate to='/' /> : <ConfirmationRetraitInfoOperation username={username} envoie2={envoie2} dataEnvoie2={dataEnvoie2} dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged}  language={language} setModalShowRetrait={setModalShowRetrait}/>}>
+        </Route>
+
+        <Route path="/form_abonne_non_valide" element={username == "" ? <Navigate to='/' /> : <AbonneFormNonValideInfo dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}setCodeRetraitStatus={setCodeRetraitStatus} codeRetraitStatus={codeRetraitStatus}  />}>
         </Route>
 
       </Routes >

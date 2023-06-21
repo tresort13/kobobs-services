@@ -50,10 +50,15 @@ function HeaderEnglish(props)
 
     }
 
-    useEffect(()=>
+   /* useEffect(()=>
     {
        const interval =  setInterval(()=>submit(),1000);
         return () => clearInterval(interval)
+    },[])*/
+
+    useEffect(()=>
+    {
+      submit()
     },[])
 
    const contactUs = ()=>{

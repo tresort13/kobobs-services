@@ -52,8 +52,28 @@ console.log(props.envoie.infoEnvoie)
               .then( res => res.json())
               .then(
                 res => {  
+                  props.setEnvoie3({infoEnvoie :{
+                    nom_expediteur : res.nom_expediteur,
+                    prenom_expediteur : res.prenom_expediteur,
+                    adresse_expediteur : res.adresse_expediteur,
+                    email_expediteur : res.email_expediteur,
+                    numero_expediteur: res.numero_expediteur,
+                    pays_expediteur : res.pays_expediteur,
+                    nom_beneficiaire : res.nom_beneficiaire,
+                    prenom_beneficiaire : res.prenom_beneficiaire,
+                    pays_beneficiaire : res.pays_beneficiaire,
+                    montant_beneficiaire : res.montant_beneficiaire,
+                    type_service : res.type_service,
+                    frais_envoie : res.frais_envoie,
+                    montant_total : res.montant_total,
+                    code_retrait : res.code_retrait,
+                    date_operation : res.date_operation,
+                    date_heure_operation : res.date_heure_operation,
+                    status_retrait : res.status_retrait,
+                    numero_transfer: res.numero_transfer
+                    }})
                    
-                  props.dataEnvoie3(res)
+               //   props.dataEnvoie3(res)
                   console.log(res)
                   console.log(props.envoie3.infoEnvoie.code_retrait)
                     setModalShow(false)
@@ -273,7 +293,7 @@ function MyVerticallyCenteredModal2(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body> 
-        <p className='text-danger'><b>Please try to fill up all the fields correctly!!!</b>   
+        <p className='text-danger'><b>Something went wrong with the server please try again later or call the technical support services!!!</b>   
       </p>
       </Modal.Body>
       <Modal.Footer>

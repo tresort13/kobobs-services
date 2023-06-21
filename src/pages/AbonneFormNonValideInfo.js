@@ -49,7 +49,7 @@ function AbonneFormNonValideInfo(props)
     
 
 
-      const submit =(e)=>
+      const submit =()=>
       {       
           fetch('https://kobobsapi.herokuapp.com/api/getRetraitNonValideInfo/code retrait en attente de validation/', {
                   method:'GET',
@@ -76,12 +76,16 @@ function AbonneFormNonValideInfo(props)
       },[])
 
 
-      useEffect(()=>
+     /* useEffect(()=>
       {
          const interval =  setInterval((e)=>submit(e),1000);
           return () => clearInterval(interval)
-      },[envoie4])
+      },[envoie4])*/
 
+       useEffect(()=>
+      {    
+        submit()
+      },[props.envoie3])
 
 
       const validateCodeRetrait = (e)=>

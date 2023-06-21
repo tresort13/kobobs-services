@@ -13,6 +13,7 @@ import LoginBoxEnglish from './LoginBoxEnglish';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import ClipLoader from "react-spinners/ClipLoader";
+import Modal from 'react-bootstrap/Modal';
 
 
 
@@ -277,11 +278,38 @@ const establishedUserStatus = ()=>
 
   </Container>
   }
- 
+   <MyVerticallyCenteredModal envoie3={props.envoie3} show={props.modalShowEnvoi} onHide={() => props.setModalShowEnvoi(false)} />
  <LoginBoxEnglish dataAbonne={props.dataAbonne} language2={props.language2} setLanguage2={props.setLanguage2} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} modalShow={props.modalShow} modalShow4={props.modalShow4} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
 <Footer />
 </>
     )
 }
+
+function MyVerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="sm"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Merci d'avoir utiliser KBStrans
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <b className='text-success'>Votre envoi a été effectué avec success </b>   
+      </Modal.Body>
+      <Modal.Footer>
+      <p >code : <b className='text-success  p-2' style={{border:"2px solid black"}}>{props.envoie3.infoEnvoie.code_retrait}</b>   
+        </p>
+        <Button variant='warning' onClick={props.onHide}>Ok i got it</Button>
+
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
 
 export default HomeEnglish;

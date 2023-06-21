@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
-import {Link} from  'react-router-dom';
+import {Link, Navigate, useNavigate} from  'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import HeaderEnglish from './HeaderEnglish';
 import Footer from './Footer';
@@ -23,6 +23,7 @@ function ConfirmationEnvoieInfoEnglish(props)
     const [couleur,setCouleur] = useState("text-dark")
     const [modalShow, setModalShow] = React.useState(true);
     const [modalShow2, setModalShow2] = React.useState(true);
+    const navigate = useNavigate()
 
     const isDesktop = useMediaQuery({
         query: "(min-width: 1224px)"
@@ -32,6 +33,10 @@ function ConfirmationEnvoieInfoEnglish(props)
       });
     
   console.log(props.envoie3.infoEnvoie)
+  const closePage = ()=>{
+    props.setModalShowEnvoi(true)
+    navigate('/')
+  }
 
   useEffect(()=>
   {
@@ -85,11 +90,10 @@ function ConfirmationEnvoieInfoEnglish(props)
     </Row>
     <Row className='justify-content-center text-center pb-3' >
         <Col xs={12}>
-        <Link to="/" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant="dark" type="submit">
+        <Button onClick={()=>closePage()} variant="dark" type="submit">
         close
         </Button>
-        </Link>
+        
         </Col>
     </Row>  
 </Container>

@@ -28,7 +28,7 @@ function FormRetraitEnglish(props)
     const [modalShow, setModalShow] = React.useState(false);
     const [modalShow2, setModalShow2] = React.useState(false);
 
-    const [message,setMessage] = useState("Please enter your tracking number")
+    const [message,setMessage] = useState("Please enter  tracking number")
     const [couleur,setCouleur] = useState("text-dark")
 
     const isDesktop = useMediaQuery({
@@ -117,9 +117,9 @@ function FormRetraitEnglish(props)
   
     <Row className='pb-3'>
        <Col>
-       <Link to="" style={{textDecoration:"none"}}>
-       <p ><b className='couleur2'>I forgot my Tracking Number ?</b></p>
-       </Link>
+       
+       <p ><b className='couleur2'>in case you forgot your tracking number, <Link to="/my_profil_english" >check your historic</Link></b></p>
+
         </Col>
     </Row>
 

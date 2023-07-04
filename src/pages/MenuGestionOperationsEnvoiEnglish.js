@@ -14,7 +14,7 @@ import HeaderFrench from './HeaderFrench';
 import HeaderEnglish from './HeaderEnglish';
 
 
-function MenuGestionOperationsRetrait(props)
+function MenuGestionOperationsEnvoiEnglish(props)
 {
 
     const isDesktop = useMediaQuery({
@@ -30,9 +30,19 @@ function MenuGestionOperationsRetrait(props)
    
     <Row className='justify-content-center pb-3 pt-5 mt-5'>
         <Col xs = {"auto"}>
-        <Link to="/form_retrait_operation" style={{color:'white',textDecorationLine:'none'}}>
+        <Link to="/form_envoie_client_english" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant='warning'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='text-dark'><pre>Effectuer un retrait</pre></b>
+        <b className='text-dark'><pre>Make sending for new client</pre></b>
+        </Button>
+        </Link>
+        </Col>
+    </Row>
+
+    <Row className='justify-content-center pb-3 '>
+        <Col xs = {"auto"}>
+        <Link to="/form_envoie_abonne_id_french" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant='warning'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
+        <b className='text-dark'><pre>Make sending for Subscriber</pre></b>
         </Button>
         </Link>
         </Col>
@@ -42,9 +52,9 @@ function MenuGestionOperationsRetrait(props)
 
     <Row className='justify-content-center pb-3'>
         <Col xs = {"auto"}>
-        <Link to="" style={{color:'white',textDecorationLine:'none'}}>
+        <Link to="/menu_rapport_envoi_french" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant='warning'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='text-dark'><pre>Rapport des opérations Retrait</pre></b>
+        <b className='text-dark'><pre>Sending operations report</pre></b>
         </Button>
         </Link>
         </Col>
@@ -85,4 +95,4 @@ function MenuGestionOperationsRetrait(props)
     )
 }
 
-export default MenuGestionOperationsRetrait;
+export default MenuGestionOperationsEnvoiEnglish;

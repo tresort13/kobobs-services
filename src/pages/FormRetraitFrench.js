@@ -114,11 +114,12 @@ function FormRetraitFrench(props)
   
     <Row className='pb-3'>
        <Col>
-       <Link to="/form_find_code_retrait_french" style={{textDecoration:"none"}}>
-       <p ><b className='couleur2'>J'ai oublié mon code de retrait ?</b></p>
-       </Link>
+       
+       <p ><b className='couleur2'>au cas où vous auriez oublié le code, <Link to="/my_profil_french" >regarde ton historique</Link></b></p>
+
         </Col>
     </Row>
+
 
 </Form>
 </Container>

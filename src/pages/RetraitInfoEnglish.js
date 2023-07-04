@@ -20,10 +20,10 @@ import HeaderEnglish from './HeaderEnglish';
 
 
 const useState = React.useState
-function RetraitInfo(props)
+function RetraitInfoEnglish(props)
 {
 
-    const [message,setMessage] = useState("Vérifier le status code retrait avant validation")
+    const [message,setMessage] = useState("Check the withdrawal code status before validation")
     const [message2,setMessage2] = useState("")
     const [couleur,setCouleur] = useState("text-dark")
     const [modalShow,setModalShow] = React.useState(false);
@@ -57,7 +57,7 @@ const navigate = useNavigate()
                   if(res[0].status_retrait==='Code Retrait Valide')
                   {
                     props.dataEnvoie2(res)
-                    navigate('/confirmation_retrait_info_operation')
+                    navigate('/confirmation_retrait_info_operation_french')
                   }  
                   else if(res[0].status_retrait==='Code Retrait Payé')
                   {
@@ -93,61 +93,61 @@ const navigate = useNavigate()
     </Row>
     <Row className='justify-content-center pb-3'>
       <hr style={{color:"darkorange"}}></hr>
-      <p className='text-dark'><b><u>Retrait Status</u></b> </p>
+      <p className='text-dark'><b><u>Withdrawal Status</u></b> </p>
     </Row>
     <Row className='justify-content-start pb-3' >
         <Col xs={12}>
-        {props.envoie2.infoEnvoie.status_retrait === 'Code Retrait Valide' ?  <p className='text-dark'>Status Retrait : <b className='text-success'>{props.envoie2.infoEnvoie.status_retrait}</b> </p> : <p className='text-dark'>Status Retrait : <b className='text-danger'>{props.envoie2.infoEnvoie.status_retrait}</b> </p>}
+        {props.envoie2.infoEnvoie.status_retrait === 'Code Retrait Valide' ?  <p className='text-dark'>Status Withdrawal : <b className='text-success'>{props.envoie2.infoEnvoie.status_retrait}</b> </p> : <p className='text-dark'>Status Status Withdrawal : <b className='text-danger'>{props.envoie2.infoEnvoie.status_retrait}</b> </p>}
         </Col>
     </Row>
 
 
     <Row className='justify-content-center pb-3'>
       <hr style={{color:"darkorange"}}></hr>
-      <p className='text-dark'><b><u>Expediteur Informations</u></b> </p>
+      <p className='text-dark'><b><u>Sender Informations</u></b> </p>
     </Row>
     <Row className='justify-content-start pb-3' >
         <Col xs={6}>
-        <p className='text-dark'>Nom : <b className='text-dark'>{props.envoie2.infoEnvoie.nom_expediteur}</b> </p>
-        <p className='text-dark'>Prénom: <b className='text-dark'>{props.envoie2.infoEnvoie.prenom_expediteur}</b> </p>
+        <p className='text-dark'>Last name : <b className='text-dark'>{props.envoie2.infoEnvoie.nom_expediteur}</b> </p>
+        <p className='text-dark'>First Name : <b className='text-dark'>{props.envoie2.infoEnvoie.prenom_expediteur}</b> </p>
         </Col>
 
         <Col xs={6}>
         <p className='text-dark'>Email: <b className='text-dark'>{props.envoie2.infoEnvoie.email_expediteur}</b> </p>
-        <p className='text-dark'>Numéro Téléphone: <b className='text-dark'> {props.envoie2.infoEnvoie.numero_expediteur} </b></p>
-        <p className='text-dark'>Pays: <b className='text-dark'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
+        <p className='text-dark'>Mobile Number: <b className='text-dark'> {props.envoie2.infoEnvoie.numero_expediteur} </b></p>
+        <p className='text-dark'>Country: <b className='text-dark'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
         </Col>
     </Row>
 
     <Row className='justify-content-center pb-3'>
       <hr style={{color:"darkorange"}}></hr>
-      <p className='text-dark'><b><u>Bénéficiare Informations</u></b> </p>
+      <p className='text-dark'><b><u>Receiver Informations</u></b> </p>
     </Row>
     <Row className='justify-content-start pb-3' >
         <Col xs={6}>
-        <p className='text-dark'>Nom: <b className='text-dark'>{props.envoie2.infoEnvoie.nom_beneficiaire}</b>  </p>
-        <p className='text-dark'>Prénom: <b className='text-dark'>{props.envoie2.infoEnvoie.prenom_beneficiaire} </b> </p>
+        <p className='text-dark'>Last Name: <b className='text-dark'>{props.envoie2.infoEnvoie.nom_beneficiaire}</b>  </p>
+        <p className='text-dark'>First Name: <b className='text-dark'>{props.envoie2.infoEnvoie.prenom_beneficiaire} </b> </p>
         </Col>
 
         <Col xs={6}>
-        <p className='text-dark'>Pays: <b className='text-dark'>{props.envoie2.infoEnvoie.pays_beneficiaire}</b> </p>
+        <p className='text-dark'>Country: <b className='text-dark'>{props.envoie2.infoEnvoie.pays_beneficiaire}</b> </p>
         </Col>
     </Row>
 
     <Row className='justify-content-center pb-3'>
       <hr style={{color:"darkorange"}}></hr>
-      <p className='text-dark'><b><u>Motant Informations</u></b> </p>
+      <p className='text-dark'><b><u>Money Informations</u></b> </p>
     </Row>
     <Row className='justify-content-start pb-3' >
         <Col xs={6}>
-        <p className='text-dark'>Montant: <b className='text-dark'>{Number(props.envoie2.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
-        <p className='text-dark'>Type de retrait: <b className='text-dark'>{props.envoie2.infoEnvoie.type_service}</b> </p>
+        <p className='text-dark'>Amount: <b className='text-dark'>{Number(props.envoie2.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
+        <p className='text-dark'>Type of service: <b className='text-dark'>{props.envoie2.infoEnvoie.type_service}</b> </p>
         
         </Col>
 
         <Col xs={6}>
         <p className='text-dark'>Mobile Money: <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
-        <p className='text-dark'>date de transfert: <b className='text-dark'>{props.envoie2.infoEnvoie.date_heure_operation}</b> </p>
+        <p className='text-dark'>transfer date: <b className='text-dark'>{props.envoie2.infoEnvoie.date_heure_operation}</b> </p>
         </Col>
     </Row>
 
@@ -159,7 +159,7 @@ const navigate = useNavigate()
         <Col xs={6}>
         <Link to="" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant="warning" type="submit" onClick={e=>validerRetrait(e)}>
-        Valider Retrait pour Servir
+        Validate Withdraw to Serve
         </Button>
         </Link>
         </Col>
@@ -286,16 +286,16 @@ function MyVerticallyCenteredModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Echec de Validation
+          Validation failed
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
 
-        <p className='text-danger'><b>Ce code de retrait n'est pas encore validé !!!</b>   
+        <p className='text-danger'><b>This withdrawal code is not yet validated !!!</b>   
         </p>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant='warning' onClick={props.onHide}>Fermer</Button>
+        <Button variant='warning' onClick={props.onHide}>close</Button>
       </Modal.Footer>
     </Modal>
   );
@@ -311,15 +311,15 @@ function MyVerticallyCenteredModal2(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Echec de Validation
+          Validation Failed
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p className='text-danger'><b>Désolé ce code de retrait a déjà été utilisé (status : Code Retrait Payé)!!!</b>   
+        <p className='text-danger'><b>Sorry this  code has already been used !!!</b>   
         </p>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant='warning' onClick={props.onHide}>Fermer</Button>
+        <Button variant='warning' onClick={props.onHide}>close</Button>
       </Modal.Footer>
     </Modal>
   );
@@ -329,4 +329,4 @@ function MyVerticallyCenteredModal2(props) {
 
 
 
-export default RetraitInfo;
+export default RetraitInfoEnglish;

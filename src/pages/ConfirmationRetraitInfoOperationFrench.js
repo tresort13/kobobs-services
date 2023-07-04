@@ -21,7 +21,7 @@ import HeaderEnglish from './HeaderEnglish';
 
 const useState = React.useState
 
-function ConfirmationRetraitInfoOperation(props)
+function ConfirmationRetraitInfoOperationFrench(props)
 {
   const [modalShow, setModalShow] = React.useState(false);
   const [modalShow2,setModalShow2] = React.useState(false);
@@ -39,23 +39,28 @@ function ConfirmationRetraitInfoOperation(props)
         query: "(max-width: 1224px)"
       });
 
-      
+      console.log(props.abonne.infoAbonne.agent_id)
   
       const payerRetrait = (e)=>
       {  
         e.preventDefault()  
-        setModalShow2(true)  
-        fetch('https://kobobsapi.herokuapp.com/api/payerCodeRetrait/'+props.envoie2.infoEnvoie.code_retrait+'/', {
+        setModalShow2(true) 
+        const date_time = {
+          date_heure_operation_retrait : new Date().toLocaleString(),
+          date_operation_retrait : new Date().toLocaleString().slice(0,10),
+          month_year_operation_retrait : new Date().toLocaleString().slice(3,10)
+        } 
+        fetch('https://kobobsapi.herokuapp.com/api/payerCodeRetrait/'+props.envoie2.infoEnvoie.code_retrait+'/'+props.abonne.infoAbonne.agent_id+'/', {
                 method: 'PUT',
                  headers: {'Content-Type': 'application/json'},
-                  //body: JSON.stringify(props.envoie2.infoEnvoie)
+                body: JSON.stringify(date_time)
                 })
                 .then( res => res.json())
                 .then(
                   res => {    
                     props.setModalShowRetrait(true)     
                     
-                    navigate('/menu_management')
+                    navigate('/menu_management_french')
 
                   }
                 )
@@ -221,4 +226,4 @@ function MyVerticallyCenteredModal2(props) {
 }
 
 
-export default ConfirmationRetraitInfoOperation;
+export default ConfirmationRetraitInfoOperationFrench;

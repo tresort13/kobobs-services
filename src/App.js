@@ -43,8 +43,8 @@ import EnvoieAbonneInfoFrench from './pages/EnvoieAbonneInfoFrench';
 import FormRetraitFrench from './pages/FormRetraitFrench';
 import FormCodeAbonneFrench from  './pages/FormCodeAbonneFrench'
 import FormFindCodeRetraitFrench from './pages/FormFindCodeRetraitFrench';
-import HomeManagement from './pages/HomeManagement';
-import RetraitInfo from './pages/RetraitInfo';
+import HomeManagementFrench from './pages/HomeManagementFrench';
+import RetraitInfoFrench from './pages/RetraitInfoFrench';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import ClipLoader from "react-spinners/ClipLoader";
@@ -53,10 +53,38 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from "react-bootstrap/Button";
 import LoginBoxEnglish from './pages/LoginBoxEnglish';
-import MenuGestionOperationsRetrait from './pages/MenuGestionOperationsRetrait';
-import FormRetraitOperation from './pages/FormRetraitOperation';
-import ConfirmationRetraitInfoOperation from './pages/ConfirmationRetraitInfoOperation';
-import AbonneFormNonValideInfo from './pages/AbonneFormNonValideInfo';
+import MenuGestionOperationsRetraitFrench from './pages/MenuGestionOperationsRetraitFrench';
+import FormRetraitOperationFrench from './pages/FormRetraitOperationFrench';
+import ConfirmationRetraitInfoOperationFrench from './pages/ConfirmationRetraitInfoOperationFrench';
+import AbonneFormNonValideInfoFrench from './pages/AbonneFormNonValideInfoFrench';
+import MenuGestionOperationsEnvoiFrench from './pages/MenuGestionOperationsEnvoiFrench';
+import MenuRapportEnvoiFrench from './pages/MenuRapportEnvoiFrench';
+import SelectDateFormEnvoiFrench from './pages/SelectDateFormEnvoiFrench';
+import SelectMoisFormEnvoie from './pages/SelectMoisFormEnvoiFrench';
+import DailyRapportInfoEnvoiFrench from './pages/DailyRapportInfoEnvoiFrench';
+import DetailsEnvoisInfoFrench from './pages/DetailsEnvoisInfoFrench';
+import MonthlyRapportInfoEnvoiFrench from './pages/MonthlyRapportInfoEnvoiFrench';
+import MenuRapportRetraitFrench from './pages/MenuRapportRetraitFrench';
+import SelectDateFormRetraitFrench from './pages/SelectDateFormRetraitFrench';
+import SelectMoisFormRetraitFrench from './pages/SelectMoisFormRetraitFrench';
+import SelectMoisFormEnvoiFrench from './pages/SelectMoisFormEnvoiFrench';
+import DailyRapportInfoRetraitFrench from './pages/DailyRapportInfoRetraitFrench';
+import MonthlyRapportInfoRetraitFrench from './pages/MonthlyRapportInfoRetraitFrench';
+import DetailsRetraitsInfoFrench from './pages/DetailsRetraitsInfoFrench';
+import MenuGestionAdminFrench from './pages/MenuGestionAdminFrench';
+import MenuRapportRecettesFrench from './pages/MenuRapportRecettesFrench';
+import MenuInfoAbonnesFrench from './pages/MenuInfoAbonnesFrench';
+import SelectDateFormRecetteFrench from './pages/SelectDateFormRecetteFrench';
+import DailyRecettesFrench from './pages/DailyRecettesFrench';
+import MonthlyRecettesFrench from './pages/MonthlyRecettesFrench';
+import SelectMoisFormRecetteFrench from './pages/SelectMoisFormRecetteFrench';
+import DetailsAbonnesInfoFrench from './pages/DetailsAbonnesInfoFrench';
+import MyProfilEnglish from './pages/MyProfilEnglish';
+import MyProfilFrench from './pages/MyProfilFrench';
+import MyProfilLingala from './pages/MyProfilLingala';
+import HomeManagementLingala from './pages/HomeManagementLingala';
+import HomeManagementEnglish from './pages/HomeManagementEnglish';
+
 
 
 
@@ -75,6 +103,18 @@ function App() {
   useEffect(() => {
     window.localStorage.setItem("forceUpdate", JSON.stringify(forceUpdate))
   }, [forceUpdate])
+
+  const [saveAbonne,setSaveAbonne] = useState(()=>
+  {
+    const localData = localStorage.getItem('saveAbonne');
+    return localData ? JSON.parse(localData) : "";
+  });
+  
+  
+  useEffect(() => {
+    window.localStorage.setItem("saveAbonne", JSON.stringify(saveAbonne))
+  }, [saveAbonne])
+
   const [language,setLanguage] = useState(()=>
   {
     const localData = localStorage.getItem('language');
@@ -96,6 +136,17 @@ function App() {
   useEffect(() => {
     window.localStorage.setItem("language2", JSON.stringify(language2))
   }, [language2])
+
+  const [clientForm, setClientForm] = useState(()=>
+  {
+    const localData = localStorage.getItem('clientForm');
+    return localData ? JSON.parse(localData) : false;
+  });
+  
+  
+  useEffect(() => {
+    window.localStorage.setItem("clientForm", JSON.stringify(clientForm))
+  }, [clientForm])
 
   const [modalShow, setModalShow] = useState(()=>
   {
@@ -313,6 +364,22 @@ function App() {
     setUserInfo(donne)
   }
 
+  const [abonneInfo2,setAbonneInfo2] = useState(()=>
+  {
+    const localData = localStorage.getItem('abonneInfo');
+    return localData ? JSON.parse(localData) :[];
+  });
+  
+  
+  useEffect(() => {
+    window.localStorage.setItem("abonneInfo2", JSON.stringify(abonneInfo2))
+  }, [abonneInfo2])
+
+  const dataAbonneInfo2 = (donne)=>
+  {
+    setAbonneInfo2(donne)
+  }
+
   /*const [detailEnvoieValide,setDetailEnvoieValide] = useState(()=>
   {
     const localData = localStorage.getItem('detailEnvoieValide');
@@ -352,7 +419,7 @@ function App() {
       agent_id:'',
       nom_expediteur : '',
       prenom_expediteur : '',
-      adresse_expediteur : '',
+      adresse_expediteur : 'N/A',
       email_expediteur : '',
       numero_expediteur: '',
       pays_expediteur : 'UK',
@@ -407,7 +474,7 @@ function App() {
     return localData ? JSON.parse(localData) : {infoEnvoie :{
       nom_expediteur : '',
       prenom_expediteur : '',
-      adresse_expediteur : '',
+      adresse_expediteur : 'N/A',
       email_expediteur : '',
       numero_expediteur: '',
       pays_expediteur : 'UK',
@@ -466,7 +533,7 @@ function App() {
     return localData ? JSON.parse(localData) : {infoEnvoie :{
       nom_expediteur : '',
       prenom_expediteur : '',
-      adresse_expediteur : '',
+      adresse_expediteur : 'N/A',
       email_expediteur : '',
       numero_expediteur: '',
       pays_expediteur : 'UK',
@@ -636,7 +703,7 @@ function App() {
         <Route path="/login_english"  element={<Login />} >
         </Route>
 
-        <Route path="/form_envoie_client_english" element={<FormEnvoiClientEnglish   dataEnvoie={dataEnvoie} envoie3={envoie3} envoie={envoie} setTaux={setTaux}/>}>
+        <Route path="/form_envoie_client_english" element={<FormEnvoiClientEnglish abonne={abonne} envoie={envoie} envoie3={envoie3} setEnvoie={setEnvoie} dataEnvoieAbonne={dataEnvoieAbonne} taux={taux} setTaux={setTaux} dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/>} >
         </Route>
 
         <Route path="/form_envoie_abonne_id_english" element={<FormEnvoiAbonneIdEnglish  dataAbonne={dataAbonne} envoie3={envoie3} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language} />} >
@@ -654,24 +721,23 @@ function App() {
         <Route path="/form_find_code_retrait_english" element={<FormFindCodeRetraitEnglish  />} >
         </Route>
         
-        <Route path="/envoi_info_english" element={<EnvoiInfoEnglish  dataEnvoie3={dataEnvoie3}  envoie={envoie} setEnvoie={setEnvoie} envoie3={envoie3}/>} >
+        <Route path="/envoi_info_english" element={<EnvoiInfoEnglish setClientForm={setClientForm} setSaveAbonne={setSaveAbonne}  setForceUpdate={setForceUpdate} setEnvoie3={setEnvoie3}  dataEnvoie3={dataEnvoie3} envoie={envoie} setEnvoie={setEnvoie} envoie3={envoie3} dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/>} >
         </Route>
 
-        <Route path="/envoi_abonne_info_english" element={<EnvoieAbonneInfoEnglish setForceUpdate={setForceUpdate} setEnvoie3={setEnvoie3}  dataEnvoie3={dataEnvoie3} envoie={envoie} setEnvoie={setEnvoie} envoie3={envoie3} dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/>} >
+        <Route path="/envoi_abonne_info_english" element={<EnvoieAbonneInfoEnglish  setForceUpdate={setForceUpdate} setEnvoie3={setEnvoie3}  dataEnvoie3={dataEnvoie3} envoie={envoie} setEnvoie={setEnvoie} envoie3={envoie3} dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/>} >
+        </Route>
+
+        <Route path="/confirmation_envoie_info_english" element={<ConfirmationEnvoieInfoEnglish clientForm={clientForm} setClientForm={setClientForm} saveAbonne={saveAbonne} setSaveAbonne={setSaveAbonne}  modalShowEnvoi={modalShowEnvoi} setModalShowEnvoi={setModalShowEnvoi} envoie3={envoie3} dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/>} >
+        </Route>
+
+        <Route path="/retrait_info_english" element={<ConfirmationRetraitInfoEnglish abonne={abonne} envoie2={envoie2} dataAbonne={dataAbonne} envoie3={envoie3} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/>} >
         </Route>
 
 
-        <Route path="/confirmation_envoie_info_english" element={<ConfirmationEnvoieInfoEnglish modalShowEnvoi={modalShowEnvoi} setModalShowEnvoi={setModalShowEnvoi} envoie3={envoie3} dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/>} >
-        </Route>
-
-        <Route path="/retrait_info_english" element={<ConfirmationRetraitInfoEnglish  envoie2={envoie2} dataAbonne={dataAbonne} envoie3={envoie3} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/>} >
-        </Route>
 
 
 
-
-
-        <Route path="/home_lingala"  element={language2 === "lingala" ? <HomeLingala isAdmin={isAdmin} envoie3={envoie3} isStaff={isStaff} language2={language2} setLanguage2={setLanguage2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/> : language2 === "english" ? <Navigate to='/' /> : <Navigate to='/home_french' />} >
+        <Route path="/home_lingala"  element={language2 === "lingala" ? <HomeLingala modalShowEnvoi={modalShowEnvoi} setModalShowEnvoi={setModalShowEnvoi} dataAbonne={dataAbonne} envoie3={envoie3} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/> : language2 === "english" ? <Navigate to='/' /> : <Navigate to='/home_french' />} >
         </Route>
        
         <Route path="/form_envoie_client" element={<FormEnvoiClient  dataEnvoie={dataEnvoie} envoie3={envoie3} envoie={envoie} setTaux={setTaux}/>}>
@@ -709,16 +775,17 @@ function App() {
 
 
 
-        <Route path="/home_french"  element={language2 === "french" ? <HomeFrench isAdmin={isAdmin} isStaff={isStaff} language2={language2} setLanguage2={setLanguage2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/> : language2 === "english" ? <Navigate to='/' /> : <Navigate to='/home_lingala' />} >
+
+        <Route path="/home_french"  element={language2 === "french" ? <HomeFrench modalShowEnvoi={modalShowEnvoi} setModalShowEnvoi={setModalShowEnvoi} dataAbonne={dataAbonne} envoie3={envoie3} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/> : language2 === "english" ? <Navigate to='/' /> : <Navigate to='/home_lingala' />} >
         </Route>
        
         <Route path="/form_envoie_client_french" element={<FormEnvoiClientFrench  dataEnvoie={dataEnvoie} envoie={envoie} setTaux={setTaux}/>}>
         </Route>
 
-        <Route path="/form_envoie_abonne_id_french" element={<FormEnvoiAbonneIdFrench dataAbonne={dataAbonne} />} >
+        <Route path="/form_envoie_abonne_id_french" element={<FormEnvoiAbonneIdFrench dataAbonne={dataAbonne} setAbonne={setAbonne} abonne={abonne}/>} >
         </Route>
 
-        <Route path="/form_envoie_abonne_french" element={<FormEnvoiAbonneFrench  abonne={abonne} dataEnvoieAbonne={dataEnvoieAbonne} setTaux={setTaux} envoie={envoie}/>} >
+        <Route path="/form_envoie_abonne_french" element={<FormEnvoiAbonneFrench  abonne={abonne} setEnvoie={setEnvoie} dataEnvoieAbonne={dataEnvoieAbonne} setTaux={setTaux} envoie={envoie}/>} >
         </Route>
 
         <Route path="/form_retrait_info_french" element={<FormRetraitFrench  dataEnvoie2={dataEnvoie2}/>} >
@@ -733,37 +800,161 @@ function App() {
         <Route path="/envoi_info_french" element={<EnvoiInfoFrench   dataEnvoie3={dataEnvoie3} envoie={envoie} setEnvoie={setEnvoie} envoie3={envoie3}/>} >
         </Route>
 
-        <Route path="/envoi_abonne_info_french" element={<EnvoieAbonneInfoFrench   dataEnvoie3={dataEnvoie3} envoie={envoie} setEnvoie={setEnvoie} envoie3={envoie3}/>} >
+        <Route path="/envoi_abonne_info_french" element={<EnvoieAbonneInfoFrench   setEnvoie3={setEnvoie3}  dataEnvoie3={dataEnvoie3} envoie={envoie} setEnvoie={setEnvoie} envoie3={envoie3} dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/>} >
         </Route>
 
 
-        <Route path="/confirmation_envoie_info_french" element={ <ConfirmationEnvoieInfoFrench   envoie3={envoie3}/>} >
+        <Route path="/confirmation_envoie_info_french" element={ <ConfirmationEnvoieInfoFrench   clientForm={clientForm} setClientForm={setClientForm} saveAbonne={saveAbonne} setSaveAbonne={setSaveAbonne}  modalShowEnvoi={modalShowEnvoi} setModalShowEnvoi={setModalShowEnvoi} envoie3={envoie3} dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/>} >
         </Route>
 
         <Route path="/retrait_info_french" element={ <ConfirmationRetraitInfoFrench   envoie2={envoie2}/>} >
         </Route>
 
 
-        <Route path="/menu_management"  element={<HomeManagement dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language} modalShowRetrait={modalShowRetrait} setModalShowRetrait={setModalShowRetrait}/>} >
+
+
+        <Route path="/menu_management_french"  element={<HomeManagementFrench envoie3={envoie3} dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language} modalShowRetrait={modalShowRetrait} setModalShowRetrait={setModalShowRetrait} setModalShowEnvoi={setModalShowEnvoi} modalShowEnvoi={modalShowEnvoi}/>} >
         </Route>
 
-        <Route path="/menu_operation_retrait"  element={<MenuGestionOperationsRetrait dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/>} >
+
+        <Route path="/menu_operation_retrait_french"  element={<MenuGestionOperationsRetraitFrench dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/>} >
         </Route>
 
-        <Route path="/form_retrait_operation" element={username == "" ? <Navigate to='/' /> : <FormRetraitOperation username={username} dataEnvoie2={dataEnvoie2} dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} language={language}/>}>
+       
+
+
+        <Route path="/menu_operation_envoi_french"  element={<MenuGestionOperationsEnvoiFrench dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/>} >
+        </Route>
+      
+
+
+        <Route path="/menu_gestion_french"  element={<MenuGestionAdminFrench dataAbonneInfo2={dataAbonneInfo2} dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/>} >
         </Route>
 
-        <Route path="/form_retrait_operation" element={username == "" ? <Navigate to='/' /> : <FormRetraitOperation  dataEnvoie2={dataEnvoie2} dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/>}>
+
+        <Route path="/menu_rapport_envoi_french"  element={<MenuRapportEnvoiFrench dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/>} >
+        </Route>
+       
+
+
+        <Route path="/menu_rapport_retrait_french"  element={<MenuRapportRetraitFrench dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/>} >
+        </Route>
+
+
+
+        <Route path="/menu_rapport_recette_french"  element={<MenuRapportRecettesFrench dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/>} >
+        </Route>
+
+
+       
+        <Route path="/menu_info_abonne_french" element={username == "" ? <Navigate to='/' /> : <MenuInfoAbonnesFrench username={username} abonneInfo2={abonneInfo2} dailyRapport={dailyRapport} setAbonneInfo2={setAbonneInfo2} dataDetailEnvoieTotal={dataDetailEnvoieTotal} dateInfo={dateInfo} setIsadmin={setIsadmin} isAdmin={isAdmin}/>}>
+        </Route>
+      
+
+       
+        <Route path="/form_retrait_operation_french" element={username == "" ? <Navigate to='/' /> : <FormRetraitOperationFrench username={username} dataEnvoie2={dataEnvoie2} dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} language={language}/>}>
+        </Route>
+
+
+
+        <Route path="/form_retrait_operation_french" element={username == "" ? <Navigate to='/' /> : <FormRetraitOperationFrench  dataEnvoie2={dataEnvoie2} dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/>}>
+        </Route>
+
+
+        
+        <Route path="/retrait_info_operation_french" element={username == "" ? <Navigate to='/' /> : <RetraitInfoFrench username={username} envoie2={envoie2} dataEnvoie2={dataEnvoie2} dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged}  language={language}/>}>
+        </Route>
+
+
+
+        <Route path="/confirmation_retrait_info_operation_french" element={username == "" ? <Navigate to='/' /> : <ConfirmationRetraitInfoOperationFrench abonne={abonne} username={username} envoie2={envoie2} dataEnvoie2={dataEnvoie2} dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged}  language={language} setModalShowRetrait={setModalShowRetrait}/>}>
+        </Route>
+
+
+
+        <Route path="/form_abonne_non_valide_french" element={username == "" ? <Navigate to='/' /> : <AbonneFormNonValideInfoFrench abonne={abonne} dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}setCodeRetraitStatus={setCodeRetraitStatus} codeRetraitStatus={codeRetraitStatus}  envoie3={envoie3}/>}>
+        </Route>
+
+        <Route path="/select_date_form_envoi_french" element={username == "" ? <Navigate to='/' /> : <SelectDateFormEnvoiFrench username={username} dataDailyRapport={dataDailyRapport} setDate={setDate} setDailyRapport={setDailyRapport} setIsadmin={setIsadmin} isAdmin={isAdmin}/>}>
         </Route>
         
-        <Route path="/retrait_info_operation" element={username == "" ? <Navigate to='/' /> : <RetraitInfo username={username} envoie2={envoie2} dataEnvoie2={dataEnvoie2} dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged}  language={language}/>}>
+
+
+
+        <Route path="/select_mois_form_envoi_french" element={username == "" ? <Navigate to='/' /> : <SelectMoisFormEnvoiFrench username={username} dataMonthlyRapport={dataMonthlyRapport} setMois={setMois} setIsadmin={setIsadmin} isAdmin={isAdmin}/>}>
         </Route>
 
-        <Route path="/confirmation_retrait_info_operation" element={username == "" ? <Navigate to='/' /> : <ConfirmationRetraitInfoOperation username={username} envoie2={envoie2} dataEnvoie2={dataEnvoie2} dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged}  language={language} setModalShowRetrait={setModalShowRetrait}/>}>
+
+
+        <Route path="/select_date_form_retrait_french" element={username == "" ? <Navigate to='/' /> : <SelectDateFormRetraitFrench username={username} dataDailyRapport={dataDailyRapport} setDate={setDate} setDailyRapport={setDailyRapport} setIsadmin={setIsadmin} isAdmin={isAdmin}/>}>
         </Route>
 
-        <Route path="/form_abonne_non_valide" element={username == "" ? <Navigate to='/' /> : <AbonneFormNonValideInfo dataAbonne={dataAbonne} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}setCodeRetraitStatus={setCodeRetraitStatus} codeRetraitStatus={codeRetraitStatus}  envoie3={envoie3}/>}>
+
+
+        <Route path="/select_mois_form_retrait_french" element={username == "" ? <Navigate to='/' /> : <SelectMoisFormRetraitFrench username={username} dataMonthlyRapport={dataMonthlyRapport} setMois={setMois} setIsadmin={setIsadmin} isAdmin={isAdmin}/>}>
         </Route>
+
+
+        <Route path="/select_date_rapport_recette" element={username == "" ? <Navigate to='/' /> : <SelectDateFormRecetteFrench username={username} dataDailyRapport={dataDailyRapport} setDate={setDate} setDailyRapport={setDailyRapport} setIsadmin={setIsadmin} isAdmin={isAdmin}/>}>
+        </Route>
+
+
+
+        <Route path="/select_mois_rapport_recette" element={username == "" ? <Navigate to='/' /> : <SelectMoisFormRecetteFrench username={username} dataMonthlyRapport={dataMonthlyRapport} setMois={setMois} setIsadmin={setIsadmin} isAdmin={isAdmin}/>}>
+        </Route>
+
+
+
+        <Route path="/daily_rapport_envoi_french" element={username == "" ? <Navigate to='/' /> : <DailyRapportInfoEnvoiFrench username={username} dailyRapport={dailyRapport} dataDetailEnvoieTotal={dataDetailEnvoieTotal} dateInfo={dateInfo} setIsadmin={setIsadmin} isAdmin={isAdmin}/>}>
+        </Route>
+       
+
+
+
+        <Route path="/monthly_rapport_envoi_french" element={username == "" ? <Navigate to='/' /> : <MonthlyRapportInfoEnvoiFrench username={username} monthlyRapport={monthlyRapport} dataDetailEnvoieTotal={dataDetailEnvoieTotal} moisInfo={moisInfo} setIsadmin={setIsadmin} isAdmin={isAdmin}/>}>
+        </Route>
+       
+
+
+        <Route path="/daily_rapport_retrait_french" element={username == "" ? <Navigate to='/' /> : <DailyRapportInfoRetraitFrench username={username} dailyRapport={dailyRapport} dataDetailEnvoieTotal={dataDetailEnvoieTotal} dateInfo={dateInfo} setIsadmin={setIsadmin} isAdmin={isAdmin}/>}>
+        </Route>
+
+
+
+        <Route path="/monthly_rapport_retrait_french" element={username == "" ? <Navigate to='/' /> : <MonthlyRapportInfoRetraitFrench username={username} monthlyRapport={monthlyRapport} dataDetailEnvoieTotal={dataDetailEnvoieTotal} moisInfo={moisInfo} setIsadmin={setIsadmin} isAdmin={isAdmin}/>}>
+        </Route>
+
+
+
+        <Route path="/daily_rapport_recette_french" element={username == "" ? <Navigate to='/' /> : <DailyRecettesFrench username={username} dailyRapport={dailyRapport} dataDetailEnvoieTotal={dataDetailEnvoieTotal} dateInfo={dateInfo} setIsadmin={setIsadmin} isAdmin={isAdmin}/>}>
+        </Route>
+
+
+
+        <Route path="/monthly_rapport_recette_french" element={username == "" ? <Navigate to='/' /> : <MonthlyRecettesFrench username={username} monthlyRapport={monthlyRapport} dataDetailEnvoieTotal={dataDetailEnvoieTotal} moisInfo={moisInfo} setIsadmin={setIsadmin} isAdmin={isAdmin}/>}>
+        </Route>
+
+        
+
+        <Route path="/details_envois_info" element={username == "" ? <Navigate to='/' /> : <DetailsEnvoisInfoFrench username={username} detailEnvoieTotal={detailEnvoieTotal} setIsadmin={setIsadmin} isAdmin={isAdmin} isStaff={isStaff}/>}>
+        </Route>
+
+
+
+
+        <Route path="/details_retraits_info" element={username == "" ? <Navigate to='/' /> : <DetailsRetraitsInfoFrench username={username} detailEnvoieTotal={detailEnvoieTotal} setIsadmin={setIsadmin} isAdmin={isAdmin}/>}>
+        </Route>
+
+
+
+        <Route path="/details_abonnes_info" element={username == "" ? <Navigate to='/' /> : <DetailsAbonnesInfoFrench username={username} abonneInfo2={abonneInfo2} detailEnvoieTotal={detailEnvoieTotal} setIsadmin={setIsadmin} isAdmin={isAdmin}/>}>
+        </Route>
+    
+
+
+        <Route path="/my_profil_english" element={username == "" ? <Navigate to='/' /> : <MyProfilEnglish username={username} abonne={abonne} abonneInfo2={abonneInfo2} dailyRapport={dailyRapport} setAbonneInfo2={setAbonneInfo2} dataDetailEnvoieTotal={dataDetailEnvoieTotal} dateInfo={dateInfo} setIsadmin={setIsadmin} isAdmin={isAdmin} isStaff={isStaff}/>}>
+        </Route>
+       
 
       </Routes >
     </BrowserRouter>

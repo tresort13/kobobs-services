@@ -18,24 +18,24 @@ import  './Header.css';
 
 
 const useState = React.useState
-function EnvoiInfoEnglish(props)
+function EnvoieInfoEnglish(props)
 {
 
-    const [message,setMessage] = useState("Please check well all your informations before sending")
+    const [message,setMessage] = useState("Please make sure everything is correct")
     const [couleur,setCouleur] = useState("text-dark")
-
-    const isDesktop = useMediaQuery({
-        query: "(min-width: 1224px)"
-      });
-      const isMobileOrTablet = useMediaQuery({
-        query: "(max-width: 1224px)"
-      });
-
-      const navigate = useNavigate()
     const [modalShow2, setModalShow2] = React.useState(false);
     const [modalShow, setModalShow] = React.useState(false);
     const [modalShow4, setModalShow4] = React.useState(false);
+
+    const navigate = useNavigate()
     
+    props.setForceUpdate(true)
+    const isDesktop = useMediaQuery({
+      query: "(min-width: 1224px)"
+    });
+    const isMobileOrTablet = useMediaQuery({
+      query: "(max-width: 1224px)"
+    });
   
     
 console.log(props.envoie.infoEnvoie)
@@ -51,41 +51,75 @@ console.log(props.envoie.infoEnvoie)
               })
               .then( res => res.json())
               .then(
-                res => {  
-
-                  props.dataEnvoie3(res)
+                res => { 
+                  console.log(res) 
+                  console.log(res.message)
+                  props.setEnvoie3({infoEnvoie :{
+                    nom_expediteur : res.data.nom_expediteur,
+                    prenom_expediteur : res.data.prenom_expediteur,
+                    adresse_expediteur : res.data.adresse_expediteur,
+                    email_expediteur : res.data.email_expediteur,
+                    numero_expediteur: res.data.numero_expediteur,
+                    pays_expediteur : res.data.pays_expediteur,
+                    nom_beneficiaire : res.data.nom_beneficiaire,
+                    prenom_beneficiaire : res.data.prenom_beneficiaire,
+                    pays_beneficiaire : res.data.pays_beneficiaire,
+                    montant_beneficiaire : res.data.montant_beneficiaire,
+                    type_service : res.data.type_service,
+                    frais_envoie : res.data.frais_envoie,
+                    montant_total : res.data.montant_total,
+                    code_retrait : res.data.code_retrait,
+                    date_operation : res.data.date_operation,
+                    date_heure_operation : res.data.date_heure_operation,
+                    status_retrait : res.data.status_retrait,
+                    numero_transfer: res.data.numero_transfer
+                    }})
+                    props.setClientForm(true)
+                    props.setSaveAbonne(res.message_english)
+                   
+               //   props.dataEnvoie3(res)
                   console.log(res)
-                  props.envoie3.infoEnvoie.code_retrait == "" ? setModalShow4(true) : 
-                  props.setEnvoie({infoEnvoie:{
-                   nom_expediteur : '',
-                   prenom_expediteur : '',
-                   adresse_expediteur : '',
-                   email_expediteur : '',
-                   numero_expediteur: '',
-                   pays_expediteur : 'UK',
-                   nom_beneficiaire : '',
-                   prenom_beneficiaire : '',
-                   pays_beneficiaire : 'RD Congo',
-                   montant_envoie_sans_frais : '',
-                   montant_beneficiaire : '',
-                   type_service : 'Kozua na maboko (kozua na nzela ya agence)',
-                   frais_envoie : '',
-                   frais_tva : '',
-                   montant_total : '',
-                   code_retrait : '',
-                   data_operation : '',
-                   date_heure_operation : '',
-                   code_abonne : '',
-                   status_retrait : '',
-                   numero_transfer: '**********'
-                  }})
-                  navigate('/confirmation_envoie_info_english')
-                }
+                  console.log(props.envoie3.infoEnvoie.code_retrait)
+                    setModalShow(false)
+                    
+                    if(props.envoie3.infoEnvoie.code_retrait === undefined)
+                    {
+                      setModalShow(false)
+                      setModalShow2(true)
+
+                    }
+                    else
+                    {
+                      props.setEnvoie({infoEnvoie:{
+                        agent_id:'',
+                        nom_expediteur : '',
+                        prenom_expediteur : '',
+                        adresse_expediteur : 'N/A',
+                        email_expediteur : '',
+                        numero_expediteur: '',
+                        pays_expediteur : 'UK',
+                        nom_beneficiaire : '',
+                        prenom_beneficiaire : '',
+                        pays_beneficiaire : 'RD Congo',
+                        montant_beneficiaire : '',
+                        montant_pour_payer :'',
+                        frais_envoie : '',
+                        frais_tva : '',
+                        type_service : '',
+                        numero_transfer :'**********',
+                        date_operation : '',
+                        date_heure_operation : '',
+                        month_year_operation:''
+                      }})
+                      navigate('/confirmation_envoie_info_english')
+                    }
+                    
+                  }
               )
               .catch( (error) =>
                 {
                   setModalShow(false)
-                  setModalShow2(true)  
+                  setModalShow4(true)  
                    console.log(error)
                 } )
 
@@ -95,23 +129,20 @@ console.log(props.envoie.infoEnvoie)
     return (
         
         <>
-        <HeaderEnglish />
+<HeaderEnglish dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
 {isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
-<Row className='justify-content-center mb-3 pt-3' >
+<Row className='justify-content-center  pt-3' >
         <Col xs={6}>
-        <p className='couleur2 display-6'><i><b>{message}</b></i></p>
+        <p className='text-danger '><i><b>{message} !</b></i></p>
+        <hr style={{color:"darkorange"}}></hr>
         </Col>
     </Row>
 
-    <Row className='justify-content-center pb-3'>
-      <hr style={{color:"darkorange"}}></hr>
-      <p className='couleur2'><b><u>Money </u></b> </p>
-    </Row>
     <Row className='justify-content-center pb-3' >
 
         <Col xs={6} className="text-start">
-        <p className='text-dark'>Total amount to pay for the transfer (all fees incl.): <b className='text-danger'>{Number(props.envoie.infoEnvoie.montant_pour_payer).toFixed(2)} £</b> </p>
-        <p className='text-dark'>Amount to get by the receiver : <b className='text-dark'>{Number(props.envoie.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p> 
+        <p className='text-dark'>Total amount to pay for the transfer (all fees incl.): <b className='text-dark bg-warning p-2' style={{border:"2px solid black"}}>{Number(props.envoie.infoEnvoie.montant_pour_payer).toFixed(2)} £</b> </p>
+        <p className='text-dark'>Amount to get by the receiver : <b className='text-dark p-2' style={{border:"2px solid black"}}>{Number(props.envoie.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p> 
         </Col>
 
         <Col xs={6} className="text-start">
@@ -119,49 +150,24 @@ console.log(props.envoie.infoEnvoie)
         <p className='text-dark'>Mobile Money Number: <b className='text-dark'>{props.envoie.infoEnvoie.numero_transfer}</b> </p>
         </Col>
     </Row>
-
-    <Row className='justify-content-center pb-3'>
-      <hr style={{color:"darkorange"}}></hr>
-      <p className='couleur2'><b><u>Sender </u></b> </p>
-    </Row>
+    <hr style={{color:"darkorange"}}></hr>
     <Row className='justify-content-center pb-3' >
        
 
-        <Col xs={6} className="text-start">
-        <p className='text-dark'>First Name : <b className='text-dark'>{props.envoie.infoEnvoie.prenom_expediteur}</b> </p>
-
-        <p className='text-dark'>Last Name : <b className='text-dark'>{props.envoie.infoEnvoie.nom_expediteur}</b>  </p>
-
-        <p className='text-dark'>Adress : <b className='text-dark'>{props.envoie.infoEnvoie.adresse_expediteur}</b> </p> 
-        </Col>
-
-        <Col xs={6} className="text-start">
-        <p className='text-dark'>Email: <b className='text-dark'>{props.envoie.infoEnvoie.email_expediteur}</b> </p>
+        <Col xs={6} className="text-start " style={{borderRight:"2px solid black"}}>
+        <p className='couleur2 text-center'><b><u>Sender </u></b> </p>
+        <p className='text-dark'>Name : <b className='text-dark'>{props.envoie.infoEnvoie.prenom_expediteur} {props.envoie.infoEnvoie.nom_expediteur}</b> </p>
         <p className='text-dark'>Mobile Number :<b className='text-dark'> {props.envoie.infoEnvoie.numero_expediteur} </b></p>
         <p className='text-dark'>country : <b className='text-dark'> {props.envoie.infoEnvoie.pays_expediteur}</b></p>
         </Col>
-  
-    </Row>
-
-    <Row className='justify-content-center pb-3'>
-      <hr style={{color:"darkorange"}}></hr>
-      <p className='couleur2'><b><u>Receiver</u></b> </p>
-    </Row>
-    <Row className='justify-content-center pb-3' >
 
         <Col xs={6} className="text-start">
-        <p className='text-dark'>First Name : <b className='text-dark'>{props.envoie.infoEnvoie.prenom_beneficiaire} </b> </p>
-        <p className='text-dark'>Last Name :<b className='text-dark'>{props.envoie.infoEnvoie.nom_beneficiaire}</b> </p>
-
-        </Col>
-
-        <Col xs={6} className="text-start">
-
+        <p className='couleur2 text-center'><b><u>Receiver </u></b> </p>
+        <p className='text-dark'>Name : <b className='text-dark'>{props.envoie.infoEnvoie.prenom_beneficiaire} {props.envoie.infoEnvoie.nom_beneficiaire}</b> </p>
         <p className='text-dark'>country : <b className='text-dark'>{props.envoie.infoEnvoie.pays_beneficiaire}</b> </p>
         </Col>
-    </Row>
-
   
+    </Row>
 
     <Row className='justify-content-center pb-3'>
       <hr style={{color:"darkorange"}}></hr>
@@ -219,12 +225,11 @@ console.log(props.envoie.infoEnvoie)
 
         <Col xs={12} className="text-start">
         <p className='text-dark'>First Name : <b className='text-dark'>{props.envoie.infoEnvoie.prenom_expediteur}</b> </p>
-
         <p className='text-dark'>Last Name : <b className='text-dark'>{props.envoie.infoEnvoie.nom_expediteur}</b>  </p>
-
+  
         <p className='text-dark'>Adress : <b className='text-dark'>{props.envoie.infoEnvoie.adresse_expediteur}</b> </p> 
-
         <p className='text-dark'>Email: <b className='text-dark'>{props.envoie.infoEnvoie.email_expediteur}</b> </p>
+
         <p className='text-dark'>Mobile Number :<b className='text-dark'> {props.envoie.infoEnvoie.numero_expediteur} </b></p>
         <p className='text-dark'>country : <b className='text-dark'> {props.envoie.infoEnvoie.pays_expediteur}</b></p>
         </Col>
@@ -239,9 +244,9 @@ console.log(props.envoie.infoEnvoie)
 
         <Col xs={12} className="text-start">
         <p className='text-dark'>First Name : <b className='text-dark'>{props.envoie.infoEnvoie.prenom_beneficiaire} </b> </p>
-        
-        <p className='text-dark'>Last Name :<b className='text-dark'>{props.envoie.infoEnvoie.nom_beneficiaire}</b> </p>
 
+        <p className='text-dark'>Last Name :<b className='text-dark'>{props.envoie.infoEnvoie.nom_beneficiaire}</b> </p>
+       
         <p className='text-dark'>country : <b className='text-dark'>{props.envoie.infoEnvoie.pays_beneficiaire}</b> </p>
         </Col>
     </Row>
@@ -259,7 +264,7 @@ console.log(props.envoie.infoEnvoie)
         </Col>
 
         <Col xs={6}>
-        <Link to="/form_envoie_client_english">
+        <Link to="/form_envoie_abonne_english">
          <Button variant="secondary" type="submit">
          Modify Form
         </Button>
@@ -303,7 +308,7 @@ function MyVerticallyCenteredModal2(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body> 
-        <p className='text-danger'><b>Please try to fill up all the fields correctly!!!</b>   
+        <p className='text-danger'><b>Something went wrong with the server please try to send again !!!</b>   
       </p>
       </Modal.Body>
       <Modal.Footer>
@@ -359,4 +364,4 @@ function MyVerticallyCenteredModal4(props) {
   );
 }
 
-export default EnvoiInfoEnglish;
+export default EnvoieInfoEnglish;

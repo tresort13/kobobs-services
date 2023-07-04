@@ -54,7 +54,7 @@ const establishedUserStatus = ()=>
 {
   if(props.isLogged && props.isStaff)
   {
-    navigate('/menu_management')  
+    navigate('/menu_management_french')  
   }
   else{
     props.setModalShow(true)
@@ -73,7 +73,7 @@ const establishedUserStatus = ()=>
                 .then(
                   res => {  
                     
-                    setResultMontant((Number(montant.infoMontant.montantTopay).toFixed(2) * Number(res.rates.GBP).toFixed(2)) + ((Number(montant.infoMontant.montantTopay).toFixed(2) * Number(res.rates.GBP).toFixed(2)) * 5)/100 + ((Number(montant.infoMontant.montantTopay).toFixed(2) * Number(res.rates.GBP).toFixed(2)) * 1)/100)
+                    setResultMontant(Number((Number(montant.infoMontant.montantTopay).toFixed(2) * Number(res.rates.GBP).toFixed(2)) + ((Number(montant.infoMontant.montantTopay).toFixed(2) * Number(res.rates.GBP).toFixed(2)) * 5)/100 + ((Number(montant.infoMontant.montantTopay).toFixed(2) * Number(res.rates.GBP).toFixed(2)) * 1)/100).toFixed(2))
                     setLoad(false) 
                   }
                 )
@@ -108,7 +108,7 @@ const establishedUserStatus = ()=>
     <Form onSubmit={(e)=>tauxEchanger(e)}>
    <Row className='justify-content-center'>
        <Col xs = {6}>
-       <Form.Label htmlFor="basic-url" className='text-light'><strong>How much for the receiver to pick up ?</strong></Form.Label>
+       <Form.Label htmlFor="basic-url" className='text-light'><strong>How much for the receiver to receive ?</strong></Form.Label>
 
        <InputGroup className="mb-3 mt-1">     
         <Form.Control aria-label="Amount (to the nearest dollar)" name='montantTopay' value={montant.infoMontant.montantTopay} type="text" onChange={e=>inputChanged(e)} required/>
@@ -117,7 +117,7 @@ const establishedUserStatus = ()=>
        </Col>
    </Row>
    <ClipLoader color={"#ff8c00"} loading={load} size={50} /> 
-   {resultMontant !== "" ? <p className='text-center'><b className='couleur2   p-2 rounded' style={{border:"2px solid white",fontSize:20}}>{resultMontant} £</b> </p>:
+   {resultMontant !== "" ? <p className='text-center'><b className='couleur2   p-2 rounded' style={{border:"2px solid white",fontSize:20}}>{Number(resultMontant).toFixed(2)} £</b> </p>:
    <span></span>}
   <Row className='pb-3'>
       <Col>
@@ -295,16 +295,16 @@ function MyVerticallyCenteredModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Merci d'avoir utiliser KBStrans
+        Thank you for using KBStrans
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <b className='text-success'>Votre envoi a été effectué avec success </b>   
+        <b className='text-success'>Your sending operation has been successful </b>   
       </Modal.Body>
       <Modal.Footer>
       <p >code : <b className='text-success  p-2' style={{border:"2px solid black"}}>{props.envoie3.infoEnvoie.code_retrait}</b>   
         </p>
-        <Button variant='warning' onClick={props.onHide}>Ok i got it</Button>
+        <Button variant='warning' onClick={props.onHide}>Ok</Button>
 
       </Modal.Footer>
     </Modal>

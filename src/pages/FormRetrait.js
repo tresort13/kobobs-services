@@ -26,7 +26,7 @@ function FormRetrait(props)
     const [modalShow, setModalShow] = React.useState(false);
     const [modalShow2, setModalShow2] = React.useState(false);
 
-    const [message,setMessage] = useState("Kotisa Code retrait nayo Pona ko yeba status ya transfert nayo")
+    const [message,setMessage] = useState("Kotisa Code retrait  ")
     const [couleur,setCouleur] = useState("text-dark")
 
     const isDesktop = useMediaQuery({
@@ -114,12 +114,11 @@ function FormRetrait(props)
 
     <Row className='pb-3'>
        <Col>
-       <Link to="/form_find_code_retrait_lingala" style={{textDecoration:"none"}}>
-       <p ><b className='couleur2'>Na bosani code retrait na ngai ?</b></p>
-       </Link>
+       
+       <p ><b className='couleur2'>au cas où obosani numéro code nayo, <Link to="/my_profil_lingala" >Tala yango na historique nayo</Link></b></p>
+
         </Col>
     </Row>
-  
 
 
 </Form>

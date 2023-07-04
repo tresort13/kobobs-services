@@ -19,7 +19,7 @@ import HeaderEnglish from './HeaderEnglish';
 
 
 const useState = React.useState
-function FormRetraitOperation(props)
+function FormRetraitOperationFrench(props)
 {
 
     const[codeRetrait,setCodeRetrait] = useState({infoCodeRetrait :{
@@ -56,14 +56,16 @@ function FormRetraitOperation(props)
               })
               .then( res => res.json())
               .then(
-                res => {   
+                res => {  
+                  console.log(res) 
                    props.dataEnvoie2(res)
-                   navigate('/retrait_info_operation')
+                   navigate('/retrait_info_operation_french')
                 }
               )
               .catch( (error) =>
                 {
                     setModalShow(true)
+                    setModalShow2(false)
                     console.log(error)
                 } )
 
@@ -215,4 +217,4 @@ function MyVerticallyCenteredModal(props) {
   }
   
 
-export default FormRetraitOperation;
+export default FormRetraitOperationFrench;

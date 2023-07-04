@@ -19,7 +19,7 @@ const useState = React.useState
 function ConfirmationEnvoieInfoEnglish(props)
 {
 
-    const [message,setMessage] = useState("Your tracking number status will be valid only after the full payement of your amount's transfer !!")
+    const [message,setMessage] = useState("Your tracking number status will be valid only after the full payment of your amount transfer !!")
     const [couleur,setCouleur] = useState("text-dark")
     const [modalShow, setModalShow] = React.useState(true);
     const [modalShow2, setModalShow2] = React.useState(true);
@@ -34,8 +34,14 @@ function ConfirmationEnvoieInfoEnglish(props)
     
   console.log(props.envoie3.infoEnvoie)
   const closePage = ()=>{
+    props.setClientForm(false)
+    props.setSaveAbonne('')
     props.setModalShowEnvoi(true)
     navigate('/')
+  }
+
+  const closeSaveAbonne = ()=>{
+    props.setSaveAbonne('')
   }
 
   useEffect(()=>
@@ -146,7 +152,10 @@ function ConfirmationEnvoieInfoEnglish(props)
             <p></p>
           </Col>
         </Row>
-  <MyVerticallyCenteredModal envoie3={props.envoie3} show={modalShow} onHide={() => setModalShow(false)} />
+  <MyVerticallyCenteredModal envoie3={props.envoie3} show={modalShow} onHide={() => {
+    closeSaveAbonne();
+    setModalShow(false);
+    }} saveAbonne={props.saveAbonne} clientForm={props.clientForm}/>
   <MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
 <Footer />
         </>
@@ -170,7 +179,8 @@ function MyVerticallyCenteredModal(props) {
       <Modal.Body>
         <p><b>Your Tracking Number :</b> </p>
       <p ><b className='text-success display-6 p-2' style={{border:"2px solid black"}}><strong>{props.envoie3.infoEnvoie.code_retrait}</strong></b></p>
-        <p ><b className='text-danger'>Always Keep it secret !! </b></p>
+        {props.clientForm === true ? <p ><b className='couleur2'>{props.saveAbonne}</b></p> :
+        <p ><b className='text-danger'>Always Keep it secret !! </b></p> }
       </Modal.Body>
       <Modal.Footer>
         <Button variant='warning' onClick={props.onHide}>ok i got it</Button>
@@ -200,6 +210,8 @@ function MyVerticallyCenteredModal2(props) {
     </Modal>
   );
 }
+
+
 
 
 export default ConfirmationEnvoieInfoEnglish;

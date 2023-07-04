@@ -13,6 +13,8 @@ import Footer from './Footer';
 import Modal from 'react-bootstrap/Modal';
 import ClipLoader from "react-spinners/ClipLoader";
 import  './Header.css';
+import * as formik from 'formik';
+import * as yup from 'yup';
 
 
 
@@ -21,16 +23,22 @@ const useState = React.useState
 function FormEnvoiAbonneIdFrench(props)
 {
    
-    const[codeAbonne,setCodeAbonne] = useState({infoCodeAbonne :{
-        code_abonne :"",
+    const[numeroExpediteur,setNumeroExpediteur] = useState({infoNumeroExpediteur :{
+      numero_expediteur :"",
     }})
 
     const navigate = useNavigate()
     const [modalShow, setModalShow] = React.useState(false);
     const [modalShow2, setModalShow2] = React.useState(false);
 
-    const [message,setMessage] = useState("Veuillez entrer l'identifiant de l'abonné")
-    const [couleur,setCouleur] = useState("text-dark")
+    const [message,setMessage] = useState("Veuillez entrer le numéro de l'expediteur")
+    
+    const { Formik } = formik;
+
+  const testValidation = yup.object().shape({
+    numero_expediteur : yup.string().required('required field'),
+  });
+ 
 
     const isDesktop = useMediaQuery({
         query: "(min-width: 1224px)"
@@ -41,11 +49,11 @@ function FormEnvoiAbonneIdFrench(props)
     
 
 
-      const submitcodeAbonne = (e)=>
+      const submitcodeAbonne = (values)=>
       {
-            e.preventDefault()
+        console.log(values.numero_expediteur)
             setModalShow2(true)
-            fetch('https://kobobsapi.herokuapp.com/api/getCodeAbonneInfo/'+codeAbonne.infoCodeAbonne.code_abonne+'/', {
+            fetch('https://kobobsapi.herokuapp.com/api/getCodeAbonneInfo/'+values.numero_expediteur+'/', {
                   method:'get',
                   headers: {'Content-Type': 'application/json'},
                  // body: JSON.stringify(codeRetrait.infoCodeRetrait)
@@ -54,7 +62,17 @@ function FormEnvoiAbonneIdFrench(props)
                 .then(
                   res => {   
                       console.log(res)
-                     props.dataAbonne(res)
+                   //  props.dataAbonne(res)
+
+                   props.setAbonne({infoAbonne : {
+                    agent_id : props.abonne.infoAbonne.agent_id,
+                    nom_expediteur : res[0].nom_expediteur,
+                    prenom_expediteur : res[0].prenom_expediteur,
+                    email_expediteur : res[0].email_expediteur,
+                    numero_expediteur: res[0].numero_expediteur,
+                    pays_expediteur:res[0].pays_expediteur
+                    }})
+                    console.log(props.abonne)
                      navigate('/form_envoie_abonne_french')
                   }
                 )
@@ -65,15 +83,15 @@ function FormEnvoiAbonneIdFrench(props)
                       console.log(error)
                   } )
   
-                  setCodeAbonne({infoCodeAbonne:{code_abonne:""}})
+              //    setCodeAbonne({infoCodeAbonne:{code_abonne:""}})
       }
   
-      const inputChanged = (event)=>
+    /*  const inputChanged = (event)=>
       {
           const cred = codeAbonne.infoCodeAbonne;
           cred[event.target.name] = event.target.value;
           setCodeAbonne({infoCodeAbonne:cred})
-      }
+      } */
 
 
 
@@ -91,14 +109,24 @@ function FormEnvoiAbonneIdFrench(props)
 
 
     
-<Form onSubmit={submitcodeAbonne}>
-   
-
+    <Formik
+      validationSchema={testValidation}
+      onSubmit={(values)=>{
+        submitcodeAbonne(values)
+      }}
+      initialValues={{
+        numero_expediteur:''
+      }}
+    >
+     {({handleSubmit, handleChange,handleBlur, values, touched, errors
+         })=>(
+    <Form noValidate onSubmit={handleSubmit}>
     <Row className='justify-content-center'>
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'>Code Abonné</Form.Label>
-        <Form.Control name="code_abonne" value={codeAbonne.infoCodeAbonne.code_abonne} onChange={e=>inputChanged(e)} type="text" placeholder='Code Abonné' autoFocus  required/>
+        <Form.Label className='text-dark'>Numéro de téléphone </Form.Label>
+        <Form.Control name="numero_expediteur" value={values.numero_expediteur} onChange={handleChange} onBlur={handleBlur} type="text" placeholder='Numéro de Téléphone' autoFocus  />
+        <p className='text-danger'>{touched.numero_expediteur && errors.numero_expediteur}</p>
          </Form.Group>
         </Col>
     </Row>
@@ -112,14 +140,17 @@ function FormEnvoiAbonneIdFrench(props)
         </Col>
     </Row>
 
-    <Row className='pb-3'>
+  {  /*<Row className='pb-3'>
        <Col>
        <Link to="/form_code_abonne_french" style={{textDecoration:"none"}}>
        <p ><b className='couleur2'>J'ai oublié mon code abonné ?</b></p>
        </Link>
         </Col>
-    </Row>
+    </Row> */}
 </Form>
+)
+}
+</Formik>
 </Container>
 }
 
@@ -139,7 +170,7 @@ function FormEnvoiAbonneIdFrench(props)
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'>Code Abonné</Form.Label>
-        <Form.Control name="code_abonne" value={codeAbonne.infoCodeAbonne.code_abonne} onChange={e=>inputChanged(e)} type="text" placeholder='Code Abonné' autoFocus  required/>
+        <Form.Control name="code_abonne"  type="text" placeholder='Code Abonné' autoFocus  required/>
          </Form.Group>
         </Col>
     </Row>

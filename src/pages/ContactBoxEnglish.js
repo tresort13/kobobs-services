@@ -10,6 +10,8 @@ import Button from "react-bootstrap/Button";
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import ClipLoader from "react-spinners/ClipLoader";
+import * as formik from 'formik';
+import * as yup from 'yup';
 
 
 
@@ -33,7 +35,7 @@ function ContactBoxEnglish(props)
     return (
    <>
    {isDesktop && <div>
-    <MyVerticallyCenteredModal show={props.modalShowContact} onHide={() => props.setModalShowContact(false)} setModalShowContact={props.setModalShowContact} setModalShowContact2={setModalShowContact2} setModalShowContact3={setModalShowContact3} setModalShowContact4={setModalShowContact4} language={props.language} />
+    <MyVerticallyCenteredModal show={props.modalShowContact} onHide={() => props.setModalShowContact(false)} setModalShowContact={props.setModalShowContact} setModalShowContact2={setModalShowContact2} setModalShowContact3={setModalShowContact3} setModalShowContact4={setModalShowContact4} language2={props.language2} />
   <MyVerticallyCenteredModal2 show={modalShowContact2} onHide={() => setModalShowContact2(false)} />
   <MyVerticallyCenteredModal3 show={modalShowContact3} onHide={() => setModalShowContact3(false)} />
   <MyVerticallyCenteredModal4 show={modalShowContact4} onHide={() => setModalShowContact4(false)} setModalShowContact2={setModalShowContact2} setModalShowContact4={setModalShowContact4} />
@@ -41,7 +43,7 @@ function ContactBoxEnglish(props)
    } 
 
 {isMobileOrTablet && <div>
-    <MyVerticallyCenteredModal show={props.modalShowContact} onHide={() => props.setModalShowContact(false)} setModalShowContact={props.setModalShowContact} setModalShowContact2={setModalShowContact2} setModalShowContact3={setModalShowContact3} setModalShowContact4={setModalShowContact4}  language={props.language}/>
+    <MyVerticallyCenteredModal show={props.modalShowContact} onHide={() => props.setModalShowContact(false)} setModalShowContact={props.setModalShowContact} setModalShowContact2={setModalShowContact2} setModalShowContact3={setModalShowContact3} setModalShowContact4={setModalShowContact4}  language2={props.language2}/>
   <MyVerticallyCenteredModal2 show={modalShowContact2} onHide={() => setModalShowContact2(false)} />
   <MyVerticallyCenteredModal3 show={modalShowContact3} onHide={() => setModalShowContact3(false)} />
   <MyVerticallyCenteredModal4 show={modalShowContact4} onHide={() => setModalShowContact4(false)} setModalShowContact2={setModalShowContact2} setModalShowContact4={setModalShowContact4} />
@@ -53,28 +55,37 @@ function ContactBoxEnglish(props)
 }
 
 function MyVerticallyCenteredModal(props) {
+  console.log(props.language2)
 
     const [state,setState] = useState({
       credentials :{
           firstname : '',
           email : '',
           message : '',
-          language:props.language
+          language:props.language2
       }})
+
+      const { Formik } = formik;
+
+      const testValidation = yup.object().shape({
+        firstname: yup.string().required('required field'),
+        email: yup.string().required('required field'),
+        message : yup.string().required('required field'),
+      });
   
       
   
        //login implimentation
        const navigate = useNavigate()
       
-       const connection = (e)=>
+       const connection = (values)=>
        {
-         console.log(state.credentials)
+         console.log(values)
           props.setModalShowContact2(true)
            fetch('https://kobobsapi.herokuapp.com/api/contact/', {
                method: 'POST',
                headers: {'Content-Type': 'application/json'},
-               body: JSON.stringify(state.credentials)
+               body: JSON.stringify(values)
              })
              .then( data => data.json())
              .then(
@@ -103,6 +114,7 @@ function MyVerticallyCenteredModal(props) {
              )
              .catch( (error) =>
                {
+                 console.log(error)
                 props.setModalShowContact(false)
                 props.setModalShowContact2(false)
                   props.setModalShowContact3(false)
@@ -135,14 +147,31 @@ function MyVerticallyCenteredModal(props) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <Form>
+        <Formik
+      validationSchema={testValidation}
+      onSubmit={(values)=>{
+        connection(values)
+      }}
+      initialValues={{
+        firstname : '',
+          email : '',
+          message : '',
+          language:props.language2
+    
+      }}
+    >
+     {({handleSubmit, handleChange,handleBlur, values, touched, errors
+         })=>(
+          <Form noValidate onSubmit={handleSubmit}>
         <Row className='justify-content-start'>
           <Col xs={7} >
           <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Control type="text" placeholder="Firstname"  name="firstname"
-          value ={state.credentials.firstname} onChange={inputChanged} autoFocus/>
+          value ={values.firstname} onChange={handleChange}
+          onBlur={handleBlur} autoFocus/>
           
            </Form.Group>
+           <p className='text-danger'>{touched.firstname && errors.firstname}</p>
           </Col>
       </Row>
 
@@ -150,32 +179,36 @@ function MyVerticallyCenteredModal(props) {
           <Col xs={7} >
           <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Control type="email" placeholder="Email"  name="email"
-          value ={state.credentials.email} onChange={inputChanged} />
-          
-           </Form.Group>
+          value ={values.email} onChange={handleChange}
+          onBlur={handleBlur} />
+ 
+         </Form.Group>
+        <p className='text-danger'>{touched.email && errors.email}</p>
           </Col>
       </Row>
 
       <Row className='justify-content-start'>
           <Col xs={7} >
           <label for="exampleFormControlTextarea1" class="form-label">Message</label>
-          <textarea  value ={state.credentials.message} onChange={inputChanged} name="message" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>   
+          <textarea  value ={values.message} onChange={handleChange} onBlur={handleBlur} name="message" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>   
           </Col>
+          <p className='text-danger'>{touched.message && errors.message}</p>
       </Row>
     
      
     
       <Row className='justify-content-start pb-3 pt-3'>
           <Col  xs={6}>    
-          <Link to="" style={{color:'white',textDecorationLine:'none'}}>      
-          <Button variant="outline-warning" type="submit" onClick={e=>connection(e)}>
+
+          <Button variant="outline-warning" type="submit" >
           <b>Send</b>
           </Button>
-          </Link>
           </Col>
       </Row>
   </Form>
- 
+ )
+}
+</Formik>
         </Modal.Body>
         <Modal.Footer>
         <span class="mx-5 px-5"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
@@ -219,7 +252,7 @@ function MyVerticallyCenteredModal(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-           your message has sent been successfully
+           your message has been sent successfully
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>

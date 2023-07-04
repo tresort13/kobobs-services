@@ -21,7 +21,7 @@ import HeaderEnglish from './HeaderEnglish';
 
 
 const useState = React.useState
-function AbonneFormNonValideInfo(props)
+function AbonneFormNonValideInfoFrench(props)
 {
 
     const [envoie4,setEnvoie4] = useState([])
@@ -31,10 +31,14 @@ function AbonneFormNonValideInfo(props)
     const[status,setStatus] = useState({statusInfo :{
         statusRetrait :"",
     }})
+    const[codeRetrait,setCodeRetrait] = useState("")
 
     const [modalShow, setModalShow] = React.useState(false);
     const [modalShow2, setModalShow2] = React.useState(false);
     const [modalShow3, setModalShow3] = React.useState(true);
+    const [modalShow4, setModalShow4] = React.useState(true);
+    const [modalShow5, setModalShow5] = React.useState(false);
+    const [deletionAnswer, setDeletionAnswer] = React.useState(false);
 
     const navigate = useNavigate()
 
@@ -46,7 +50,9 @@ function AbonneFormNonValideInfo(props)
       });
     
     
-    
+    const closePage = ()=>{
+      navigate('/')
+    }
 
 
       const submit =()=>
@@ -92,17 +98,20 @@ function AbonneFormNonValideInfo(props)
       {       
           e.preventDefault()
           console.log(e.target.value)
-         // setStatus("Code Retrait Valide")     
-          fetch('https://kobobsapi.herokuapp.com/api/validateCodeRetrait/'+e.target.value+'/', {
+         // setStatus("Code Retrait Valide") 
+         const date_time = {
+          date_heure_operation_validation : new Date().toLocaleString(),
+          date_operation_validation : new Date().toLocaleString().slice(0,10)
+        }     
+          fetch('https://kobobsapi.herokuapp.com/api/validateCodeRetrait/'+e.target.value+'/'+props.abonne.infoAbonne.agent_id+'/', {
                   method: 'PUT',
                   headers: {'Content-Type': 'application/json'},
-                 // body: JSON.stringify(status.statusInfo.statusRetrait)
+                  body: JSON.stringify(date_time)
                 })
                 .then( res => res.json())
                 .then(
                   res => {   
                     setModalShow(true)
-                     navigate('/form_abonne_non_valide')
                   }
                 )
                 .catch( (error) =>
@@ -116,22 +125,44 @@ function AbonneFormNonValideInfo(props)
       const suprimerOperation = (e)=>
       {       
           e.preventDefault()
-          setModalShow2(true)
-          console.log(e.target.value)
+           setCodeRetrait(e.target.value)
+          setModalShow5(true)
+    /*      if (deletionAnswer === true) 
+          {
+            setModalShow5(false)
+            suprimerOperationConfirm(e.target.value)
+          }
+          else{
+            setModalShow5(false)
+          }*/
+
+      }
+
+      const suprimerOperationConfirm = (value)=>
+      {  
+        setModalShow5(false)
+        setModalShow3(true)
+        console.log(value)    
+         // e.preventDefault()     
+
          // setStatus("Code Retrait Valide")     
-          fetch('https://kobobsapi.herokuapp.com/api/suprimer/'+e.target.value+'/', {
+          fetch('https://kobobsapi.herokuapp.com/api/suprimer/'+value+'/', {
                   method: 'DELETE',
                   headers: {'Content-Type': 'application/json'},
                  // body: JSON.stringify(status.statusInfo.statusRetrait)
                 })
                 .then( res => res.json())
                 .then(
-                  res => {   
-                     navigate('/form_abonne_non_valide')
+                  res => {  
+                   
+                    setModalShow3(false)               
+                    setModalShow2(true)
                   }
                 )
                 .catch( (error) =>
                   {
+                    setModalShow3(false)               
+                    setModalShow2(true)
                       console.log(error)
                   } )
   
@@ -143,7 +174,7 @@ function AbonneFormNonValideInfo(props)
         
         <>
 <HeaderEnglish dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
-{isDesktop && envoie4.map((value)=>
+{isDesktop && envoie4.length > 0  ?  envoie4.map((value)=>
     {
     return <Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:50,width:1000}} >
 <Row className='justify-content-center mb-3 pt-3' >
@@ -174,8 +205,18 @@ function AbonneFormNonValideInfo(props)
         <p className='text-dark'>Email Expediteur: <b className='text-dark'> {value.email_expediteur}</b></p>
         <p className='text-dark'>Pays Beneficiare: <b className='text-dark'> {value.pays_beneficiaire}</b></p>
         <p className='text-dark'>Type de retrait: <b className='text-dark '>{value.type_service}</b> </p>
-        <p className='text-dark'>date  : <b className='text-dark'> {value.date_heure_operation}</b></p> 
+        <p className='text-dark'>date et heure d'envoi : <b className='text-dark'> {value.date_heure_operation}</b></p> 
+        
     </Col>
+    </Row>
+    <Row className='justify-content-center pb-3'>
+      <hr style={{color:"darkorange"}}></hr>
+
+    </Row>
+    <Row>
+      <Col className='justify-content-start text-center'  xs={12}>
+      <p className='text-dark'>Envoi fait par : <b className='text-dark'> {value.envoi_executed_by_agent}</b></p> 
+      </Col>
     </Row>
 
     <Row className="pb-3">
@@ -200,8 +241,14 @@ function AbonneFormNonValideInfo(props)
 
     
 
-</Container> })
-} 
+</Container> }
+)
+: <MyVerticallyCenteredModal4 show={modalShow4} onHide={() => {
+  setModalShow4(false)
+  closePage()
+}} />
+}
+
 
 
 {isMobileOrTablet && envoie4.map((value)=>
@@ -263,9 +310,18 @@ function AbonneFormNonValideInfo(props)
             <p></p>
           </Col>
         </Row>
-<MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
-<MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
+<MyVerticallyCenteredModal show={modalShow} onHide={() => {
+  setModalShow(false)
+  window.location.reload()
+}
+} />
+<MyVerticallyCenteredModal2 show={modalShow2} onHide={() =>{ 
+  setModalShow2(false)
+  window.location.reload();}
+  } />
 <MyVerticallyCenteredModal3 show={modalShow3} onHide={() => setModalShow3(false)} />
+<MyVerticallyCenteredModal5 show={modalShow5} onHide={() => setModalShow5(false)} codeRetrait={codeRetrait} suprimerOperationConfirm={suprimerOperationConfirm} setModalShow5={setModalShow5} setModalShow3={setModalShow3}/>
+
 {/*<SessionOut setIsadmin={props.setIsadmin}/>*/}
 <Footer />
         </>
@@ -291,7 +347,7 @@ function MyVerticallyCenteredModal(props) {
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant='warning' onClick={props.onHide}>Fermer</Button>
+          <Button variant='warning' onClick={props.onHide}>Ok</Button>
         </Modal.Footer>
       </Modal>
     );
@@ -343,6 +399,54 @@ function MyVerticallyCenteredModal(props) {
     );
   }
 
+  function MyVerticallyCenteredModal4(props) {
+    return (
+      <Modal
+        {...props}
+        size="sm"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Aucun envoi à valider disponible
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p className='couleur2'><b>Pas de code de rétrait en attente de validation pour le moment </b>   
+          </p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant='warning' onClick={props.onHide}>Fermer</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
+
+  function MyVerticallyCenteredModal5(props) {
+    return (
+      <Modal
+        {...props}
+        size="sm"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            voulez-vous vraiment supprimer cet envoi ?
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body className='text-center'>
+        <Button variant='dark' className='mx-2'  onClick={props.onHide}>Non</Button> <Button variant='danger' className='mx-5' onClick={()=>{
+           props.suprimerOperationConfirm(props.codeRetrait)}
+        }>oui</Button>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant='warning' onClick={props.onHide}>Annuler</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
 
 
-export default AbonneFormNonValideInfo;
+export default AbonneFormNonValideInfoFrench;

@@ -18,12 +18,14 @@ import LoginBoxEnglish from './LoginBoxEnglish';
 import ContactBoxEnglish from './ContactBoxEnglish';
 import ChangePasswordBoxEnglish from './ChangePasswordBoxEnglish';
 import Badge from 'react-bootstrap/Badge';
+import Modal from 'react-bootstrap/Modal';
 
 
 
 function HeaderEnglish(props)
 {
   const [show2, setShow2] = useState(false);
+  const [modalShowNoValidDialog,setModalShowNoValidDialog] = useState(false)
   const [theTime, setTheTime] = useState(new Date().toLocaleString())
 
   const [count,setCount] = useState(0)
@@ -64,6 +66,9 @@ function HeaderEnglish(props)
    const contactUs = ()=>{
      props.setModalShowContact(true)
      
+   }
+   const openNoValidDialog = ()=>{
+     setModalShowNoValidDialog(true)
    }
     
     const showLogin = ()=>props.setModalShow(true);
@@ -134,11 +139,11 @@ function HeaderEnglish(props)
                 <NavDropdown.Divider />
                   <Nav.Link href="/"><b><pre>Home</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link href="#"><b><pre>Send Money</pre></b></Nav.Link>
+                  <Nav.Link href="/form_envoie_abonne_english"><b><pre>Send Money</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link href="#"><b><pre>track your transfer status</pre></b></Nav.Link>
+                  <Nav.Link href="/my_profil_english"><b><pre>check your historic</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link  href="#"><b><pre>lost your tracking number ?</pre></b></Nav.Link>
+                  <Nav.Link  href="/form_retrait_info_english"><b><pre>track  transfer</pre></b></Nav.Link>
                   <NavDropdown.Divider />
                   <Nav.Link ><b onClick={contactUs} ><pre>Contact us</pre></b></Nav.Link>
                 </Nav>
@@ -185,9 +190,9 @@ function HeaderEnglish(props)
         
         { props.isLogged === true ? <Col xs={6} className="my-auto  my-auto text-end">
         {props.isAdmin ?
-         count > 0 ? <Link to="/form_abonne_non_valide"><Badge className='m-0' bg="danger">{count}</Badge><span><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="text-light bi bi-bell-fill mt-2 "  viewBox="0 0 16 16">
+         count > 0 ? <Link to="/form_abonne_non_valide_french"><Badge className='m-0' bg="danger">{count}</Badge><span><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="text-light bi bi-bell-fill mt-2 "  viewBox="0 0 16 16">
         <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
-        </svg></span></Link> : <Link to=""><span><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="text-light bi bi-bell-fill mt-2 mx-2" viewBox="0 0 16 16">
+        </svg></span></Link> : <Link to="" onClick={openNoValidDialog}><span><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="text-light bi bi-bell-fill mt-2 mx-2" viewBox="0 0 16 16">
         
         <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
         </svg></span></Link>
@@ -229,9 +234,9 @@ function HeaderEnglish(props)
              <Dropdown.Menu>
              <Dropdown.Item onClick={()=>props.setLanguage2("english")}>English</Dropdown.Item>
              <NavDropdown.Divider />
-            { /* <Dropdown.Item onClick={()=>props.setLanguage2("lingala")}>Lingala</Dropdown.Item>
+            <Dropdown.Item onClick={()=>props.setLanguage2("lingala")}>Lingala</Dropdown.Item>
              <NavDropdown.Divider />
-             <Dropdown.Item onClick={()=>props.setLanguage2("french")}>Français</Dropdown.Item>*/}
+             <Dropdown.Item onClick={()=>props.setLanguage2("french")}>Français</Dropdown.Item>
           </Dropdown.Menu>
             </Dropdown>
             </a>
@@ -426,7 +431,7 @@ function HeaderEnglish(props)
     </Row>
    
    </Container>}
-   <Offcanvas show={show2} onHide={handleClose2} placement='end'  className='bg-dark mt-5' style={{height:250,width:300}}>
+   <Offcanvas show={show2} onHide={handleClose2} placement='end'  className='bg-dark mt-5' style={{height:300,width:300}}>
            <Offcanvas.Header closeButton closeVariant='white'>
             <Offcanvas.Title className="text-end mx-auto"><span><svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" className="bi bi-person-circle text-light" viewBox="0 0 16 16">
          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
@@ -435,20 +440,47 @@ function HeaderEnglish(props)
            </Offcanvas.Header>
            <Offcanvas.Body>
            <Nav justify menuVariant="dark"  className="navbar justify-content-end flex-grow-1 pe-3 flex-column">
+           <Nav.Link href="/my_profil_english"><span className='couleur2 '><u><b>My Historic</b></u></span></Nav.Link>
+           <NavDropdown.Divider />
             <span onClick={passwordChange} className='mb-3 btn3 btn-sm btn--orange' ><b className='text-light'>Change Password</b>  
             </span>
-          
+            <NavDropdown.Divider />
             <Button variant='danger' onClick={logout}><span><b>Logout</b>  
             </span></Button>
            </Nav>
            </Offcanvas.Body>
       </Offcanvas>
+    <MyVerticallyCenteredModal4 show={modalShowNoValidDialog} onHide={() => setModalShowNoValidDialog(false)} />
     <ChangePasswordBoxEnglish modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} userID={props.userID} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber}/>
    <ContactBoxEnglish language2={props.language2} setLanguage2={props.setLanguage2} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} language={props.language}/>
    <LoginBoxEnglish dataAbonne={props.dataAbonne} language2={props.language2} setLanguage2={props.setLanguage2} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} modalShow={props.modalShow} modalShow4={props.modalShow4} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
    </div>
 
     )
+}
+
+function MyVerticallyCenteredModal4(props) {
+  return (
+    <Modal
+      {...props}
+      size="sm"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Aucun envoi à valider disponible
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <p className='couleur2'><b>Pas de code de rétrait en attente de validation pour le moment </b>   
+        </p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant='warning' onClick={props.onHide}>Fermer</Button>
+      </Modal.Footer>
+    </Modal>
+  );
 }
 
 

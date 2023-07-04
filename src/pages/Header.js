@@ -17,17 +17,58 @@ import Dropdown from "react-bootstrap/esm/Dropdown";
 import ChangePasswordBoxLingala from './ChangePasswordBoxLingala';
 import ContactBoxLingala from './ContactBoxLingala';
 import LoginBoxLingala from './LoginBoxLingala';
+import Badge from 'react-bootstrap/Badge';
 
 
 
 function Header(props)
 {
   const [show2, setShow2] = useState(false);
+  const [modalShowNoValidDialog,setModalShowNoValidDialog] = useState(false)
   const [theTime, setTheTime] = useState(new Date().toLocaleString())
+  const [count,setCount] = useState(0)
+
+  const submit = ()=>
+    {
+              
+        fetch('https://kobobsapi.herokuapp.com/api/getRetraitNonValideInfo/code retrait en attente de validation/', {
+                method:'GET',
+                headers: {'Content-Type': 'application/json'},
+               // body: JSON.stringify(codeRetrait.infoCodeRetrait)
+              })
+              .then( res => res.json())
+              .then(
+                res => {  
+                   setCount(res.length)
+                   console.log(res)
+                }
+              )
+              .catch( (error) =>
+                {
+                    console.log(error)
+                } )
+
+    }
+
+   /* useEffect(()=>
+    {
+       const interval =  setInterval(()=>submit(),1000);
+        return () => clearInterval(interval)
+    },[])*/
+
+    useEffect(()=>
+    {
+      submit()
+    },[])
+
+
    const contactUs = ()=>{
      props.setModalShowContact(true)
      
    }
+   const openNoValidDialog = ()=>{
+    setModalShowNoValidDialog(true)
+  }
     
     const showLogin = ()=>props.setModalShow(true);
     
@@ -73,7 +114,7 @@ function Header(props)
     {isDesktop && <Container fluid className="mx-auto mt-2" >
     <Row>
     <Col xs={2} className="my-auto mx-auto text-center justify-content-center">
-          <Link to="/" style={{textDecoration:"none"}}>
+          <Link to="/home_lingala" style={{textDecoration:"none"}}>
           <Image  src={require('./kobo_logo.JPG')}  className='rounded-pill ' style={{width:130}}></Image>
           </Link>
         </Col>
@@ -99,9 +140,9 @@ function Header(props)
                   <NavDropdown.Divider />
                   <Nav.Link href="#"><b><pre>Tinda Mbongo</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link href="#"><b><pre>bolanda état ya transfert na yo</pre></b></Nav.Link>
+                  <Nav.Link href="#"><b><pre>Tala historique nayo</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link  href="#"><b><pre>abungisi nimero code nayo ?</pre></b></Nav.Link>
+                  <Nav.Link  href="/form_retrait_info"><b><pre>landela transfert </pre></b></Nav.Link>
                   <NavDropdown.Divider />
                   <Nav.Link ><b onClick={contactUs} ><pre>tindela biso message</pre></b></Nav.Link>
                 </Nav>
@@ -147,12 +188,14 @@ function Header(props)
      
         
         
-        { props.isLogged === true ? <Col xs={6} className="my-auto  my-auto text-end">
-
+{ props.isLogged === true ? <Col xs={6} className="my-auto  my-auto text-end">
         {props.isAdmin ?
-         <Link to=""><span><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="text-light bi bi-bell-fill mt-2 mx-2" viewBox="0 0 16 16">
-  <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
-</svg></span></Link>
+         count > 0 ? <Link to="/form_abonne_non_valide_french"><Badge className='m-0' bg="danger">{count}</Badge><span><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="text-light bi bi-bell-fill mt-2 "  viewBox="0 0 16 16">
+        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+        </svg></span></Link> : <Link to="" onClick={openNoValidDialog}><span><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="text-light bi bi-bell-fill mt-2 mx-2" viewBox="0 0 16 16">
+        
+        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+        </svg></span></Link>
          :
         <span>
         </span>
@@ -407,7 +450,7 @@ function Header(props)
       </Offcanvas>
     <ChangePasswordBoxLingala modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} userID={props.userID} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber}/>
    <ContactBoxLingala language2={props.language2} setLanguage2={props.setLanguage2} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} language={props.language}/>
-   <LoginBoxLingala language2={props.language2} setLanguage2={props.setLanguage2} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} modalShow={props.modalShow} modalShow4={props.modalShow4} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
+   <LoginBoxLingala dataAbonne={props.dataAbonne} language2={props.language2} setLanguage2={props.setLanguage2} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} modalShow={props.modalShow} modalShow4={props.modalShow4} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
    </div>
 
     )

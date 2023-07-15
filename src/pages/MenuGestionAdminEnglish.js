@@ -12,6 +12,7 @@ import { useMediaQuery } from 'react-responsive';
 //import SessionOut from './SessionOut';
 import HeaderFrench from './HeaderFrench';
 import HeaderEnglish from './HeaderEnglish';
+import SessionOutEnglish from './SessionOutEnglish';
 
 
 function MenuGestionAdminEnglish(props)
@@ -30,9 +31,9 @@ function MenuGestionAdminEnglish(props)
    
     <Row className='justify-content-center pb-3 pt-5 mt-5'>
         <Col xs = {"auto"}>
-        <Link to="/menu_rapport_recette_french" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='warning'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='text-dark'><pre>Revenue report</pre></b>
+        <Link to="/menu_rapport_recette_english" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant='btn--blue'  style={{width:400,height:80}} className='btn-lg btn--blue rounded zoom py-4'>
+        <b className='text-light'><pre>Revenue report</pre></b>
         </Button>
         </Link>
         </Col>
@@ -42,9 +43,9 @@ function MenuGestionAdminEnglish(props)
 
     <Row className='justify-content-center pb-3 '>
         <Col xs = {"auto"}>
-        <Link to="/menu_info_abonne_french" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='warning'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='text-dark'><pre>Subscriber Informations</pre></b>
+        <Link to="/menu_info_abonne_english" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant='btn--blue'  style={{width:400,height:80}} className='btn-lg btn--blue rounded zoom py-4'>
+        <b className='text-light'><pre>Subscriber Informations</pre></b>
         </Button>
         </Link>
         </Col>
@@ -53,8 +54,8 @@ function MenuGestionAdminEnglish(props)
     <Row className='justify-content-center pb-3 '>
         <Col xs = {"auto"}>
         <a href="https://kobobsapi.herokuapp.com/admin/" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='warning'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='text-dark'><pre>User Management</pre></b>
+        <Button variant='btn--blue'  style={{width:400,height:80}} className='btn-lg btn--blue rounded zoom py-4'>
+        <b className='text-light'><pre>User Management</pre></b>
         </Button>
         </a>
         </Col>
@@ -72,7 +73,7 @@ function MenuGestionAdminEnglish(props)
        <Col xs = {12}>
        <Link to="/menu_rapport_envoie" style={{color:'white',textDecorationLine:'none'}}>
        <Button variant='warning'  style={{width:400,height:50}} className='btn-lg rounded-pill zoom'>
-       <b className='text-dark'><pre>Opérations Envoi</pre></b>
+       <b className='text-light'><pre>Opérations Envoi</pre></b>
        </Button>
        </Link>
        </Col>
@@ -92,7 +93,7 @@ function MenuGestionAdminEnglish(props)
  
 
 </Container>}
-{/*<SessionOut setIsadmin={props.setIsadmin}/>*/}
+<SessionOutEnglish setIsadmin={props.setIsadmin}/>
 <Footer />
 </>
     )

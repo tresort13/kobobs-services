@@ -17,6 +17,8 @@ import Dropdown from "react-bootstrap/esm/Dropdown";
 import LoginBoxFrench from './LoginBoxFrench';
 import ContactBoxFrench from './ContactBoxFrench';
 import ChangePasswordBoxFrench from './ChangePasswordBoxFrench';
+import Badge from 'react-bootstrap/Badge';
+import SessionOutFrench from './SessionOutFrench';
 
 
 
@@ -25,10 +27,49 @@ function HeaderFrench(props)
  
   
   const [show2, setShow2] = useState(false);
+  const [modalShowNoValidDialog,setModalShowNoValidDialog] = useState(false)
   const [theTime, setTheTime] = useState(new Date().toLocaleString())
+  const [count,setCount] = useState(0)
+
+   const submit = ()=>
+    {
+              
+        fetch('https://kobobsapi.herokuapp.com/api/getRetraitNonValideInfo/code retrait en attente de validation/', {
+                method:'GET',
+                headers: {'Content-Type': 'application/json'},
+               // body: JSON.stringify(codeRetrait.infoCodeRetrait)
+              })
+              .then( res => res.json())
+              .then(
+                res => {  
+                   setCount(res.length)
+                   console.log(res)
+                }
+              )
+              .catch( (error) =>
+                {
+                    console.log(error)
+                } )
+
+    }
+
+   /* useEffect(()=>
+    {
+       const interval =  setInterval(()=>submit(),1000);
+        return () => clearInterval(interval)
+    },[])*/
+
+    useEffect(()=>
+    {
+      submit()
+    },[])
+
    const contactUs = ()=>{
      props.setModalShowContact(true)
      
+   }
+   const openNoValidDialog = ()=>{
+     setModalShowNoValidDialog(true)
    }
     
     const showLogin = ()=>props.setModalShow(true);
@@ -47,6 +88,14 @@ function HeaderFrench(props)
       window.localStorage.setItem("isAdmin", false)
       window.localStorage.setItem("isLogged", false)
       window.localStorage.setItem("isStaff", false)
+      window.localStorage.setItem("abonne",JSON.stringify({infoAbonne :{
+        agent_id:'',
+        nom_expediteur : '',
+        prenom_expediteur : '',
+        email_expediteur : '',
+        numero_expediteur: '',
+        pays_expediteur : 'UK',
+        }}))
       window.location.reload();
      // navigate('/')
       
@@ -93,18 +142,19 @@ function HeaderFrench(props)
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
-              <Nav className="justify-content-end flex-grow-1 pe-3">  
+                <Nav className="justify-content-end flex-grow-1 pe-3">
                 <NavDropdown.Divider />
-                <Nav.Link href="/home_french"><b> <pre>Accueil</pre></b></Nav.Link>
+                  <Nav.Link href="/home_french"><b><pre>Accueil</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link href="#"><b> <pre>envoyer l'argent</pre></b></Nav.Link>
+                  <Nav.Link href="/form_envoie_abonne_french"><b><pre>Envoyer de l'argent</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link href="#"><b> <pre>J'ai oublié mon code abonné ?</pre></b></Nav.Link>
+                  <Nav.Link href="/my_profil_french"><b><pre>Vérifier l'historic</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link  href="#"> <b><pre>J'ai oublié mon code de retrait ?</pre></b></Nav.Link>
+                  <Nav.Link  href="/form_retrait_info_french"><b><pre>Tracker un transfer </pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link ><b onClick={contactUs} > <pre>Contacter nous</pre></b></Nav.Link>
-                </Nav>     
+                  <Nav.Link ><b onClick={contactUs} ><pre>Contacter nous</pre></b></Nav.Link>
+                </Nav>
+               
               </Offcanvas.Body>
             </Navbar.Offcanvas>
           </Container>
@@ -144,17 +194,20 @@ function HeaderFrench(props)
         }
 
 
-        { props.isLogged === true ?  <Col xs={6} className="my-auto  my-auto text-end">
+{ props.isLogged === true ? <Col xs={6} className="my-auto  my-auto text-end">
         {props.isAdmin ?
-         <Link to=""><span><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="text-light bi bi-bell-fill mt-2 mx-2" viewBox="0 0 16 16">
-  <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
-</svg></span></Link>
+         count > 0 ? <Link to="/table_validation_french"><Badge className='m-0' bg="danger">{count}</Badge><span><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="text-light bi bi-bell-fill mt-2 "  viewBox="0 0 16 16">
+        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+        </svg></span></Link> : <Link to="" onClick={openNoValidDialog}><span><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="text-light bi bi-bell-fill mt-2 mx-2" viewBox="0 0 16 16">
+        
+        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+        </svg></span></Link>
          :
         <span>
         </span>
          }
         <Link to="" style={{textDecoration:"none"}}>
-        <Button variant='outline-light'  className='btn btn-outline-light btn-lg'>Bonjour, <strong className='textUpper'>{props.username}</strong> <span><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+        <Button variant='outline-light' onClick={()=>handleShow2()}  className='btn btn-outline-light btn-lg'>Bonjour, <strong className='textUpper'>{props.username}</strong> <span><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
          <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
           </svg></span></Button>
@@ -264,18 +317,18 @@ function HeaderFrench(props)
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
-              <Nav className="justify-content-end flex-grow-1 pe-3">  
+                <Nav className="justify-content-end flex-grow-1 pe-3">
                 <NavDropdown.Divider />
-                  <Nav.Link href="/home_french"><b> <pre>Accueil</pre></b></Nav.Link>
+                  <Nav.Link href="/home_lingala"><b><pre>Home</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link href="#"><b> <pre>envoyer l'argent</pre></b></Nav.Link>
+                  <Nav.Link href="/form_envoie_abonne"><b><pre>Send Money</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link href="#"><b> <pre>J'ai oublié mon code abonné ?</pre></b></Nav.Link>
+                  <Nav.Link href="/my_profil_lingala"><b><pre>check your historic</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link href="#"><b><pre>J'ai oublié mon code de retrait ?</pre></b></Nav.Link>
+                  <Nav.Link  href="/form_retrait_info"><b><pre>track  transfer</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link ><b onClick={contactUs} > <pre>Contacter nous</pre></b></Nav.Link>
-                </Nav>     
+                  <Nav.Link ><b onClick={contactUs} ><pre>Contact us</pre></b></Nav.Link>
+                </Nav>
                
               </Offcanvas.Body>
             </Navbar.Offcanvas>
@@ -354,23 +407,26 @@ function HeaderFrench(props)
 
 
    </Container>}
-   <Offcanvas show={show2} onHide={handleClose2} placement='end'  className='bg-dark mt-5' style={{height:250,width:300}}>
+   <Offcanvas show={show2} onHide={handleClose2} placement='end'  className='bg-dark mt-5' style={{height:300,width:300}}>
            <Offcanvas.Header closeButton closeVariant='white'>
             <Offcanvas.Title className="text-end mx-auto"><span><svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" className="bi bi-person-circle text-light" viewBox="0 0 16 16">
          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
          <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
           </svg></span></Offcanvas.Title>
            </Offcanvas.Header>
-           <Offcanvas.Body>
+            <Offcanvas.Body>
            <Nav justify menuVariant="dark"  className="navbar justify-content-end flex-grow-1 pe-3 flex-column">
-            <span onClick={passwordChange} className='mb-3 btn3 btn-sm btn--orange' ><b className='text-light'>Changer Mot de passe</b>  
+           <Nav.Link href="/my_profil_french"><span className='couleur2 '><u><b>Mon Historique</b></u></span></Nav.Link>
+           <NavDropdown.Divider />
+            <span onClick={passwordChange} className='mb-3 btn3 btn-sm btn--orange' ><b className='text-light'>Changer mot de passe</b>  
             </span>
-          
+            <NavDropdown.Divider />
             <Button variant='danger' onClick={logout}><span><b>Deconnexion</b>  
             </span></Button>
            </Nav>
            </Offcanvas.Body>
       </Offcanvas>
+      <SessionOutFrench setIsadmin={props.setIsadmin}/>
     <ChangePasswordBoxFrench modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} userID={props.userID} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber}/>
    <ContactBoxFrench language2={props.language2} setLanguage2={props.setLanguage2} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} language={props.language}/>
    <LoginBoxFrench dataAbonne={props.dataAbonne} language2={props.language2} setLanguage2={props.setLanguage2} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} modalShow={props.modalShow} modalShow4={props.modalShow4} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>

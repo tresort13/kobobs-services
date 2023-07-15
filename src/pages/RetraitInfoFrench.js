@@ -15,6 +15,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import  './Header.css';
 import HeaderFrench from './HeaderFrench';
 import HeaderEnglish from './HeaderEnglish';
+import SessionOutFrench from './SessionOutFrench';
 //import SessionOut from './SessionOut';
 
 
@@ -84,11 +85,11 @@ const navigate = useNavigate()
     return (
         
         <>
-        <HeaderEnglish dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
+        <HeaderFrench dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
 {isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
-<Row className='justify-content-center mb-3 pt-3' >
+<Row className='justify-content-center pt-3' >
         <Col xs={12}>
-        <p className='couleur2 display-6'><i><b>{message}</b></i></p>
+        <p className='couleur2'><i><b>{message}</b></i></p>
         </Col>
     </Row>
     <Row className='justify-content-center pb-3'>
@@ -270,7 +271,7 @@ const navigate = useNavigate()
         </Row>
 <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
 <MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
-{/*<SessionOut setIsadmin={props.setIsadmin}/>*/}
+<SessionOutFrench setIsadmin={props.setIsadmin}/>
 <Footer />
 </>     
     )

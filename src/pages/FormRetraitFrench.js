@@ -82,7 +82,7 @@ function FormRetraitFrench(props)
     return (
         
         <>
-        <HeaderFrench />
+        <HeaderFrench dataEnvoie2={props.dataEnvoie2} envoie3={props.envoie3} dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} isStaff={props.isStaff} language2={props.language2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} setLanguage2={props.setLanguage2} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
 {isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:100,width:750}} >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={12}>

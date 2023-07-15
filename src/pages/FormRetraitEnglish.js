@@ -13,6 +13,8 @@ import Footer from './Footer';
 import Modal from 'react-bootstrap/Modal';
 import ClipLoader from "react-spinners/ClipLoader";
 import  './Header.css';
+import * as formik from 'formik';
+import * as yup from 'yup';
 
 
 
@@ -20,9 +22,13 @@ const useState = React.useState
 function FormRetraitEnglish(props)
 {
 
+  const { Formik } = formik;
+
     const[codeRetrait,setCodeRetrait] = useState({infoCodeRetrait :{
         code_retrait :"",
     }})
+
+    
 
     const navigate = useNavigate()
     const [modalShow, setModalShow] = React.useState(false);
@@ -30,6 +36,10 @@ function FormRetraitEnglish(props)
 
     const [message,setMessage] = useState("Please enter  tracking number")
     const [couleur,setCouleur] = useState("text-dark")
+
+    const testValidation = yup.object().shape({
+      codeRetrait: yup.string().required('field required')
+    });
 
     const isDesktop = useMediaQuery({
         query: "(min-width: 1224px)"
@@ -42,11 +52,11 @@ function FormRetraitEnglish(props)
     
 
 
-    const submitcodeRetrait = (e)=>
+    const submitcodeRetrait = (values)=>
     {
-        e.preventDefault(e)  
+         
         setModalShow2(true)    
-        fetch('https://kobobsapi.herokuapp.com/api/getRetraitInfo/'+codeRetrait.infoCodeRetrait.code_retrait+'/', {
+        fetch('https://kobobsapi.herokuapp.com/api/getRetraitInfo/'+values.codeRetrait+'/', {
                 method:'GET',
                 headers: {'Content-Type': 'application/json'},
                // body: JSON.stringify(codeRetrait.infoCodeRetrait)
@@ -84,7 +94,7 @@ function FormRetraitEnglish(props)
     return (
         
         <>
-        <HeaderEnglish />
+        <HeaderEnglish dataEnvoie2={props.dataEnvoie2} envoie3={props.envoie3} dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} isStaff={props.isStaff} language2={props.language2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} setLanguage2={props.setLanguage2} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
 {isDesktop && <Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:100,width:750}} >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={6}>
@@ -94,15 +104,27 @@ function FormRetraitEnglish(props)
 
    
     
-<Form onSubmit={submitcodeRetrait}>
+    <Formik
+      validationSchema={testValidation}
+      onSubmit={(values)=>{
+        submitcodeRetrait(values)
+      }}
+      initialValues={{
+        codeRetrait : ''
+      }}
+    >
+     {({handleSubmit, handleChange,handleBlur, values, touched, errors
+         })=>(
+          <Form noValidate onSubmit={handleSubmit}>
    
 
     <Row className='justify-content-center'>
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'>Tracking Number</Form.Label>
-        <Form.Control name="code_retrait" value={codeRetrait.infoCodeRetrait.code_retrait} onChange={e=>inputChanged(e)} type="text" placeholder='Please enter your tracking number' autoFocus   required/>
+        <Form.Control name="codeRetrait" value={values.codeRetrait} onChange={handleChange} onBlur={handleBlur} type="text" placeholder='Please enter your tracking number' autoFocus/>
          </Form.Group>
+         <p className='text-danger'>{touched.codeRetrait && errors.codeRetrait}</p>
         </Col>
     </Row>
 
@@ -124,6 +146,9 @@ function FormRetraitEnglish(props)
     </Row>
 
 </Form>
+         )
+  }
+</Formik>
 </Container>
 }
 

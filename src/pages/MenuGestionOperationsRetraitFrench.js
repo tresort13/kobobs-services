@@ -12,6 +12,7 @@ import { useMediaQuery } from 'react-responsive';
 //import SessionOut from './SessionOut';
 import HeaderFrench from './HeaderFrench';
 import HeaderEnglish from './HeaderEnglish';
+import SessionOutFrench from './SessionOutFrench';
 
 
 function MenuGestionOperationsRetraitFrench(props)
@@ -25,14 +26,14 @@ function MenuGestionOperationsRetraitFrench(props)
       });    
     return (
 <>
-<HeaderEnglish dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
+<HeaderFrench dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
 {isDesktop && <Container >
    
     <Row className='justify-content-center pb-3 pt-5 mt-5'>
         <Col xs = {"auto"}>
         <Link to="/form_retrait_operation_french" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='warning'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='text-dark'><pre>Effectuer un retrait</pre></b>
+        <Button variant='btn--blue'  style={{width:400,height:80}} className='btn-lg btn--blue rounded zoom py-4'>
+        <b className='text-light'><pre>Effectuer un retrait</pre></b>
         </Button>
         </Link>
         </Col>
@@ -43,8 +44,8 @@ function MenuGestionOperationsRetraitFrench(props)
     <Row className='justify-content-center pb-3'>
         <Col xs = {"auto"}>
         <Link to="/menu_rapport_retrait_french" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='warning'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='text-dark'><pre>Rapport des opérations Retraits</pre></b>
+        <Button variant='btn--blue'  style={{width:400,height:80}} className='btn-lg btn--blue rounded zoom py-4'>
+        <b className='text-light'><pre>Rapport des opérations Retraits</pre></b>
         </Button>
         </Link>
         </Col>
@@ -79,7 +80,7 @@ function MenuGestionOperationsRetraitFrench(props)
  
 
 </Container>}
-{/*<SessionOut setIsadmin={props.setIsadmin}/>*/}
+<SessionOutFrench setIsadmin={props.setIsadmin}/>
 <Footer />
 </>
     )

@@ -11,6 +11,7 @@ import { useMediaQuery } from 'react-responsive';
 import Header from './Header';
 import Footer from './Footer';
 import Modal from 'react-bootstrap/Modal';
+import HeaderFrench from './HeaderFrench';
 //import SessionOut from './SessionOut';
 
 
@@ -50,14 +51,14 @@ function DetailsAbonnesInfoFrench(props)
 */
 
      
-console.log(props.abonneInfo2)
+console.log(props.abonneInfoDetail)
    
    
     return (
         
         <>
-        <Header username={props.username} isAdmin={props.isAdmin}/>
-{isDesktop && props.abonneInfo2.length > 0 ? props.abonneInfo2.map((value)=>
+        <HeaderFrench dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
+{isDesktop && props.abonneInfoDetail.length > 0 ? props.abonneInfoDetail.map((value)=>
     {
     return <Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:50,width:1000}} >
 <Row className='justify-content-center mb-3 pt-3' >
@@ -72,17 +73,14 @@ console.log(props.abonneInfo2)
     </Row>
     <Row className='justify-content-start text-start pb-3 mb-3' >
     <Col xs={6} className='justify-content-start'>
-        <p className='text-dark'>Noms Abonné: <b className='text-dark'>{value.nom_expediteur} {value.postnom_expediteur} {value.prenom_expediteur}</b> </p>
-        <p className='text-dark'>Email Abonné: <b className='text-dark '> {value.email_expediteur}</b></p>
+        <p className='text-dark'>Prénom abonné: <b className='text-dark'>{value.prenom_expediteur}</b> </p>
+        <p className='text-dark'>Nom de famille  abonné: <b className='text-dark'>{value.nom_expediteur} {value.postnom_expediteur}</b> </p>
         <p className='text-dark'>Pays Abonné: <b className='text-dark '> {value.pays_expediteur}</b></p>
-        <p className='text-dark'>Numéro Abonné: <b className='text-dark'> {value.numero_expediteur}</b></p>
+        <p className='text-dark'>Numéro Téléphone Abonné: <b className='text-dark'> {value.numero_expediteur}</b></p>
+        {value.adresse_expediteur != 'N/A' ? <p className='text-dark'>Subscriber Address: <b className='text-dark'> {value.adresse_expediteur}</b></p> : <span></span>}
         <p className='text-dark'>Date et heure de création de l'abonné: <b className='text-dark'> {value.date_heure_operation}</b></p> 
     </Col>
 
-    </Row>
-    <Row className='justify-content-center pb-3'>
-      <hr style={{color:"darkorange"}}></hr>
-     
     </Row>
 
    { /*<Row className='justify-content-center pb-3 mb-3 text-start' >

@@ -13,6 +13,9 @@ import Footer from './Footer';
 import Modal from 'react-bootstrap/Modal';
 import ClipLoader from "react-spinners/ClipLoader";
 import  './Header.css';
+import * as formik from 'formik';
+import * as yup from 'yup';
+
 
 
 
@@ -20,15 +23,22 @@ const useState = React.useState
 function FormEnvoiAbonneIdEnglish(props)
 {
    
-    const[codeAbonne,setCodeAbonne] = useState({infoCodeAbonne :{
-        code_abonne :"",
+    const[numeroExpediteur,setNumeroExpediteur] = useState({infoNumeroExpediteur :{
+      numero_expediteur :"",
     }})
+
     const navigate = useNavigate()
     const [modalShow, setModalShow] = React.useState(false);
     const [modalShow2, setModalShow2] = React.useState(false);
 
-    const [message,setMessage] = useState("Please enter your subscriber id")
-    const [couleur,setCouleur] = useState("text-dark")
+    const [message,setMessage] = useState("Please enter the sender's mobile number")
+    
+    const { Formik } = formik;
+
+  const testValidation = yup.object().shape({
+    numero_expediteur : yup.string().required('required field'),
+  });
+ 
 
     const isDesktop = useMediaQuery({
         query: "(min-width: 1224px)"
@@ -39,12 +49,12 @@ function FormEnvoiAbonneIdEnglish(props)
     
 
 
-      const submitcodeAbonne = (e)=>
+      const submitcodeAbonne = (values)=>
       {
-        e.preventDefault()
-        setModalShow2(true)
-          fetch('https://kobobsapi.herokuapp.com/api/getCodeAbonneInfo/'+codeAbonne.infoCodeAbonne.code_abonne+'/', {
-                  method:'GET',
+        console.log(values.numero_expediteur)
+            setModalShow2(true)
+            fetch('https://kobobsapi.herokuapp.com/api/getCodeAbonneInfo/'+values.numero_expediteur+'/', {
+                  method:'get',
                   headers: {'Content-Type': 'application/json'},
                  // body: JSON.stringify(codeRetrait.infoCodeRetrait)
                 })
@@ -52,28 +62,36 @@ function FormEnvoiAbonneIdEnglish(props)
                 .then(
                   res => {   
                       console.log(res)
-                     props.dataAbonne(res)
+                   //  props.dataAbonne(res)
+
+                   props.setAbonne({infoAbonne : {
+                    agent_id : props.abonne.infoAbonne.agent_id,
+                    nom_expediteur : res[0].nom_expediteur,
+                    prenom_expediteur : res[0].prenom_expediteur,
+                    email_expediteur : res[0].email_expediteur,
+                    numero_expediteur: res[0].numero_expediteur,
+                    pays_expediteur:res[0].pays_expediteur
+                    }})
+                    console.log(props.abonne)
                      navigate('/form_envoie_abonne_english')
                   }
                 )
                 .catch( (error) =>
                   {
                     setModalShow2(false)
-                      setModalShow(true)
+                    setModalShow(true)
                       console.log(error)
                   } )
   
-                  
-  
-                  setCodeAbonne({infoCodeAbonne:{code_abonne:""}})
+              //    setCodeAbonne({infoCodeAbonne:{code_abonne:""}})
       }
   
-      const inputChanged = (event)=>
+    /*  const inputChanged = (event)=>
       {
           const cred = codeAbonne.infoCodeAbonne;
           cred[event.target.name] = event.target.value;
           setCodeAbonne({infoCodeAbonne:cred})
-      }
+      } */
 
 
 
@@ -81,24 +99,34 @@ function FormEnvoiAbonneIdEnglish(props)
     return (
         
         <>
-        <HeaderEnglish />
-{isDesktop &&<Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:100,width:750}} >
+        <HeaderEnglish dataAbonne={props.dataAbonne} setAbonne={props.setAbonne} abonne={props.abonne}  modalShowEnvoi={props.modalShowEnvoi} setModalShowEnvoi={props.setModalShowEnvoi}  envoie3={props.envoie3} isAdmin={props.isAdmin} isStaff={props.isStaff} language2={props.language2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} setLanguage2={props.setLanguage2} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
+{isDesktop && <Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:100,width:750}} >
 <Row className='justify-content-center mb-3 pt-3' >
-        <Col xs={6}>
+        <Col xs={12}>
         <p className='text-dark'><i><b>{message}</b></i></p>
         </Col>
     </Row>
 
 
     
-<Form onSubmit={submitcodeAbonne}>
-   
-
+    <Formik
+      validationSchema={testValidation}
+      onSubmit={(values)=>{
+        submitcodeAbonne(values)
+      }}
+      initialValues={{
+        numero_expediteur:''
+      }}
+    >
+     {({handleSubmit, handleChange,handleBlur, values, touched, errors
+         })=>(
+    <Form noValidate onSubmit={handleSubmit}>
     <Row className='justify-content-center'>
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'>Subscriber Id</Form.Label>
-        <Form.Control name="code_abonne" value={codeAbonne.infoCodeAbonne.code_abonne} onChange={e=>inputChanged(e)} type="text" placeholder='Subscriber Id' autoFocus  required/>
+        <Form.Label className='text-dark'>Mobile Number </Form.Label>
+        <Form.Control name="numero_expediteur" value={values.numero_expediteur} onChange={handleChange} onBlur={handleBlur} type="text" placeholder='Mobile Number' autoFocus  />
+        <p className='text-danger'>{touched.numero_expediteur && errors.numero_expediteur}</p>
          </Form.Group>
         </Col>
     </Row>
@@ -106,25 +134,27 @@ function FormEnvoiAbonneIdEnglish(props)
 
    <Row className='pb-3'>
        <Col>
-        <Button variant="warning" type="submit" >
-        validate
+        <Button variant="warning" type="submit">
+        Validate
         </Button>
         </Col>
     </Row>
-  
-    <Row className='pb-3'>
+
+  {  /*<Row className='pb-3'>
        <Col>
-       <Link to="/form_code_abonne_english" style={{textDecoration:"none"}}>
-       <p ><b className='couleur2'>I forgot my subscriber ID ?</b></p>
+       <Link to="/form_code_abonne_french" style={{textDecoration:"none"}}>
+       <p ><b className='couleur2'>J'ai oublié mon code abonné ?</b></p>
        </Link>
         </Col>
-    </Row>
-
+    </Row> */}
 </Form>
+)
+}
+</Formik>
 </Container>
 }
 
-{isMobileOrTablet &&<Container className='bg-light justify-content-center text-center  mx-auto mt-5'>
+{isMobileOrTablet && <Container className='bg-light justify-content-center text-center  mx-auto mt-5'>
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={12}>
         <p className='text-dark'><i><b>{message}</b></i></p>
@@ -139,8 +169,8 @@ function FormEnvoiAbonneIdEnglish(props)
     <Row className='justify-content-center'>
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'>Subscriber Id</Form.Label>
-        <Form.Control name="code_abonne" value={codeAbonne.infoCodeAbonne.code_abonne} onChange={e=>inputChanged(e)} type="text" placeholder='Subscriber Id' autoFocus  required/>
+        <Form.Label className='text-dark'>Code Abonné</Form.Label>
+        <Form.Control name="code_abonne"  type="text" placeholder='Code Abonné' autoFocus  required/>
          </Form.Group>
         </Col>
     </Row>
@@ -148,30 +178,29 @@ function FormEnvoiAbonneIdEnglish(props)
 
    <Row className='pb-3'>
        <Col>
-        <Button variant="warning" type="submit" >
-        validate
+        <Button variant="warning" type="submit">
+        Valider 
         </Button>
         </Col>
     </Row>
-  
+
     <Row className='pb-3'>
        <Col>
-       <Link to="/form_code_abonne_english" style={{textDecoration:"none"}}>
-       <p ><b className='couleur2'>I forgot my subscriber ID ?</b></p>
+       <Link to="/form_code_abonne_french" style={{textDecoration:"none"}}>
+       <p ><b className='couleur2'>J'ai oublié mon code abonné ?</b></p>
        </Link>
         </Col>
     </Row>
-
-
+    
 </Form>
-</Container>}
+</Container> }
 <Row className="mt-5">
           <Col md={12}>
             <p></p>
           </Col>
         </Row>
- <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
- <MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
+<MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
+<MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
 <Footer />
         </>
        
@@ -188,11 +217,12 @@ function MyVerticallyCenteredModal(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            this code does not exist
+            Validation failed
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p className='text-danger'><b>Sorry the code entered is not valid!!!</b>   
+
+          <p className='text-danger'><b>this mobile number does not exist !!!</b>   
           </p>
         </Modal.Body>
         <Modal.Footer>
@@ -223,6 +253,6 @@ function MyVerticallyCenteredModal(props) {
       </Modal>
     );
   }
-
+  
 
 export default FormEnvoiAbonneIdEnglish;

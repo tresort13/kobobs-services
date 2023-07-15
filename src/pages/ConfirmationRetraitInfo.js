@@ -18,7 +18,7 @@ const useState = React.useState
 function ConfirmationRetraitInfo(props)
 {
     
-    const [message,setMessage] = useState("Informations Ya transfert Na Yo")
+    const [message,setMessage] = useState("Informations Ya transfert")
     
     
     const isDesktop = useMediaQuery({
@@ -32,19 +32,19 @@ function ConfirmationRetraitInfo(props)
     return (
         
         <>
-        <Header  />
+        <Header  abonne={props.abonne} envoie2={props.envoie2} dataAbonne={props.dataAbonne} envoie3={props.envoie3} isAdmin={props.isAdmin} isStaff={props.isStaff} language2={props.language2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} setLanguage2={props.setLanguage2} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
 {isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={12}>
-        <p className='display-6 couleur2'><i><b>{message}</b></i></p>
+        <p className=' couleur2'><i><b>{message}</b></i></p>
         </Col>
     </Row>
 
     <Row className='justify-content-start pb-3'>
       <hr style={{color:"darkorange"}}></hr>
-      {props.envoie2.infoEnvoie.status_retrait == "code retrait en attente de validation" ? <p className='text-dark'>status ya transfer nayo: <b className="text-danger">validation ya code ya transfer na yo ezali kaka en attente...</b> </p> :
-     props.envoie2.infoEnvoie.status_retrait == "Code Retrait Valide" ? <p className='text-dark'><b>status ya transfer nayo :</b> <b className="text-success">Numéro na yo ya code eza validé mpe Mbongo ezali prêt ya kozuama</b> </p> : 
-     <p className='text-dark'><b>status ya transfer nayo :</b> <b className="text-success">Mozui na yo esi azui mbongo</b> </p> }
+      {props.envoie2.infoEnvoie.status_retrait == "code retrait en attente de validation" ? <p className='text-dark'>status ya transfert : <b className="text-danger">validation ya code ezali kaka en attente...</b> </p> :
+     props.envoie2.infoEnvoie.status_retrait == "Code Retrait Valide" ? <p className='text-dark'><b>status ya transfert :</b> <b className="text-success">code eza validé mpe Mbongo ezali prêt ya kozuama</b> </p> : 
+     <p className='text-dark'><b>status ya transfert :</b> <b className="text-success">Mozui  esi azui mbongo</b> </p> }
     </Row>
 
 
@@ -52,7 +52,7 @@ function ConfirmationRetraitInfo(props)
       <hr style={{color:"darkorange"}}></hr>
     </Row>
     <Row className='justify-content-start pb-3' >
-        <Col xs={6}>
+        <Col xs={6} className='justify-content-start text-start'>
         <p className='text-dark'>Code Retrait : <b className='text-danger'> {props.envoie2.infoEnvoie.code_retrait}</b></p>
         <p className='text-dark'>Mbongo Yako Zwa: <b className='text-danger'>{Number(props.envoie2.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
         <p className='text-dark'>Kombo Ya Mozui: <b className='text-dark'>{props.envoie2.infoEnvoie.nom_beneficiaire}  {props.envoie2.infoEnvoie.prenom_beneficiaire}</b> </p>
@@ -61,11 +61,11 @@ function ConfirmationRetraitInfo(props)
        
         </Col>
 
-        <Col xs={6}>
+        <Col xs={6} className='justify-content-start text-start'>
         <p className='text-dark'>Kombo Ya Motindi: <b className='text-dark'>{props.envoie2.infoEnvoie.prenom_expediteur} {props.envoie2.infoEnvoie.nom_expediteur}  </b> </p>
         <p className='text-dark'>Ekolo Ya Motindi: <b className='text-dark'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
-        <p className='text-dark'>Numéro Ya Mobile money : <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
-        <p className='text-dark'>date : <b className='text-dark'> {JSON.stringify(props.envoie2.infoEnvoie.date_heure_operation)}</b></p>
+        {props.envoie2.infoEnvoie.numero_transfer==='N/A' ? <p></p> : <p className='text-dark'>Numéro Ya Mobile money: <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>}
+        <p className='text-dark'>date : <b className='text-dark'> {props.envoie2.infoEnvoie.date_heure_operation}</b></p>
         
         </Col>
     </Row>
@@ -119,7 +119,7 @@ function ConfirmationRetraitInfo(props)
         <p className='text-dark'>Noms Expediteur: <b className='text-dark'>{props.envoie2.infoEnvoie.prenom_expediteur} {props.envoie2.infoEnvoie.nom_expediteur} </b> </p>
         <p className='text-dark'>Pays Expediteur: <b className='text-dark'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
         <p className='text-dark'>Mobile Money: <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
-        <p className='text-dark'>date : <b className='text-dark'> {JSON.stringify(props.envoie2.infoEnvoie.data_operation)}</b></p>
+        <p className='text-dark'>date : <b className='text-dark'> {props.envoie2.infoEnvoie.data_operation}</b></p>
         </Col>
     </Row>
 

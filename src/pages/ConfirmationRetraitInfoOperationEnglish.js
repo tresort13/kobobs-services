@@ -26,7 +26,7 @@ function ConfirmationRetraitInfoOperationEnglish(props)
   const [modalShow, setModalShow] = React.useState(false);
   const [modalShow2,setModalShow2] = React.useState(false);
     
-    const [message,setMessage] = useState("Page de confirmation Retrait")
+    const [message,setMessage] = useState("Withdrawal Confirmation Page")
     const [couleur,setCouleur] = useState("text-dark")
     const navigate = useNavigate()
     
@@ -60,7 +60,7 @@ function ConfirmationRetraitInfoOperationEnglish(props)
                   res => {    
                     props.setModalShowRetrait(true)     
                     
-                    navigate('/menu_management_french')
+                    navigate('/menu_management_english')
 
                   }
                 )
@@ -90,20 +90,19 @@ function ConfirmationRetraitInfoOperationEnglish(props)
     </Row>
     <Row className='justify-content-start pb-3' >
         <Col xs={6}>
-        <p className='text-dark'>Code Retrait : <b className='text-danger'> {props.envoie2.infoEnvoie.code_retrait}</b></p>
-        <p className='text-dark'>Montant à récupérer: <b className='text-danger'>{Number(props.envoie2.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
-        <p className='text-dark'>Noms Beneficiare: <b className='text-dark'>{props.envoie2.infoEnvoie.nom_beneficiaire} {props.envoie2.infoEnvoie.postnom_beneficiaire} {props.envoie2.infoEnvoie.prenom_beneficiaire}</b> </p>
-        <p className='text-dark'>Pays Beneficiare: <b className='text-dark'> {props.envoie2.infoEnvoie.pays_beneficiaire}</b></p>
-        <p className='text-dark'>Type de retrait: <b className='text-dark'>{props.envoie2.infoEnvoie.type_service}</b> </p>
+        <p className='text-dark'>Withdrawal Code : <b className='text-danger'> {props.envoie2.infoEnvoie.code_retrait}</b></p>
+        <p className='text-dark'>Amount to pick up: <b className='text-danger'>{Number(props.envoie2.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
+        <p className='text-dark'>Receiver Name: <b className='text-dark'>{props.envoie2.infoEnvoie.nom_beneficiaire} {props.envoie2.infoEnvoie.postnom_beneficiaire} {props.envoie2.infoEnvoie.prenom_beneficiaire}</b> </p>
+        <p className='text-dark'>Receiver Country: <b className='text-dark'> {props.envoie2.infoEnvoie.pays_beneficiaire}</b></p>
+        <p className='text-dark'>Type of service: <b className='text-dark'>{props.envoie2.infoEnvoie.type_service}</b> </p>
        
         </Col>
 
         <Col xs={6}>
-        <p className='text-dark'>Noms Expediteur: <b className='text-dark'>{props.envoie2.infoEnvoie.nom_expediteur} {props.envoie2.infoEnvoie.postnom_expediteur} {props.envoie2.infoEnvoie.prenom_expediteur}</b> </p>
-        <p className='text-dark'>Pays Expediteur: <b className='text-dark'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
-        <p className='text-dark'>Numéro à transferer de l'argent: <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
+        <p className='text-dark'>Sender Name: <b className='text-dark'>{props.envoie2.infoEnvoie.nom_expediteur} {props.envoie2.infoEnvoie.postnom_expediteur} {props.envoie2.infoEnvoie.prenom_expediteur}</b> </p>
+        <p className='text-dark'>Sender Country: <b className='text-dark'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
         <p className='text-dark'>date : <b className='text-dark'> {props.envoie2.infoEnvoie.date_heure_operation}</b></p>
-        <p className='text-dark'>Mobile Money: <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
+        {props.envoie2.infoEnvoie.numero_transfer==='N/A' ? <p></p> : <p className='text-dark'>Mobile money Number: <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>}
         </Col>
     </Row>
 
@@ -115,7 +114,7 @@ function ConfirmationRetraitInfoOperationEnglish(props)
         <Col xs={12}>
         <Link to="" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant="warning" type="submit" onClick={e=>payerRetrait(e)}> 
-        Payé Beneficiaire
+        Pay receiver
         </Button>
         </Link>
         </Col>
@@ -187,16 +186,16 @@ function MyVerticallyCenteredModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Paiement Reussi
+        Payment Successful
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p className='text-success'><b>le code de retrait a été payé avec success </b>   
+        <p className='text-success'><b>the withdrawal code has been paid successfully </b>   
         </p>
       </Modal.Body>
       <Modal.Footer>
         <Link to="/home">
-        <Button variant='warning' onClick={props.onHide}>Fermer</Button>
+        <Button variant='warning' onClick={props.onHide}>close</Button>
         </Link>
       </Modal.Footer>
     </Modal>
@@ -213,7 +212,7 @@ function MyVerticallyCenteredModal2(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Veuillez Patienter...
+          Please wait...
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>

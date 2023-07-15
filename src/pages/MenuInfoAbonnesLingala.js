@@ -15,6 +15,7 @@ import Modal from 'react-bootstrap/Modal';
 import ClipLoader from "react-spinners/ClipLoader";
 import * as formik from 'formik';
 import * as yup from 'yup';
+import SessionOutLingala from './SessionOutLingala';
 
 //import SessionOut from './SessionOut';
 
@@ -123,7 +124,7 @@ function MenuInfoAbonnesLingala(props)
      const detailTotal =()=>
      {
       props.setAbonneInfo2(abonneInfo)
-      navigate('/details_abonnes_info')
+      navigate('/table_abonnes_lingala')
      }
 
      const detailValide =()=>
@@ -198,7 +199,7 @@ function MenuInfoAbonnesLingala(props)
     return (
         
         <>
-        <Header username={props.username} isAdmin={props.isAdmin}/>
+        <Header dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
 {isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={6}>
@@ -279,21 +280,24 @@ function MenuInfoAbonnesLingala(props)
 
  {abonne.length > 0 ? abonne.map((value)=>
     {
-    return <div className='bg-light justify-content-center text-center' style={{width:1000}} >
+    return <div className='bg-light justify-content-center text-center' style={{border:"2px solid black"}} >
 <Row className='justify-content-start' >
         <Col xs={12}>
-        <p className='couleur2'><i><b>Information ya abonné</b></i></p>
+        <p className='couleur2'><i><b><u>Information ya abonné</u></b></i></p>
         </Col>
     </Row>
     <Row className='justify-content-start text-start pb-3 mb-3' >
       <Col xs={2}>
       </Col>
-    <Col xs={5} className='justify-content-start'>
-        <p className='text-dark'>Kombo ya Abonné: <b className='text-dark'>{value.nom_expediteur} {value.postnom_expediteur} {value.prenom_expediteur}</b> </p>
+      <Col xs={5} className='justify-content-start'>
+        <p className='text-dark'>kombo Mukristu: <b className='text-dark'>{value.prenom_expediteur}</b> </p>
+        <p className='text-dark'>kombo ya Libota: <b className='text-dark'>{value.nom_expediteur} {value.postnom_expediteur}</b> </p>
         <p className='text-dark'>Email ya Abonné: <b className='text-dark '> {value.email_expediteur}</b></p>
         <p className='text-dark'>Mboka ya Abonné: <b className='text-dark '> {value.pays_expediteur}</b></p>
-        <p className='text-dark'>Numéro Ya Abonné: <b className='text-dark'> {value.numero_expediteur}</b></p>
-        <p className='text-dark'>Date na heure ya création ya abonné: <b className='text-dark'> {value.date_heure_operation}</b></p> 
+        <p className='text-dark'>Numéro ya Abonné: <b className='text-dark'> {value.numero_expediteur}</b></p>
+        {value.adresse_expediteur != 'N/A' ? <p className='text-dark'>Adresse ya Abonné: <b className='text-dark'> {value.adresse_expediteur}</b></p> : <span></span>}
+        <p className='text-dark'>Date et heure ya création ya abonné: <b className='text-dark'> {value.date_heure_operation}</b></p>
+
     </Col>
 
     </Row>
@@ -308,7 +312,7 @@ function MenuInfoAbonnesLingala(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <Link to="/menu_rapport_envoi_french" style={{color:'white',textDecorationLine:'none'}}>
+        <Link to="/menu_gestion_lingala" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant="danger" type="submit">
         Fermer
         </Button>
@@ -386,7 +390,7 @@ function MenuInfoAbonnesLingala(props)
             <p></p>
           </Col>
         </Row>
-      {/* <SessionOut setIsadmin={props.setIsadmin}/>*/} 
+      <SessionOutLingala setIsadmin={props.setIsadmin}/>
       <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
       <MyVerticallyCenteredModal3 show={modalShow3} onHide={() => setModalShow3(false)} />
        <Footer />

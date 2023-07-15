@@ -55,7 +55,6 @@ function ContactBoxEnglish(props)
 }
 
 function MyVerticallyCenteredModal(props) {
-  console.log(props.language2)
 
     const [state,setState] = useState({
       credentials :{

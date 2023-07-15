@@ -15,6 +15,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import  './Header.css';
 import HeaderFrench from './HeaderFrench';
 import HeaderEnglish from './HeaderEnglish';
+import SessionOutEnglish from './SessionOutEnglish';
 //import SessionOut from './SessionOut';
 
 
@@ -57,7 +58,7 @@ const navigate = useNavigate()
                   if(res[0].status_retrait==='Code Retrait Valide')
                   {
                     props.dataEnvoie2(res)
-                    navigate('/confirmation_retrait_info_operation_french')
+                    navigate('/confirmation_retrait_info_operation_english')
                   }  
                   else if(res[0].status_retrait==='Code Retrait Payé')
                   {
@@ -86,9 +87,9 @@ const navigate = useNavigate()
         <>
         <HeaderEnglish dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
 {isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
-<Row className='justify-content-center mb-3 pt-3' >
+<Row className='justify-content-center pt-3' >
         <Col xs={12}>
-        <p className='couleur2 display-6'><i><b>{message}</b></i></p>
+        <p className='couleur2'><i><b>{message}</b></i></p>
         </Col>
     </Row>
     <Row className='justify-content-center pb-3'>
@@ -146,7 +147,7 @@ const navigate = useNavigate()
         </Col>
 
         <Col xs={6}>
-        <p className='text-dark'>Mobile Money: <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
+        {props.envoie2.infoEnvoie.numero_transfer==='' ? <p></p> : <p className='text-dark'>Mobile Money Number: <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>}
         <p className='text-dark'>transfer date: <b className='text-dark'>{props.envoie2.infoEnvoie.date_heure_operation}</b> </p>
         </Col>
     </Row>
@@ -159,7 +160,7 @@ const navigate = useNavigate()
         <Col xs={6}>
         <Link to="" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant="warning" type="submit" onClick={e=>validerRetrait(e)}>
-        Validate Withdraw to Serve
+        Validate withdraw to serve
         </Button>
         </Link>
         </Col>
@@ -270,7 +271,7 @@ const navigate = useNavigate()
         </Row>
 <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
 <MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
-{/*<SessionOut setIsadmin={props.setIsadmin}/>*/}
+<SessionOutEnglish setIsadmin={props.setIsadmin}/>
 <Footer />
 </>     
     )

@@ -12,11 +12,14 @@ import Footer from './Footer';
 import Modal from 'react-bootstrap/Modal';
 import ClipLoader from "react-spinners/ClipLoader";
 import  './Header.css';
+import * as formik from 'formik';
+import * as yup from 'yup';
 
 
 const useState = React.useState
 function FormRetrait(props)
 {
+  const { Formik } = formik;
 
     const[codeRetrait,setCodeRetrait] = useState({infoCodeRetrait :{
         code_retrait :"",
@@ -26,9 +29,12 @@ function FormRetrait(props)
     const [modalShow, setModalShow] = React.useState(false);
     const [modalShow2, setModalShow2] = React.useState(false);
 
-    const [message,setMessage] = useState("Kotisa Code retrait  ")
+    const [message,setMessage] = useState("Kotisa Code ya retrait  ")
     const [couleur,setCouleur] = useState("text-dark")
 
+    const testValidation = yup.object().shape({
+      codeRetrait: yup.string().required('esengeli okotisa makomi')
+    });
     const isDesktop = useMediaQuery({
         query: "(min-width: 1224px)"
       });
@@ -40,33 +46,35 @@ function FormRetrait(props)
     
 
 
-    const submitcodeRetrait = (e)=>
-    {
-        e.preventDefault(e)  
-        setModalShow2(true)    
-        fetch('https://kobobsapi.herokuapp.com/api/getRetraitInfo/'+codeRetrait.infoCodeRetrait.code_retrait+'/', {
-                method:'GET',
-                headers: {'Content-Type': 'application/json'},
-               // body: JSON.stringify(codeRetrait.infoCodeRetrait)
-              })
-              .then( res => res.json())
-              .then(
-                res => {   
-                   props.dataEnvoie2(res)
-                   navigate('/retrait_info')
-                }
-              )
-              .catch( (error) =>
-                {
-                  setModalShow2(false)
-                    setModalShow(true)
-                    console.log(error)
-                } )
-
-                
-
-                setCodeRetrait({infoCodeRetrait:{code_retrait:""}})
-    }
+      const submitcodeRetrait = (values)=>
+      {
+           
+          setModalShow2(true)    
+          fetch('https://kobobsapi.herokuapp.com/api/getRetraitInfo/'+values.codeRetrait+'/', {
+                  method:'GET',
+                  headers: {'Content-Type': 'application/json'},
+                 // body: JSON.stringify(codeRetrait.infoCodeRetrait)
+                })
+                .then( res => res.json())
+                .then(
+                  res => {   
+                    console.log(res)
+                     props.dataEnvoie2(res)
+                     navigate('/retrait_info')
+                  }
+                )
+                .catch( (error) =>
+                  {
+                    setModalShow2(false)  
+                      setModalShow(true)
+                      console.log(error)
+                  } )
+  
+                  
+  
+                  setCodeRetrait({infoCodeRetrait:{code_retrait:""}})
+      }
+  
 
     const inputChanged = (event)=>
     {
@@ -81,7 +89,7 @@ function FormRetrait(props)
     return (
         
         <>
-        <Header />
+        <Header dataEnvoie2={props.dataEnvoie2} envoie3={props.envoie3} dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} isStaff={props.isStaff} language2={props.language2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} setLanguage2={props.setLanguage2} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
 {isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:100,width:750}} >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={6}>
@@ -91,15 +99,27 @@ function FormRetrait(props)
 
    
     
-<Form onSubmit={submitcodeRetrait}>
+    <Formik
+      validationSchema={testValidation}
+      onSubmit={(values)=>{
+        submitcodeRetrait(values)
+      }}
+      initialValues={{
+        codeRetrait : ''
+      }}
+    >
+     {({handleSubmit, handleChange,handleBlur, values, touched, errors
+         })=>(
+          <Form noValidate onSubmit={handleSubmit}>
    
 
     <Row className='justify-content-center'>
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'>Code Retrait</Form.Label>
-        <Form.Control name="code_retrait" value={codeRetrait.infoCodeRetrait.code_retrait} onChange={e=>inputChanged(e)} type="text" placeholder='code retrait' autoFocus   required/>
+        <Form.Label className='text-dark'>Code ya rétrait</Form.Label>
+        <Form.Control name="codeRetrait" value={values.codeRetrait} onChange={handleChange} onBlur={handleBlur} type="text" placeholder='kotisa code ya rétrait' autoFocus/>
          </Form.Group>
+         <p className='text-danger'>{touched.codeRetrait && errors.codeRetrait}</p>
         </Col>
     </Row>
 
@@ -107,21 +127,23 @@ function FormRetrait(props)
    <Row className='pb-3'>
        <Col>
         <Button variant="warning" type="submit" >
-        Valider 
+        ko validé
         </Button>
         </Col>
     </Row>
-
+  
     <Row className='pb-3'>
        <Col>
        
-       <p ><b className='couleur2'>au cas où obosani numéro code nayo, <Link to="/my_profil_lingala" >Tala yango na historique nayo</Link></b></p>
+       <p ><b className='couleur2'>au cas où obosani code, <Link to="/my_profil_lingala" >Tala yango na historique nayo</Link></b></p>
 
         </Col>
     </Row>
 
-
 </Form>
+         )
+  }
+</Formik>
 </Container>
 }
 

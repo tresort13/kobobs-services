@@ -9,6 +9,8 @@ import Header from './Header';
 import Footer from './Footer';
 import './Header.css'
 import { useMediaQuery } from 'react-responsive';
+import HeaderEnglish from './HeaderEnglish';
+import SessionOutEnglish from './SessionOutEnglish';
 //import SessionOut from './SessionOut';
 
 
@@ -23,14 +25,14 @@ function MenuRapportRetraitEnglish(props)
       });    
     return (
 <>
-<Header username={props.username} isAdmin={props.isAdmin}/>
+<HeaderEnglish dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
 {isDesktop && <Container >
     
     <Row className='justify-content-center pb-3 pt-5 mt-5'>
         <Col xs = {"auto"}>
-        <Link to="/select_date_form_retrait_french" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='warning'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='text-dark'><pre>Daily Rapport</pre></b>
+        <Link to="/select_date_form_retrait_english" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant='btn--blue'  style={{width:400,height:80}} className='btn-lg btn--blue rounded zoom py-4'>
+        <b className='text-light'><pre>Daily Rapport</pre></b>
         </Button>
         </Link>
         </Col>
@@ -40,9 +42,9 @@ function MenuRapportRetraitEnglish(props)
 
     <Row className='justify-content-center pb-3'>
         <Col xs = {"auto"}>
-        <Link to="/select_mois_form_retrait_french" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='warning'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='text-dark'><pre>Monthly Rapport</pre></b>
+        <Link to="/select_mois_form_retrait_english" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant='btn--blue'  style={{width:400,height:80}} className='btn-lg btn--blue rounded zoom py-4'>
+        <b className='text-light'><pre>Monthly Rapport</pre></b>
         </Button>
         </Link>
         </Col>
@@ -77,7 +79,7 @@ function MenuRapportRetraitEnglish(props)
   
 
 </Container> }
-{/*<SessionOut setIsadmin={props.setIsadmin}/>*/}
+<SessionOutEnglish setIsadmin={props.setIsadmin}/>
 <Footer />
 </>
     )

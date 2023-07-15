@@ -26,7 +26,7 @@ function ConfirmationRetraitInfoOperationLingala(props)
   const [modalShow, setModalShow] = React.useState(false);
   const [modalShow2,setModalShow2] = React.useState(false);
     
-    const [message,setMessage] = useState("Page de confirmation Retrait")
+    const [message,setMessage] = useState("Page Ya confirmation ya Retrait")
     const [couleur,setCouleur] = useState("text-dark")
     const navigate = useNavigate()
     
@@ -60,7 +60,7 @@ function ConfirmationRetraitInfoOperationLingala(props)
                   res => {    
                     props.setModalShowRetrait(true)     
                     
-                    navigate('/menu_management_french')
+                    navigate('/menu_management_lingala')
 
                   }
                 )
@@ -76,7 +76,7 @@ function ConfirmationRetraitInfoOperationLingala(props)
     return (
         
         <>
-<HeaderEnglish dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
+<Header dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
 {isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={12}>
@@ -90,20 +90,19 @@ function ConfirmationRetraitInfoOperationLingala(props)
     </Row>
     <Row className='justify-content-start pb-3' >
         <Col xs={6}>
-        <p className='text-dark'>Code Retrait : <b className='text-danger'> {props.envoie2.infoEnvoie.code_retrait}</b></p>
-        <p className='text-dark'>Montant à récupérer: <b className='text-danger'>{Number(props.envoie2.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
-        <p className='text-dark'>Noms Beneficiare: <b className='text-dark'>{props.envoie2.infoEnvoie.nom_beneficiaire} {props.envoie2.infoEnvoie.postnom_beneficiaire} {props.envoie2.infoEnvoie.prenom_beneficiaire}</b> </p>
-        <p className='text-dark'>Pays Beneficiare: <b className='text-dark'> {props.envoie2.infoEnvoie.pays_beneficiaire}</b></p>
-        <p className='text-dark'>Type de retrait: <b className='text-dark'>{props.envoie2.infoEnvoie.type_service}</b> </p>
+        <p className='text-dark'>Code ya Retrait: <b className='text-danger'> {props.envoie2.infoEnvoie.code_retrait}</b></p>
+        <p className='text-dark'>Mosolo oyo esengeli kozwama : <b className='text-danger'>{Number(props.envoie2.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
+        <p className='text-dark'>Kombo ya Mozui: <b className='text-dark'>{props.envoie2.infoEnvoie.nom_beneficiaire} {props.envoie2.infoEnvoie.postnom_beneficiaire} {props.envoie2.infoEnvoie.prenom_beneficiaire}</b> </p>
+        <p className='text-dark'>Mboka ya Mozui: <b className='text-dark'> {props.envoie2.infoEnvoie.pays_beneficiaire}</b></p>
+        <p className='text-dark'>Nzela yako zwa mbongo: <b className='text-dark'>{props.envoie2.infoEnvoie.type_service}</b> </p>
        
         </Col>
 
         <Col xs={6}>
-        <p className='text-dark'>Noms Expediteur: <b className='text-dark'>{props.envoie2.infoEnvoie.nom_expediteur} {props.envoie2.infoEnvoie.postnom_expediteur} {props.envoie2.infoEnvoie.prenom_expediteur}</b> </p>
-        <p className='text-dark'>Pays Expediteur: <b className='text-dark'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
-        <p className='text-dark'>Numéro à transferer de l'argent: <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
-        <p className='text-dark'>date : <b className='text-dark'> {props.envoie2.infoEnvoie.date_heure_operation}</b></p>
-        <p className='text-dark'>Mobile Money: <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
+        <p className='text-dark'>Kombo ya Motindi: <b className='text-dark'>{props.envoie2.infoEnvoie.nom_expediteur} {props.envoie2.infoEnvoie.postnom_expediteur} {props.envoie2.infoEnvoie.prenom_expediteur}</b> </p>
+        <p className='text-dark'>Mboka ya Motindi: <b className='text-dark'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
+        {props.envoie2.infoEnvoie.numero_transfer==='N/A' ? <p></p> : <p className='text-dark'>Numéro yako tinda mbongo: <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>}
+        <p className='text-dark'>date: <b className='text-dark'> {props.envoie2.infoEnvoie.date_heure_operation}</b></p>
         </Col>
     </Row>
 
@@ -115,7 +114,7 @@ function ConfirmationRetraitInfoOperationLingala(props)
         <Col xs={12}>
         <Link to="" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant="warning" type="submit" onClick={e=>payerRetrait(e)}> 
-        Payé Beneficiaire
+        Futa Mozui
         </Button>
         </Link>
         </Col>
@@ -187,16 +186,16 @@ function MyVerticallyCenteredModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Paiement Reussi
+        Kofuta Elongi
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p className='text-success'><b>le code de retrait a été payé avec success </b>   
+        <p className='text-success'><b>code ya retrait efutami malamu</b>   
         </p>
       </Modal.Body>
       <Modal.Footer>
         <Link to="/home">
-        <Button variant='warning' onClick={props.onHide}>Fermer</Button>
+        <Button variant='warning' onClick={props.onHide}>kokanga</Button>
         </Link>
       </Modal.Footer>
     </Modal>
@@ -213,7 +212,7 @@ function MyVerticallyCenteredModal2(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Veuillez Patienter...
+          zela mukie...
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>

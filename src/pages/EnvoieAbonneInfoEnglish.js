@@ -87,13 +87,13 @@ console.log(props.envoie.infoEnvoie)
                       pays_expediteur : 'UK',
                       nom_beneficiaire : '',
                       prenom_beneficiaire : '',
-                      pays_beneficiaire : 'RD Congo',
+                      pays_beneficiaire : '',
                       montant_beneficiaire : '',
                       montant_pour_payer :'',
                       frais_envoie : '',
                       frais_tva : '',
                       type_service : '',
-                      numero_transfer :'**********',
+                      numero_transfer :'',
                       date_operation : '',
                       date_heure_operation : '',
                       month_year_operation:''
@@ -130,9 +130,10 @@ console.log(props.envoie.infoEnvoie)
         <p className='text-dark'>Amount to get by the receiver : <b className='text-dark p-2' style={{border:"2px solid black"}}>{Number(props.envoie.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p> 
         </Col>
 
+        
         <Col xs={6} className="text-start">
         <p className='text-dark'>Type of service : <b className='text-dark'>{props.envoie.infoEnvoie.type_service}</b> </p>
-        <p className='text-dark'>Mobile Money Number: <b className='text-dark'>{props.envoie.infoEnvoie.numero_transfer}</b> </p>
+        {props.envoie.infoEnvoie.numero_transfer==='' ? <p></p> : <p className='text-dark'>Mobile Money Number: <b className='text-dark'>{props.envoie.infoEnvoie.numero_transfer}</b> </p>}
         </Col>
     </Row>
     <hr style={{color:"darkorange"}}></hr>

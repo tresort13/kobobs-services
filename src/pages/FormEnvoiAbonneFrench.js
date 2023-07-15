@@ -15,6 +15,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import Modal from 'react-bootstrap/Modal';
 import * as formik from 'formik';
 import * as yup from 'yup';
+import HeaderFrench from './HeaderFrench';
 
 
 
@@ -23,23 +24,24 @@ import * as yup from 'yup';
 
 function FormEnvoiAbonneFrench(props)
 {
-  
+  console.log(props.envoie.infoEnvoie)
   const [modalShow, setModalShow] = useState(false);
     const[envoieAbonne,setEnvoieAbonne] = useState({infoEnvoieAbonne :{
       nom_beneficiaire : props.envoie.infoEnvoie.nom_beneficiaire,
       prenom_beneficiaire : props.envoie.infoEnvoie.prenom_beneficiaire,
       pays_beneficiaire : props.envoie.infoEnvoie.pays_beneficiaire,
       montant_beneficiaire : props.envoie.infoEnvoie.montant_beneficiaire,
-      type_service : 'By Cash (at the agency)',
+      type_service :"En espèces (à l'agence)",
       numero_transfer : props.envoie.infoEnvoie.numero_transfer 
         }})
     const { Formik } = formik;
 
     const testValidation = yup.object().shape({
-      nom_beneficiaire: yup.string().required('required field'),
-      prenom_beneficiaire: yup.string().required('required field'),
-      montant_beneficiaire : yup.string().required('required field'),
-      numero_transfer : yup.string().required('required field'),
+      nom_beneficiaire: yup.string().required('champs requis'),
+      prenom_beneficiaire: yup.string().required('champs requis'),
+      pays_beneficiaire: yup.string().required('champs requis'),
+      montant_beneficiaire : yup.string().required('champs requis'),
+      numero_transfer : yup.string().notRequired(),
     });
    
     const navigate = useNavigate()
@@ -55,7 +57,14 @@ function FormEnvoiAbonneFrench(props)
     
       const tauxEchanger = (values)=>
       {
+        if((values.type_service==='')||(values.type_service==="En espèces (à l'agence)"))
+        {
+          values.type_service="En espèces (à l'agence)"
+          values.numero_transfer=''
+          
+        }
         console.log(values)
+        console.log(props.abonne.infoAbonne)
         setModalShow(true)
         fetch('https://openexchangerates.org/api/latest.json?app_id=41351d88e53f4f0c89785fba9fc60ca0&symbols=GBP', {
                   method:'GET',
@@ -122,7 +131,7 @@ function FormEnvoiAbonneFrench(props)
     return (
         
         <>
-<HeaderEnglish dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
+<HeaderFrench dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
 {isDesktop && <Container className='bg-light justify-content-center text-center  mb-5 mt-3' style={{width:1000}} >
 <Row className='justify-content-center mb-3 pt-3' >
 <Col xs={6}>
@@ -134,7 +143,7 @@ function FormEnvoiAbonneFrench(props)
     </Row>
 <Row className='justify-content-start  py-2' >
 <Col xs={6}>
-        <i><b className='text-dark text-end'>Liste de destinataire(s) précédent(s) : </b></i>
+        <i><b className='text-dark text-end'>Liste de bénéficiaire(s) précédent(s) : </b></i>
   </Col>
   <Col xs={6} >
   <div ><Form.Select aria-label="Default select example">
@@ -157,12 +166,12 @@ function FormEnvoiAbonneFrench(props)
         prenom_beneficiaire : props.envoie.infoEnvoie.prenom_beneficiaire,
         pays_beneficiaire : props.envoie.infoEnvoie.pays_beneficiaire,
         montant_beneficiaire : props.envoie.infoEnvoie.montant_beneficiaire,
-        type_service :"En espèces (à l'agence)",
+        type_service : props.envoie.infoEnvoie.type_service,
         numero_transfer:props.envoie.infoEnvoie.numero_transfer,
     
       }}
     >
-     {({handleSubmit, handleChange,handleBlur, values, touched, errors
+     {({handleSubmit, handleChange,handleBlur, values, touched, errors,setFieldValue
          })=>(
           <Form noValidate onSubmit={handleSubmit}>
              <Row>
@@ -171,7 +180,7 @@ function FormEnvoiAbonneFrench(props)
     </Row>
           <Row className="mb-3">
             <Form.Group as={Col} md="6" controlId="validationFormik01">
-              <Form.Label>Prénom</Form.Label>
+              <Form.Label><span className='text-danger'>*</span>Prénom</Form.Label>
               <Form.Control
                 type="text"
                 name="prenom_beneficiaire"
@@ -182,7 +191,7 @@ function FormEnvoiAbonneFrench(props)
               <p className='text-danger'>{touched.prenom_beneficiaire && errors.prenom_beneficiaire}</p>
             </Form.Group>
             <Form.Group as={Col} md="6" controlId="validationFormik02">
-              <Form.Label>Nom de famille</Form.Label>
+              <Form.Label><span className='text-danger'>*</span>Nom de famille</Form.Label>
               <Form.Control
                 type="text"
                 name="nom_beneficiaire"
@@ -198,11 +207,13 @@ function FormEnvoiAbonneFrench(props)
    
    <Col xs ={12}>
    <Form.Group className="mb-3" controlId="validationFormik03">
-   <Form.Label className='text-dark'>Pays </Form.Label>
-   <Form.Select name='pays_beneficiaire'   value={values.pays_beneficiaire} aria-label="Default select example" onChange={handleChange} >
-    <option value='RD Congo' >RD Congo</option> 
+   <Form.Label className='text-dark'><span className='text-danger'>*</span>Pays </Form.Label>
+    <Form.Select name='pays_beneficiaire'   value={values.pays_beneficiaire} aria-label="Default select example" onChange={handleChange} >
+   <option>Sélectionner Pays</option>
+    <option value='RD Congo' >RD Congo</option>
+    <option value='Angola' >Angola</option> 
     </Form.Select>
-    
+    <p className='text-danger'>{touched.pays_beneficiaire && errors.pays_beneficiaire}</p>   
     </Form.Group>
    </Col>
 </Row>
@@ -214,8 +225,8 @@ function FormEnvoiAbonneFrench(props)
     <Row className='justify-content-center'>
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="validationFormik04" >
-        <Form.Label className='text-dark'><span className='text-danger'>*</span> which Amount do you want the receiver to get in US dollars ($)</Form.Label>
-        <Form.Control name="montant_beneficiaire"  value={values.montant_beneficiaire} onBlur={handleBlur} onChange={handleChange} type="text" placeholder="Amount to send for the receiver"  />
+        <Form.Label className='text-dark'><span className='text-danger'>*</span>combien voulez-vous que le destinataire reçoive en dollars? ($)</Form.Label>
+        <Form.Control name="montant_beneficiaire"  value={values.montant_beneficiaire} onBlur={handleBlur} onChange={handleChange} type="text" placeholder="entrer le montant à récevoir"  />
         <p className='text-danger'>{touched.montant_beneficiaire && errors.montant_beneficiaire}</p>
          </Form.Group>
         </Col>
@@ -224,8 +235,11 @@ function FormEnvoiAbonneFrench(props)
 
         <Col xs ={6}>
         <Form.Group className="mb-3" controlId="validationFormik05">
-        <Form.Label className='text-dark'>Type of service </Form.Label>
-        <Form.Select name="type_service"  value={values.type_service} aria-label="Default select example" onChange={handleChange} >
+        <Form.Label className='text-dark'>Type de service </Form.Label>
+        <Form.Select name="type_service"  value={values.type_service} aria-label="Default select example" onChange={(e)=>{
+             e.target.value ==="par transfert d'argent mobile (Mpesa, Orange Money, Airtel Money)" ? testValidation.fields.numero_transfer = yup.string().required('champs requis') :testValidation.fields.numero_transfer = yup.string().notRequired()
+             setFieldValue("type_service",e.target.value)
+        }} >
         <option value="En espèces (à l'agence)">En espèces (à l'agence)</option>
          <option value="par transfert d'argent mobile (Mpesa, Orange Money, Airtel Money)">par transfert d'argent mobile (Mpesa, Orange Money, Airtel Money) </option> 
          </Form.Select>
@@ -236,7 +250,7 @@ function FormEnvoiAbonneFrench(props)
         <Form.Label className='text-dark'><span className="text-danger">*</span> Entrez le numéro de téléphone portable pour transférer l'argent </Form.Label>
         <InputGroup className="mb-3" controlId="validationFormik06">
         <InputGroup.Text id="basic-addon1">+243</InputGroup.Text>
-        <Form.Control name="numero_transfer"   onBlur={handleBlur}  onChange={handleChange} type="text" placeholder='numéro portable'  />
+        <Form.Control name="numero_transfer" value={values.numero_transfer}   onBlur={handleBlur}  onChange={handleChange} type="text" placeholder='numéro portable de transfert '  />
         </InputGroup>
         <p className='text-danger'>{touched.numero_transfer && errors.numero_transfer}</p>
         </Col> : <span></span>}

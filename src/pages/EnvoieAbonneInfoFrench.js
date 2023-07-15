@@ -88,13 +88,13 @@ const submitEnvoie = (e)=>
                   pays_expediteur : 'UK',
                   nom_beneficiaire : '',
                   prenom_beneficiaire : '',
-                  pays_beneficiaire : 'RD Congo',
+                  pays_beneficiaire : '',
                   montant_beneficiaire : '',
                   montant_pour_payer :'',
                   frais_envoie : '',
                   frais_tva : '',
                   type_service : '',
-                  numero_transfer :'**********',
+                  numero_transfer :'',
                   date_operation : '',
                   date_heure_operation : '',
                   month_year_operation:''
@@ -118,7 +118,7 @@ const submitEnvoie = (e)=>
 {isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
   <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={12}>
-        <p className='couleur2 '><i><b>{message}</b></i></p>
+        <p className='text-danger'><i><b>{message} !</b></i></p>
         </Col>
     </Row>
 
@@ -129,22 +129,22 @@ const submitEnvoie = (e)=>
         </Col>
 
         <Col xs={6} className="text-start">
-        <p className='text-dark'>Type de retrait: <b className='text-dark'>{props.envoie.infoEnvoie.type_service}</b> </p>
-        <p className='text-dark'>Numéro de transfert: <b className='text-dark'>{props.envoie.infoEnvoie.numero_transfer}</b> </p>     
+        <p className='text-dark'>Type de service : <b className='text-dark'>{props.envoie.infoEnvoie.type_service}</b> </p>
+        {props.envoie.infoEnvoie.numero_transfer==='' ? <p></p> : <p className='text-dark'>Numéro yako tinda mbongo: <b className='text-dark'>{props.envoie.infoEnvoie.numero_transfer}</b> </p>}
         </Col>
     </Row>
 
     <Row className='justify-content-center pb-3' >
         <Col xs={6} className="text-start" style={{borderRight:"2px solid black"}}>
-        <p className='couleur2 text-center'><b><u>Sender </u></b> </p>
+        <p className='couleur2 text-center'><b><u>Expéditeur </u></b> </p>
         <p className='text-dark'>Nom complet: <b className='text-dark'>{props.envoie.infoEnvoie.prenom_expediteur} {props.envoie.infoEnvoie.nom_expediteur}</b> </p>
         <p className='text-dark'>Téléphone: <b className='text-dark'> {props.envoie.infoEnvoie.numero_expediteur} </b></p>
         <p className='text-dark'>Pays: <b className='text-dark'> {props.envoie.infoEnvoie.pays_expediteur}</b></p>
         </Col>
     
         <Col xs={6} className="text-start"> 
-        <p className='couleur2 text-center'><b><u>Receiver </u></b> </p>
-        <p className='text-dark'>Nom complet:: <b className='text-dark'>{props.envoie.infoEnvoie.prenom_beneficiaire} {props.envoie.infoEnvoie.nom_beneficiaire} </b> </p>
+        <p className='couleur2 text-center'><b><u>Bénéficiare </u></b> </p>
+        <p className='text-dark'>Nom complet: <b className='text-dark'>{props.envoie.infoEnvoie.prenom_beneficiaire} {props.envoie.infoEnvoie.nom_beneficiaire} </b> </p>
         <p className='text-dark'>Pays: <b className='text-dark'>{props.envoie.infoEnvoie.pays_beneficiaire}</b> </p>
         </Col>
     </Row>

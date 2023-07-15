@@ -4,23 +4,29 @@ import Button from "react-bootstrap/Button";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import {Link} from  'react-router-dom';
+import {Link,useNavigate} from  'react-router-dom';
 import Header from './Header';
 import { useMediaQuery } from 'react-responsive';
 import Footer from './Footer';
 import Table from 'react-bootstrap/Table';
+import HeaderEnglish from './HeaderEnglish';
+import SessionOutEnglish from './SessionOutEnglish';
 //import SessionOut from './SessionOut';
 
 
 
 function MonthlyRecettesEnglish(props)
 {
+  const operationDetailArray = []
+
     const isDesktop = useMediaQuery({
         query: "(min-width: 1224px)"
       });
       const isMobileOrTablet = useMediaQuery({
         query: "(max-width: 1224px)"
       });
+
+      const navigate = useNavigate()
 
             const message = ()=>
         {
@@ -54,7 +60,7 @@ const total_montant = props.monthlyRapport.reduce((total,value)=>
   
     return (
         <>
-            <Header username={props.username} isAdmin={props.isAdmin}/>
+            <HeaderEnglish dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
             <div>
 {isDesktop && <Container fluid className='bg-light justify-content-center text-center borders mb-5' style={{marginTop:20}} >
 
@@ -76,6 +82,7 @@ const total_montant = props.monthlyRapport.reduce((total,value)=>
           <th>sending fees(£)</th>
           <th>TVA fees(£)</th>
           <th>Total Amount Paid (£)</th>
+          <th>Operation details</th>
         </tr>
       </thead>
       <tbody>
@@ -87,6 +94,12 @@ const total_montant = props.monthlyRapport.reduce((total,value)=>
              <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.frais_envoie).toFixed(2))}</b></i></td>
              <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.frais_tva).toFixed(2))}</b></i></td>
              <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_total).toFixed(2))}</b></i></td>
+             <td onClick={()=>{
+               operationDetailArray.push(value)
+               console.log(operationDetailArray)
+               props.dataDetailEnvoieTotal(operationDetailArray)
+               navigate('/details_retraits_info_english')
+             }} ><i className="text-primary" ><b><u>check details</u></b></i></td>
             </tr>     
         }) 
         }
@@ -201,7 +214,7 @@ const total_montant = props.monthlyRapport.reduce((total,value)=>
           </Col>
         </Row>
 </div>
-{/*<SessionOut setIsadmin={props.setIsadmin}/>*/}
+<SessionOutEnglish setIsadmin={props.setIsadmin}/>
 <Footer />
         </>
     )

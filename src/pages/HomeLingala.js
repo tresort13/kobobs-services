@@ -14,6 +14,7 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import ClipLoader from "react-spinners/ClipLoader";
 import Modal from 'react-bootstrap/Modal';
+import SessionOutLingala from './SessionOutLingala';
 
 
 
@@ -31,7 +32,7 @@ function HomeLingala(props)
 {
   if(props.isLogged)
   {
-    navigate('/form_envoie_abonne_lingala')  
+    navigate('/form_envoie_abonne')  
   }
   else{
     props.setModalShow(true)
@@ -42,7 +43,7 @@ function HomeLingala(props)
 {
   if(props.isLogged)
   {
-    navigate('/form_retrait_info_lingala')  
+    navigate('/form_retrait_info')  
   }
   else{
     props.setModalShow(true)
@@ -99,7 +100,7 @@ function HomeLingala(props)
       });    
     return (
 <>
-<Header dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
+<Header setDataValidation={props.setDataValidation} dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
 {isDesktop && <Container>  
   <Row className="text-center justify-content-center  mt-3 mb-3">
     <col md={2}>
@@ -277,6 +278,7 @@ function HomeLingala(props)
     </Row>
   </Container>
   }
+  <SessionOutLingala setIsadmin={props.setIsadmin}/>
      <MyVerticallyCenteredModal envoie3={props.envoie3} show={props.modalShowEnvoi} onHide={() => props.setModalShowEnvoi(false)} />
    <LoginBoxLingala dataAbonne={props.dataAbonne} language2={props.language2} setLanguage2={props.setLanguage2} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} modalShow={props.modalShow} modalShow4={props.modalShow4} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
 <Footer />

@@ -18,6 +18,7 @@ import ChangePasswordBoxLingala from './ChangePasswordBoxLingala';
 import ContactBoxLingala from './ContactBoxLingala';
 import LoginBoxLingala from './LoginBoxLingala';
 import Badge from 'react-bootstrap/Badge';
+import SessionOutLingala from './SessionOutLingala';
 
 
 
@@ -86,6 +87,14 @@ function Header(props)
       window.localStorage.setItem("isAdmin", false)
       window.localStorage.setItem("isLogged", false)
       window.localStorage.setItem("isStaff", false)
+      window.localStorage.setItem("abonne",JSON.stringify({infoAbonne :{
+        agent_id:'',
+        nom_expediteur : '',
+        prenom_expediteur : '',
+        email_expediteur : '',
+        numero_expediteur: '',
+        pays_expediteur : 'UK',
+        }}))
       window.location.reload();
      // navigate('/')
       
@@ -190,7 +199,7 @@ function Header(props)
         
 { props.isLogged === true ? <Col xs={6} className="my-auto  my-auto text-end">
         {props.isAdmin ?
-         count > 0 ? <Link to="/form_abonne_non_valide_french"><Badge className='m-0' bg="danger">{count}</Badge><span><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="text-light bi bi-bell-fill mt-2 "  viewBox="0 0 16 16">
+         count > 0 ? <Link to="/table_validation_lingala"><Badge className='m-0' bg="danger">{count}</Badge><span><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="text-light bi bi-bell-fill mt-2 "  viewBox="0 0 16 16">
         <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
         </svg></span></Link> : <Link to="" onClick={openNoValidDialog}><span><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="text-light bi bi-bell-fill mt-2 mx-2" viewBox="0 0 16 16">
         
@@ -431,23 +440,26 @@ function Header(props)
     </Row>
    
    </Container>}
-   <Offcanvas show={show2} onHide={handleClose2} placement='end'  className='bg-dark mt-5' style={{height:250,width:300}}>
+   <Offcanvas show={show2} onHide={handleClose2} placement='end'  className='bg-dark mt-5' style={{height:300,width:300}}>
            <Offcanvas.Header closeButton closeVariant='white'>
             <Offcanvas.Title className="text-end mx-auto"><span><svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" className="bi bi-person-circle text-light" viewBox="0 0 16 16">
          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
          <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
           </svg></span></Offcanvas.Title>
            </Offcanvas.Header>
-           <Offcanvas.Body>
+            <Offcanvas.Body>
            <Nav justify menuVariant="dark"  className="navbar justify-content-end flex-grow-1 pe-3 flex-column">
-            <span onClick={passwordChange} className='mb-3 btn3 btn-sm btn--orange' ><b className='text-light'>Bobongola Mot de passe</b>  
+           <Nav.Link href="/my_profil_lingala"><span className='couleur2 '><u><b>Historique na yo</b></u></span></Nav.Link>
+           <NavDropdown.Divider />
+            <span onClick={passwordChange} className='mb-3 btn3 btn-sm btn--orange' ><b className='text-light'>Bobongola mot de passe</b>  
             </span>
-          
-            <Button variant='danger' onClick={logout}><span><b>Kobima</b>  
+            <NavDropdown.Divider />
+            <Button variant='danger' onClick={logout}><span><b>kobima</b>  
             </span></Button>
            </Nav>
            </Offcanvas.Body>
       </Offcanvas>
+      <SessionOutLingala setIsadmin={props.setIsadmin}/>
     <ChangePasswordBoxLingala modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} userID={props.userID} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber}/>
    <ContactBoxLingala language2={props.language2} setLanguage2={props.setLanguage2} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} language={props.language}/>
    <LoginBoxLingala dataAbonne={props.dataAbonne} language2={props.language2} setLanguage2={props.setLanguage2} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} modalShow={props.modalShow} modalShow4={props.modalShow4} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>

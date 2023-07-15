@@ -11,6 +11,7 @@ import HeaderEnglish from './HeaderEnglish';
 import Footer from './Footer';
 import Modal from 'react-bootstrap/Modal';
 import ClipLoader from "react-spinners/ClipLoader";
+import HeaderFrench from './HeaderFrench';
 
 
 
@@ -19,7 +20,7 @@ const useState = React.useState
 function ConfirmationEnvoieInfoFrench(props)
 {
 
-    const [message,setMessage] = useState("Le statut de votre code ne sera valide qu'après le paiement intégral de votre transfert !!")
+    const [message,setMessage] = useState("Le code sera valide qu'après le paiement de votre transfert")
     const [couleur,setCouleur] = useState("text-dark")
     const [modalShow, setModalShow] = React.useState(true);
     const [modalShow2, setModalShow2] = React.useState(true);
@@ -37,7 +38,7 @@ function ConfirmationEnvoieInfoFrench(props)
     props.setClientForm(false)
     props.setSaveAbonne('')
     props.setModalShowEnvoi(true)
-    navigate('/menu_management_french')
+    navigate('/home_french')
   }
 
   const closeSaveAbonne = ()=>{
@@ -57,7 +58,7 @@ function ConfirmationEnvoieInfoFrench(props)
     return (
         
         <>
-<HeaderEnglish dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
+<HeaderFrench dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
 {isDesktop && <Container className='bg-light justify-content-center   mb-5' style={{marginTop:50,width:1000}} >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={6}>
@@ -85,7 +86,7 @@ function ConfirmationEnvoieInfoFrench(props)
         <p className='text-dark'>Nom complet bénéficiaire: <b className='text-dark'>{props.envoie3.infoEnvoie.prenom_beneficiaire} {props.envoie3.infoEnvoie.nom_beneficiaire}</b> </p> 
         <p className='text-dark'>Pays bénéficiaire: <b className='text-dark'> {props.envoie3.infoEnvoie.pays_beneficiaire}</b></p>
         <p className='text-dark'>Type de service : <b className='text-dark'>{props.envoie3.infoEnvoie.type_service}</b> </p>
-        <p className='text-dark'>Numéro de transfert : <b className='text-dark'>{props.envoie3.infoEnvoie.numero_transfer}</b> </p>
+        {props.envoie3.infoEnvoie.numero_transfer==='N/A' ? <p></p> : <p className='text-dark'>Numéro de transfert: <b className='text-dark'>{props.envoie3.infoEnvoie.numero_transfer}</b> </p>}
         <p className='text-dark'>date et heure: <b className='text-dark'> {props.envoie3.infoEnvoie.date_heure_operation}</b></p>
         </Col>
     </Row>
@@ -179,11 +180,11 @@ function MyVerticallyCenteredModal(props) {
       <Modal.Body>
         <p><b>Votre code :</b> </p>
       <p ><b className='text-success display-6 p-2' style={{border:"2px solid black"}}><strong>{props.envoie3.infoEnvoie.code_retrait}</strong></b></p>
-        {props.clientForm === true ? <p ><b className='text-danger'>{props.saveAbonne}</b></p> :
+        {props.clientForm === true ? <p ><b className='couleur2'>{props.saveAbonne}</b></p> :
         <p ><b className='text-danger'>Gardez le toujours secret !! </b></p> }
       </Modal.Body>
       <Modal.Footer>
-        <Button variant='warning' onClick={props.onHide}>OK j'ai compris</Button>
+        <Button variant='warning' onClick={props.onHide}>OK</Button>
       </Modal.Footer>
     </Modal>
   );

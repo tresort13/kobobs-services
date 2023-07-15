@@ -12,6 +12,8 @@ import { useMediaQuery } from 'react-responsive';
 //import SessionOut from './SessionOut';
 import HeaderFrench from './HeaderFrench';
 import HeaderEnglish from './HeaderEnglish';
+import SessionOutEnglish from './SessionOutEnglish';
+import SessionOutLingala from './SessionOutLingala';
 
 
 function MenuGestionOperationsRetraitEnglish(props)
@@ -30,9 +32,9 @@ function MenuGestionOperationsRetraitEnglish(props)
    
     <Row className='justify-content-center pb-3 pt-5 mt-5'>
         <Col xs = {"auto"}>
-        <Link to="/form_retrait_operation_french" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='warning'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='text-dark'><pre>Make a withdrawal</pre></b>
+        <Link to="/form_retrait_operation_english" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant='btn--blue'  style={{width:400,height:80}} className='btn-lg btn--blue rounded zoom py-4'>
+        <b className='text-light'><pre>Make a withdrawal</pre></b>
         </Button>
         </Link>
         </Col>
@@ -42,9 +44,9 @@ function MenuGestionOperationsRetraitEnglish(props)
 
     <Row className='justify-content-center pb-3'>
         <Col xs = {"auto"}>
-        <Link to="/menu_rapport_retrait_french" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='warning'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='text-dark'><pre>Operation Report Withdrawals</pre></b>
+        <Link to="/menu_rapport_retrait_english" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant='btn--blue'  style={{width:400,height:80}} className='btn-lg btn--blue rounded zoom py-4'>
+        <b className='text-light'><pre>Operation Report Withdrawals</pre></b>
         </Button>
         </Link>
         </Col>
@@ -79,7 +81,7 @@ function MenuGestionOperationsRetraitEnglish(props)
  
 
 </Container>}
-{/*<SessionOut setIsadmin={props.setIsadmin}/>*/}
+<SessionOutLingala setIsadmin={props.setIsadmin}/>
 <Footer />
 </>
     )

@@ -12,6 +12,7 @@ import Header from './Header';
 import Footer from './Footer';
 //import SessionOut from './SessionOut';
 import Modal from 'react-bootstrap/Modal';
+import HeaderFrench from './HeaderFrench';
 
 
 const useState = React.useState
@@ -71,40 +72,40 @@ function DailyRapportInfoRetraitFrench(props)
 
       const detailPaye =()=>
       {
-       props.dataDetailEnvoieTotal(props.dailyRapport.filter((value)=>
+       props.dataDetailEnvoieTotalTableau(props.dailyRapport.filter((value)=>
        {
          return value.status_retrait === "Code Retrait Payé"
        }))
-       navigate('/details_retraits_info')
+       navigate('/table_daily_rapport_french')
       }
  
       const detailValide =()=>
       {
-       props.dataDetailEnvoieTotal(props.dailyRapport.filter((value)=>
+       props.dataDetailEnvoieTotalTableau(props.dailyRapport.filter((value)=>
        {
          return value.status_retrait === "Code Retrait Valide"
        }))
-       navigate('/details_retraits_info')
+       navigate('/table_daily_rapport_french')
       }
  
       const detailNonValide =()=>
       {
-       props.dataDetailEnvoieTotal(props.dailyRapport.filter((value)=>
+       props.dataDetailEnvoieTotalTableau(props.dailyRapport.filter((value)=>
        {
          return value.status_retrait === "code retrait en attente de validation"
        }))
-       navigate('/details_retraits_info')     
+       navigate('/table_daily_rapport_french')     
       }
 
    
     return (
         
         <>
-        <Header username={props.username} isAdmin={props.isAdmin}/>
+        <HeaderFrench dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
 {isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
-<Row className='justify-content-center mb-3 pt-3' >
+<Row className='justify-content-center  pt-3' >
         <Col xs={12}>
-        <p className='couleur2'><i><b>{message}</b></i></p>
+        <p className='text-dark'><i><b>{message}</b></i></p>
         </Col>
     </Row>
 
@@ -115,8 +116,8 @@ function DailyRapportInfoRetraitFrench(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={12}>
-        <p className='text-dark'>Type de Rapport: <b className='couleur2'>Journalier</b> </p>
-        <p className='text-dark'>Date : <b className='couleur2'>{props.dateInfo}</b>  </p>
+        <p className='text-dark'><b>Type de Rapport:</b> <b className='couleur2'>Journalier</b> </p>
+        <p className='text-dark'><b>Date :</b> <b className='couleur2'>{props.dateInfo}</b>  </p>
         
         </Col>
     </Row>
@@ -126,11 +127,11 @@ function DailyRapportInfoRetraitFrench(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <p className='text-dark'>Nombres des retraits: <b className='couleur2'> {nombre_retrait_paye}</b> </p>
+        <p className='text-dark'><b>Nombres des retraits:</b> <b className='couleur2'> {nombre_retrait_paye}</b> </p>
         </Col>
 
         <Col xs={6}>
-        {nombre_retrait_paye > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={detailPaye}>Voir Details </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={closeModal}>Voir Details </p></a>}
+        {nombre_retrait_paye > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailPaye}>Voir Details </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={closeModal}>Voir Details </p></a>}
         </Col>
     </Row>
 

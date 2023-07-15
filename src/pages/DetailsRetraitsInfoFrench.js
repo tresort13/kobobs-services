@@ -11,6 +11,7 @@ import { useMediaQuery } from 'react-responsive';
 import Header from './Header';
 import Footer from './Footer';
 import Modal from 'react-bootstrap/Modal';
+import HeaderFrench from './HeaderFrench';
 //import SessionOut from './SessionOut';
 
 
@@ -56,7 +57,7 @@ console.log(props.detailEnvoieTotal)
     return (
         
         <>
-        <Header username={props.username} isAdmin={props.isAdmin}/>
+        <HeaderFrench dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
 {isDesktop && props.detailEnvoieTotal.length > 0 ? props.detailEnvoieTotal.map((value)=>
     {
     return <Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:50,width:1000}} >
@@ -122,6 +123,12 @@ console.log(props.detailEnvoieTotal)
     <p></p>}        
     </Col>
 
+    <Col xs={12}>
+     {props.message === "Historique de suppression" ? <div><p className='text-dark'>operation fait par : <b className='text-dark'>{value.deletion_executed_by_owner}</b> </p>
+     <p className='text-dark'>Date et heure  de suppression: <b className='text-dark'> {value.date_heure_operation_deletion}</b></p></div>  :
+    <p></p>}        
+    </Col>
+
     </Row>
 
 
@@ -131,15 +138,7 @@ console.log(props.detailEnvoieTotal)
     </Row>
 
 
-    <Row className='justify-content-center pb-3'>
-    <Col xs={6}>
-        <Link to="/menu_rapport_retrait_french" style={{color:'white',textDecorationLine:'none'}}>
-        <Button name='validate' value={value.code_retrait} className='py-2' variant="warning" type="submit">
-        Fermer
-        </Button>
-        </Link>
-        </Col>
-    </Row>
+   
 
     
 

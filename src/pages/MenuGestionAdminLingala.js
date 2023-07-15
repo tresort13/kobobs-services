@@ -12,6 +12,7 @@ import { useMediaQuery } from 'react-responsive';
 //import SessionOut from './SessionOut';
 import HeaderFrench from './HeaderFrench';
 import HeaderEnglish from './HeaderEnglish';
+import SessionOutLingala from './SessionOutLingala';
 
 
 function MenuGestionAdminLingala(props)
@@ -25,14 +26,14 @@ function MenuGestionAdminLingala(props)
       });    
     return (
 <>
-<HeaderEnglish dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
+<Header dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
 {isDesktop && <Container >
    
     <Row className='justify-content-center pb-3 pt-5 mt-5'>
         <Col xs = {"auto"}>
-        <Link to="/menu_rapport_recette_french" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='warning'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='text-dark'><pre>Rapport ya mosolo</pre></b>
+        <Link to="/menu_rapport_recette_lingala" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant='btn--blue'  style={{width:400,height:80}} className='btn-lg btn--blue rounded zoom py-4'>
+        <b className='text-light'><pre>Rapport ya mosolo</pre></b>
         </Button>
         </Link>
         </Col>
@@ -42,9 +43,9 @@ function MenuGestionAdminLingala(props)
 
     <Row className='justify-content-center pb-3 '>
         <Col xs = {"auto"}>
-        <Link to="/menu_info_abonne_french" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='warning'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='text-dark'><pre>Informations yaba abonnés</pre></b>
+        <Link to="/menu_info_abonne_lingala" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant='btn--blue'  style={{width:400,height:80}} className='btn-lg btn--blue rounded zoom py-4'>
+        <b className='text-light'><pre>Informations yaba abonnés</pre></b>
         </Button>
         </Link>
         </Col>
@@ -53,8 +54,8 @@ function MenuGestionAdminLingala(props)
     <Row className='justify-content-center pb-3 '>
         <Col xs = {"auto"}>
         <a href="https://kobobsapi.herokuapp.com/admin/" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='warning'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='text-dark'><pre>Bokambami yaba saleli</pre></b>
+        <Button variant='btn--blue'  style={{width:400,height:80}} className='btn-lg btn--blue rounded zoom py-4'>
+        <b className='text-light'><pre>gestion yaba utilisateurs</pre></b>
         </Button>
         </a>
         </Col>
@@ -92,7 +93,7 @@ function MenuGestionAdminLingala(props)
  
 
 </Container>}
-{/*<SessionOut setIsadmin={props.setIsadmin}/>*/}
+<SessionOutLingala setIsadmin={props.setIsadmin}/>
 <Footer />
 </>
     )

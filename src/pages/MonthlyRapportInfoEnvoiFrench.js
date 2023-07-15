@@ -12,6 +12,8 @@ import Header from './Header';
 import Footer from './Footer';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Modal from 'react-bootstrap/Modal';
+import HeaderFrench from './HeaderFrench';
+import SessionOutFrench from './SessionOutFrench';
 //import SessionOut from './SessionOut';
 
 
@@ -69,34 +71,35 @@ function MonthlyRapportInfoEnvoiFrench(props)
 
      const detailTotal =()=>
      {
-      props.dataDetailEnvoieTotal(props.monthlyRapport)
-      navigate('/details_envois_info')
+      props.dataDetailEnvoieTotalTableau(props.monthlyRapport)
+      navigate('/table_monthly_rapport_french')
      }
 
      const detailValide =()=>
      {
-      props.dataDetailEnvoieTotal(props.monthlyRapport.filter((value)=>
+      props.dataDetailEnvoieTotalTableau(props.monthlyRapport.filter((value)=>
       {
         return value.status_retrait !== "code retrait en attente de validation"
       }))
-      navigate('/details_envois_info')
+      navigate('/table_monthly_rapport_french')
      }
 
      const detailNonValide =()=>
      {
-      props.dataDetailEnvoieTotal(props.monthlyRapport.filter((value)=>
+      props.dataDetailEnvoieTotalTableau(props.monthlyRapport.filter((value)=>
       {
         return value.status_retrait === "code retrait en attente de validation"
       }))
-      navigate('/details_envois_info')
+      navigate('/table_monthly_rapport_french')
      }
+     
      
     return (
         
         <>
-        <Header username={props.username} isAdmin={props.isAdmin}/>
+        <HeaderFrench dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
 {isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
-<Row className='justify-content-center mb-3 pt-3' >
+<Row className='justify-content-center pt-3' >
         <Col xs={6}>
         <p className='text-dark'><i><b>{message}</b></i></p>
         </Col>
@@ -109,8 +112,8 @@ function MonthlyRapportInfoEnvoiFrench(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={12}>
-        <p className='text-dark'>Type de Rapport: <b className='couleur2'>Mensuel</b> </p>
-        <p className='text-dark'>Période : <b className='couleur2'>{props.moisInfo}</b>  </p>
+        <p className='text-dark'><b>Type de Rapport</b>: <b className='couleur2'>Mensuel</b> </p>
+        <p className='text-dark'><b>Période</b> : <b className='couleur2'>{props.moisInfo}</b>  </p>
         
         </Col>
     </Row>
@@ -120,11 +123,11 @@ function MonthlyRapportInfoEnvoiFrench(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <p className='text-dark'>Nombres d'envois total effectués : <b className='couleur2'> {nombre_envoie_total}</b>  </p>
+        <p className='text-dark'><b>Nombres d'envois total effectués :</b> <b className='couleur2'> {nombre_envoie_total}</b>  </p>
          </Col>
 
          <Col xs={6}>
-       {nombre_envoie_total > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={detailTotal}>Voir Details </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit"  onClick={closeModal}>Voir Details </p></a>}
+       {nombre_envoie_total > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailTotal}>Voir Details </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit"  onClick={closeModal}>Voir Details </p></a>}
        
     </Col>
     </Row>
@@ -135,13 +138,13 @@ function MonthlyRapportInfoEnvoiFrench(props)
 
         <Row>
           <Col>
-        <p className='text-dark'>Nombres d'envois validés : <b className='couleur2'> {nombre_envoie_valide}</b> </p>
-        <p className='text-dark'>Nombres d'envois non validés : <b className='couleur2'> {nombre_envoie_nonvalide}</b></p>
+        <p className='text-dark'><b>Nombres d'envois validés :</b> <b className='couleur2'> {nombre_envoie_valide}</b> </p>
+        <p className='text-dark'><b>Nombres d'envois non validés :</b> <b className='couleur2'> {nombre_envoie_nonvalide}</b></p>
         </Col>
 
        <Col xs={6}>
-        {nombre_envoie_valide > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={detailValide}>Voir Details </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={closeModal}>Voir Details </p></a>}
-        {nombre_envoie_nonvalide > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={detailNonValide}>Voir Details </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit"  onClick={closeModal}>Voir Details </p></a>}
+        {nombre_envoie_valide > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailValide}>Voir Details </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={closeModal}>Voir Details </p></a>}
+        {nombre_envoie_nonvalide > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailNonValide}>Voir Details </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit"  onClick={closeModal}>Voir Details </p></a>}
     </Col>
     </Row>
 
@@ -228,7 +231,7 @@ function MonthlyRapportInfoEnvoiFrench(props)
             <p></p>
           </Col>
         </Row>
-{/*<SessionOut setIsadmin={props.setIsadmin}/>*/}
+<SessionOutFrench setIsadmin={props.setIsadmin}/>
 <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
 <Footer />
         </>

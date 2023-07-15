@@ -15,6 +15,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import  './Header.css';
 import * as formik from 'formik';
 import * as yup from 'yup';
+import SessionOutFrench from './SessionOutFrench';
 //import SessionOut from './SessionOut';
 
 
@@ -172,7 +173,7 @@ return (
 </Container>} 
 <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
 <MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
-{/*<SessionOut setIsadmin={props.setIsadmin}/>*/}
+<SessionOutFrench setIsadmin={props.setIsadmin}/>
 <Footer />
 </>
     )

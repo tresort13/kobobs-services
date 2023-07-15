@@ -55,7 +55,7 @@ const [modalShowContact4, setModalShowContact4] = React.useState(false);
 }
 
 function MyVerticallyCenteredModal(props) {
-console.log(props.language2)
+
 
   const [state,setState] = useState({
     credentials :{

@@ -15,6 +15,8 @@ import Modal from 'react-bootstrap/Modal';
 import ClipLoader from "react-spinners/ClipLoader";
 import * as formik from 'formik';
 import * as yup from 'yup';
+import HeaderEnglish from './HeaderEnglish';
+import SessionOutEnglish from './SessionOutEnglish';
 
 //import SessionOut from './SessionOut';
 
@@ -123,7 +125,7 @@ function MenuInfoAbonnesEnglish(props)
      const detailTotal =()=>
      {
       props.setAbonneInfo2(abonneInfo)
-      navigate('/details_abonnes_info')
+      navigate('/table_abonnes_english')
      }
 
      const detailValide =()=>
@@ -198,7 +200,7 @@ function MenuInfoAbonnesEnglish(props)
     return (
         
         <>
-        <Header username={props.username} isAdmin={props.isAdmin}/>
+        <HeaderEnglish dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
 {isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={6}>
@@ -225,11 +227,11 @@ function MenuInfoAbonnesEnglish(props)
     */}
     <Row className='justify-content-center pb-3' >
         <Col xs={3}>
-        <p className='text-dark py-2 text-center'><strong>Total number of subscribers :</strong> <b className='couleur2'>  {nombre_abonnes_total}</b>  </p>
+        <p className='text-dark py-2 text-center'><strong>Number of subscribers :</strong> <b className='couleur2'>  {nombre_abonnes_total}</b>  </p>
          </Col>
 
          <Col xs={4}>
-       {nombre_abonnes_total > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailTotal}>Voir tous les Abonnés </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded' type="submit"  onClick={closeModal}>Voir Details </p></a>}
+       {nombre_abonnes_total > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailTotal}>See all subscribers </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded' type="submit"  onClick={closeModal}>more details </p></a>}
        
     </Col>
     </Row>
@@ -279,7 +281,7 @@ function MenuInfoAbonnesEnglish(props)
 
  {abonne.length > 0 ? abonne.map((value)=>
     {
-    return <div className='bg-light justify-content-center text-center' style={{width:1000}} >
+    return <div className='bg-light justify-content-center text-center' style={{border:"2px solid black"}} >
 <Row className='justify-content-start' >
         <Col xs={12}>
         <p className='couleur2'><i><b>Subscriber Information</b></i></p>
@@ -288,11 +290,13 @@ function MenuInfoAbonnesEnglish(props)
     <Row className='justify-content-start text-start pb-3 mb-3' >
       <Col xs={2}>
       </Col>
-    <Col xs={5} className='justify-content-start'>
-        <p className='text-dark'>Subscriber Name: <b className='text-dark'>{value.nom_expediteur} {value.postnom_expediteur} {value.prenom_expediteur}</b> </p>
+      <Col xs={5} className='justify-content-start'>
+        <p className='text-dark'>Subscriber First Name: <b className='text-dark'>{value.prenom_expediteur}</b> </p>
+        <p className='text-dark'>Subscriber Last Name: <b className='text-dark'>{value.nom_expediteur} {value.postnom_expediteur}</b> </p>
         <p className='text-dark'>Subscriber Email: <b className='text-dark '> {value.email_expediteur}</b></p>
         <p className='text-dark'>Subscriber Country: <b className='text-dark '> {value.pays_expediteur}</b></p>
         <p className='text-dark'>Subscriber Number: <b className='text-dark'> {value.numero_expediteur}</b></p>
+        {value.adresse_expediteur != 'N/A' ? <p className='text-dark'>Subscriber Address: <b className='text-dark'> {value.adresse_expediteur}</b></p> : <span></span>}
         <p className='text-dark'>Subscriber creation date and time: <b className='text-dark'> {value.date_heure_operation}</b></p> 
     </Col>
 
@@ -308,7 +312,7 @@ function MenuInfoAbonnesEnglish(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <Link to="/menu_rapport_envoi_french" style={{color:'white',textDecorationLine:'none'}}>
+        <Link to="/menu_gestion_english" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant="danger" type="submit">
         close
         </Button>
@@ -386,7 +390,7 @@ function MenuInfoAbonnesEnglish(props)
             <p></p>
           </Col>
         </Row>
-      {/* <SessionOut setIsadmin={props.setIsadmin}/>*/} 
+      <SessionOutEnglish setIsadmin={props.setIsadmin}/>
       <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
       <MyVerticallyCenteredModal3 show={modalShow3} onHide={() => setModalShow3(false)} />
        <Footer />

@@ -12,6 +12,7 @@ import Header from './Header';
 import Footer from './Footer';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Modal from 'react-bootstrap/Modal';
+import SessionOutLingala from './SessionOutLingala';
 //import SessionOut from './SessionOut';
 
 
@@ -69,32 +70,32 @@ function MonthlyRapportInfoEnvoiLingala(props)
 
      const detailTotal =()=>
      {
-      props.dataDetailEnvoieTotal(props.monthlyRapport)
-      navigate('/details_envois_info')
+      props.dataDetailEnvoieTotalTableau(props.monthlyRapport)
+      navigate('/table_monthly_rapport_lingala')
      }
 
      const detailValide =()=>
      {
-      props.dataDetailEnvoieTotal(props.monthlyRapport.filter((value)=>
+      props.dataDetailEnvoieTotalTableau(props.monthlyRapport.filter((value)=>
       {
         return value.status_retrait !== "code retrait en attente de validation"
       }))
-      navigate('/details_envois_info')
+      navigate('/table_monthly_rapport_lingala')
      }
 
      const detailNonValide =()=>
      {
-      props.dataDetailEnvoieTotal(props.monthlyRapport.filter((value)=>
+      props.dataDetailEnvoieTotalTableau(props.monthlyRapport.filter((value)=>
       {
         return value.status_retrait === "code retrait en attente de validation"
       }))
-      navigate('/details_envois_info')
+      navigate('/table_monthly_rapport_lingala')
      }
      
     return (
         
         <>
-        <Header username={props.username} isAdmin={props.isAdmin}/>
+        <Header dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
 {isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={6}>
@@ -109,8 +110,8 @@ function MonthlyRapportInfoEnvoiLingala(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={12}>
-        <p className='text-dark'>Lolenge ya Rapport: <b className='couleur2'>Mokolo na mokolo</b> </p>
-        <p className='text-dark'>Période ya : <b className='couleur2'>{props.moisInfo}</b>  </p>
+        <p className='text-dark'><b>Lolenge ya Rapport:</b> <b className='couleur2'>Mokolo na mokolo</b> </p>
+        <p className='text-dark'><b>Période ya :</b> <b className='couleur2'>{props.moisInfo}</b>  </p>
         
         
         </Col>
@@ -121,11 +122,11 @@ function MonthlyRapportInfoEnvoiLingala(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <p className='text-dark'>total ya ba envois oyo esalemi : <b className='couleur2'> {nombre_envoie_total}</b>  </p>
+        <p className='text-dark'><b>total ya ba envois oyo esalemi :</b> <b className='couleur2'> {nombre_envoie_total}</b>  </p>
          </Col>
 
          <Col xs={6}>
-       {nombre_envoie_total > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={detailTotal}>Tala ba détails </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit"  onClick={closeModal}>Tala ba détails </p></a>}
+       {nombre_envoie_total > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailTotal}>Tala ba détails </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit"  onClick={closeModal}>Tala ba détails </p></a>}
        
     </Col>
     </Row>
@@ -136,13 +137,13 @@ function MonthlyRapportInfoEnvoiLingala(props)
 
         <Row>
           <Col>
-        <p className='text-dark'>Nombre ya ba envois validés : <b className='couleur2'> {nombre_envoie_valide}</b> </p>
-        <p className='text-dark'>Nombre ya ba envois non validés : <b className='couleur2'> {nombre_envoie_nonvalide}</b></p>
+        <p className='text-dark'><b>Nombre ya ba envois validés :</b> <b className='couleur2'> {nombre_envoie_valide}</b> </p>
+        <p className='text-dark'><b>Nombre ya ba envois non validés : </b><b className='couleur2'> {nombre_envoie_nonvalide}</b></p>
         </Col>
 
        <Col xs={6}>
-        {nombre_envoie_valide > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={detailValide}>Tala ba détails </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={closeModal}>Tala ba détails </p></a>}
-        {nombre_envoie_nonvalide > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={detailNonValide}>Tala ba détails </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit"  onClick={closeModal}>Tala ba détails </p></a>}
+        {nombre_envoie_valide > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailValide}>Tala ba détails </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={closeModal}>Tala ba détails </p></a>}
+        {nombre_envoie_nonvalide > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailNonValide}>Tala ba détails </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit"  onClick={closeModal}>Tala ba détails </p></a>}
     </Col>
     </Row>
 
@@ -153,7 +154,7 @@ function MonthlyRapportInfoEnvoiLingala(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <Link to="/home" style={{color:'white',textDecorationLine:'none'}}>
+        <Link to="/menu_rapport_envoi_lingala" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant="danger" type="submit">
         kokanga
         </Button>
@@ -229,7 +230,7 @@ function MonthlyRapportInfoEnvoiLingala(props)
             <p></p>
           </Col>
         </Row>
-{/*<SessionOut setIsadmin={props.setIsadmin}/>*/}
+<SessionOutLingala setIsadmin={props.setIsadmin}/>
 <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
 <Footer />
         </>

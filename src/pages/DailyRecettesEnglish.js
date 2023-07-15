@@ -4,16 +4,19 @@ import Button from "react-bootstrap/Button";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import {Link} from  'react-router-dom';
+import {Link,useNavigate} from  'react-router-dom';
 import Header from './Header';
 import { useMediaQuery } from 'react-responsive';
 import Footer from './Footer';
 import Table from 'react-bootstrap/Table';
+import HeaderEnglish from './HeaderEnglish';
+import  './Header.css';
+
 //import SessionOut from './SessionOut';
 
 
 
-function DailyRecettesFrench(props)
+function DailyRecettesEnglish(props)
 {
     const isDesktop = useMediaQuery({
         query: "(min-width: 1224px)"
@@ -21,11 +24,14 @@ function DailyRecettesFrench(props)
       const isMobileOrTablet = useMediaQuery({
         query: "(max-width: 1224px)"
       });
+      const navigate = useNavigate()
 
             const message = ()=>
         {
             alert(" sorry the print page is not yet available")
         }
+
+const operationDetailArray = []
 
 const total_montant_beneficiaire = props.dailyRapport.reduce((total,value)=>
 {
@@ -51,11 +57,11 @@ const total_montant = props.dailyRapport.reduce((total,value)=>
   total=total + parseFloat(value.montant_total)
   return total
 },0)
-  
-  
+
+
     return (
         <>
-            <Header username={props.username} isAdmin={props.isAdmin}/>
+            <HeaderEnglish dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
             <div>
 {isDesktop && <Container fluid className='bg-light justify-content-center text-center borders mb-5' style={{marginTop:20}} >
 
@@ -77,18 +83,25 @@ const total_montant = props.dailyRapport.reduce((total,value)=>
           <th>sending fees(£)</th>
           <th>TVA fees(£)</th>
           <th>Total Amount Paid (£)</th>
+          <th>Operations details</th>
         </tr>
       </thead>
       <tbody>
         {props.dailyRapport.map((value)=>
         {
-          return  <tr style={{border:"2px solid white"}} >
+          return  <tr  style={{border:"2px solid white"}} >
              <td><i ><b>{props.dateInfo}</b></i></td>
              <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_beneficiaire).toFixed(2)) }</b></i></td>
              <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.frais_envoie).toFixed(2))}</b></i></td>
              <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.frais_tva).toFixed(2))}</b></i></td>
              <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_total).toFixed(2))}</b></i></td>
-            </tr>     
+             <td onClick={()=>{
+               operationDetailArray.push(value)
+               console.log(operationDetailArray)
+               props.dataDetailEnvoieTotal(operationDetailArray)
+               navigate('/details_retraits_info_english')
+             }} ><i className="text-primary btn" ><b><u>check details</u></b></i></td>
+            </tr> 
         }) 
         }
        <tr style={{border:"2px solid white"}}>
@@ -208,4 +221,4 @@ const total_montant = props.dailyRapport.reduce((total,value)=>
     )
 }
 
-export default DailyRecettesFrench;
+export default DailyRecettesEnglish;

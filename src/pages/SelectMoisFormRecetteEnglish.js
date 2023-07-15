@@ -15,6 +15,8 @@ import ClipLoader from "react-spinners/ClipLoader";
 import  './Header.css';
 import * as formik from 'formik';
 import * as yup from 'yup';
+import HeaderEnglish from './HeaderEnglish';
+import SessionOutEnglish from './SessionOutEnglish';
 //import SessionOut from './SessionOut';
 
 
@@ -68,7 +70,7 @@ function SelectMoisFormRecetteEnglish(props)
             console.log(res)
             props.dataMonthlyRapport(res)
             props.setMois(date.moisInfo)
-            navigate('/monthly_rapport_recette_french')
+            navigate('/monthly_rapport_recette_english')
             }
           )
           .catch( (error) =>
@@ -90,7 +92,7 @@ function SelectMoisFormRecetteEnglish(props)
 
 return (
     <>
-    <Header username={props.username} isAdmin={props.isAdmin}/>
+    <HeaderEnglish dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
 
 {isDesktop && <Container className='bg-light justify-content-center text-center ' style={{marginTop:100,width:750}} >
 <Row className='justify-content-center mb-3 pt-5' >
@@ -172,7 +174,7 @@ return (
 </Container>} 
 <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
 <MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
-{/*<SessionOut setIsadmin={props.setIsadmin}/>*/}
+<SessionOutEnglish setIsadmin={props.setIsadmin}/>
 <Footer />
 </>
     )

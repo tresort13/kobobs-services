@@ -24,20 +24,15 @@ const useState = React.useState
 function AbonneFormNonValideInfoFrench(props)
 {
 
-    const [envoie4,setEnvoie4] = useState([])
-       
     const [message,setMessage] = useState("formulaire non validé")
-    const [couleur,setCouleur] = useState("text-dark")
-    const[status,setStatus] = useState({statusInfo :{
-        statusRetrait :"",
-    }})
     const[codeRetrait,setCodeRetrait] = useState("")
 
     const [modalShow, setModalShow] = React.useState(false);
     const [modalShow2, setModalShow2] = React.useState(false);
-    const [modalShow3, setModalShow3] = React.useState(true);
+    const [modalShow3, setModalShow3] = React.useState(false);
     const [modalShow4, setModalShow4] = React.useState(true);
     const [modalShow5, setModalShow5] = React.useState(false);
+    const [modalShow6, setModalShow6] = React.useState(false);
     const [deletionAnswer, setDeletionAnswer] = React.useState(false);
 
     const navigate = useNavigate()
@@ -51,47 +46,10 @@ function AbonneFormNonValideInfoFrench(props)
     
     
     const closePage = ()=>{
-      navigate('/')
+      navigate('/table_validation_french')
     }
 
 
-      const submit =()=>
-      {       
-          fetch('https://kobobsapi.herokuapp.com/api/getRetraitNonValideInfo/code retrait en attente de validation/', {
-                  method:'GET',
-                  headers: {'Content-Type': 'application/json'},
-                 // body: JSON.stringify(codeRetrait.infoCodeRetrait)
-                })
-                .then( res => res.json())
-                .then(
-                  res => {   
-                    setEnvoie4(res)
-                     console.log(res)
-                  }
-                )
-                .catch( (error) =>
-                  {
-                      console.log(error)
-                  } )
-      }
-
-      useEffect(()=>
-      {
-         const interval =  setInterval(()=>setModalShow3(false),4000);
-          return () => clearInterval(interval)
-      },[])
-
-
-     /* useEffect(()=>
-      {
-         const interval =  setInterval((e)=>submit(e),1000);
-          return () => clearInterval(interval)
-      },[envoie4])*/
-
-       useEffect(()=>
-      {    
-        submit()
-      },[props.envoie3])
 
 
       const validateCodeRetrait = (e)=>
@@ -142,27 +100,44 @@ function AbonneFormNonValideInfoFrench(props)
       {  
         setModalShow5(false)
         setModalShow3(true)
-        console.log(value)    
+        console.log(value)   
+        const date_time_deletion = {
+          date_heure_operation_deletion : new Date().toLocaleString(),
+          date_operation_deletion : new Date().toLocaleString().slice(0,10)
+        }      
          // e.preventDefault()     
 
          // setStatus("Code Retrait Valide")     
-          fetch('https://kobobsapi.herokuapp.com/api/suprimer/'+value+'/', {
+          fetch('https://kobobsapi.herokuapp.com/api/suprimer/'+value+'/'+props.abonne.infoAbonne.agent_id+'/', {
                   method: 'DELETE',
                   headers: {'Content-Type': 'application/json'},
-                 // body: JSON.stringify(status.statusInfo.statusRetrait)
+                  body: JSON.stringify(date_time_deletion)
                 })
                 .then( res => res.json())
                 .then(
                   res => {  
-                   
-                    setModalShow3(false)               
-                    setModalShow2(true)
+                    if(res.message==="success")
+                    {
+                      console.log(res.message)
+                      setModalShow3(false)               
+                      setModalShow2(true)
+                    }
+                    else{
+                      console.log(res.message)
+                      console.log(res)
+                      console.log(res.error)
+                      setModalShow3(false)  
+                      setModalShow6(true)
+                    }
+                                    
+                    
                   }
                 )
                 .catch( (error) =>
                   {
                     setModalShow3(false)               
-                    setModalShow2(true)
+                    setModalShow2(false)
+                    setModalShow6(true)
                       console.log(error)
                   } )
   
@@ -173,19 +148,19 @@ function AbonneFormNonValideInfoFrench(props)
     return (
         
         <>
-<HeaderEnglish dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
-{isDesktop && envoie4.length > 0  ?  envoie4.map((value)=>
+<HeaderFrench dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
+{isDesktop && props.dataValidation.length > 0  ?  props.dataValidation.map((value)=>
     {
     return <Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:50,width:1000}} >
-<Row className='justify-content-center mb-3 pt-3' >
+<Row className='justify-content-center pt-3' >
         <Col xs={6}>
-        <p className='couleur2 display-6'><i><b>{message}</b></i></p>
+        <p className='couleur2'><i><b>{message}</b></i></p>
         </Col>
     </Row>
 
 
 
-    <Row className='justify-content-center pb-3'>
+    <Row className='justify-content-center'>
       <hr style={{color:"darkorange"}}></hr>
 
     </Row>
@@ -251,7 +226,7 @@ function AbonneFormNonValideInfoFrench(props)
 
 
 
-{isMobileOrTablet && envoie4.map((value)=>
+{isMobileOrTablet && props.dataValidation.map((value)=>
     {
     return <Container className='bg-light justify-content-center text-center mx-auto my-auto mb-5' >
     <Row className='justify-content-center mb-3 pt-3' >
@@ -294,7 +269,7 @@ function AbonneFormNonValideInfoFrench(props)
             <Col xs={6} className="text-center">
             <Link to="" style={{color:'white',textDecorationLine:'none'}}>
             <Button name='validate' value={value.code_retrait} className='pt-3' variant="danger" type="submit" onClick={e=>suprimerOperation(e)}>
-            suprimer opération
+            supprimer opération
             </Button>
             </Link>
             </Col>
@@ -311,17 +286,18 @@ function AbonneFormNonValideInfoFrench(props)
           </Col>
         </Row>
 <MyVerticallyCenteredModal show={modalShow} onHide={() => {
-  setModalShow(false)
-  window.location.reload()
+    setModalShow(false)
+    closePage()
 }
 } />
 <MyVerticallyCenteredModal2 show={modalShow2} onHide={() =>{ 
-  setModalShow2(false)
-  window.location.reload();}
+    setModalShow4(false)
+    closePage()
+  }
   } />
 <MyVerticallyCenteredModal3 show={modalShow3} onHide={() => setModalShow3(false)} />
 <MyVerticallyCenteredModal5 show={modalShow5} onHide={() => setModalShow5(false)} codeRetrait={codeRetrait} suprimerOperationConfirm={suprimerOperationConfirm} setModalShow5={setModalShow5} setModalShow3={setModalShow3}/>
-
+<MyVerticallyCenteredModal6 show={modalShow6} onHide={() => setModalShow6(false)} />
 {/*<SessionOut setIsadmin={props.setIsadmin}/>*/}
 <Footer />
         </>
@@ -343,7 +319,7 @@ function MyVerticallyCenteredModal(props) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p className='text-success'><b>le code de retrait a été validé avec success </b>   
+          <p className='text-success'><b> le code de retrait a été validé avec succès </b>   
           </p>
         </Modal.Body>
         <Modal.Footer>
@@ -447,6 +423,33 @@ function MyVerticallyCenteredModal(props) {
       </Modal>
     );
   }
+
+  function MyVerticallyCenteredModal6(props) {
+    return (
+      <Modal
+        {...props}
+        size="sm"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+          echec suppression
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p className='text-danger'><b>désolé quelque chose s'est mal passé pour supprimer cette opération !!</b>   
+          </p>
+          <p ><b>merci de contacter de service maintenance si le problème persiste.</b>   
+          </p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant='warning' onClick={props.onHide}>ferme</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
+
 
 
 export default AbonneFormNonValideInfoFrench;

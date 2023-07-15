@@ -12,6 +12,7 @@ import Header from './Header';
 import Footer from './Footer';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Modal from 'react-bootstrap/Modal';
+import HeaderEnglish from './HeaderEnglish';
 //import SessionOut from './SessionOut';
 
 
@@ -71,34 +72,35 @@ function DailyRapportInfoEnvoiEnglish(props)
 
      const detailTotal =()=>
      {
-      props.dataDetailEnvoieTotal(props.dailyRapport)
-      navigate('/details_envois_info')
+      //props.dataDetailEnvoieTotal(props.dailyRapport)
+      props.dataDetailEnvoieTotalTableau(props.dailyRapport)
+      navigate('/table_daily_rapport_english')
      }
 
      const detailValide =()=>
      {
-      props.dataDetailEnvoieTotal(props.dailyRapport.filter((value)=>
+      props.dataDetailEnvoieTotalTableau(props.dailyRapport.filter((value)=>
       {
         return value.status_retrait !== "code retrait en attente de validation"
       }))
-      navigate('/details_envois_info')
+      navigate('/table_daily_rapport_english')
      }
 
      const detailNonValide =()=>
      {
-      props.dataDetailEnvoieTotal(props.dailyRapport.filter((value)=>
+      props.dataDetailEnvoieTotalTableau(props.dailyRapport.filter((value)=>
       {
         return value.status_retrait === "code retrait en attente de validation"
       }))
 
-      navigate('/details_envois_info')
+      navigate('/table_daily_rapport_english')
        
      }
      
     return (
         
         <>
-        <Header username={props.username} isAdmin={props.isAdmin}/>
+        <HeaderEnglish dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
 {isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={6}>
@@ -113,8 +115,8 @@ function DailyRapportInfoEnvoiEnglish(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={12}>
-        <p className='text-dark'>Type of Rapport: <b className='couleur2'>Daily</b> </p>
-        <p className='text-dark'>Date : <b className='couleur2'>{props.dateInfo}</b>  </p>
+        <p className='text-dark'><b>Type of Rapport :</b> <b className='couleur2'>Daily</b> </p>
+        <p className='text-dark'><b>Date :</b> <b className='couleur2'>{props.dateInfo}</b>  </p>
         
         </Col>
     </Row>
@@ -124,11 +126,11 @@ function DailyRapportInfoEnvoiEnglish(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <p className='text-dark'>Number of total sendings made : <b className='couleur2'> {nombre_envoie_total}</b>  </p>
+        <p className='text-dark py-2 text-center'><b>Number of total sendings made :</b> <b className='couleur2'> {nombre_envoie_total}</b>  </p>
          </Col>
 
          <Col xs={6}>
-       {nombre_envoie_total > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={detailTotal}>See details </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit"  onClick={closeModal}>See details </p></a>}
+       {nombre_envoie_total > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailTotal}>See details </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit"  onClick={closeModal}>See details </p></a>}
        
     </Col>
     </Row>
@@ -139,13 +141,13 @@ function DailyRapportInfoEnvoiEnglish(props)
 
         <Row>
           <Col>
-        <p className='text-dark'>Number of validated sendings : <b className='couleur2'> {nombre_envoie_valide}</b> </p>
-        <p className='text-dark'>Number of no validated sendings  : <b className='couleur2'> {nombre_envoie_nonvalide}</b></p>
+        <p className='text-dark py-2 text-center'><b>Number of validated sendings :</b> <b className='couleur2'> {nombre_envoie_valide}</b> </p>
+        <p className='text-dark py-2 text-center'><b>Number of no validated sendings :</b> <b className='couleur2'> {nombre_envoie_nonvalide}</b></p>
         </Col>
 
        <Col xs={6}>
-        {nombre_envoie_valide > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={detailValide}>See details </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={closeModal}>See details </p></a>}
-        {nombre_envoie_nonvalide > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={detailNonValide}>See details </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit"  onClick={closeModal}>See details </p></a>}
+        {nombre_envoie_valide > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailValide}>See details </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={closeModal}>See details </p></a>}
+        {nombre_envoie_nonvalide > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailNonValide}>See details </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit"  onClick={closeModal}>See details </p></a>}
     </Col>
     </Row>
 
@@ -155,7 +157,7 @@ function DailyRapportInfoEnvoiEnglish(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <Link to="/menu_rapport_envoi_french" style={{color:'white',textDecorationLine:'none'}}>
+        <Link to="/menu_rapport_envoi_english" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant="danger" type="submit">
         close
         </Button>

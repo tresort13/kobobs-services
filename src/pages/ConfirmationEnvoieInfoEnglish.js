@@ -19,7 +19,7 @@ const useState = React.useState
 function ConfirmationEnvoieInfoEnglish(props)
 {
 
-    const [message,setMessage] = useState("Your tracking number status will be valid only after the full payment of your amount transfer !!")
+    const [message,setMessage] = useState("Your tracking number status will be valid only after the full payment of your amount transfer")
     const [couleur,setCouleur] = useState("text-dark")
     const [modalShow, setModalShow] = React.useState(true);
     const [modalShow2, setModalShow2] = React.useState(true);
@@ -85,7 +85,7 @@ function ConfirmationEnvoieInfoEnglish(props)
         <p className='text-dark'>Receiver full name: <b className='text-dark'>{props.envoie3.infoEnvoie.prenom_beneficiaire} {props.envoie3.infoEnvoie.nom_beneficiaire}</b> </p> 
         <p className='text-dark'>receiver country : <b className='text-dark'> {props.envoie3.infoEnvoie.pays_beneficiaire}</b></p>
         <p className='text-dark'>Type of service : <b className='text-dark'>{props.envoie3.infoEnvoie.type_service}</b> </p>
-        <p className='text-dark'>Mobile Money Number : <b className='text-dark'>{props.envoie3.infoEnvoie.numero_transfer}</b> </p>
+        {props.envoie3.infoEnvoie.numero_transfer==='N/A' ? <p></p> : <p className='text-dark'>Mobile money Number: <b className='text-dark'>{props.envoie3.infoEnvoie.numero_transfer}</b> </p>}
         <p className='text-dark'>date and time: <b className='text-dark'> {props.envoie3.infoEnvoie.date_heure_operation}</b></p>
         </Col>
     </Row>

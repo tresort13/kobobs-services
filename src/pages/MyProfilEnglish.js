@@ -15,6 +15,8 @@ import Modal from 'react-bootstrap/Modal';
 import ClipLoader from "react-spinners/ClipLoader";
 import * as formik from 'formik';
 import * as yup from 'yup';
+import HeaderEnglish from './HeaderEnglish';
+import SessionOutEnglish from './SessionOutEnglish';
 
 //import SessionOut from './SessionOut';
 
@@ -28,7 +30,10 @@ function MyProfilEnglish(props)
     const [modalShow, setModalShow] = React.useState(false);
     const [modalShow3, setModalShow3] = React.useState(false);
     const[abonneInfo,setAbonneInfo] = useState([])
-    const[operation,setOperation] = useState([])
+    const[operationSending,setOperationSending] = useState([])
+    const[operationValidation,setOperationValidation] = useState([])
+    const[operationRetrait,setOperationRetrait] = useState([])
+    const[operationDeletion,setOperationDeletion] = useState([])
     const [localDate,setLocalDate] = useState('')
     const [operationType,setOperationType] = useState('')
     const navigate = useNavigate()
@@ -39,7 +44,7 @@ function MyProfilEnglish(props)
 
   const testValidation = yup.object().shape({
     dateInfo : yup.string().required('required field'),
-    operationType : yup.string().required('required field')
+    
   });
 
   const testValidation2 = yup.object().shape({
@@ -60,40 +65,36 @@ function MyProfilEnglish(props)
      
 
      
-     const nombre_sending_total =  operation.reduce((total,value)=>
+     const nombre_sending_total =  operationSending.reduce((total,value)=>
      {
         total = total + 1
         return total
      },0)
 
 
-     const nombre_envoie_valide = operation.filter((value)=>
+     const nombre_envoie_valide = operationValidation.reduce((total,value)=>
      {
-       return value.status_retrait !== "code retrait en attente de validation"
-     }).reduce((total,value)=>
-     {
-       total = total + 1
-       return total
+        total = total + 1
+        return total
      },0)
 
-     const nombre_envoie_nonvalide = operation.filter((value)=>
-     {
-       return value.status_retrait === "code retrait en attente de validation"
-     }).reduce((total,value)=>
-     {
-       total = total + 1
-       return total
-     },0)
 
      
-     const nombre_retrait_paye = operation.filter((value)=>
+
+
+     
+     const nombre_retrait_paye = operationRetrait.reduce((total,value)=>
      {
-       return value.status_retrait === "Code Retrait Payé"
-     }).reduce((total,value)=>
-     {
-       total = total + 1
-       return total
+        total = total + 1
+        return total
      },0)
+
+     const nombre_operation_deleted = operationDeletion.reduce((total,value)=>
+     {
+        total = total + 1
+        return total
+     },0)
+
 
    
 
@@ -101,44 +102,47 @@ function MyProfilEnglish(props)
 
      const detailValide =()=>
      {
-      props.dataDetailEnvoieTotal(operation.filter((value)=>
-      {
-        return value.status_retrait !== "code retrait en attente de validation"
-      }))
-      navigate('/details_envois_info')
+      props.setDateHistoric(localDate)
+      props.setMessage("Validation historic")
+      props.setDetailHistoric(operationValidation)
+      navigate('/details_historic_info_english')
      }
 
      const detailTotal =()=>
      {
-      props.dataDetailEnvoieTotal(operation)
-      navigate('/details_envois_info')
+      props.setDateHistoric(localDate)
+       props.setMessage("Sending historic")
+      props.setDetailHistoric(operationSending)
+      navigate('/details_historic_info_english')
      }
 
      const detailPaye =()=>
      {
-      props.dataDetailEnvoieTotal(operation.filter((value)=>
-      {
-        return value.status_retrait === "Code Retrait Payé"
-      }))
-      navigate('/details_envois_info')
+      props.setDateHistoric(localDate)
+      props.setMessage("withdrawal historic")
+      props.setDetailHistoric(operationRetrait)
+      navigate('/details_historic_info_english')
+     
      }
 
-     const detailNonValide =()=>
+     const detailDeletion =()=>
      {
-      props.dataDetailEnvoieTotal(operation.filter((value)=>
-      {
-        return value.status_retrait === "code retrait en attente de validation"
-      }))
-
-      navigate('/details_envois_info')
-       
+      props.setDateHistoric(localDate)
+      props.setMessage("Deletion historic")
+      props.setDetailHistoric(operationDeletion)
+      navigate('/details_historic_info_english')
+      
      }
+
+
 
      const submitDate = (values)=>
      {
       setLocalDate('')
-      setOperationType('')
-      setOperation([])
+      setOperationSending([])
+      setOperationValidation([])
+      setOperationRetrait([])
+      setOperationDeletion([])
       setModalShow3(true)
       const values_replace = values.dateInfo.replace(/-/g,'/')
       console.log(values_replace)
@@ -147,7 +151,7 @@ function MyProfilEnglish(props)
       const day = values_replace.slice(8,10)
       const date = { "dateInfo": day.concat("",mois,year),
                  "agent_id":props.abonne.infoAbonne.agent_id,
-                "operationType":values.operationType}
+                }
      
        console.log(date)
        
@@ -161,11 +165,14 @@ function MyProfilEnglish(props)
              res => {   
                 
                  console.log(res)
-                if (res.length > 0)
+                if ((res.dataDeletion.length > 0) ||  (res.dataRetrait.length > 0) || (res.dataSending.length > 0) || (res.dataValidation > 0))
                 {
                   setLocalDate(date.dateInfo)
-                  setOperationType(date.operationType)
-                  setOperation(res)
+                 // setOperationType(date.operationType)
+                  setOperationSending(res.dataSending)
+                  setOperationValidation(res.dataValidation)
+                  setOperationRetrait(res.dataRetrait)
+                  setOperationDeletion(res.dataDeletion)
                   setModalShow3(false)
                 }
                 else{
@@ -184,10 +191,66 @@ function MyProfilEnglish(props)
                  
      }
 
+     const submitDateAuto = ()=>
+     {
+      const today = new Date().toLocaleString()
+      console.log(today)
+      setLocalDate('')
+      setOperationSending([])
+      setOperationValidation([])
+      setOperationRetrait([])
+      setOperationDeletion([])
+      setModalShow3(true)
+     // const values_replace = today.replace(/-/g,'/')
+      
+      
+      const date = { "dateInfo": today.slice(0,10),
+                 "agent_id":props.abonne.infoAbonne.agent_id,
+                }
+     
+       console.log(date)
+       
+         fetch('https://kobobsapi.herokuapp.com/api/getDailyRapportInfoUserStaff/', {
+             method:'POST',
+             headers: {'Content-Type': 'application/json'},
+             body: JSON.stringify(date)
+           })
+           .then( res => res.json())
+           .then(
+             res => {   
+                
+                 console.log(res)
+                if ((res.dataDeletion.length > 0) ||  (res.dataRetrait.length > 0) || (res.dataSending.length > 0) || (res.dataValidation > 0))
+                {
+                  setLocalDate(date.dateInfo)
+                 // setOperationType(date.operationType)
+                  setOperationSending(res.dataSending)
+                  setOperationValidation(res.dataValidation)
+                  setOperationRetrait(res.dataRetrait)
+                  setOperationDeletion(res.dataDeletion)
+                  setModalShow3(false)
+                }
+                else{
+                  setModalShow3(false)
+                  setModalShow(true)
+                }
+             }
+           )
+           .catch( (error) =>
+             {
+                 setModalShow(true)
+                 setModalShow3(false)
+                 console.log(error)
+             } )
+        
+                 
+     }
+
+
      const submitDate2 = (values)=>
      {
        setLocalDate('')
-         setOperation([])
+         setOperationSending([])
       setModalShow3(true)
       const values_replace = values.dateInfo.replace(/-/g,'/')
       console.log(values_replace)
@@ -212,7 +275,7 @@ function MyProfilEnglish(props)
                 if (res.length > 0)
                 {
                   setLocalDate(date.dateInfo)
-                  setOperation(res)
+                  setOperationSending(res)
                   setModalShow3(false)
                 }
                 else{
@@ -231,12 +294,77 @@ function MyProfilEnglish(props)
                  
      }
 
+     const submitDate2Auto = (values)=>
+     {
+      const today = new Date().toLocaleString()
+      console.log(today)
+       setLocalDate('')
+         setOperationSending([])
+      setModalShow3(true)
+      const date = { "dateInfo": today.slice(0,10),
+                 "agent_id":props.abonne.infoAbonne.agent_id}
+     
+       console.log(date)
+       
+         fetch('https://kobobsapi.herokuapp.com/api/getDailyRapportInfoUser/', {
+             method:'POST',
+             headers: {'Content-Type': 'application/json'},
+             body: JSON.stringify(date)
+           })
+           .then( res => res.json())
+           .then(
+             res => {   
+                
+                 console.log(res)
+                if (res.length > 0)
+                {
+                  setLocalDate(date.dateInfo)
+                  setOperationSending(res)
+                  setModalShow3(false)
+                }
+                else{
+                  setModalShow3(false)
+                  setModalShow(true)
+                }
+             }
+           )
+           .catch( (error) =>
+             {
+                 setModalShow(true)
+                 setModalShow3(false)
+                 console.log(error)
+             } )
+        
+                 
+     }
+
+     useEffect(()=>
+     {
+        const interval =  setInterval(()=>setModalShow3(false),4000);
+         return () => clearInterval(interval)
+     },[])
+
+
+
+      useEffect(()=>
+     {  
+       if((props.isAdmin)||(props.isStaff)) 
+       {
+        submitDateAuto()
+       }
+       
+       else
+       {
+         submitDate2Auto()
+       }
+     },[])
+
 
      
     return (
         
         <>
-        <Header username={props.username} isAdmin={props.isAdmin}/>
+        <HeaderEnglish dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
 {isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
 <Row className='justify-content-center  pt-3' >
         <Col xs={6}>
@@ -275,31 +403,15 @@ function MyProfilEnglish(props)
       }}
       initialValues={{
         dateInfo:'',
-        operationType :''
       }}
     >
      {({handleSubmit, handleChange,handleBlur, values, touched, errors
          })=>(
     <Form noValidate onSubmit={handleSubmit}>
-        <Row className='justify-content-center  py-2' >
-       <Col xs={4}>
-        <i><b className='text-dark text-center'>Select type of operation to check : </b></i>
-        </Col>
-        <Col xs={4} >
-     <div ><Form.Select aria-label="Default select example" name='operationType'   value={values.operationType} onChange={handleChange}>
-        <option value="">Select operation</option>
-         <option value="sending">sending</option>
-         <option value="validation">validation</option>
-         <option value="withdrawal">withdrawal</option>
-         </Form.Select>
-         <p className='text-danger'>{touched.operationType && errors.operationType}</p>
-       </div> 
-      </Col>
-      </Row> 
-        
+       
     <Row className='justify-content-center text-center mx-3 px-3 py-3' >
         <Col xs={8} className='justify-content-end text-start '>
-        <Form.Label htmlFor="basic-url" className='text-start'><strong><i>Select the date you want to check on :</i></strong></Form.Label>
+        <Form.Label htmlFor="basic-url" className='text-start'><strong><i>Select a particular date you want to check your historic :</i></strong></Form.Label>
         <InputGroup className="mb-3" controlId="formBasicText" >  
         <Form.Control name="dateInfo" value={values.dateInfo} onChange={handleChange} onBlur={handleBlur} type="date" placeholder='Select  date'  />
         <InputGroup.Text ><Button type="submit" variant='dark'>
@@ -357,7 +469,7 @@ function MyProfilEnglish(props)
 </Row>
 }
 
- {operation.length > 0 ?  <div className='bg-light justify-content-start text-center' >
+ {localDate !=='' ? <div className='bg-light justify-content-start text-center' >
 <Row className='justify-content-start ' >
   <Col xs={2}>
   </Col>
@@ -365,41 +477,62 @@ function MyProfilEnglish(props)
        { props.isStaff === true ? <p ><i><b>Your historic on <span className='couleur2'>{localDate} :</span> </b></i></p> : 
        <p ><i><b>Your historic  on <span className='couleur2'>{localDate} :</span> </b></i></p>}
         </Col>
-    </Row>
-  { props.isStaff === true ?
+  </Row>
+  { props.isAdmin === true ?
     <Row className='justify-content-end pb-3'>
       <Col xs={2}>
       </Col>
-       { operationType === "sending" ?  <Col xs={4}>
+      <Col xs={4} >
         {nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Number of sendings made :</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
-         </Col> :
-         operationType === "validation" ? 
-         <Col xs={4}>
+        
         {nombre_envoie_valide > 0 ? <p className='text-dark py-2 text-start'><strong>Number of validations  made :</strong> <b className='couleur2'>  {nombre_envoie_valide}</b>  </p> : <span></span>}
-         </Col> :
-         <Col xs={4}>
-         {nombre_retrait_paye > 0 ? <p className='text-dark py-2 text-center'><strong> number of withdrawals made :</strong> <b className='couleur2'>  {nombre_retrait_paye}</b>  </p> :<span></span> }
-        
-          </Col> 
-         }
-
-
-
-       { operationType === "sending" ?  <Col xs={4}>
-       {nombre_sending_total > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailTotal}>Check details </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded' type="submit"  onClick={closeModal}>Voir Details </p></a>}
-         </Col> :
-         operationType === "validation" ? 
-         <Col xs={4}>
-         {nombre_envoie_valide > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailValide}>Check details </p></a> :<span></span>}
-         </Col> :
-         <Col xs={4}>
-        {nombre_retrait_paye > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailPaye}>Check details </p></a> : <span></span>}
-        
-          </Col> 
-         }
-       <Col xs={2}>
-      </Col>
          
+         {nombre_retrait_paye > 0 ? <p className='text-dark py-2 text-start'><strong>number of withdrawals made :</strong> <b className='couleur2'>  {nombre_retrait_paye}</b>  </p> :<span></span> }
+
+         {nombre_operation_deleted > 0 ? <p className='text-dark py-2 text-start'><strong> number of operation deleted :</strong> <b className='couleur2'>  {nombre_operation_deleted}</b>  </p> :<span></span> }   
+        </Col> 
+         
+
+
+
+       <Col xs={4}>
+       {nombre_sending_total > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailTotal}>Check details </p></a> : <span></span>}
+       
+         {nombre_envoie_valide > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailValide}>Check details </p></a> :<span></span>}
+       
+        {nombre_retrait_paye > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailPaye}>Check details </p></a> : <span></span>}
+
+        {nombre_operation_deleted > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailDeletion}>Check details </p></a> : <span></span>}  
+        </Col> 
+
+       <Col xs={2}>
+      </Col>        
+</Row> :
+
+props.isStaff === true ?
+    <Row className='justify-content-end pb-3'>
+      <Col xs={2}>
+      </Col>
+      <Col xs={4}>
+        {nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Number of sendings made :</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
+         </Col> 
+
+         <Col xs={4}>
+         {nombre_retrait_paye > 0 ? <p className='text-dark py-2 text-center'><strong> number of withdrawals made :</strong> <b className='couleur2'>  {nombre_retrait_paye}</b>  </p> :<span></span> }   
+          </Col> 
+         
+
+
+
+       <Col xs={4}>
+       {nombre_sending_total > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailTotal}>Check details </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded' type="submit"  onClick={closeModal}>Voir Details </p></a>}
+        </Col>
+         
+         <Col xs={4}>
+        {nombre_retrait_paye > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailPaye}>Check details </p></a> : <span></span>}  
+          </Col> 
+       <Col xs={2}>
+      </Col>        
 </Row> :
 
 <Row className='justify-content-center pb-3' >
@@ -415,8 +548,7 @@ function MyProfilEnglish(props)
 }
     </div>
     :
-    <span></span>
-
+    <Row></Row>
 }
 
     <Row className='justify-content-center pb-3'>
@@ -467,14 +599,14 @@ function MyProfilEnglish(props)
 
       <Row>
         <Col>
-        <p className='text-dark'>envoies validés: <b className='couleur2'> {nombre_envoie_valide}</b> </p>
-        <p className='text-dark'>envoies non validés: <b className='couleur2'> {nombre_envoie_nonvalide}</b></p>
+        <p className='text-dark'>envoies validés: <b className='couleur2'></b> </p>
+        <p className='text-dark'>envoies non validés: <b className='couleur2'></b></p>
         </Col>
 
         <Col xs={6}>
         <Link to="" style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={detailTotal}>Voir Details </p></Link>
         <Link to="" style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={detailValide}>Voir Details </p></Link>
-        <Link to="" style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={detailNonValide}>Voir Details </p></Link>
+        <Link to="" style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" >Voir Details </p></Link>
        
         </Col>
     </Row>
@@ -502,7 +634,7 @@ function MyProfilEnglish(props)
             <p></p>
           </Col>
         </Row>
-      {/* <SessionOut setIsadmin={props.setIsadmin}/>*/} 
+      <SessionOutEnglish setIsadmin={props.setIsadmin}/>
       <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
       <MyVerticallyCenteredModal3 show={modalShow3} onHide={() => setModalShow3(false)} />
        <Footer />
@@ -525,7 +657,7 @@ function MyVerticallyCenteredModal(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p className='couleur2'><b>you have not carried out any action on this date !</b>   
+        <p className='couleur2'><b>no any historic available !</b>   
         </p>
       </Modal.Body>
       <Modal.Footer>

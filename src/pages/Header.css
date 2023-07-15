@@ -118,4 +118,8 @@ li {
     border-radius: 10%;
   }
 
+  .mouseOver:hover{
+   pointer-events:auto;
+  }
+
   

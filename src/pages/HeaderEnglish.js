@@ -19,6 +19,7 @@ import ContactBoxEnglish from './ContactBoxEnglish';
 import ChangePasswordBoxEnglish from './ChangePasswordBoxEnglish';
 import Badge from 'react-bootstrap/Badge';
 import Modal from 'react-bootstrap/Modal';
+import SessionOutEnglish from './SessionOutEnglish';
 
 
 
@@ -42,6 +43,7 @@ function HeaderEnglish(props)
               .then(
                 res => {  
                    setCount(res.length)
+                   
                    console.log(res)
                 }
               )
@@ -87,6 +89,14 @@ function HeaderEnglish(props)
       window.localStorage.setItem("isAdmin", false)
       window.localStorage.setItem("isLogged", false)
       window.localStorage.setItem("isStaff", false)
+      window.localStorage.setItem("abonne",JSON.stringify({infoAbonne :{
+        agent_id:'',
+        nom_expediteur : '',
+        prenom_expediteur : '',
+        email_expediteur : '',
+        numero_expediteur: '',
+        pays_expediteur : 'UK',
+        }}))
       window.location.reload();
      // navigate('/')
       
@@ -190,7 +200,7 @@ function HeaderEnglish(props)
         
         { props.isLogged === true ? <Col xs={6} className="my-auto  my-auto text-end">
         {props.isAdmin ?
-         count > 0 ? <Link to="/form_abonne_non_valide_french"><Badge className='m-0' bg="danger">{count}</Badge><span><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="text-light bi bi-bell-fill mt-2 "  viewBox="0 0 16 16">
+         count > 0 ? <Link to="/table_validation_english"><Badge className='m-0' bg="danger">{count}</Badge><span><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="text-light bi bi-bell-fill mt-2 "  viewBox="0 0 16 16">
         <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
         </svg></span></Link> : <Link to="" onClick={openNoValidDialog}><span><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="text-light bi bi-bell-fill mt-2 mx-2" viewBox="0 0 16 16">
         
@@ -450,6 +460,7 @@ function HeaderEnglish(props)
            </Nav>
            </Offcanvas.Body>
       </Offcanvas>
+      <SessionOutEnglish setIsadmin={props.setIsadmin}/>
     <MyVerticallyCenteredModal4 show={modalShowNoValidDialog} onHide={() => setModalShowNoValidDialog(false)} />
     <ChangePasswordBoxEnglish modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} userID={props.userID} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber}/>
    <ContactBoxEnglish language2={props.language2} setLanguage2={props.setLanguage2} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} language={props.language}/>

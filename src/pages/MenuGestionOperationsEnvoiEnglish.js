@@ -12,6 +12,7 @@ import { useMediaQuery } from 'react-responsive';
 //import SessionOut from './SessionOut';
 import HeaderFrench from './HeaderFrench';
 import HeaderEnglish from './HeaderEnglish';
+import SessionOutEnglish from './SessionOutEnglish';
 
 
 function MenuGestionOperationsEnvoiEnglish(props)
@@ -31,8 +32,8 @@ function MenuGestionOperationsEnvoiEnglish(props)
     <Row className='justify-content-center pb-3 pt-5 mt-5'>
         <Col xs = {"auto"}>
         <Link to="/form_envoie_client_english" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='warning'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='text-dark'><pre>Make sending for new client</pre></b>
+        <Button variant='btn--blue'  style={{width:400,height:80}} className='btn-lg btn--blue rounded zoom py-4'>
+        <b className='text-light'><pre>To send for new client</pre></b>
         </Button>
         </Link>
         </Col>
@@ -40,9 +41,9 @@ function MenuGestionOperationsEnvoiEnglish(props)
 
     <Row className='justify-content-center pb-3 '>
         <Col xs = {"auto"}>
-        <Link to="/form_envoie_abonne_id_french" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='warning'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='text-dark'><pre>Make sending for Subscriber</pre></b>
+        <Link to="/form_envoie_abonne_id_english" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant='btn--blue'  style={{width:400,height:80}} className='btn-lg rounded btn--blue zoom py-4'>
+        <b className='text-light'><pre>To send for Subscriber</pre></b>
         </Button>
         </Link>
         </Col>
@@ -50,15 +51,15 @@ function MenuGestionOperationsEnvoiEnglish(props)
   
 
 
-    <Row className='justify-content-center pb-3'>
+   {props.isAdmin=== true ? <Row className='justify-content-center pb-3'>
         <Col xs = {"auto"}>
-        <Link to="/menu_rapport_envoi_french" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='warning'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='text-dark'><pre>Sending operations report</pre></b>
+        <Link to="/menu_rapport_envoi_english" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant='btn--blue'  style={{width:400,height:80}} className='btn-lg rounded btn--blue zoom py-4'>
+        <b className='text-light'><pre>Sending operations report</pre></b>
         </Button>
         </Link>
         </Col>
-    </Row>
+    </Row> : <span></span>}
   
 
 </Container> }
@@ -68,7 +69,7 @@ function MenuGestionOperationsEnvoiEnglish(props)
    <Row className='justify-content-center pb-3 pt-5 mt-5'>
        <Col xs = {12}>
        <Link to="/menu_rapport_envoie" style={{color:'white',textDecorationLine:'none'}}>
-       <Button variant='warning'  style={{width:400,height:50}} className='btn-lg rounded-pill zoom'>
+       <Button variant='btn--blue'  style={{width:400,height:50}} className='btn-lg btn--blue rounded-pill zoom'>
        <b className='text-dark'><pre>Opérations Envoi</pre></b>
        </Button>
        </Link>
@@ -89,7 +90,7 @@ function MenuGestionOperationsEnvoiEnglish(props)
  
 
 </Container>}
-{/*<SessionOut setIsadmin={props.setIsadmin}/>*/}
+<SessionOutEnglish setIsadmin={props.setIsadmin}/>
 <Footer />
 </>
     )

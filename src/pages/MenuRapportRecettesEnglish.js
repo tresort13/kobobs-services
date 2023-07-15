@@ -12,6 +12,7 @@ import { useMediaQuery } from 'react-responsive';
 //import SessionOut from './SessionOut';
 import HeaderFrench from './HeaderFrench';
 import HeaderEnglish from './HeaderEnglish';
+import SessionOutEnglish from './SessionOutEnglish';
 
 
 function MenuRapportRecettesEnglish(props)
@@ -30,9 +31,9 @@ function MenuRapportRecettesEnglish(props)
    
     <Row className='justify-content-center pb-3 pt-5 mt-5'>
         <Col xs = {"auto"}>
-        <Link to="/select_date_rapport_recette" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='warning'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='text-dark'><pre>Daily Revenue</pre></b>
+        <Link to="/select_date_rapport_recette_english" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant='btn--blue'  style={{width:400,height:80}} className='btn-lg btn--blue rounded zoom py-4'>
+        <b className='text-light'><pre>Daily Revenue</pre></b>
         </Button>
         </Link>
         </Col>
@@ -40,9 +41,9 @@ function MenuRapportRecettesEnglish(props)
 
     <Row className='justify-content-center pb-3 '>
         <Col xs = {"auto"}>
-        <Link to="/select_mois_rapport_recette" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='warning'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='text-dark'><pre>Monthly Revenue</pre></b>
+        <Link to="/select_mois_rapport_recette_english" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant='btn--blue'  style={{width:400,height:80}} className='btn-lg btn--blue rounded zoom py-4'>
+        <b className='text-light'><pre>Monthly Revenue</pre></b>
         </Button>
         </Link>
         </Col>
@@ -80,7 +81,7 @@ function MenuRapportRecettesEnglish(props)
  
 
 </Container>}
-{/*<SessionOut setIsadmin={props.setIsadmin}/>*/}
+<SessionOutEnglish setIsadmin={props.setIsadmin}/>
 <Footer />
 </>
     )

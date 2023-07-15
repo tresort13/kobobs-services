@@ -9,6 +9,7 @@ import Header from './Header';
 import Footer from './Footer';
 import './Header.css'
 import { useMediaQuery } from 'react-responsive';
+import SessionOutLingala from './SessionOutLingala';
 //import SessionOut from './SessionOut';
 
 
@@ -23,14 +24,14 @@ function MenuRapportRetraitLingala(props)
       });    
     return (
 <>
-<Header username={props.username} isAdmin={props.isAdmin}/>
+<Header dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
 {isDesktop && <Container >
     
     <Row className='justify-content-center pb-3 pt-5 mt-5'>
         <Col xs = {"auto"}>
-        <Link to="/select_date_form_retrait_french" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='warning'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='text-dark'><pre>Rapport ya mokolo na mokolo</pre></b>
+        <Link to="/select_date_form_retrait_lingala" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant='btn--blue'  style={{width:400,height:80}} className='btn-lg btn--blue rounded zoom py-4'>
+        <b className='text-light'><pre>Rapport ya mokolo na mokolo</pre></b>
         </Button>
         </Link>
         </Col>
@@ -40,9 +41,9 @@ function MenuRapportRetraitLingala(props)
 
     <Row className='justify-content-center pb-3'>
         <Col xs = {"auto"}>
-        <Link to="/select_mois_form_retrait_french" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='warning'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='text-dark'><pre>Rapport ya sanza na sanza</pre></b>
+        <Link to="/select_mois_form_retrait_lingala" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant='btn--blue'  style={{width:400,height:80}} className='btn-lg btn--blue rounded zoom py-4'>
+        <b className='text-light'><pre>Rapport ya sanza na sanza</pre></b>
         </Button>
         </Link>
         </Col>
@@ -77,7 +78,7 @@ function MenuRapportRetraitLingala(props)
   
 
 </Container> }
-{/*<SessionOut setIsadmin={props.setIsadmin}/>*/}
+<SessionOutLingala setIsadmin={props.setIsadmin}/>
 <Footer />
 </>
     )

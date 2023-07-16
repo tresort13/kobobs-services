@@ -16,7 +16,6 @@ import ClipLoader from "react-spinners/ClipLoader";
 import * as formik from 'formik';
 import * as yup from 'yup';
 import HeaderFrench from './HeaderFrench';
-import SessionOutFrench from './SessionOutFrench';
 
 //import SessionOut from './SessionOut';
 
@@ -389,7 +388,6 @@ function MenuInfoAbonnesFrench(props)
             <p></p>
           </Col>
         </Row>
-      <SessionOutFrench setIsadmin={props.setIsadmin}/>
       <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
       <MyVerticallyCenteredModal3 show={modalShow3} onHide={() => setModalShow3(false)} />
        <Footer />

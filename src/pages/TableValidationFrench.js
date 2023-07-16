@@ -15,9 +15,6 @@ import Modal from 'react-bootstrap/Modal';
 import ClipLoader from "react-spinners/ClipLoader";
 import HeaderFrench from './HeaderFrench';
 
-import SessionOutFrench from './SessionOutFrench';
-
-
 const useState = React.useState
 function TableValidationFrench(props)
 {
@@ -219,7 +216,6 @@ const submit =()=>
           </Col>
         </Row>
 </div>
-<SessionOutFrench setIsadmin={props.setIsadmin}/>
 <MyVerticallyCenteredModal3 show={modalShow3} onHide={() => setModalShow3(false)} />
 <Footer />
         </>

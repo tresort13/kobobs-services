@@ -16,7 +16,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import * as formik from 'formik';
 import * as yup from 'yup';
 import HeaderEnglish from './HeaderEnglish';
-import SessionOutEnglish from './SessionOutEnglish';
+
 
 //import SessionOut from './SessionOut';
 
@@ -37,6 +37,7 @@ function MyProfilEnglish(props)
     const [localDate,setLocalDate] = useState('')
     const [operationType,setOperationType] = useState('')
     const navigate = useNavigate()
+    const [isTodayHistory,setIsTodayHistoric] = useState(true)
 
 
     
@@ -174,10 +175,12 @@ function MyProfilEnglish(props)
                   setOperationRetrait(res.dataRetrait)
                   setOperationDeletion(res.dataDeletion)
                   setModalShow3(false)
+                  setIsTodayHistoric(false)
                 }
                 else{
                   setModalShow3(false)
                   setModalShow(true)
+                  setIsTodayHistoric(false)
                 }
              }
            )
@@ -186,6 +189,7 @@ function MyProfilEnglish(props)
                  setModalShow(true)
                  setModalShow3(false)
                  console.log(error)
+                 setIsTodayHistoric(false)
              } )
         
                  
@@ -220,7 +224,7 @@ function MyProfilEnglish(props)
              res => {   
                 
                  console.log(res)
-                if ((res.dataDeletion.length > 0) ||  (res.dataRetrait.length > 0) || (res.dataSending.length > 0) || (res.dataValidation > 0))
+                if ((res.dataDeletion.length > 0) ||  (res.dataRetrait.length > 0) || (res.dataSending.length > 0) || (res.dataValidation.length > 0))
                 {
                   setLocalDate(date.dateInfo)
                  // setOperationType(date.operationType)
@@ -229,6 +233,7 @@ function MyProfilEnglish(props)
                   setOperationRetrait(res.dataRetrait)
                   setOperationDeletion(res.dataDeletion)
                   setModalShow3(false)
+                  setIsTodayHistoric(true)
                 }
                 else{
                   setModalShow3(false)
@@ -473,10 +478,14 @@ function MyProfilEnglish(props)
 <Row className='justify-content-start ' >
   <Col xs={2}>
   </Col>
-        <Col xs={10} className='text-start'>
+        {isTodayHistory === false ? <Col xs={10} className='text-start'>
        { props.isStaff === true ? <p ><i><b>Your historic on <span className='couleur2'>{localDate} :</span> </b></i></p> : 
        <p ><i><b>Your historic  on <span className='couleur2'>{localDate} :</span> </b></i></p>}
-        </Col>
+        </Col> :
+       <Col xs={10} className='text-start'>
+       { props.isStaff === true ? <p ><i><b>Your historic for today <span className='couleur2'>{localDate} :</span> </b></i></p> : 
+       <p ><i><b>Your historic for today <span className='couleur2'>{localDate} :</span> </b></i></p>}
+        </Col>}
   </Row>
   { props.isAdmin === true ?
     <Row className='justify-content-end pb-3'>
@@ -489,7 +498,7 @@ function MyProfilEnglish(props)
          
          {nombre_retrait_paye > 0 ? <p className='text-dark py-2 text-start'><strong>number of withdrawals made :</strong> <b className='couleur2'>  {nombre_retrait_paye}</b>  </p> :<span></span> }
 
-         {nombre_operation_deleted > 0 ? <p className='text-dark py-2 text-start'><strong> number of operation deleted :</strong> <b className='couleur2'>  {nombre_operation_deleted}</b>  </p> :<span></span> }   
+         {nombre_operation_deleted > 0 ? <p className='text-dark py-2 text-start'><strong> number of operations deleted :</strong> <b className='couleur2'>  {nombre_operation_deleted}</b>  </p> :<span></span> }   
         </Col> 
          
 
@@ -634,8 +643,7 @@ props.isStaff === true ?
             <p></p>
           </Col>
         </Row>
-      <SessionOutEnglish setIsadmin={props.setIsadmin}/>
-      <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
+      <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} isTodayHistory={isTodayHistory}/>
       <MyVerticallyCenteredModal3 show={modalShow3} onHide={() => setModalShow3(false)} />
        <Footer />
         </>
@@ -657,8 +665,9 @@ function MyVerticallyCenteredModal(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p className='couleur2'><b>no any historic available !</b>   
-        </p>
+       {props.isTodayHistory === false ? <p className='couleur2'><b>no any historic available for the selected date !</b></p>
+       : <p className='couleur2'><b>no any historic available for today {new Date().toLocaleString().slice(0,10)} !</b><br></br>
+       <span className='text-dark'>because you have not done yet any operation today</span></p>}
       </Modal.Body>
       <Modal.Footer>
         <Button variant='warning' onClick={props.onHide}>close</Button>

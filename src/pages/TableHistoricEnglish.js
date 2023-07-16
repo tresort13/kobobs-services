@@ -13,9 +13,6 @@ import HeaderEnglish from './HeaderEnglish';
 import  './Header.css';
 import Modal from 'react-bootstrap/Modal';
 import ClipLoader from "react-spinners/ClipLoader";
-import SessionOutEnglish from './SessionOutEnglish';
-
-//import SessionOut from './SessionOut';
 
 
 const useState = React.useState
@@ -83,7 +80,7 @@ console.log(props.detailHistoric)
                console.log(operationDetailArray)
                props.dataDetailEnvoieTotal(operationDetailArray)
                navigate('/details_retraits_info_english')
-             }} ><i className="text-primary btn" ><b><u>more detail</u></b></i></td>
+             }} ><i className="text-primary btn" ><b><u>more details</u></b></i></td>
             </tr> 
         }) 
         }
@@ -100,7 +97,7 @@ console.log(props.detailHistoric)
   
     <Row className='justify-content-center pb-3 pt-3'>
         <Col xs ={4} >
-        <Link to="/" style={{color:'white',textDecorationLine:'none'}}>
+        <Link to="/my_profil_english" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant="danger" type="submit" >
         close 
         </Button>
@@ -186,7 +183,6 @@ console.log(props.detailHistoric)
           </Col>
         </Row>
 </div>
-<SessionOutEnglish setIsadmin={props.setIsadmin}/>
 <MyVerticallyCenteredModal3 show={modalShow3} onHide={() => setModalShow3(false)} />
 <Footer />
         </>

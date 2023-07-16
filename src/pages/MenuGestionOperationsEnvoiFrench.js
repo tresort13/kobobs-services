@@ -12,7 +12,7 @@ import { useMediaQuery } from 'react-responsive';
 //import SessionOut from './SessionOut';
 import HeaderFrench from './HeaderFrench';
 import HeaderEnglish from './HeaderEnglish';
-import SessionOutFrench from './SessionOutFrench';
+
 
 
 function MenuGestionOperationsEnvoiFrench(props)
@@ -90,7 +90,6 @@ function MenuGestionOperationsEnvoiFrench(props)
  
 
 </Container>}
-<SessionOutFrench setIsadmin={props.setIsadmin}/>
 <Footer />
 </>
     )

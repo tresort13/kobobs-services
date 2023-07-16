@@ -16,8 +16,6 @@ import  './Header.css';
 import * as formik from 'formik';
 import * as yup from 'yup';
 import HeaderFrench from './HeaderFrench';
-import SessionOutFrench from './SessionOutFrench';
-//import SessionOut from './SessionOut';
 
 
 const useState = React.useState
@@ -174,7 +172,6 @@ return (
 </Container>} 
 <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
 <MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
-<SessionOutFrench setIsadmin={props.setIsadmin}/>
 <Footer />
 </>
     )

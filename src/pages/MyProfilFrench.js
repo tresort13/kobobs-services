@@ -16,7 +16,6 @@ import ClipLoader from "react-spinners/ClipLoader";
 import * as formik from 'formik';
 import * as yup from 'yup';
 import HeaderFrench from './HeaderFrench';
-import SessionOutFrench from './SessionOutFrench';
 
 //import SessionOut from './SessionOut';
 
@@ -37,6 +36,7 @@ function MyProfilFrench(props)
     const [localDate,setLocalDate] = useState('')
     const [operationType,setOperationType] = useState('')
     const navigate = useNavigate()
+    const [isTodayHistory,setIsTodayHistoric] = useState(true)
 
     const { Formik } = formik;
 
@@ -170,10 +170,12 @@ function MyProfilFrench(props)
                  setOperationRetrait(res.dataRetrait)
                  setOperationDeletion(res.dataDeletion)
                  setModalShow3(false)
+                 setIsTodayHistoric(false)
                }
                else{
                  setModalShow3(false)
                  setModalShow(true)
+                 setIsTodayHistoric(false)
                }
             }
           )
@@ -181,6 +183,7 @@ function MyProfilFrench(props)
             {
                 setModalShow(true)
                 setModalShow3(false)
+                setIsTodayHistoric(false)
                 console.log(error)
             } )
        
@@ -216,7 +219,7 @@ function MyProfilFrench(props)
             res => {   
                
                 console.log(res)
-               if ((res.dataDeletion.length > 0) ||  (res.dataRetrait.length > 0) || (res.dataSending.length > 0) || (res.dataValidation > 0))
+               if ((res.dataDeletion.length > 0) ||  (res.dataRetrait.length > 0) || (res.dataSending.length > 0) || (res.dataValidation.length > 0))
                {
                  setLocalDate(date.dateInfo)
                 // setOperationType(date.operationType)
@@ -225,6 +228,7 @@ function MyProfilFrench(props)
                  setOperationRetrait(res.dataRetrait)
                  setOperationDeletion(res.dataDeletion)
                  setModalShow3(false)
+                 setIsTodayHistoric(true)
                }
                else{
                  setModalShow3(false)
@@ -273,10 +277,12 @@ function MyProfilFrench(props)
                  setLocalDate(date.dateInfo)
                  setOperationSending(res)
                  setModalShow3(false)
+                 setIsTodayHistoric(false)
                }
                else{
                  setModalShow3(false)
                  setModalShow(true)
+                 setIsTodayHistoric(false)
                }
             }
           )
@@ -285,6 +291,7 @@ function MyProfilFrench(props)
                 setModalShow(true)
                 setModalShow3(false)
                 console.log(error)
+                setIsTodayHistoric(false)
             } )
        
                 
@@ -317,6 +324,7 @@ function MyProfilFrench(props)
                  setLocalDate(date.dateInfo)
                  setOperationSending(res)
                  setModalShow3(false)
+                 setIsTodayHistoric(true)
                }
                else{
                  setModalShow3(false)
@@ -471,10 +479,14 @@ function MyProfilFrench(props)
 <Row className='justify-content-start ' >
   <Col xs={2}>
   </Col>
-        <Col xs={10} className='text-start'>
+        {isTodayHistory === false ? <Col xs={10} className='text-start'>
        { props.isStaff === true ? <p ><i><b>Votre historique du <span className='couleur2'>{localDate} :</span> </b></i></p> : 
        <p ><i><b>Votre historique du <span className='couleur2'>{localDate} :</span> </b></i></p>}
+        </Col> :<Col xs={10} className='text-start'>
+       { props.isStaff === true ? <p ><i><b>Votre historique d'aujoudhui <span className='couleur2'>{localDate} :</span> </b></i></p> : 
+       <p ><i><b>Votre historique d'aujoudhui <span className='couleur2'>{localDate} :</span> </b></i></p>}
         </Col>
+        }
   </Row>
   { props.isAdmin === true ?
     <Row className='justify-content-end pb-3'>
@@ -632,8 +644,7 @@ props.isStaff === true ?
             <p></p>
           </Col>
         </Row>
-      <SessionOutFrench setIsadmin={props.setIsadmin}/>
-      <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
+      <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} isTodayHistory={isTodayHistory}/>
       <MyVerticallyCenteredModal3 show={modalShow3} onHide={() => setModalShow3(false)} />
        <Footer />
         </>
@@ -655,8 +666,10 @@ function MyVerticallyCenteredModal(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p className='couleur2'><b>pas d'historique disponible!</b>   
-        </p>
+        {props.isTodayHistory === false ? <p className='couleur2'><b>pas d'historique disponible!</b>   
+        </p> : <p className='couleur2'><b>pas d'historique disponible à la date d'aujourd'hui  {new Date().toLocaleString().slice(0,10)}!</b> 
+        <br></br><span className='text-dark'>parceque vous n'aviez éffectué aucune opération aujourd'hui</span></p>
+        }
       </Modal.Body>
       <Modal.Footer>
         <Button variant='warning' onClick={props.onHide}>Fermer</Button>

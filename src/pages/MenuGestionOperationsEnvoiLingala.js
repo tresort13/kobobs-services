@@ -12,9 +12,6 @@ import { useMediaQuery } from 'react-responsive';
 //import SessionOut from './SessionOut';
 import HeaderFrench from './HeaderFrench';
 import HeaderEnglish from './HeaderEnglish';
-import SessionOutEnglish from './SessionOutEnglish';
-import SessionOutLingala from './SessionOutLingala';
-
 
 function MenuGestionOperationsEnvoiLingala(props)
 {
@@ -91,7 +88,6 @@ function MenuGestionOperationsEnvoiLingala(props)
  
 
 </Container>}
-<SessionOutLingala setIsadmin={props.setIsadmin}/>
 <Footer />
 </>
     )

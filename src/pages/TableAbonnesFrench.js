@@ -12,7 +12,7 @@ import Table from 'react-bootstrap/Table';
 import HeaderEnglish from './HeaderEnglish';
 import  './Header.css';
 import HeaderFrench from './HeaderFrench';
-import SessionOutFrench from './SessionOutFrench';
+
 
 //import SessionOut from './SessionOut';
 
@@ -177,7 +177,6 @@ const operationDetailArray = []
           </Col>
         </Row>
 </div>
-<SessionOutFrench setIsadmin={props.setIsadmin}/>
 <Footer />
         </>
     )

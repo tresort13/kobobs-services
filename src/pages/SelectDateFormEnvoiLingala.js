@@ -16,7 +16,6 @@ import  './Header.css';
 import * as formik from 'formik';
 import * as yup from 'yup';
 import HeaderEnglish from './HeaderEnglish';
-import SessionOutLingala from './SessionOutLingala';
 
 //import SessionOut from './SessionOut';
 
@@ -171,7 +170,6 @@ return (
 </Container>}
 <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
 <MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
-<SessionOutLingala setIsadmin={props.setIsadmin}/>
 <Footer />
 </>
     )

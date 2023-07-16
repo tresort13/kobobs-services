@@ -11,7 +11,7 @@ import Footer from './Footer';
 import Table from 'react-bootstrap/Table';
 import HeaderEnglish from './HeaderEnglish';
 import  './Header.css';
-import SessionOutLingala from './SessionOutLingala';
+
 
 //import SessionOut from './SessionOut';
 
@@ -176,7 +176,6 @@ const operationDetailArray = []
           </Col>
         </Row>
 </div>
-<SessionOutLingala setIsadmin={props.setIsadmin}/>
 <Footer />
         </>
     )

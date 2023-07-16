@@ -10,8 +10,7 @@ import Footer from './Footer';
 import './Header.css'
 import { useMediaQuery } from 'react-responsive';
 import HeaderFrench from './HeaderFrench';
-import SessionOutFrench from './SessionOutFrench';
-//import SessionOut from './SessionOut';
+
 
 
 function MenuRapportEnvoiFrench(props)
@@ -79,7 +78,6 @@ function MenuRapportEnvoiFrench(props)
   
 
 </Container> }
-<SessionOutFrench setIsadmin={props.setIsadmin}/>
 <Footer />
 </>
     )

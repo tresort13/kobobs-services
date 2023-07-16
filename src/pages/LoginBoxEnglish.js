@@ -40,7 +40,7 @@ function LoginBoxEnglish(props)
     return (
    <>
    {isDesktop && <div>
-  <MyVerticallyCenteredModal show={props.modalShow} onHide={() => props.setModalShow(false)} dataAbonne={props.dataAbonne} setModalShow={props.setModalShow} setModalShow2={setModalShow2} setModalShow3={setModalShow3} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber}  setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} openRegister={openRegister} language={props.language}/>
+  <MyVerticallyCenteredModal show={props.modalShow} onHide={() => props.setModalShow(false)} dataAbonne={props.dataAbonne} setModalShow={props.setModalShow} setModalShow2={setModalShow2} setModalShow3={setModalShow3} setModalShow4={props.setModalShow4} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber}  setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} openRegister={openRegister} language={props.language}/>
   <MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
   <MyVerticallyCenteredModal3 show={modalShow3} onHide={() => setModalShow3(false)} />
   <MyVerticallyCenteredModal4 show={props.modalShow4} onHide={() => props.setModalShow4(false)} language2={props.language2} setLanguage2={props.setLanguage2} setModalShow2={setModalShow2} setModalShow4={props.setModalShow4} setModalShow5={setModalShow5} setModalShow6={setModalShow6} language={props.language}/>
@@ -50,7 +50,7 @@ function LoginBoxEnglish(props)
    } 
 
 {isMobileOrTablet && <div>
-   <MyVerticallyCenteredModal show={props.modalShow} onHide={() => props.setModalShow(false)} dataAbonne={props.dataAbonne} setModalShow={props.setModalShow} setModalShow2={setModalShow2} setModalShow3={setModalShow3} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber}  setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} openRegister={openRegister} language={props.language}/>
+   <MyVerticallyCenteredModal show={props.modalShow} onHide={() => props.setModalShow(false)} dataAbonne={props.dataAbonne} setModalShow={props.setModalShow} setModalShow2={setModalShow2} setModalShow3={setModalShow3} setModalShow4={props.setModalShow4} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber}  setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} openRegister={openRegister} language={props.language}/>
   <MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
   <MyVerticallyCenteredModal3 show={modalShow3} onHide={() => setModalShow3(false)} />
   <MyVerticallyCenteredModal4 show={props.modalShow4} onHide={() => props.setModalShow4(false)} language2={props.language2} setLanguage2={props.setLanguage2} setModalShow2={setModalShow2} setModalShow4={props.setModalShow4} setModalShow5={setModalShow5} setModalShow6={setModalShow6} language={props.language}/>
@@ -93,6 +93,7 @@ function MyVerticallyCenteredModal(props) {
                 props.setModalShow(false)
                  props.setModalShow2(false)
                  props.setModalShow3(false)
+                 props.setModalShow4(false)
                 console.log('you are connected') 
                  
                  if (data.username === state.credentials.username)
@@ -106,6 +107,7 @@ function MyVerticallyCenteredModal(props) {
                    props.setIsLogged(true)
                    console.log(data.is_superuser)
                    setState({credentials:{username :data.username}})
+                   props.setModalShow4(false)
                     
                    navigate('/')
                    console.log('you are connected')
@@ -115,6 +117,7 @@ function MyVerticallyCenteredModal(props) {
                   props.setModalShow(true)
                   props.setModalShow2(false)
                   props.setModalShow3(true)
+                  props.setModalShow4(false)
                   navigate('/')
                  }
                  
@@ -450,6 +453,7 @@ function MyVerticallyCenteredModal(props) {
   
     const showLogin2 = ()=>{
       props.setModalShow5(false)
+      props.setModalShow4(false)
       props.setModalShow(true)
     }
     return (

@@ -9,8 +9,6 @@ import Header from './Header';
 import Footer from './Footer';
 import './Header.css'
 import { useMediaQuery } from 'react-responsive';
-import SessionOutLingala from './SessionOutLingala';
-//import SessionOut from './SessionOut';
 
 
 function MenuRapportRetraitLingala(props)
@@ -78,7 +76,6 @@ function MenuRapportRetraitLingala(props)
   
 
 </Container> }
-<SessionOutLingala setIsadmin={props.setIsadmin}/>
 <Footer />
 </>
     )

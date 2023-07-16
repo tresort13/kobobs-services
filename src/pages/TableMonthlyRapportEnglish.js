@@ -11,10 +11,6 @@ import Footer from './Footer';
 import Table from 'react-bootstrap/Table';
 import HeaderEnglish from './HeaderEnglish';
 import  './Header.css';
-import SessionOutEnglish from './SessionOutEnglish';
-
-//import SessionOut from './SessionOut';
-
 
 
 function TableMonthlyRapportEnglish(props)
@@ -210,7 +206,6 @@ const total_montant = props.dailyRapport.reduce((total,value)=>
           </Col>
         </Row>
 </div>
-<SessionOutEnglish setIsadmin={props.setIsadmin}/>
 <Footer />
         </>
     )

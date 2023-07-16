@@ -12,6 +12,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Modal from 'react-bootstrap/Modal';
 import HeaderFrench from './HeaderFrench';
+import ClipLoader from "react-spinners/ClipLoader";
 //import SessionOut from './SessionOut';
 
 
@@ -25,6 +26,96 @@ function DetailsRetraitsInfoFrench(props)
     const [message,setMessage] = useState("Détails sur l'opération")
     const [couleur,setCouleur] = useState("text-dark")
     const [modalShow, setModalShow] = React.useState(true);
+    const [modalShow2, setModalShow2] = React.useState(false);
+    const [modalShow3, setModalShow3] = React.useState(false);
+    const [modalShow4, setModalShow4] = React.useState(false);
+    const [modalShow5, setModalShow5] = React.useState(false);
+    const [modalShow6, setModalShow6] = React.useState(false);
+    const[envoie,setEnvoie] = useState({infoEnvoie :{
+      agent_id :props.detailEnvoieTotal[0].agent_id,
+      nom_expediteur : props.detailEnvoieTotal[0].nom_expediteur,
+      prenom_expediteur : props.detailEnvoieTotal[0].prenom_expediteur,
+      adresse_expediteur : props.detailEnvoieTotal[0].adresse_expediteur,
+      email_expediteur : props.detailEnvoieTotal[0].email_expediteur,
+      numero_expediteur: props.detailEnvoieTotal[0].numero_expediteur,
+      pays_expediteur : props.detailEnvoieTotal[0].pays_expediteur,
+      nom_beneficiaire : props.detailEnvoieTotal[0].nom_beneficiaire,
+      prenom_beneficiaire : props.detailEnvoieTotal[0].prenom_beneficiaire,
+      pays_beneficiaire : props.detailEnvoieTotal[0].pays_beneficiaire,
+      montant_beneficiaire : props.detailEnvoieTotal[0].montant_beneficiaire,
+      type_service :props.detailEnvoieTotal[0].type_service,
+      numero_transfer : props.detailEnvoieTotal[0].numero_transfer,
+      code_retrait : props.detailEnvoieTotal[0].code_retrait,  
+      montant_pour_payer : props.detailEnvoieTotal[0].montant_total,
+      frais_envoie : props.detailEnvoieTotal[0].frais_envoie,
+      frais_tva : props.detailEnvoieTotal[0].frais_tva,
+      date_operation : props.detailEnvoieTotal[0].date_operation,
+      date_heure_operation :props.detailEnvoieTotal[0].date_heure_operation,
+      month_year_operation : props.detailEnvoieTotal[0].month_year_operation
+      }})
+
+    const recoverOperation = ()=>
+    {
+      setModalShow2(true)
+        fetch('https://kobobsapi.herokuapp.com/api/recoverOperation/',{
+                method:'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(envoie.infoEnvoie)
+              })
+              .then( res => res.json())
+              .then(
+                res => {  
+                  if (res.recoverMessage == "success")
+                  {
+                    setModalShow2(false)
+                    setModalShow4(true)
+                    props.setMessage("Sending historic")
+                   
+                  }
+                  else{
+                    setModalShow2(false)
+                    setModalShow3(true)
+                  }
+                  }
+              )
+              .catch( (error) =>
+                {
+                  setModalShow2(false)
+                  setModalShow3(true)
+                } )
+    }
+
+    const deleteOperation = ()=>
+    {
+      setModalShow2(true)
+        fetch('https://kobobsapi.herokuapp.com/api/suprimerPermanently/',{
+                method:'DELETE',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(envoie.infoEnvoie)
+              })
+              .then( res => res.json())
+              .then(
+                res => {  
+                  if (res.message == "success")
+                  {
+                    setModalShow2(false)
+                    setModalShow5(true)
+                    //props.setMessage("Sending historic")
+                   
+                  }
+                  else{
+                    setModalShow2(false)
+                    setModalShow3(true)
+                  }
+                  }
+              )
+              .catch( (error) =>
+                {
+                  setModalShow2(false)
+                  setModalShow3(true)
+                } )
+    }
+
 
 
 
@@ -125,7 +216,9 @@ console.log(props.detailEnvoieTotal)
 
     <Col xs={12}>
      {props.message === "Historique de suppression" ? <div><p className='text-dark'>operation fait par : <b className='text-dark'>{value.deletion_executed_by_owner}</b> </p>
-     <p className='text-dark'>Date et heure  de suppression: <b className='text-dark'> {value.date_heure_operation_deletion}</b></p></div>  :
+     <p className='text-dark'>Date et heure  de suppression: <b className='text-dark'> {value.date_heure_operation_deletion}</b></p><br></br>
+      <Button onClick={recoverOperation}  className='mx-5' variant='success'>Récupérer l'operation</Button>
+      <Button  onClick={()=>setModalShow6(true)}className='mx-5' variant='danger'>supprimer définitivement</Button></div>  :
     <p></p>}        
     </Col>
 
@@ -203,6 +296,18 @@ console.log(props.detailEnvoieTotal)
           </Col>
         </Row>
 {/*<SessionOut setIsadmin={props.setIsadmin}/>*/}
+<MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
+<MyVerticallyCenteredModal3 show={modalShow3} onHide={() => setModalShow3(false)} />
+<MyVerticallyCenteredModal4 show={modalShow4} onHide={() => {
+  setModalShow4(false)
+  navigate('/my_profil_french')  
+  
+  }} />
+  <MyVerticallyCenteredModal5 show={modalShow5} onHide={() => {
+  setModalShow5(false)
+ navigate('/my_profil_french')  
+  }} />
+  <MyVerticallyCenteredModal6 show={modalShow6} onHide={() => setModalShow6(false)}  deleteOperation={deleteOperation}/>
 <Footer />
         </>
        
@@ -233,6 +338,126 @@ function MyVerticallyCenteredModal(props) {
   );
 }
 
+
+
+function MyVerticallyCenteredModal2(props) {
+  return (
+    <Modal
+      {...props}
+      size="sm"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          veuillez patienter...
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+      <ClipLoader color={"#ff8c00"} loading={true} size={150} /> 
+      </Modal.Body>
+      <Modal.Footer>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
+function MyVerticallyCenteredModal3(props) {
+  return (
+    <Modal
+      {...props}
+      size="sm"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+        désolé l'opération a échoué
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <p className='couleur2'><b>Veuillez contacter l'équipe technique ! </b>   
+        </p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant='warning' onClick={props.onHide}>fermer</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
+function MyVerticallyCenteredModal4(props) {
+  return (
+    <Modal
+      {...props}
+      size="sm"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+        opération de récupération réussie
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <p className='text-success'><b>vous avez récupéré cette opération avec succès ! </b>   
+        </p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant='warning' onClick={props.onHide}>ok</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
+function MyVerticallyCenteredModal5(props) {
+  return (
+    <Modal
+      {...props}
+      size="sm"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+        opération supprimée  définitivement 
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <p className='text-success'><b>vous avez définitivement supprimé cette opération d'envoi</b>   
+        </p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant='warning' onClick={props.onHide}>ok</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
+function MyVerticallyCenteredModal6(props) {
+  return (
+    <Modal
+      {...props}
+      size="sm"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+        voulez-vous vraiment supprimer définitivement cette opération d'envoi ??
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body className='text-center'>
+      <Button variant='dark' className='mx-2'  onClick={props.onHide}>Non</Button> <Button variant='danger' className='mx-5' onClick={()=>{
+         props.deleteOperation()}
+      }>oui</Button>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant='warning' onClick={props.onHide}>cancel</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
 
 
 export default DetailsRetraitsInfoFrench;

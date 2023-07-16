@@ -39,14 +39,32 @@ function SessionOutFrench(props)
      // navigate('/')
       
     }
-const idleTimer = useIdleTimer({
-promptTimeout : 10 * 1000,
-onPrompt : open,
-timeout : 30 * 1000,
-onIdle : logout,
-onActive : close,
+    const idleTimer = useIdleTimer({
+      promptTimeout : 10 * 1000,
+      onPrompt : ()=>{
+        if(props.isLogged ===true)
+        {
+          open()
+        } 
+        else
+        {
+          close()
+        }  
+      },
+      timeout : 30 * 1000,
+      onIdle : ()=>{
+        if(props.isLogged ===true)
+        {
+          logout()
+        }  
+        else
+        {
+          close()
+        }     
+      },
+      onActive : close,
+     })
 
- })
 
  return (
   <MyVerticallyCenteredModal close={close} logout = {logout} show={modalShow} onHide={() => setModalShow(false)} />

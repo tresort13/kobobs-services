@@ -13,7 +13,6 @@ import Footer from './Footer';
 //import SessionOut from './SessionOut';
 import Modal from 'react-bootstrap/Modal';
 import HeaderFrench from './HeaderFrench';
-import SessionOutFrench from './SessionOutFrench';
 
 
 
@@ -221,7 +220,6 @@ function MonthlyRapportInfoRetraitFrench(props)
           </Col>
         </Row>
         <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
-      <SessionOutFrench setIsadmin={props.setIsadmin}/>
 <Footer />
         </>
        

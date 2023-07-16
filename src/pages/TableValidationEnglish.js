@@ -13,7 +13,6 @@ import HeaderEnglish from './HeaderEnglish';
 import  './Header.css';
 import Modal from 'react-bootstrap/Modal';
 import ClipLoader from "react-spinners/ClipLoader";
-import SessionOutEnglish from './SessionOutEnglish';
 
 //import SessionOut from './SessionOut';
 
@@ -221,7 +220,6 @@ const submit =()=>
           </Col>
         </Row>
 </div>
-<SessionOutEnglish setIsadmin={props.setIsadmin}/>
 <MyVerticallyCenteredModal3 show={modalShow3} onHide={() => setModalShow3(false)} />
 <Footer />
         </>

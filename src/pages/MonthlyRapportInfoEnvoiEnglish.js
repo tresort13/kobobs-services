@@ -13,8 +13,6 @@ import Footer from './Footer';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Modal from 'react-bootstrap/Modal';
 import HeaderEnglish from './HeaderEnglish';
-import SessionOutEnglish from './SessionOutEnglish';
-//import SessionOut from './SessionOut';
 
 
 const useState = React.useState
@@ -230,7 +228,6 @@ function MonthlyRapportInfoEnvoiEnglish(props)
             <p></p>
           </Col>
         </Row>
-<SessionOutEnglish setIsadmin={props.setIsadmin}/>
 <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
 <Footer />
         </>

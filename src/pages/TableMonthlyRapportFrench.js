@@ -12,10 +12,6 @@ import Table from 'react-bootstrap/Table';
 import HeaderEnglish from './HeaderEnglish';
 import  './Header.css';
 import HeaderFrench from './HeaderFrench';
-import SessionOutFrench from './SessionOutFrench';
-
-//import SessionOut from './SessionOut';
-
 
 
 function TableMonthlyRapportFrench(props)
@@ -213,7 +209,6 @@ const total_montant = props.dailyRapport.reduce((total,value)=>
           </Col>
         </Row>
 </div>
-<SessionOutFrench setIsadmin={props.setIsadmin}/>
 <Footer />
         </>
     )

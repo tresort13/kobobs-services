@@ -16,7 +16,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import * as formik from 'formik';
 import * as yup from 'yup';
 import HeaderFrench from './HeaderFrench';
-import SessionOutLingala from './SessionOutLingala';
+
 
 //import SessionOut from './SessionOut';
 
@@ -37,16 +37,18 @@ function MyProfilLingala(props)
     const [localDate,setLocalDate] = useState('')
     const [operationType,setOperationType] = useState('')
     const navigate = useNavigate()
+    const [isTodayHistory,setIsTodayHistoric] = useState(true)
+
 
     const { Formik } = formik;
 
     const testValidation = yup.object().shape({
-      dateInfo : yup.string().required('esengeli ko kota makami'),
+      dateInfo : yup.string().required('esengeli ko kota makomi'),
       
     });
   
     const testValidation2 = yup.object().shape({
-      dateInfo : yup.string().required('esengeli ko kota makami'),
+      dateInfo : yup.string().required('esengeli ko kota makomi'),
     });
   
       const isDesktop = useMediaQuery({
@@ -170,10 +172,12 @@ function MyProfilLingala(props)
                  setOperationRetrait(res.dataRetrait)
                  setOperationDeletion(res.dataDeletion)
                  setModalShow3(false)
+                 setIsTodayHistoric(false)
                }
                else{
                  setModalShow3(false)
                  setModalShow(true)
+                 setIsTodayHistoric(false)
                }
             }
           )
@@ -182,6 +186,7 @@ function MyProfilLingala(props)
                 setModalShow(true)
                 setModalShow3(false)
                 console.log(error)
+                setIsTodayHistoric(false)
             } )
        
                 
@@ -216,7 +221,7 @@ function MyProfilLingala(props)
             res => {   
                
                 console.log(res)
-               if ((res.dataDeletion.length > 0) ||  (res.dataRetrait.length > 0) || (res.dataSending.length > 0) || (res.dataValidation > 0))
+               if ((res.dataDeletion.length > 0) ||  (res.dataRetrait.length > 0) || (res.dataSending.length > 0) || (res.dataValidation.length > 0))
                {
                  setLocalDate(date.dateInfo)
                 // setOperationType(date.operationType)
@@ -225,6 +230,7 @@ function MyProfilLingala(props)
                  setOperationRetrait(res.dataRetrait)
                  setOperationDeletion(res.dataDeletion)
                  setModalShow3(false)
+                 setIsTodayHistoric(true)
                }
                else{
                  setModalShow3(false)
@@ -273,10 +279,12 @@ function MyProfilLingala(props)
                  setLocalDate(date.dateInfo)
                  setOperationSending(res)
                  setModalShow3(false)
+                 setIsTodayHistoric(false)
                }
                else{
                  setModalShow3(false)
                  setModalShow(true)
+                 setIsTodayHistoric(false)
                }
             }
           )
@@ -285,6 +293,7 @@ function MyProfilLingala(props)
                 setModalShow(true)
                 setModalShow3(false)
                 console.log(error)
+                setIsTodayHistoric(false)
             } )
        
                 
@@ -317,6 +326,7 @@ function MyProfilLingala(props)
                  setLocalDate(date.dateInfo)
                  setOperationSending(res)
                  setModalShow3(false)
+                 setIsTodayHistoric(true)
                }
                else{
                  setModalShow3(false)
@@ -362,7 +372,7 @@ function MyProfilLingala(props)
     return (
         
         <>
-        <HeaderFrench dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
+        <Header dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
 {isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
 <Row className='justify-content-center  pt-3' >
         <Col xs={6}>
@@ -409,7 +419,7 @@ function MyProfilLingala(props)
        
     <Row className='justify-content-center text-center mx-3 px-3 py-3' >
         <Col xs={8} className='justify-content-end text-start '>
-        <Form.Label htmlFor="basic-url" className='text-start'><strong><i>Pona dati moko boye oyo olingi kotala histoirique na yo :</i></strong></Form.Label>
+        <Form.Label htmlFor="basic-url" className='text-start'><strong><i>Pona dati  oyo olingi kotala histoirique na yo :</i></strong></Form.Label>
         <InputGroup className="mb-3" controlId="formBasicText" >  
         <Form.Control name="dateInfo" value={values.dateInfo} onChange={handleChange} onBlur={handleBlur} type="date" placeholder='pona date'  />
         <InputGroup.Text ><Button type="submit" variant='dark'>
@@ -471,23 +481,27 @@ function MyProfilLingala(props)
 <Row className='justify-content-start ' >
   <Col xs={2}>
   </Col>
-        <Col xs={10} className='text-start'>
+        {props.isTodayHistory===false ? <Col xs={10} className='text-start'>
        { props.isStaff === true ? <p ><i><b>historique nayo na date ya <span className='couleur2'>{localDate} :</span> </b></i></p> : 
        <p ><i><b>historique nayo na date ya <span className='couleur2'>{localDate} :</span> </b></i></p>}
-        </Col>
+        </Col> :
+         <Col xs={10} className='text-start'>
+         { props.isStaff === true ? <p ><i><b>historique nayo pona na date ya lelo le <span className='couleur2'>{localDate} :</span> </b></i></p> : 
+         <p ><i><b>historique nayo ya lelo le <span className='couleur2'>{localDate} :</span> </b></i></p>}
+          </Col>}
   </Row>
   { props.isAdmin === true ?
     <Row className='justify-content-end pb-3'>
       <Col xs={2}>
       </Col>
       <Col xs={4} >
-        {nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Nombre yaba envois esalemi :</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
+        {nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Nombre yaba envois osali :</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
         
-        {nombre_envoie_valide > 0 ? <p className='text-dark py-2 text-start'><strong>Nombre yaba validations esalemi :</strong> <b className='couleur2'>  {nombre_envoie_valide}</b>  </p> : <span></span>}
+        {nombre_envoie_valide > 0 ? <p className='text-dark py-2 text-start'><strong>Nombre yaba validations osali :</strong> <b className='couleur2'>  {nombre_envoie_valide}</b>  </p> : <span></span>}
          
-         {nombre_retrait_paye > 0 ? <p className='text-dark py-2 text-start'><strong>nombre yaba retraits esalemi :</strong> <b className='couleur2'>  {nombre_retrait_paye}</b>  </p> :<span></span> }
+         {nombre_retrait_paye > 0 ? <p className='text-dark py-2 text-start'><strong>nombre yaba retraits osali :</strong> <b className='couleur2'>  {nombre_retrait_paye}</b>  </p> :<span></span> }
 
-         {nombre_operation_deleted > 0 ? <p className='text-dark py-2 text-start'><strong> nombre yaba opérations supprimées :</strong> <b className='couleur2'>  {nombre_operation_deleted}</b>  </p> :<span></span> }   
+         {nombre_operation_deleted > 0 ? <p className='text-dark py-2 text-start'><strong> nombre yaba opérations oyo o supprimées :</strong> <b className='couleur2'>  {nombre_operation_deleted}</b>  </p> :<span></span> }   
         </Col> 
          
 
@@ -512,11 +526,11 @@ props.isStaff === true ?
       <Col xs={2}>
       </Col>
       <Col xs={4}>
-      {nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Nombre yaba envois esalemi :</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
+      {nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Nombre yaba envois osali :</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
          </Col> 
 
          <Col xs={4}>
-         {nombre_retrait_paye > 0 ? <p className='text-dark py-2 text-start'><strong>nombre yaba retraits esalemi :</strong> <b className='couleur2'>  {nombre_retrait_paye}</b>  </p> :<span></span> }
+         {nombre_retrait_paye > 0 ? <p className='text-dark py-2 text-start'><strong>nombre yaba retraits osali :</strong> <b className='couleur2'>  {nombre_retrait_paye}</b>  </p> :<span></span> }
           </Col> 
          
 
@@ -632,8 +646,7 @@ props.isStaff === true ?
             <p></p>
           </Col>
         </Row>
-      <SessionOutLingala setIsadmin={props.setIsadmin}/>
-      <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
+      <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} isTodayHistory = {isTodayHistory}/>
       <MyVerticallyCenteredModal3 show={modalShow3} onHide={() => setModalShow3(false)} />
        <Footer />
         </>
@@ -651,15 +664,16 @@ function MyVerticallyCenteredModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          désolé 
+          bolibimsi 
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p className='couleur2'><b>pas d'historique disponible!</b>   
-        </p>
+        {props.isTodayHistory === true ? <p className='couleur2'><b>historique eza te lelo le {new Date().toLocaleString().slice(0,10)}!</b> <br></br><span className='text-dark'>pona nanu osali opération ata moko te lelo</span>   
+        </p>: <p className='couleur2'><b>historique eza te pona osali opération ata moko te na date oponi! </b> 
+        </p>}
       </Modal.Body>
       <Modal.Footer>
-        <Button variant='warning' onClick={props.onHide}>Fermer</Button>
+        <Button variant='warning' onClick={props.onHide}>kokanga</Button>
       </Modal.Footer>
     </Modal>
   );
@@ -675,7 +689,7 @@ function MyVerticallyCenteredModal3(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Please wait...
+        zela mukie...
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>

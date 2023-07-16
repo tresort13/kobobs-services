@@ -14,9 +14,6 @@ import  './Header.css';
 import Modal from 'react-bootstrap/Modal';
 import ClipLoader from "react-spinners/ClipLoader";
 import HeaderFrench from './HeaderFrench';
-import SessionOutFrench from './SessionOutFrench';
-
-//import SessionOut from './SessionOut';
 
 
 const useState = React.useState
@@ -54,7 +51,7 @@ console.log(props.detailHistoric)
 <Row className='justify-content-center '>
         <Col xs = {12} className='text-center borders pt-2'>
         <div>
-        <h4 ><b><i className='couleur2'>{props.message} à la date {props.dateHistoric}</i></b></h4>
+        <h4 ><b><i className='couleur2'>{props.message} à la date du {props.dateHistoric}</i></b></h4>
         </div>
         <div>
         <Table striped bordered hover variant="light">
@@ -101,7 +98,7 @@ console.log(props.detailHistoric)
   
     <Row className='justify-content-center pb-3 pt-3'>
         <Col xs ={4} >
-        <Link to="/home_french" style={{color:'white',textDecorationLine:'none'}}>
+        <Link to="/my_profil_french" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant="danger" type="submit" >
         ferme 
         </Button>
@@ -187,7 +184,6 @@ console.log(props.detailHistoric)
           </Col>
         </Row>
 </div>
-<SessionOutFrench setIsadmin={props.setIsadmin}/>
 <MyVerticallyCenteredModal3 show={modalShow3} onHide={() => setModalShow3(false)} />
 <Footer />
         </>

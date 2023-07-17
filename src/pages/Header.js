@@ -149,6 +149,8 @@ function Header(props)
                   <NavDropdown.Divider />
                   <Nav.Link href="/form_envoie_abonne"><b><pre>Tinda Mbongo</pre></b></Nav.Link>
                   <NavDropdown.Divider />
+                  <Nav.Link href="/menu_management_lingala"><b><pre>Gestions yaba Opérations</pre></b></Nav.Link>
+                  <NavDropdown.Divider />
                   <Nav.Link href="/my_profil_lingala"><b><pre>Tala Historique nayo</pre></b></Nav.Link>
                   <NavDropdown.Divider />
                   <Nav.Link  href="/form_retrait_info"><b><pre>Landela transfer nayo </pre></b></Nav.Link>

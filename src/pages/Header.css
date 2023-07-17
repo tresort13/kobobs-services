@@ -3,6 +3,10 @@ p {
   
 }
 
+.text-bold {
+  font-weight: bold;
+}
+
 .textUpper {
   text-transform: capitalize;
 }

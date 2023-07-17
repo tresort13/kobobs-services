@@ -144,7 +144,12 @@ function FormEnvoiClientEnglish(props)
       
       <>
 <HeaderEnglish dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
-{isDesktop && <Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:50,width:1000}} >
+{isDesktop && <Container className=' justify-content-center text-center mb-5 text-light text-bold' style={{marginTop:50,width:1000}} >
+{/*<Row className='mt-3'>
+        <Col xs={12} className="text-start text-light">
+            <p><Link to='/menu_management_english' style={{textDecoration:"none"}}><b className='text-light'>Operation Management &gt;&gt;</b></Link> <Link to='/menu_operation_envoi_english' style={{textDecoration:"none"}}><b className='text-warning'>Sending Operations </b></Link></p>
+        </Col>
+  </Row>*/}
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={6}>
         <p className='couleur2'><i><b>{message}</b></i></p>
@@ -186,7 +191,7 @@ function FormEnvoiClientEnglish(props)
 
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className="text-danger">*</span> First Name </Form.Label>
+        <Form.Label className='text-light'><span className="text-danger">*</span>First Name </Form.Label>
         <Form.Control name="prenom_expediteur" value={values.prenom_expediteur} onBlur={handleBlur} onChange={handleChange} type="text" placeholder='First Name'  />
         <p className='text-danger'>{touched.prenom_expediteur && errors.prenom_expediteur}</p>
          </Form.Group>
@@ -195,7 +200,7 @@ function FormEnvoiClientEnglish(props)
 
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Last Name </Form.Label>  
+        <Form.Label className='text-light'><span className="text-danger">*</span> Last Name </Form.Label>  
         <Form.Control name="nom_expediteur" value={values.nom_expediteur} onBlur={handleBlur} onChange={handleChange} type="text" placeholder='Last Name' />
         <p className='text-danger'>{touched.nom_expediteur && errors.nom_expediteur}</p>
          </Form.Group>
@@ -208,7 +213,7 @@ function FormEnvoiClientEnglish(props)
     
        <Col xs = {4}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className="text-danger"></span> Address (optional)</Form.Label>
+        <Form.Label className='text-light'><span className="text-danger"></span> Address (optional)</Form.Label>
         <Form.Control name="adresse_expediteur"  onBlur={handleBlur} onChange={handleChange} type="text" placeholder='Address'  />
 
          </Form.Group>
@@ -216,7 +221,7 @@ function FormEnvoiClientEnglish(props)
 
 
         <Col xs = {4}>
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Email</Form.Label>
+        <Form.Label className='text-light'><span className="text-danger">*</span> Email</Form.Label>
         <InputGroup className="mb-3">
         <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
         <Form.Control name="email_expediteur" value={values.email_expediteur} onBlur={handleBlur} onChange={handleChange} type="text" placeholder='Email' /> 
@@ -225,7 +230,7 @@ function FormEnvoiClientEnglish(props)
         </Col>
 
         <Col xs = {4}>
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Mobile Number</Form.Label>
+        <Form.Label className='text-light'><span className="text-danger">*</span> Mobile Number</Form.Label>
         <InputGroup className="mb-3">
         <InputGroup.Text id="basic-addon1">+44</InputGroup.Text>
         <Form.Control name="numero_expediteur" value={values.numero_expediteur} onBlur={handleBlur} onChange={handleChange} type="text" placeholder='Numéro ya Tshombo' />
@@ -239,7 +244,7 @@ function FormEnvoiClientEnglish(props)
         
         <Col xs ={12}>
         <Form.Group className="mb-3" >
-        <Form.Label className='text-dark'>Country</Form.Label>
+        <Form.Label className='text-light'>Country</Form.Label>
         <Form.Select name='pays_expediteur' value={values.pays_expediteur} aria-label="Default select example" onBlur={handleBlur} onChange={handleChange} >
          <option value="UK">UK</option>
          </Form.Select>
@@ -255,7 +260,7 @@ function FormEnvoiClientEnglish(props)
 
     <Row className="mb-3">
             <Form.Group as={Col} md="6" controlId="validationFormik01">
-              <Form.Label>First name</Form.Label>
+              <Form.Label><span className="text-danger">*</span>First name</Form.Label>
               <Form.Control
                 type="text"
                 name="prenom_beneficiaire"
@@ -266,7 +271,7 @@ function FormEnvoiClientEnglish(props)
               <p className='text-danger'>{touched.prenom_beneficiaire && errors.prenom_beneficiaire}</p>
             </Form.Group>
             <Form.Group as={Col} md="6" controlId="validationFormik02">
-              <Form.Label>Last name</Form.Label>
+              <Form.Label><span className="text-danger">*</span>Last name</Form.Label>
               <Form.Control
                 type="text"
                 name="nom_beneficiaire"
@@ -282,7 +287,7 @@ function FormEnvoiClientEnglish(props)
    
              <Col xs ={12}>
             <Form.Group className="mb-3" controlId="validationFormik03">
-           <Form.Label className='text-dark'><span className='text-danger'>*</span>Country </Form.Label>
+           <Form.Label ><span className='text-danger'>*</span>Country </Form.Label>
            <Form.Select name='pays_beneficiaire'   value={values.pays_beneficiaire} aria-label="Default select example" onChange={handleChange} >
            <option >Select Country</option>
            <option value='RD Congo' >RD Congo</option> 
@@ -300,7 +305,7 @@ function FormEnvoiClientEnglish(props)
     <Row className='justify-content-center'>
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="validationFormik04" >
-        <Form.Label className='text-dark'><span className='text-danger'>*</span> which Amount do you want the receiver to get in US dollars ($)</Form.Label>
+        <Form.Label ><span className='text-danger'>*</span>The Amount you want the recepient to receive in US($)</Form.Label>
         <Form.Control name="montant_beneficiaire"  value={values.montant_beneficiaire} onBlur={handleBlur} onChange={handleChange} type="text" placeholder="Amount to send for the receiver"  />
         <p className='text-danger'>{touched.montant_beneficiaire && errors.montant_beneficiaire}</p>
          </Form.Group>
@@ -310,7 +315,7 @@ function FormEnvoiClientEnglish(props)
 
         <Col xs ={6}>
         <Form.Group className="mb-3" controlId="validationFormik05">
-        <Form.Label className='text-dark'>Type of service </Form.Label>
+        <Form.Label >Type of service </Form.Label>
         <Form.Select name="type_service"  value={values.type_service} aria-label="Default select example" onChange={(e)=>{
              e.target.value ==="by mobile money tranfer(Mpesa,Orange Money,Airtel Money)" ? testValidation.fields.numero_transfer = yup.string().required('required field') :testValidation.fields.numero_transfer = yup.string().notRequired()
              setFieldValue("type_service",e.target.value)
@@ -322,7 +327,7 @@ function FormEnvoiClientEnglish(props)
         </Col>
       
         {values.type_service === "by mobile money tranfer(Mpesa,Orange Money,Airtel Money)" ? <Col xs = {12}>
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Enter the mobile number for transfering the money  </Form.Label>
+        <Form.Label ><span className="text-danger">*</span> Enter the mobile number for transfering the money  </Form.Label>
         <InputGroup className="mb-3" controlId="validationFormik06">
         <InputGroup.Text id="basic-addon1">+243</InputGroup.Text>
         <Form.Control name="numero_transfer" value={values.numero_transfer}  onBlur={handleBlur}  onChange={handleChange} type="text" placeholder='transfering mobile number'  />

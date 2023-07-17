@@ -151,6 +151,9 @@ function HeaderEnglish(props)
                   <NavDropdown.Divider />
                   <Nav.Link href="/form_envoie_abonne_english"><b><pre>Send Money</pre></b></Nav.Link>
                   <NavDropdown.Divider />
+                  <Nav.Link href="/menu_management_english"><b><pre>Operations Management</pre></b></Nav.Link>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Divider />
                   <Nav.Link href="/my_profil_english"><b><pre>check your historic</pre></b></Nav.Link>
                   <NavDropdown.Divider />
                   <Nav.Link  href="/form_retrait_info_english"><b><pre>track  transfer</pre></b></Nav.Link>
@@ -460,7 +463,7 @@ function HeaderEnglish(props)
            </Nav>
            </Offcanvas.Body>
       </Offcanvas>
-     <SessionOutEnglish isLogged={props.isLogged}/> 
+     {/*  <SessionOutEnglish isLogged={props.isLogged}/> */}
     <MyVerticallyCenteredModal4 show={modalShowNoValidDialog} onHide={() => setModalShowNoValidDialog(false)} />
     <ChangePasswordBoxEnglish modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} userID={props.userID} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber}/>
    <ContactBoxEnglish language2={props.language2} setLanguage2={props.setLanguage2} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} language={props.language}/>

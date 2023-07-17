@@ -139,18 +139,7 @@ console.log(props.envoie.infoEnvoie)
         </Col>
     </Row>
 
-    <Row className='justify-content-center pb-3' >
-
-        <Col xs={6} className="text-start">
-        <p className='text-dark'>Total amount to pay for the transfer (all fees incl.): <b className='text-dark bg-warning p-2' style={{border:"2px solid black"}}>{Number(props.envoie.infoEnvoie.montant_pour_payer).toFixed(2)} £</b> </p>
-        <p className='text-dark'>Amount to get by the receiver : <b className='text-dark p-2' style={{border:"2px solid black"}}>{Number(props.envoie.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p> 
-        </Col>
-
-        <Col xs={6} className="text-start">
-        <p className='text-dark'>Type of service : <b className='text-dark'>{props.envoie.infoEnvoie.type_service}</b> </p>
-        {props.envoie.infoEnvoie.numero_transfer==='' ? <p></p> : <p className='text-dark'>Mobile Money Number: <b className='text-dark'>{props.envoie.infoEnvoie.numero_transfer}</b> </p>}
-        </Col>
-    </Row>
+    
     <hr style={{color:"darkorange"}}></hr>
     <Row className='justify-content-center pb-3' >
 

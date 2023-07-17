@@ -129,18 +129,18 @@ function FormEnvoiAbonneEnglish(props)
         
         <>
 <HeaderEnglish dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
-{isDesktop && <Container className='bg-light justify-content-center text-center  mb-5 mt-3' style={{width:1000}} >
+{isDesktop && <Container className='justify-content-center text-center mb-5 text-light text-bold' style={{width:1000}} >
 <Row className='justify-content-start py-2' >
 <Row className='justify-content-center mb-3 pt-3' >
 <Col xs={6}>
-        <p ><i><b className='text-dark'>Subscriber Number : </b><b className='couleur2'>{props.abonne.infoAbonne.numero_expediteur}</b></i></p>
+        <p ><i><b >Subscriber Number : </b><b className='couleur2'>{props.abonne.infoAbonne.numero_expediteur}</b></i></p>
         </Col>
         <Col xs={6}>
-        <p ><i><b className='text-dark'>Subscriber Name: </b><b className='couleur2'>{props.abonne.infoAbonne.prenom_expediteur} {props.abonne.infoAbonne.nom_expediteur}</b></i></p>
+        <p ><i><b >Subscriber Name: </b><b className='couleur2'>{props.abonne.infoAbonne.prenom_expediteur} {props.abonne.infoAbonne.nom_expediteur}</b></i></p>
         </Col>
     </Row>
 <Col xs={3}>
-        <i><b className='text-dark'>List of previous receiver(s) : </b></i>
+        <i><b >previous receiver(s) : </b></i>
   </Col>
   <Col xs={6} >
   <div><Form.Select aria-label="Default select example">
@@ -177,7 +177,7 @@ function FormEnvoiAbonneEnglish(props)
     </Row>
           <Row className="mb-3">
             <Form.Group as={Col} md="6" controlId="validationFormik01">
-              <Form.Label>First name</Form.Label>
+              <Form.Label><span className='text-danger'>*</span>First name</Form.Label>
               <Form.Control
                 type="text"
                 name="prenom_beneficiaire"
@@ -188,7 +188,7 @@ function FormEnvoiAbonneEnglish(props)
               <p className='text-danger'>{touched.prenom_beneficiaire && errors.prenom_beneficiaire}</p>
             </Form.Group>
             <Form.Group as={Col} md="6" controlId="validationFormik02">
-              <Form.Label>Last name</Form.Label>
+              <Form.Label><span className='text-danger'>*</span>Last name</Form.Label>
               <Form.Control
                 type="text"
                 name="nom_beneficiaire"
@@ -204,7 +204,7 @@ function FormEnvoiAbonneEnglish(props)
    
    <Col xs ={12}>
    <Form.Group className="mb-3" controlId="validationFormik03">
-   <Form.Label className='text-dark'><span className='text-danger'>*</span>Country </Form.Label>
+   <Form.Label ><span className='text-danger'>*</span>Country </Form.Label>
    <Form.Select name='pays_beneficiaire'   value={values.pays_beneficiaire} aria-label="Default select example" onChange={handleChange} >
    <option >Select Country</option>
     <option value='RD Congo' >RD Congo</option> 
@@ -222,7 +222,7 @@ function FormEnvoiAbonneEnglish(props)
     <Row className='justify-content-center'>
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="validationFormik04" >
-        <Form.Label className='text-dark'><span className='text-danger'>*</span> which Amount do you want the receiver to get in US dollars ($)</Form.Label>
+        <Form.Label ><span className='text-danger'>*</span>The Amount you want the recipient to get in US($)</Form.Label>
         <Form.Control name="montant_beneficiaire"  value={values.montant_beneficiaire} onBlur={handleBlur} onChange={handleChange} type="text" placeholder="Amount to send for the receiver"  />
         <p className='text-danger'>{touched.montant_beneficiaire && errors.montant_beneficiaire}</p>
          </Form.Group>
@@ -232,7 +232,7 @@ function FormEnvoiAbonneEnglish(props)
 
         <Col xs ={6}>
         <Form.Group className="mb-3" controlId="validationFormik05">
-        <Form.Label className='text-dark'>Type of service </Form.Label>
+        <Form.Label >Type of service </Form.Label>
         <Form.Select name="type_service"  value={values.type_service} aria-label="Default select example" onChange={(e)=>{
              e.target.value ==="by mobile money tranfer(Mpesa,Orange Money,Airtel Money)" ? testValidation.fields.numero_transfer = yup.string().required('required field') :testValidation.fields.numero_transfer = yup.string().notRequired()
              setFieldValue("type_service",e.target.value)
@@ -244,7 +244,7 @@ function FormEnvoiAbonneEnglish(props)
         </Col>
       
         {values.type_service === "by mobile money tranfer(Mpesa,Orange Money,Airtel Money)" ? <Col xs = {12}>
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Enter the mobile number for transfering the money  </Form.Label>
+        <Form.Label ><span className="text-danger">*</span> Enter the mobile number for transfering the money  </Form.Label>
         <InputGroup className="mb-3" controlId="validationFormik06">
         <InputGroup.Text id="basic-addon1">+243</InputGroup.Text>
         <Form.Control name="numero_transfer" value={values.numero_transfer}   onBlur={handleBlur}  onChange={handleChange} type="text" placeholder='transfering mobile number'  />

@@ -130,18 +130,18 @@ function FormEnvoiAbonne(props)
         
         <>
 <Header dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
-{isDesktop && <Container className='bg-light justify-content-center text-center  mb-5 mt-3' style={{width:1000}} >
+{isDesktop && <Container className='justify-content-center text-center mb-5 text-light text-bold' style={{width:1000}} >
 <Row className='justify-content-center mb-3 pt-3' >
 <Col xs={6}>
-        <p ><i><b className='text-dark'>Numéro ya Abonné : </b><b className='couleur2'>{props.abonne.infoAbonne.numero_expediteur}</b></i></p>
+        <p ><i><b >Numéro ya Abonné : </b><b className='couleur2'>{props.abonne.infoAbonne.numero_expediteur}</b></i></p>
         </Col>
         <Col xs={6}>
-        <p ><i><b className='text-dark'>Noms ya Abonné : </b><b className='couleur2'>{props.abonne.infoAbonne.prenom_expediteur} {props.abonne.infoAbonne.nom_expediteur}</b></i></p>
+        <p ><i><b >Noms ya Abonné : </b><b className='couleur2'>{props.abonne.infoAbonne.prenom_expediteur} {props.abonne.infoAbonne.nom_expediteur}</b></i></p>
         </Col>
     </Row>
 <Row className='justify-content-start py-2' >
 <Col xs={3}>
-        <i><b className='text-dark'>Liste ya ba mozui nayo : </b></i>
+        <i><b >Liste ya ba mozui nayo : </b></i>
   </Col>
   <Col xs={6} >
   <div><Form.Select aria-label="Default select example">
@@ -178,7 +178,7 @@ function FormEnvoiAbonne(props)
     </Row>
           <Row className="mb-3">
             <Form.Group as={Col} md="6" controlId="validationFormik01">
-              <Form.Label>Kombo ya Mukristu</Form.Label>
+              <Form.Label><span className='text-danger'>*</span>Kombo ya Mukristu</Form.Label>
               <Form.Control
                 type="text"
                 name="prenom_beneficiaire"
@@ -189,7 +189,7 @@ function FormEnvoiAbonne(props)
               <p className='text-danger'>{touched.prenom_beneficiaire && errors.prenom_beneficiaire}</p>
             </Form.Group>
             <Form.Group as={Col} md="6" controlId="validationFormik02">
-              <Form.Label>Kombo Ya Libota</Form.Label>
+              <Form.Label><span className='text-danger'>*</span>Kombo Ya Libota</Form.Label>
               <Form.Control
                 type="text"
                 name="nom_beneficiaire"
@@ -205,7 +205,7 @@ function FormEnvoiAbonne(props)
    
    <Col xs ={12}>
    <Form.Group className="mb-3" controlId="validationFormik03">
-   <Form.Label className='text-dark'><span className='text-danger'>*</span>Ekolo </Form.Label>
+   <Form.Label ><span className='text-danger'>*</span>Ekolo </Form.Label>
    <Form.Select name='pays_beneficiaire'   value={values.pays_beneficiaire} aria-label="Default select example" onChange={handleChange} >
    <option >Pona Ekolo</option>
     <option value='RD Congo' >RD Congo</option> 
@@ -223,7 +223,7 @@ function FormEnvoiAbonne(props)
     <Row className='justify-content-center'>
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="validationFormik04" >
-        <Form.Label className='text-dark'><span className='text-danger'>*</span> Mbongo oyo olingi Mozui azwa na dollars ($)</Form.Label>
+        <Form.Label ><span className='text-danger'>*</span> Mbongo oyo olingi Mozui azwa na dollars ($)</Form.Label>
         <Form.Control name="montant_beneficiaire"  value={values.montant_beneficiaire} onBlur={handleBlur} onChange={handleChange} type="text" placeholder="Kota montant olingi kotinda"  />
         <p className='text-danger'>{touched.montant_beneficiaire && errors.montant_beneficiaire}</p>
          </Form.Group>
@@ -233,7 +233,7 @@ function FormEnvoiAbonne(props)
 
         <Col xs ={6}>
         <Form.Group className="mb-3" controlId="validationFormik05">
-        <Form.Label className='text-dark'>Nzela yako zwa Mbongo </Form.Label>
+        <Form.Label >Nzela yako zwa Mbongo </Form.Label>
         <Form.Select name="type_service"  value={values.type_service} aria-label="Default select example" onChange={(e)=>{
              e.target.value ==="Kozwa na nzela ya tshombo(Mpesa,Orange money,Airtel Money)" ? testValidation.fields.numero_transfer = yup.string().required('esengeli ko kotisa makomi') :testValidation.fields.numero_transfer = yup.string().notRequired()
              setFieldValue("type_service",e.target.value)
@@ -245,7 +245,7 @@ function FormEnvoiAbonne(props)
         </Col>
       
         {values.type_service === "Kozwa na nzela ya tshombo(Mpesa,Orange money,Airtel Money)" ? <Col xs = {12}>
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Kotisa Numéro yako tinda mbongo  </Form.Label>
+        <Form.Label ><span className="text-danger">*</span> Kotisa Numéro yako tinda mbongo  </Form.Label>
         <InputGroup className="mb-3" controlId="validationFormik06">
         <InputGroup.Text id="basic-addon1">+243</InputGroup.Text>
         <Form.Control name="numero_transfer" value={values.numero_transfer}  onBlur={handleBlur}  onChange={handleChange} type="text" placeholder='numéro ya tshombo pona transfer'  />

@@ -336,7 +336,7 @@ function FormEnvoiClientFrench(props)
           <Row className='justify-content-center pb-3'>
         <Col xs ={4}> 
         <Button variant="warning" type="submit" >
-        Validate
+        Suivant
         </Button>
         </Col>
         </Row>

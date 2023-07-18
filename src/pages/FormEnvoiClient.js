@@ -338,7 +338,7 @@ function FormEnvoiClient(props)
           <Row className='justify-content-center pb-3'>
         <Col xs ={4}> 
         <Button variant="warning" type="submit" >
-        ko validé
+        kende na page elandi
         </Button>
         </Col>
         </Row>

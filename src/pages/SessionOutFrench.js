@@ -51,7 +51,7 @@ function SessionOutFrench(props)
           close()
         }  
       },
-      timeout : 30 * 1000,
+      timeout : 60 * 1000,
       onIdle : ()=>{
         if(props.isLogged ===true)
         {

@@ -27,11 +27,11 @@ function MenuGestionOperationsEnvoiLingala(props)
 <Header dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
 {isDesktop && <Container >
 
-    <Row className='mt-3'>
+   {/* <Row className='mt-3'>
         <Col xs={12} className="text-start text-light">
             <p><Link to='/menu_management_lingala' style={{textDecoration:"none"}}><b className='text-light'>Gestions yaba opérations &gt;&gt;</b></Link> <Link to='/menu_operation_envoi_french' style={{textDecoration:"none"}}><b className='text-warning'>Opérations yaba envois </b></Link></p>
         </Col>
-    </Row>
+</Row>*/}
    
     <Row className='justify-content-center pb-3 pt-5 mt-5'>
         <Col xs = {"auto"}>
@@ -47,23 +47,24 @@ function MenuGestionOperationsEnvoiLingala(props)
         <Col xs = {"auto"}>
         <Link to="/form_envoie_abonne_id" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant='btn--blue'  style={{width:400,height:80}} className='btn-lg btn--blue rounded py-4 zoom'>
-        <b className='text-light'><pre>Sala envoi pona  abonné</pre></b>
+        <b className='text-light'><pre>Sala envoi pona abonné</pre></b>
         </Button>
         </Link>
         </Col>
     </Row>
   
-
-
-    <Row className='justify-content-center pb-3'>
+    <Row className='justify-content-center pb-3 '>
         <Col xs = {"auto"}>
-        <Link to="/menu_rapport_envoi_lingala" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='btn--blue'  style={{width:400,height:80}} className='btn-lg btn--blue rounded py-4 zoom'>
-        <b className='text-light'><pre>Rapport yaba envois</pre></b>
+        <Link to="/form_envoie_abonne" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant='btn--blue'  style={{width:400,height:80}} className='btn-lg rounded btn--blue zoom py-4'>
+        <b className='text-light'><pre>Sala envoi lokola client</pre></b>
         </Button>
         </Link>
         </Col>
     </Row>
+
+
+   
   
 
 </Container> }

@@ -35,6 +35,18 @@ function TableHistoricLingala(props)
         }
 const [envoie4,setEnvoie4] = useState([])
 const operationDetailArray = []
+const total_montant_beneficiaire = props.detailHistoric.reduce((total,value)=>
+{
+  
+  total = total + parseFloat(value.montant_beneficiaire)
+  return total
+},0)
+
+const total_montant = props.detailHistoric.reduce((total,value)=>
+{
+  total=total + parseFloat(value.montant_total)
+  return total
+},0)
 
 console.log(props.detailHistoric)
 
@@ -62,8 +74,8 @@ console.log(props.detailHistoric)
           <th>Kombo ya Motindi</th>
           <th>Kombo ya Mozui</th>
           <th>Mboka ya Mozui</th>
-          <th>Mbongo yako zwa ($)</th>
-          <th>Mbongo yako futa (£)</th>
+          <th>Montant ya Mozui ($)</th>
+          <th>Mbongo Total (£)</th>
           <th>Détails ya ba opérations</th>
         </tr>
       </thead>
@@ -86,6 +98,20 @@ console.log(props.detailHistoric)
             </tr> 
         }) 
         }
+         {props.message === "Historique yaba rétrait" ? <tr style={{border:"2px solid white"}}>
+         <td><i><b>TOTAL</b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_montant_beneficiaire).toFixed(2))} $</b></i></td>
+       </tr>: props.message === "Historique ya ba Validation" ? <tr style={{border:"2px solid white"}}>
+         <td><i><b>TOTAL</b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_montant).toFixed(2))} £</b></i></td>
+       </tr>: <tr></tr>}
        
          
       </tbody>

@@ -60,7 +60,7 @@ function ConfirmationRetraitInfoOperationEnglish(props)
                   res => {    
                     props.setModalShowRetrait(true)     
                     
-                    navigate('/menu_management_english')
+                    navigate('/')
 
                   }
                 )

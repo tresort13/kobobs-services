@@ -29,16 +29,16 @@ function MenuGestionOperationsEnvoiFrench(props)
 <HeaderFrench dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
 {isDesktop && <Container >
    
-    <Row className='mt-3'>
+    {/*<Row className='mt-3'>
         <Col xs={12} className="text-start text-light">
             <p><Link to='/menu_management_french' style={{textDecoration:"none"}}><b className='text-light'>Gestions des opérations &gt;&gt;</b></Link> <Link to='/menu_operation_envoi_french' style={{textDecoration:"none"}}><b className='text-warning'>Opérations des envois </b></Link></p>
         </Col>
-    </Row>
+</Row>*/}
     <Row className='justify-content-center pb-3 pt-5 mt-5'>
         <Col xs = {"auto"}>
         <Link to="/form_envoie_client_french" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant='btn--blue'  style={{width:400,height:80}} className='btn-lg btn--blue rounded py-4 zoom'>
-        <b className='text-light'><pre>Effectuer un envoi pour client</pre></b>
+        <b className='text-light'><pre>Faire un envoi pour un client</pre></b>
         </Button>
         </Link>
         </Col>
@@ -48,24 +48,22 @@ function MenuGestionOperationsEnvoiFrench(props)
         <Col xs = {"auto"}>
         <Link to="/form_envoie_abonne_id_french" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant='btn--blue'  style={{width:400,height:80}} className='btn-lg btn--blue rounded py-4 zoom'>
-        <b className='text-light'><pre>Effectuer un envoi pour abonné</pre></b>
+        <b className='text-light'><pre>Faire un envoi pour un abonné</pre></b>
         </Button>
         </Link>
         </Col>
     </Row>
   
 
-
-    <Row className='justify-content-center pb-3'>
+    <Row className='justify-content-center pb-3 '>
         <Col xs = {"auto"}>
-        <Link to="/menu_rapport_envoi_french" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='btn--blue'  style={{width:400,height:80}} className='btn-lg btn--blue rounded py-4 zoom'>
-        <b className='text-light'><pre>Rapport des opérations d'envois</pre></b>
+        <Link to="/form_envoie_abonne_french" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant='btn--blue'  style={{width:400,height:80}} className='btn-lg rounded btn--blue zoom py-4'>
+        <b className='text-light'><pre>Faire un envoi etant expéditeur</pre></b>
         </Button>
         </Link>
         </Col>
     </Row>
-  
 
 </Container> }
 

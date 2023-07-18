@@ -139,7 +139,7 @@ function FormEnvoiAbonneEnglish(props)
         <p ><i><b >Subscriber Name: </b><b className='couleur2'>{props.abonne.infoAbonne.prenom_expediteur} {props.abonne.infoAbonne.nom_expediteur}</b></i></p>
         </Col>
     </Row>
-<Col xs={3}>
+{/*<Col xs={3}>
         <i><b >previous receiver(s) : </b></i>
   </Col>
   <Col xs={6} >
@@ -150,7 +150,7 @@ function FormEnvoiAbonneEnglish(props)
       <option value="3">lionel mbunga</option>
     </Form.Select>
     </div> 
-    </Col>
+    </Col>*/}
     </Row>
 
 <Formik

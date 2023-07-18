@@ -1,5 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Form from 'react-bootstrap/Form';
 import Button from "react-bootstrap/Button";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -35,7 +36,9 @@ function TableDailyRapportFrench(props)
 
 const operationDetailArray = []
 
-const total_montant_beneficiaire = props.dailyRapport.reduce((total,value)=>
+// const [typeRapport,setTypeRapport] = useState("")
+
+const total_montant_beneficiaire = props.detailEnvoieTotalTableau.reduce((total,value)=>
 {
   
   total = total + parseFloat(value.montant_beneficiaire)
@@ -54,7 +57,7 @@ const total_frais_tva = props.dailyRapport.reduce((total,value)=>
   return total
 },0)
 
-const total_montant = props.dailyRapport.reduce((total,value)=>
+const total_montant = props.detailEnvoieTotalTableau.reduce((total,value)=>
 {
   total=total + parseFloat(value.montant_total)
   return total
@@ -74,9 +77,19 @@ const total_montant = props.dailyRapport.reduce((total,value)=>
 <Row className='justify-content-center '>
         <Col xs = {12} className='text-center borders pt-2'>
         <div>
-        <h6 ><u><b><i className='couleur2'>Table de rapports Journalières</i></b></u></h6>
+        <h6 ><u><b><i className='couleur2'>{props.message2} </i></b></u></h6>
         </div>
         <div>
+        
+  {/*<Col xs={12} >
+  <div><Form.Select aria-label="Default select example">
+      <option value="Rapport Angola et RD Congo">Rapport Angola et RD Congo</option>
+      <option value="Rapport RD Congo">Rapport RD Congo</option>
+      <option value="Rapport Angola">Rapport Angola</option>
+    </Form.Select>
+    </div> 
+    </Col>*/}
+    
         <Table striped bordered hover variant="light">
       <thead>
         <tr className='text-dark' style={{border:"2px solid white"}}>
@@ -84,8 +97,8 @@ const total_montant = props.dailyRapport.reduce((total,value)=>
           <th>Nom Expéditeur</th>
           <th>Nom bénéficiaire</th>
           <th>Pays Bénéficiaire</th>
-          <th>Montant à récuperer ($)</th>
-          <th>Montant total payé (£)</th>
+          <th>Montant Bénéficiaire ($)</th>
+          <th>Montant total(£)</th>
           <th>Détails des opérations</th>
         </tr>
       </thead>
@@ -108,6 +121,21 @@ const total_montant = props.dailyRapport.reduce((total,value)=>
             </tr> 
         }) 
         }
+
+{props.message2 === "Rapport des Rétraits" ? <tr style={{border:"2px solid white"}}>
+         <td><i><b>TOTAL</b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_montant_beneficiaire).toFixed(2))} $</b></i></td>
+       </tr>: props.message2 === "Rapport de envois validés" ? <tr style={{border:"2px solid white"}}>
+         <td><i><b>TOTAL</b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_montant).toFixed(2))} £</b></i></td>
+       </tr>: <tr></tr>}
        
          
       </tbody>

@@ -70,6 +70,7 @@ function MonthlyRapportInfoEnvoiFrench(props)
      const detailTotal =()=>
      {
       props.dataDetailEnvoieTotalTableau(props.monthlyRapport)
+      props.setMessage2("Rapport de tous les envois")
       navigate('/table_monthly_rapport_french')
      }
 
@@ -79,6 +80,7 @@ function MonthlyRapportInfoEnvoiFrench(props)
       {
         return value.status_retrait !== "code retrait en attente de validation"
       }))
+      props.setMessage2("Rapport de envois validé")
       navigate('/table_monthly_rapport_french')
      }
 
@@ -88,6 +90,7 @@ function MonthlyRapportInfoEnvoiFrench(props)
       {
         return value.status_retrait === "code retrait en attente de validation"
       }))
+      props.setMessage2("Rapport de envois non validé")
       navigate('/table_monthly_rapport_french')
      }
      

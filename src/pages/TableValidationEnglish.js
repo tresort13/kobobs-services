@@ -97,8 +97,8 @@ const submit =()=>
           <th>Sender Name</th>
           <th>Receiver Name</th>
           <th>Receiver Country</th>
-          <th>Amount to pick up ($)</th>
-          <th>Total Amount to pay (£)</th>
+          <th>Recipient Amount  ($)</th>
+          <th>Total Amount  (£)</th>
           <th>Operation details</th>
         </tr>
       </thead>

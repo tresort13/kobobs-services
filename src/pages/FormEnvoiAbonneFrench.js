@@ -141,7 +141,7 @@ function FormEnvoiAbonneFrench(props)
         <p ><i><b >Noms Abonné : </b><b className='couleur2'>{props.abonne.infoAbonne.prenom_expediteur} {props.abonne.infoAbonne.nom_expediteur}</b></i></p>
         </Col>
     </Row>
-<Row className='justify-content-start  py-2' >
+{/*<Row className='justify-content-start  py-2' >
 <Col xs={6}>
         <i><b >bénéficiaire(s) précédent(s) : </b></i>
   </Col>
@@ -154,7 +154,7 @@ function FormEnvoiAbonneFrench(props)
     </Form.Select>
     </div> 
     </Col>
-    </Row>
+    </Row>*/}
 
 <Formik
       validationSchema={testValidation}

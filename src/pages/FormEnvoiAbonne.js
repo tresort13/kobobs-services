@@ -139,7 +139,7 @@ function FormEnvoiAbonne(props)
         <p ><i><b >Noms ya Abonné : </b><b className='couleur2'>{props.abonne.infoAbonne.prenom_expediteur} {props.abonne.infoAbonne.nom_expediteur}</b></i></p>
         </Col>
     </Row>
-<Row className='justify-content-start py-2' >
+{/*<Row className='justify-content-start py-2' >
 <Col xs={3}>
         <i><b >Liste ya ba mozui nayo : </b></i>
   </Col>
@@ -152,7 +152,7 @@ function FormEnvoiAbonne(props)
     </Form.Select>
     </div> 
     </Col>
-    </Row>
+    </Row>*/}
 
 <Formik
       validationSchema={testValidation}

@@ -73,23 +73,23 @@ function HomeManagementLingala(props)
 
            
            <Col md={4} className="my-auto text-center">
-           <Link to="/menu_operation_envoi_lingala">
+           <Link to="/menu_rapport_envoi_lingala">
             <Button   variant="light" style={{width:300,height:300,border:'4px solid white'}} className='btn-lg rounded-pill zoom'>
             <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
             <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
              </svg><br></br>
-            <b className="display-6"><strong> Opérations yaba envoies</strong></b>
+            <b className="display-6"><strong> Rapport yaba envoies</strong></b>
             </Button>
             </Link>
             </Col>
 
             <Col md={4} className="my-auto text-center">
-            <Link to="/menu_operation_retrait_lingala">
+            <Link to="/menu_rapport_retrait_lingala">
             <Button   variant="dark" style={{width:300,height:300}}  className=" btn-lg rounded-pill zoom ">
             <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" fill="currentColor" className="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
            </svg><br></br>
-            <b className="display-6"><strong>Opérations yaba retraits</strong></b>
+            <b className="display-6"><strong>Rapport yaba retraits</strong></b>
            </Button> 
             </Link>
             </Col>
@@ -115,23 +115,23 @@ function HomeManagementLingala(props)
 
            
 <Col md={4} className="my-auto text-center">
-           <Link to="/menu_operation_envoi_french">
+           <Link to="/menu_rapport_envoi_lingala">
             <Button   variant="light" style={{width:300,height:300,border:'4px solid white'}} className='btn-lg rounded-pill zoom'>
             <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
             <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
              </svg><br></br>
-            <b className="display-6"><strong> Opérations yaba envoies</strong></b>
+            <b className="display-6"><strong> Rapport yaba envoies</strong></b>
             </Button>
             </Link>
             </Col>
 
             <Col md={4} className="my-auto text-center">
-            <Link to="/menu_operation_retrait_french">
+            <Link to="/menu_rapport_retrait_lingala">
             <Button   variant="dark" style={{width:300,height:300}}  className=" btn-lg rounded-pill zoom ">
             <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" fill="currentColor" className="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
            </svg><br></br>
-            <b className="display-6"><strong>Opérations yaba retraits</strong></b>
+            <b className="display-6"><strong>Rapport yaba retraits</strong></b>
            </Button> 
             </Link>
             </Col>
@@ -206,7 +206,7 @@ function HomeManagementLingala(props)
   </Container>
   }
   <SessionOutLingala setIsadmin={props.setIsadmin}/>
-  <MyVerticallyCenteredModal show={props.modalShowRetrait} onHide={() => props.setModalShowRetrait(false)} />
+  
   <MyVerticallyCenteredModal2 envoie3={props.envoie3} show={props.modalShowEnvoi} onHide={() => props.setModalShowEnvoi(false)} />
      <LoginBoxFrench language2={props.language2} setLanguage2={props.setLanguage2} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} modalShow={props.modalShow} modalShow4={props.modalShow4} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} setLanguage={props.setLanguage}/>
 <Footer />
@@ -214,31 +214,7 @@ function HomeManagementLingala(props)
     )
 }
 
-function MyVerticallyCenteredModal(props) {
-    return (
-      <Modal
-        {...props}
-        size="sm"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-          Kofuta Elongi
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p className='text-success'><b>code ya retrait efutami malamu </b>   
-          </p>
-        </Modal.Body>
-        <Modal.Footer>
-          
-          <Button variant='warning' onClick={props.onHide}>kokanga</Button>
 
-        </Modal.Footer>
-      </Modal>
-    );
-  }
 
   function MyVerticallyCenteredModal2(props) {
     return (

@@ -34,6 +34,18 @@ function TableHistoricFrench(props)
         }
 const [envoie4,setEnvoie4] = useState([])
 const operationDetailArray = []
+const total_montant_beneficiaire = props.detailHistoric.reduce((total,value)=>
+{
+  
+  total = total + parseFloat(value.montant_beneficiaire)
+  return total
+},0)
+
+const total_montant = props.detailHistoric.reduce((total,value)=>
+{
+  total=total + parseFloat(value.montant_total)
+  return total
+},0)
 
 console.log(props.detailHistoric)
 
@@ -61,8 +73,8 @@ console.log(props.detailHistoric)
           <th>Nom Expéditeur</th>
           <th>Nom bénéficiaire</th>
           <th>Pays Bénéficiaire</th>
-          <th>Montant à récuperer ($)</th>
-          <th>Montant total payé (£)</th>
+          <th>Montant Bénéficiaire($)</th>
+          <th>Montant total(£)</th>
           <th>Détails des opérations</th>
         </tr>
       </thead>
@@ -85,6 +97,20 @@ console.log(props.detailHistoric)
             </tr> 
         }) 
         }
+         {props.message === "Historique de rétrait" ? <tr style={{border:"2px solid white"}}>
+         <td><i><b>TOTAL</b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_montant_beneficiaire).toFixed(2))} $</b></i></td>
+       </tr>: props.message === "Historique de Validation" ? <tr style={{border:"2px solid white"}}>
+         <td><i><b>TOTAL</b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_montant).toFixed(2))} £</b></i></td>
+       </tr>: <tr></tr>}
        
          
       </tbody>

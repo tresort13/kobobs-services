@@ -75,6 +75,7 @@ function DailyRapportInfoRetraitLingala(props)
        {
          return value.status_retrait === "Code Retrait Payé"
        }))
+       props.setMessage2("Rapport yaba Rétraits")
        navigate('/table_daily_rapport_lingala')
       }
  

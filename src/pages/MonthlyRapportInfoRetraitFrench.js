@@ -77,6 +77,7 @@ function MonthlyRapportInfoRetraitFrench(props)
        {
          return value.status_retrait === "Code Retrait Payé"
        }))
+       props.setMessage2("Rapport des Rétraits")
        navigate('/table_monthly_rapport_french')
       }
  

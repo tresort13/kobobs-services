@@ -60,7 +60,7 @@ function ConfirmationRetraitInfoOperationLingala(props)
                   res => {    
                     props.setModalShowRetrait(true)     
                     
-                    navigate('/menu_management_lingala')
+                    navigate('/home_lingala')
 
                   }
                 )

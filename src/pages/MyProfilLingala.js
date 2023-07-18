@@ -527,9 +527,7 @@ props.isStaff === true ?
       </Col>
       <Col xs={4}>
       {nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Nombre yaba envois osali :</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
-         </Col> 
-
-         <Col xs={4}>
+         
          {nombre_retrait_paye > 0 ? <p className='text-dark py-2 text-start'><strong>nombre yaba retraits osali :</strong> <b className='couleur2'>  {nombre_retrait_paye}</b>  </p> :<span></span> }
           </Col> 
          
@@ -538,9 +536,7 @@ props.isStaff === true ?
 
        <Col xs={4}>
        {nombre_sending_total > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailTotal}>Tala ba détails </p></a> : <span></span>}
-        </Col>
-         
-         <Col xs={4}>
+        
          {nombre_retrait_paye > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailPaye}>Tala ba détails </p></a> : <span></span>}
           </Col> 
        <Col xs={2}>

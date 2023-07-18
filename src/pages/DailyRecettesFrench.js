@@ -80,7 +80,7 @@ const total_montant = props.dailyRapport.reduce((total,value)=>
           <th>Montant Bénéficiaire ($)</th>
           <th>Frais Envoie (£)</th>
           <th>Frais TVA (£)</th>
-          <th>Montant Total Payé (£)</th>
+          <th>Montant Total(£)</th>
           <th>Détails des opérations</th>
         </tr>
       </thead>

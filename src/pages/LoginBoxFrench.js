@@ -44,7 +44,7 @@ function LoginBoxFrench(props)
   <MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
   <MyVerticallyCenteredModal3 show={modalShow3} onHide={() => setModalShow3(false)} />
   <MyVerticallyCenteredModal4 show={props.modalShow4} onHide={() => props.setModalShow4(false)} language2={props.language2} setLanguage2={props.setLanguage2} setModalShow2={setModalShow2} setModalShow4={props.setModalShow4} setModalShow5={setModalShow5} setModalShow6={setModalShow6} language={props.language}/>
-  <MyVerticallyCenteredModal5 show={modalShow5} onHide={() => setModalShow5(false)} setModalShow={props.setModalShow} setModalShow5={setModalShow5}/>
+  <MyVerticallyCenteredModal5 show={modalShow5} onHide={() => setModalShow5(false)} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setModalShow5={setModalShow5}/>
   <MyVerticallyCenteredModal6 show={modalShow6} onHide={() => setModalShow6(false)} />
   </div>
    } 
@@ -54,7 +54,7 @@ function LoginBoxFrench(props)
   <MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
   <MyVerticallyCenteredModal3 show={modalShow3} onHide={() => setModalShow3(false)} />
   <MyVerticallyCenteredModal4 show={props.modalShow4} onHide={() => props.setModalShow4(false)} language2={props.language2} setLanguage2={props.setLanguage2} setModalShow2={setModalShow2} setModalShow4={props.setModalShow4} setModalShow5={setModalShow5} setModalShow6={setModalShow6} language={props.language}/>
-  <MyVerticallyCenteredModal5 show={modalShow5} onHide={() => setModalShow5(false)} setModalShow={props.setModalShow} setModalShow5={setModalShow5} />
+  <MyVerticallyCenteredModal5 show={modalShow5} onHide={() => setModalShow5(false)} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setModalShow5={setModalShow5}/>
   <MyVerticallyCenteredModal6 show={modalShow6} onHide={() => setModalShow6(false)} />
   </div>
    } 

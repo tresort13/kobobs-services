@@ -69,7 +69,7 @@ const total_montant = props.dailyRapport.reduce((total,value)=>
 <Row className='justify-content-center '>
         <Col xs = {12} className='text-center borders pt-2'>
         <div>
-        <h6 ><u><b><i className='couleur2'>Table ya ba rapports Mensuel</i></b></u></h6>
+        <h6 ><u><b><i className='couleur2'>{props.message2}</i></b></u></h6>
         </div>
         <div>
         <Table striped bordered hover variant="light">
@@ -79,8 +79,8 @@ const total_montant = props.dailyRapport.reduce((total,value)=>
           <th>Kombo ya Motindi</th>
           <th>Kombo ya Mozui</th>
           <th>Mboka ya Mozui</th>
-          <th>Mbongo yako zwa ($)</th>
-          <th>Mbongo yako futa (£)</th>
+          <th>Montant ya Mozui ($)</th>
+          <th>Mbongo Total (£)</th>
           <th>Détails ya ba opérations</th>
         </tr>
       </thead>
@@ -103,6 +103,20 @@ const total_montant = props.dailyRapport.reduce((total,value)=>
             </tr> 
         }) 
         }
+        {props.message2 === "Rapport yaba Rétraits" ? <tr style={{border:"2px solid white"}}>
+         <td><i><b>TOTAL</b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_montant_beneficiaire).toFixed(2))} $</b></i></td>
+       </tr>: props.message2 === "Rapport yaba envois validés" ? <tr style={{border:"2px solid white"}}>
+         <td><i><b>TOTAL</b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_montant).toFixed(2))} £</b></i></td>
+       </tr>: <tr></tr>}
        
          
       </tbody>

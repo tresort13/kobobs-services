@@ -33,6 +33,18 @@ function TableHistoricEnglish(props)
         }
 const [envoie4,setEnvoie4] = useState([])
 const operationDetailArray = []
+const total_montant_beneficiaire = props.detailHistoric.reduce((total,value)=>
+{
+  
+  total = total + parseFloat(value.montant_beneficiaire)
+  return total
+},0)
+
+const total_montant = props.detailHistoric.reduce((total,value)=>
+{
+  total=total + parseFloat(value.montant_total)
+  return total
+},0)
 
 console.log(props.detailHistoric)
 
@@ -58,10 +70,10 @@ console.log(props.detailHistoric)
         <tr className='text-dark' style={{border:"2px solid white"}}>
           <th>Date</th>
           <th>Sender Name</th>
-          <th>Receiver Name</th>
-          <th>Receiver Country</th>
-          <th>Amount to pick up ($)</th>
-          <th>Total Amount to pay (£)</th>
+          <th>Recipient Name</th>
+          <th>Recipient Country</th>
+          <th>Recipient Amount  ($)</th>
+          <th>Total Amount  (£)</th>
           <th>Operation details</th>
         </tr>
       </thead>
@@ -84,6 +96,20 @@ console.log(props.detailHistoric)
             </tr> 
         }) 
         }
+       {props.message === "withdrawal historic" ? <tr style={{border:"2px solid white"}}>
+         <td><i><b>TOTAL</b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_montant_beneficiaire).toFixed(2))} $</b></i></td>
+       </tr>: props.message === "Validation historic" ? <tr style={{border:"2px solid white"}}>
+         <td><i><b>TOTAL</b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_montant).toFixed(2))} £</b></i></td>
+       </tr>: <tr></tr>}
        
          
       </tbody>

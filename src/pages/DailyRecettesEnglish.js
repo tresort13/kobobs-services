@@ -79,10 +79,10 @@ const total_montant = props.dailyRapport.reduce((total,value)=>
       <thead>
         <tr className='text-dark' style={{border:"2px solid white"}}>
           <th>Date</th>
-          <th>Beneficiary Amount ($)</th>
+          <th>Recipient Amount ($)</th>
           <th>sending fees(£)</th>
           <th>TVA fees(£)</th>
-          <th>Total Amount Paid (£)</th>
+          <th>Total Amount (£)</th>
           <th>Operations details</th>
         </tr>
       </thead>

@@ -27,12 +27,22 @@ function HomeLingala(props)
   const[load,setLoad] = useState(false)
   const[resultMontant,setResultMontant] = useState("")
   const navigate = useNavigate()
+  const establishedUserStatusClient = ()=>
+{
+  if(props.isLogged)
+  {
+    navigate('/form_envoie_abonne')  
+  }
+  else{
+    props.setModalShow(true)
+  }
+ }
 
   const establishedUserStatus = ()=>
 {
   if(props.isLogged)
   {
-    navigate('/form_envoie_abonne')  
+    navigate('/menu_operation_envoi_lingala')  
   }
   else{
     props.setModalShow(true)
@@ -55,6 +65,16 @@ function HomeLingala(props)
   if(props.isLogged && props.isStaff)
   {
     navigate('/menu_management_lingala')  
+  }
+  else{
+    props.setModalShow(true)
+  }
+ }
+ const establishedUserStatus4 = ()=>
+{
+  if(props.isLogged && props.isStaff)
+  {
+    navigate('/form_retrait_operation_lingala')  
   }
   else{
     props.setModalShow(true)
@@ -100,7 +120,7 @@ function HomeLingala(props)
       });    
     return (
 <>
-<Header setDataValidation={props.setDataValidation} dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
+<Header isStaff={props.isStaff} setDataValidation={props.setDataValidation} dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
 {isDesktop && <Container>  
   <Row className="text-center justify-content-center  mt-3 mb-3">
     <col md={2}>
@@ -174,24 +194,32 @@ function HomeLingala(props)
   </Button>
    </Col>
  
-   <Col mdmd={4} className="my-auto text-center">  
-   <Button onClick={establishedUserStatus3}  variant="outline-light" style={{width:300,height:300,border:'4px solid white'}}  className=" btn-lg rounded-pill zoom ">
-   <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" fill="currentColor" className="bi bi-gear-fill" viewBox="0 0 16 16">
-  <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
-    </svg><br></br>
-   <b className=" display-6"><strong>gestion ya ba opérations</strong></b>
-  </Button>
-   </Col>
-   <div className='mt-5 mb-5'>
-   </div>
-  </Row>
-   :
+   {props.isAdmin===true ?  <Col mdmd={4} className="my-auto text-center">  
+            <Button onClick={establishedUserStatus3}  variant="outline-light" style={{width:300,height:300,border:'4px solid white'}}  className=" btn-lg rounded-pill zoom ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" fill="currentColor" className="bi bi-gear-fill" viewBox="0 0 16 16">
+           <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+             </svg><br></br>
+            <b className=" display-6"><strong>operations management</strong></b>
+           </Button>
+            </Col> :
+            <Col mdmd={4} className="my-auto text-center">  
+            <Button onClick={establishedUserStatus4}  variant="outline-light" style={{width:300,height:300,border:'4px solid white'}}  className=" btn-lg rounded-pill zoom ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" fill="currentColor" className="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+           <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+           </svg><br></br>
+            <b className=" display-6"><strong>Withdrawal operation</strong></b>
+           </Button>
+            </Col>}
+            <div className='mt-5 mb-5'>
+            </div>
+           </Row>
+            :
 
 <Row className="text-center justify-content-center mt-2 mb-5">
 
 <Col md={6} className="my-auto text-center">
 
-<Button onClick={establishedUserStatus}  variant="outline-light" style={{width:300,height:300,border:'4px solid white'}} className='btn-lg rounded-pill zoom'>
+<Button onClick={establishedUserStatusClient}  variant="outline-light" style={{width:300,height:300,border:'4px solid white'}} className='btn-lg rounded-pill zoom'>
 <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" fill="currentColor" className="bi bi-send-fill" viewBox="0 0 16 16">
 <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
 </svg><br></br>
@@ -279,6 +307,7 @@ function HomeLingala(props)
   </Container>
   }
   <SessionOutLingala setIsadmin={props.setIsadmin}/>
+  <MyVerticallyCenteredModal2 show={props.modalShowRetrait} onHide={() => props.setModalShowRetrait(false)} />
      <MyVerticallyCenteredModal envoie3={props.envoie3} show={props.modalShowEnvoi} onHide={() => props.setModalShowEnvoi(false)} />
    <LoginBoxLingala dataAbonne={props.dataAbonne} language2={props.language2} setLanguage2={props.setLanguage2} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} modalShow={props.modalShow} modalShow4={props.modalShow4} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
 <Footer />
@@ -312,5 +341,30 @@ function MyVerticallyCenteredModal(props) {
   );
 }
 
+function MyVerticallyCenteredModal2(props) {
+  return (
+    <Modal
+      {...props}
+      size="sm"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+        Kofuta Elongi
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <p className='text-success'><b>code ya retrait efutami malamu </b>   
+        </p>
+      </Modal.Body>
+      <Modal.Footer>
+        
+        <Button variant='warning' onClick={props.onHide}>kokanga</Button>
+
+      </Modal.Footer>
+    </Modal>
+  );
+}
 
 export default HomeLingala;

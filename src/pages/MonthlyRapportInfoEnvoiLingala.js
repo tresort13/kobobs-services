@@ -69,6 +69,7 @@ function MonthlyRapportInfoEnvoiLingala(props)
      const detailTotal =()=>
      {
       props.dataDetailEnvoieTotalTableau(props.monthlyRapport)
+      props.setMessage2("Rapport yaba envois nionso")
       navigate('/table_monthly_rapport_lingala')
      }
 
@@ -78,6 +79,7 @@ function MonthlyRapportInfoEnvoiLingala(props)
       {
         return value.status_retrait !== "code retrait en attente de validation"
       }))
+      props.setMessage2("Rapport yaba envois validés")
       navigate('/table_monthly_rapport_lingala')
      }
 
@@ -87,6 +89,7 @@ function MonthlyRapportInfoEnvoiLingala(props)
       {
         return value.status_retrait === "code retrait en attente de validation"
       }))
+      props.setMessage2("Rapport yaba envois non validés")
       navigate('/table_monthly_rapport_lingala')
      }
      

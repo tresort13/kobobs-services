@@ -76,10 +76,10 @@ const total_montant = props.dailyRapport.reduce((total,value)=>
       <thead>
         <tr className='text-dark' style={{border:"2px solid white"}}>
           <th>Mois</th>
-          <th>Montant Beneficiaire ($)</th>
+          <th>Montant ya Mozui ($)</th>
           <th>Ba frais ya envoi (£)</th>
           <th>Frais ya TVA (£)</th>
-          <th>Mosolo mobimba oyo efutami (£)</th>
+          <th>Mbongo Total(£)</th>
           <th>Détails ya ba Opérations</th>
         </tr>
       </thead>

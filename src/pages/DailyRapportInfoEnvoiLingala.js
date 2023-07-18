@@ -73,6 +73,7 @@ function DailyRapportInfoEnvoiLingala(props)
      const detailTotal =()=>
      {
       props.dataDetailEnvoieTotalTableau(props.dailyRapport)
+      props.setMessage2("Rapport yaba envois nionso")
       navigate('/table_daily_rapport_lingala')
      }
 
@@ -82,6 +83,7 @@ function DailyRapportInfoEnvoiLingala(props)
       {
         return value.status_retrait !== "code retrait en attente de validation"
       }))
+      props.setMessage2("Rapport yaba envois validés")
       navigate('/table_daily_rapport_lingala')
      }
 
@@ -91,7 +93,7 @@ function DailyRapportInfoEnvoiLingala(props)
       {
         return value.status_retrait === "code retrait en attente de validation"
       }))
-
+      props.setMessage2("Rapport yaba envois non validés")
       navigate('/table_daily_rapport_lingala')
        
      }

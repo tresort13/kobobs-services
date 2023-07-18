@@ -75,6 +75,7 @@ function DailyRapportInfoEnvoiFrench(props)
      {
       //props.dataDetailEnvoieTotal(props.dailyRapport)
       props.dataDetailEnvoieTotalTableau(props.dailyRapport)
+      props.setMessage2("Rapport de tous les envois")
       navigate('/table_daily_rapport_french')
      }
 
@@ -84,6 +85,7 @@ function DailyRapportInfoEnvoiFrench(props)
       {
         return value.status_retrait !== "code retrait en attente de validation"
       }))
+      props.setMessage2("Rapport de envois validés")
       navigate('/table_daily_rapport_french')
      }
 
@@ -93,7 +95,7 @@ function DailyRapportInfoEnvoiFrench(props)
       {
         return value.status_retrait === "code retrait en attente de validation"
       }))
-
+      props.setMessage2("Rapport de envois non validés")
       navigate('/table_daily_rapport_french')
        
      }

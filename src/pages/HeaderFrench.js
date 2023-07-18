@@ -146,9 +146,11 @@ function HeaderFrench(props)
                 <NavDropdown.Divider />
                   <Nav.Link href="/home_french"><b><pre>Accueil</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link href="/form_envoie_abonne_french"><b><pre>Envoyer de l'argent</pre></b></Nav.Link>
+                  <Nav.Link href="/menu_operation_envoi_french"><b><pre>Envoyer de l'argent</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link href="/menu_management_french"><b><pre>Gestions des Operations</pre></b></Nav.Link>
+                  {props.isAdmin === true ? <Nav.Link href="/menu_management_french"><b><pre>Gestions des Opérations </pre></b></Nav.Link> : <span></span>}
+                  <NavDropdown.Divider />
+                  {props.isStaff === true ? <Nav.Link href="/form_retrait_operation_french"><b><pre>Effectuer une Opération rétrait </pre></b></Nav.Link> : <span></span>}
                   <NavDropdown.Divider />
                   <Nav.Link href="/my_profil_french"><b><pre>Vérifier l'historic</pre></b></Nav.Link>
                   <NavDropdown.Divider />
@@ -325,7 +327,7 @@ function HeaderFrench(props)
                   <NavDropdown.Divider />
                   <Nav.Link href="/form_envoie_abonne"><b><pre>Send Money</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link href="/menu_management_french"><b><pre>Gestions des Operations</pre></b></Nav.Link>
+                  {props.isStaff === true ? <Nav.Link href="/menu_management_french"><b><pre>Gestions des Operations</pre></b></Nav.Link> : <span></span>}
                   <NavDropdown.Divider />
                   <Nav.Link href="/my_profil_lingala"><b><pre>check your historic</pre></b></Nav.Link>
                   <NavDropdown.Divider />
@@ -430,7 +432,7 @@ function HeaderFrench(props)
            </Nav>
            </Offcanvas.Body>
       </Offcanvas>
-     <SessionOutFrench isLogged={props.isLogged}/> 
+     {/*<SessionOutFrench isLogged={props.isLogged}/> */}
     <ChangePasswordBoxFrench modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} userID={props.userID} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber}/>
    <ContactBoxFrench language2={props.language2} setLanguage2={props.setLanguage2} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} language={props.language}/>
    <LoginBoxFrench dataAbonne={props.dataAbonne} language2={props.language2} setLanguage2={props.setLanguage2} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} modalShow={props.modalShow} modalShow4={props.modalShow4} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>

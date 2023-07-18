@@ -74,6 +74,7 @@ function DailyRapportInfoEnvoiEnglish(props)
      {
       //props.dataDetailEnvoieTotal(props.dailyRapport)
       props.dataDetailEnvoieTotalTableau(props.dailyRapport)
+      props.setMessage2("Rapport of all sendings")
       navigate('/table_daily_rapport_english')
      }
 
@@ -83,6 +84,7 @@ function DailyRapportInfoEnvoiEnglish(props)
       {
         return value.status_retrait !== "code retrait en attente de validation"
       }))
+      props.setMessage2("Rapport of validated sendings")
       navigate('/table_daily_rapport_english')
      }
 
@@ -92,7 +94,7 @@ function DailyRapportInfoEnvoiEnglish(props)
       {
         return value.status_retrait === "code retrait en attente de validation"
       }))
-
+      props.setMessage2("Rapport of non validated sendings")
       navigate('/table_daily_rapport_english')
        
      }

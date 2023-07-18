@@ -76,6 +76,7 @@ function DailyRapportInfoRetraitEnglish(props)
        {
          return value.status_retrait === "Code Retrait Payé"
        }))
+       props.setMessage2("Rapport of withdrawals")
        navigate('/table_daily_rapport_english')
       }
  

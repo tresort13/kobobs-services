@@ -52,7 +52,7 @@ function SessionOutEnglish(props)
           close()
         }  
       },
-      timeout : 120 * 1000,
+      timeout : 200 * 1000,
       onIdle : ()=>{
         if(props.isLogged ===true)
         {

@@ -96,6 +96,71 @@ function HeaderFrench(props)
         numero_expediteur: '',
         pays_expediteur : 'UK',
         }}))
+        window.localStorage.setItem("envoie",JSON.stringify({infoEnvoie :{
+          agent_id:'',
+          nom_expediteur : '',
+          prenom_expediteur : '',
+          adresse_expediteur : 'N/A',
+          email_expediteur : '',
+          numero_expediteur: '',
+          pays_expediteur : 'UK',
+          nom_beneficiaire : '',
+          prenom_beneficiaire : '',
+          pays_beneficiaire : '',
+          montant_beneficiaire : '',
+          montant_pour_payer :'',
+          frais_envoie : '',
+          frais_tva : '',
+          type_service : '',
+          numero_transfer :'',
+          date_operation : '',
+          date_heure_operation : '',
+          month_year_operation :''
+          }}))
+
+          window.localStorage.setItem("envoie2",JSON.stringify({infoEnvoie :{
+            nom_expediteur : '',
+      prenom_expediteur : '',
+      adresse_expediteur : 'N/A',
+      email_expediteur : '',
+      numero_expediteur: '',
+      pays_expediteur : 'UK',
+      nom_beneficiaire : '',
+      prenom_beneficiaire : '',
+      pays_beneficiaire : '',
+      montant_beneficiaire : '',
+      type_service : '',
+      frais_envoie : '',
+      montant_total : '',
+      code_retrait : '',
+      data_operation : '',
+      date_heure_operation : '',
+      code_abonne : '',
+      status_retrait : '',
+      numero_transfer :''
+                }}))
+                window.localStorage.setItem("envoie3",JSON.stringify({infoEnvoie :{
+                  nom_expediteur : '',
+      prenom_expediteur : '',
+      adresse_expediteur : 'N/A',
+      email_expediteur : '',
+      numero_expediteur: '',
+      pays_expediteur : 'UK',
+      nom_beneficiaire : '',
+      prenom_beneficiaire : '',
+      pays_beneficiaire : '',
+      montant_envoie_sans_frais : '',
+      montant_beneficiaire : '',
+      type_service : '',
+      frais_envoie : '',
+      frais_tva : '',
+      montant_total : '',
+      code_retrait : '',
+      data_operation : '',
+      date_heure_operation : '',
+      status_retrait : '',
+      numero_transfer:''
+                      }}))
       window.location.reload();
      // navigate('/')
       

@@ -32,7 +32,7 @@ function FormEnvoiAbonneId(props)
     const [modalShow, setModalShow] = React.useState(false);
     const [modalShow2, setModalShow2] = React.useState(false);
 
-    const [message,setMessage] = useState("Tosengi otia numéro ya téléphone portable ya motindi")
+    const [message,setMessage] = useState("Kotisa numéro ya téléphone ya abonné")
     
     const { Formik } = formik;
 
@@ -101,13 +101,16 @@ function FormEnvoiAbonneId(props)
         
         <>
         <Header dataAbonne={props.dataAbonne} setAbonne={props.setAbonne} abonne={props.abonne}  modalShowEnvoi={props.modalShowEnvoi} setModalShowEnvoi={props.setModalShowEnvoi}  envoie3={props.envoie3} isAdmin={props.isAdmin} isStaff={props.isStaff} language2={props.language2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} setLanguage2={props.setLanguage2} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
-{isDesktop && <Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:100,width:750}} >
-<Row className='justify-content-center mb-3 pt-3' >
-        <Col xs={12}>
-        <p className='text-dark'><i><b>{message}</b></i></p>
+{isDesktop && <Container className='justify-content-center text-center mb-5 text-light text-bold'  >
+<Row className='mt-3'>
+        <Col xs={12} className="text-start text-light">
+            <p><Link to='/menu_operation_envoi_lingala' style={{textDecoration:"none"}}><b className='text-light'>Tinda Mbongo &gt;&gt; </b></Link> <Link to='/form_envoie_abonne_id' style={{textDecoration:"none"}}><b className='text-warning'>Sala envoi pona abonné</b></Link></p>
         </Col>
     </Row>
 
+<Row className=' justify-content-center mb-3 pt-3' >
+        <Col xs={12} className="rounded" style={{marginTop:100,width:750,border:"3px solid white"}}>
+        <p className="text-light"><i><b>{message}</b></i></p>
 
     
     <Formik
@@ -125,7 +128,7 @@ function FormEnvoiAbonneId(props)
     <Row className='justify-content-center'>
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'>Numéro ya téléphone </Form.Label>
+        <Form.Label ><span className="text-danger">*</span>Numéro ya téléphone </Form.Label>
         <Form.Control name="numero_expediteur" value={values.numero_expediteur} onChange={handleChange} onBlur={handleBlur} type="text" placeholder='Numéro ya téléphone' autoFocus  />
         <p className='text-danger'>{touched.numero_expediteur && errors.numero_expediteur}</p>
          </Form.Group>
@@ -152,6 +155,8 @@ function FormEnvoiAbonneId(props)
 )
 }
 </Formik>
+</Col>
+</Row>
 </Container>
 }
 

@@ -59,35 +59,38 @@ function ConfirmationEnvoieInfoFrench(props)
         
         <>
 <HeaderFrench dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
-{isDesktop && <Container className='bg-light justify-content-center   mb-5' style={{marginTop:50,width:1000}} >
-<Row className='justify-content-center mb-3 pt-3' >
+{isDesktop && <Container className=' justify-content-center text-center mb-5 text-light text-bold rounded'  >
+<Row className='mt-3'>
+        <Col xs={12} className="text-start text-light">
+            <p><Link to='/menu_operation_envoi_french' style={{textDecoration:"none"}}><b className='text-light'>Retourner au menu d'envoyer de l'argent &gt;&gt; </b></Link> <Link to='/confirmation_envoie_info_french' style={{textDecoration:"none"}}><b className='text-warning'>Page de Confirmation d'envoi</b></Link></p>
+        </Col>
+    </Row>
+  <Row className='justify-content-center mt-3'>
+<Col xs={12} style={{border:"2px solid white",width:1000}}>
+<Row className='justify-content-center  pt-3' >
         <Col xs={6}>
-        <p className='text-danger'><i><b>{message}</b></i></p>
+        <p className='couleur2'><i><b>{message} !</b></i></p>
+        <hr style={{color:"darkorange"}}></hr>
         </Col>
     </Row>
     
-
-    <Row className='justify-content-center pb-3'>
-      <hr style={{color:"darkorange"}}></hr>
-      <p className='couleur2'><b><u></u></b> </p>
-    </Row>
     <Row className='justify-content-start pb-3' >
         <Col xs={6} className='text-start'>
-        <p className='text-dark'>Code : <b className='text-success  p-2' style={{border:"2px solid black"}}> {props.envoie3.infoEnvoie.code_retrait} </b></p>
-        {props.envoie3.infoEnvoie.status_retrait == "code retrait en attente de validation" ? <p className='text-dark'>votre code status : <b className="couleur2">en attente de validation...</b> </p> :
-     <p className='text-dark'><b>Status de votre code :</b> <b className="text-success">Votre code a été validé</b> </p> }
-        <p className='text-dark'>Nom complet expéditeur: <b className='text-dark'>{props.envoie3.infoEnvoie.prenom_expediteur} {props.envoie3.infoEnvoie.nom_expediteur}  </b> </p>
-        <p className='text-dark'>Montant à obtenir par le bénéficiaire: <b className='text-dark'>{Number(props.envoie3.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
-        <p className='text-dark'>Montant à payer (y compris tous les frais): <b className='bg-warning  p-2' style={{border:"2px solid black"}}>{Number(props.envoie3.infoEnvoie.montant_total).toFixed(2)} £</b> </p>
-        <p className='text-dark'>Pays Expéditeur  : <b className='text-dark'> {props.envoie3.infoEnvoie.pays_expediteur}</b></p>
+        <p className='text-light'>Code : <b className='text-success  p-2' style={{border:"2px solid white"}}> {props.envoie3.infoEnvoie.code_retrait} </b></p>
+        {props.envoie3.infoEnvoie.status_retrait == "code retrait en attente de validation" ? <p className='text-light'>votre code status : <b className="couleur2">en attente de validation...</b> </p> :
+     <p className='text-light'><b>Status de votre code :</b> <b className="text-success">Votre code a été validé</b> </p> }
+        <p className='text-light'>Nom complet expéditeur: <b className='text-light'>{props.envoie3.infoEnvoie.prenom_expediteur} {props.envoie3.infoEnvoie.nom_expediteur}  </b> </p>
+        <p className='text-light'>Montant à obtenir par le bénéficiaire: <b className='text-light'>{Number(props.envoie3.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
+        <p className='text-light'>Montant à payer (y compris tous les frais): <b className='bg-warning  p-2' style={{border:"2px solid white"}}>{Number(props.envoie3.infoEnvoie.montant_total).toFixed(2)} £</b> </p>
+        <p className='text-light'>Pays Expéditeur  : <b className='text-light'> {props.envoie3.infoEnvoie.pays_expediteur}</b></p>
         </Col>
 
         <Col xs={6} className='text-start'>
-        <p className='text-dark'>Nom complet bénéficiaire: <b className='text-dark'>{props.envoie3.infoEnvoie.prenom_beneficiaire} {props.envoie3.infoEnvoie.nom_beneficiaire}</b> </p> 
-        <p className='text-dark'>Pays bénéficiaire: <b className='text-dark'> {props.envoie3.infoEnvoie.pays_beneficiaire}</b></p>
-        <p className='text-dark'>Type de service : <b className='text-dark'>{props.envoie3.infoEnvoie.type_service}</b> </p>
-        {props.envoie3.infoEnvoie.numero_transfer==='N/A' ? <p></p> : <p className='text-dark'>Numéro de transfert: <b className='text-dark'>{props.envoie3.infoEnvoie.numero_transfer}</b> </p>}
-        <p className='text-dark'>date et heure: <b className='text-dark'> {props.envoie3.infoEnvoie.date_heure_operation}</b></p>
+        <p className='text-light'>Nom complet bénéficiaire: <b className='text-light'>{props.envoie3.infoEnvoie.prenom_beneficiaire} {props.envoie3.infoEnvoie.nom_beneficiaire}</b> </p> 
+        <p className='text-light'>Pays bénéficiaire: <b className='text-light'> {props.envoie3.infoEnvoie.pays_beneficiaire}</b></p>
+        <p className='text-light'>Type de service : <b className='text-light'>{props.envoie3.infoEnvoie.type_service}</b> </p>
+        {props.envoie3.infoEnvoie.numero_transfer==='N/A' ? <p></p> : <p className='text-light'>Numéro de transfert: <b className='text-light'>{props.envoie3.infoEnvoie.numero_transfer}</b> </p>}
+        <p className='text-light'>date et heure: <b className='text-light'> {props.envoie3.infoEnvoie.date_heure_operation}</b></p>
         </Col>
     </Row>
 
@@ -102,7 +105,10 @@ function ConfirmationEnvoieInfoFrench(props)
         </Button>
         
         </Col>
-    </Row>  
+    </Row> 
+    </Col>
+
+</Row>  
 </Container>
 }
 

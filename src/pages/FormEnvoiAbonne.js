@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import {useNavigate} from  'react-router-dom';
+import {Link,useNavigate} from  'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import HeaderEnglish from './HeaderEnglish';
 import Header from './Header';
@@ -52,6 +52,32 @@ function FormEnvoiAbonne(props)
         query: "(max-width: 1224px)"
       });
     
+      const closePage = ()=>
+    {
+      props.setEnvoie({infoEnvoie :{
+        agent_id:'',
+        nom_expediteur : '',
+        prenom_expediteur : '',
+        adresse_expediteur : 'N/A',
+        email_expediteur : '',
+        numero_expediteur: '',
+        pays_expediteur : 'UK',
+        nom_beneficiaire : '',
+        prenom_beneficiaire : '',
+        pays_beneficiaire : '',
+        montant_beneficiaire : '',
+        montant_pour_payer :'',
+        frais_envoie : '',
+        frais_tva : '',
+        type_service : '',
+        numero_transfer :'',
+        date_operation : '',
+        date_heure_operation : '',
+        month_year_operation :''
+        }})
+    navigate('/menu_operation_envoi_lingala')
+    }
+  
       
     
       const tauxEchanger = (values)=>
@@ -131,6 +157,11 @@ function FormEnvoiAbonne(props)
         <>
 <Header dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
 {isDesktop && <Container className='justify-content-center text-center mb-5 text-light text-bold' style={{width:1000}} >
+<Row className='mt-3'>
+        <Col xs={12} className="text-start text-light">
+            <p><Link to='/menu_operation_envoi_lingala' style={{textDecoration:"none"}}><b className='text-light'>Tinda Mbongo &gt;&gt; </b></Link> <Link to='/form_envoie_abonne' style={{textDecoration:"none"}}><b className='text-warning'>Sala envoi pona abonné</b></Link></p>
+        </Col>
+    </Row>
 <Row className='justify-content-center mb-3 pt-3' >
 <Col xs={6}>
         <p ><i><b >Numéro ya Abonné : </b><b className='couleur2'>{props.abonne.infoAbonne.numero_expediteur}</b></i></p>
@@ -259,6 +290,12 @@ function FormEnvoiAbonne(props)
         <Col xs ={4}> 
         <Button variant="warning" type="submit" >
         kende na page elandi
+        </Button>
+        </Col>
+
+        <Col xs ={4}> 
+        <Button variant="danger" onClick={closePage} >
+        kokanga
         </Button>
         </Col>
         </Row>

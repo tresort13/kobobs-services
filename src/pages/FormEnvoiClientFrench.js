@@ -39,7 +39,33 @@ function FormEnvoiClientFrench(props)
     numero_transfer : props.envoie.infoEnvoie.numero_transfer
     }})
 
+    const closePage = ()=>
+    {
+      props.setEnvoie({infoEnvoie :{
+        agent_id:'',
+        nom_expediteur : '',
+        prenom_expediteur : '',
+        adresse_expediteur : 'N/A',
+        email_expediteur : '',
+        numero_expediteur: '',
+        pays_expediteur : 'UK',
+        nom_beneficiaire : '',
+        prenom_beneficiaire : '',
+        pays_beneficiaire : '',
+        montant_beneficiaire : '',
+        montant_pour_payer :'',
+        frais_envoie : '',
+        frais_tva : '',
+        type_service : '',
+        numero_transfer :'',
+        date_operation : '',
+        date_heure_operation : '',
+        month_year_operation :''
+        }})
+
     
+    navigate('/menu_operation_envoi_french')
+    }
     const [message,setMessage] = useState("Formulaire nouveau client")
   const { Formik } = formik;
 
@@ -145,7 +171,13 @@ function FormEnvoiClientFrench(props)
       
       <>
 <HeaderFrench dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
-{isDesktop && <Container className='justify-content-center text-center mb-5 text-light text-bold' style={{marginTop:50,width:1000}} >
+{isDesktop && <Container className='justify-content-center text-center mb-5 text-light text-bold'  >
+<Row className='mt-3'>
+        <Col xs={12} className="text-start text-light">
+            <p><Link to='/menu_operation_envoi_french' style={{textDecoration:"none"}}><b className='text-light'>Envoyer de l'argent &gt;&gt; </b></Link> <Link to='/form_envoie_client' style={{textDecoration:"none"}}><b className='text-warning'>Envoyer pour un nouveau client</b></Link></p>
+        </Col>
+    </Row>
+
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={6}>
         <p className='couleur2'><i><b>{message}</b></i></p>
@@ -337,6 +369,12 @@ function FormEnvoiClientFrench(props)
         <Col xs ={4}> 
         <Button variant="warning" type="submit" >
         Suivant
+        </Button>
+        </Col>
+
+        <Col xs ={4}> 
+        <Button variant="danger" onClick={closePage} >
+        fermer
         </Button>
         </Col>
         </Row>

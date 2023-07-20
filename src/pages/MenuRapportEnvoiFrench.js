@@ -26,11 +26,16 @@ function MenuRapportEnvoiFrench(props)
 <>
 <HeaderFrench dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
 {isDesktop && <Container >
+   <Row className='mt-3'>
+        <Col xs={12} className="text-start text-light">
+            <p><Link to='/menu_management_french' style={{textDecoration:"none"}}><b className='text-light'>Gestion des Opérations &gt;&gt; </b></Link> <Link to='/menu_rapport_envoi_french' style={{textDecoration:"none"}}><b className='text-warning'>Rapport des envois</b></Link></p>
+        </Col>
+    </Row>
     
     <Row className='justify-content-center pb-3 pt-5 mt-5'>
         <Col xs = {"auto"}>
         <Link to="/select_date_form_envoi_french" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='btn--blue'  style={{width:400,height:80}} className='btn-lg btn--blue rounded zoom py-4'>
+        <Button variant='btn--blue'  style={{width:400,height:80,border:"2px solid white"}} className='btn-lg btn--blue rounded-pill zoom py-4'>
         <b className='text-light'><pre>Rapport Journalier</pre></b>
         </Button>
         </Link>
@@ -42,7 +47,7 @@ function MenuRapportEnvoiFrench(props)
     <Row className='justify-content-center pb-3'>
         <Col xs = {"auto"}>
         <Link to="/select_mois_form_envoi_french" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='btn--blue'  style={{width:400,height:80}} className='btn-lg btn--blue rounded zoom py-4'>
+        <Button variant='btn--blue'  style={{width:400,height:80,border:"2px solid white"}} className='btn-lg btn--blue rounded-pill zoom py-4'>
         <b className='text-light'><pre>Rapport Mensuel</pre></b>
         </Button>
         </Link>

@@ -37,6 +37,28 @@ function ConfirmationEnvoieInfoEnglish(props)
     props.setClientForm(false)
     props.setSaveAbonne('')
     props.setModalShowEnvoi(true)
+    /*props.setEnvoie3({infoEnvoie :{
+    nom_expediteur : '',
+    prenom_expediteur : '',
+    adresse_expediteur : 'N/A',
+    email_expediteur : '',
+    numero_expediteur: '',
+    pays_expediteur : 'UK',
+    nom_beneficiaire : '',
+    prenom_beneficiaire : '',
+    pays_beneficiaire : '',
+    montant_envoie_sans_frais : '',
+    montant_beneficiaire : '',
+    type_service : '',
+    frais_envoie : '',
+    frais_tva : '',
+    montant_total : '',
+    code_retrait : '',
+    data_operation : '',
+    date_heure_operation : '',
+    status_retrait : '',
+    numero_transfer:''
+    }})*/
     navigate('/')
   }
 
@@ -58,35 +80,39 @@ function ConfirmationEnvoieInfoEnglish(props)
         
         <>
 <HeaderEnglish dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
-{isDesktop && <Container className='bg-light justify-content-center   mb-5' style={{marginTop:50,width:1000}} >
-<Row className='justify-content-center mb-3 pt-3' >
+{isDesktop && <Container className=' justify-content-center text-center mb-5 text-light text-bold rounded'  >
+<Row className='mt-3'>
+        <Col xs={12} className="text-start text-light">
+            <p><Link to='/menu_operation_envoi_english' style={{textDecoration:"none"}}><b className='text-light'>Back to sending money Menu &gt;&gt; </b></Link> <Link to='/confirmation_envoie_info_english' style={{textDecoration:"none"}}><b className='text-warning'>Sending Confirmation Page</b></Link></p>
+        </Col>
+    </Row>
+  <Row className='justify-content-center mt-3'>
+<Col xs={12} style={{border:"2px solid white",width:1000}}>
+<Row className='justify-content-center  pt-3' >
         <Col xs={6}>
-        <p className='text-danger'><i><b>{message}</b></i></p>
+        <p className='couleur2'><i><b>{message} !</b></i></p>
+        <hr style={{color:"darkorange"}}></hr>
         </Col>
     </Row>
     
 
-    <Row className='justify-content-center pb-3'>
-      <hr style={{color:"darkorange"}}></hr>
-      <p className='couleur2'><b><u></u></b> </p>
-    </Row>
     <Row className='justify-content-start pb-3' >
         <Col xs={6} className='text-start'>
-        <p className='text-dark'>Tracking Number : <b className='text-success  p-2' style={{border:"2px solid black"}}> {props.envoie3.infoEnvoie.code_retrait} </b></p>
-        {props.envoie3.infoEnvoie.status_retrait == "code retrait en attente de validation" ? <p className='text-dark'>Tracking Number status : <b className="couleur2">pending for validation...</b> </p> :
-     <p className='text-dark'><b>Tracking Number status :</b> <b className="text-success">Your tracking number has been validated</b> </p> }
-        <p className='text-dark'>Sender full name: <b className='text-dark'>{props.envoie3.infoEnvoie.prenom_expediteur} {props.envoie3.infoEnvoie.nom_expediteur}  </b> </p>
-        <p className='text-dark'>amount to get by the receiver: <b className='text-dark'>{Number(props.envoie3.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
-        <p className='text-dark'>amount to pay for the transfer (including all fees): <b className='bg-warning  p-2' style={{border:"2px solid black"}}>{Number(props.envoie3.infoEnvoie.montant_total).toFixed(2)} £</b> </p>
-        <p className='text-dark'>sender country  : <b className='text-dark'> {props.envoie3.infoEnvoie.pays_expediteur}</b></p>
+        <p className='text-light'>Tracking Number : <b className='text-success  p-2' style={{border:"2px solid white"}}> {props.envoie3.infoEnvoie.code_retrait} </b></p>
+        {props.envoie3.infoEnvoie.status_retrait == "code retrait en attente de validation" ? <p className='text-light'>Tracking Number status : <b className="couleur2">pending for validation...</b> </p> :
+     <p className='text-light'><b>Tracking Number status :</b> <b className="text-success">Your tracking number has been validated</b> </p> }
+        <p className='text-light'>Sender full name: <b className='text-light'>{props.envoie3.infoEnvoie.prenom_expediteur} {props.envoie3.infoEnvoie.nom_expediteur}  </b> </p>
+        <p className='text-light'>amount to get by the receiver: <b className='text-light'>{Number(props.envoie3.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
+        <p className='text-light'>amount to pay for (including all fees): <b className='bg-warning  p-2' style={{border:"2px solid white"}}>{Number(props.envoie3.infoEnvoie.montant_total).toFixed(2)} £</b> </p>
+        <p className='text-light'>sender country  : <b className='text-light'> {props.envoie3.infoEnvoie.pays_expediteur}</b></p>
         </Col>
 
         <Col xs={6} className='text-start'>
-        <p className='text-dark'>Receiver full name: <b className='text-dark'>{props.envoie3.infoEnvoie.prenom_beneficiaire} {props.envoie3.infoEnvoie.nom_beneficiaire}</b> </p> 
-        <p className='text-dark'>receiver country : <b className='text-dark'> {props.envoie3.infoEnvoie.pays_beneficiaire}</b></p>
-        <p className='text-dark'>Type of service : <b className='text-dark'>{props.envoie3.infoEnvoie.type_service}</b> </p>
-        {props.envoie3.infoEnvoie.numero_transfer==='N/A' ? <p></p> : <p className='text-dark'>Mobile money Number: <b className='text-dark'>{props.envoie3.infoEnvoie.numero_transfer}</b> </p>}
-        <p className='text-dark'>date and time: <b className='text-dark'> {props.envoie3.infoEnvoie.date_heure_operation}</b></p>
+        <p className='text-light'>Receiver full name: <b className='text-light'>{props.envoie3.infoEnvoie.prenom_beneficiaire} {props.envoie3.infoEnvoie.nom_beneficiaire}</b> </p> 
+        <p className='text-light'>receiver country : <b className='text-light'> {props.envoie3.infoEnvoie.pays_beneficiaire}</b></p>
+        <p className='text-light'>Type of service : <b className='text-light'>{props.envoie3.infoEnvoie.type_service}</b> </p>
+        {props.envoie3.infoEnvoie.numero_transfer==='N/A' ? <p></p> : <p className='text-light'>Mobile money Number: <b className='text-light'>{props.envoie3.infoEnvoie.numero_transfer}</b> </p>}
+        <p className='text-light'>date and time: <b className='text-light'> {props.envoie3.infoEnvoie.date_heure_operation}</b></p>
         </Col>
     </Row>
 
@@ -96,12 +122,15 @@ function ConfirmationEnvoieInfoEnglish(props)
     </Row>
     <Row className='justify-content-center text-center pb-3' >
         <Col xs={12}>
-        <Button onClick={()=>closePage()} variant="dark" type="submit">
+        <Button onClick={()=>closePage()} variant="danger" type="submit">
         close
         </Button>
         
         </Col>
     </Row>  
+    </Col>
+
+    </Row>
 </Container>
 }
 

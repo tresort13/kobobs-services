@@ -131,46 +131,55 @@ console.log(props.envoie.infoEnvoie)
         
         <>
 <Header dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
-{isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
+{isDesktop && <Container className=' justify-content-center text-center mb-5 text-light text-bold rounded'  >
+<Row className='mt-3'>
+        <Col xs={12} className="text-start text-light">
+            <p><Link to='/form_envoie_client' style={{textDecoration:"none"}}><b className='text-light'>Sala envoi pona client ya sika &gt;&gt; </b></Link> <Link to='/envoi_info_french' style={{textDecoration:"none"}}><b className='text-warning'>Validation ya makomi pona ko tinda mbongo </b></Link></p>
+        </Col>
+    </Row>
+  <Row className='justify-content-center mt-3'>
+<Col xs={12} style={{border:"2px solid white",width:1000}}>
 <Row className='justify-content-center  pt-3' >
         <Col xs={6}>
-        <p className='text-danger '><i><b>{message} !</b></i></p>
+        <p className='couleur2'><i><b>{message} !</b></i></p>
         <hr style={{color:"darkorange"}}></hr>
         </Col>
     </Row>
 
     
-    <hr style={{color:"darkorange"}}></hr>
-    <Row className='justify-content-center pb-3' >
-
-<Col xs={6} className="text-start">
-<p className='text-dark'>Mbongo Yako Futa (naba taxe.): <b className='text-dark bg-warning p-2' style={{border:"2px solid black"}}>{Number(props.envoie.infoEnvoie.montant_pour_payer).toFixed(2)} £</b> </p>
-<p className='text-dark'>Mbongo Yako Zwa : <b className='text-dark p-2' style={{border:"2px solid black"}}>{Number(props.envoie.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p> 
-</Col>
-
-<Col xs={6} className="text-start">
-<p className='text-dark'>Nzela Yako Zwa Mbongo : <b className='text-dark'>{props.envoie.infoEnvoie.type_service}</b> </p>
-{props.envoie.infoEnvoie.numero_transfer==='' ? <p></p> : <p className='text-dark'>Numéro Ya Mobile money: <b className='text-dark'>{props.envoie.infoEnvoie.numero_transfer}</b> </p>}
-</Col>
-</Row>
-<hr style={{color:"darkorange"}}></hr>
 <Row className='justify-content-center pb-3' >
 
 
-<Col xs={6} className="text-start " style={{borderRight:"2px solid black"}}>
+<Col xs={6} className="text-start " style={{borderRight:"2px solid darkorange"}}>
 <p className='couleur2 text-center'><b><u>Motindi </u></b> </p>
-<p className='text-dark'>Kombo : <b className='text-dark'>{props.envoie.infoEnvoie.prenom_expediteur} {props.envoie.infoEnvoie.nom_expediteur}</b> </p>
-<p className='text-dark'>Numéro Ya tshombo :<b className='text-dark'> {props.envoie.infoEnvoie.numero_expediteur} </b></p>
-<p className='text-dark'>Ekolo : <b className='text-dark'> {props.envoie.infoEnvoie.pays_expediteur}</b></p>
+<p className='text-light'>Kombo : <b className='text-light'>{props.envoie.infoEnvoie.prenom_expediteur} {props.envoie.infoEnvoie.nom_expediteur}</b> </p>
+<p className='text-light'>Numéro Ya tshombo :<b className='text-light'> {props.envoie.infoEnvoie.numero_expediteur} </b></p>
+<p className='text-light'>Ekolo : <b className='text-light'> {props.envoie.infoEnvoie.pays_expediteur}</b></p>
 </Col>
 
 <Col xs={6} className="text-start">
 <p className='couleur2 text-center'><b><u>Mozui </u></b> </p>
-<p className='text-dark'>Kombo : <b className='text-dark'>{props.envoie.infoEnvoie.prenom_beneficiaire} {props.envoie.infoEnvoie.nom_beneficiaire}</b> </p>
-<p className='text-dark'>Ekolo : <b className='text-dark'>{props.envoie.infoEnvoie.pays_beneficiaire}</b> </p>
+<p className='text-light'>Kombo : <b className='text-light'>{props.envoie.infoEnvoie.prenom_beneficiaire} {props.envoie.infoEnvoie.nom_beneficiaire}</b> </p>
+<p className='text-light'>Ekolo : <b className='text-light'>{props.envoie.infoEnvoie.pays_beneficiaire}</b> </p>
 </Col>
 
 </Row>
+<Row className='justify-content-center pb-3'>
+<hr style={{color:"darkorange"}}></hr>
+</Row>
+<Row className='justify-content-center pb-3' >
+
+<Col xs={6} className="text-start">
+<p className='text-light'>Mbongo Yako Futa (naba taxe.): <b className='text-dark bg-warning p-2' style={{border:"2px solid black"}}>{Number(props.envoie.infoEnvoie.montant_pour_payer).toFixed(2)} £</b> </p>
+<p className='text-light'>Mbongo Yako Zwa : <b className='text-light p-2' style={{border:"2px solid white"}}>{Number(props.envoie.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p> 
+</Col>
+
+<Col xs={6} className="text-start">
+<p className='text-light'>Nzela Yako Zwa Mbongo : <b className='text-light'>{props.envoie.infoEnvoie.type_service}</b> </p>
+{props.envoie.infoEnvoie.numero_transfer==='' ? <p></p> : <p className='text-light'>Numéro Ya Mobile money: <b className='text-light'>{props.envoie.infoEnvoie.numero_transfer}</b> </p>}
+</Col>
+</Row>
+
 
 <Row className='justify-content-center pb-3'>
 <hr style={{color:"darkorange"}}></hr>
@@ -191,7 +200,9 @@ Tinda makomi
 </Col>
 
 </Row>
+        </Col>
 
+</Row>
     
     
 

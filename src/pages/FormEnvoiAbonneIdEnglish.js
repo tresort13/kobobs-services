@@ -31,7 +31,7 @@ function FormEnvoiAbonneIdEnglish(props)
     const [modalShow, setModalShow] = React.useState(false);
     const [modalShow2, setModalShow2] = React.useState(false);
 
-    const [message,setMessage] = useState("Please enter the sender's mobile number")
+    const [message,setMessage] = useState("Enter the subscriber's mobile number")
     
     const { Formik } = formik;
 
@@ -100,15 +100,17 @@ function FormEnvoiAbonneIdEnglish(props)
         
         <>
         <HeaderEnglish dataAbonne={props.dataAbonne} setAbonne={props.setAbonne} abonne={props.abonne}  modalShowEnvoi={props.modalShowEnvoi} setModalShowEnvoi={props.setModalShowEnvoi}  envoie3={props.envoie3} isAdmin={props.isAdmin} isStaff={props.isStaff} language2={props.language2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} setLanguage2={props.setLanguage2} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
-{isDesktop && <Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:100,width:750}} >
-<Row className='justify-content-center mb-3 pt-3' >
-        <Col xs={12}>
-        <p className='text-dark'><i><b>{message}</b></i></p>
+{isDesktop && <Container className='justify-content-center text-center mb-5 text-light text-bold'  >
+<Row className='mt-3'>
+        <Col xs={12} className="text-start text-light">
+            <p><Link to='/menu_operation_envoi_english' style={{textDecoration:"none"}}><b className='text-light'>Sending Money &gt;&gt; </b></Link> <Link to='/form_envoie_abonne_id_english' style={{textDecoration:"none"}}><b className='text-warning'>To send for a subscriber</b></Link></p>
         </Col>
     </Row>
 
-
-    
+<Row className=' justify-content-center mb-3 pt-3' >
+        <Col xs={12} className="rounded" style={{marginTop:100,width:750,border:"3px solid white"}}>
+        <p className="text-light"><i><b>{message}</b></i></p>
+         
     <Formik
       validationSchema={testValidation}
       onSubmit={(values)=>{
@@ -124,7 +126,7 @@ function FormEnvoiAbonneIdEnglish(props)
     <Row className='justify-content-center'>
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'>Mobile Number </Form.Label>
+        <Form.Label ><span className="text-danger">*</span>Mobile Number </Form.Label>
         <Form.Control name="numero_expediteur" value={values.numero_expediteur} onChange={handleChange} onBlur={handleBlur} type="text" placeholder='Mobile Number' autoFocus  />
         <p className='text-danger'>{touched.numero_expediteur && errors.numero_expediteur}</p>
          </Form.Group>
@@ -151,6 +153,8 @@ function FormEnvoiAbonneIdEnglish(props)
 )
 }
 </Formik>
+</Col>
+</Row>
 </Container>
 }
 

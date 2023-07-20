@@ -131,37 +131,51 @@ const submitEnvoie = (e)=>
         
         <>
         <HeaderFrench  dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
-{isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
-  <Row className='justify-content-center mb-3 pt-3' >
-        <Col xs={12}>
-        <p className='text-danger'><i><b>{message} !</b></i></p>
+{isDesktop && <Container className=' justify-content-center text-center mb-5 text-light text-bold rounded'  >
+<Row className='mt-3'>
+        <Col xs={12} className="text-start text-light">
+            <p><Link to='/form_envoie_client_french' style={{textDecoration:"none"}}><b className='text-light'>Envoyer pour un nouveau client &gt;&gt; </b></Link> <Link to='/envoi_info_french' style={{textDecoration:"none"}}><b className='text-warning'>Validation du formulaire d'envoi </b></Link></p>
+        </Col>
+    </Row>
+  <Row className='justify-content-center mt-3'>
+<Col xs={12} style={{border:"2px solid white",width:1000}}>
+<Row className='justify-content-center  pt-3' >
+        <Col xs={6}>
+        <p className='couleur2'><i><b>{message} !</b></i></p>
+        <hr style={{color:"darkorange"}}></hr>
         </Col>
     </Row>
 
-    <Row className='justify-content-center pb-3' >
-        <Col xs={6} className="text-start">
-        <p className='text-dark'>Montant Total à payer: <b className='text-dark bg-warning p-2' style={{border:"2px solid black"}}>{Number(props.envoie.infoEnvoie.montant_pour_payer).toFixed(2)} £</b> </p>
-        <p className='text-dark'>Montant à recevoir par le Bénéficiare: <b className='text-dark p-2' style={{border:"2px solid black"}}>{Number(props.envoie.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
-        </Col>
 
-        <Col xs={6} className="text-start">
-        <p className='text-dark'>Type de service : <b className='text-dark'>{props.envoie.infoEnvoie.type_service}</b> </p>
-        {props.envoie.infoEnvoie.numero_transfer==='' ? <p></p> : <p className='text-dark'>Numéro yako tinda mbongo: <b className='text-dark'>{props.envoie.infoEnvoie.numero_transfer}</b> </p>}
-        </Col>
-    </Row>
+    
 
     <Row className='justify-content-center pb-3' >
-        <Col xs={6} className="text-start" style={{borderRight:"2px solid black"}}>
+        <Col xs={6} className="text-start" style={{borderRight:"2px solid darkorange"}}>
         <p className='couleur2 text-center'><b><u>Expéditeur </u></b> </p>
-        <p className='text-dark'>Nom complet: <b className='text-dark'>{props.envoie.infoEnvoie.prenom_expediteur} {props.envoie.infoEnvoie.nom_expediteur}</b> </p>
-        <p className='text-dark'>Téléphone: <b className='text-dark'> {props.envoie.infoEnvoie.numero_expediteur} </b></p>
-        <p className='text-dark'>Pays: <b className='text-dark'> {props.envoie.infoEnvoie.pays_expediteur}</b></p>
+        <p className='text-light'>Nom complet: <b className='text-light'>{props.envoie.infoEnvoie.prenom_expediteur} {props.envoie.infoEnvoie.nom_expediteur}</b> </p>
+        <p className='text-light'>Téléphone: <b className='text-light'> {props.envoie.infoEnvoie.numero_expediteur} </b></p>
+        <p className='text-light'>Pays: <b className='text-light'> {props.envoie.infoEnvoie.pays_expediteur}</b></p>
         </Col>
     
         <Col xs={6} className="text-start"> 
         <p className='couleur2 text-center'><b><u>Bénéficiare </u></b> </p>
-        <p className='text-dark'>Nom complet: <b className='text-dark'>{props.envoie.infoEnvoie.prenom_beneficiaire} {props.envoie.infoEnvoie.nom_beneficiaire} </b> </p>
-        <p className='text-dark'>Pays: <b className='text-dark'>{props.envoie.infoEnvoie.pays_beneficiaire}</b> </p>
+        <p className='text-light'>Nom complet: <b className='text-light'>{props.envoie.infoEnvoie.prenom_beneficiaire} {props.envoie.infoEnvoie.nom_beneficiaire} </b> </p>
+        <p className='text-light'>Pays: <b className='text-light'>{props.envoie.infoEnvoie.pays_beneficiaire}</b> </p>
+        </Col>
+    </Row>
+    <Row className='justify-content-center pb-3'>
+      <hr style={{color:"darkorange"}}></hr>
+    </Row>
+
+    <Row className='justify-content-center pb-3' >
+        <Col xs={6} className="text-start">
+        <p className='text-light'>Montant Total à payer: <b className='text-dark bg-warning p-2' style={{border:"2px solid white"}}>{Number(props.envoie.infoEnvoie.montant_pour_payer).toFixed(2)} £</b> </p>
+        <p className='text-light'>Montant à recevoir par le Bénéficiare: <b className='text-light p-2' style={{border:"2px solid white"}}>{Number(props.envoie.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
+        </Col>
+
+        <Col xs={6} className="text-start">
+        <p className='text-light'>Type de service : <b className='text-light'>{props.envoie.infoEnvoie.type_service}</b> </p>
+        {props.envoie.infoEnvoie.numero_transfer==='' ? <p></p> : <p className='text-light'>Numéro yako tinda mbongo: <b className='text-light'>{props.envoie.infoEnvoie.numero_transfer}</b> </p>}
         </Col>
     </Row>
 
@@ -171,21 +185,21 @@ const submitEnvoie = (e)=>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
         <Button variant="warning" type="submit" onClick={e=>submitEnvoie(e)}>
-        envoyer
+        Valider formulaire
         </Button>
         </Col>
 
         <Col xs={6}>
         <Link to="/form_envoie_client_french">
          <Button variant="secondary" type="submit">
-        modifier
+        Modifier
         </Button>
         </Link>
         </Col>
-        
-    </Row>
-    
-    
+        </Row>
+        </Col>
+
+</Row>
 
 </Container>
 }

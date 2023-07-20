@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from "react-bootstrap/Button";
 import Container from 'react-bootstrap/Container';
@@ -11,51 +11,80 @@ import Footer from './Footer';
 import Table from 'react-bootstrap/Table';
 import HeaderEnglish from './HeaderEnglish';
 import  './Header.css';
+import Form from 'react-bootstrap/Form';
 import HeaderFrench from './HeaderFrench';
+
+
+//import SessionOut from './SessionOut';
+
 
 
 function TableMonthlyRapportFrench(props)
 {
-    const isDesktop = useMediaQuery({
-        query: "(min-width: 1224px)"
-      });
-      const isMobileOrTablet = useMediaQuery({
-        query: "(max-width: 1224px)"
-      });
-      const navigate = useNavigate()
+  const [rapportLocation, setRapportLocation] = useState("Rapport Angola et RD Congo");
+  const isDesktop = useMediaQuery({
+      query: "(min-width: 1224px)"
+    });
+    const isMobileOrTablet = useMediaQuery({
+      query: "(max-width: 1224px)"
+    });
+    const navigate = useNavigate()
 
-            const message = ()=>
-        {
-            alert(" sorry the print page is not yet available")
-        }
+          const message = ()=>
+      {
+          alert("not available")
+      }
+    const changeRapportLocation = (e)=>{
+      setRapportLocation(e.target.value)
+      console.log(e.target.value)
+    }
 
 const operationDetailArray = []
 
-const total_montant_beneficiaire = props.dailyRapport.reduce((total,value)=>
+const total_montant_beneficiaire = props.detailEnvoieTotalTableau.reduce((total,value)=>
 {
-  
-  total = total + parseFloat(value.montant_beneficiaire)
-  return total
+
+total = total + parseFloat(value.montant_beneficiaire)
+return total
+},0)
+
+const total_montant_beneficiaire_rdcongo = props.detailEnvoieTotalTableau.filter((value)=>{
+return value.pays_beneficiaire ==="RD Congo"
+}).reduce((total,value)=>
+{
+
+total = total + parseFloat(value.montant_beneficiaire)
+return total
+},0)
+
+const total_montant_beneficiaire_angola = props.detailEnvoieTotalTableau.filter((value)=>{
+return value.pays_beneficiaire ==="Angola"
+}).reduce((total,value)=>
+{
+
+total = total + parseFloat(value.montant_beneficiaire)
+return total
 },0)
 
 const total_frais_envoie = props.dailyRapport.reduce((total,value)=>
 {
-  total=total + parseFloat(value.frais_envoie)
-  return total
+total=total + parseFloat(value.frais_envoie)
+return total
 },0)
 
 const total_frais_tva = props.dailyRapport.reduce((total,value)=>
 {
-  total=total + parseFloat(value.frais_tva)
-  return total
+total=total + parseFloat(value.frais_tva)
+return total
 },0)
 
-const total_montant = props.dailyRapport.reduce((total,value)=>
+const total_montant = props.detailEnvoieTotalTableau.reduce((total,value)=>
 {
-  total=total + parseFloat(value.montant_total)
-  return total
+total=total + parseFloat(value.montant_total)
+return total
 },0)
 
+console.log(rapportLocation)
 
     return (
         <>
@@ -70,29 +99,40 @@ const total_montant = props.dailyRapport.reduce((total,value)=>
 <Row className='justify-content-center '>
         <Col xs = {12} className='text-center borders pt-2'>
         <div>
-        <h6 ><u><b><i className='couleur2'>{props.message2}</i></b></u></h6>
+        <h6 ><u><b><i className='couleur2'>{props.message2} {props.moisInfo}</i></b></u></h6>
         </div>
         <div>
+        
+        {props.message2 === "Rapport des Rétraits" ? <div>
+    <Form>
+    <Form.Select aria-label="Default select example" onChange={(e)=>changeRapportLocation(e)}>
+      <option value="Rapport Angola et RD Congo" ><b>Rapport Angola et RD Congo </b></option>
+      <option value="Rapport RD Congo"><b>Rapport RD Congo </b></option>
+      <option value="Rapport Angola"><b>Rapport Angola</b></option>
+    </Form.Select>
+    </Form>
+    </div> : <di></di>}
+    
         <Table striped bordered hover variant="light">
       <thead>
         <tr className='text-dark' style={{border:"2px solid white"}}>
-          <th>Période</th>
+          <th>Date</th>
           <th>Nom Expéditeur</th>
           <th>Nom bénéficiaire</th>
-          <th>pays bénéficiaire</th>
-          <th>Montant Bénéficiaire($)</th>
+          <th>Pays Bénéficiaire</th>
+          <th>Montant Bénéficiaire ($)</th>
           <th>Montant total(£)</th>
           <th>Détails des opérations</th>
         </tr>
       </thead>
       <tbody>
-        {props.detailEnvoieTotalTableau.map((value)=>
+      {rapportLocation === "Rapport Angola et RD Congo" ? props.detailEnvoieTotalTableau.map((value)=>
         {
           return  <tr  style={{border:"2px solid white"}} >
-             <td><i ><b>{props.moisInfo}</b></i></td>
+             <td><i ><b>{value.date_operation}</b></i></td>
              <td><i><b className="text-dark">{value.prenom_expediteur} {value.nom_expediteur} {value.postnom_expediteur} </b></i></td>
              <td><i><b className="text-dark"> {value.prenom_beneficiaire} {value.nom_beneficiaire} {value.postnom_beneficiaire}</b></i></td>
-             <td><i><b className="text-dark">{value.pays_beneficiaire}</b></i></td>
+             <td><i><b className="text-dark"> {value.pays_beneficiaire}</b></i></td>
              <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_beneficiaire).toFixed(2))}</b></i></td>
              <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_total).toFixed(2))}</b></i></td>
              <td onClick={()=>{
@@ -100,17 +140,54 @@ const total_montant = props.dailyRapport.reduce((total,value)=>
                console.log(operationDetailArray)
                props.dataDetailEnvoieTotal(operationDetailArray)
                navigate('/details_retraits_info_french')
-             }} ><i className="text-primary btn" ><b><u>voir détails</u></b></i></td>
+             }} ><i className="text-primary btn" ><b><u>Plus des Détails</u></b></i></td>
             </tr> 
         }) 
-        }
-
+        
+        :rapportLocation === "Rapport RD Congo" ? props.detailEnvoieTotalTableau.filter((value)=>{
+         return value.pays_beneficiaire ==="RD Congo"
+        }).map((value)=>
+        {
+          return  <tr  style={{border:"2px solid white"}} >
+             <td><i ><b>{value.date_operation}</b></i></td>
+             <td><i><b className="text-dark">{value.prenom_expediteur} {value.nom_expediteur} {value.postnom_expediteur} </b></i></td>
+             <td><i><b className="text-dark"> {value.prenom_beneficiaire} {value.nom_beneficiaire} {value.postnom_beneficiaire}</b></i></td>
+             <td><i><b className="text-dark"> {value.pays_beneficiaire}</b></i></td>
+             <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_beneficiaire).toFixed(2))}</b></i></td>
+             <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_total).toFixed(2))}</b></i></td>
+             <td onClick={()=>{
+               operationDetailArray.push(value)
+               console.log(operationDetailArray)
+               props.dataDetailEnvoieTotal(operationDetailArray)
+               navigate('/details_retraits_info_french')
+             }} ><i className="text-primary btn" ><b><u>Plus des Détails</u></b></i></td>
+            </tr> 
+        }) 
+        :props.detailEnvoieTotalTableau.filter((value)=>{
+          return value.pays_beneficiaire ==="Angola"
+         }).map((value)=>
+        {
+          return  <tr  style={{border:"2px solid white"}} >
+             <td><i ><b>{value.date_operation}</b></i></td>
+             <td><i><b className="text-dark">{value.prenom_expediteur} {value.nom_expediteur} {value.postnom_expediteur} </b></i></td>
+             <td><i><b className="text-dark"> {value.prenom_beneficiaire} {value.nom_beneficiaire} {value.postnom_beneficiaire}</b></i></td>
+             <td><i><b className="text-dark"> {value.pays_beneficiaire}</b></i></td>
+             <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_beneficiaire).toFixed(2))}</b></i></td>
+             <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_total).toFixed(2))}</b></i></td>
+             <td onClick={()=>{
+               operationDetailArray.push(value)
+               console.log(operationDetailArray)
+               props.dataDetailEnvoieTotal(operationDetailArray)
+               navigate('/details_retraits_info_french')
+             }} ><i className="text-primary btn" ><b><u>Plus des Détails</u></b></i></td>
+            </tr> 
+        }) }
 {props.message2 === "Rapport des Rétraits" ? <tr style={{border:"2px solid white"}}>
          <td><i><b>TOTAL</b></i></td>
          <td><i className='couleur2'><b></b></i></td>
          <td><i className='couleur2'><b></b></i></td>
          <td><i className='couleur2'><b></b></i></td>
-         <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_montant_beneficiaire).toFixed(2))} $</b></i></td>
+         {rapportLocation === "Rapport Angola et RD Congo" ? <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_montant_beneficiaire).toFixed(2))} $</b></i></td> : rapportLocation === "Rapport RD Congo" ? <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_montant_beneficiaire_rdcongo).toFixed(2))} $</b></i></td> :<td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_montant_beneficiaire_angola).toFixed(2))} $</b></i></td>}
        </tr>: props.message2 === "Rapport de envois validés" ? <tr style={{border:"2px solid white"}}>
          <td><i><b>TOTAL</b></i></td>
          <td><i className='couleur2'><b></b></i></td>
@@ -119,7 +196,6 @@ const total_montant = props.dailyRapport.reduce((total,value)=>
          <td><i className='couleur2'><b></b></i></td>
          <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_montant).toFixed(2))} £</b></i></td>
        </tr>: <tr></tr>}
-       
        
          
       </tbody>

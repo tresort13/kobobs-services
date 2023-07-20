@@ -9,17 +9,17 @@ import Image from 'react-bootstrap/Image';
 import {Link,useNavigate} from  'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import HeaderEnglish from './HeaderEnglish';
-import Header from './Header';
 import Footer from './Footer';
 import Modal from 'react-bootstrap/Modal';
 import ClipLoader from "react-spinners/ClipLoader";
 import  './Header.css';
+import Header from './Header';
 
 
 
 
 const useState = React.useState
-function EnvoieAbonneInfo(props)
+function EnvoieAonneInfo(props)
 {
 
     const [message,setMessage] = useState("Tala lisusu bien makomi nayo avant yako tinda")
@@ -41,139 +41,152 @@ function EnvoieAbonneInfo(props)
     
 console.log(props.envoie.infoEnvoie)
 
-    const submitEnvoie = (e)=>
-    {    
-      e.preventDefault()  
-      setModalShow(true)
-        fetch('https://kobobsapi.herokuapp.com/api/envoieFormulaireAbonne/',{
-                method:'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(props.envoie.infoEnvoie)
-              })
-              .then( res => res.json())
-              .then(
-                res => {  
-                  props.setEnvoie3({infoEnvoie :{
-                    nom_expediteur : res.nom_expediteur,
-                    prenom_expediteur : res.prenom_expediteur,
-                    adresse_expediteur : res.adresse_expediteur,
-                    email_expediteur : res.email_expediteur,
-                    numero_expediteur: res.numero_expediteur,
-                    pays_expediteur : res.pays_expediteur,
-                    nom_beneficiaire : res.nom_beneficiaire,
-                    prenom_beneficiaire : res.prenom_beneficiaire,
-                    pays_beneficiaire : res.pays_beneficiaire,
-                    montant_beneficiaire : res.montant_beneficiaire,
-                    type_service : res.type_service,
-                    frais_envoie : res.frais_envoie,
-                    montant_total : res.montant_total,
-                    code_retrait : res.code_retrait,
-                    date_operation : res.date_operation,
-                    date_heure_operation : res.date_heure_operation,
-                    status_retrait : res.status_retrait,
-                    numero_transfer: res.numero_transfer
-                    }})
-                   
-               //   props.dataEnvoie3(res)
-                  console.log(res)
-                  console.log(props.envoie3.infoEnvoie.code_retrait)
-                    setModalShow(false)
-                    props.setEnvoie({infoEnvoie:{
-                      agent_id:'',
-                      nom_expediteur : '',
-                      prenom_expediteur : '',
-                      adresse_expediteur : '',
-                      email_expediteur : '',
-                      numero_expediteur: '',
-                      pays_expediteur : 'UK',
-                      nom_beneficiaire : '',
-                      prenom_beneficiaire : '',
-                      pays_beneficiaire : '',
-                      montant_beneficiaire : '',
-                      montant_pour_payer :'',
-                      frais_envoie : '',
-                      frais_tva : '',
-                      type_service : '',
-                      numero_transfer :'',
-                      date_operation : '',
-                      date_heure_operation : '',
-                      month_year_operation:''
-                    }})
-                    navigate('/confirmation_envoie_info')
-                  }
-              )
-              .catch( (error) =>
-                {
-                  setModalShow(false)
-                  setModalShow2(true)  
-                   console.log(error)
-                } )
+const submitEnvoie = (e)=>
+{    
+  e.preventDefault()  
+  setModalShow(true)
+    fetch('https://kobobsapi.herokuapp.com/api/envoieFormulaireAbonne/',{
+            method:'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(props.envoie.infoEnvoie)
+          })
+          .then( res => res.json())
+          .then(
+            res => {  
+              props.setEnvoie3({infoEnvoie :{
+                nom_expediteur : res.nom_expediteur,
+                prenom_expediteur : res.prenom_expediteur,
+                adresse_expediteur : res.adresse_expediteur,
+                email_expediteur : res.email_expediteur,
+                numero_expediteur: res.numero_expediteur,
+                pays_expediteur : res.pays_expediteur,
+                nom_beneficiaire : res.nom_beneficiaire,
+                prenom_beneficiaire : res.prenom_beneficiaire,
+                pays_beneficiaire : res.pays_beneficiaire,
+                montant_beneficiaire : res.montant_beneficiaire,
+                type_service : res.type_service,
+                frais_envoie : res.frais_envoie,
+                montant_total : res.montant_total,
+                code_retrait : res.code_retrait,
+                date_operation : res.date_operation,
+                date_heure_operation : res.date_heure_operation,
+                status_retrait : res.status_retrait,
+                numero_transfer: res.numero_transfer
+                }})
+               
+           //   props.dataEnvoie3(res)
+              console.log(res)
+              console.log(props.envoie3.infoEnvoie.code_retrait)
+                setModalShow(false)
+                props.setEnvoie({infoEnvoie:{
+                  agent_id:'',
+                  nom_expediteur : '',
+                  prenom_expediteur : '',
+                  adresse_expediteur : '',
+                  email_expediteur : '',
+                  numero_expediteur: '',
+                  pays_expediteur : 'UK',
+                  nom_beneficiaire : '',
+                  prenom_beneficiaire : '',
+                  pays_beneficiaire : '',
+                  montant_beneficiaire : '',
+                  montant_pour_payer :'',
+                  frais_envoie : '',
+                  frais_tva : '',
+                  type_service : '',
+                  numero_transfer :'',
+                  date_operation : '',
+                  date_heure_operation : '',
+                  month_year_operation:''
+                }})
+                navigate('/confirmation_envoie_info')
+              }
+          )
+          .catch( (error) =>
+            {
+              setModalShow(false)
+              setModalShow2(true)  
+               console.log(error)
+            } )
 
-    }
-
+}
    
     return (
         
         <>
 <Header dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
-{isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
+{isDesktop && <Container className=' justify-content-center text-center mb-5 text-light text-bold rounded'  >
+<Row className='mt-3'>
+        <Col xs={12} className="text-start text-light">
+            <p><Link to='/form_envoie_abonne' style={{textDecoration:"none"}}><b className='text-light'>Sala envoi pona Abonné &gt;&gt; </b></Link> <Link to='/envoi_abonne_info' style={{textDecoration:"none"}}><b className='text-warning'>Validation ya makomi pona ko tinda mbongo </b></Link></p>
+        </Col>
+    </Row>
+  <Row className='justify-content-center mt-3'>
+<Col xs={12} style={{border:"2px solid white",width:1000}}>
 <Row className='justify-content-center  pt-3' >
         <Col xs={6}>
-        <p className='text-danger '><i><b>{message} !</b></i></p>
+        <p className='couleur2'><i><b>{message} !</b></i></p>
         <hr style={{color:"darkorange"}}></hr>
         </Col>
     </Row>
 
-    <Row className='justify-content-center pb-3' >
+    
+<Row className='justify-content-center pb-3' >
 
-        <Col xs={6} className="text-start">
-        <p className='text-dark'>Mbongo Yako Futa (naba taxe.): <b className='text-dark bg-warning p-2' style={{border:"2px solid black"}}>{Number(props.envoie.infoEnvoie.montant_pour_payer).toFixed(2)} £</b> </p>
-        <p className='text-dark'>Mbongo Yako Zwa : <b className='text-dark p-2' style={{border:"2px solid black"}}>{Number(props.envoie.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p> 
+
+<Col xs={6} className="text-start " style={{borderRight:"2px solid darkorange"}}>
+<p className='couleur2 text-center'><b><u>Motindi </u></b> </p>
+<p className='text-light'>Kombo : <b className='text-light'>{props.envoie.infoEnvoie.prenom_expediteur} {props.envoie.infoEnvoie.nom_expediteur}</b> </p>
+<p className='text-light'>Numéro Ya tshombo :<b className='text-light'> {props.envoie.infoEnvoie.numero_expediteur} </b></p>
+<p className='text-light'>Ekolo : <b className='text-light'> {props.envoie.infoEnvoie.pays_expediteur}</b></p>
+</Col>
+
+<Col xs={6} className="text-start">
+<p className='couleur2 text-center'><b><u>Mozui </u></b> </p>
+<p className='text-light'>Kombo : <b className='text-light'>{props.envoie.infoEnvoie.prenom_beneficiaire} {props.envoie.infoEnvoie.nom_beneficiaire}</b> </p>
+<p className='text-light'>Ekolo : <b className='text-light'>{props.envoie.infoEnvoie.pays_beneficiaire}</b> </p>
+</Col>
+
+</Row>
+<Row className='justify-content-center pb-3'>
+<hr style={{color:"darkorange"}}></hr>
+</Row>
+<Row className='justify-content-center pb-3' >
+
+<Col xs={6} className="text-start">
+<p className='text-light'>Mbongo Yako Futa (naba taxe.): <b className='text-dark bg-warning p-2' style={{border:"2px solid black"}}>{Number(props.envoie.infoEnvoie.montant_pour_payer).toFixed(2)} £</b> </p>
+<p className='text-light'>Mbongo Yako Zwa : <b className='text-light p-2' style={{border:"2px solid white"}}>{Number(props.envoie.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p> 
+</Col>
+
+<Col xs={6} className="text-start">
+<p className='text-light'>Nzela Yako Zwa Mbongo : <b className='text-light'>{props.envoie.infoEnvoie.type_service}</b> </p>
+{props.envoie.infoEnvoie.numero_transfer==='' ? <p></p> : <p className='text-light'>Numéro Ya Mobile money: <b className='text-light'>{props.envoie.infoEnvoie.numero_transfer}</b> </p>}
+</Col>
+</Row>
+
+
+<Row className='justify-content-center pb-3'>
+<hr style={{color:"darkorange"}}></hr>
+</Row>
+<Row className='justify-content-center pb-3' >
+<Col xs={6}>
+<Button variant="warning" type="submit" onClick={submitEnvoie}>
+Tinda makomi
+</Button>
+</Col>
+
+<Col xs={6}>
+<Link to="/form_envoie_client">
+ <Button variant="secondary" type="submit">
+ Bongisa makomi
+</Button>
+</Link>
+</Col>
+
+</Row>
         </Col>
 
-        <Col xs={6} className="text-start">
-        <p className='text-dark'>Nzela Yako Zwa Mbongo : <b className='text-dark'>{props.envoie.infoEnvoie.type_service}</b> </p>
-        {props.envoie.infoEnvoie.numero_transfer==='' ? <p></p> : <p className='text-dark'>Numéro Ya Mobile money: <b className='text-dark'>{props.envoie.infoEnvoie.numero_transfer}</b> </p>}
-        </Col>
-    </Row>
-    <hr style={{color:"darkorange"}}></hr>
-    <Row className='justify-content-center pb-3' >
-       
-
-        <Col xs={6} className="text-start " style={{borderRight:"2px solid black"}}>
-        <p className='couleur2 text-center'><b><u>Motindi </u></b> </p>
-        <p className='text-dark'>Kombo : <b className='text-dark'>{props.envoie.infoEnvoie.prenom_expediteur} {props.envoie.infoEnvoie.nom_expediteur}</b> </p>
-        <p className='text-dark'>Numéro Ya tshombo :<b className='text-dark'> {props.envoie.infoEnvoie.numero_expediteur} </b></p>
-        <p className='text-dark'>Ekolo : <b className='text-dark'> {props.envoie.infoEnvoie.pays_expediteur}</b></p>
-        </Col>
-
-        <Col xs={6} className="text-start">
-        <p className='couleur2 text-center'><b><u>Mozui </u></b> </p>
-        <p className='text-dark'>Kombo : <b className='text-dark'>{props.envoie.infoEnvoie.prenom_beneficiaire} {props.envoie.infoEnvoie.nom_beneficiaire}</b> </p>
-        <p className='text-dark'>Ekolo : <b className='text-dark'>{props.envoie.infoEnvoie.pays_beneficiaire}</b> </p>
-        </Col>
-  
-    </Row>
-
-    <Row className='justify-content-center pb-3'>
-      <hr style={{color:"darkorange"}}></hr>
-    </Row>
-    <Row className='justify-content-center pb-3' >
-        <Col xs={6}>
-        <Button variant="warning" type="submit" onClick={submitEnvoie}>
-        Tinda makomi
-        </Button>
-        </Col>
-
-        <Col xs={6}>
-        <Link to="/form_envoie_abonne">
-         <Button variant="secondary" type="submit">
-         Bongisa makomi
-        </Button>
-        </Link>
-        </Col>
-        
-    </Row>
+</Row>
     
     
 
@@ -245,14 +258,14 @@ console.log(props.envoie.infoEnvoie)
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
         <Button variant="warning" type="submit" onClick={submitEnvoie}>
-        Tinda makomi
+        Send Form
         </Button>
         </Col>
 
         <Col xs={6}>
-        <Link to="/form_envoie_abonne">
+        <Link to="/form_envoie_abonne_english">
          <Button variant="secondary" type="submit">
-         Bongisa makomi
+         Modify Form
         </Button>
         </Link>
         </Col>
@@ -350,4 +363,4 @@ function MyVerticallyCenteredModal4(props) {
   );
 }
 
-export default EnvoieAbonneInfo;
+export default EnvoieAonneInfo;

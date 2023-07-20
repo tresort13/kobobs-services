@@ -77,10 +77,17 @@ function ConfirmationRetraitInfoOperationFrench(props)
         
         <>
 <HeaderFrench dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
-{isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
-<Row className='justify-content-center mb-3 pt-3' >
-        <Col xs={12}>
-        <p className='couleur2'><i><b>{message}</b></i></p>
+{isDesktop && <Container className=' justify-content-center text-center mb-5 text-light text-bold rounded'  >
+<Row className='mt-3'>
+        <Col xs={12} className="text-start text-light">
+            <p><Link to='/retrait_info_operation_french' style={{textDecoration:"none"}}><b className='text-light'>Validation du code rétrait &gt;&gt; </b></Link> <Link to='/confirmation_retrait_info_operation_french' style={{textDecoration:"none"}}><b className='text-warning'>Page de confirmation Rétrait</b></Link></p>
+        </Col>
+    </Row>
+  <Row className='justify-content-center mt-3'>
+<Col xs={12} style={{border:"2px solid white",width:1000}}>
+<Row className='justify-content-center  pt-3' >
+        <Col xs={6}>
+        <p className='couleur2'><i><b>{message} </b></i></p>
         </Col>
     </Row>
 
@@ -90,20 +97,20 @@ function ConfirmationRetraitInfoOperationFrench(props)
     </Row>
     <Row className='justify-content-start pb-3' >
         <Col xs={6}>
-        <p className='text-dark'>Code Retrait : <b className='text-danger'> {props.envoie2.infoEnvoie.code_retrait}</b></p>
-        <p className='text-dark'>Montant à récupérer: <b className='text-danger'>{Number(props.envoie2.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
-        <p className='text-dark'>Noms Beneficiare: <b className='text-dark'>{props.envoie2.infoEnvoie.nom_beneficiaire} {props.envoie2.infoEnvoie.postnom_beneficiaire} {props.envoie2.infoEnvoie.prenom_beneficiaire}</b> </p>
-        <p className='text-dark'>Pays Beneficiare: <b className='text-dark'> {props.envoie2.infoEnvoie.pays_beneficiaire}</b></p>
-        <p className='text-dark'>Type de retrait: <b className='text-dark'>{props.envoie2.infoEnvoie.type_service}</b> </p>
+        <p className='text-light'>Code Retrait : <b className='text-light'> {props.envoie2.infoEnvoie.code_retrait}</b></p>
+        <p className='text-light'>Montant à récupérer: <b className='couleur2 p-2' style={{border:"2px solid white"}}>{Number(props.envoie2.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
+        <p className='text-light'>Noms Beneficiare: <b className='text-light'>{props.envoie2.infoEnvoie.nom_beneficiaire} {props.envoie2.infoEnvoie.postnom_beneficiaire} {props.envoie2.infoEnvoie.prenom_beneficiaire}</b> </p>
+        <p className='text-light'>Pays Beneficiare: <b className='text-light'> {props.envoie2.infoEnvoie.pays_beneficiaire}</b></p>
+        <p className='text-light'>Type de retrait: <b className='text-light'>{props.envoie2.infoEnvoie.type_service}</b> </p>
        
         </Col>
 
         <Col xs={6}>
-        <p className='text-dark'>Noms Expediteur: <b className='text-dark'>{props.envoie2.infoEnvoie.nom_expediteur} {props.envoie2.infoEnvoie.postnom_expediteur} {props.envoie2.infoEnvoie.prenom_expediteur}</b> </p>
-        <p className='text-dark'>Pays Expediteur: <b className='text-dark'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
-        <p className='text-dark'>Numéro à transferer de l'argent: <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
-        <p className='text-dark'>date : <b className='text-dark'> {props.envoie2.infoEnvoie.date_heure_operation}</b></p>
-        {props.envoie2.infoEnvoie.numero_transfer==='N/A' ? <p></p> : <p className='text-dark'>Numéro Mobile money: <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>}
+        <p className='text-light'>Noms Expediteur: <b className='text-light'>{props.envoie2.infoEnvoie.nom_expediteur} {props.envoie2.infoEnvoie.postnom_expediteur} {props.envoie2.infoEnvoie.prenom_expediteur}</b> </p>
+        <p className='text-light'>Pays Expediteur: <b className='text-light'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
+        <p className='text-light'>Numéro à transferer de l'argent: <b className='text-light'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
+        <p className='text-light'>date : <b className='text-light'> {props.envoie2.infoEnvoie.date_heure_operation}</b></p>
+        {props.envoie2.infoEnvoie.numero_transfer==='N/A' ? <p></p> : <p className='text-light'>Numéro Mobile money: <b className='text-light'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>}
 
         </Col>
     </Row>
@@ -121,6 +128,9 @@ function ConfirmationRetraitInfoOperationFrench(props)
         </Link>
         </Col>
     </Row>  
+    </Col>
+
+</Row>
 </Container>
 }
 

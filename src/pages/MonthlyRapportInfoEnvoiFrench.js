@@ -70,7 +70,11 @@ function MonthlyRapportInfoEnvoiFrench(props)
      const detailTotal =()=>
      {
       props.dataDetailEnvoieTotalTableau(props.monthlyRapport)
-      props.setMessage2("Rapport de tous les envois")
+      props.setRapportType("monthlyRapportEnvoi")
+      props.setTitleEnglish("Rapport of all sendings")
+      props.setTitleFrench("Rapport de tous les envois")
+      props.setTitleLingala("Rapport yaba envois nionso")
+      props.setMessage2("Rapport of all sendings")
       navigate('/table_monthly_rapport_french')
      }
 
@@ -80,7 +84,11 @@ function MonthlyRapportInfoEnvoiFrench(props)
       {
         return value.status_retrait !== "code retrait en attente de validation"
       }))
-      props.setMessage2("Rapport de envois validé")
+      props.setRapportType("monthlyRapportEnvoi")
+      props.setTitleLingala("Rapport yaba envois validés")
+      props.setTitleFrench("Rapport de envois validés")
+      props.setTitleEnglish("Rapport of validated sendings")
+      props.setMessage2("Rapport of validated sendings")
       navigate('/table_monthly_rapport_french')
      }
 
@@ -90,17 +98,26 @@ function MonthlyRapportInfoEnvoiFrench(props)
       {
         return value.status_retrait === "code retrait en attente de validation"
       }))
-      props.setMessage2("Rapport de envois non validé")
+      props.setRapportType("monthlyRapportEnvoi")
+      props.setTitleLingala("Rapport yaba envois non validés")
+      props.setTitleEnglish("Rapport of non validated sendings")
+      props.setTitleFrench("Rapport de envois non validés")
+      props.setMessage2("Rapport of non validated sendings")
       navigate('/table_monthly_rapport_french')
      }
-     
      
     return (
         
         <>
         <HeaderFrench dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
-{isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
-<Row className='justify-content-center pt-3' >
+{isDesktop && <div className='justify-content-center text-center mb-5 text-light text-bold rounded'>
+<Row className='mt-3 px-5'>
+        <Col xs={12} className="text-start text-light">
+            <p><Link to='/select_mois_form_envoi_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u>  </b></Link> </p>
+        </Col>
+    </Row>
+   <Container className='bg-light text-dark rounded' style={{width:750}}>
+<Row className='justify-content-center mb-3 pt-3' >
         <Col xs={6}>
         <p className='text-dark'><i><b>{message}</b></i></p>
         </Col>
@@ -144,8 +161,8 @@ function MonthlyRapportInfoEnvoiFrench(props)
         </Col>
 
        <Col xs={6}>
-        {nombre_envoie_valide > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailValide}>Voir Details </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={closeModal}>Voir Details </p></a>}
-        {nombre_envoie_nonvalide > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailNonValide}>Voir Details </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit"  onClick={closeModal}>Voir Details </p></a>}
+        {nombre_envoie_valide > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailValide}>Voir Details </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={closeModal}>Voir Details </p></a>}
+        {nombre_envoie_nonvalide > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailNonValide}>Voir Details </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit"  onClick={closeModal}>Voir Details </p></a>}
     </Col>
     </Row>
 
@@ -156,7 +173,7 @@ function MonthlyRapportInfoEnvoiFrench(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <Link to="/home" style={{color:'white',textDecorationLine:'none'}}>
+        <Link to="/menu_rapport_envoi_french" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant="danger" type="submit">
         Fermer
         </Button>
@@ -168,6 +185,7 @@ function MonthlyRapportInfoEnvoiFrench(props)
     
 
 </Container>
+</div>
 }
 
 {isMobileOrTablet && <Container className='bg-light justify-content-center text-center  mx-auto my-auto'>

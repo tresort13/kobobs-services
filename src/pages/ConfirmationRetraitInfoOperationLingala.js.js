@@ -40,6 +40,33 @@ function ConfirmationRetraitInfoOperationLingala(props)
       });
 
       console.log(props.abonne.infoAbonne.agent_id)
+
+      const closePage = ()=>
+      {
+        props.setEnvoie2({infoEnvoie :{
+          agent_id:'',
+          nom_expediteur : '',
+          prenom_expediteur : '',
+          adresse_expediteur : 'N/A',
+          email_expediteur : '',
+          numero_expediteur: '',
+          pays_expediteur : 'UK',
+          nom_beneficiaire : '',
+          prenom_beneficiaire : '',
+          pays_beneficiaire : '',
+          montant_beneficiaire : '',
+          montant_pour_payer :'',
+          frais_envoie : '',
+          frais_tva : '',
+          type_service : '',
+          numero_transfer :'',
+          date_operation : '',
+          date_heure_operation : '',
+          month_year_operation :''
+          }})
+      
+      navigate('/form_retrait_operation_lingala')
+      }
   
       const payerRetrait = (e)=>
       {  
@@ -80,7 +107,7 @@ function ConfirmationRetraitInfoOperationLingala(props)
 {isDesktop && <Container className=' justify-content-center text-center mb-5 text-light text-bold rounded'  >
 <Row className='mt-3'>
         <Col xs={12} className="text-start text-light">
-            <p><Link to='/retrait_info_operation_lingala' style={{textDecoration:"none"}}><b className='text-light'>Validation pona ko futa mbongo &gt;&gt; </b></Link> <Link to='/confirmation_retrait_info_operation_lingala' style={{textDecoration:"none"}}><b className='text-warning'>Page Ya confirmation ya Retrait</b></Link></p>
+            <p><Link to='/retrait_info_operation_lingala' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Zonga</u>  </b></Link> </p>
         </Col>
     </Row>
   <Row className='justify-content-center mt-3'>
@@ -118,12 +145,18 @@ function ConfirmationRetraitInfoOperationLingala(props)
       <hr style={{color:"darkorange"}}></hr>
     </Row>
     <Row className='justify-content-center pb-3' >
-        <Col xs={12}>
+        <Col xs={6}>
         <Link to="" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant="warning" type="submit" onClick={e=>payerRetrait(e)}> 
         Futa Mozui
         </Button>
         </Link>
+        </Col>
+
+        <Col xs={6}>
+        <Button variant="danger" type="submit" onClick={closePage}>
+        Annuler opération oyo
+        </Button>
         </Col>
     </Row>  
     </Col>

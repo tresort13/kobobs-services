@@ -90,6 +90,7 @@ console.log(props.detailHistoric)
              <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_total).toFixed(2))}</b></i></td>
              <td onClick={()=>{
                operationDetailArray.push(value)
+               props.setTableType("historic")
                console.log(operationDetailArray)
                props.dataDetailEnvoieTotal(operationDetailArray)
                navigate('/details_retraits_info_french')

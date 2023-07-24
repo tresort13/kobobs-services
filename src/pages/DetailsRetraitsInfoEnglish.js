@@ -149,7 +149,13 @@ console.log(props.detailEnvoieTotal)
         <HeaderEnglish dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
 {isDesktop && props.detailEnvoieTotal.length > 0 ? props.detailEnvoieTotal.map((value)=>
     {
-    return <Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:50,width:1000}} >
+    return <div className='justify-content-center text-center mb-5 text-light text-bold rounded'>
+<Row className='mt-3 px-5'>
+        <Col xs={12} className="text-start text-light">
+            {props.tableType === "dailyRapport" ? <p><Link to='/table_daily_rapport_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u></b></Link></p> : props.tableType === "monthlyRapport" ? <p><Link to='/table_monthly_rapport_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u></b></Link></p> : props.tableType === "dailyRapportRecette" ? <p><Link to='/daily_rapport_recette_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u></b></Link></p> : props.tableType === "monthlyRapportRecette" ? <p><Link to='/monthly_rapport_recette_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u></b></Link></p> : <p><Link to='/details_historic_info_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u></b></Link></p>}
+        </Col>
+    </Row>
+    <Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:50,width:1000}} >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={12}>
         <p className='couleur2'><i><b>{message}</b></i></p>
@@ -213,11 +219,11 @@ console.log(props.detailEnvoieTotal)
     </Col>
 
     <Col xs={12}>
-     {props.message === "Deletion historic" ? <div><p className='text-dark'>operation deleted by : <b className='text-dark'>{value.deletion_executed_by_owner}</b> </p>
+     {props.tableType==="historic" ? props.message === "Deletion historic" ? <div><p className='text-dark'>operation deleted by : <b className='text-dark'>{value.deletion_executed_by_owner}</b> </p>
      <p className='text-dark'>Date and time  of deletion: <b className='text-dark'> {value.date_heure_operation_deletion}</b></p><br></br>
       <Button onClick={recoverOperation}  className='mx-5' variant='success'>Recover operation</Button>
       <Button  onClick={()=>setModalShow6(true)}className='mx-5' variant='danger'>delete permanently </Button></div>  :
-    <p></p>}        
+    <p></p> :<p></p>}        
     </Col>
 
     </Row>
@@ -229,19 +235,16 @@ console.log(props.detailEnvoieTotal)
     </Row>
 
 
-   {/* <Row className='justify-content-center pb-3'>
+   <Row className='justify-content-center pb-3'>
     <Col xs={6}>
-        <Link to="/menu_rapport_retrait_english" style={{color:'white',textDecorationLine:'none'}}>
-        <Button name='validate' value={value.code_retrait} className='py-2' variant="warning" type="submit">
-        close
-        </Button>
-        </Link>
-        </Col>
-    </Row>*/}
+    {props.tableType === "dailyRapport" ? <p><Link to='/table_daily_rapport_english' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>close</Button></Link></p> : props.tableType === "monthlyRapport" ? <p><Link to='/table_monthly_rapport_english' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>close</Button></Link></p> : props.tableType === "dailyRapportRecette" ? <p><Link to='/daily_rapport_recette_english' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>close</Button></Link></p> : props.tableType === "monthlyRapportRecette" ? <p><Link to='/monthly_rapport_recette_english' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>close</Button></Link></p> : <p><Link to='/details_historic_info_english' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>close</Button></Link></p>}
+     </Col>
+    </Row>
 
     
 
-</Container> })
+</Container>
+</div> })
 :
 <MyVerticallyCenteredModal show={modalShow} onHide={() => {
   setModalShow(false)

@@ -195,11 +195,11 @@ function HeaderEnglish(props)
           </Link>
         </Col>
 
-       {props.isLogged === true ? <Col xs={2} className="my-auto mx-auto text-start">
+       {props.isLogged === true ? <Col xs={2} className="my-auto mx-auto">
         {[false].map((expand) => (
-        <Navbar key={expand}  expand={expand} className="mb-1">
-          <Container>
-            <Navbar.Toggle   className="couleur"   aria-controls={`offcanvasNavbar-expand-${expand}`} />
+        <Navbar key={expand}  expand={expand} >
+          <Container >
+            <Navbar.Toggle     className="couleur"   aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}
               aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
@@ -209,10 +209,10 @@ function HeaderEnglish(props)
                  
                 </Offcanvas.Title>
               </Offcanvas.Header>
-              <Offcanvas.Body>
-                <Nav className="justify-content-end flex-grow-1 pe-3">
+              <Offcanvas.Body >
+                <Nav className="justify-content-end flex-grow-1 pe-3 ">
                 <NavDropdown.Divider />
-                  <Nav.Link href="/"><b><pre>Home</pre></b></Nav.Link>
+                  <Nav.Link href="/" ><b><pre>Home</pre></b></Nav.Link>
                   <NavDropdown.Divider />
                   <Nav.Link href="/menu_operation_envoi_english"><b><pre>Send Money</pre></b></Nav.Link>
                   <NavDropdown.Divider />

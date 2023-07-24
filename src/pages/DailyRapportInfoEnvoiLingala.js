@@ -73,7 +73,11 @@ function DailyRapportInfoEnvoiLingala(props)
      const detailTotal =()=>
      {
       props.dataDetailEnvoieTotalTableau(props.dailyRapport)
-      props.setMessage2("Rapport yaba envois nionso")
+      props.setRapportType("dailyRapportEnvoi")
+      props.setTitleEnglish("Rapport of all sendings")
+      props.setTitleFrench("Rapport de tous les envois")
+      props.setTitleLingala("Rapport yaba envois nionso")
+      props.setMessage2("Rapport of all sendings")
       navigate('/table_daily_rapport_lingala')
      }
 
@@ -83,7 +87,11 @@ function DailyRapportInfoEnvoiLingala(props)
       {
         return value.status_retrait !== "code retrait en attente de validation"
       }))
-      props.setMessage2("Rapport yaba envois validés")
+      props.setRapportType("dailyRapportEnvoi")
+      props.setTitleLingala("Rapport yaba envois validés")
+      props.setTitleFrench("Rapport de envois validés")
+      props.setTitleEnglish("Rapport of validated sendings")
+      props.setMessage2("Rapport of validated sendings")
       navigate('/table_daily_rapport_lingala')
      }
 
@@ -93,7 +101,11 @@ function DailyRapportInfoEnvoiLingala(props)
       {
         return value.status_retrait === "code retrait en attente de validation"
       }))
-      props.setMessage2("Rapport yaba envois non validés")
+      props.setRapportType("dailyRapportEnvoi")
+      props.setTitleLingala("Rapport yaba envois non validés")
+      props.setTitleEnglish("Rapport of non validated sendings")
+      props.setTitleFrench("Rapport de envois non validés")
+      props.setMessage2("Rapport of non validated sendings")
       navigate('/table_daily_rapport_lingala')
        
      }
@@ -102,17 +114,19 @@ function DailyRapportInfoEnvoiLingala(props)
         
         <>
         <Header dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
-{isDesktop && <Container className=' justify-content-center text-center mb-5 text-light text-bold rounded'  >
-{/*<Row className='mt-3'>
+{isDesktop && <div className='justify-content-center text-center mb-5 text-light text-bold rounded'>
+<Row className='mt-3 px-5'>
         <Col xs={12} className="text-start text-light">
-            <p><Link to='/form_envoie_abonne_english' style={{textDecoration:"none"}}><b className='text-light'>Subscriber sending form &gt;&gt; </b></Link> <Link to='/envoi_abonne_info_english' style={{textDecoration:"none"}}><b className='text-warning'>Sending form Validation </b></Link></p>
+            <p><Link to='/select_date_form_envoi_lingala' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Zonga</u>  </b></Link> </p>
         </Col>
-    </Row>*/}
+    </Row>
+   <Container className='bg-light text-dark rounded' style={{width:750}}>
+
   <Row className='justify-content-center mt-3'>
-<Col xs={12} style={{border:"2px solid white",width:1000}}>
+<Col xs={12} >
 <Row className='justify-content-center  pt-3' >
         <Col xs={6}>
-        <p className='couleur2'><i><b>{message} !</b></i></p>
+        <p className='couleur2'><i><b>{message} </b></i></p>
         <hr style={{color:"darkorange"}}></hr>
         </Col>
     </Row>
@@ -125,8 +139,8 @@ function DailyRapportInfoEnvoiLingala(props)
 
     <Row className='justify-content-center pb-3' >
         <Col xs={12}>
-        <p className='text-light'><b>Lolenge ya Rapport:</b> <b className='couleur2'>Mokolo na mokolo</b> </p>
-        <p className='text-light'><b>Date :</b> <b className='couleur2'>{props.dateInfo}</b>  </p>
+        <p className='text-dark'><b>Lolenge ya Rapport:</b> <b className='couleur2'>Mokolo na mokolo</b> </p>
+        <p className='text-dark'><b>Date :</b> <b className='couleur2'>{props.dateInfo}</b>  </p>
         
         </Col>
     </Row>
@@ -136,11 +150,11 @@ function DailyRapportInfoEnvoiLingala(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <p className='text-light py-2'><b>total ya ba envois oyo esalemi :</b> <b className='couleur2'> {nombre_envoie_total}</b>  </p>
+        <p className='text-dark py-2'><b>total ya ba envois oyo esalemi :</b> <b className='couleur2'> {nombre_envoie_total}</b>  </p>
          </Col>
 
          <Col xs={6}>
-       {nombre_envoie_total > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='couleur rounded py-2' type="submit" onClick={detailTotal}>Tala ba détails </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='couleur rounded py-2' type="submit"  onClick={closeModal}>Tala ba détails </p></a>}
+       {nombre_envoie_total > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailTotal}>Tala ba détails </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit"  onClick={closeModal}>Tala ba détails </p></a>}
        
     </Col>
     </Row>
@@ -151,13 +165,13 @@ function DailyRapportInfoEnvoiLingala(props)
 
         <Row>
           <Col>
-        <p className='text-light py-2'><b>Nombre ya ba envois validés : </b><b className='couleur2'> {nombre_envoie_valide}</b> </p>
-        <p className='text-light py-2'><b>Nombre ya ba envois non validés  :</b> <b className='couleur2'> {nombre_envoie_nonvalide}</b></p>
+        <p className='text-dark py-2'><b>Nombre ya ba envois validés : </b><b className='couleur2'> {nombre_envoie_valide}</b> </p>
+        <p className='text-dark py-2'><b>Nombre ya ba envois non validés  :</b> <b className='couleur2'> {nombre_envoie_nonvalide}</b></p>
         </Col>
 
        <Col xs={6}>
-        {nombre_envoie_valide > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='couleur rounded py-2' type="submit" onClick={detailValide}>Tala ba détails </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='couleur rounded py-2' type="submit" onClick={closeModal}>Tala ba détails </p></a>}
-        {nombre_envoie_nonvalide > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='couleur rounded py-2' type="submit" onClick={detailNonValide}>Tala ba détails </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='couleur rounded py-2' type="submit"  onClick={closeModal}>Tala ba détails </p></a>}
+        {nombre_envoie_valide > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailValide}>Tala ba détails </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={closeModal}>Tala ba détails </p></a>}
+        {nombre_envoie_nonvalide > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailNonValide}>Tala ba détails </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit"  onClick={closeModal}>Tala ba détails </p></a>}
     </Col>
     </Row>
 
@@ -180,6 +194,7 @@ function DailyRapportInfoEnvoiLingala(props)
 </Row>  
 
 </Container>
+</div>
 }
 
 {isMobileOrTablet && <Container className='bg-light justify-content-center text-center mx-auto my-auto'>

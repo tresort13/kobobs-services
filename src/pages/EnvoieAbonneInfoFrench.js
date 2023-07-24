@@ -119,7 +119,7 @@ const submitEnvoie = (e)=>
 {isDesktop && <Container className=' justify-content-center text-center mb-5 text-light text-bold rounded'  >
 <Row className='mt-3'>
         <Col xs={12} className="text-start text-light">
-            <p><Link to='/form_envoie_abonne_french' style={{textDecoration:"none"}}><b className='text-light'>Envoyer pour un abonné  &gt;&gt; </b></Link> <Link to='/envoi_abonne_info_french' style={{textDecoration:"none"}}><b className='text-warning'>Validation du formulaire d'envoi </b></Link></p>
+            <p><Link to='/form_envoie_abonne_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u>  </b></Link> </p>
         </Col>
     </Row>
   <Row className='justify-content-center mt-3'>

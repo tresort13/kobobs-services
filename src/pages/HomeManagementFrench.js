@@ -50,8 +50,15 @@ function HomeManagementFrench(props)
     return (
 <>
 <HeaderFrench dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
-{isDesktop && <Container>  
+{isDesktop && <Container className=' justify-content-center text-center mb-5 text-light text-bold rounded'>  
 
+  <Row className='mt-3'>
+        <Col xs={12} className="text-start text-light">
+        <p><Link to='/home_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'><span><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-house-door-fill" viewBox="0 0 16 16">
+  <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z"/>
+</svg></span><u> Acceuil</u>   </b></Link></p>
+        </Col>
+    </Row>
   <Row className="text-center justify-content-center  mt-3">
     <Col md={1}>
     </Col>
@@ -73,7 +80,7 @@ function HomeManagementFrench(props)
            
            <Col md={4} className="my-auto text-center">
            <Link to="/menu_rapport_envoi_french">
-            <Button   variant="light" style={{width:300,height:300,border:'4px solid white'}} className='btn-lg rounded-pill zoom'>
+            <Button   variant="outline-light" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
             <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
             <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
              </svg><br></br>
@@ -84,7 +91,7 @@ function HomeManagementFrench(props)
 
             <Col md={4} className="my-auto text-center">
             <Link to="/menu_rapport_retrait_french">
-            <Button   variant="dark" style={{width:300,height:300}}  className=" btn-lg rounded-pill zoom ">
+            <Button   variant="outline-light" style={{width:300,height:300}}  className=" btn-lg rounded-pill zoom ">
             <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" fill="currentColor" className="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
            </svg><br></br>
@@ -95,7 +102,7 @@ function HomeManagementFrench(props)
 
             <Col md={4} className="my-auto text-center">
             <Link to="/menu_gestion_french">
-            <Button   variant="light" style={{width:300,height:300,border:'4px solid white'}}  className=" btn-lg rounded-pill zoom ">
+            <Button   variant="outline-light" style={{width:300,height:300}}  className=" btn-lg rounded-pill zoom ">
             <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" fill="currentColor" className="bi bi-house-gear-fill" viewBox="0 0 16 16">
   <path d="M7.293 1.5a1 1 0 0 1 1.414 0L11 3.793V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v3.293l2.354 2.353a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5Z"/>
   <path d="M11.07 9.047a1.5 1.5 0 0 0-1.742.26l-.02.021a1.5 1.5 0 0 0-.261 1.742 1.5 1.5 0 0 0 0 2.86 1.504 1.504 0 0 0-.12 1.07H3.5A1.5 1.5 0 0 1 2 13.5V9.293l6-6 4.724 4.724a1.5 1.5 0 0 0-1.654 1.03Z"/>
@@ -115,7 +122,7 @@ function HomeManagementFrench(props)
            
 <Col md={4} className="my-auto text-center">
            <Link to="/menu_rapport_envoi_french">
-            <Button   variant="light" style={{width:300,height:300,border:'4px solid white'}} className='btn-lg rounded-pill zoom'>
+            <Button   variant="outline-light" style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
             <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
             <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
              </svg><br></br>
@@ -126,7 +133,7 @@ function HomeManagementFrench(props)
 
             <Col md={4} className="my-auto text-center">
             <Link to="/menu_rapport_retrait_french">
-            <Button   variant="dark" style={{width:300,height:300}}  className=" btn-lg rounded-pill zoom ">
+            <Button   variant="outline-light" style={{width:300,height:300}}  className=" btn-lg rounded-pill zoom ">
             <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" fill="currentColor" className="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
            </svg><br></br>

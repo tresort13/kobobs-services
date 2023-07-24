@@ -36,6 +36,32 @@ function RetraitInfoEnglish(props)
         query: "(max-width: 1224px)"
       });
     
+      const closePage = ()=>
+    {
+      props.setEnvoie2({infoEnvoie :{
+        agent_id:'',
+        nom_expediteur : '',
+        prenom_expediteur : '',
+        adresse_expediteur : 'N/A',
+        email_expediteur : '',
+        numero_expediteur: '',
+        pays_expediteur : 'UK',
+        nom_beneficiaire : '',
+        prenom_beneficiaire : '',
+        pays_beneficiaire : '',
+        montant_beneficiaire : '',
+        montant_pour_payer :'',
+        frais_envoie : '',
+        frais_tva : '',
+        type_service : '',
+        numero_transfer :'',
+        date_operation : '',
+        date_heure_operation : '',
+        month_year_operation :''
+        }})
+    
+    navigate('/form_retrait_operation_english')
+    }
   
 const navigate = useNavigate()
    
@@ -87,24 +113,24 @@ const navigate = useNavigate()
 {isDesktop && <Container className=' justify-content-center text-center mb-5 text-light text-bold rounded'  >
 <Row className='mt-3'>
         <Col xs={12} className="text-start text-light">
-            <p><Link to='/form_retrait_operation_english' style={{textDecoration:"none"}}><b className='text-light'>Make a withdrawal &gt;&gt; </b></Link> <Link to='/retrait_info_operation_english' style={{textDecoration:"none"}}><b className='text-warning'>Withdrawal Validation </b></Link></p>
+            <p><Link to='/form_retrait_operation_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>
         </Col>
     </Row>
   <Row className='justify-content-center mt-3'>
 <Col xs={12} style={{border:"2px solid white",width:1000}}>
 <Row className='justify-content-center  pt-3' >
         <Col xs={6}>
-        <p className='couleur2'><i><b>{message} !</b></i></p>
+        <p className='text-light'><i><b>{message}</b></i></p>
         <hr style={{color:"darkorange"}}></hr>
         </Col>
     </Row>
 
-    <Row className='justify-content-center pb-3'>
+    <Row className='justify-content-center'>
       <p className='couleur2'><b><u>Withdrawal Status</u></b> </p>
     </Row>
     <Row className='justify-content-start pb-3' >
         <Col xs={12}>
-        {props.envoie2.infoEnvoie.status_retrait === 'Code Retrait Valide' ?  <p className='text-light'>Status Withdrawal : <b className='text-success'>{props.envoie2.infoEnvoie.status_retrait}</b> </p> : <p className='text-light'>Status Status Withdrawal : <b className='text-danger'>{props.envoie2.infoEnvoie.status_retrait}</b> </p>}
+        {props.envoie2.infoEnvoie.status_retrait === 'Code Retrait Valide' ?  <p><b  ><h1 className='text-success '><strong>Withdrawal code has been validated</strong> </h1></b> </p>: props.envoie2.infoEnvoie.status_retrait === 'Code Retrait Payé' ? <p><b className='text-danger display-6'><h1><strong>Withdrawal code has been already used</strong></h1></b> </p>: <p><b className='text-warning display-6'><h1><strong>Withdrawal code awaiting for validation</strong></h1></b> </p>}
         </Col>
     </Row>
 
@@ -169,6 +195,12 @@ const navigate = useNavigate()
         Validate withdraw to serve
         </Button>
         </Link>
+        </Col>
+
+        <Col xs={6}>
+        <Button variant="danger" type="submit" onClick={closePage}>
+        close
+        </Button>
         </Col>
         
     </Row>

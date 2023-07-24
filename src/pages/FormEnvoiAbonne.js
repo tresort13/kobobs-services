@@ -159,7 +159,7 @@ function FormEnvoiAbonne(props)
 {isDesktop && <Container className='justify-content-center text-center mb-5 text-light text-bold' style={{width:1000}} >
 <Row className='mt-3'>
         <Col xs={12} className="text-start text-light">
-            <p><Link to='/menu_operation_envoi_lingala' style={{textDecoration:"none"}}><b className='text-light'>Tinda Mbongo &gt;&gt; </b></Link> <Link to='/form_envoie_abonne' style={{textDecoration:"none"}}><b className='text-warning'>Sala envoi pona abonné</b></Link></p>
+            <p><Link to='/menu_operation_envoi_lingala' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Zonga</u>  </b></Link> </p>
         </Col>
     </Row>
 <Row className='justify-content-center mb-3 pt-3' >

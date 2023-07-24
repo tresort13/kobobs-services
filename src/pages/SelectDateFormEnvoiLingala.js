@@ -45,7 +45,7 @@ function SelectDateFormEnvoiLingala(props)
         query: "(max-width: 1224px)"
       });    
 
-    const [message,setMessage] = useState("Pona date ")
+    const [message,setMessage] = useState("Pona date ya rapport ya envoi ya mokolo")
     const [couleur,setCouleur] = useState("text-dark")
 
     const submitVol =(values)=>
@@ -97,13 +97,13 @@ return (
 {isDesktop && <Container className='justify-content-center text-center mb-5 text-light text-bold'  >
 <Row className='mt-3'>
         <Col xs={12} className="text-start text-light">
-            <p><Link to='/menu_rapport_envoi_lingala' style={{textDecoration:"none"}}><b className='text-light'>Rapport yaba envois &gt;&gt; </b></Link> <Link to='/select_date_form_envoi_lingala' style={{textDecoration:"none"}}><b className='text-warning'>Formulaire ya rapport journalier</b></Link></p>
+            <p><Link to='/menu_rapport_envoi_lingala' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Zonga</u>  </b></Link> </p>
         </Col>
     </Row>
 
 <Row className=' justify-content-center mb-3 pt-3' >
         <Col xs={12} className="rounded" style={{marginTop:100,width:750,border:"3px solid white"}}>
-        <p className="text-light"><i><b>{message}</b></i></p>
+        <p className="couleur2"><i><b>{message}</b></i></p>
     
     
     <Formik

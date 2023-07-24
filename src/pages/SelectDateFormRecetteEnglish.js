@@ -44,7 +44,7 @@ function SelectDateFormRecetteEnglish(props)
         query: "(max-width: 1224px)"
       });    
 
-    const [message,setMessage] = useState("select date ")
+    const [message,setMessage] = useState("select date for daily incomes rapport")
     const [couleur,setCouleur] = useState("text-dark")
 
     const submitVol =(values)=>
@@ -93,13 +93,16 @@ return (
     <>
     <HeaderEnglish dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
 
-{isDesktop && <Container className='bg-light justify-content-center text-center' style={{marginTop:100,width:750}} >
-<Row className='justify-content-center mb-3 pt-5' >
-        <Col xs={12}>
-        <p className="text-dark"><i><b>{message}</b></i></p>
+{isDesktop && <Container className='justify-content-center text-center mb-5 text-light text-bold'  >
+<Row className='mt-3'>
+        <Col xs={12} className="text-start text-light">
+            <p><Link to='/menu_rapport_recette_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>
         </Col>
     </Row>
-    
+
+<Row className=' justify-content-center mb-3 pt-3' >
+        <Col xs={12} className="rounded" style={{marginTop:100,width:750,border:"3px solid white"}}>
+        <p className="couleur2 "><i><b>{message}</b></i></p>
     
     <Formik
       validationSchema={testValidation}
@@ -136,6 +139,8 @@ return (
          )
 }
 </Formik>
+</Col>
+</Row>
 </Container> }
 
 {isMobileOrTablet &&  <Container className='bg-light justify-content-center text-center  mt-5 mx-auto'>

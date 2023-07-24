@@ -37,7 +37,32 @@ function EnvoieInfoFrench(props)
     const [modalShow3, setModalShow3] = React.useState(false);
     const [modalShow4, setModalShow4] = React.useState(false);
     
-  
+    const closePage = ()=>
+    {
+      props.setEnvoie({infoEnvoie :{
+        agent_id:'',
+        nom_expediteur : '',
+        prenom_expediteur : '',
+        adresse_expediteur : 'N/A',
+        email_expediteur : '',
+        numero_expediteur: '',
+        pays_expediteur : 'UK',
+        nom_beneficiaire : '',
+        prenom_beneficiaire : '',
+        pays_beneficiaire : '',
+        montant_beneficiaire : '',
+        montant_pour_payer :'',
+        frais_envoie : '',
+        frais_tva : '',
+        type_service : '',
+        numero_transfer :'',
+        date_operation : '',
+        date_heure_operation : '',
+        month_year_operation :''
+        }})
+    
+    navigate('/menu_operation_envoi_french')
+    }
     
 console.log(props.envoie.infoEnvoie)
 
@@ -134,7 +159,7 @@ const submitEnvoie = (e)=>
 {isDesktop && <Container className=' justify-content-center text-center mb-5 text-light text-bold rounded'  >
 <Row className='mt-3'>
         <Col xs={12} className="text-start text-light">
-            <p><Link to='/form_envoie_client_french' style={{textDecoration:"none"}}><b className='text-light'>Envoyer pour un nouveau client &gt;&gt; </b></Link> <Link to='/envoi_info_french' style={{textDecoration:"none"}}><b className='text-warning'>Validation du formulaire d'envoi </b></Link></p>
+            <p><Link to='/form_envoie_client_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u>  </b></Link> </p>
         </Col>
     </Row>
   <Row className='justify-content-center mt-3'>
@@ -183,19 +208,26 @@ const submitEnvoie = (e)=>
       <hr style={{color:"darkorange"}}></hr>
     </Row>
     <Row className='justify-content-center pb-3' >
-        <Col xs={6}>
+        <Col xs={4}>
         <Button variant="warning" type="submit" onClick={e=>submitEnvoie(e)}>
         Valider formulaire
         </Button>
         </Col>
 
-        <Col xs={6}>
+        <Col xs={4}>
         <Link to="/form_envoie_client_french">
          <Button variant="secondary" type="submit">
         Modifier
         </Button>
         </Link>
         </Col>
+
+        <Col xs={4}>
+        <Button variant="danger" type="submit" onClick={closePage}>
+        Fermer
+        </Button>
+        </Col>
+
         </Row>
         </Col>
 
@@ -259,18 +291,23 @@ const submitEnvoie = (e)=>
       <hr style={{color:"darkorange"}}></hr>
     </Row>
     <Row className='justify-content-center pb-3' >
-        <Col xs={6}>
+        <Col xs={4}>
         <Button variant="warning" type="submit" onClick={e=>submitEnvoie(e)}>
         envoyer
         </Button>
         </Col>
 
-        <Col xs={6}>
+        <Col xs={4}>
         <Link to="/form_envoie_client_french">
          <Button variant="secondary" type="submit">
         modifier
         </Button>
         </Link>
+        </Col>
+        <Col xs={4}>
+        <Button variant="danger" type="submit" onClick={closePage}>
+        Close
+        </Button>
         </Col>
         
     </Row>

@@ -151,17 +151,23 @@ console.log(props.detailEnvoieTotal)
         <HeaderFrench dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
 {isDesktop && props.detailEnvoieTotal.length > 0 ? props.detailEnvoieTotal.map((value)=>
     {
-    return <Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:50,width:1000}} >
-<Row className='justify-content-center mb-3 pt-3' >
-        <Col xs={12}>
-        <p className='couleur2'><i><b>{message}</b></i></p>
-        </Col>
-    </Row>
-
-    <Row className='justify-content-center pb-3'>
-      <hr style={{color:"darkorange"}}></hr>
-     
-    </Row>
+    return <div className='justify-content-center text-center mb-5 text-light text-bold rounded'>
+    <Row className='mt-3 px-5'>
+            <Col xs={12} className="text-start text-light">
+                {props.tableType === "dailyRapport" ? <p><Link to='/table_daily_rapport_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p> : props.tableType === "monthlyRapport" ? <p><Link to='/table_monthly_rapport_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p> : props.tableType === "dailyRapportRecette" ? <p><Link to='/daily_rapport_recette_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p> : props.tableType === "monthlyRapportRecette" ? <p><Link to='/monthly_rapport_recette_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p> : <p><Link to='/details_historic_info_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p>}
+            </Col>
+        </Row>
+        <Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:50,width:1000}} >
+    <Row className='justify-content-center mb-3 pt-3' >
+            <Col xs={12}>
+            <p className='couleur2'><i><b>{message}</b></i></p>
+            </Col>
+        </Row>
+    
+        <Row className='justify-content-center pb-3'>
+          <hr style={{color:"darkorange"}}></hr>
+         
+        </Row>
     <Row className='justify-content-start text-start pb-3 mb-3' >
     <Col xs={6} className='justify-content-start'>
         <p className='text-dark'>Noms Expediteur: <b className='text-dark'>{value.nom_expediteur} {value.postnom_expediteur} {value.prenom_expediteur}</b> </p>
@@ -215,11 +221,11 @@ console.log(props.detailEnvoieTotal)
     </Col>
 
     <Col xs={12}>
-     {props.message === "Historique de suppression" ? <div><p className='text-dark'>operation fait par : <b className='text-dark'>{value.deletion_executed_by_owner}</b> </p>
+     {props.tableType==="historic" ? props.message === "Historique de suppression" ? <div><p className='text-dark'>operation fait par : <b className='text-dark'>{value.deletion_executed_by_owner}</b> </p>
      <p className='text-dark'>Date et heure  de suppression: <b className='text-dark'> {value.date_heure_operation_deletion}</b></p><br></br>
       <Button onClick={recoverOperation}  className='mx-5' variant='success'>Récupérer l'operation</Button>
       <Button  onClick={()=>setModalShow6(true)}className='mx-5' variant='danger'>supprimer définitivement</Button></div>  :
-    <p></p>}        
+    <p></p>:<p></p>}        
     </Col>
 
     </Row>
@@ -230,12 +236,17 @@ console.log(props.detailEnvoieTotal)
      
     </Row>
 
-
+    <Row className='justify-content-center pb-3'>
+    <Col xs={6}>
+    {props.tableType === "dailyRapport" ? <p><Link to='/table_daily_rapport_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.tableType === "monthlyRapport" ? <p><Link to='/table_monthly_rapport_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.tableType === "dailyRapportRecette" ? <p><Link to='/daily_rapport_recette_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.tableType === "monthlyRapportRecette" ? <p><Link to='/monthly_rapport_recette_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : <p><Link to='/details_historic_info_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p>}
+     </Col>
+    </Row>
    
 
     
 
-</Container> })
+</Container>
+</div> })
 :
 <MyVerticallyCenteredModal show={modalShow} onHide={() => {
   setModalShow(false)

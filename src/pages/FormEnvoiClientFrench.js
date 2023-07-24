@@ -174,7 +174,7 @@ function FormEnvoiClientFrench(props)
 {isDesktop && <Container className='justify-content-center text-center mb-5 text-light text-bold'  >
 <Row className='mt-3'>
         <Col xs={12} className="text-start text-light">
-            <p><Link to='/menu_operation_envoi_french' style={{textDecoration:"none"}}><b className='text-light'>Envoyer de l'argent &gt;&gt; </b></Link> <Link to='/form_envoie_client' style={{textDecoration:"none"}}><b className='text-warning'>Envoyer pour un nouveau client</b></Link></p>
+            <p><Link to='/menu_operation_envoi_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u>  </b></Link> </p>
         </Col>
     </Row>
 

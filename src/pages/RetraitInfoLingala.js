@@ -36,6 +36,32 @@ function RetraitInfoLingala(props)
         query: "(max-width: 1224px)"
       });
     
+      const closePage = ()=>
+      {
+        props.setEnvoie2({infoEnvoie :{
+          agent_id:'',
+          nom_expediteur : '',
+          prenom_expediteur : '',
+          adresse_expediteur : 'N/A',
+          email_expediteur : '',
+          numero_expediteur: '',
+          pays_expediteur : 'UK',
+          nom_beneficiaire : '',
+          prenom_beneficiaire : '',
+          pays_beneficiaire : '',
+          montant_beneficiaire : '',
+          montant_pour_payer :'',
+          frais_envoie : '',
+          frais_tva : '',
+          type_service : '',
+          numero_transfer :'',
+          date_operation : '',
+          date_heure_operation : '',
+          month_year_operation :''
+          }})
+      
+      navigate('/form_retrait_operation_lingala')
+      } 
   
 const navigate = useNavigate()
    
@@ -87,7 +113,7 @@ const navigate = useNavigate()
 {isDesktop && <Container className=' justify-content-center text-center mb-5 text-light text-bold rounded'  >
 <Row className='mt-3'>
         <Col xs={12} className="text-start text-light">
-            <p><Link to='/form_retrait_operation_lingala' style={{textDecoration:"none"}}><b className='text-light'>Futa Mbongo &gt;&gt; </b></Link> <Link to='/retrait_info_operation_lingala' style={{textDecoration:"none"}}><b className='text-warning'>Validation pona ko futa mbongo</b></Link></p>
+            <p><Link to='/form_retrait_operation_lingala' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Zonga</u>  </b></Link> </p>
         </Col>
     </Row>
   <Row className='justify-content-center mt-3'>
@@ -102,8 +128,8 @@ const navigate = useNavigate()
       <p className='couleur2'><b><u> Status ya Retrait</u></b> </p>
     </Row>
     <Row className='justify-content-start pb-3' >
-        <Col xs={12}>
-        {props.envoie2.infoEnvoie.status_retrait === 'Code Retrait Valide' ?  <p className='text-light'>Status ya Retrait : <b className='text-success'>{props.envoie2.infoEnvoie.status_retrait}</b> </p> : <p className='text-light'>Status Retrait : <b className='text-danger'>{props.envoie2.infoEnvoie.status_retrait}</b> </p>}
+    <Col xs={12}>
+        {props.envoie2.infoEnvoie.status_retrait === 'Code Retrait Valide' ?  <p><b  ><h1 className='text-success '><strong>Code ya retrait nayo eza validé</strong> </h1></b> </p>: props.envoie2.infoEnvoie.status_retrait === 'Code Retrait Payé' ? <p><b  ><h1 className='text-danger '><strong>Code ya retrait esi salelami</strong> </h1></b> </p>: <p><b className='text-warning display-6'><h1><strong>Code ya retrait nayo eza en attente ya validation</strong></h1></b> </p>}
         </Col>
     </Row>
 
@@ -168,6 +194,12 @@ const navigate = useNavigate()
         Valider Retrait mpo na kosala
         </Button>
         </Link>
+        </Col>
+
+        <Col xs={6}>
+        <Button variant="danger" type="submit" onClick={closePage}>
+        kokanga
+        </Button>
         </Col>
         
     </Row>

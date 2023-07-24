@@ -37,6 +37,32 @@ function EnvoieInfoEnglish(props)
       query: "(max-width: 1224px)"
     });
   
+    const closePage = ()=>
+    {
+      props.setEnvoie({infoEnvoie :{
+        agent_id:'',
+        nom_expediteur : '',
+        prenom_expediteur : '',
+        adresse_expediteur : 'N/A',
+        email_expediteur : '',
+        numero_expediteur: '',
+        pays_expediteur : 'UK',
+        nom_beneficiaire : '',
+        prenom_beneficiaire : '',
+        pays_beneficiaire : '',
+        montant_beneficiaire : '',
+        montant_pour_payer :'',
+        frais_envoie : '',
+        frais_tva : '',
+        type_service : '',
+        numero_transfer :'',
+        date_operation : '',
+        date_heure_operation : '',
+        month_year_operation :''
+        }})
+    
+    navigate('/menu_operation_envoi_english')
+    }
     
 console.log(props.envoie.infoEnvoie)
 
@@ -133,7 +159,7 @@ console.log(props.envoie.infoEnvoie)
 {isDesktop && <Container className=' justify-content-center text-center mb-5 text-light text-bold rounded'  >
 <Row className='mt-3'>
         <Col xs={12} className="text-start text-light">
-            <p><Link to='/form_envoie_client_english' style={{textDecoration:"none"}}><b className='text-light'>To send for a new client &gt;&gt; </b></Link> <Link to='/envoi_info_english' style={{textDecoration:"none"}}><b className='text-warning'>Sending form Validation </b></Link></p>
+            <p><Link to='/form_envoie_client_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>
         </Col>
     </Row>
   <Row className='justify-content-center mt-3'>
@@ -182,18 +208,24 @@ console.log(props.envoie.infoEnvoie)
     <hr style={{color:"darkorange"}}></hr>
 
     <Row className='justify-content-center pb-3' >
-        <Col xs={6}>
+        <Col xs={4}>
         <Button variant="warning" type="submit" onClick={submitEnvoie}>
         Validate Form
         </Button>
         </Col>
 
-        <Col xs={6}>
+        <Col xs={4}>
         <Link to="/form_envoie_client_english">
          <Button variant="secondary" type="submit">
          Modify Form
         </Button>
         </Link>
+        </Col>
+
+        <Col xs={4}>
+        <Button variant="danger" type="submit" onClick={closePage}>
+        Close
+        </Button>
         </Col>
         
     </Row>

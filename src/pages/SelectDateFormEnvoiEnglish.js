@@ -45,7 +45,7 @@ function SelectDateFormEnvoiEnglish(props)
         query: "(max-width: 1224px)"
       });    
 
-    const [message,setMessage] = useState("Select date")
+    const [message,setMessage] = useState("Select date for daily sending rapport")
     const [couleur,setCouleur] = useState("text-dark")
 
     const submitVol =(values)=>
@@ -97,13 +97,13 @@ return (
 {isDesktop && <Container className='justify-content-center text-center mb-5 text-light text-bold'  >
 <Row className='mt-3'>
         <Col xs={12} className="text-start text-light">
-            <p><Link to='/menu_rapport_envoi_english' style={{textDecoration:"none"}}><b className='text-light'>Sending Rapport &gt;&gt; </b></Link> <Link to='/select_date_form_envoi_english' style={{textDecoration:"none"}}><b className='text-warning'>Daily Rapport Form</b></Link></p>
+            <p><Link to='/menu_rapport_envoi_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>
         </Col>
     </Row>
 
 <Row className=' justify-content-center mb-3 pt-3' >
         <Col xs={12} className="rounded" style={{marginTop:100,width:750,border:"3px solid white"}}>
-        <p className="text-light"><i><b>{message}</b></i></p>
+        <p className="couleur2 "><i><b>{message}</b></i></p>
     <Formik
       validationSchema={testValidation}
       onSubmit={(values)=>{

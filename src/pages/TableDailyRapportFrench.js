@@ -89,21 +89,22 @@ console.log(rapportLocation)
     return (
         <>
             <HeaderFrench dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
-            <div>
-{isDesktop && <Container fluid className='bg-light justify-content-center text-center borders mb-5' style={{marginTop:20}} >
-
-
-
-    
+            <div className=' justify-content-center text-center mb-5 text-light text-bold rounded'>
+            <Row className='mt-3 px-5'>
+              <Col xs={12} className="text-start text-light">
+              {props.rapportType === "dailyRapportRetrait" ? <p><Link to='/daily_rapport_retrait_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p> : props.rapportType === "monthlyRapportRetrait" ? <p><Link to='/monthly_rapport_retrait_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p> : props.rapportType === "yearlyRapportRetrait" ? <p><Link to='/yearly_rapport_retrait_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p>:  props.rapportType === "dailyRapportEnvoi" ? <p><Link to='/daily_rapport_envoi_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p> : props.rapportType === "monthlyRapportEnvoi" ? <p><Link to='/monthly_rapport_envoi_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p>: <p><Link to='/yearly_rapport_envoi_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p>}
+              </Col>
+            </Row>
+         {isDesktop && <Container fluid className='bg-light justify-content-center text-center borders mb-5' style={{marginTop:20}} >  
 <div>
 <Row className='justify-content-center '>
         <Col xs = {12} className='text-center borders pt-2'>
         <div>
-        <h6 ><u><b><i className='couleur2'>{props.message2} {props.dateInfo}</i></b></u></h6>
+        <h4 ><u><b><i className='couleur2'>{props.titleFrench} {props.dateInfo}</i></b></u></h4>
         </div>
         <div>
         
-        {props.message2 === "Rapport des Rétraits" ? <div>
+        {props.message2 === "Rapport of withdrawals" ? <div>
     <Form>
     <Form.Select aria-label="Default select example" onChange={(e)=>changeRapportLocation(e)}>
       <option value="Rapport Angola et RD Congo" ><b>Rapport Angola et RD Congo </b></option>
@@ -137,6 +138,7 @@ console.log(rapportLocation)
              <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_total).toFixed(2))}</b></i></td>
              <td onClick={()=>{
                operationDetailArray.push(value)
+               props.setTableType("dailyRapport")
                console.log(operationDetailArray)
                props.dataDetailEnvoieTotal(operationDetailArray)
                navigate('/details_retraits_info_french')
@@ -157,6 +159,7 @@ console.log(rapportLocation)
              <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_total).toFixed(2))}</b></i></td>
              <td onClick={()=>{
                operationDetailArray.push(value)
+               props.setTableType("dailyRapport")
                console.log(operationDetailArray)
                props.dataDetailEnvoieTotal(operationDetailArray)
                navigate('/details_retraits_info_french')
@@ -176,19 +179,20 @@ console.log(rapportLocation)
              <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_total).toFixed(2))}</b></i></td>
              <td onClick={()=>{
                operationDetailArray.push(value)
+               props.setTableType("dailyRapport")
                console.log(operationDetailArray)
                props.dataDetailEnvoieTotal(operationDetailArray)
                navigate('/details_retraits_info_french')
              }} ><i className="text-primary btn" ><b><u>Plus des Détails</u></b></i></td>
             </tr> 
         }) }
-{props.message2 === "Rapport des Rétraits" ? <tr style={{border:"2px solid white"}}>
+{props.message2 === "Rapport of withdrawals" ? <tr style={{border:"2px solid white"}}>
          <td><i><b>TOTAL</b></i></td>
          <td><i className='couleur2'><b></b></i></td>
          <td><i className='couleur2'><b></b></i></td>
          <td><i className='couleur2'><b></b></i></td>
          {rapportLocation === "Rapport Angola et RD Congo" ? <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_montant_beneficiaire).toFixed(2))} $</b></i></td> : rapportLocation === "Rapport RD Congo" ? <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_montant_beneficiaire_rdcongo).toFixed(2))} $</b></i></td> :<td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_montant_beneficiaire_angola).toFixed(2))} $</b></i></td>}
-       </tr>: props.message2 === "Rapport de envois validés" ? <tr style={{border:"2px solid white"}}>
+       </tr>: props.message2 === "Rapport of validated sendings" ? <tr style={{border:"2px solid white"}}>
          <td><i><b>TOTAL</b></i></td>
          <td><i className='couleur2'><b></b></i></td>
          <td><i className='couleur2'><b></b></i></td>
@@ -209,12 +213,7 @@ console.log(rapportLocation)
   
     <Row className='justify-content-center pb-3 pt-3'>
         <Col xs ={4} >
-        <Link to="" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant="outline-warning" type="submit" onClick={message} >
-        imprimer 
-        </Button>
-        </Link>
-
+        {props.rapportType === "dailyRapportRetrait" ? <p><Link to='/daily_rapport_retrait_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.rapportType === "monthlyRapportRetrait" ? <p><Link to='/monthly_rapport_retrait_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.rapportType === "yearlyRapportRetrait" ? <p><Link to='/yearly_rapport_retrait_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p>:  props.rapportType === "dailyRapportEnvoi" ? <p><Link to='/daily_rapport_envoi_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.rapportType === "monthlyRapportEnvoi" ? <p><Link to='/monthly_rapport_envoi_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p>: <p><Link to='/yearly_rapport_envoi_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p>}
         </Col>
     </Row>
   

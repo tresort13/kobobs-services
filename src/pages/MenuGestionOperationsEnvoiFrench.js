@@ -29,9 +29,11 @@ function MenuGestionOperationsEnvoiFrench(props)
 <HeaderFrench dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
 {isDesktop && <Container className="text-light text-bold">
    
-    <Row className='mt-3'>
+<Row className='mt-3'>
         <Col xs={12} className="text-start text-light">
-            <p><Link to='/home_french' style={{textDecoration:"none"}}><b className='text-light'>Acceuil &gt;&gt;</b></Link> <Link to='/menu_operation_envoi_french' style={{textDecoration:"none"}}><b className='text-warning'>Envoyer de l'argent </b></Link></p>
+        <p><Link to='/home_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'><span><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-house-door-fill" viewBox="0 0 16 16">
+  <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z"/>
+</svg></span><u>Acceuil</u>   </b></Link></p>
         </Col>
     </Row>
     <Row className='justify-content-center pb-3 pt-5 mt-5'>

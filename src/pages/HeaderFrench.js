@@ -193,7 +193,7 @@ function HeaderFrench(props)
           </Link>
         </Col>
 
-        {props.isLogged === true ? <Col xs={2} className="my-auto mx-auto text-start">
+        {props.isLogged === true ? <Col xs={1} className="my-auto mx-auto text-start">
         {[false].map((expand) => (
         <Navbar key={expand}  expand={expand} className="mb-1">
           <Container>
@@ -231,7 +231,7 @@ function HeaderFrench(props)
       ))}
         </Col> :
 
-<Col xs={2} className="my-auto mx-auto text-start">
+<Col xs={1} className="my-auto mx-auto text-start">
 {[false].map((expand) => (
 <Navbar key={expand}  expand={expand} className="mb-1">
   <Container>
@@ -262,8 +262,14 @@ function HeaderFrench(props)
 
         }
 
+<Col xs={2} className="pt-4 text-start">
+<p><Link to='/home_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2 '><span><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-house-door-fill" viewBox="0 0 16 16">
+<path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z"/>
+</svg></span><span >Accueil</span></b></Link></p>
+</Col>
 
-{ props.isLogged === true ? <Col xs={6} className="my-auto  my-auto text-end">
+
+{ props.isLogged === true ? <Col xs={5} className="my-auto  my-auto text-end">
         {props.isAdmin ?
          count > 0 ? <Link to="/table_validation_french"><Badge className='m-0' bg="danger">{count}</Badge><span><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="text-light bi bi-bell-fill mt-2 "  viewBox="0 0 16 16">
         <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
@@ -276,7 +282,7 @@ function HeaderFrench(props)
         </span>
          }
         <Link to="" style={{textDecoration:"none"}}>
-        <Button variant='outline-light' onClick={()=>handleShow2()}  className='btn btn-outline-light btn-lg'>Bonjour, <strong className='textUpper'>{props.username}</strong> <span><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+        <Button variant='outline-light' onClick={()=>handleShow2()}  className='btn btn-outline-light btn-lg'>Bjr, <strong className='textUpper'>{props.username}</strong> <span><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
          <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
           </svg></span></Button>
@@ -285,7 +291,7 @@ function HeaderFrench(props)
           <Button onClick={logout} style={{marginLeft:10}}  className='btn--dark-orange btn2 rounded zoom btn-lg'>Deconnexion</Button>
           </Link>
         </Col> :
-        <Col xs={6} className="my-auto  my-auto text-end">
+        <Col xs={5} className="my-auto  my-auto text-end">
         <Link to="" style={{textDecoration:"none"}}>
           <Button onClick={showLogin}  className='btn2 btn--blue rounded zoom btn-lg '>Connexion </Button>
           </Link>

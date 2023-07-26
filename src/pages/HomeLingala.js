@@ -107,10 +107,10 @@ const establishedUserStatus = ()=>
                     
                     if(montant.infoMontant.montantTopay >= 100)
                     {
-                      setResultMontant(Number((Number(montant.infoMontant.montantTopay) * Number(res.rates.GBP).toFixed(2)) + ((Number(montant.infoMontant.montantTopay) * Number(res.rates.GBP)) * 5)/100 + ((Number(montant.infoMontant.montantTopay) * Number(res.rates.GBP)) * 1)/100).toFixed())
+                      setResultMontant(Number((Number(montant.infoMontant.montantTopay) * Number(res.rates.GBP + 0.02).toFixed(2)) + ((Number(montant.infoMontant.montantTopay) * Number(res.rates.GBP + 0.02)) * 5)/100 + ((Number(montant.infoMontant.montantTopay) * Number(res.rates.GBP + 0.02)) * 1)/100).toFixed(2))
                     }
                     else{
-                      setResultMontant(Number((Number(montant.infoMontant.montantTopay) * Number(res.rates.GBP)) + ((Number(5) * Number(res.rates.GBP))) + ((Number(1) * Number(res.rates.GBP))) ).toFixed())
+                      setResultMontant(Number((Number(montant.infoMontant.montantTopay) * Number(res.rates.GBP + 0.02)) + ((Number(5) * Number(res.rates.GBP + 0.02))) + ((Number(1) * Number(res.rates.GBP + 0.02))) ).toFixed(2))
                     }
                     setLoad(false) 
                   }

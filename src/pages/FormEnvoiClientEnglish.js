@@ -112,9 +112,11 @@ function FormEnvoiClientEnglish(props)
               .then( res => res.json())
               .then(
                 res => {  
+                  console.log(res.rates.GBP)
           
                   if(values.montant_beneficiaire >= 100)
                   {
+                    console.log(res.rates.GBP)
                     
                    props.setTaux(res.rates.GBP) 
                    props.setEnvoie({infoEnvoie :{
@@ -129,9 +131,9 @@ function FormEnvoiClientEnglish(props)
                      prenom_beneficiaire : values.prenom_beneficiaire,
                      pays_beneficiaire : values.pays_beneficiaire,
                      montant_beneficiaire : values.montant_beneficiaire,
-                     montant_pour_payer : Number((Number(values.montant_beneficiaire) * Number(res.rates.GBP)) + ((Number(values.montant_beneficiaire) * Number(res.rates.GBP)) * 5)/100 + ((Number(values.montant_beneficiaire) * Number(res.rates.GBP)) * 1)/100 ).toFixed(2),
-                     frais_envoie : Number(((Number(values.montant_beneficiaire).toFixed(2) * Number(res.rates.GBP)) * 5)/100).toFixed(2),
-                     frais_tva : Number(((Number(values.montant_beneficiaire).toFixed(2) * Number(res.rates.GBP)) * 1)/100).toFixed(2),
+                     montant_pour_payer : Number((Number(values.montant_beneficiaire) * Number(res.rates.GBP + 0.02)) + ((Number(values.montant_beneficiaire) * Number(res.rates.GBP + 0.02)) * 5)/100 + ((Number(values.montant_beneficiaire) * Number(res.rates.GBP + 0.02)) * 1)/100 ).toFixed(2),
+                     frais_envoie : Number(((Number(values.montant_beneficiaire).toFixed(2) * Number(res.rates.GBP + 0.02)) * 5)/100).toFixed(2),
+                     frais_tva : Number(((Number(values.montant_beneficiaire).toFixed(2) * Number(res.rates.GBP + 0.02)) * 1)/100).toFixed(2),
                      type_service : values.type_service,
                      numero_transfer : values.numero_transfer,
                      date_operation : new Date().toLocaleString().slice(0,10),
@@ -142,7 +144,7 @@ function FormEnvoiClientEnglish(props)
 
                   }
                   else{
-                    
+                    console.log(res.rates.GBP)
                    props.setTaux(res.rates.GBP) 
                    props.setEnvoie({infoEnvoie :{
                     agent_id : props.abonne.infoAbonne.agent_id,
@@ -156,9 +158,9 @@ function FormEnvoiClientEnglish(props)
                      prenom_beneficiaire : values.prenom_beneficiaire,
                      pays_beneficiaire : values.pays_beneficiaire,
                      montant_beneficiaire : values.montant_beneficiaire,
-                     montant_pour_payer : Number((Number(values.montant_beneficiaire) * Number(res.rates.GBP)) + (Number(5) * Number(res.rates.GBP)) + (Number(5) * Number(res.rates.GBP)) ).toFixed(),
-                     frais_envoie : (Number(5) * Number(res.rates.GBP)).toFixed(),
-                     frais_tva : (Number(1) * Number(res.rates.GBP)).toFixed(),
+                     montant_pour_payer : Number((Number(values.montant_beneficiaire) * Number(res.rates.GBP + 0.02)) + (Number(5) * Number(res.rates.GBP + 0.02)) + (Number(5) * Number(res.rates.GBP + 0.02)) ).toFixed(),
+                     frais_envoie : (Number(5) * Number(res.rates.GBP + 0.02)).toFixed(),
+                     frais_tva : (Number(1) * Number(res.rates.GBP + 0.02)).toFixed(),
                      type_service : values.type_service,
                      numero_transfer : values.numero_transfer,
                      date_operation : new Date().toLocaleString().slice(0,10),

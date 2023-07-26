@@ -121,6 +121,7 @@ function FormEnvoiClientEnglish(props)
                     agent_id : props.abonne.infoAbonne.agent_id,
                     nom_expediteur : values.nom_expediteur,
                     prenom_expediteur : values.prenom_expediteur,
+                    adresse_expediteur : values.adresse_expediteur,
                     email_expediteur : values.email_expediteur,
                     numero_expediteur: values.numero_expediteur,
                     pays_expediteur : values.pays_expediteur,
@@ -147,6 +148,7 @@ function FormEnvoiClientEnglish(props)
                     agent_id : props.abonne.infoAbonne.agent_id,
                     nom_expediteur : values.nom_expediteur,
                     prenom_expediteur : values.prenom_expediteur,
+                    adresse_expediteur : values.adresse_expediteur,
                     email_expediteur : values.email_expediteur,
                     numero_expediteur: values.numero_expediteur,
                     pays_expediteur : values.pays_expediteur,
@@ -290,7 +292,7 @@ function FormEnvoiClientEnglish(props)
         <Form.Label className='text-light'><span className="text-danger">*</span> Mobile Number</Form.Label>
         <InputGroup className="mb-3">
         <InputGroup.Text id="basic-addon1">+44</InputGroup.Text>
-        <Form.Control name="numero_expediteur" value={values.numero_expediteur} onBlur={handleBlur} onChange={handleChange} type="text" placeholder='Numéro ya Tshombo' />
+        <Form.Control name="numero_expediteur" value={values.numero_expediteur} onBlur={handleBlur} onChange={handleChange} type="text" placeholder='Mobile Number' />
         </InputGroup>
         <p className='text-danger'>{touched.numero_expediteur && errors.numero_expediteur}</p>
         </Col>

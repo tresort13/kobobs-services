@@ -155,7 +155,7 @@ function FormEnvoiClientFrench(props)
                      prenom_beneficiaire : values.prenom_beneficiaire,
                      pays_beneficiaire : values.pays_beneficiaire,
                      montant_beneficiaire : values.montant_beneficiaire,
-                     montant_pour_payer : Number((Number(values.montant_beneficiaire) * Number(res.rates.GBP + 0.03)) + (Number(5) * Number(res.rates.GBP + 0.03)) + (Number(5) * Number(res.rates.GBP + 0.03)) ).toFixed(),
+                     montant_pour_payer : Number((Number(values.montant_beneficiaire) * Number(res.rates.GBP + 0.03)) + (Number(5) * Number(res.rates.GBP + 0.03)) + (Number(1) * Number(res.rates.GBP + 0.03)) ).toFixed(),
                      frais_envoie : (Number(5) * Number(res.rates.GBP + 0.03)).toFixed(),
                      frais_tva : (Number(1) * Number(res.rates.GBP + 0.03)).toFixed(),
                      type_service : values.type_service,

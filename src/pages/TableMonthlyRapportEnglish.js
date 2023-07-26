@@ -31,7 +31,7 @@ function TableMonthlyRapportEnglish(props)
 
             const message = ()=>
         {
-            alert("not available")
+            alert("available after payment")
         }
       const changeRapportLocation = (e)=>{
         setRapportLocation(e.target.value)
@@ -212,11 +212,19 @@ console.log(rapportLocation)
 
   
     <Row className='justify-content-center pb-3 pt-3'>
-        <Col xs ={4} >
+
         <Col xs ={4} >
         {props.rapportType === "dailyRapportRetrait" ? <p><Link to='/daily_rapport_retrait_english' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>close</Button></Link></p> : props.rapportType === "monthlyRapportRetrait" ? <p><Link to='/monthly_rapport_retrait_english' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>close</Button></Link></p> : props.rapportType === "yearlyRapportRetrait" ? <p><Link to='/yearly_rapport_retrait_english' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>close</Button></Link></p>:  props.rapportType === "dailyRapportEnvoi" ? <p><Link to='/daily_rapport_envoi_english' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>close</Button></Link></p> : props.rapportType === "monthlyRapportEnvoi" ? <p><Link to='/monthly_rapport_envoi_english' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>close</Button></Link></p>: <p><Link to='/yearly_rapport_envoi_english' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>close</Button></Link></p>}
         </Col>
 
+        <Col xs ={4} >
+        <Link to="" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant="success" type="submit" onClick={message} >
+       <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-excel-fill" viewBox="0 0 16 16">
+  <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM5.884 6.68 8 9.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 10l2.233 2.68a.5.5 0 0 1-.768.64L8 10.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 10 5.116 7.32a.5.5 0 1 1 .768-.64z"/>
+</svg></span> export to Excel 
+        </Button>
+        </Link>
         </Col>
     </Row>
   

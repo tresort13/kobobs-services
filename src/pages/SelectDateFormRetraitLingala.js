@@ -34,7 +34,7 @@ function SelectDateFormRetraitLingala(props)
     const { Formik } = formik;
 
   const testValidation = yup.object().shape({
-    dateInfo : yup.string().required('required field'),
+    dateInfo : yup.string().required('esengeli ko pona dati'),
   });
  
 

@@ -1,3 +1,4 @@
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from "react-bootstrap/Button";
 import Container from 'react-bootstrap/Container';
@@ -12,11 +13,13 @@ import { useMediaQuery } from 'react-responsive';
 //import SessionOut from './SessionOut';
 import HeaderFrench from './HeaderFrench';
 import HeaderEnglish from './HeaderEnglish';
+import Modal from 'react-bootstrap/Modal';
 
 
 function MenuRapportRecettesFrench(props)
 {
 
+    const [modalShow3, setModalShow3] = React.useState(false);
     const isDesktop = useMediaQuery({
         query: "(min-width: 1224px)"
       });
@@ -47,6 +50,16 @@ function MenuRapportRecettesFrench(props)
         <Link to="/select_mois_rapport_recette" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant='btn--blue'  style={{width:400,height:80,border:"2px solid white"}} className='btn-lg btn--blue rounded-pill zoom py-4'>
         <b className='text-light'><pre>Récettes Mensuelles</pre></b>
+        </Button>
+        </Link>
+        </Col>
+    </Row>
+
+    <Row className='justify-content-center pb-3 '>
+        <Col xs = {"auto"}>
+        <Link to="" style={{color:'white',textDecorationLine:'none'}}>
+        <Button onClick={()=>setModalShow3(true)} variant='btn--blue'  style={{width:400,height:80,border:"2px solid white"}} className='btn-lg btn--blue rounded-pill zoom py-4'>
+        <b className='text-light'><pre>Récettes Annuelles</pre></b>
         </Button>
         </Link>
         </Col>
@@ -84,9 +97,34 @@ function MenuRapportRecettesFrench(props)
  
 
 </Container>}
+<MyVerticallyCenteredModal3 show={modalShow3} onHide={() => setModalShow3(false)} />
 <Footer />
 </>
     )
 }
+
+function MyVerticallyCenteredModal3(props) {
+    return (
+      <Modal
+        {...props}
+        size="sm"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+          <p className='text-danger'><b> Désolé option disponible après paiement...</b></p>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        Cette option sera disponible après le paiement
+        </Modal.Body>
+        <Modal.Footer>
+        <Button variant='warning' onClick={props.onHide}>ok</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
+
 
 export default MenuRapportRecettesFrench;

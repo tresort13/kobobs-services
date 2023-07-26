@@ -99,7 +99,9 @@ function MyProfilFrench(props)
     const detailValide =()=>
     {
      props.setDateHistoric(localDate)
-     props.setMessage("Historique de Validation")
+     props.setMessageEnglish("Validation historic")
+      props.setMessageFrench("Historique de Validation")
+      props.setMessageLingala("Historique ya ba Validation")
      props.setDetailHistoric(operationValidation)
      navigate('/details_historic_info_french')
     }
@@ -107,7 +109,9 @@ function MyProfilFrench(props)
     const detailTotal =()=>
     {
      props.setDateHistoric(localDate)
-      props.setMessage("Historique d'envoi")
+     props.setMessageEnglish("Sending historic")
+       props.setMessageFrench("Historique d'envoi")
+       props.setMessageLingala("Historique ya ba envoi")
      props.setDetailHistoric(operationSending)
      navigate('/details_historic_info_french')
     }
@@ -115,7 +119,9 @@ function MyProfilFrench(props)
     const detailPaye =()=>
     {
      props.setDateHistoric(localDate)
-     props.setMessage("Historique de rétrait")
+     props.setMessageEnglish("withdrawal historic")
+      props.setMessageFrench("Historique de rétrait")
+      props.setMessageLingala("Historique yaba rétrait")
      props.setDetailHistoric(operationRetrait)
      navigate('/details_historic_info_french')
     
@@ -124,7 +130,9 @@ function MyProfilFrench(props)
     const detailDeletion =()=>
     {
      props.setDateHistoric(localDate)
-     props.setMessage("Historique de suppression")
+     props.setMessageEnglish("Deletion historic")
+      props.setMessageFrench("Historique de suppression")
+      props.setMessageLingala("Historique yaba suppression")
      props.setDetailHistoric(operationDeletion)
      navigate('/details_historic_info_french')
      
@@ -371,7 +379,13 @@ function MyProfilFrench(props)
         
         <>
         <HeaderFrench dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
-{isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
+{isDesktop && <div className='justify-content-center text-center mb-5 text-light text-bold rounded'>
+<Row className='mt-3 px-5'>
+        <Col xs={12} className="text-start text-light">
+            <p><Link to='/home_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u>  </b></Link> </p>
+        </Col>
+    </Row>
+   <Container className='bg-light text-dark rounded' style={{width:1000}}>
 <Row className='justify-content-center  pt-3' >
         <Col xs={6}>
         <p className='text-dark'><i><b>{message}</b></i></p>
@@ -388,9 +402,9 @@ function MyProfilFrench(props)
       <Col xs={4}>
       </Col>
     <Col xs={8} className='justify-content-start'>
-        <p className='text-dark'>Noms complets : <b className='text-dark'>{props.abonne.infoAbonne.prenom_expediteur} {props.abonne.infoAbonne.nom_expediteur} {props.abonne.infoAbonne.postnom_expediteur}</b> </p>
-        <p className='text-dark'>Email : <b className='text-dark '> {props.abonne.infoAbonne.email_expediteur}</b></p>
-        <p className='text-dark'>Téléphone: <b className='text-dark '> {props.abonne.infoAbonne.numero_expediteur}</b></p>
+        <p className='text-dark'>Noms complets : <b className='text-dark'>{props.user.infoUser.prenom} {props.user.infoUser.nom} {props.user.infoUser.postnom}</b> </p>
+        <p className='text-dark'>Email : <b className='text-dark '> {props.user.infoUser.email}</b></p>
+        <p className='text-dark'>Téléphone: <b className='text-dark '> {props.user.infoUser.numero}</b></p>
     </Col>
 
     </Row>
@@ -497,9 +511,9 @@ function MyProfilFrench(props)
         
         {nombre_envoie_valide > 0 ? <p className='text-dark py-2 text-start'><strong>Nombre de validations effectuées :</strong> <b className='couleur2'>  {nombre_envoie_valide}</b>  </p> : <span></span>}
          
-         {nombre_retrait_paye > 0 ? <p className='text-dark py-2 text-start'><strong>nombre de retraits effectués :</strong> <b className='couleur2'>  {nombre_retrait_paye}</b>  </p> :<span></span> }
+         {nombre_retrait_paye > 0 ? <p className='text-dark py-2 text-start'><strong>Nombre de retraits effectués :</strong> <b className='couleur2'>  {nombre_retrait_paye}</b>  </p> :<span></span> }
 
-         {nombre_operation_deleted > 0 ? <p className='text-dark py-2 text-start'><strong> nombre d'opérations supprimées :</strong> <b className='couleur2'>  {nombre_operation_deleted}</b>  </p> :<span></span> }   
+         {nombre_operation_deleted > 0 ? <p className='text-dark py-2 text-start'><strong> Nombre d'opérations supprimées :</strong> <b className='couleur2'>  {nombre_operation_deleted}</b>  </p> :<span></span> }   
         </Col> 
          
 
@@ -526,7 +540,7 @@ props.isStaff === true ?
       <Col xs={4}>
         {nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Nombre d'envois effectués :</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
 
-         {nombre_retrait_paye > 0 ? <p className='text-dark py-2 text-start'><strong> nombre de retraits effectués :</strong> <b className='couleur2'>  {nombre_retrait_paye}</b>  </p> :<span></span> }   
+         {nombre_retrait_paye > 0 ? <p className='text-dark py-2 text-start'><strong> Nombre de retraits effectués :</strong> <b className='couleur2'>  {nombre_retrait_paye}</b>  </p> :<span></span> }   
           </Col> 
          
 
@@ -543,11 +557,11 @@ props.isStaff === true ?
 
 <Row className='justify-content-center pb-3' >
 <Col xs={4}>
-{nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Number of sendings made :</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
+{nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Nombre of sendings made :</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
  </Col>
 
  <Col xs={4}>
-{nombre_sending_total > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailTotal}>Check details </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded' type="submit"  onClick={closeModal}>Voir Details </p></a>}
+{nombre_sending_total > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailTotal}>Vérifier les détails </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded' type="submit"  onClick={closeModal}>Vérifier les détails </p></a>}
 
 </Col>
 </Row>
@@ -571,6 +585,7 @@ props.isStaff === true ?
         
     </Row>
 </Container>
+</div>
 }
 
 {isMobileOrTablet && <Container className='bg-light justify-content-center text-center mx-auto my-auto'>

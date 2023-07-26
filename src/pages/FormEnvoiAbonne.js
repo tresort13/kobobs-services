@@ -98,28 +98,58 @@ function FormEnvoiAbonne(props)
                 .then( res => res.json())
                 .then(
                   res => {  
-            
-                    props.setTaux(res.rates.GBP) 
-                    props.setEnvoie({infoEnvoie :{
+                    if(values.montant_beneficiaire >= 100)
+                    {
+                      
+                     props.setTaux(res.rates.GBP) 
+                     props.setEnvoie({infoEnvoie :{
                       agent_id : props.abonne.infoAbonne.agent_id,
                       nom_expediteur : props.abonne.infoAbonne.nom_expediteur,
                       prenom_expediteur : props.abonne.infoAbonne.prenom_expediteur,
                       email_expediteur : props.abonne.infoAbonne.email_expediteur,
                       numero_expediteur: props.abonne.infoAbonne.numero_expediteur,
                       pays_expediteur : props.abonne.infoAbonne.pays_expediteur,
-                      nom_beneficiaire : values.nom_beneficiaire,
-                      prenom_beneficiaire : values.prenom_beneficiaire,
-                      pays_beneficiaire : values.pays_beneficiaire,
-                      montant_beneficiaire : values.montant_beneficiaire,
-                      montant_pour_payer : Number((Number(values.montant_beneficiaire).toFixed(2) * Number(res.rates.GBP).toFixed(2)) + ((Number(values.montant_beneficiaire).toFixed(2) * Number(res.rates.GBP).toFixed(2)) * 5)/100 + ((Number(values.montant_beneficiaire).toFixed(2) * Number(res.rates.GBP).toFixed(2)) * 1)/100).toFixed(2),
-                      frais_envoie : Number(((Number(values.montant_beneficiaire).toFixed(2) * Number(res.rates.GBP).toFixed(2)) * 5)/100).toFixed(2),
-                      frais_tva : Number(((Number(values.montant_beneficiaire).toFixed(2) * Number(res.rates.GBP).toFixed(2)) * 1)/100).toFixed(2),
-                      type_service : values.type_service,
-                      numero_transfer : values.numero_transfer,
-                      date_operation : new Date().toLocaleString().slice(0,10),
-                      date_heure_operation :new Date().toLocaleString(),
-                      month_year_operation : new Date().toLocaleString().slice(3,10)
-                      }})
+                       nom_beneficiaire : values.nom_beneficiaire,
+                       prenom_beneficiaire : values.prenom_beneficiaire,
+                       pays_beneficiaire : values.pays_beneficiaire,
+                       montant_beneficiaire : values.montant_beneficiaire,
+                       montant_pour_payer : Number((Number(values.montant_beneficiaire) * Number(res.rates.GBP)) + ((Number(values.montant_beneficiaire) * Number(res.rates.GBP)) * 5)/100 + ((Number(values.montant_beneficiaire) * Number(res.rates.GBP)) * 1)/100 ).toFixed(2),
+                       frais_envoie : Number(((Number(values.montant_beneficiaire).toFixed(2) * Number(res.rates.GBP)) * 5)/100).toFixed(2),
+                       frais_tva : Number(((Number(values.montant_beneficiaire).toFixed(2) * Number(res.rates.GBP)) * 1)/100).toFixed(2),
+                       type_service : values.type_service,
+                       numero_transfer : values.numero_transfer,
+                       date_operation : new Date().toLocaleString().slice(0,10),
+                       date_heure_operation :new Date().toLocaleString(),
+                       month_year_operation : new Date().toLocaleString().slice(3,10),
+                       year_operation : new Date().toLocaleString().slice(6,10)
+                       }})
+ 
+                    }
+                    else{
+                      
+                     props.setTaux(res.rates.GBP) 
+                     props.setEnvoie({infoEnvoie :{
+                      agent_id : props.abonne.infoAbonne.agent_id,
+                      nom_expediteur : props.abonne.infoAbonne.nom_expediteur,
+                      prenom_expediteur : props.abonne.infoAbonne.prenom_expediteur,
+                      email_expediteur : props.abonne.infoAbonne.email_expediteur,
+                      numero_expediteur: props.abonne.infoAbonne.numero_expediteur,
+                      pays_expediteur : props.abonne.infoAbonne.pays_expediteur,
+                       nom_beneficiaire : values.nom_beneficiaire,
+                       prenom_beneficiaire : values.prenom_beneficiaire,
+                       pays_beneficiaire : values.pays_beneficiaire,
+                       montant_beneficiaire : values.montant_beneficiaire,
+                       montant_pour_payer : Number((Number(values.montant_beneficiaire) * Number(res.rates.GBP)) + (Number(5) * Number(res.rates.GBP)) + (Number(5) * Number(res.rates.GBP)) ).toFixed(),
+                       frais_envoie : (Number(5) * Number(res.rates.GBP)).toFixed(),
+                       frais_tva : (Number(1) * Number(res.rates.GBP)).toFixed(),
+                       type_service : values.type_service,
+                       numero_transfer : values.numero_transfer,
+                       date_operation : new Date().toLocaleString().slice(0,10),
+                       date_heure_operation :new Date().toLocaleString(),
+                       month_year_operation : new Date().toLocaleString().slice(3,10),
+                       year_operation : new Date().toLocaleString().slice(6,10)
+                       }})
+                    }
                   }
                 ).then(
                   submitFormulaire()
@@ -159,7 +189,7 @@ function FormEnvoiAbonne(props)
 {isDesktop && <Container className='justify-content-center text-center mb-5 text-light text-bold' style={{width:1000}} >
 <Row className='mt-3'>
         <Col xs={12} className="text-start text-light">
-            <p><Link to='/menu_operation_envoi_lingala' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Zonga</u>  </b></Link> </p>
+        {props.isStaff === true ? <p><Link to='/form_envoie_abonne_id' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p> : <p><Link to='/home_lingala' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Zonga</u>  </b></Link> </p>}
         </Col>
     </Row>
 <Row className='justify-content-center mb-3 pt-3' >

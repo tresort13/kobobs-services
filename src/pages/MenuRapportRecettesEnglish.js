@@ -1,3 +1,4 @@
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from "react-bootstrap/Button";
 import Container from 'react-bootstrap/Container';
@@ -12,6 +13,7 @@ import { useMediaQuery } from 'react-responsive';
 //import SessionOut from './SessionOut';
 import HeaderFrench from './HeaderFrench';
 import HeaderEnglish from './HeaderEnglish';
+import Modal from 'react-bootstrap/Modal';
 
 
 function MenuRapportRecettesEnglish(props)
@@ -22,7 +24,8 @@ function MenuRapportRecettesEnglish(props)
       });
       const isMobileOrTablet = useMediaQuery({
         query: "(max-width: 1224px)"
-      });    
+      });  
+      const [modalShow3, setModalShow3] = React.useState(false);  
     return (
 <>
 <HeaderEnglish dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
@@ -47,6 +50,16 @@ function MenuRapportRecettesEnglish(props)
         <Link to="/select_mois_rapport_recette_english" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant='btn--blue'  style={{width:400,height:80,border:"2px solid white"}} className='btn-lg btn--blue rounded-pill zoom py-4'>
         <b className='text-light'><pre>Monthly Incomes</pre></b>
+        </Button>
+        </Link>
+        </Col>
+    </Row>
+
+    <Row className='justify-content-center pb-3 '>
+        <Col xs = {"auto"}>
+        <Link to="" style={{color:'white',textDecorationLine:'none'}}>
+        <Button onClick={()=>setModalShow3(true)} variant='btn--blue'  style={{width:400,height:80,border:"2px solid white"}} className='btn-lg btn--blue rounded-pill zoom py-4'>
+        <b className='text-light'><pre>Yearly Incomes</pre></b>
         </Button>
         </Link>
         </Col>
@@ -84,9 +97,33 @@ function MenuRapportRecettesEnglish(props)
  
 
 </Container>}
+<MyVerticallyCenteredModal3 show={modalShow3} onHide={() => setModalShow3(false)} />
 <Footer />
 </>
     )
 }
+
+function MyVerticallyCenteredModal3(props) {
+    return (
+      <Modal
+        {...props}
+        size="sm"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+          <p className='text-danger'><b> Sorry option available after payment...</b></p>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        This option is going to be available after payment
+        </Modal.Body>
+        <Modal.Footer>
+        <Button variant='warning' onClick={props.onHide}>ok</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
 
 export default MenuRapportRecettesEnglish;

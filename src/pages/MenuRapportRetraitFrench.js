@@ -1,3 +1,4 @@
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from "react-bootstrap/Button";
 import Container from 'react-bootstrap/Container';
@@ -10,10 +11,12 @@ import Footer from './Footer';
 import './Header.css'
 import { useMediaQuery } from 'react-responsive';
 import HeaderFrench from './HeaderFrench';
+import Modal from 'react-bootstrap/Modal';
 
 
 function MenuRapportRetraitFrench(props)
 {
+    const [modalShow3, setModalShow3] = React.useState(false);
 
     const isDesktop = useMediaQuery({
         query: "(min-width: 1224px)"
@@ -34,7 +37,7 @@ function MenuRapportRetraitFrench(props)
         <Col xs = {"auto"}>
         <Link to="/select_date_form_retrait_french" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant='btn--blue'  style={{width:400,height:80,border:"2px solid white"}} className='btn-lg btn--blue rounded-pill zoom py-4'>
-        <b className='text-light'><pre>Rapport Journalier</pre></b>
+        <b className='text-light'><pre>Rapport Journalier des Rétraits </pre></b>
         </Button>
         </Link>
         </Col>
@@ -46,7 +49,18 @@ function MenuRapportRetraitFrench(props)
         <Col xs = {"auto"}>
         <Link to="/select_mois_form_retrait_french" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant='btn--blue'  style={{width:400,height:80,border:"2px solid white"}} className='btn-lg btn--blue rounded-pill zoom py-4'>
-        <b className='text-light'><pre>Rapport Mensuel</pre></b>
+        <b className='text-light'><pre>Rapport Mensuel des Rétraits</pre></b>
+        </Button>
+        </Link>
+        </Col>
+    </Row>
+
+
+    <Row className='justify-content-center pb-3'>
+        <Col xs = {"auto"}>
+        <Link to="" style={{color:'white',textDecorationLine:'none'}}>
+        <Button onClick={()=>setModalShow3(true)} variant='btn--blue'  style={{width:400,height:80,border:"2px solid white"}} className='btn-lg btn--blue rounded-pill zoom py-4'>
+        <b className='text-light'><pre>Rapport Annuel des Rétraits</pre></b>
         </Button>
         </Link>
         </Col>
@@ -81,9 +95,33 @@ function MenuRapportRetraitFrench(props)
   
 
 </Container> }
+<MyVerticallyCenteredModal3 show={modalShow3} onHide={() => setModalShow3(false)} />
 <Footer />
 </>
     )
 }
+
+function MyVerticallyCenteredModal3(props) {
+    return (
+      <Modal
+        {...props}
+        size="sm"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+          <p className='text-danger'><b> Désolé option disponible après paiement...</b></p>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        Cette option sera disponible après le paiement
+        </Modal.Body>
+        <Modal.Footer>
+        <Button variant='warning' onClick={props.onHide}>ok</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
 
 export default MenuRapportRetraitFrench;

@@ -95,7 +95,13 @@ function FormRetraitEnglish(props)
         
         <>
         <HeaderEnglish dataEnvoie2={props.dataEnvoie2} envoie3={props.envoie3} dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} isStaff={props.isStaff} language2={props.language2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} setLanguage2={props.setLanguage2} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
-{isDesktop && <Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:100,width:750}} >
+{isDesktop && <div className=' justify-content-center text-center mb-5 text-light text-bold rounded'>
+  <Row className='mt-3 px-5'>
+        <Col xs={12} className="text-start text-light">
+            <p><Link to='/' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>
+        </Col>
+    </Row>
+  <Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:100,width:750}} >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={6}>
         <p className='text-dark'><i><b>{message}</b></i></p>
@@ -150,6 +156,7 @@ function FormRetraitEnglish(props)
   }
 </Formik>
 </Container>
+</div>
 }
 
 {isMobileOrTablet && <Container className='bg-light justify-content-center text-center  mx-auto mt-5'>

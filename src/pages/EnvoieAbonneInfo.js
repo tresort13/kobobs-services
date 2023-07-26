@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
 import Button from "react-bootstrap/Button";
@@ -25,7 +25,7 @@ function EnvoieAonneInfo(props)
     const [message,setMessage] = useState("Tala lisusu bien makomi nayo avant yako tinda")
     const [couleur,setCouleur] = useState("text-dark")
     const [modalShow2, setModalShow2] = React.useState(false);
-    const [modalShow, setModalShow] = React.useState(false);
+    const [modalShow, setModalShow] = React.useState(true);
     const [modalShow4, setModalShow4] = React.useState(false);
 
     const navigate = useNavigate()
@@ -37,6 +37,15 @@ function EnvoieAonneInfo(props)
     const isMobileOrTablet = useMediaQuery({
       query: "(max-width: 1224px)"
     });
+
+    useEffect(()=>
+  {
+     const interval =  setInterval(()=> {
+       setModalShow(false)
+      }
+       ,5000);
+      return () => clearInterval(interval)
+  },[])
   
     
 console.log(props.envoie.infoEnvoie)
@@ -97,7 +106,8 @@ const submitEnvoie = (e)=>
                   numero_transfer :'',
                   date_operation : '',
                   date_heure_operation : '',
-                  month_year_operation:''
+                  month_year_operation:'',
+                  year_operation :''
                 }})
                 navigate('/confirmation_envoie_info')
               }
@@ -176,7 +186,7 @@ Tinda makomi
 </Col>
 
 <Col xs={6}>
-<Link to="/form_envoie_client">
+<Link to="/form_envoie_abonne">
  <Button variant="secondary" type="submit">
  Bongisa makomi
 </Button>

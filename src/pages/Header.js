@@ -212,7 +212,7 @@ function Header(props)
                 <NavDropdown.Divider />
                 <Nav.Link href="/home_lingala"><b><pre>Zonga na ebandeli</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link href="/menu_operation_envoi_lingala"><b><pre>Tinda Mbongo</pre></b></Nav.Link>
+                  {props.isStaff === true ? <Nav.Link href="/menu_operation_envoi_lingala"><b><pre>Tinda Mbongo</pre></b></Nav.Link>: <Nav.Link href="/form_envoie_abonne"><b><pre>Tinda Mbongo</pre></b></Nav.Link>}
                   <NavDropdown.Divider />
                   {props.isAdmin === true ? <Nav.Link href="/menu_management_lingala"><b><pre>Gestion yaba Operations</pre></b></Nav.Link> : <span></span>}
                   <NavDropdown.Divider />
@@ -220,7 +220,7 @@ function Header(props)
                   <NavDropdown.Divider />
                   <Nav.Link href="/my_profil_lingala"><b><pre>Tala Historique nayo</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link  href="/form_retrait_info"><b><pre>Landela transfer nayo </pre></b></Nav.Link>
+                  <Nav.Link  href="/form_retrait_info"><b><pre>Landela status ya transfer nayo </pre></b></Nav.Link>
                   <NavDropdown.Divider />
                   <Nav.Link ><b onClick={contactUs} ><pre>Contacter biso</pre></b></Nav.Link>
                 </Nav>
@@ -403,7 +403,7 @@ function Header(props)
                   <NavDropdown.Divider />
                   <Nav.Link href="/form_envoie_abonne"><b><pre>Tinda Mbongo</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link href="/my_profil_french"><b><pre>bolanda état ya transfert na yo</pre></b></Nav.Link>
+                  <Nav.Link href="/my_profil_french"><b><pre>bolanda status ya transfert na yo</pre></b></Nav.Link>
                   <NavDropdown.Divider />
                   <Nav.Link  href="#"><b><pre>abungisi nimero code nayo ?</pre></b></Nav.Link>
                   <NavDropdown.Divider />
@@ -532,10 +532,10 @@ function Header(props)
            </Nav>
            </Offcanvas.Body>
       </Offcanvas>
-      {/*<SessionOutLingala isLogged={props.isLogged}/>*/}
+    <SessionOutLingala isLogged={props.isLogged}/>
     <ChangePasswordBoxLingala modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} userID={props.userID} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber}/>
    <ContactBoxLingala language2={props.language2} setLanguage2={props.setLanguage2} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} language={props.language}/>
-   <LoginBoxLingala dataAbonne={props.dataAbonne} language2={props.language2} setLanguage2={props.setLanguage2} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} modalShow={props.modalShow} modalShow4={props.modalShow4} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
+   <LoginBoxLingala dataUser={props.dataUser} dataAbonne={props.dataAbonne} language2={props.language2} setLanguage2={props.setLanguage2} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} modalShow={props.modalShow} modalShow4={props.modalShow4} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
    </div>
 
     )

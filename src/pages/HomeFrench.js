@@ -81,6 +81,17 @@ const establishedUserStatus = ()=>
     props.setModalShow(true)
   }
  }
+
+ const establishedUserStatus5 = ()=>
+{
+  if(props.isLogged)
+  {
+    navigate('/form_retrait_info_french')  
+  }
+  else{
+    props.setModalShow(true)
+  }
+ }
  const tauxEchanger = (e)=>
       {
         e.preventDefault()
@@ -94,7 +105,13 @@ const establishedUserStatus = ()=>
                 .then(
                   res => {  
                     
-                    setResultMontant(Number((Number(montant.infoMontant.montantTopay).toFixed(2) * Number(res.rates.GBP).toFixed(2)) + ((Number(montant.infoMontant.montantTopay).toFixed(2) * Number(res.rates.GBP).toFixed(2)) * 5)/100 + ((Number(montant.infoMontant.montantTopay).toFixed(2) * Number(res.rates.GBP).toFixed(2)) * 1)/100).toFixed(2))
+                    if(montant.infoMontant.montantTopay >= 100)
+                    {
+                      setResultMontant(Number((Number(montant.infoMontant.montantTopay) * Number(res.rates.GBP).toFixed(2)) + ((Number(montant.infoMontant.montantTopay) * Number(res.rates.GBP)) * 5)/100 + ((Number(montant.infoMontant.montantTopay) * Number(res.rates.GBP)) * 1)/100).toFixed())
+                    }
+                    else{
+                      setResultMontant(Number((Number(montant.infoMontant.montantTopay) * Number(res.rates.GBP)) + ((Number(5) * Number(res.rates.GBP))) + ((Number(1) * Number(res.rates.GBP))) ).toFixed())
+                    }
                     setLoad(false) 
                   }
                 )
@@ -119,7 +136,7 @@ const establishedUserStatus = ()=>
       });       
     return (
 <>
-<HeaderFrench isStaff={props.isStaff} setDataValidation={props.setDataValidation} dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
+<HeaderFrench isStaff={props.isStaff} dataUser={props.dataUser} setDataValidation={props.setDataValidation} dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
 {isDesktop && <Container>  
   <Row className="text-center justify-content-center  mt-3 mb-3">
     <col md={2}>
@@ -238,11 +255,11 @@ const establishedUserStatus = ()=>
 </Col>
 
 <Col md={6} className="my-auto text-center ">  
-<Button onClick={establishedUserStatus2}  variant="outline-light" style={{width:300,height:300}}  className=" btn-lg rounded-pill zoom ">
+<Button onClick={establishedUserStatus5}  variant="outline-light" style={{width:300,height:300}}  className=" btn-lg rounded-pill zoom ">
 <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
 </svg><br></br>
-<b className=" display-6"><strong>Tracker un transfert</strong></b>
+<b className=" display-6"><strong>Tracker un transfert status</strong></b>
 </Button>
 </Col>
 
@@ -318,7 +335,7 @@ const establishedUserStatus = ()=>
   }
    <MyVerticallyCenteredModal2 show={props.modalShowRetrait} onHide={() => props.setModalShowRetrait(false)} />
      <MyVerticallyCenteredModal envoie3={props.envoie3} show={props.modalShowEnvoi} onHide={() => props.setModalShowEnvoi(false)} />
-     <LoginBoxFrench dataAbonne={props.dataAbonne} language2={props.language2} setLanguage2={props.setLanguage2} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} modalShow={props.modalShow} modalShow4={props.modalShow4} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
+     <LoginBoxFrench dataUser={props.dataUser} dataAbonne={props.dataAbonne} language2={props.language2} setLanguage2={props.setLanguage2} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} modalShow={props.modalShow} modalShow4={props.modalShow4} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
 <Footer />
 </>
     )

@@ -53,17 +53,19 @@ console.log(props.detailHistoric)
     return (
         <>
             <HeaderFrench dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
-            <div>
+            <div className=' justify-content-center text-center mb-5 text-light text-bold rounded'>
+            <Row className='mt-3 px-5'>
+             <Col xs={12} className="text-start text-light">
+            <p><Link to='/my_profil_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u>  </b></Link> </p>
+           </Col>
+             </Row>
 {isDesktop && <Container fluid className='bg-light justify-content-center text-center borders mb-5' style={{marginTop:20}} >
 
-
-
-    
 <div>
 <Row className='justify-content-center '>
         <Col xs = {12} className='text-center borders pt-2'>
         <div>
-        <h4 ><b><i className='couleur2'>{props.message} à la date du {props.dateHistoric}</i></b></h4>
+        <h4 ><b><i className='couleur2'>{props.messageFrench} à la date du {props.dateHistoric}</i></b></h4>
         </div>
         <div>
         <Table striped bordered hover variant="light">

@@ -33,7 +33,7 @@ function SelectMoisFormRecetteLingala(props)
     const { Formik } = formik;
 
   const testValidation = yup.object().shape({
-    moisInfo : yup.string().required('required field'),
+    moisInfo : yup.string().required('esengeli ko pona sanza'),
   });
  
 

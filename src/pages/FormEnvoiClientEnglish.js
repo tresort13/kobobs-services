@@ -113,28 +113,58 @@ function FormEnvoiClientEnglish(props)
               .then(
                 res => {  
           
-                  props.setTaux(res.rates.GBP) 
-                  props.setEnvoie({infoEnvoie :{
+                  if(values.montant_beneficiaire >= 100)
+                  {
+                    
+                   props.setTaux(res.rates.GBP) 
+                   props.setEnvoie({infoEnvoie :{
                     agent_id : props.abonne.infoAbonne.agent_id,
                     nom_expediteur : values.nom_expediteur,
                     prenom_expediteur : values.prenom_expediteur,
-                    adresse_expediteur : values.adresse_expediteur,
                     email_expediteur : values.email_expediteur,
                     numero_expediteur: values.numero_expediteur,
                     pays_expediteur : values.pays_expediteur,
-                    nom_beneficiaire : values.nom_beneficiaire,
-                    prenom_beneficiaire : values.prenom_beneficiaire,
-                    pays_beneficiaire : values.pays_beneficiaire,
-                    montant_beneficiaire : values.montant_beneficiaire,
-                    montant_pour_payer : Number((Number(values.montant_beneficiaire).toFixed(2) * Number(res.rates.GBP).toFixed(2)) + ((Number(values.montant_beneficiaire).toFixed(2) * Number(res.rates.GBP).toFixed(2)) * 5)/100 + ((Number(values.montant_beneficiaire).toFixed(2) * Number(res.rates.GBP).toFixed(2)) * 1)/100).toFixed(2),
-                    frais_envoie : Number(((Number(values.montant_beneficiaire).toFixed(2) * Number(res.rates.GBP).toFixed(2)) * 5)/100).toFixed(2),
-                    frais_tva : Number(((Number(values.montant_beneficiaire).toFixed(2) * Number(res.rates.GBP).toFixed(2)) * 1)/100).toFixed(2),
-                    type_service : values.type_service,
-                    numero_transfer : values.numero_transfer,
-                    date_operation : new Date().toLocaleString().slice(0,10),
-                    date_heure_operation :new Date().toLocaleString(),
-                    month_year_operation : new Date().toLocaleString().slice(3,10)
-                    }})
+                     nom_beneficiaire : values.nom_beneficiaire,
+                     prenom_beneficiaire : values.prenom_beneficiaire,
+                     pays_beneficiaire : values.pays_beneficiaire,
+                     montant_beneficiaire : values.montant_beneficiaire,
+                     montant_pour_payer : Number((Number(values.montant_beneficiaire) * Number(res.rates.GBP)) + ((Number(values.montant_beneficiaire) * Number(res.rates.GBP)) * 5)/100 + ((Number(values.montant_beneficiaire) * Number(res.rates.GBP)) * 1)/100 ).toFixed(2),
+                     frais_envoie : Number(((Number(values.montant_beneficiaire).toFixed(2) * Number(res.rates.GBP)) * 5)/100).toFixed(2),
+                     frais_tva : Number(((Number(values.montant_beneficiaire).toFixed(2) * Number(res.rates.GBP)) * 1)/100).toFixed(2),
+                     type_service : values.type_service,
+                     numero_transfer : values.numero_transfer,
+                     date_operation : new Date().toLocaleString().slice(0,10),
+                     date_heure_operation :new Date().toLocaleString(),
+                     month_year_operation : new Date().toLocaleString().slice(3,10),
+                     year_operation : new Date().toLocaleString().slice(6,10)
+                     }})
+
+                  }
+                  else{
+                    
+                   props.setTaux(res.rates.GBP) 
+                   props.setEnvoie({infoEnvoie :{
+                    agent_id : props.abonne.infoAbonne.agent_id,
+                    nom_expediteur : values.nom_expediteur,
+                    prenom_expediteur : values.prenom_expediteur,
+                    email_expediteur : values.email_expediteur,
+                    numero_expediteur: values.numero_expediteur,
+                    pays_expediteur : values.pays_expediteur,
+                     nom_beneficiaire : values.nom_beneficiaire,
+                     prenom_beneficiaire : values.prenom_beneficiaire,
+                     pays_beneficiaire : values.pays_beneficiaire,
+                     montant_beneficiaire : values.montant_beneficiaire,
+                     montant_pour_payer : Number((Number(values.montant_beneficiaire) * Number(res.rates.GBP)) + (Number(5) * Number(res.rates.GBP)) + (Number(5) * Number(res.rates.GBP)) ).toFixed(),
+                     frais_envoie : (Number(5) * Number(res.rates.GBP)).toFixed(),
+                     frais_tva : (Number(1) * Number(res.rates.GBP)).toFixed(),
+                     type_service : values.type_service,
+                     numero_transfer : values.numero_transfer,
+                     date_operation : new Date().toLocaleString().slice(0,10),
+                     date_heure_operation :new Date().toLocaleString(),
+                     month_year_operation : new Date().toLocaleString().slice(3,10),
+                     year_operation : new Date().toLocaleString().slice(6,10)
+                     }})
+                  }
                 }
               ).then(
                 submitFormulaire()

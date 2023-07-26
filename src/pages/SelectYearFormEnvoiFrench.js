@@ -15,12 +15,14 @@ import ClipLoader from "react-spinners/ClipLoader";
 import  './Header.css';
 import * as formik from 'formik';
 import * as yup from 'yup';
+import HeaderFrench from './HeaderFrench';
+
 
 //import SessionOut from './SessionOut';
 
 const useState = React.useState
 
-function SelectDateFormRecetteLingala(props)
+function SelectYearFormEnvoiFrench(props)
 {
     const[dateEnvoie,setDateEnvoie] = useState({infodateEnvoie :{
         dateInfo:""
@@ -29,11 +31,12 @@ function SelectDateFormRecetteLingala(props)
     const navigate = useNavigate()
     const [modalShow, setModalShow] = React.useState(false);
     const [modalShow2, setModalShow2] = React.useState(false);
+    const [modalShow3, setModalShow3] = React.useState(false);
 
     const { Formik } = formik;
 
   const testValidation = yup.object().shape({
-    dateInfo : yup.string().required('esengeli ko pona dati'),
+    dateInfo : yup.string().required('champs requis'),
   });
  
 
@@ -44,7 +47,7 @@ function SelectDateFormRecetteLingala(props)
         query: "(max-width: 1224px)"
       });    
 
-    const [message,setMessage] = useState("Pona date pona rapport yaba récettes ya mokolo ")
+    const [message,setMessage] = useState("Entrer l'année pour le rapport d'envoi annuel")
     const [couleur,setCouleur] = useState("text-dark")
 
     const submitVol =(values)=>
@@ -54,11 +57,11 @@ function SelectDateFormRecetteLingala(props)
      const year = values_replace.slice(0,4)
      const mois = values_replace.slice(4,8)
      const day = values_replace.slice(8,10)
-     const date = { "dateInfo": day.concat("",mois,year)}
+     const date = { "yearInfo": year}
     
       console.log(date)
       setModalShow2(true)
-        fetch('https://kobobsapi.herokuapp.com/api/getDailyRapportRecetteInfo/', {
+        fetch('https://kobobsapi.herokuapp.com/api/getYearlyRapportInfo/', {
             method:'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(date)
@@ -68,8 +71,8 @@ function SelectDateFormRecetteLingala(props)
             res => {   
                console.log(res)
                props.setDailyRapport(res)
-               props.setDate(date.dateInfo)
-               navigate('/daily_rapport_recette_lingala')
+               props.setDate(date.yearInfo)
+               navigate('/yearly_rapport_envoi_french')
             }
           )
           .catch( (error) =>
@@ -91,22 +94,25 @@ function SelectDateFormRecetteLingala(props)
 
 return (
     <>
-    <Header dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
+    <HeaderFrench dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
 
 {isDesktop && <Container className='justify-content-center text-center mb-5 text-light text-bold'  >
 <Row className='mt-3'>
         <Col xs={12} className="text-start text-light">
-            <p><Link to='/menu_rapport_recette_lingala' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Zonga</u>  </b></Link> </p>
+            <p><Link to='/menu_rapport_envoi_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u>  </b></Link> </p>
         </Col>
     </Row>
 
 <Row className=' justify-content-center mb-3 pt-3' >
         <Col xs={12} className="rounded" style={{marginTop:100,width:750,border:"3px solid white"}}>
-        <p className="couleur2 "><i><b>{message}</b></i></p>
+        <p className="couleur2"><i><b>{message}</b></i></p>
+    
+    
     <Formik
       validationSchema={testValidation}
       onSubmit={(values)=>{
-        submitVol(values)
+      //  submitVol(values)
+      setModalShow3(true)
       }}
       initialValues={{
         dateInfo:''
@@ -120,7 +126,7 @@ return (
     <Row className='justify-content-center'>
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Control name="dateInfo" value={values.dateInfo}  type="date" onBlur={handleBlur} onChange={handleChange} required />
+        <Form.Control name="dateInfo" value={values.dateInfo}  type="year" onBlur={handleBlur} onChange={handleChange} placeholder="Entrer l'année (yyyy)" required />
          </Form.Group>
          <p className='text-danger'>{touched.dateInfo && errors.dateInfo}</p>
         </Col>
@@ -130,7 +136,7 @@ return (
     <Row className='justify-content-center pb-3'>
         <Col xs ={4}>  
         <Button variant="warning" type="submit" >
-        ko validé
+        Valider 
         </Button>
         </Col>
     </Row>
@@ -173,35 +179,36 @@ return (
 </Container>}
 <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
 <MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
+<MyVerticallyCenteredModal3 show={modalShow3} onHide={() => setModalShow3(false)} />
 <Footer />
 </>
     )
 }
 
 function MyVerticallyCenteredModal(props) {
-  return (
-    <Modal
-      {...props}
-      size="sm"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Validation esimbi te
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        
-        <p className='text-danger'><b>Mawa rapport eza te na date oyo oponi !!!</b>   
-        </p>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant='warning' onClick={props.onHide}>kokanga</Button>
-      </Modal.Footer>
-    </Modal>
-  );
-}
+    return (
+      <Modal
+        {...props}
+        size="sm"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Echec de Validation
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          
+          <p className='text-danger'><b>Désolé pas de rapport d'envoi sur la date sélectionnée !!!</b>   
+          </p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant='warning' onClick={props.onHide}>Fermer</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
 
   function MyVerticallyCenteredModal2(props) {
     return (
@@ -213,7 +220,7 @@ function MyVerticallyCenteredModal(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            zela mukie...
+            Veuillez Patienter...
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -225,5 +232,28 @@ function MyVerticallyCenteredModal(props) {
     );
   }
 
+  function MyVerticallyCenteredModal3(props) {
+    return (
+      <Modal
+        {...props}
+        size="sm"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+          <p className='text-danger'><b> Désolé option disponible après paiement...</b></p>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        Cette option sera disponible après le paiement
+        </Modal.Body>
+        <Modal.Footer>
+        <Button variant='warning' onClick={props.onHide}>ok</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
 
-export default SelectDateFormRecetteLingala;
+
+export default SelectYearFormEnvoiFrench;

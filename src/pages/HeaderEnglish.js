@@ -214,7 +214,7 @@ function HeaderEnglish(props)
                 <NavDropdown.Divider />
                   <Nav.Link href="/" ><b><pre>Home</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link href="/menu_operation_envoi_english"><b><pre>Send Money</pre></b></Nav.Link>
+                  {props.isStaff === true ? <Nav.Link href="/menu_operation_envoi_english"><b><pre>Send Money</pre></b></Nav.Link>: <Nav.Link href="/form_envoie_abonne_english"><b><pre>Send Money</pre></b></Nav.Link>}
                   <NavDropdown.Divider />
                   {props.isAdmin === true ? <Nav.Link href="/menu_management_english"><b><pre>Operations Management</pre></b></Nav.Link> : <span></span>}
                   <NavDropdown.Divider />
@@ -222,7 +222,7 @@ function HeaderEnglish(props)
                   <NavDropdown.Divider />
                   <Nav.Link href="/my_profil_english"><b><pre>check your historic</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link  href="/form_retrait_info_english"><b><pre>track  transfer</pre></b></Nav.Link>
+                  <Nav.Link  href="/form_retrait_info_english"><b><pre>track  transfer status</pre></b></Nav.Link>
                   <NavDropdown.Divider />
                   <Nav.Link ><b onClick={contactUs} ><pre>Contact us</pre></b></Nav.Link>
                 </Nav>
@@ -533,11 +533,11 @@ function HeaderEnglish(props)
            </Nav>
            </Offcanvas.Body>
       </Offcanvas>
-      {/*<SessionOutEnglish isLogged={props.isLogged}/>*/}
+      <SessionOutEnglish isLogged={props.isLogged}/>
     <MyVerticallyCenteredModal4 show={modalShowNoValidDialog} onHide={() => setModalShowNoValidDialog(false)} />
     <ChangePasswordBoxEnglish modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} userID={props.userID} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber}/>
    <ContactBoxEnglish language2={props.language2} setLanguage2={props.setLanguage2} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} language={props.language}/>
-   <LoginBoxEnglish dataAbonne={props.dataAbonne} language2={props.language2} setLanguage2={props.setLanguage2} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} modalShow={props.modalShow} modalShow4={props.modalShow4} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
+   <LoginBoxEnglish dataUser={props.dataUser} dataAbonne={props.dataAbonne} language2={props.language2} setLanguage2={props.setLanguage2} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} modalShow={props.modalShow} modalShow4={props.modalShow4} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
    </div>
 
     )

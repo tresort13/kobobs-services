@@ -52,7 +52,8 @@ function DetailsRetraitsInfoEnglish(props)
       frais_tva : props.detailEnvoieTotal[0].frais_tva,
       date_operation : props.detailEnvoieTotal[0].date_operation,
       date_heure_operation :props.detailEnvoieTotal[0].date_heure_operation,
-      month_year_operation : props.detailEnvoieTotal[0].month_year_operation
+      month_year_operation : props.detailEnvoieTotal[0].month_year_operation,
+      year_operation : props.detailEnvoieTotal[0].year_operation
       }})
 
     const recoverOperation = ()=>
@@ -219,7 +220,7 @@ console.log(props.detailEnvoieTotal)
     </Col>
 
     <Col xs={12}>
-     {props.tableType==="historic" ? props.message === "Deletion historic" ? <div><p className='text-dark'>operation deleted by : <b className='text-dark'>{value.deletion_executed_by_owner}</b> </p>
+     {props.tableType==="historic" ? props.messageEnglish === "Deletion historic" ? <div><p className='text-dark'>operation deleted by : <b className='text-dark'>{value.deletion_executed_by_owner}</b> </p>
      <p className='text-dark'>Date and time  of deletion: <b className='text-dark'> {value.date_heure_operation_deletion}</b></p><br></br>
       <Button onClick={recoverOperation}  className='mx-5' variant='success'>Recover operation</Button>
       <Button  onClick={()=>setModalShow6(true)}className='mx-5' variant='danger'>delete permanently </Button></div>  :

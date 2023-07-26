@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
 import Button from "react-bootstrap/Button";
@@ -24,7 +24,7 @@ function EnvoieInfoEnglish(props)
     const [message,setMessage] = useState("Please make sure everything is correct")
     const [couleur,setCouleur] = useState("text-dark")
     const [modalShow2, setModalShow2] = React.useState(false);
-    const [modalShow, setModalShow] = React.useState(false);
+    const [modalShow, setModalShow] = React.useState(true);
     const [modalShow4, setModalShow4] = React.useState(false);
 
     const navigate = useNavigate()
@@ -36,6 +36,15 @@ function EnvoieInfoEnglish(props)
     const isMobileOrTablet = useMediaQuery({
       query: "(max-width: 1224px)"
     });
+
+    useEffect(()=>
+    {
+       const interval =  setInterval(()=> {
+         setModalShow(false)
+        }
+         ,5000);
+        return () => clearInterval(interval)
+    },[])
   
     const closePage = ()=>
     {
@@ -58,7 +67,8 @@ function EnvoieInfoEnglish(props)
         numero_transfer :'',
         date_operation : '',
         date_heure_operation : '',
-        month_year_operation :''
+        month_year_operation :'',
+        year_operation :''
         }})
     
     navigate('/menu_operation_envoi_english')
@@ -135,7 +145,8 @@ console.log(props.envoie.infoEnvoie)
                         numero_transfer :'',
                         date_operation : '',
                         date_heure_operation : '',
-                        month_year_operation:''
+                        month_year_operation:'',
+                        year_operation :''
                       }})
                       navigate('/confirmation_envoie_info_english')
                     }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
 import Button from "react-bootstrap/Button";
@@ -32,7 +32,7 @@ function EnvoieInfoFrench(props)
       });
 
       const navigate = useNavigate()
-    const [modalShow, setModalShow] = React.useState(false);
+    const [modalShow, setModalShow] = React.useState(true);
     const [modalShow2, setModalShow2] = React.useState(false);
     const [modalShow3, setModalShow3] = React.useState(false);
     const [modalShow4, setModalShow4] = React.useState(false);
@@ -58,11 +58,21 @@ function EnvoieInfoFrench(props)
         numero_transfer :'',
         date_operation : '',
         date_heure_operation : '',
-        month_year_operation :''
+        month_year_operation :'',
+        year_operation :''
         }})
     
     navigate('/menu_operation_envoi_french')
     }
+
+    useEffect(()=>
+    {
+       const interval =  setInterval(()=> {
+         setModalShow(false)
+        }
+         ,5000);
+        return () => clearInterval(interval)
+    },[])
     
 console.log(props.envoie.infoEnvoie)
 
@@ -135,7 +145,8 @@ const submitEnvoie = (e)=>
                         numero_transfer :'',
                         date_operation : '',
                         date_heure_operation : '',
-                        month_year_operation:''
+                        month_year_operation:'',
+                        year_operation :''
                       }})
                       navigate('/confirmation_envoie_info_french')
                     }

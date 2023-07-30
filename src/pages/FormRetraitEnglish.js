@@ -159,7 +159,13 @@ function FormRetraitEnglish(props)
 </div>
 }
 
-{isMobileOrTablet && <Container className='bg-light justify-content-center text-center  mx-auto mt-5'>
+{isMobileOrTablet &&  <div className=' justify-content-center text-center mb-5 text-light text-bold rounded'>
+  <Row className='mt-3 px-5'>
+        <Col xs={12} className="text-start text-light">
+            <p><Link to='/' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>
+        </Col>
+    </Row>
+  <Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:100,width:750}} >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={12}>
         <p className='text-dark'><i><b>{message}</b></i></p>
@@ -168,15 +174,27 @@ function FormRetraitEnglish(props)
 
    
     
-<Form onSubmit={submitcodeRetrait}>
+    <Formik
+      validationSchema={testValidation}
+      onSubmit={(values)=>{
+        submitcodeRetrait(values)
+      }}
+      initialValues={{
+        codeRetrait : ''
+      }}
+    >
+     {({handleSubmit, handleChange,handleBlur, values, touched, errors
+         })=>(
+          <Form noValidate onSubmit={handleSubmit}>
    
 
     <Row className='justify-content-center'>
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'>Tracking Number</Form.Label>
-        <Form.Control name="code_retrait" value={codeRetrait.infoCodeRetrait.code_retrait} onChange={e=>inputChanged(e)} type="text" placeholder='Please enter your tracking number' autoFocus   required/>
+        <Form.Control name="codeRetrait" value={values.codeRetrait} onChange={handleChange} onBlur={handleBlur} type="text" placeholder='Please enter your tracking number' autoFocus/>
          </Form.Group>
+         <p className='text-danger'>{touched.codeRetrait && errors.codeRetrait}</p>
         </Col>
     </Row>
 
@@ -191,15 +209,20 @@ function FormRetraitEnglish(props)
   
     <Row className='pb-3'>
        <Col>
-       <Link to="/form_find_code_retrait_english" style={{textDecoration:"none"}}>
-       <p ><b className='couleur2'>I forgot my Tracking Number ?</b></p>
-       </Link>
+       
+       <p ><b className='couleur2'>in case you forgot your tracking number, <Link to="/my_profil_english" >check your historic</Link></b></p>
+
         </Col>
     </Row>
 
-
 </Form>
-</Container>}
+         )
+  }
+</Formik>
+</Container>
+</div>
+}
+
 <Row className="mt-5">
           <Col md={12}>
             <p></p>

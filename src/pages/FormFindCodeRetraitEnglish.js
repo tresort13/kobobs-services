@@ -140,17 +140,18 @@ function FormFindCodeRetraitEnglish(props)
 </Container>
 }
 
-{isMobileOrTablet && <Container className='bg-light justify-content-center text-center mx-auto mt-5'  >
+{isMobileOrTablet && <Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:100,width:1000}} >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={12}>
         <p className='text-dark'><i><b>{message}</b></i></p>
         </Col>
     </Row>
+
     <hr style={{color:"darkorange"}}></hr>
     
 <Form onSubmit={submitNumero}>
-<Row className='justify-content-center'>
-       <Col xs = {12}>
+    <Row className='justify-content-center'>
+        <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label className='text-dark'>Subscriber ID</Form.Label>
         <Form.Control name="codeAbonne" value={retrait.infoRetrait.codeAbonne} onChange={e=>inputChanged(e)} type="text" placeholder="Subscriber ID" autoFocus   required/>
@@ -171,11 +172,12 @@ function FormFindCodeRetraitEnglish(props)
          </Form.Group>
         </Col>
     </Row>
+
     <hr style={{color:"darkorange"}}></hr>
    <Row className='pb-3'>
        <Col>
         <Button variant="warning" type="submit">
-        Validate 
+        Validate
         </Button>
         </Col>
     </Row>
@@ -183,7 +185,8 @@ function FormFindCodeRetraitEnglish(props)
 
 
 </Form>
-</Container> }
+</Container>
+}
 <Row className="mt-5">
           <Col md={12}>
             <p></p>

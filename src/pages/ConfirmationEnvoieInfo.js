@@ -116,31 +116,42 @@ function ConfirmationEnvoieInfo(props)
 </Container>
 }
 
-{isMobileOrTablet && <Container className='bg-light justify-content-center text-center  mx-auto my-auto'>
-<Row className='justify-content-center mb-3 pt-3' >
-        <Col xs={12}>
-        <p className='display-6 couleur2'><i><b>{message}</b></i></p>
+{isMobileOrTablet && <Container className=' justify-content-center text-center mb-5 text-light text-bold rounded'  >
+<Row className='mt-3'>
+        <Col xs={12} className="text-start text-light">
+            <p> <Link to='/menu_operation_envoi_lingala' style={{textDecoration:"none",fontSize:20}}><b className='text-light mx-5'><span><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+</svg></span> <u>Sala envoi mususu</u>  </b></Link></p>
         </Col>
     </Row>
-
-
-    <Row className='justify-content-center pb-3'>
-      <hr style={{color:"darkorange"}}></hr>
-      <p className='couleur2'><b><u></u></b> </p>
+  <Row className='justify-content-center mt-3'>
+<Col xs={12} style={{border:"2px solid white"}}>
+<Row className='justify-content-center  pt-3' >
+        <Col xs={12}>
+        <p className='couleur2'><i><b>{message} !</b></i></p>
+        <hr style={{color:"darkorange"}}></hr>
+        </Col>
     </Row>
-    <Row className='justify-content-start pb-3' >
-    <Col xs={12}>
-        <p className='text-dark'>Tracking Number : <b className='text-danger'> {props.envoie3.infoEnvoie.code_retrait} </b><b className='text-dark'>(this code will be valid only after the full payement of your transfer fees)</b></p>
+    
 
-        <p className='text-dark'>Sender full name: <b className='text-dark'>{props.envoie3.infoEnvoie.prenom_expediteur} {props.envoie3.infoEnvoie.nom_expediteur} </b> </p>
-        <p className='text-dark'>amount to get by the receiver: <b className='text-dark'>{Number(props.envoie3.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
-        <p className='text-dark'>amount to pay for the transfer (including all fees): <b className='text-danger'>{Number(props.envoie3.infoEnvoie.montant_total).toFixed(2)} £</b> </p>
-        <p className='text-dark'>sender country  : <b className='text-dark'> {props.envoie3.infoEnvoie.pays_expediteur}</b></p>
-        <p className='text-dark'>Receiver full name: <b className='text-dark'>{props.envoie3.infoEnvoie.prenom_beneficiaire} {props.envoie3.infoEnvoie.nom_beneficiaire}</b> </p> 
-        <p className='text-dark'>receiver country : <b className='text-dark'> {props.envoie3.infoEnvoie.pays_beneficiaire}</b></p>
-        <p className='text-dark'>Type of service : <b className='text-dark'>{props.envoie3.infoEnvoie.type_service}</b> </p>
-        <p className='text-dark'>Mobile Money Number : <b className='text-dark'>{props.envoie3.infoEnvoie.numero_transfer}</b> </p>
-        <p className='text-dark'>date : <b className='text-dark'> {JSON.stringify(props.envoie3.infoEnvoie.data_operation)}</b></p>
+    
+    <Row className='justify-content-start pb-3' >
+        <Col xs={12} className='text-start'>
+        <p className='text-light'>Code ya rétrait : <b className='text-success  p-2' style={{border:"2px solid white"}}> {props.envoie3.infoEnvoie.code_retrait} </b></p>
+        {props.envoie3.infoEnvoie.status_retrait == "code retrait en attente de validation" ? <p className='text-light'>Status ya code ya rétrait : <b className="couleur2">code ezali kozela validation...</b> </p> :
+     <p className='text-light'><b>Status ya code ya rétrait :</b> <b className="text-success">code nayo ekomi valide</b> </p> }
+        <p className='text-light'>Kombo ya motindi: <b className='text-light'>{props.envoie3.infoEnvoie.prenom_expediteur} {props.envoie3.infoEnvoie.nom_expediteur}  </b> </p>
+        <p className='text-light'>Mbongo Yako Zwa: <b className='text-light'>{Number(props.envoie3.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
+        <p className='text-light'>Mbongo Yako Futa: <b className='bg-warning  p-2' style={{border:"2px solid white"}}>{Number(props.envoie3.infoEnvoie.montant_total).toFixed(2)} £</b> </p>
+        <p className='text-light'>Ekolo Ya Motindi  : <b className='text-light'> {props.envoie3.infoEnvoie.pays_expediteur}</b></p>
+        </Col>
+
+        <Col xs={12} className='text-start'>
+        <p className='text-light'>Kombo ya mozui: <b className='text-light'>{props.envoie3.infoEnvoie.prenom_beneficiaire} {props.envoie3.infoEnvoie.nom_beneficiaire}</b> </p> 
+        <p className='text-light'>Ekolo ya mozui : <b className='text-light'> {props.envoie3.infoEnvoie.pays_beneficiaire}</b></p>
+        <p className='text-light'>Nzela Yako Zwa Mbongo : <b className='text-light'>{props.envoie3.infoEnvoie.type_service}</b> </p>
+        {props.envoie3.infoEnvoie.numero_transfer==='N/A' ? <p></p> : <p className='text-light'>Numéro Ya Mobile money: <b className='text-dark'>{props.envoie3.infoEnvoie.numero_transfer}</b> </p>}
+        <p className='text-light'>date na heure: <b className='text-light'> {props.envoie3.infoEnvoie.date_heure_operation}</b></p>
         </Col>
     </Row>
 
@@ -148,16 +159,19 @@ function ConfirmationEnvoieInfo(props)
     <Row className='justify-content-center pb-3'>
       <hr style={{color:"darkorange"}}></hr>
     </Row>
-    <Row className='justify-content-center pb-3' >
-        <Col xs={6}>
-        <Link to="/" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant="warning" type="submit">
-        close
+    <Row className='justify-content-center text-center pb-3' >
+        <Col xs={12}>
+        <Button onClick={()=>closePage()} variant="danger" type="submit">
+        kokanga
         </Button>
-        </Link>
+        
         </Col>
-    </Row>  
-</Container>}
+    </Row> 
+    </Col>
+
+</Row> 
+</Container>
+}
 <Row className="mt-5">
           <Col md={12}>
             <p></p>

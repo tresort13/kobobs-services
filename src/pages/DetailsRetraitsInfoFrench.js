@@ -256,9 +256,15 @@ console.log(props.detailEnvoieTotal)
 } 
 
 
-{isMobileOrTablet && props.detailEnvoieTotal.map((value)=>
+{isMobileOrTablet && props.detailEnvoieTotal.length > 0 ? props.detailEnvoieTotal.map((value)=>
     {
-    return<Container className='bg-light justify-content-center text-center mx-auto my-auto'>
+    return <div className='justify-content-center text-center mb-5 text-light text-bold rounded'>
+    <Row className='mt-3 px-5'>
+            <Col xs={12} className="text-start text-light">
+                {props.tableType === "dailyRapport" ? <p><Link to='/table_daily_rapport_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p> : props.tableType === "monthlyRapport" ? <p><Link to='/table_monthly_rapport_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p> : props.tableType === "dailyRapportRecette" ? <p><Link to='/daily_rapport_recette_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p> : props.tableType === "monthlyRapportRecette" ? <p><Link to='/monthly_rapport_recette_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p> : <p><Link to='/details_historic_info_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p>}
+            </Col>
+        </Row>
+        <Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:50,width:1000}} >
     <Row className='justify-content-center mb-3 pt-3' >
             <Col xs={12}>
             <p className='couleur2'><i><b>{message}</b></i></p>
@@ -267,40 +273,94 @@ console.log(props.detailEnvoieTotal)
     
         <Row className='justify-content-center pb-3'>
           <hr style={{color:"darkorange"}}></hr>
-          
+         
         </Row>
-        <Row className='justify-content-start pb-3' >
-        <Col xs={12}>
+    <Row className='justify-content-start text-start pb-3 mb-3' >
+    <Col xs={12} className='justify-content-start'>
         <p className='text-dark'>Noms Expediteur: <b className='text-dark'>{value.nom_expediteur} {value.postnom_expediteur} {value.prenom_expediteur}</b> </p>
         <p className='text-dark'>Noms Beneficiare: <b className='text-dark '>{value.nom_beneficiaire} {value.postnom_beneficiaire} {value.prenom_beneficiaire}</b> </p>
         <p className='text-dark'>Pays Expediteur: <b className='text-dark '> {value.pays_expediteur}</b></p>
         <p className='text-dark'>Numéro Expediteur: <b className='text-dark'> {value.numero_expediteur}</b></p>
         <p className='text-dark'>Email Expediteur: <b className='text-dark '> {value.email_expediteur}</b></p>
         <p className='text-dark'>Pays Beneficiare: <b className='text-dark '> {value.pays_beneficiaire}</b></p>
-        <p className='text-dark'>Montant à Recuperer: <b className='text-dark'>{Number(value.montant_beneficiaire).toFixed(2)} $</b> </p>    
+        <p className='text-dark'>Montant à Recuperer: <b className='text-dark'>{Number(value.montant_beneficiaire).toFixed(2)} $</b> </p>
+        
+    </Col>
+
+    <Col xs={12}>
+       
         <p className='text-dark'>Montant à payer: <b className='text-dark'>{Number(value.montant_total).toFixed(2)} £</b> </p>
         <p className='text-dark'>Type de retrait: <b className='text-dark'>{value.type_service}</b> </p>
         <p className='text-dark'>Mobile Money: <b className='text-dark'>{value.numero_transfer}</b> </p>
         <p className='text-dark'>Code Retrait : <b className='text-dark'>{value.code_retrait}</b> </p>
         <p className='text-dark'>Status Retrait : <b className='text-dark'>{value.status_retrait}</b> </p>
-        <p className='text-dark'>date et heure : <b className='text-dark'> {value.date_heure_operation}</b></p> 
-    </Col>
-        </Row>
-    
-        <Row className='justify-content-center pb-3'>
-        <Col xs={6}>
-            <Link to="/home" style={{color:'white',textDecorationLine:'none'}}>
-            <Button name='validate' value={value.code_retrait} className='pt-3' variant="warning" type="submit">
-            Fermer
-            </Button>
-            </Link>
-            </Col>
-        </Row>
-    
         
+    </Col>
+    </Row>
+    <Row className='justify-content-center pb-3'>
+      <hr style={{color:"darkorange"}}></hr>
+     
+    </Row>
+
+    <Row className='justify-content-center pb-3 mb-3 text-start' >
+    <Col xs={12}>
+     {value.status_retrait === "Code Retrait Payé" ? <div><p className='text-dark'>Rétrait fait par : <b className='text-dark'>{value.retrait_executed_by_agent}</b> </p>
+     <p className='text-dark'>Date et heure Retrait: <b className='text-dark'> {value.date_heure_operation_retrait}</b></p></div>  :
+    <p></p>}        
+    </Col>
+
+    <Col xs={12}> 
+        <p className='text-dark'>Envoi fait par : <b className='text-dark'>{value.envoi_executed_by_agent}</b> </p>
+        <p className='text-dark'>Date et heure Envoi: <b className='text-dark'> {value.date_heure_operation}</b></p> 
+    </Col>
+    </Row>
+
+    <Row className='justify-content-center pb-3'>
+      <hr style={{color:"darkorange"}}></hr>
+     
+    </Row>
+
+    <Row className='justify-content-center pb-3 mb-3' >
+    <Col xs={12}>
+     {value.status_retrait !== "code retrait en attente de validation" ? <div><p className='text-dark'>Code Retrait validé par : <b className='text-dark'>{value.validation_executed_by_owner}</b> </p>
+     <p className='text-dark'>Date et heure de validation: <b className='text-dark'> {value.date_heure_operation_validation}</b></p></div>  :
+    <p></p>}        
+    </Col>
+
+    <Col xs={12}>
+     {props.tableType==="historic" ? props.messageFrench === "Historique de suppression" ? <div><p className='text-dark'>operation fait par : <b className='text-dark'>{value.deletion_executed_by_owner}</b> </p>
+     <p className='text-dark'>Date et heure  de suppression: <b className='text-dark'> {value.date_heure_operation_deletion}</b></p><br></br>
+      <Button onClick={recoverOperation}  className='mx-5' variant='success'>Récupérer l'operation</Button>
+      <Button  onClick={()=>setModalShow6(true)}className='mx-5' variant='danger'>supprimer définitivement</Button></div>  :
+    <p></p>:<p></p>}        
+    </Col>
+
+    </Row>
+
+
+    <Row className='justify-content-center pb-3'>
+      <hr style={{color:"darkorange"}}></hr>
+     
+    </Row>
+
+    <Row className='justify-content-center pb-3'>
+    <Col xs={12}>
+    {props.tableType === "dailyRapport" ? <p><Link to='/table_daily_rapport_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.tableType === "monthlyRapport" ? <p><Link to='/table_monthly_rapport_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.tableType === "dailyRapportRecette" ? <p><Link to='/daily_rapport_recette_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.tableType === "monthlyRapportRecette" ? <p><Link to='/monthly_rapport_recette_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : <p><Link to='/details_historic_info_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p>}
+     </Col>
+    </Row>
+   
+
     
-    </Container> })
+
+</Container>
+</div> })
+:
+<MyVerticallyCenteredModal show={modalShow} onHide={() => {
+  setModalShow(false)
+  closePage()
+}} />
 } 
+
 
 <Row className="mt-5">
           <Col md={12}>

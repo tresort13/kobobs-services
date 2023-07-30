@@ -52,7 +52,7 @@ function ConfirmationRetraitInfo(props)
       <hr style={{color:"darkorange"}}></hr>
     </Row>
     <Row className='justify-content-start pb-3' >
-        <Col xs={6} className='justify-content-start text-start'>
+        <Col xs={12} className='justify-content-start text-start'>
         <p className='text-dark'>Code Retrait : <b className='text-danger'> {props.envoie2.infoEnvoie.code_retrait}</b></p>
         <p className='text-dark'>Mbongo Yako Zwa: <b className='text-danger'>{Number(props.envoie2.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
         <p className='text-dark'>Kombo Ya Mozui: <b className='text-dark'>{props.envoie2.infoEnvoie.nom_beneficiaire}  {props.envoie2.infoEnvoie.prenom_beneficiaire}</b> </p>
@@ -61,7 +61,7 @@ function ConfirmationRetraitInfo(props)
        
         </Col>
 
-        <Col xs={6} className='justify-content-start text-start'>
+        <Col xs={12} className='justify-content-start text-start'>
         <p className='text-dark'>Kombo Ya Motindi: <b className='text-dark'>{props.envoie2.infoEnvoie.prenom_expediteur} {props.envoie2.infoEnvoie.nom_expediteur}  </b> </p>
         <p className='text-dark'>Ekolo Ya Motindi: <b className='text-dark'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
         {props.envoie2.infoEnvoie.numero_transfer==='N/A' ? <p></p> : <p className='text-dark'>Numéro Ya Mobile money: <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>}

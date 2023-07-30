@@ -128,12 +128,15 @@ function FormRetraitOperationLingala(props)
 </Container>
 }
 
-{isMobileOrTablet && <Container className='bg-light justify-content-center text-center  mx-auto mt-5'>
-<Row className='justify-content-center mb-3 pt-3' >
-        <Col xs={12}>
-        <p className='text-dark'><i><b>{message}</b></i></p>
+{isMobileOrTablet && <Container className='justify-content-center text-center mb-5 text-light text-bold'  >
+<Row className='mt-3'>
+        <Col xs={12} className="text-start text-light">
+        <p><Link to='/home_lingala' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Zonga</u>  </b></Link> </p>
         </Col>
     </Row>
+<Row className=' justify-content-center mb-3 pt-3' >
+        <Col xs={12} className="rounded" style={{marginTop:100,width:750,border:"3px solid white"}}>
+        <p className="text-light"><i><b>{message}</b></i></p>
 
    
     
@@ -143,7 +146,7 @@ function FormRetraitOperationLingala(props)
     <Row className='justify-content-center'>
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Control name="code_retrait" value={codeRetrait.infoCodeRetrait.code_retrait} onChange={e=>inputChanged(e)} type="text" placeholder='Veuillez entrer code retrait' autoFocus   required/>
+        <Form.Control name="code_retrait" value={codeRetrait.infoCodeRetrait.code_retrait} onChange={e=>inputChanged(e)} type="text" placeholder='Kotisa code ya retrait na yo' autoFocus   required/>
          </Form.Group>
         </Col>
     </Row>
@@ -152,7 +155,7 @@ function FormRetraitOperationLingala(props)
    <Row className='pb-3'>
        <Col>
         <Button variant="warning" type="submit" >
-        Valider 
+        ko validé 
         </Button>
         </Col>
     </Row>
@@ -160,7 +163,10 @@ function FormRetraitOperationLingala(props)
 
 
 </Form>
-</Container> }
+</Col>
+</Row>
+</Container>
+}
 <Row className="mt-5">
           <Col md={12}>
             <p></p>

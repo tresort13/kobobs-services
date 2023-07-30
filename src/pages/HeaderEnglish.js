@@ -533,7 +533,7 @@ function HeaderEnglish(props)
            </Nav>
            </Offcanvas.Body>
       </Offcanvas>
-      <SessionOutEnglish isLogged={props.isLogged}/>
+      {/*<SessionOutEnglish isLogged={props.isLogged}/>*/}
     <MyVerticallyCenteredModal4 show={modalShowNoValidDialog} onHide={() => setModalShowNoValidDialog(false)} />
     <ChangePasswordBoxEnglish modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} userID={props.userID} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber}/>
    <ContactBoxEnglish language2={props.language2} setLanguage2={props.setLanguage2} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} language={props.language}/>

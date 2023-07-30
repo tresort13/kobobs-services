@@ -338,106 +338,155 @@ function FormEnvoiAbonneFrench(props)
 </Container>
 }
 
-{isMobileOrTablet &&   <Container className='bg-light justify-content-center text-center  mb-auto my-auto' >
+{isMobileOrTablet &&   <Container className='justify-content-center text-center mb-5 text-light text-bold' style={{width:1000}} >
+<Row className='mt-3'>
+        <Col xs={12} className="text-start text-light">
+        {props.isStaff === true ? <p><Link to='/form_envoie_abonne_id_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p> : <p><Link to='/home_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u>  </b></Link> </p>}
+        </Col>
+    </Row>
 <Row className='justify-content-center mb-3 pt-3' >
 <Col xs={12}>
-        <p ><i><b className='text-dark'>Subscriber ID : </b><b className='couleur2'>{props.abonne.infoAbonne.code_abonne}</b></i></p>
+        <p ><i><b >Numéro Abonné : </b><b className='couleur2'>{props.abonne.infoAbonne.numero_expediteur}</b></i></p>
         </Col>
         <Col xs={12}>
-        <p ><i><b className='text-dark'>Subscriber full name : </b><b className='couleur2'>{props.abonne.infoAbonne.prenom_expediteur} {props.abonne.infoAbonne.nom_expediteur} {props.abonne.infoAbonne.postnom_expediteur}</b></i></p>
+        <p ><i><b >Noms Abonné : </b><b className='couleur2'>{props.abonne.infoAbonne.prenom_expediteur} {props.abonne.infoAbonne.nom_expediteur}</b></i></p>
         </Col>
     </Row>
+{/*<Row className='justify-content-start  py-2' >
+<Col xs={6}>
+        <i><b >bénéficiaire(s) précédent(s) : </b></i>
+  </Col>
+  <Col xs={6} >
+  <div ><Form.Select aria-label="Default select example">
+      <option>sélectionner un bénéficiaire</option>
+      <option value="1">felly ngoy</option>
+      <option value="2">shaloom bowa</option>
+      <option value="3">lionel mbunga</option>
+    </Form.Select>
+    </div> 
+    </Col>
+    </Row>*/}
 
+<Formik
+      validationSchema={testValidation}
+      onSubmit={(values)=>{
+        tauxEchanger(values)
+      }}
+      initialValues={{
+        nom_beneficiaire : props.envoie.infoEnvoie.nom_beneficiaire,
+        prenom_beneficiaire : props.envoie.infoEnvoie.prenom_beneficiaire,
+        pays_beneficiaire : props.envoie.infoEnvoie.pays_beneficiaire,
+        montant_beneficiaire : props.envoie.infoEnvoie.montant_beneficiaire,
+        type_service : props.envoie.infoEnvoie.type_service,
+        numero_transfer:props.envoie.infoEnvoie.numero_transfer,
     
-<Form onSubmit={submitFormulaire}>
-      <Row>
+      }}
+    >
+     {({handleSubmit, handleChange,handleBlur, values, touched, errors,setFieldValue
+         })=>(
+          <Form noValidate onSubmit={handleSubmit}>
+             <Row>
       <hr style={{color:"darkorange"}}></hr>
-      <p className='couleur2'><b><u>Receiver </u></b></p>
+      <p className='couleur2'><b><u>Nouveau bénéficiaire</u></b></p>
     </Row>
-    <Row className='justify-content-center'>
-    <Col xs = {12}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className='text-danger'>*</span> First Name </Form.Label>
-        <Form.Control name="prenom_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.prenom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='First Name'  required/>
-         </Form.Group>
-        </Col>
+          <Row className="mb-3">
+            <Form.Group as={Col} md="6" controlId="validationFormik01">
+              <Form.Label><span className='text-danger'>*</span>Prénom</Form.Label>
+              <Form.Control
+                type="text"
+                name="prenom_beneficiaire"
+                value={values.prenom_beneficiaire}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              <p className='text-danger'>{touched.prenom_beneficiaire && errors.prenom_beneficiaire}</p>
+            </Form.Group>
+            <Form.Group as={Col} md="6" controlId="validationFormik02">
+              <Form.Label><span className='text-danger'>*</span>Nom de famille</Form.Label>
+              <Form.Control
+                type="text"
+                name="nom_beneficiaire"
+                value={values.nom_beneficiaire}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+                       <p className='text-danger'>{touched.nom_beneficiaire && errors.nom_beneficiaire}</p>
+            </Form.Group>
+             </Row>
 
-    <Col xs = {12}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className='text-danger'>*</span>Last Name </Form.Label>
-        <Form.Control name="nom_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.nom_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder='Middle Name'  required/>
-         </Form.Group>
-        </Col>
-
-        
-
-        
-    </Row>
-
-    <Row className='justify-content-center'>
+             <Row className='justify-content-center'>
    
+   <Col xs ={12}>
+   <Form.Group className="mb-3" controlId="validationFormik03">
+   <Form.Label ><span className='text-danger'>*</span>Pays </Form.Label>
+    <Form.Select name='pays_beneficiaire'   value={values.pays_beneficiaire} aria-label="Default select example" onChange={handleChange} >
+   <option>Sélectionner Pays</option>
+    <option value='RD Congo' >RD Congo</option>
+    <option value='Angola' >Angola</option> 
+    </Form.Select>
+    <p className='text-danger'>{touched.pays_beneficiaire && errors.pays_beneficiaire}</p>   
+    </Form.Group>
+   </Col>
+</Row>
 
-        <Col xs ={12}>
-        <Form.Group className="mb-3" >
-        <Form.Label className='text-dark'>Country </Form.Label>
-        <Form.Select name='pays_beneficiaire' value={envoieAbonne.infoEnvoieAbonne.pays_beneficiaire} aria-label="Default select example" onChange={e=>inputChanged(e)} required>
-         <option value='RD Congo'>RD Congo</option>
-         </Form.Select>
-         </Form.Group>
-        </Col>
-    </Row>
-  
-    <Row>
+<Row>
       <hr style={{color:"darkorange"}}></hr>
       <p className='couleur2'><b><u> Money</u></b> </p>
     </Row>
     <Row className='justify-content-center'>
-        <Col xs = {12}>
-        <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Label className='text-dark'><span className='text-danger'>*</span> which Amount do you want the receiver to get in US dollars ($) </Form.Label>
-        <Form.Control name="montant_beneficiaire" value={envoieAbonne.infoEnvoieAbonne.montant_beneficiaire} onChange={e=>inputChanged(e)} type="text" placeholder="Amount to send for the receiver"  required/>
+        <Col xs = {6}>
+        <Form.Group className="mb-3" controlId="validationFormik04" >
+        <Form.Label ><span className='text-danger'>*</span>combien voulez-vous que le destinataire reçoive en US($)</Form.Label>
+        <Form.Control name="montant_beneficiaire"  value={values.montant_beneficiaire} onBlur={handleBlur} onChange={handleChange} type="text" placeholder="entrer le montant à récevoir"  />
+        <p className='text-danger'>{touched.montant_beneficiaire && errors.montant_beneficiaire}</p>
          </Form.Group>
         </Col>
 
         
 
         <Col xs ={12}>
-        <Form.Group className="mb-3" >
-        <Form.Label className='text-dark'>Type of service </Form.Label>
-        <Form.Select name="type_service" value={envoieAbonne.infoEnvoieAbonne.type_service} aria-label="Default select example" onChange={e=>inputChanged(e)} required>
-        <option value='By Cash (at the agency)'>By Cash (at the agency)</option>
-         <option value="by mobile money tranfer(Mpesa,Orange Money,Airtel Money)">by mobile money tranfer(Mpesa,Orange Money,Airtel Money) </option>
-         
+        <Form.Group className="mb-3" controlId="validationFormik05">
+        <Form.Label >Type de service </Form.Label>
+        <Form.Select name="type_service"  value={values.type_service} aria-label="Default select example" onChange={(e)=>{
+             e.target.value ==="par transfert d'argent mobile (Mpesa, Orange Money, Airtel Money)" ? testValidation.fields.numero_transfer = yup.string().required('champs requis') :testValidation.fields.numero_transfer = yup.string().notRequired()
+             setFieldValue("type_service",e.target.value)
+        }} >
+        <option value="En espèces (à l'agence)">En espèces (à l'agence)</option>
+         <option value="par transfert d'argent mobile (Mpesa, Orange Money, Airtel Money)">par transfert d'argent mobile (Mpesa, Orange Money, Airtel Money) </option> 
          </Form.Select>
          </Form.Group>
         </Col>
-
-        {envoieAbonne.infoEnvoieAbonne.type_service === "by mobile money tranfer(Mpesa,Orange Money,Airtel Money)" ? <Col xs = {12}>
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Enter the mobile number for transfering the money  </Form.Label>
-        <InputGroup className="mb-3">
+      
+        {values.type_service === "par transfert d'argent mobile (Mpesa, Orange Money, Airtel Money)" ? <Col xs = {12}>
+        <Form.Label ><span className="text-danger">*</span> Entrez le numéro de téléphone portable pour transférer l'argent </Form.Label>
+        <InputGroup className="mb-3" controlId="validationFormik06">
         <InputGroup.Text id="basic-addon1">+243</InputGroup.Text>
-        <Form.Control name="numero_transfer"  onChange={e=>inputChanged(e)} type="text" placeholder='transfering mobile number'  required/>
+        <Form.Control name="numero_transfer" value={values.numero_transfer}   onBlur={handleBlur}  onChange={handleChange} type="text" placeholder='numéro portable de transfert '  />
         </InputGroup>
+        <p className='text-danger'>{touched.numero_transfer && errors.numero_transfer}</p>
         </Col> : <span></span>}
+         
     </Row>
-    <Row>
-      <hr style={{color:"darkorange"}}></hr>
-    </Row>
-  
-    <Row className='justify-content-center pb-3'>
+
+          <Row className='justify-content-center pb-3'>
         <Col xs ={4}> 
-        <Button variant="warning" type="submit">
-        Validate
+        <Button variant="warning" type="submit" >
+        Suivant
         </Button>
         </Col>
-    </Row>
-  
-  
- 
-
-
-</Form>
-</Container>}
+        <Col xs ={4}> 
+        <Button variant="danger" onClick={closePage} >
+        fermer
+        </Button>
+        </Col>
+        </Row>
+        
+        </Form>
+)
+}
+</Formik>
+</Container>
+}
 <Row className="mt-5">
           <Col md={12}>
             <p></p>

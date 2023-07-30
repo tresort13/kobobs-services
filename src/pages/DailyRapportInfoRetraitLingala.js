@@ -171,22 +171,31 @@ function DailyRapportInfoRetraitLingala(props)
 </div>
 }
 
-{isMobileOrTablet && <Container className='bg-light justify-content-center text-center mx-auto my-auto'>
-<Row className='justify-content-center mb-3 pt-3' >
+{isMobileOrTablet && <div className='justify-content-center text-center mb-5 text-light text-bold rounded'>
+<Row className='mt-3 px-5'>
+        <Col xs={12} className="text-start text-light">
+            <p><Link to='/select_date_form_retrait_lingala' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Zonga</u>  </b></Link> </p>
+        </Col>
+    </Row>
+   <Container className='bg-light text-dark rounded'>
+
+  <Row className='justify-content-center mt-3'>
+<Col xs={12} >
+<Row className='justify-content-center  pt-3' >
         <Col xs={12}>
-        <p className='text-dark'><i><b>{message}</b></i></p>
+        <p className='couleur2'><i><b>{message}</b></i></p>
+        <hr style={{color:"darkorange"}}></hr>
         </Col>
     </Row>
 
-   
+
     <Row className='justify-content-center pb-3'>
-      <hr style={{color:"darkorange"}}></hr>
       <p className='couleur2'><b><u></u></b> </p>
     </Row>
-    <Row className='justify-content-start pb-3' >
+    <Row className='justify-content-center pb-3' >
         <Col xs={12}>
-        <p className='text-dark'>Type de Rapport: <b className='couleur2'>Journalier</b> </p>
-        <p className='text-dark'>Date : <b className='couleur2'>{props.dateInfo}</b>  </p>
+        <p className='text-dark'><b>Lolenge ya Rapport:</b> <b className='couleur2'>Mokolo na mokolo</b>  </p>
+        <p className='text-dark'><b>Date :</b> <b className='couleur2'>{props.dateInfo}</b>  </p>
         
         </Col>
     </Row>
@@ -194,17 +203,13 @@ function DailyRapportInfoRetraitLingala(props)
     <Row className='justify-content-center pb-3'>
       <hr style={{color:"darkorange"}}></hr>
     </Row>
-    <Row className='justify-content-start pb-3' >
-        <Col xs={6}>
-        <p className='text-dark'>etraits payés: <b className='couleur2'> {nombre_retrait_paye}</b> </p>
-        <p className='text-dark'>retraits validés: <b className='couleur2'> {nombre_retrait_valide}</b> </p>
-        <p className='text-dark'>retraits non validés: <b className='couleur2'> {nombre_retrait_nonvalide}</b></p>
+    <Row className='justify-content-center pb-3' >
+        <Col xs={8}>
+        <p className='text-dark'><b>Nombre ya ba retraits:</b> <b className='couleur2'> {nombre_retrait_paye}</b> </p>
         </Col>
 
-        <Col xs={6}>
-        <Link to="/details_envoie_info" style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={detailPaye}>Voir Details </p></Link>
-        <Link to="/details_envoie_info" style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={detailValide}>Voir Details </p></Link>
-        <Link to="/details_envoie_info" style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={detailNonValide}>Voir Details </p></Link>
+        <Col xs={4}>
+        {nombre_retrait_paye > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailPaye}>Tala ba détails </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={closeModal}>Tala ba détails </p></a>}
         </Col>
     </Row>
 
@@ -214,18 +219,20 @@ function DailyRapportInfoRetraitLingala(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <Link to="/home" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant="warning" type="submit">
-        Fermer
+        <Link to="/menu_rapport_retrait_french" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant="danger" type="submit">
+        kokanga
         </Button>
         </Link>
         </Col>
         
     </Row>
+    </Col>
+</Row>  
     
-    
-
-</Container>}
+</Container>
+</div>
+}
 <Row className="mt-5">
           <Col md={12}>
             <p></p>

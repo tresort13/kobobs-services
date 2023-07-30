@@ -320,17 +320,24 @@ const establishedUserStatus = ()=>
 
   </Row>
 
-<Row className=' justify-content-center  mt-5'>
-        <Col xs = {"auto"}>
-        <Link to="" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='outline-light py-4 '  style={{width:300,height:300,border:'4px solid white'}} className='btn-lg rounded-pill zoom'>
+  <Row className=' justify-content-center  mt-5'>
+{props.isStaff === true ? <Col xs = {12} className=' text-center'>    
+        <Button onClick={establishedUserStatus} variant='outline-light py-4 '  style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
         <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" fill="currentColor" className="bi bi-send-fill" viewBox="0 0 16 16">
            <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
             </svg><br></br>
-        <b className=" display-6"><strong> Tinda Mbongo</strong></b>
+        <b className=" display-6"><strong> Tinda Mbongo </strong></b>
         </Button>
-        </Link>
-        </Col>
+      
+        </Col> : 
+       <Col xs = {12} className=' text-center'>
+       <Button onClick={establishedUserStatusClient} variant='outline-light py-4 '  style={{width:300,height:300}} className='btn-lg rounded-pill zoom'>
+       <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" fill="currentColor" className="bi bi-send-fill" viewBox="0 0 16 16">
+          <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
+           </svg><br></br>
+       <b className=" display-6"><strong> Tinda Mbongo </strong></b>
+       </Button>
+       </Col> }
     </Row>
   </Container>
   }

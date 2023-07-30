@@ -248,89 +248,87 @@ console.log(props.envoie.infoEnvoie)
 </Container>
 }
 
-{isMobileOrTablet && <Container className='bg-light justify-content-center text-center  mx-auto my-auto' >
-<Row className='justify-content-center mb-3 pt-3' >
-        <Col xs={6}>
-        <p className='couleur2 display-6'><i><b>{message}</b></i></p>
+{isMobileOrTablet && <Container className=' justify-content-center text-center mb-5 text-light text-bold rounded'  >
+<Row className='mt-3'>
+        <Col xs={12} className="text-start text-light">
+            <p><Link to='/form_envoie_client_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>
+        </Col>
+    </Row>
+  <Row className='justify-content-center mt-3'>
+<Col xs={12} style={{border:"2px solid white",width:1000}}>
+<Row className='justify-content-center  pt-3' >
+        <Col xs={12}>
+        <p className='couleur2'><i><b>{message} !</b></i></p>
+        <hr style={{color:"darkorange"}}></hr>
         </Col>
     </Row>
 
-    <Row className='justify-content-center pb-3'>
-      <hr style={{color:"darkorange"}}></hr>
-      <p className='couleur2'><b><u>Money </u></b> </p>
-    </Row>
-    <Row className='justify-content-center pb-3' >
-
-        <Col xs={12} className="text-start">
-        <p className='text-dark'>Total amount to pay for the transfer (all fees incl.): <b className='text-danger'>{Number(props.envoie.infoEnvoie.montant_pour_payer).toFixed(2)} £</b> </p>
-        <p className='text-dark'>Amount to get by the receiver : <b className='text-dark'>{Number(props.envoie.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p> 
-        
-        <p className='text-dark'>Type of service : <b className='text-dark'>{props.envoie.infoEnvoie.type_service}</b> </p>
-        <p className='text-dark'>Mobile Money Number: <b className='text-dark'>{props.envoie.infoEnvoie.numero_transfer}</b> </p>
-        </Col>
-    </Row>
-
-    <Row className='justify-content-center pb-3'>
-      <hr style={{color:"darkorange"}}></hr>
-      <p className='couleur2'><b><u>Sender </u></b> </p>
-    </Row>
+    
+    
     <Row className='justify-content-center pb-3' >
        
+        <Col xs={12} className="text-start " style={{borderRight:"2px solid darkorange"}}>
+        <p className='couleur2 text-center'><b><u>Sender </u></b> </p>
+        <p >Name : <b >{props.envoie.infoEnvoie.prenom_expediteur} {props.envoie.infoEnvoie.nom_expediteur}</b> </p>
+        <p >Mobile Number :<b > {props.envoie.infoEnvoie.numero_expediteur} </b></p>
+        <p >country : <b > {props.envoie.infoEnvoie.pays_expediteur}</b></p>
+        </Col>
 
         <Col xs={12} className="text-start">
-        <p className='text-dark'>First Name : <b className='text-dark'>{props.envoie.infoEnvoie.prenom_expediteur}</b> </p>
-        <p className='text-dark'>Last Name : <b className='text-dark'>{props.envoie.infoEnvoie.nom_expediteur}</b>  </p>
-  
-        <p className='text-dark'>Adress : <b className='text-dark'>{props.envoie.infoEnvoie.adresse_expediteur}</b> </p> 
-        <p className='text-dark'>Email: <b className='text-dark'>{props.envoie.infoEnvoie.email_expediteur}</b> </p>
-
-        <p className='text-dark'>Mobile Number :<b className='text-dark'> {props.envoie.infoEnvoie.numero_expediteur} </b></p>
-        <p className='text-dark'>country : <b className='text-dark'> {props.envoie.infoEnvoie.pays_expediteur}</b></p>
+        <p className='couleur2 text-center'><b><u>Recipient </u></b> </p>
+        <p >Name : <b >{props.envoie.infoEnvoie.prenom_beneficiaire} {props.envoie.infoEnvoie.nom_beneficiaire}</b> </p>
+        <p >country : <b >{props.envoie.infoEnvoie.pays_beneficiaire}</b> </p>
         </Col>
   
     </Row>
 
     <Row className='justify-content-center pb-3'>
       <hr style={{color:"darkorange"}}></hr>
-      <p className='couleur2'><b><u>Receiver</u></b> </p>
     </Row>
     <Row className='justify-content-center pb-3' >
 
         <Col xs={12} className="text-start">
-        <p className='text-dark'>First Name : <b className='text-dark'>{props.envoie.infoEnvoie.prenom_beneficiaire} </b> </p>
+        <p className='text-light'>Total amount to pay  (all fees incl.): <b className='text-dark bg-warning p-2' style={{border:"2px solid white"}}>{Number(props.envoie.infoEnvoie.montant_pour_payer).toFixed(2)} £</b> </p>
+        <p className='text-light'>Amount to get by the receiver : <b className='text-light p-2' style={{border:"2px solid white"}}>{Number(props.envoie.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p> 
+        </Col>
 
-        <p className='text-dark'>Last Name :<b className='text-dark'>{props.envoie.infoEnvoie.nom_beneficiaire}</b> </p>
-       
-        <p className='text-dark'>country : <b className='text-dark'>{props.envoie.infoEnvoie.pays_beneficiaire}</b> </p>
+        <Col xs={12} className="text-start">
+        <p className='text-light'>Type of service : <b className='text-light'>{props.envoie.infoEnvoie.type_service}</b> </p>
+        {props.envoie.infoEnvoie.numero_transfer==='' ? <p></p> : <p className='text-light'>Mobile Money Number: <b className='text-light'>{props.envoie.infoEnvoie.numero_transfer}</b> </p>}
         </Col>
     </Row>
+    <hr style={{color:"darkorange"}}></hr>
 
-  
-
-    <Row className='justify-content-center pb-3'>
-      <hr style={{color:"darkorange"}}></hr>
-    </Row>
     <Row className='justify-content-center pb-3' >
-        <Col xs={6}>
+        <Col xs={4}>
         <Button variant="warning" type="submit" onClick={submitEnvoie}>
-        Send Form
+        Validate Form
         </Button>
         </Col>
 
-        <Col xs={6}>
-        <Link to="/form_envoie_abonne_english">
+        <Col xs={4}>
+        <Link to="/form_envoie_client_english">
          <Button variant="secondary" type="submit">
          Modify Form
         </Button>
         </Link>
         </Col>
+
+        <Col xs={4}>
+        <Button variant="danger" type="submit" onClick={closePage}>
+        Close
+        </Button>
+        </Col>
         
+    </Row>
+    </Col>
+
     </Row>
     
 
-    
+</Container>
+}
 
-</Container>}
 <Row className="mt-5">
           <Col md={12}>
             <p></p>

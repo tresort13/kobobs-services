@@ -218,7 +218,7 @@ function AbonneFormNonValideInfoFrench(props)
 
 </Container> }
 )
-: <MyVerticallyCenteredModal4 show={modalShow4} onHide={() => {
+: <MyVerticallyCenteredModal4 show={false} onHide={() => {
   setModalShow4(false)
   closePage()
 }} />
@@ -226,59 +226,80 @@ function AbonneFormNonValideInfoFrench(props)
 
 
 
-{isMobileOrTablet && props.dataValidation.map((value)=>
+{isMobileOrTablet && props.dataValidation.length > 0  ?  props.dataValidation.map((value)=>
     {
-    return <Container className='bg-light justify-content-center text-center mx-auto my-auto mb-5' >
-    <Row className='justify-content-center mb-3 pt-3' >
-            <Col xs={6}>
-            <p className='couleur2 display-6'><i><b>{message}</b></i></p>
-            </Col>
-        </Row>
-    
-    
-    
-        <Row className='justify-content-center pb-3'>
-          <hr style={{color:"darkorange"}}></hr>
-        </Row>
-        <Row className='justify-content-start pb-3' >
+    return <Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:50}} >
+<Row className='justify-content-center pt-3' >
         <Col xs={12}>
-        <p className='text-dark'>Code Retrait : <b className='text-dark bg-danger'>{value.code_retrait}</b> </p>
-        <p className='text-dark'>Montant à payer: <b className='text-dark bg-danger'>{Number(value.montant_total).toFixed(2)} £</b> </p>
-        <p className='text-dark'>Montant à Recuperer: <b className='text-dark '>{Number(value.montant_beneficiaire).toFixed(2)} $</b> </p>
-        <p className='text-dark'>Status Retrait : <b className='text-dark'>{value.status_retrait}</b> </p>
-        <p className='text-dark'>Noms Expediteur: <b className='text-dark '>{value.nom_expediteur} {value.postnom_expediteur} {value.prenom_expediteur}</b> </p>
-        <p className='text-dark'>Numéro Expediteur: <b className='text-dark'> {value.numero_expediteur}</b></p>
-        <p className='text-dark'>Email Expediteur: <b className='text-dark'> {value.email_expediteur}</b></p>
-        <p className='text-dark'>Noms  Beneficiare: <b className='text-dark'>{value.nom_beneficiaire} {value.postnom_beneficiaire} {value.prenom_beneficiaire}</b> </p> 
-        <p className='text-dark'>Pays Beneficiare: <b className='text-dark'> {value.pays_beneficiaire}</b></p>
-        <p className='text-dark'>Type de retrait: <b className='text-dark'>{value.type_service}</b> </p>
-        <p className='text-dark'>date et heure : <b className='text-dark'> {value.date_heure_operation}</b></p> 
+        <p className='couleur2'><i><b>{message}</b></i></p>
         </Col>
-        </Row>
+    </Row>
 
-        <Row className='pt-3 pb-3'>
-        <hr style={{color:"darkorange"}}></hr>
-        <Col xs={6} className="text-center">
-            <Link to="" style={{color:'white',textDecorationLine:'none'}}>
-            <Button name='validate' value={value.code_retrait} className='pt-3' variant="warning" type="submit" onClick={e=>validateCodeRetrait(e)}>
-            Valider code 
-            </Button>
-            </Link>
-            </Col>
-    
-            <Col xs={6} className="text-center">
-            <Link to="" style={{color:'white',textDecorationLine:'none'}}>
-            <Button name='validate' value={value.code_retrait} className='pt-3' variant="danger" type="submit" onClick={e=>suprimerOperation(e)}>
-            supprimer opération
-            </Button>
-            </Link>
-            </Col>
-        </Row>
-    
+
+
+    <Row className='justify-content-center'>
+      <hr style={{color:"darkorange"}}></hr>
+
+    </Row>
+    <Row className='justify-content-start pb-3 text-start' >
+    <Col className='justify-content-start text-start'  xs={12}>
+       <p className='text-dark'>Code Retrait : <b className='text-danger'>{value.code_retrait}</b> </p>
+        <p className='text-dark'>Status Retrait : <b className='text-dark '>{value.status_retrait}</b> </p>
+        <p className='text-dark'>Noms complets Expediteur: <b className='text-dark '>{value.nom_expediteur} {value.postnom_expediteur} {value.prenom_expediteur}</b> </p>
+        <p className='text-dark'>Noms complets Beneficiare: <b className='text-dark'>{value.nom_beneficiaire} {value.postnom_beneficiaire} {value.prenom_beneficiaire}</b> </p>
+        <p className='text-dark'>Pays Expediteur: <b className='text-dark'> {value.pays_expediteur}</b></p>
+        <p className='text-dark'>Numéro Expediteur: <b className='text-dark'> {value.numero_expediteur}</b></p>
+    </Col>
+
+    <Col className='justify-content-start text-start'  xs={12}>
+    <p className='text-dark'>Montant à payer: <b className='text-danger'>{Number(value.montant_total).toFixed(2)} £</b> </p>
+    <p className='text-dark'>Montant à Recuperer: <b className='text-dark'>{Number(value.montant_beneficiaire).toFixed(2)} $</b> </p>
+        <p className='text-dark'>Email Expediteur: <b className='text-dark'> {value.email_expediteur}</b></p>
+        <p className='text-dark'>Pays Beneficiare: <b className='text-dark'> {value.pays_beneficiaire}</b></p>
+        <p className='text-dark'>Type de retrait: <b className='text-dark '>{value.type_service}</b> </p>
+        <p className='text-dark'>date et heure d'envoi : <b className='text-dark'> {value.date_heure_operation}</b></p> 
         
+    </Col>
+    </Row>
+    <Row className='justify-content-center pb-3'>
+      <hr style={{color:"darkorange"}}></hr>
+
+    </Row>
+    <Row>
+      <Col className='justify-content-start text-center'  xs={12}>
+      <p className='text-dark'>Envoi fait par : <b className='text-dark'> {value.envoi_executed_by_agent}</b></p> 
+      </Col>
+    </Row>
+
+    <Row className="pb-3">
+      <hr style={{color:"darkorange"}} ></hr>
+
+    <Col className='text-center' xs={6}>
+        <Link to="" style={{color:'white',textDecorationLine:'none'}}>
+        <Button name='validate' value={value.code_retrait} className='pt-3' variant="warning" type="submit" onClick={e=>validateCodeRetrait(e)}>
+        Valider code
+        </Button>
+        </Link>
+        </Col>
+
+        <Col className='text-center' xs={6}>
+        <Link to="" style={{color:'white',textDecorationLine:'none'}}>
+        <Button name='validate' value={value.code_retrait} className='pt-3' variant="danger" type="submit" onClick={e=>suprimerOperation(e)}>
+        suprimer opération
+        </Button>
+        </Link>
+        </Col>
+    </Row>
+
     
-    </Container> })
-} 
+
+</Container> }
+)
+: <MyVerticallyCenteredModal4 show={false} onHide={() => {
+  setModalShow4(false)
+  closePage()
+}} />
+}
 
 <Row className="mt-5">
           <Col md={12}>

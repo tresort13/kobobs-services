@@ -160,8 +160,8 @@ function ConfirmationEnvoieInfoEnglish(props)
         {props.envoie3.infoEnvoie.status_retrait == "code retrait en attente de validation" ? <p className='text-light'>Tracking Number status : <b className="couleur2">pending for validation...</b> </p> :
      <p className='text-light'><b>Tracking Number status :</b> <b className="text-success">Your tracking number has been validated</b> </p> }
         <p className='text-light'>Sender full name: <b className='text-light'>{props.envoie3.infoEnvoie.prenom_expediteur} {props.envoie3.infoEnvoie.nom_expediteur}  </b> </p>
-        <p className='text-light'>amount to get by the receiver: <b className='text-light'>{Number(props.envoie3.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
-        <p className='text-light'>amount to pay for (including all fees): <b className='bg-warning  p-2' style={{border:"2px solid white"}}>{Number(props.envoie3.infoEnvoie.montant_total).toFixed(2)} £</b> </p>
+        <p className='text-light'>receiver amount: <b className='text-light'>{Number(props.envoie3.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
+        <p className='text-light'>amount to pay for: <b className='bg-warning  p-2' style={{border:"2px solid white"}}>{Number(props.envoie3.infoEnvoie.montant_total).toFixed(2)} £</b> </p>
         <p className='text-light'>sender country  : <b className='text-light'> {props.envoie3.infoEnvoie.pays_expediteur}</b></p>
         </Col>
 

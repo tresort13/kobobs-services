@@ -239,8 +239,8 @@ const submitEnvoie = (e)=>
     <Row className='justify-content-center pb-3' >
 
         <Col xs={12} className="text-start">
-        <p className='text-light'>Total amount to pay  (all fees incl.): <b className='text-dark bg-warning p-2' style={{border:"2px solid white"}}>{Number(props.envoie.infoEnvoie.montant_pour_payer).toFixed(2)} £</b> </p>
-        <p className='text-light'>Amount to get by the receiver : <b className='text-light p-2' style={{border:"2px solid white"}}>{Number(props.envoie.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p> 
+        <p className='text-light'>Total amount to pay: <b className='text-dark bg-warning p-2' style={{border:"2px solid white"}}>{Number(props.envoie.infoEnvoie.montant_pour_payer).toFixed(2)} £</b> </p>
+        <p className='text-light'>Receiver Amount: <b className='text-light p-2' style={{border:"2px solid white"}}>{Number(props.envoie.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p> 
         </Col>
 
         <Col xs={12} className="text-start">

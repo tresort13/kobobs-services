@@ -286,7 +286,7 @@ const submitEnvoie = (e)=>
     <Row className='justify-content-center pb-3' >
         <Col xs={12} className="text-start">
         <p className='text-light'>Montant Total à payer: <b className='text-dark bg-warning p-2' style={{border:"2px solid white"}}>{Number(props.envoie.infoEnvoie.montant_pour_payer).toFixed(2)} £</b> </p>
-        <p className='text-light'>Montant à recevoir par le Bénéficiare: <b className='text-light p-2' style={{border:"2px solid white"}}>{Number(props.envoie.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
+        <p className='text-light'>Montant Bénéficiare: <b className='text-light p-2' style={{border:"2px solid white"}}>{Number(props.envoie.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
         </Col>
 
         <Col xs={12} className="text-start">

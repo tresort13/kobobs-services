@@ -290,8 +290,8 @@ Tinda makomi
 <Row className='justify-content-center pb-3' >
 
 <Col xs={12} className="text-start">
-<p className='text-light'>Mbongo Yako Futa (naba taxe.): <b className='text-dark bg-warning p-2' style={{border:"2px solid black"}}>{Number(props.envoie.infoEnvoie.montant_pour_payer).toFixed(2)} £</b> </p>
-<p className='text-light'>Mbongo Yako Zwa : <b className='text-light p-2' style={{border:"2px solid white"}}>{Number(props.envoie.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p> 
+<p className='text-light'>Mbongo Yako Futa: <b className='text-dark bg-warning p-2' style={{border:"2px solid black"}}>{Number(props.envoie.infoEnvoie.montant_pour_payer).toFixed(2)} £</b> </p>
+<p className='text-light'>Mbongo Yako Zwa: <b className='text-light p-2' style={{border:"2px solid white"}}>{Number(props.envoie.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p> 
 </Col>
 
 <Col xs={12} className="text-start">

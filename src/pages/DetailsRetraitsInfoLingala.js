@@ -262,7 +262,7 @@ console.log(props.detailEnvoieTotal)
                 {props.tableType === "dailyRapport" ? <p><Link to='/table_daily_rapport_lingala' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Zonga</u></b></Link></p> : props.tableType === "monthlyRapport" ? <p><Link to='/table_monthly_rapport_lingala' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Zonga</u></b></Link></p> : props.tableType === "dailyRapportRecette" ? <p><Link to='/daily_rapport_recette_lingala' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Zonga</u></b></Link></p> : props.tableType === "monthlyRapportRecette" ? <p><Link to='/monthly_rapport_recette_lingala' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Zonga</u></b></Link></p> : <p><Link to='/details_historic_info_lingala' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Zonga</u></b></Link></p>}
             </Col>
         </Row>
-        <Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:50,width:1000}} >
+        <Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:50,width:"auto"}} >
     <Row className='justify-content-center mb-3 pt-3' >
             <Col xs={12}>
             <p className='couleur2'><i><b>{message}</b></i></p>

@@ -179,7 +179,7 @@ function MonthlyRapportInfoRetraitFrench(props)
             <p><Link to='/select_mois_form_retrait_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u>  </b></Link> </p>
         </Col>
     </Row>
-   <Container className='bg-light text-dark rounded' style={{width:750}}>
+   <Container className='bg-light text-dark rounded' style={{width:"auto"}}>
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={12}>
         <p className='text-dark'><i><b>{message}</b></i></p>

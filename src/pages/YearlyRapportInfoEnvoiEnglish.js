@@ -130,7 +130,7 @@ function YearlyRapportInfoEnvoiEnglish(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={12}>
-        <p className='text-dark'><b>Type of Report :</b> <b className='couleur2'>Monthly</b> </p>
+        <p className='text-dark'><b>Type of Report :</b> <b className='couleur2'>Yearly</b> </p>
         <p className='text-dark'><b>Period :</b> <b className='couleur2'>{props.moisInfo}</b>  </p>
         
         </Col>
@@ -207,7 +207,7 @@ function YearlyRapportInfoEnvoiEnglish(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={12}>
-        <p className='text-dark'><b>Type of Report :</b> <b className='couleur2'>Monthly</b> </p>
+        <p className='text-dark'><b>Type of Report :</b> <b className='couleur2'>Yearly</b> </p>
         <p className='text-dark'><b>Period :</b> <b className='couleur2'>{props.moisInfo}</b>  </p>
         
         </Col>

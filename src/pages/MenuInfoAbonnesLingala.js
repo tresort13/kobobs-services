@@ -330,7 +330,13 @@ function MenuInfoAbonnesLingala(props)
 </div>
 }
 
-{isMobileOrTablet && <Container className='bg-light justify-content-center text-center mx-auto my-auto'>
+{isMobileOrTablet && <div className='justify-content-center text-center mb-5 text-light text-bold rounded'>
+<Row className='mt-3 px-5'>
+        <Col xs={12} className="text-start text-light">
+            <p><Link to='/menu_gestion_lingala' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Zonga</u>  </b></Link> </p>
+        </Col>
+    </Row>
+   <Container className='bg-light text-dark rounded' style={{width:1000}}>
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={12}>
         <p className='text-dark'><i><b>{message}</b></i></p>
@@ -342,9 +348,9 @@ function MenuInfoAbonnesLingala(props)
       <hr style={{color:"darkorange"}}></hr>
       <p className='couleur2'><b><u></u></b> </p>
     </Row>
-    <Row className='justify-content-start pb-3' >
+ {/*   <Row className='justify-content-center pb-3' >
         <Col xs={12}>
-        <p className='text-dark'>Type of Rapport: <b className='couleur2'>Journalier</b> </p>
+        <p className='text-dark'>Type de Rapport: <b className='couleur2'>Journalier</b> </p>
         <p className='text-dark'>Date : <b className='couleur2'>{props.dateInfo}</b>  </p>
         
         </Col>
@@ -352,46 +358,108 @@ function MenuInfoAbonnesLingala(props)
 
     <Row className='justify-content-center pb-3'>
       <hr style={{color:"darkorange"}}></hr>
-      
     </Row>
+    */}
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <p className='text-dark'>envoies effectué: <b className='couleur2'> </b>  </p>
+        <p className='text-dark py-2 text-center'><strong>Nombre ya ba abonnés :</strong> <b className='couleur2'>  {nombre_abonnes_total}</b>  </p>
          </Col>
-    </Row>
 
-      <Row>
-        <Col>
-        <p className='text-dark'>envoies validés: <b className='couleur2'> {nombre_envoie_valide}</b> </p>
-        <p className='text-dark'>envoies non validés: <b className='couleur2'> {nombre_envoie_nonvalide}</b></p>
-        </Col>
-
-        <Col xs={6}>
-        <Link to="" style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={detailTotal}>Voir Details </p></Link>
-        <Link to="" style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={detailValide}>Voir Details </p></Link>
-        <Link to="" style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={detailNonValide}>Voir Details </p></Link>
+         <Col xs={6}>
+       {nombre_abonnes_total > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailTotal}>Tala ba abonnés nionso</p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded' type="submit"  onClick={closeModal}>Tala ba détails </p></a>}
        
+    </Col>
+    </Row>
+
+    <Row className='justify-content-center pb-3'>
+      <hr style={{color:"darkorange"}}></hr>
+    </Row>
+
+    <Row>
+       <Col xs={12} className='justify-content-center '>
+       <Formik
+      validationSchema={testValidation}
+      onSubmit={(values)=>{
+        submitcodeAbonne(values)
+      }}
+      initialValues={{
+        numero_expediteur:''
+      }}
+    >
+     {({handleSubmit, handleChange,handleBlur, values, touched, errors
+         })=>(
+    <Form noValidate onSubmit={handleSubmit}>
+    <Row className='justify-content-center text-center mx-3 px-3 py-3' >
+        <Col xs={8} className='justify-content-end text-start '>
+        <Form.Label htmlFor="basic-url" className='text-start'><strong>Luka abonné</strong></Form.Label>
+        <InputGroup className="mb-3" controlId="formBasicText" >  
+        <Form.Control name="numero_expediteur" value={values.numero_expediteur} onChange={handleChange} onBlur={handleBlur} type="text" placeholder='Numéro ya Téléphone'  />
+        <InputGroup.Text ><Button type="submit" variant='success'>
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="25" fill="currentColor" className="bi bi-search " viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+</svg>
+        </Button>
+        </InputGroup.Text>
+         </InputGroup>
+         <p className='text-danger'>{touched.numero_expediteur && errors.numero_expediteur}</p>
         </Col>
     </Row>
 
+
+
+</Form>
+)
+}
+</Formik>
+</Col>
+</Row>
+
+ {abonne.length > 0 ? abonne.map((value)=>
+    {
+    return <div className='bg-light justify-content-center text-center' style={{border:"2px solid black"}} >
+<Row className='justify-content-start' >
+        <Col xs={12}>
+        <p className='couleur2'><i><b><u>Information ya abonné</u></b></i></p>
+        </Col>
+    </Row>
+    <Row className='justify-content-start text-start pb-3 mb-3' >
+      <Col xs={12}>
+      </Col>
+      <Col xs={12} className='justify-content-start'>
+        <p className='text-dark'>kombo Mukristu: <b className='text-dark'>{value.prenom_expediteur}</b> </p>
+        <p className='text-dark'>kombo ya Libota: <b className='text-dark'>{value.nom_expediteur} {value.postnom_expediteur}</b> </p>
+        <p className='text-dark'>Email ya Abonné: <b className='text-dark '> {value.email_expediteur}</b></p>
+        <p className='text-dark'>Mboka ya Abonné: <b className='text-dark '> {value.pays_expediteur}</b></p>
+        <p className='text-dark'>Numéro ya Abonné: <b className='text-dark'> {value.numero_expediteur}</b></p>
+        {value.adresse_expediteur != 'N/A' ? <p className='text-dark'>Adresse ya Abonné: <b className='text-dark'> {value.adresse_expediteur}</b></p> : <span></span>}
+        <p className='text-dark'>Date et heure ya création ya abonné: <b className='text-dark'> {value.date_heure_operation}</b></p>
+
+    </Col>
+
+    </Row>
+    </div> })
+    :
+    <span></span>
+
+}
 
     <Row className='justify-content-center pb-3'>
       <hr style={{color:"darkorange"}}></hr>
     </Row>
     <Row className='justify-content-center pb-3' >
-        <Col xs={6}>
-        <Link to="/home" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant="warning" type="submit">
+        <Col xs={12}>
+        <Link to="/menu_gestion_lingala" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant="danger" type="submit">
         kokanga
         </Button>
         </Link>
         </Col>
         
     </Row>
-    
-    
+</Container>
+</div>
+}
 
-</Container>}
 <Row className="mt-5">
           <Col md={12}>
             <p></p>

@@ -59,31 +59,37 @@ function MenuGestionOperationsRetraitLingala(props)
 </Container> }
 
 {isMobileOrTablet &&  <Container >
+    <Row className='mt-3'>
+        <Col xs={"auto"} className="text-start text-light">
+            <p><Link to='/menu_management_lingala' style={{textDecoration:"none"}}><b className='text-light'>Gestions yaba opérations &gt;&gt;</b></Link> <Link to='/menu_operation_retrait_french' style={{textDecoration:"none"}}><b className='text-warning'>Opérations yaba Rétrait </b></Link></p>
+        </Col>
+    </Row>
    
-   <Row className='justify-content-center pb-3 pt-5 mt-5'>
-       <Col xs = {12}>
-       <Link to="/menu_rapport_envoie_french" style={{color:'white',textDecorationLine:'none'}}>
-       <Button variant='warning'  style={{width:400,height:50}} className='btn-lg rounded-pill zoom'>
-       <b className='text-dark'><pre>Opérations Envoi</pre></b>
-       </Button>
-       </Link>
-       </Col>
-   </Row>
- 
+    <Row className='justify-content-center pb-3 pt-5 mt-5'>
+        <Col xs = {"auto"}>
+        <Link to="/form_retrait_operation_lingala" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant='btn--blue'  style={{width:400,height:80,border:"2px solid white"}} className='btn-lg btn--blue rounded-pill zoom py-4'>
+        <b className='text-light'><pre>Sala  retrait</pre></b>
+        </Button>
+        </Link>
+        </Col>
+    </Row>
+  
 
 
-   <Row className='justify-content-center pb-3'>
-       <Col xs = {12}>
-       <Link to="/menu_rapport_retrait" style={{color:'white',textDecorationLine:'none'}}>
-       <Button variant='warning'  style={{width:400,height:50}} className='btn-lg rounded-pill zoom'>
-       <b className='text-dark'><pre>Opérations Retrait</pre></b>
-       </Button>
-       </Link>
-       </Col>
-   </Row>
- 
+    <Row className='justify-content-center pb-3'>
+        <Col xs = {"auto"}>
+        <Link to="/menu_rapport_retrait_lingala" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant='btn--blue'  style={{width:400,height:80,border:"2px solid white"}} className='btn-lg btn--blue rounded-pill zoom py-4'>
+        <b className='text-light'><pre>Rapport yaba opérations ya Retraits</pre></b>
+        </Button>
+        </Link>
+        </Col>
+    </Row>
+  
 
-</Container>}
+</Container> }
+
 <Footer />
 </>
     )

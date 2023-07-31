@@ -144,8 +144,7 @@ console.log(props.detailHistoric)
 
 </Container>}
 
-{isMobileOrTablet && <Container fluid className='bg-light justify-content-center text-center borders mx-auto my-auto' >
-
+{isMobileOrTablet && <Container fluid className='bg-light justify-content-center text-center borders mb-5' style={{marginTop:20}} >
 
 
     
@@ -153,32 +152,56 @@ console.log(props.detailHistoric)
 <Row className='justify-content-center '>
         <Col xs = {12} className='text-center borders pt-2'>
         <div>
-        <h6 ><u><b><i className='couleur2'>Table des Recettes Journalières</i></b></u></h6>
+        <h4 ><b><i className='couleur2'>{props.messageEnglish} on {props.dateHistoric}</i></b></h4>
         </div>
         <div>
         <Table striped bordered hover variant="light">
       <thead>
         <tr className='text-dark' style={{border:"2px solid white"}}>
           <th>Date</th>
-          <th>Montant Beneficiaire ($)</th>
-          <th>Frais Envoie (£)</th>
-          <th>Frais TVA (£)</th>
-          <th>Total (£)</th>
+          <th>Sender Name</th>
+          <th>Recipient Name</th>
+          <th>Recipient Country</th>
+          <th>Recipient Amount  ($)</th>
+          <th>Total Amount  (£)</th>
+          <th>Operation details</th>
         </tr>
       </thead>
       <tbody>
-        {props.dailyRapport.map((value)=>
+        {props.detailHistoric.map((value)=>
         {
-          return  <tr style={{border:"2px solid white"}} >
-              <td><i ><b>{props.dateInfo}</b></i></td>
-             <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_beneficiaire).toFixed(2)) }</b></i></td>
-             <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.frais_envoie).toFixed(2))}</b></i></td>
-             <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.frais_tva).toFixed(2))}</b></i></td>
+          return  <tr  style={{border:"2px solid white"}} >
+             <td><i ><b>{props.dateHistoric}</b></i></td>
+             <td><i><b className="text-dark">{value.prenom_expediteur} {value.nom_expediteur} {value.postnom_expediteur} </b></i></td>
+             <td><i><b className="text-dark"> {value.prenom_beneficiaire} {value.nom_beneficiaire} {value.postnom_beneficiaire}</b></i></td>
+             <td><i><b className="text-dark"> {value.pays_beneficiaire}</b></i></td>
+             <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_beneficiaire).toFixed(2))}</b></i></td>
              <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_total).toFixed(2))}</b></i></td>
-            </tr>     
+             <td onClick={()=>{
+               operationDetailArray.push(value)
+               props.setTableType("historic")
+               console.log(operationDetailArray)
+               props.dataDetailEnvoieTotal(operationDetailArray)
+               navigate('/details_retraits_info_english')
+             }} ><i className="text-primary btn" ><b><u>more details</u></b></i></td>
+            </tr> 
         }) 
         }
-
+       {props.message === "withdrawal historic" ? <tr style={{border:"2px solid white"}}>
+         <td><i><b>TOTAL</b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_montant_beneficiaire).toFixed(2))} $</b></i></td>
+       </tr>: props.message === "Validation historic" ? <tr style={{border:"2px solid white"}}>
+         <td><i><b>TOTAL</b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_montant).toFixed(2))} £</b></i></td>
+       </tr>: <tr></tr>}
+       
          
       </tbody>
     </Table>
@@ -191,9 +214,9 @@ console.log(props.detailHistoric)
   
     <Row className='justify-content-center pb-3 pt-3'>
         <Col xs ={4} >
-        <Link to="" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant="outline-warning" type="submit" onClick={message} >
-        Imprimer 
+        <Link to="/my_profil_english" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant="danger" type="submit" >
+        close 
         </Button>
         </Link>
 

@@ -234,7 +234,7 @@ function AbonneFormNonValideInfoEnglish(props)
       <hr style={{color:"darkorange"}}></hr>
 
     </Row>
-    <Row className='justify-content-start pb-3 text-start' >
+    <Row className='justify-content-start pb-3 text-start mx-2' >
     <Col className='justify-content-start text-start'  xs={12}>
        <p className='text-dark'>Withdrawal Code : <b className='text-danger'>{value.code_retrait}</b> </p>
         <p className='text-dark'>Status Withdrawal Code : <b className='text-dark '>{value.status_retrait}</b> </p>

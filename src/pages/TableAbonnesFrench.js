@@ -107,41 +107,40 @@ const operationDetailArray = []
 
 </Container>}
 
-{isMobileOrTablet && <Container fluid className='bg-light justify-content-center text-center borders mx-auto my-auto' >
-
-
-
-    
+{isMobileOrTablet && <Container fluid className='bg-light justify-content-center text-center borders mb-5' style={{marginTop:20}} >
 <div>
 <Row className='justify-content-center '>
         <Col xs = {12} className='text-center borders pt-2'>
         <div>
-        <h6 ><u><b><i className='couleur2'>Table des Recettes Journalières</i></b></u></h6>
+        <h4 ><u><b><i className='couleur2'>Informations des abonnés</i></b></u></h4>
         </div>
         <div>
         <Table striped bordered hover variant="light">
       <thead>
         <tr className='text-dark' style={{border:"2px solid white"}}>
-          <th>Date</th>
-          <th>Montant Beneficiaire ($)</th>
-          <th>Frais Envoie (£)</th>
-          <th>Frais TVA (£)</th>
-          <th>Total (£)</th>
+          <th>Prénom</th>
+          <th>Nom de famille</th>
+          <th>Numéro de téléphone</th>
+          <th>détails sur l'abonne</th>
         </tr>
       </thead>
       <tbody>
-        {props.dailyRapport.map((value)=>
+        {props.abonneInfo2.map((value)=>
         {
-          return  <tr style={{border:"2px solid white"}} >
-              <td><i ><b>{props.dateInfo}</b></i></td>
-             <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_beneficiaire).toFixed(2)) }</b></i></td>
-             <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.frais_envoie).toFixed(2))}</b></i></td>
-             <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.frais_tva).toFixed(2))}</b></i></td>
-             <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_total).toFixed(2))}</b></i></td>
-            </tr>     
+          return  <tr  style={{border:"2px solid white"}} >
+             <td><i><b className="text-dark">{value.prenom_expediteur} </b></i></td>
+             <td><i><b className="text-dark">{value.nom_expediteur} {value.postnom_expediteur}</b></i></td>
+             <td><i><b className="text-dark"> {value.numero_expediteur}</b></i></td>
+             <td onClick={()=>{
+               operationDetailArray.push(value)
+               console.log(operationDetailArray)
+               props.setAbonneInfoDetail(operationDetailArray)
+               navigate('/details_abonnes_info_french')
+             }} ><i className="text-primary btn" ><b><u>voir details</u></b></i></td>
+            </tr> 
         }) 
         }
-
+       
          
       </tbody>
     </Table>
@@ -154,15 +153,14 @@ const operationDetailArray = []
   
     <Row className='justify-content-center pb-3 pt-3'>
         <Col xs ={4} >
-        <Link to="" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant="outline-warning" type="submit" onClick={message} >
-        Imprimer 
+        <Link to="/menu_info_abonne_french" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant="danger" type="submit" >
+        fermer 
         </Button>
         </Link>
 
         </Col>
     </Row>
-  
 
 
 </div>

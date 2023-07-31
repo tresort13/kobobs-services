@@ -170,7 +170,13 @@ function MonthlyRapportInfoRetraitEnglish(props)
 </div>
 }
 
-{isMobileOrTablet && <Container className='bg-light justify-content-center text-center mx-auto my-auto'>
+{isMobileOrTablet && <div className='justify-content-center text-center mb-5 text-light text-bold rounded'>
+<Row className='mt-3 px-5'>
+        <Col xs={12} className="text-start text-light">
+            <p><Link to='/select_mois_form_retrait_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>
+        </Col>
+    </Row>
+   <Container className='bg-light text-dark rounded' style={{width:750}}>
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={12}>
         <p className='text-dark'><i><b>{message}</b></i></p>
@@ -180,11 +186,12 @@ function MonthlyRapportInfoRetraitEnglish(props)
    
     <Row className='justify-content-center pb-3'>
       <hr style={{color:"darkorange"}}></hr>
+      <p className='couleur2'><b><u></u></b> </p>
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={12}>
-        <p className='text-dark'>Type de Rapport: <b className='couleur2'>Mensuel</b> </p>
-        <p className='text-dark'>Date : <b className='couleur2'>{props.moisInfo}</b>  </p>
+        <p className='text-dark'><b>Type of Report:</b> <b className='couleur2'>Monthly</b> </p>
+        <p className='text-dark'><b>Period :</b> <b className='couleur2'>{props.moisInfo}</b>  </p>
         
         </Col>
     </Row>
@@ -195,15 +202,13 @@ function MonthlyRapportInfoRetraitEnglish(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <p className='text-dark'>retraits payés: <b className='couleur2'> {nombre_retrait_paye}</b> </p>
-        <p className='text-dark'>retraits validés: <b className='couleur2'> {nombre_retrait_valide}</b> </p>
-        <p className='text-dark'>retraits non validés: <b className='couleur2'> {nombre_retrait_nonvalide}</b></p>
+        <p className='text-dark'><b>Number of withdrawals :</b> <b className='couleur2'> {nombre_retrait_paye}</b> </p>
+        
         </Col>
 
         <Col xs={6}>
-        {nombre_retrait_paye > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={detailPaye}>Voir Details </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={closeModal}>Voir Details </p></a>}
-        {nombre_retrait_valide > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={detailValide}>Voir Details </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit"  onClick={closeModal}>Voir Details </p></a>}
-        {nombre_retrait_nonvalide > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={detailNonValide}>Voir Details </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit"  onClick={closeModal}>Voir Details </p></a>}
+        {nombre_retrait_paye > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailPaye}>Voir Details </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={closeModal}>Voir Details </p></a>}
+       
         </Col>
     </Row>
 
@@ -213,18 +218,18 @@ function MonthlyRapportInfoRetraitEnglish(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <Link to="/home" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant="warning" type="submit">
-        Fermer
+        <Link to="/menu_rapport_retrait_english" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant="danger" type="submit">
+        close
         </Button>
         </Link>
         </Col>
         
     </Row>
-    
-    
+</Container>
+</div>
+}
 
-</Container> }
 <Row className="mt-5">
           <Col md={12}>
             <p></p>

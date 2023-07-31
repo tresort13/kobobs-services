@@ -341,17 +341,31 @@ function HeaderEnglish(props)
    {isMobileOrTablet && <Container className="pt-2" fluid >
 
     <Row className="">
-    <Col xs={6} className="mx-auto my-auto text-start">
+    <Col xs={4} className="mx-auto my-auto text-start">
         <a href="/" style={{textDecoration:"none"}}>
           <Image  src={require('./kobo_logo.JPG')}  className='rounded-pill ' style={{width:80}}></Image>
           </a>
         </Col>
 
-        {props.isLogged === true ?  <Col xs={4} className="text-end py-2"> <strong className='textUpper  btn btn-outline-light' onClick={()=>handleShow2()}>{props.username}</strong> </Col> :
-        <Col xs={4}></Col>}
+        {props.isLogged === true ?  
+        <Col xs={6} className="text-end py-2"> 
+        {props.isAdmin ?
+         count > 0 ? <Link to="/table_validation_english"><Badge className='m-0' bg="danger">{count}</Badge><span><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="text-light bi bi-bell-fill mt-2 "  viewBox="0 0 16 16">
+        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+        </svg></span></Link> : <Link to="" onClick={openNoValidDialog}><span><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="text-light bi bi-bell-fill mt-2 mx-2" viewBox="0 0 16 16">
+        
+        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+        </svg></span></Link>
+         :
+        <span>
+        </span>
+         }
+        
+        <strong className='textUpper  btn btn-outline-light' onClick={()=>handleShow2()}>{props.username}</strong> </Col> :
+        <Col xs={6}></Col>}
 
         {props.isLogged === true ? 
-        <Col xs={2} className=" text-center">    
+        <Col xs={2} className=" text-center my-auto mx-auto">    
         {[false].map((expand) => (
         <Navbar key={expand}  expand={expand} className="mb-1" >
           <Container className='justify-content-end' >
@@ -398,19 +412,22 @@ function HeaderEnglish(props)
               </Offcanvas.Header>
               <Offcanvas.Body>
                 
-                <Nav className="justify-content-end flex-grow-1 pe-3">
+              <Nav className="justify-content-end flex-grow-1 pe-3 ">
                 <NavDropdown.Divider />
-                <Nav.Link href="/"><b><pre>Home</pre></b></Nav.Link>
+                  <Nav.Link href="/" ><b><pre>Home</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link href="#"><b><pre>Send Money</pre></b></Nav.Link>
+                  {props.isStaff === true ? <Nav.Link href="/menu_operation_envoi_english"><b><pre>Send Money</pre></b></Nav.Link>: <Nav.Link href="/form_envoie_abonne_english"><b><pre>Send Money</pre></b></Nav.Link>}
                   <NavDropdown.Divider />
-                  <Nav.Link href="#"><b><pre>track your transfer status</pre></b></Nav.Link>
+                  {props.isAdmin === true ? <Nav.Link href="/menu_management_english"><b><pre>Operations Management</pre></b></Nav.Link> : <span></span>}
                   <NavDropdown.Divider />
-                  <Nav.Link  href="#"><b><pre>lost your tracking number ?</pre></b></Nav.Link>
+                  {props.isStaff === true ? <Nav.Link href="/form_retrait_operation_english"><b><pre>Withdrawal Operation</pre></b></Nav.Link> : <span></span>}
+                  <NavDropdown.Divider />
+                  <Nav.Link href="/my_profil_english"><b><pre>check your historic</pre></b></Nav.Link>
+                  <NavDropdown.Divider />
+                  <Nav.Link  href="/form_retrait_info_english"><b><pre>track  transfer status</pre></b></Nav.Link>
                   <NavDropdown.Divider />
                   <Nav.Link ><b onClick={contactUs} ><pre>Contact us</pre></b></Nav.Link>
                 </Nav>
-               
               </Offcanvas.Body>
             </Navbar.Offcanvas>
 
@@ -467,14 +484,14 @@ function HeaderEnglish(props)
       </Offcanvas.Header>
       <Offcanvas.Body>
         
-        <Nav className="justify-content-end flex-grow-1 pe-3">
-        <NavDropdown.Divider />
-        <Nav.Link href="/"><b><pre>Home</pre></b></Nav.Link>
-          <NavDropdown.Divider />
-          <Nav.Link ><b onClick={showLogin}><pre>Send Money</pre></b></Nav.Link>
-          <NavDropdown.Divider />
-          <Nav.Link ><b onClick={contactUs} ><pre>Contact us</pre></b></Nav.Link>
-        </Nav>
+      <Nav className="justify-content-end flex-grow-1 pe-3">
+                <NavDropdown.Divider />
+                  <Nav.Link href="/"><b><pre>Home</pre></b></Nav.Link>
+                  <NavDropdown.Divider />
+                  <Nav.Link ><b onClick={showLogin}><pre>Send Money</pre></b></Nav.Link>
+                  <NavDropdown.Divider />
+                  <Nav.Link ><b onClick={contactUs} ><pre>Contact us</pre></b></Nav.Link>
+                </Nav>
        
       </Offcanvas.Body>
     </Navbar.Offcanvas>

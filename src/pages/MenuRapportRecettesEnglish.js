@@ -29,7 +29,7 @@ function MenuRapportRecettesEnglish(props)
     return (
 <>
 <HeaderEnglish dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
-{isDesktop &&<Container className='justify-content-center text-center mb-5 text-light text-bold'>
+{isDesktop && <Container className='justify-content-center text-center mb-5 text-light text-bold'>
     <Row className='mt-3'>
         <Col xs={12} className="text-start text-light">
             <p><Link to='/menu_gestion_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>
@@ -71,32 +71,47 @@ function MenuRapportRecettesEnglish(props)
 
 </Container> }
 
-{isMobileOrTablet &&  <Container >
-   
-   <Row className='justify-content-center pb-3 pt-5 mt-5'>
-       <Col xs = {12}>
-       <Link to="/menu_rapport_envoie" style={{color:'white',textDecorationLine:'none'}}>
-       <Button variant='warning'  style={{width:400,height:50}} className='btn-lg rounded-pill zoom'>
-       <b className='text-dark'><pre>Opérations Envoi</pre></b>
-       </Button>
-       </Link>
-       </Col>
-   </Row>
- 
+{isMobileOrTablet &&  <Container className='justify-content-center text-center mb-5 text-light text-bold'>
+    <Row className='mt-3'>
+        <Col xs={"auto"} className="text-start text-light">
+            <p><Link to='/menu_gestion_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>
+        </Col>
+    </Row>
+    <Row className='justify-content-center pb-3 pt-5 mt-5'>
+        <Col xs = {"auto"}>
+        <Link to="/select_date_rapport_recette_english" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant='btn--blue'  style={{width:400,height:80,border:"2px solid white"}} className='btn-lg btn--blue rounded-pill zoom py-4'>
+        <b className='text-light'><pre>Daily Incomes</pre></b>
+        </Button>
+        </Link>
+        </Col>
+    </Row>
+
+    <Row className='justify-content-center pb-3 '>
+        <Col xs = {"auto"}>
+        <Link to="/select_mois_rapport_recette_english" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant='btn--blue'  style={{width:400,height:80,border:"2px solid white"}} className='btn-lg btn--blue rounded-pill zoom py-4'>
+        <b className='text-light'><pre>Monthly Incomes</pre></b>
+        </Button>
+        </Link>
+        </Col>
+    </Row>
+
+    <Row className='justify-content-center pb-3 '>
+        <Col xs = {"auto"}>
+        <Link to="" style={{color:'white',textDecorationLine:'none'}}>
+        <Button onClick={()=>setModalShow3(true)} variant='btn--blue'  style={{width:400,height:80,border:"2px solid white"}} className='btn-lg btn--blue rounded-pill zoom py-4'>
+        <b className='text-light'><pre>Yearly Incomes</pre></b>
+        </Button>
+        </Link>
+        </Col>
+    </Row>
+  
 
 
-   <Row className='justify-content-center pb-3'>
-       <Col xs = {12}>
-       <Link to="/menu_rapport_retrait" style={{color:'white',textDecorationLine:'none'}}>
-       <Button variant='warning'  style={{width:400,height:50}} className='btn-lg rounded-pill zoom'>
-       <b className='text-dark'><pre>Opérations Retrait</pre></b>
-       </Button>
-       </Link>
-       </Col>
-   </Row>
- 
+  
 
-</Container>}
+</Container> }
 <MyVerticallyCenteredModal3 show={modalShow3} onHide={() => setModalShow3(false)} />
 <Footer />
 </>

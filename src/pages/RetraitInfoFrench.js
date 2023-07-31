@@ -214,68 +214,76 @@ const navigate = useNavigate()
 </Container>
 }
 
-{isMobileOrTablet && <Container className='bg-light justify-content-center text-center bordure mx-auto mt-5' >
-<Row className='justify-content-center mb-3 pt-3' >
+{isMobileOrTablet && <Container className=' justify-content-center text-center mb-5 text-light text-bold rounded'  >
+<Row className='mt-3'>
+        <Col xs={12} className="text-start text-light">
+            <p><Link to='/form_retrait_operation_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u>  </b></Link> </p>
+        </Col>
+    </Row>
+  <Row className='justify-content-center mt-3'>
+<Col xs={12} style={{border:"2px solid white",width:"auto"}}>
+<Row className='justify-content-center  pt-3' >
         <Col xs={12}>
-        <p className='couleur2 display-6'><i><b>{message}</b></i></p>
+        <p className='couleur2'><i><b>{message} !</b></i></p>
         </Col>
     </Row>
     <Row className='justify-content-center pb-3'>
       <hr style={{color:"darkorange"}}></hr>
       <p className='couleur2'><b><u>Retrait Status</u></b> </p>
     </Row>
-    <Row className='justify-content-center pb-3' >
-        <Col xs={12}>
-        {props.envoie2.infoEnvoie.status_retrait === 'Code Retrait Valide' ?  <p className='text-dark'>Status Retrait : <b className='text-success'>{props.envoie2.infoEnvoie.status_retrait}</b> </p> : <p className='text-dark'>Status Retrait : <b className='text-danger'>{props.envoie2.infoEnvoie.status_retrait}</b> </p>}
-        </Col>
-    </Row>
-
-
-    <Row className='justify-content-center pb-3'>
-      <hr style={{color:"darkorange"}}></hr>
-      <p className='text-dark'><b><u>Expediteur Informations</u></b> </p>
-    </Row>
     <Row className='justify-content-start pb-3' >
-        <Col xs={6}>
-        <p className='text-dark'>Nom: <b className='text-dark'>{props.envoie2.infoEnvoie.nom_expediteur}</b> </p>
-        <p className='text-dark'>Postnom: <b className='text-dark'>{props.envoie2.infoEnvoie.postnom_expediteur}</b>  </p>
-        <p className='text-dark'>Prénom: <b className='text-dark'>{props.envoie2.infoEnvoie.prenom_expediteur}</b> </p>
-        </Col>
-
-        <Col xs={6}>
-        <p className='text-dark'>Email: <b className='text-dark'>{props.envoie2.infoEnvoie.email_expediteur}</b> </p>
-        <p className='text-dark'>Numéro Téléphone: <b className='text-dark'> {props.envoie2.infoEnvoie.numero_expediteur} </b></p>
-        <p className='text-dark'>Pays: <b className='text-dark'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
+    <Col xs={12}>
+        {props.envoie2.infoEnvoie.status_retrait === 'Code Retrait Valide' ?  <p><b  ><h1 className='text-success '><strong>Le code de retrait a été validé</strong> </h1></b> </p>: props.envoie2.infoEnvoie.status_retrait === 'Code Retrait Payé' ? <p><b  ><h1 className='text-danger '><strong>Le code de retrait a déjà été utilisé</strong> </h1></b> </p>: <p><b className='text-warning display-6'><h1><strong>Le code de retrait en attente de validation</strong></h1></b> </p>}
         </Col>
     </Row>
+
 
     <Row className='justify-content-center pb-3'>
       <hr style={{color:"darkorange"}}></hr>
-      <p className='text-dark'><b><u>Bénéficiare Informations</u></b> </p>
-    </Row>
-    <Row className='justify-content-start pb-3' >
-        <Col xs={6}>
-        <p className='text-dark'>Nom: <b className='text-dark'>{props.envoie2.infoEnvoie.nom_beneficiaire}</b>  </p>
-        <p className='text-dark'>Postnom: <b className='text-dark'>{props.envoie2.infoEnvoie.postnom_beneficiaire}</b> </p>
-        <p className='text-dark'>Prénom: <b className='text-dark'>{props.envoie2.infoEnvoie.prenom_beneficiaire} </b> </p>
-        </Col>
-
-        <Col xs={6}>
-        <p className='text-dark'>Email Adresse: <b className='text-dark'> {props.envoie2.infoEnvoie.adresse_beneficiaire}</b></p>
-        <p className='text-dark'>Numéro Téléphone: <b className='text-dark'>{props.envoie2.infoEnvoie.numero_beneficiaire}</b>  </p>
-        <p className='text-dark'>Pays: <b className='text-dark'>{props.envoie2.infoEnvoie.pays_beneficiaire}</b> </p>
-        </Col>
-    </Row>
-
-    <Row className='justify-content-center pb-3'>
-      <hr style={{color:"darkorange"}}></hr>
-      <p className='text-dark'><b><u>Motant Informations</u></b> </p>
+      <p className='couleur2'><b><u>Expediteur Informations</u></b> </p>
     </Row>
     <Row className='justify-content-start pb-3' >
         <Col xs={12}>
-        <p className='text-dark'>Montant: <b className='text-dark'>{Number(props.envoie2.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
-        <p className='text-dark'>Type de retrait: <b className='text-dark'>{props.envoie2.infoEnvoie.type_service}</b> </p>
-        <p className='text-dark'>Numéro à transferer de l'argent: <b className='text-dark'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
+        <p className='text-light'>Nom : <b className='text-light'>{props.envoie2.infoEnvoie.nom_expediteur}</b> </p>
+        <p className='text-light'>Prénom: <b className='text-light'>{props.envoie2.infoEnvoie.prenom_expediteur}</b> </p>
+        </Col>
+
+        <Col xs={12}>
+        <p className='text-light'>Email: <b className='text-light'>{props.envoie2.infoEnvoie.email_expediteur}</b> </p>
+        <p className='text-light'>Numéro Téléphone: <b className='text-light'> {props.envoie2.infoEnvoie.numero_expediteur} </b></p>
+        <p className='text-light'>Pays: <b className='text-light'> {props.envoie2.infoEnvoie.pays_expediteur}</b></p>
+        </Col>
+    </Row>
+
+    <Row className='justify-content-center pb-3'>
+      <hr style={{color:"darkorange"}}></hr>
+      <p className='couleur2'><b><u>Bénéficiare Informations</u></b> </p>
+    </Row>
+    <Row className='justify-content-start pb-3' >
+        <Col xs={12}>
+        <p className='text-light'>Nom: <b className='text-light'>{props.envoie2.infoEnvoie.nom_beneficiaire}</b>  </p>
+        <p className='text-light'>Prénom: <b className='text-light'>{props.envoie2.infoEnvoie.prenom_beneficiaire} </b> </p>
+        </Col>
+
+        <Col xs={12}>
+        <p className='text-light'>Pays: <b className='text-light'>{props.envoie2.infoEnvoie.pays_beneficiaire}</b> </p>
+        </Col>
+    </Row>
+
+    <Row className='justify-content-center pb-3'>
+      <hr style={{color:"darkorange"}}></hr>
+      <p className='couleur2'><b><u>Motant Informations</u></b> </p>
+    </Row>
+    <Row className='justify-content-start pb-3' >
+        <Col xs={12}>
+        <p className='text-light'>Montant: <b className='text-light'>{Number(props.envoie2.infoEnvoie.montant_beneficiaire).toFixed(2)} $</b> </p>
+        <p className='text-light'>Type de retrait: <b className='text-light'>{props.envoie2.infoEnvoie.type_service}</b> </p>
+        
+        </Col>
+
+        <Col xs={12}>
+        <p className='text-light'>Mobile Money: <b className='text-light'>{props.envoie2.infoEnvoie.numero_transfer}</b> </p>
+        <p className='text-light'>date de transfert: <b className='text-light'>{props.envoie2.infoEnvoie.date_heure_operation}</b> </p>
         </Col>
     </Row>
 
@@ -291,6 +299,12 @@ const navigate = useNavigate()
         </Button>
         </Link>
         </Col>
+
+        <Col xs={6}>
+        <Button variant="danger" type="submit" onClick={closePage}>
+        fermer
+        </Button>
+        </Col>
         
     </Row>
     <Row className='justify-content-center pb-3'>
@@ -299,8 +313,12 @@ const navigate = useNavigate()
         </Col>
     </Row>
     
+    </Col>
 
-</Container> }
+    </Row>
+
+</Container>
+}
 <Row className="mt-5">
           <Col md={12}>
             <p></p>

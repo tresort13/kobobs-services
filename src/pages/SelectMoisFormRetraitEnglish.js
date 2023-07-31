@@ -143,22 +143,36 @@ return (
 </Row>
 </Container>}
 
-{isMobileOrTablet && <Container className='bg-light justify-content-center text-center mt-5 mx-auto'  >
-<Row className='justify-content-center mb-3 pt-5' >
-        <Col xs={12}>
-        <p className="text-dark"><i><b>{message}</b></i></p>
+{isMobileOrTablet &&<Container className='justify-content-center text-center mb-5 text-light text-bold'  >
+<Row className='mt-3'>
+        <Col xs={12} className="text-start text-light">
+            <p><Link to='/menu_rapport_retrait_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>
         </Col>
     </Row>
-    
-    
-<Form onSubmit={submitVol}>
+
+<Row className=' justify-content-center mb-3 pt-3' >
+        <Col xs={12} className="rounded" style={{marginTop:100,width:"auto",border:"3px solid white"}}>
+        <p className="couleur2"><i><b>{message}</b></i></p>
+    <Formik
+      validationSchema={testValidation}
+      onSubmit={(values)=>{
+        submitVol(values)
+      }}
+      initialValues={{
+        moisInfo:''
+      }}
+    >
+     {({handleSubmit, handleChange,handleBlur, values, touched, errors
+         })=>(
+    <Form noValidate onSubmit={handleSubmit}>
    
 
     <Row className='justify-content-center'>
-        <Col xs = {12}>
+    <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Control name="moisInfo"  type="month" onChange={e=>inputChanged(e)} required />
+        <Form.Control name="moisInfo" value={values.moisInfo}  type="month" onBlur={handleBlur} onChange={handleChange} required />
          </Form.Group>
+         <p className='text-danger'>{touched.moisInfo && errors.moisInfo}</p>
         </Col>
     </Row>
 
@@ -167,13 +181,18 @@ return (
         <Col xs ={4}>
         
         <Button variant="warning" type="submit">
-        Valider 
+        Validate
         </Button>
 
         </Col>
     </Row>
 </Form>
-</Container>} 
+         )
+        }
+        </Formik>
+        </Col>
+</Row>
+</Container>}
 <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
 <MyVerticallyCenteredModal2 show={modalShow2} onHide={() => setModalShow2(false)} />
 <Footer />

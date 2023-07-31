@@ -160,7 +160,7 @@ function FormRetrait(props)
             <p><Link to='/home_lingala' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Zonga</u>  </b></Link> </p>
         </Col>
     </Row>
- <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:100,width:750}} >
+ <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:20,width:"auto"}} >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={12}>
         <p className='text-dark'><i><b>{message}</b></i></p>

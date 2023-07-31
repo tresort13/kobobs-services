@@ -234,47 +234,112 @@ console.log(rapportLocation)
 
 </Container>}
 
-{isMobileOrTablet && <Container fluid className='bg-light justify-content-center text-center borders mx-auto my-auto' >
-
-
-
-    
+{isMobileOrTablet && <Container fluid className='bg-light justify-content-center text-center borders mb-5' style={{marginTop:20}} >  
 <div>
 <Row className='justify-content-center '>
         <Col xs = {12} className='text-center borders pt-2'>
         <div>
-        <h6 ><u><b><i className='couleur2'>Table des Recettes Journalières</i></b></u></h6>
+        <h4 ><u><b><i className='couleur2'>{props.titleFrench} {props.dateInfo}</i></b></u></h4>
         </div>
         <div>
+        
+        {props.message2 === "Rapport of withdrawals" ? <div>
+    <Form>
+    <Form.Select aria-label="Default select example" onChange={(e)=>changeRapportLocation(e)}>
+      <option value="Rapport Angola et RD Congo" ><b>Rapport Angola et RD Congo </b></option>
+      <option value="Rapport RD Congo"><b>Rapport RD Congo </b></option>
+      <option value="Rapport Angola"><b>Rapport Angola</b></option>
+    </Form.Select>
+    </Form>
+    </div> : <di></di>}
+    
         <Table striped bordered hover variant="light">
       <thead>
         <tr className='text-dark' style={{border:"2px solid white"}}>
           <th>Date</th>
-          <th>Montant Beneficiaire ($)</th>
-          <th>Frais Envoie (£)</th>
-          <th>Frais TVA (£)</th>
-          <th>Total (£)</th>
+          <th>Nom Expéditeur</th>
+          <th>Nom bénéficiaire</th>
+          <th>Pays Bénéficiaire</th>
+          <th>Montant Bénéficiaire ($)</th>
+          <th>Montant total(£)</th>
+          <th>Détails des opérations</th>
         </tr>
       </thead>
       <tbody>
-        {props.dailyRapport.map((value)=>
+      {rapportLocation === "Rapport Angola et RD Congo" ? props.detailEnvoieTotalTableau.map((value)=>
         {
-          return  <tr style={{border:"2px solid white"}} >
-              <td><i ><b>{props.dateInfo}</b></i></td>
-             <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_beneficiaire).toFixed(2)) }</b></i></td>
-             <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.frais_envoie).toFixed(2))}</b></i></td>
-             <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.frais_tva).toFixed(2))}</b></i></td>
+          return  <tr  style={{border:"2px solid white"}} >
+             <td><i ><b>{value.date_operation}</b></i></td>
+             <td><i><b className="text-dark">{value.prenom_expediteur} {value.nom_expediteur} {value.postnom_expediteur} </b></i></td>
+             <td><i><b className="text-dark"> {value.prenom_beneficiaire} {value.nom_beneficiaire} {value.postnom_beneficiaire}</b></i></td>
+             <td><i><b className="text-dark"> {value.pays_beneficiaire}</b></i></td>
+             <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_beneficiaire).toFixed(2))}</b></i></td>
              <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_total).toFixed(2))}</b></i></td>
-            </tr>     
+             <td onClick={()=>{
+               operationDetailArray.push(value)
+               props.setTableType("dailyRapport")
+               console.log(operationDetailArray)
+               props.dataDetailEnvoieTotal(operationDetailArray)
+               navigate('/details_retraits_info_french')
+             }} ><i className="text-primary btn" ><b><u>Plus des Détails</u></b></i></td>
+            </tr> 
         }) 
-        }
-       <tr style={{border:"2px solid white"}}>
+        
+        :rapportLocation === "Rapport RD Congo" ? props.detailEnvoieTotalTableau.filter((value)=>{
+         return value.pays_beneficiaire ==="RD Congo"
+        }).map((value)=>
+        {
+          return  <tr  style={{border:"2px solid white"}} >
+             <td><i ><b>{value.date_operation}</b></i></td>
+             <td><i><b className="text-dark">{value.prenom_expediteur} {value.nom_expediteur} {value.postnom_expediteur} </b></i></td>
+             <td><i><b className="text-dark"> {value.prenom_beneficiaire} {value.nom_beneficiaire} {value.postnom_beneficiaire}</b></i></td>
+             <td><i><b className="text-dark"> {value.pays_beneficiaire}</b></i></td>
+             <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_beneficiaire).toFixed(2))}</b></i></td>
+             <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_total).toFixed(2))}</b></i></td>
+             <td onClick={()=>{
+               operationDetailArray.push(value)
+               props.setTableType("dailyRapport")
+               console.log(operationDetailArray)
+               props.dataDetailEnvoieTotal(operationDetailArray)
+               navigate('/details_retraits_info_french')
+             }} ><i className="text-primary btn" ><b><u>Plus des Détails</u></b></i></td>
+            </tr> 
+        }) 
+        :props.detailEnvoieTotalTableau.filter((value)=>{
+          return value.pays_beneficiaire ==="Angola"
+         }).map((value)=>
+        {
+          return  <tr  style={{border:"2px solid white"}} >
+             <td><i ><b>{value.date_operation}</b></i></td>
+             <td><i><b className="text-dark">{value.prenom_expediteur} {value.nom_expediteur} {value.postnom_expediteur} </b></i></td>
+             <td><i><b className="text-dark"> {value.prenom_beneficiaire} {value.nom_beneficiaire} {value.postnom_beneficiaire}</b></i></td>
+             <td><i><b className="text-dark"> {value.pays_beneficiaire}</b></i></td>
+             <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_beneficiaire).toFixed(2))}</b></i></td>
+             <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_total).toFixed(2))}</b></i></td>
+             <td onClick={()=>{
+               operationDetailArray.push(value)
+               props.setTableType("dailyRapport")
+               console.log(operationDetailArray)
+               props.dataDetailEnvoieTotal(operationDetailArray)
+               navigate('/details_retraits_info_french')
+             }} ><i className="text-primary btn" ><b><u>Plus des Détails</u></b></i></td>
+            </tr> 
+        }) }
+{props.message2 === "Rapport of withdrawals" ? <tr style={{border:"2px solid white"}}>
          <td><i><b>TOTAL</b></i></td>
-         <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_montant_beneficiaire).toFixed(2))}</b></i></td>
-         <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_frais_envoie).toFixed(2))}</b></i></td>
-         <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_frais_tva).toFixed(2))}</b></i></td>
-         <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_montant).toFixed(2))}</b></i></td>
-       </tr>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         {rapportLocation === "Rapport Angola et RD Congo" ? <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_montant_beneficiaire).toFixed(2))} $</b></i></td> : rapportLocation === "Rapport RD Congo" ? <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_montant_beneficiaire_rdcongo).toFixed(2))} $</b></i></td> :<td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_montant_beneficiaire_angola).toFixed(2))} $</b></i></td>}
+       </tr>: props.message2 === "Rapport of validated sendings" ? <tr style={{border:"2px solid white"}}>
+         <td><i><b>TOTAL</b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b></b></i></td>
+         <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_montant).toFixed(2))} £</b></i></td>
+       </tr>: <tr></tr>}
+       
          
       </tbody>
     </Table>
@@ -286,16 +351,11 @@ console.log(rapportLocation)
 
   
     <Row className='justify-content-center pb-3 pt-3'>
-        <Col xs ={4} >
-        <Link to="" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant="outline-warning" type="submit" onClick={message} >
-        Imprimer 
-        </Button>
-        </Link>
-
+        <Col xs ={6} >
+        {props.rapportType === "dailyRapportRetrait" ? <p><Link to='/daily_rapport_retrait_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.rapportType === "monthlyRapportRetrait" ? <p><Link to='/monthly_rapport_retrait_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.rapportType === "yearlyRapportRetrait" ? <p><Link to='/yearly_rapport_retrait_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p>:  props.rapportType === "dailyRapportEnvoi" ? <p><Link to='/daily_rapport_envoi_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.rapportType === "monthlyRapportEnvoi" ? <p><Link to='/monthly_rapport_envoi_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p>: <p><Link to='/yearly_rapport_envoi_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p>}
         </Col>
 
-        <Col xs ={4} >
+        <Col xs ={6} >
         <Link to="" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant="success" type="submit" onClick={message} >
        <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-excel-fill" viewBox="0 0 16 16">
@@ -312,7 +372,6 @@ console.log(rapportLocation)
 
 
 </Container>}
-
 
 <Row className="mt-5">
           <Col md={12}>

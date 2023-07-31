@@ -586,68 +586,214 @@ props.isStaff === true ?
 </div>
 }
 
-{isMobileOrTablet && <Container className='bg-light justify-content-center text-center mx-auto my-auto'>
-<Row className='justify-content-center mb-3 pt-3' >
+{isMobileOrTablet && <div className='justify-content-center text-center mb-5 text-light text-bold rounded'>
+<Row className='mt-3 px-5'>
+        <Col xs={12} className="text-start text-light">
+            <p><Link to='/' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>
+        </Col>
+    </Row>
+   <Container className='bg-light text-dark rounded' style={{width:"auto"}}>
+<Row className='justify-content-center  pt-3' >
         <Col xs={12}>
         <p className='text-dark'><i><b>{message}</b></i></p>
         </Col>
     </Row>
 
 
-    <Row className='justify-content-center pb-3'>
+    <Row className='justify-content-center'>
       <hr style={{color:"darkorange"}}></hr>
       <p className='couleur2'><b><u></u></b> </p>
     </Row>
-    <Row className='justify-content-start pb-3' >
-        <Col xs={12}>
-        <p className='text-dark'>Type de Rapport: <b className='couleur2'>Journalier</b> </p>
-        <p className='text-dark'>Date : <b className='couleur2'>{props.dateInfo}</b>  </p>
-        
-        </Col>
+ 
+     <Row className='justify-content-start text-start ' >
+      <Col xs={12}>
+      </Col>
+    <Col xs={12} className='justify-content-start'>
+        <p className='text-dark'>Full Name : <b className='text-dark'>{props.user.infoUser.prenom} {props.user.infoUser.nom} {props.user.infoUser.postnom}</b> </p>
+        <p className='text-dark'>Email : <b className='text-dark '> {props.user.infoUser.email}</b></p>
+        <p className='text-dark'>Mobile number: <b className='text-dark '> {props.user.infoUser.numero}</b></p>
+    </Col>
+
     </Row>
+
 
     <Row className='justify-content-center pb-3'>
       <hr style={{color:"darkorange"}}></hr>
-      
     </Row>
-    <Row className='justify-content-center pb-3' >
-        <Col xs={6}>
-        <p className='text-dark'>envoies effectué: <b className='couleur2'> </b>  </p>
-         </Col>
-    </Row>
-
-      <Row>
-        <Col>
-        <p className='text-dark'>envoies validés: <b className='couleur2'></b> </p>
-        <p className='text-dark'>envoies non validés: <b className='couleur2'></b></p>
-        </Col>
-
-        <Col xs={6}>
-        <Link to="" style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={detailTotal}>Voir Details </p></Link>
-        <Link to="" style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={detailValide}>Voir Details </p></Link>
-        <Link to="" style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" >Voir Details </p></Link>
+    {props.isStaff === true ?
+    <Row>
+       <Col xs={12} className='justify-content-center '>
+       <Formik
+      validationSchema={testValidation}
+      onSubmit={(values)=>{
+        submitDate(values)
+      }}
+      initialValues={{
+        dateInfo:'',
+      }}
+    >
+     {({handleSubmit, handleChange,handleBlur, values, touched, errors
+         })=>(
+    <Form noValidate onSubmit={handleSubmit}>
        
+    <Row className='justify-content-center text-center mx-3 px-3 py-3' >
+        <Col xs={12} className='justify-content-end text-start '>
+        <Form.Label htmlFor="basic-url" className='text-start'><strong><i>Select a particular date you want to check your historic :</i></strong></Form.Label>
+        <InputGroup className="mb-3" controlId="formBasicText" >  
+        <Form.Control name="dateInfo" value={values.dateInfo} onChange={handleChange} onBlur={handleBlur} type="date" placeholder='Select  date'  />
+        <InputGroup.Text ><Button type="submit" variant='dark'>
+           <strong>check historic</strong>
+        </Button>
+        </InputGroup.Text>
+         </InputGroup>
+         <p className='text-danger'>{touched.dateInfo && errors.dateInfo}</p>
         </Col>
     </Row>
 
+
+
+</Form>
+)
+}
+</Formik>
+</Col>
+</Row> :
+<Row>
+       <Col xs={12} className='justify-content-center '>
+       <Formik
+      validationSchema={testValidation2}
+      onSubmit={(values)=>{
+        submitDate2(values)
+      }}
+      initialValues={{
+        dateInfo:''
+      }}
+    >
+     {({handleSubmit, handleChange,handleBlur, values, touched, errors
+         })=>(
+    <Form noValidate onSubmit={handleSubmit}>
+    <Row className='justify-content-center text-center mx-3 px-3 py-3' >
+        <Col xs={12} className='justify-content-end text-start '>
+        <Form.Label htmlFor="basic-url" className='text-start'><strong><i>Select the date you want to check on :</i></strong></Form.Label>
+        <InputGroup className="mb-3" controlId="formBasicText" >  
+        <Form.Control name="dateInfo" value={values.dateInfo} onChange={handleChange} onBlur={handleBlur} type="date" placeholder='Select  date'  />
+        <InputGroup.Text ><Button type="submit" variant='dark'>
+           <strong>check historic</strong>
+        </Button>
+        </InputGroup.Text>
+         </InputGroup>
+         <p className='text-danger'>{touched.dateInfo && errors.dateInfo}</p>
+        </Col>
+    </Row>
+
+
+
+</Form>
+)
+}
+</Formik>
+</Col>
+</Row>
+}
+
+ {localDate !=='' ? <div className='bg-light justify-content-start text-center' >
+<Row className='justify-content-start ' >
+  <Col xs={12}>
+  </Col>
+        {isTodayHistory === false ? <Col xs={10} className='text-start'>
+       { props.isStaff === true ? <p ><i><b>Your historic on <span className='couleur2'>{localDate} :</span> </b></i></p> : 
+       <p ><i><b>Your historic  on <span className='couleur2'>{localDate} :</span> </b></i></p>}
+        </Col> :
+       <Col xs={12} className='text-start'>
+       { props.isStaff === true ? <p ><i><b>Your historic for today <span className='couleur2'>{localDate} :</span> </b></i></p> : 
+       <p ><i><b>Your historic for today <span className='couleur2'>{localDate} :</span> </b></i></p>}
+        </Col>}
+  </Row>
+  { props.isAdmin === true ?
+    <Row className='justify-content-end pb-3'>
+      <Col xs={12}>
+      </Col>
+      <Col xs={6} >
+        {nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Number of sendings made :</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
+        
+        {nombre_envoie_valide > 0 ? <p className='text-dark py-2 text-start'><strong>Number of validations  made :</strong> <b className='couleur2'>  {nombre_envoie_valide}</b>  </p> : <span></span>}
+         
+         {nombre_retrait_paye > 0 ? <p className='text-dark py-2 text-start'><strong>Number of withdrawals made :</strong> <b className='couleur2'>  {nombre_retrait_paye}</b>  </p> :<span></span> }
+
+         {nombre_operation_deleted > 0 ? <p className='text-dark py-2 text-start'><strong> Number of operations deleted :</strong> <b className='couleur2'>  {nombre_operation_deleted}</b>  </p> :<span></span> }   
+        </Col> 
+         
+
+
+
+       <Col xs={6}>
+       {nombre_sending_total > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailTotal}>Check details </p></a> : <span></span>}
+       
+         {nombre_envoie_valide > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailValide}>Check details </p></a> :<span></span>}
+       
+        {nombre_retrait_paye > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailPaye}>Check details </p></a> : <span></span>}
+
+        {nombre_operation_deleted > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailDeletion}>Check details </p></a> : <span></span>}  
+        </Col> 
+
+       <Col xs={2}>
+      </Col>        
+</Row> :
+
+props.isStaff === true ?
+    <Row className='justify-content-end pb-3'>
+      <Col xs={12}>
+      </Col>
+      <Col xs={6}>
+        {nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Number of sendings made :</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
+         {nombre_retrait_paye > 0 ? <p className='text-dark py-2 text-start'><strong> Number of withdrawals made :</strong> <b className='couleur2'>  {nombre_retrait_paye}</b>  </p> :<span></span> }   
+          </Col> 
+         
+
+
+
+       <Col xs={6}>
+       {nombre_sending_total > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailTotal}>Check details </p></a> : <span></span>}
+
+        {nombre_retrait_paye > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailPaye}>Check details </p></a> : <span></span>}  
+          </Col> 
+       <Col xs={12}>
+      </Col>        
+</Row> :
+
+<Row className='justify-content-center pb-3' >
+<Col xs={6}>
+{nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Number of sendings made :</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
+ </Col>
+
+ <Col xs={6}>
+{nombre_sending_total > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailTotal}>Check details </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded' type="submit"  onClick={closeModal}>Check details</p></a>}
+
+</Col>
+</Row>
+}
+    </div>
+    :
+    <Row></Row>
+}
 
     <Row className='justify-content-center pb-3'>
       <hr style={{color:"darkorange"}}></hr>
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <Link to="/home" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant="warning" type="submit">
+        <Link to="/" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant="danger" type="submit">
         close
         </Button>
         </Link>
         </Col>
         
     </Row>
-    
-    
+</Container>
+</div>
+}
 
-</Container>}
 <Row className="mt-5">
           <Col md={12}>
             <p></p>

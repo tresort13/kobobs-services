@@ -67,13 +67,18 @@ function MenuRapportEnvoiEnglish(props)
 
 </Container> }
 
-{isMobileOrTablet && <Container >
+{isMobileOrTablet && <Container className='justify-content-center text-center mb-5 text-light text-bold'>
+    <Row className='mt-3'>
+        <Col xs={"auto"} className="text-start text-light">
+            <p><Link to='/menu_management_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>
+        </Col>
+    </Row>
     
     <Row className='justify-content-center pb-3 pt-5 mt-5'>
-        <Col xs = {12}>
-        <Link to="/select_date_form_envoi_french" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='warning'  style={{width:400,height:50}} className='btn-lg rounded-pill zoom'>
-        <b className='text-dark'><pre>Rapport Jounalier</pre></b>
+        <Col xs = {"auto"}>
+        <Link to="/select_date_form_envoi_english" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant='btn--blue'  style={{width:400,height:80,border:"2px solid white"}} className='btn-lg btn--blue rounded-pill zoom py-4'>
+        <b className='text-light'><pre>Daily Sendings Report</pre></b>
         </Button>
         </Link>
         </Col>
@@ -82,10 +87,20 @@ function MenuRapportEnvoiEnglish(props)
 
 
     <Row className='justify-content-center pb-3'>
-        <Col xs = {12}>
-        <Link to="/select_mois_form_envoi_french" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='warning'  style={{width:400,height:50}} className='btn-lg rounded-pill zoom'>
-        <b className='text-dark'><pre>Rapport Mensuel</pre></b>
+        <Col xs = {"auto"}>
+        <Link to="/select_mois_form_envoi_english" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant='btn--blue'  style={{width:400,height:80,border:"2px solid white"}} className='btn-lg btn--blue rounded-pill zoom py-4'>
+        <b className='text-light'><pre>Monthly Sendings Report</pre></b>
+        </Button>
+        </Link>
+        </Col>
+    </Row>
+
+    <Row className='justify-content-center pb-3'>
+        <Col xs = {"auto"}>
+        <Link to="/select_year_form_envoi_english" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant='btn--blue'  style={{width:400,height:80,border:"2px solid white"}} className='btn-lg btn--blue rounded-pill zoom py-4'>
+        <b className='text-light'><pre>Yearly Sendings Report</pre></b>
         </Button>
         </Link>
         </Col>

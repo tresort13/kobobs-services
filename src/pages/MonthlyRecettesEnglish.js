@@ -140,74 +140,79 @@ const total_montant = props.monthlyRapport.reduce((total,value)=>
 
 </Container>}
 
-{isMobileOrTablet && <Container fluid className='bg-light justify-content-center text-center borders mx-auto my-auto'>
-
-
-
+{isMobileOrTablet &&  <Container fluid className='bg-light justify-content-center text-center borders mb-5' style={{marginTop:20}} >
     
-<div>
-<Row className='justify-content-center '>
-        <Col xs = {12} className='text-center borders pt-2'>
-        <div>
-        <h6 ><u><b><i className='couleur2'>Table des Recettes Mensuelles</i></b></u></h6>
-        </div>
-        <div>
-        <Table striped bordered hover variant="light">
-      <thead>
-        <tr className='text-dark' style={{border:"2px solid white"}}>
-          <th>Periode</th>
-          <th>Montant ($)</th>
-          <th>Frais Envoie (£)</th>
-          <th>Frais TVA (£)</th>
-          <th>Total (£)</th>
-        </tr>
-      </thead>
-      <tbody>
-        {props.monthlyRapport.map((value)=>
-        {
-          return  <tr style={{border:"2px solid white"}} >
-             <td><i ><b>{props.moisInfo}</b></i></td>
-             <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_beneficiaire).toFixed(2)) }</b></i></td>
-             <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.frais_envoie).toFixed(2))}</b></i></td>
-             <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.frais_tva).toFixed(2))}</b></i></td>
-             <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_total).toFixed(2))}</b></i></td>
-            </tr>     
-        }) 
-        }
-       <tr style={{border:"2px solid white"}}>
-         <td><i><b>TOTAL</b></i></td>
-         <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_montant_beneficiaire).toFixed(2))}</b></i></td>
-         <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_frais_envoie).toFixed(2))}</b></i></td>
-         <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_frais_tva).toFixed(2))}</b></i></td>
-         <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_montant).toFixed(2))}</b></i></td>
-       </tr>
-         
-      </tbody>
-    </Table>
-        </div>
-        </Col>
-    </Row>
-
-
-
-  
-    <Row className='justify-content-center pb-3 pt-3'>
-        <Col xs ={4} >
-        <Link to="" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant="outline-warning" type="submit" onClick={message} >
-        print 
-        </Button>
-        </Link>
-
-        </Col>
-    </Row>
-  
-
-
-</div>
-
-
-</Container>}
+    <div>
+    <Row className='justify-content-center '>
+            <Col xs = {12} className='text-center borders pt-2'>
+            <div>
+            <h4 ><u><b><i className='couleur2'>Table of Monthly Revenues</i></b></u></h4>
+            </div>
+            <div>
+            <Table striped bordered hover variant="light">
+          <thead>
+            <tr className='text-dark' style={{border:"2px solid white"}}>
+            <th>Period</th>
+              <th>Beneficiary Amount ($)</th>
+              <th>sending fees(£)</th>
+              <th>TVA fees(£)</th>
+              <th>Total Amount Paid (£)</th>
+              <th>Operation details</th>
+            </tr>
+          </thead>
+          <tbody>
+            {props.monthlyRapport.map((value)=>
+            {
+              return  <tr style={{border:"2px solid white"}} >
+                 <td><i ><b>{props.moisInfo}</b></i></td>
+                 <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_beneficiaire).toFixed(2)) }</b></i></td>
+                 <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.frais_envoie).toFixed(2))}</b></i></td>
+                 <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.frais_tva).toFixed(2))}</b></i></td>
+                 <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_total).toFixed(2))}</b></i></td>
+                 <td onClick={()=>{
+                   operationDetailArray.push(value)
+                   props.setTableType("monthlyRapportRecette")
+                   console.log(operationDetailArray)
+                   props.dataDetailEnvoieTotal(operationDetailArray)
+                   navigate('/details_retraits_info_english')
+                 }} ><i className="text-primary" ><b><u>check details</u></b></i></td>
+                </tr>     
+            }) 
+            }
+           <tr style={{border:"2px solid white"}}>
+             <td><i><b>TOTAL</b></i></td>
+             <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_montant_beneficiaire).toFixed(2))}</b></i></td>
+             <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_frais_envoie).toFixed(2))}</b></i></td>
+             <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_frais_tva).toFixed(2))}</b></i></td>
+             <td><i className='couleur2'><b>{new Intl.NumberFormat().format(Number(total_montant).toFixed(2))}</b></i></td>
+           </tr>
+             
+          </tbody>
+        </Table>
+            </div>
+            </Col>
+        </Row>
+    
+    
+    
+      
+        <Row className='justify-content-center pb-3 pt-3'>
+            <Col xs ={4} >
+            <Link to="/menu_rapport_recette_english" style={{color:'white',textDecorationLine:'none'}}>
+            <Button variant="danger" type="submit" >
+            close 
+            </Button>
+            </Link>
+    
+            </Col>
+        </Row>
+      
+    
+    
+    </div>
+    
+    
+    </Container>}
 
 
 <Row className="mt-5">

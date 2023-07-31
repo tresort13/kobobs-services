@@ -187,7 +187,13 @@ function YearlyRapportInfoEnvoiEnglish(props)
 </div>
 }
 
-{isMobileOrTablet && <Container className='bg-light justify-content-center text-center  mx-auto my-auto'>
+{isMobileOrTablet && <div className='justify-content-center text-center mb-5 text-light text-bold rounded'>
+<Row className='mt-3 px-5'>
+        <Col xs={12} className="text-start text-light">
+            <p><Link to='/select_mois_form_envoi_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>
+        </Col>
+    </Row>
+   <Container className='bg-light text-dark rounded' style={{width:"auto"}}>
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={12}>
         <p className='text-dark'><i><b>{message}</b></i></p>
@@ -201,29 +207,40 @@ function YearlyRapportInfoEnvoiEnglish(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={12}>
-        <p className='text-dark'>Type de Rapport: <b className='couleur2'>Mensuel</b> </p>
-        <p className='text-dark'>Période : <b className='couleur2'>{props.moisInfo}</b>  </p>
+        <p className='text-dark'><b>Type of Report :</b> <b className='couleur2'>Monthly</b> </p>
+        <p className='text-dark'><b>Period :</b> <b className='couleur2'>{props.moisInfo}</b>  </p>
         
         </Col>
     </Row>
 
     <Row className='justify-content-center pb-3'>
       <hr style={{color:"darkorange"}}></hr>
-      <p className='couleur2'><b><u>Rapport</u></b> </p>
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <p className='text-dark'>envoies effectué: <b className='couleur2'> {nombre_envoie_total}</b>  </p>
-        <p className='text-dark'>envoies validés: <b className='couleur2'> {nombre_envoie_valide}</b> </p>
-        <p className='text-dark'>envoies non validés: <b className='couleur2'> {nombre_envoie_nonvalide}</b></p>
+        <p className='text-dark py-2 text-center'><b>Number of total sendings made :</b> <b className='couleur2'> {nombre_envoie_total}</b>  </p>
+         </Col>
+
+         <Col xs={6}>
+       {nombre_envoie_total > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailTotal}>See details </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit"  onClick={closeModal}>See details </p></a>}
+       
+    </Col>
+    </Row>
+
+    <Row className='justify-content-center pb-3'>
+      <hr style={{color:"darkorange"}}></hr>
+    </Row>
+
+    <Row>
+          <Col>
+        <p className='text-dark py-2 text-center'><b>Number of validated sendings :</b> <b className='couleur2'> {nombre_envoie_valide}</b> </p>
+        <p className='text-dark py-2 text-center'><b>Number of no validated sendings :</b> <b className='couleur2'> {nombre_envoie_nonvalide}</b></p>
         </Col>
 
-        <Col xs={6}>
-        <Link to="/details_envoie_info" style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={detailTotal}>Voir Details </p></Link>
-        <Link to="/details_envoie_info" style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={detailValide}>Voir Details </p></Link>
-        <Link to="/details_envoie_info" style={{color:'white',textDecorationLine:'none'}}><p className='btn-warning rounded-pill' type="submit" onClick={detailNonValide}>Voir Details </p></Link>
-       
-        </Col>
+       <Col xs={6}>
+        {nombre_envoie_valide > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailValide}>See details </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={closeModal}>See details </p></a>}
+        {nombre_envoie_nonvalide > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailNonValide}>See details </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit"  onClick={closeModal}>See details </p></a>}
+    </Col>
     </Row>
 
 
@@ -232,9 +249,9 @@ function YearlyRapportInfoEnvoiEnglish(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <Link to="/home" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant="warning" type="submit">
-        Fermer
+        <Link to="/menu_rapport_envoi_english" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant="danger" type="submit">
+        close
         </Button>
         </Link>
         </Col>
@@ -243,7 +260,10 @@ function YearlyRapportInfoEnvoiEnglish(props)
     
     
 
-</Container>}
+</Container>
+</div>
+}
+
 <Row className="mt-5">
           <Col md={12}>
             <p></p>

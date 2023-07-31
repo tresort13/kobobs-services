@@ -596,7 +596,7 @@ props.isStaff === true ?
             <p><Link to='/home_lingala' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Zonga</u>  </b></Link> </p>
         </Col>
     </Row>
-   <Container className='bg-light text-dark rounded' style={{width:1000}}>
+   <Container className='bg-light text-dark rounded' style={{width:"auto"}}>
 <Row className='justify-content-center  pt-3' >
         <Col xs={12}>
         <p className='text-dark'><i><b>{message}</b></i></p>
@@ -718,13 +718,13 @@ props.isStaff === true ?
       <Col xs={12}>
       </Col>
       <Col xs={6} >
-        {nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Nombre yaba envois osali :</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
+        {nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Envois osali :</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
         
-        {nombre_envoie_valide > 0 ? <p className='text-dark py-2 text-start'><strong>Nombre yaba validations osali :</strong> <b className='couleur2'>  {nombre_envoie_valide}</b>  </p> : <span></span>}
+        {nombre_envoie_valide > 0 ? <p className='text-dark py-2 text-start'><strong>Validations osali :</strong> <b className='couleur2'>  {nombre_envoie_valide}</b>  </p> : <span></span>}
          
-         {nombre_retrait_paye > 0 ? <p className='text-dark py-2 text-start'><strong>Nombre yaba retraits osali :</strong> <b className='couleur2'>  {nombre_retrait_paye}</b>  </p> :<span></span> }
+         {nombre_retrait_paye > 0 ? <p className='text-dark py-2 text-start'><strong>Retraits osali :</strong> <b className='couleur2'>  {nombre_retrait_paye}</b>  </p> :<span></span> }
 
-         {nombre_operation_deleted > 0 ? <p className='text-dark py-2 text-start'><strong> Nombre yaba opérations oyo o supprimées :</strong> <b className='couleur2'>  {nombre_operation_deleted}</b>  </p> :<span></span> }   
+         {nombre_operation_deleted > 0 ? <p className='text-dark py-2 text-start'><strong> Opérations oyo o supprimées :</strong> <b className='couleur2'>  {nombre_operation_deleted}</b>  </p> :<span></span> }   
         </Col> 
          
 
@@ -749,9 +749,9 @@ props.isStaff === true ?
       <Col xs={12}>
       </Col>
       <Col xs={6}>
-      {nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Nombre yaba envois osali :</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
+      {nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Envois osali :</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
          
-         {nombre_retrait_paye > 0 ? <p className='text-dark py-2 text-start'><strong>Nombre yaba retraits osali :</strong> <b className='couleur2'>  {nombre_retrait_paye}</b>  </p> :<span></span> }
+         {nombre_retrait_paye > 0 ? <p className='text-dark py-2 text-start'><strong>Retraits osali :</strong> <b className='couleur2'>  {nombre_retrait_paye}</b>  </p> :<span></span> }
           </Col> 
          
 
@@ -768,7 +768,7 @@ props.isStaff === true ?
 
 <Row className='justify-content-center pb-3' >
 <Col xs={6}>
-{nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Nombre yaba envois esalemi :</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
+{nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Envois osali :</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
          </Col>
 
  <Col xs={6}>

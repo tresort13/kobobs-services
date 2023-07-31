@@ -511,7 +511,7 @@ function MyProfilFrench(props)
         
         {nombre_envoie_valide > 0 ? <p className='text-dark py-2 text-start'><strong>Nombre de validations effectuées :</strong> <b className='couleur2'>  {nombre_envoie_valide}</b>  </p> : <span></span>}
          
-         {nombre_retrait_paye > 0 ? <p className='text-dark py-2 text-start'><strong>Nombre de retraits effectués :</strong> <b className='couleur2'>  {nombre_retrait_paye}</b>  </p> :<span></span> }
+         {nombre_retrait_paye > 0 ? <p className='text-dark py-2 text-start'><strong>Nombre de rétraits effectués :</strong> <b className='couleur2'>  {nombre_retrait_paye}</b>  </p> :<span></span> }
 
          {nombre_operation_deleted > 0 ? <p className='text-dark py-2 text-start'><strong> Nombre d'opérations supprimées :</strong> <b className='couleur2'>  {nombre_operation_deleted}</b>  </p> :<span></span> }   
         </Col> 
@@ -540,7 +540,7 @@ props.isStaff === true ?
       <Col xs={4}>
         {nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Nombre d'envois effectués :</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
 
-         {nombre_retrait_paye > 0 ? <p className='text-dark py-2 text-start'><strong> Nombre de retraits effectués :</strong> <b className='couleur2'>  {nombre_retrait_paye}</b>  </p> :<span></span> }   
+         {nombre_retrait_paye > 0 ? <p className='text-dark py-2 text-start'><strong> Nombre de rétraits effectués :</strong> <b className='couleur2'>  {nombre_retrait_paye}</b>  </p> :<span></span> }   
           </Col> 
          
 
@@ -557,7 +557,7 @@ props.isStaff === true ?
 
 <Row className='justify-content-center pb-3' >
 <Col xs={4}>
-{nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Nombre of sendings made :</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
+{nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Envois effectués:</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
  </Col>
 
  <Col xs={4}>
@@ -716,13 +716,13 @@ props.isStaff === true ?
       <Col xs={12}>
       </Col>
       <Col xs={6} >
-        {nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Nombre d'envois effectués :</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
+        {nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Envois effectués :</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
         
-        {nombre_envoie_valide > 0 ? <p className='text-dark py-2 text-start'><strong>Nombre de validations effectuées :</strong> <b className='couleur2'>  {nombre_envoie_valide}</b>  </p> : <span></span>}
+        {nombre_envoie_valide > 0 ? <p className='text-dark py-2 text-start'><strong>Validations effectuées :</strong> <b className='couleur2'>  {nombre_envoie_valide}</b>  </p> : <span></span>}
          
-         {nombre_retrait_paye > 0 ? <p className='text-dark py-2 text-start'><strong>Nombre de retraits effectués :</strong> <b className='couleur2'>  {nombre_retrait_paye}</b>  </p> :<span></span> }
+         {nombre_retrait_paye > 0 ? <p className='text-dark py-2 text-start'><strong>Rétraits effectués :</strong> <b className='couleur2'>  {nombre_retrait_paye}</b>  </p> :<span></span> }
 
-         {nombre_operation_deleted > 0 ? <p className='text-dark py-2 text-start'><strong> Nombre d'opérations supprimées :</strong> <b className='couleur2'>  {nombre_operation_deleted}</b>  </p> :<span></span> }   
+         {nombre_operation_deleted > 0 ? <p className='text-dark py-2 text-start'><strong>Opérations supprimées :</strong> <b className='couleur2'>  {nombre_operation_deleted}</b>  </p> :<span></span> }   
         </Col> 
          
 
@@ -747,9 +747,9 @@ props.isStaff === true ?
       <Col xs={12}>
       </Col>
       <Col xs={12}>
-        {nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Nombre d'envois effectués :</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
+        {nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Envois effectués :</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
 
-         {nombre_retrait_paye > 0 ? <p className='text-dark py-2 text-start'><strong> Nombre de retraits effectués :</strong> <b className='couleur2'>  {nombre_retrait_paye}</b>  </p> :<span></span> }   
+         {nombre_retrait_paye > 0 ? <p className='text-dark py-2 text-start'><strong>Rétraits effectués :</strong> <b className='couleur2'>  {nombre_retrait_paye}</b>  </p> :<span></span> }   
           </Col> 
          
 
@@ -766,7 +766,7 @@ props.isStaff === true ?
 
 <Row className='justify-content-center pb-3' >
 <Col xs={6}>
-{nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Nombre of sendings made :</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
+{nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Envois effectués:</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
  </Col>
 
  <Col xs={6}>

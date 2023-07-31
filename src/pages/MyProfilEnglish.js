@@ -714,13 +714,13 @@ props.isStaff === true ?
       <Col xs={12}>
       </Col>
       <Col xs={6} >
-        {nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Number of sendings made :</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
+        {nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Sendings made :</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
         
-        {nombre_envoie_valide > 0 ? <p className='text-dark py-2 text-start'><strong>Number of validations  made :</strong> <b className='couleur2'>  {nombre_envoie_valide}</b>  </p> : <span></span>}
+        {nombre_envoie_valide > 0 ? <p className='text-dark py-2 text-start'><strong>Validations made :</strong> <b className='couleur2'>  {nombre_envoie_valide}</b>  </p> : <span></span>}
          
-         {nombre_retrait_paye > 0 ? <p className='text-dark py-2 text-start'><strong>Number of withdrawals made :</strong> <b className='couleur2'>  {nombre_retrait_paye}</b>  </p> :<span></span> }
+         {nombre_retrait_paye > 0 ? <p className='text-dark py-2 text-start'><strong>Withdrawals made :</strong> <b className='couleur2'>  {nombre_retrait_paye}</b>  </p> :<span></span> }
 
-         {nombre_operation_deleted > 0 ? <p className='text-dark py-2 text-start'><strong> Number of operations deleted :</strong> <b className='couleur2'>  {nombre_operation_deleted}</b>  </p> :<span></span> }   
+         {nombre_operation_deleted > 0 ? <p className='text-dark py-2 text-start'><strong>Operations deleted :</strong> <b className='couleur2'>  {nombre_operation_deleted}</b>  </p> :<span></span> }   
         </Col> 
          
 
@@ -745,8 +745,8 @@ props.isStaff === true ?
       <Col xs={12}>
       </Col>
       <Col xs={6}>
-        {nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Number of sendings made :</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
-         {nombre_retrait_paye > 0 ? <p className='text-dark py-2 text-start'><strong> Number of withdrawals made :</strong> <b className='couleur2'>  {nombre_retrait_paye}</b>  </p> :<span></span> }   
+        {nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Sendings made :</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
+         {nombre_retrait_paye > 0 ? <p className='text-dark py-2 text-start'><strong>Withdrawals made :</strong> <b className='couleur2'>  {nombre_retrait_paye}</b>  </p> :<span></span> }   
           </Col> 
          
 
@@ -763,7 +763,7 @@ props.isStaff === true ?
 
 <Row className='justify-content-center pb-3' >
 <Col xs={6}>
-{nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Number of sendings made :</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
+{nombre_sending_total > 0 ? <p className='text-dark py-2 text-start'><strong>Sendings made :</strong> <b className='couleur2'>  {nombre_sending_total}</b>  </p> : <span></span>}
  </Col>
 
  <Col xs={6}>

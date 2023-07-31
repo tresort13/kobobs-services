@@ -337,7 +337,7 @@ function FormEnvoiAbonneEnglish(props)
 </Container>
 }
 
-{isMobileOrTablet &&   <Container className='justify-content-center text-center mb-5 text-light text-bold' style={{width:1000}} >
+{isMobileOrTablet &&   <Container className='justify-content-center text-center mb-5 text-light text-bold' style={{width:"auto"}} >
 <Row className='mt-3'>
         <Col xs={12} className="text-start text-light">
             {props.isStaff === true ? <p><Link to='/form_envoie_abonne_id_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p> : <p><Link to='/' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>}

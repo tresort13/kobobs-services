@@ -341,15 +341,13 @@ function HeaderEnglish(props)
    {isMobileOrTablet && <Container className="pt-2" fluid >
 
     <Row className="">
-    <Col xs={1} className="mx-auto my-auto text-start">
+    <Col xs={4} className="mx-auto my-auto text-start">
         <a href="/" style={{textDecoration:"none"}}>
           <Image  src={require('./kobo_logo.JPG')}  className='rounded-pill ' style={{width:80}}></Image>
           </a>
         </Col>
 
-        <Col xs={3} className="pt-4 text-end">
-<p><Link to='/' style={{textDecoration:"none",fontSize:20}}><b className='couleur2 '><span>Home</span></b></Link></p>
-</Col>
+        
 
         {props.isLogged === true ?  
         <Col xs={6} className="text-end py-2 px-3"> 

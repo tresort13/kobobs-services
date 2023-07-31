@@ -338,17 +338,13 @@ function HeaderFrench(props)
    {isMobileOrTablet && <Container className="pt-2" fluid >
     <Row>
         
-        <Col xs={2} className="mx-auto my-auto text-start">
+        <Col xs={4} className="mx-auto my-auto text-start">
         <a href="/home_french" style={{textDecoration:"none"}}>
           <Image  src={require('./kobo_logo.JPG')}  className='rounded-pill ' style={{width:80}}></Image>
           </a>
         </Col>
 
-        <Col xs={3} className="pt-4 text-start">
-<p><Link to='/home_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2 '><span><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-house-door-fill" viewBox="0 0 16 16">
-<path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z"/>
-</svg></span><span >Accueil</span></b></Link></p>
-</Col>
+
      
         {props.isLogged === true ? 
          <Col xs={5} className="text-end py-2 px-3"> 

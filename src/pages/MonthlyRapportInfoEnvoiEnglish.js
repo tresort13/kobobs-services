@@ -218,7 +218,7 @@ function MonthlyRapportInfoEnvoiEnglish(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <p className='text-dark py-2 text-center'><b>Number of total sendings made :</b> <b className='couleur2'> {nombre_envoie_total}</b>  </p>
+        <p className='text-dark py-2 text-center'><b>Total sendings made :</b> <b className='couleur2'> {nombre_envoie_total}</b>  </p>
          </Col>
 
          <Col xs={6}>
@@ -233,8 +233,8 @@ function MonthlyRapportInfoEnvoiEnglish(props)
 
     <Row>
           <Col>
-        <p className='text-dark py-2 text-center'><b>Number of validated sendings :</b> <b className='couleur2'> {nombre_envoie_valide}</b> </p>
-        <p className='text-dark py-2 text-center'><b>Number of no validated sendings :</b> <b className='couleur2'> {nombre_envoie_nonvalide}</b></p>
+        <p className='text-dark py-2 text-center'><b>Validated sendings :</b> <b className='couleur2'> {nombre_envoie_valide}</b> </p>
+        <p className='text-dark py-2 text-center'><b>No validated sendings :</b> <b className='couleur2'> {nombre_envoie_nonvalide}</b></p>
         </Col>
 
        <Col xs={6}>

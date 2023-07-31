@@ -219,7 +219,7 @@ function MonthlyRapportInfoEnvoiFrench(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <p className='text-dark'><b>Nombres d'envois total effectués :</b> <b className='couleur2'> {nombre_envoie_total}</b>  </p>
+        <p className='text-dark'><b>Envois total effectués :</b> <b className='couleur2'> {nombre_envoie_total}</b>  </p>
          </Col>
 
          <Col xs={6}>
@@ -234,8 +234,8 @@ function MonthlyRapportInfoEnvoiFrench(props)
 
         <Row>
           <Col>
-        <p className='text-dark'><b>Nombres d'envois validés :</b> <b className='couleur2'> {nombre_envoie_valide}</b> </p>
-        <p className='text-dark'><b>Nombres d'envois non validés :</b> <b className='couleur2'> {nombre_envoie_nonvalide}</b></p>
+        <p className='text-dark'><b>Envois validés :</b> <b className='couleur2'> {nombre_envoie_valide}</b> </p>
+        <p className='text-dark'><b>Envois non validés :</b> <b className='couleur2'> {nombre_envoie_nonvalide}</b></p>
         </Col>
 
        <Col xs={6}>

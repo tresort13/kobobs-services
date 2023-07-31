@@ -204,11 +204,11 @@ function DailyRapportInfoRetraitLingala(props)
       <hr style={{color:"darkorange"}}></hr>
     </Row>
     <Row className='justify-content-center pb-3' >
-        <Col xs={8}>
+        <Col xs={6}>
         <p className='text-dark'><b>Nombre ya ba retraits:</b> <b className='couleur2'> {nombre_retrait_paye}</b> </p>
         </Col>
 
-        <Col xs={4}>
+        <Col xs={6}>
         {nombre_retrait_paye > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailPaye}>Tala ba détails </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={closeModal}>Tala ba détails </p></a>}
         </Col>
     </Row>

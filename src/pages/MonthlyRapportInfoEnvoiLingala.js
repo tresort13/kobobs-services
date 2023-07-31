@@ -220,7 +220,7 @@ function MonthlyRapportInfoEnvoiLingala(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <p className='text-dark'><b>total ya ba envois oyo esalemi :</b> <b className='couleur2'> {nombre_envoie_total}</b>  </p>
+        <p className='text-dark'><b>Envois nionso esalemi :</b> <b className='couleur2'> {nombre_envoie_total}</b>  </p>
          </Col>
 
          <Col xs={6}>
@@ -235,8 +235,8 @@ function MonthlyRapportInfoEnvoiLingala(props)
 
         <Row>
           <Col>
-        <p className='text-dark'><b>Nombre ya ba envois validés :</b> <b className='couleur2'> {nombre_envoie_valide}</b> </p>
-        <p className='text-dark'><b>Nombre ya ba envois non validés : </b><b className='couleur2'> {nombre_envoie_nonvalide}</b></p>
+        <p className='text-dark'><b>Ba envois validés :</b> <b className='couleur2'> {nombre_envoie_valide}</b> </p>
+        <p className='text-dark'><b>Ba envois non validés : </b><b className='couleur2'> {nombre_envoie_nonvalide}</b></p>
         </Col>
 
        <Col xs={6}>

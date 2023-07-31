@@ -134,7 +134,7 @@ console.log(props.detailEnvoieTotal)
 
 </Container> })
 :
-<MyVerticallyCenteredModal show={modalShow} onHide={() => {
+<MyVerticallyCenteredModal show={false} onHide={() => {
   setModalShow(false)
   closePage()
 }} />
@@ -212,7 +212,7 @@ console.log(props.detailEnvoieTotal)
    
 </Container> })
 :
-<MyVerticallyCenteredModal show={modalShow} onHide={() => {
+<MyVerticallyCenteredModal show={false} onHide={() => {
   setModalShow(false)
   closePage()
 }} />

@@ -228,11 +228,11 @@ function DailyRapportInfoEnvoiFrench(props)
       <hr style={{color:"darkorange"}}></hr>
     </Row>
     <Row className='justify-content-center pb-3' >
-        <Col xs={8}>
-        <p className='text-dark py-2 text-center'><b>Nombres d'envois total effectués:</b> <b className='couleur2'> {nombre_envoie_total}</b>  </p>
+        <Col xs={6}>
+        <p className='text-dark py-2 text-center'><b>Envois total effectués:</b> <b className='couleur2'> {nombre_envoie_total}</b>  </p>
          </Col>
 
-         <Col xs={4}>
+         <Col xs={6}>
        {nombre_envoie_total > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailTotal}>See details </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit"  onClick={closeModal}>See details </p></a>}
        
     </Col>
@@ -243,12 +243,12 @@ function DailyRapportInfoEnvoiFrench(props)
     </Row>
 
         <Row>
-          <Col xs={8}>
-        <p className='text-dark py-2 text-center'><b>Nombres d'envois validés :</b> <b className='couleur2'> {nombre_envoie_valide}</b> </p>
-        <p className='text-dark py-2 text-center'><b>Nombres d'envois non validés :</b> <b className='couleur2'> {nombre_envoie_nonvalide}</b></p>
+          <Col xs={6}>
+        <p className='text-dark py-2 text-center'><b>Envois validés :</b> <b className='couleur2'> {nombre_envoie_valide}</b> </p>
+        <p className='text-dark py-2 text-center'><b>Envois non validés :</b> <b className='couleur2'> {nombre_envoie_nonvalide}</b></p>
         </Col>
 
-       <Col xs={4}>
+       <Col xs={6}>
         {nombre_envoie_valide > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailValide}>plus des détails </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={closeModal}>plus des détails </p></a>}
         {nombre_envoie_nonvalide > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailNonValide}>plus des details </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit"  onClick={closeModal}>plus des détails </p></a>}
     </Col>

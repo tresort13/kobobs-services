@@ -209,7 +209,7 @@ const total_montant = props.dailyRapport.reduce((total,value)=>
     
       
         <Row className='justify-content-center pb-3 pt-3'>
-            <Col xs ={4} >
+            <Col xs ={6} >
             <Link to="/menu_rapport_recette_english" style={{color:'white',textDecorationLine:'none'}}>
             <Button variant="danger" type="submit" >
             close 
@@ -218,7 +218,7 @@ const total_montant = props.dailyRapport.reduce((total,value)=>
     
             </Col>
     
-            <Col xs ={4} >
+            <Col xs ={6} >
             <Link to="" style={{color:'white',textDecorationLine:'none'}}>
             <Button variant="success" type="submit" onClick={message} >
            <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-excel-fill" viewBox="0 0 16 16">

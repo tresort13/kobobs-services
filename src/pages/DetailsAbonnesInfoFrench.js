@@ -118,7 +118,7 @@ console.log(props.abonneInfoDetail)
 </Container>
 </div> })
 :
-<MyVerticallyCenteredModal show={modalShow} onHide={() => {
+<MyVerticallyCenteredModal show={false} onHide={() => {
   setModalShow(false)
   closePage()
 }} />
@@ -185,7 +185,7 @@ console.log(props.abonneInfoDetail)
 </Container>
 </div> })
 :
-<MyVerticallyCenteredModal show={modalShow} onHide={() => {
+<MyVerticallyCenteredModal show={false} onHide={() => {
   setModalShow(false)
   closePage()
 }} />

@@ -232,11 +232,11 @@ function DailyRapportInfoEnvoiLingala(props)
       <hr style={{color:"darkorange"}}></hr>
     </Row>
     <Row className='justify-content-center pb-3' >
-        <Col xs={8}>
-        <p className='text-dark py-2'><b>total ya ba envois oyo esalemi :</b> <b className='couleur2'> {nombre_envoie_total}</b>  </p>
+        <Col xs={6}>
+        <p className='text-dark py-2'><b>Envois nionso esalemi :</b> <b className='couleur2'> {nombre_envoie_total}</b>  </p>
          </Col>
 
-         <Col xs={4}>
+         <Col xs={6}>
        {nombre_envoie_total > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailTotal}>Tala ba détails </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit"  onClick={closeModal}>Tala ba détails </p></a>}
        
     </Col>
@@ -247,23 +247,25 @@ function DailyRapportInfoEnvoiLingala(props)
     </Row>
 
         <Row>
-          <Col xs={8}>
-        <p className='text-dark py-2'><b>Nombre ya ba envois validés : </b><b className='couleur2'> {nombre_envoie_valide}</b> </p>
-        <p className='text-dark py-2'><b>Nombre ya ba envois non validés  :</b> <b className='couleur2'> {nombre_envoie_nonvalide}</b></p>
+          <Col>
+        <p className='text-dark py-2'><b>Ba envois validés : </b><b className='couleur2'> {nombre_envoie_valide}</b> </p>
+        <p className='text-dark py-2'><b>Ba envois non validés  :</b> <b className='couleur2'> {nombre_envoie_nonvalide}</b></p>
         </Col>
 
-       <Col xs={4}>
+       <Col xs={6}>
         {nombre_envoie_valide > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailValide}>Tala ba détails </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={closeModal}>Tala ba détails </p></a>}
         {nombre_envoie_nonvalide > 0 ? <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit" onClick={detailNonValide}>Tala ba détails </p></a> : <a style={{color:'white',textDecorationLine:'none'}}><p className='btn--blue rounded py-2' type="submit"  onClick={closeModal}>Tala ba détails </p></a>}
     </Col>
     </Row>
 
 
+
+
     <Row className='justify-content-center pb-3'>
       <hr style={{color:"darkorange"}}></hr>
     </Row>
     <Row className='justify-content-center pb-3' >
-        <Col xs={12}>
+        <Col xs={6}>
         <Link to="/menu_rapport_envoi_lingala" style={{color:'white',textDecorationLine:'none'}}>
         <Button variant="danger" type="submit">
         kokanga

@@ -267,7 +267,7 @@ function AbonneFormNonValideInfoEnglish(props)
     <Row className="pb-3">
       <hr style={{color:"darkorange"}} ></hr>
 
-    <Col className='text-center' xs={6}>
+    <Col xs={6} className='text-center' >
         <Link to="" style={{color:'white',textDecorationLine:'none'}}>
         <Button name='validate' value={value.code_retrait} className='pt-3' variant="warning" type="submit" onClick={e=>validateCodeRetrait(e)}>
         validate code
@@ -275,7 +275,7 @@ function AbonneFormNonValideInfoEnglish(props)
         </Link>
         </Col>
 
-        <Col className='text-center' xs={6}>
+        <Col xs={6} className='text-center' >
         <Link to="" style={{color:'white',textDecorationLine:'none'}}>
         <Button name='validate' value={value.code_retrait} className='pt-3' variant="danger" type="submit" onClick={e=>suprimerOperation(e)}>
         delete operation

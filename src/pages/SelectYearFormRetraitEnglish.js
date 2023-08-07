@@ -21,7 +21,7 @@ import HeaderEnglish from './HeaderEnglish';
 
 const useState = React.useState
 
-function SelectYearFormEnvoiEnglish(props)
+function SelectYearFormRetraitEnglish(props)
 {
    
 
@@ -44,7 +44,7 @@ function SelectYearFormEnvoiEnglish(props)
         query: "(max-width: 1224px)"
       });    
 
-    const [message,setMessage] = useState("Enter the year for yearly sending rapport")
+    const [message,setMessage] = useState("Enter the year for yearly withdrawal rapport")
     const [couleur,setCouleur] = useState("text-dark")
 
     const submitVol =(values)=>
@@ -58,7 +58,7 @@ function SelectYearFormEnvoiEnglish(props)
     
       console.log(date)
       setModalShow2(true)
-        fetch('https://kobobsapi.herokuapp.com/api/getYearlyRapportInfo/', {
+        fetch('https://kobobsapi.herokuapp.com/api/getYearlyRapportInfoRetrait/', {
             method:'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(date)
@@ -69,7 +69,7 @@ function SelectYearFormEnvoiEnglish(props)
                console.log(res)
                props.dataYearlyRapport(res)
                props.setYear(date.yearInfo)
-               navigate('/yearly_rapport_envoi_english')
+               navigate('/yearly_rapport_retrait_english')
             }
           )
           .catch( (error) =>
@@ -91,7 +91,7 @@ return (
 {isDesktop && <Container className='justify-content-center text-center mb-5 text-light text-bold'  >
 <Row className='mt-3'>
         <Col xs={12} className="text-start text-light">
-            <p><Link to='/menu_rapport_envoi_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>
+            <p><Link to='/menu_rapport_retrait_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>
         </Col>
     </Row>
 
@@ -140,8 +140,8 @@ return (
 
 {isMobileOrTablet &&  <Container className='justify-content-center text-center mb-5 text-light text-bold'  >
 <Row className='mt-3'>
-        <Col xs={12} className="text-start text-light">
-            <p><Link to='/menu_rapport_envoi_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>
+<Col xs={12} className="text-start text-light">
+            <p><Link to='/menu_rapport_retrait_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>
         </Col>
     </Row>
 
@@ -152,7 +152,7 @@ return (
       validationSchema={testValidation}
       onSubmit={(values)=>{
         submitVol(values)
-        //setModalShow3(true)
+      //setModalShow3(true)
       }}
       initialValues={{
         dateInfo:''
@@ -266,4 +266,4 @@ function MyVerticallyCenteredModal(props) {
   }
 
 
-export default SelectYearFormEnvoiEnglish;
+export default SelectYearFormRetraitEnglish;

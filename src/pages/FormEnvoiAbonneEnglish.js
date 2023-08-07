@@ -34,6 +34,8 @@ function FormEnvoiAbonneEnglish(props)
         }})
     const { Formik } = formik;
 
+    var data=[]
+
     const testValidation = yup.object().shape({
       nom_beneficiaire: yup.string().required('required field'),
       prenom_beneficiaire: yup.string().required('required field'),
@@ -58,7 +60,7 @@ function FormEnvoiAbonneEnglish(props)
         nom_expediteur : '',
         prenom_expediteur : '',
         adresse_expediteur : 'N/A',
-        email_expediteur : '',
+        email_expediteur : 'N/A',
         numero_expediteur: '',
         pays_expediteur : 'UK',
         nom_beneficiaire : '',
@@ -233,6 +235,29 @@ function FormEnvoiAbonneEnglish(props)
      {({handleSubmit, handleChange,handleBlur, values, touched, errors,setFieldValue
          })=>(
           <Form noValidate onSubmit={handleSubmit}>
+             {props.receiver.length > 0 ? <Row className='justify-content-start py-2' >
+<Col xs={3}>
+        <i><b >previous receiver(s) : </b></i>
+  </Col>
+  <Col xs={6} >
+  <div><Form.Select aria-label="Default select example" onChange={(e)=>{
+          data = props.receiver.filter((value)=>{
+            return value.nom_complet_beneficiaire === e.target.value
+          })
+             setFieldValue("nom_beneficiaire",data[0].nom_beneficiaire)
+             setFieldValue("prenom_beneficiaire",data[0].prenom_beneficiaire)
+             setFieldValue("pays_beneficiaire",data[0].pays_beneficiaire)
+             console.log(data)
+        }}>
+       <option>select a receiver</option>
+      {props.receiver.map((value)=>{
+         return <option value={value.nom_complet_beneficiaire}>{value.nom_complet_beneficiaire}</option>
+      })  }
+    </Form.Select>
+  </div> 
+    </Col>
+</Row> :
+<p></p>}
              <Row>
       <hr style={{color:"darkorange"}}></hr>
       <p className='couleur2'><b><u>New Receiver informations </u></b></p>
@@ -384,6 +409,29 @@ function FormEnvoiAbonneEnglish(props)
      {({handleSubmit, handleChange,handleBlur, values, touched, errors,setFieldValue
          })=>(
           <Form noValidate onSubmit={handleSubmit}>
+              {props.receiver.length > 0 ? <Row className='justify-content-start py-2' >
+<Col xs={12}>
+        <i><b >previous receiver(s) : </b></i>
+  </Col>
+  <Col xs={12} >
+  <div><Form.Select aria-label="Default select example" onChange={(e)=>{
+          data = props.receiver.filter((value)=>{
+            return value.nom_complet_beneficiaire === e.target.value
+          })
+             setFieldValue("nom_beneficiaire",data[0].nom_beneficiaire)
+             setFieldValue("prenom_beneficiaire",data[0].prenom_beneficiaire)
+             setFieldValue("pays_beneficiaire",data[0].pays_beneficiaire)
+             console.log(data)
+        }}>
+       <option>select a receiver</option>
+      {props.receiver.map((value)=>{
+         return <option value={value.nom_complet_beneficiaire}>{value.nom_complet_beneficiaire}</option>
+      })  }
+    </Form.Select>
+  </div> 
+    </Col>
+</Row> :
+<p></p>}
              <Row>
       <hr style={{color:"darkorange"}}></hr>
       <p className='couleur2'><b><u>New Receiver informations </u></b></p>

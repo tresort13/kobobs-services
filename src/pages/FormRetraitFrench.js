@@ -12,11 +12,14 @@ import Footer from './Footer';
 import Modal from 'react-bootstrap/Modal';
 import ClipLoader from "react-spinners/ClipLoader";
 import  './Header.css';
+import * as formik from 'formik';
+import * as yup from 'yup';
 
 
 const useState = React.useState
 function FormRetraitFrench(props)
 {
+  const { Formik } = formik;
 
     const[codeRetrait,setCodeRetrait] = useState({infoCodeRetrait :{
         code_retrait :"",
@@ -30,6 +33,10 @@ function FormRetraitFrench(props)
     const [message,setMessage] = useState("Veuillez entrer le code de retrait")
     const [couleur,setCouleur] = useState("text-dark")
 
+    const testValidation = yup.object().shape({
+      codeRetrait: yup.string().required('champs requis')
+    });
+
     const isDesktop = useMediaQuery({
         query: "(min-width: 1224px)"
       });
@@ -41,11 +48,10 @@ function FormRetraitFrench(props)
     
 
 
-    const submitcodeRetrait = (e)=>
+    const submitcodeRetrait = (values)=>
     {
-        e.preventDefault(e)  
         setModalShow2(true)    
-        fetch('https://kobobsapi.herokuapp.com/api/getRetraitInfo/'+codeRetrait.infoCodeRetrait.code_retrait+'/', {
+        fetch('https://kobobsapi.herokuapp.com/api/getRetraitInfo/'+values.codeRetrait+'/', {
                 method:'GET',
                 headers: {'Content-Type': 'application/json'},
                // body: JSON.stringify(codeRetrait.infoCodeRetrait)
@@ -98,14 +104,26 @@ function FormRetraitFrench(props)
 
    
     
-<Form onSubmit={submitcodeRetrait}>
+    <Formik
+      validationSchema={testValidation}
+      onSubmit={(values)=>{
+        submitcodeRetrait(values)
+      }}
+      initialValues={{
+        codeRetrait : ''
+      }}
+    >
+     {({handleSubmit, handleChange,handleBlur, values, touched, errors
+         })=>(
+          <Form noValidate onSubmit={handleSubmit}>
    
 
     <Row className='justify-content-center'>
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Control name="code_retrait" value={codeRetrait.infoCodeRetrait.code_retrait} onChange={e=>inputChanged(e)} type="text" placeholder='Veuillez entrer code retrait' autoFocus   required/>
+        <Form.Control name="codeRetrait" value={values.codeRetrait} onChange={handleChange} onBlur={handleBlur} type="text" placeholder='Veuillez entrer le code de retrait' autoFocus/>
          </Form.Group>
+         <p className='text-danger'>{touched.codeRetrait && errors.codeRetrait}</p>
         </Col>
     </Row>
 
@@ -128,6 +146,9 @@ function FormRetraitFrench(props)
 
 
 </Form>
+         )
+        }
+      </Formik>
 </Container>
 </div>
 }
@@ -147,20 +168,32 @@ function FormRetraitFrench(props)
 
    
     
-<Form onSubmit={submitcodeRetrait}>
+    <Formik
+      validationSchema={testValidation}
+      onSubmit={(values)=>{
+        submitcodeRetrait(values)
+      }}
+      initialValues={{
+        codeRetrait : ''
+      }}
+    >
+     {({handleSubmit, handleChange,handleBlur, values, touched, errors
+         })=>(
+          <Form noValidate onSubmit={handleSubmit}>
    
 
     <Row className='justify-content-center'>
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Control name="code_retrait" value={codeRetrait.infoCodeRetrait.code_retrait} onChange={e=>inputChanged(e)} type="text" placeholder='Veuillez entrer code retrait' autoFocus   required/>
+        <Form.Control name="codeRetrait" value={values.codeRetrait} onChange={handleChange} onBlur={handleBlur} type="text" placeholder='Veuillez entrer le code de retrait' autoFocus/>
          </Form.Group>
+         <p className='text-danger'>{touched.codeRetrait && errors.codeRetrait}</p>
         </Col>
     </Row>
 
 
    <Row className='pb-3'>
-       <Col xs = {12}>
+       <Col>
         <Button variant="warning" type="submit" >
         Valider 
         </Button>
@@ -168,7 +201,7 @@ function FormRetraitFrench(props)
     </Row>
   
     <Row className='pb-3'>
-       <Col xs = {12}>
+       <Col>
        
        <p ><b className='couleur2'>au cas où vous auriez oublié le code, <Link to="/my_profil_french" >regarde ton historique</Link></b></p>
 
@@ -177,6 +210,9 @@ function FormRetraitFrench(props)
 
 
 </Form>
+         )
+        }
+      </Formik>
 </Container>
 </div>
 }

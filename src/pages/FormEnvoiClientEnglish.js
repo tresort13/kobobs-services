@@ -46,7 +46,7 @@ function FormEnvoiClientEnglish(props)
     nom_expediteur : yup.string().required('required field'),
     prenom_expediteur : yup.string().required('required field'),
     adresse_expediteur : yup.string().required('required field'),
-    email_expediteur : yup.string().required('required field'),
+   // email_expediteur : yup.string().required('required field'),
     numero_expediteur: yup.string().required('required field'),
     pays_expediteur : yup.string().required('required field'),
     nom_beneficiaire: yup.string().required('required field'),
@@ -72,7 +72,7 @@ function FormEnvoiClientEnglish(props)
         nom_expediteur : '',
         prenom_expediteur : '',
         adresse_expediteur : 'N/A',
-        email_expediteur : '',
+        email_expediteur : 'N/A',
         numero_expediteur: '',
         pays_expediteur : 'UK',
         nom_beneficiaire : '',
@@ -282,12 +282,11 @@ function FormEnvoiClientEnglish(props)
 
 
         <Col xs = {4}>
-        <Form.Label className='text-light'><span className="text-danger">*</span> Email</Form.Label>
+        <Form.Label className='text-light'><span className="text-danger"></span> Email (optional)</Form.Label>
         <InputGroup className="mb-3">
         <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
-        <Form.Control name="email_expediteur" value={values.email_expediteur} onBlur={handleBlur} onChange={handleChange} type="text" placeholder='Email' /> 
+        <Form.Control name="email_expediteur"  onBlur={handleBlur} onChange={handleChange} type="text" placeholder='Email' /> 
       </InputGroup>
-      <p className='text-danger'>{touched.email_expediteur && errors.email_expediteur}</p>
         </Col>
 
         <Col xs = {4}>
@@ -496,12 +495,11 @@ function FormEnvoiClientEnglish(props)
 
 
         <Col xs = {12}>
-        <Form.Label className='text-light'><span className="text-danger">*</span> Email</Form.Label>
+        <Form.Label className='text-light'><span className="text-danger"></span> Email (optional)</Form.Label>
         <InputGroup className="mb-3">
         <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
-        <Form.Control name="email_expediteur" value={values.email_expediteur} onBlur={handleBlur} onChange={handleChange} type="text" placeholder='Email' /> 
+        <Form.Control name="email_expediteur"  onBlur={handleBlur} onChange={handleChange} type="text" placeholder='Email' /> 
       </InputGroup>
-      <p className='text-danger'>{touched.email_expediteur && errors.email_expediteur}</p>
         </Col>
 
         <Col xs = {12}>

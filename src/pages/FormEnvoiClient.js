@@ -47,7 +47,7 @@ function FormEnvoiClient(props)
     nom_expediteur : yup.string().required('esengeli ko kotisa makomi'),
     prenom_expediteur : yup.string().required('esengeli ko kotisa makomi'),
     adresse_expediteur : yup.string().required('esengeli ko kotisa makomi'),
-    email_expediteur : yup.string().required('esengeli ko kotisa makomi'),
+   // email_expediteur : yup.string().required('esengeli ko kotisa makomi'),
     numero_expediteur: yup.string().required('esengeli ko kotisa makomi'),
     pays_expediteur : yup.string().required('esengeli ko kotisa makomi'),
     nom_beneficiaire: yup.string().required('esengeli ko kotisa makomi'),
@@ -73,7 +73,7 @@ function FormEnvoiClient(props)
         nom_expediteur : '',
         prenom_expediteur : '',
         adresse_expediteur : 'N/A',
-        email_expediteur : '',
+        email_expediteur : 'N/A',
         numero_expediteur: '',
         pays_expediteur : 'UK',
         nom_beneficiaire : '',
@@ -281,10 +281,10 @@ function FormEnvoiClient(props)
 
 
         <Col xs = {4}>
-        <Form.Label ><span className="text-danger">*</span> Email</Form.Label>
+        <Form.Label ><span className="text-danger"></span> Email (kotisa soki olingi)</Form.Label>
         <InputGroup className="mb-3">
         <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
-        <Form.Control name="email_expediteur" value={values.email_expediteur} onBlur={handleBlur} onChange={handleChange} type="text" placeholder='Email' /> 
+        <Form.Control name="email_expediteur"  onBlur={handleBlur} onChange={handleChange} type="text" placeholder='Email' /> 
       </InputGroup>
       <p className='text-danger'>{touched.email_expediteur && errors.email_expediteur}</p>
         </Col>
@@ -295,7 +295,7 @@ function FormEnvoiClient(props)
         <InputGroup.Text id="basic-addon1">+44</InputGroup.Text>
         <Form.Control name="numero_expediteur" value={values.numero_expediteur} onBlur={handleBlur} onChange={handleChange} type="text" placeholder='Numéro ya Tshombo' />
         </InputGroup>
-        <p className='text-danger'>{touched.numero_expediteur && errors.numero_expediteur}</p>
+        
         </Col>
 
         
@@ -499,12 +499,11 @@ function FormEnvoiClient(props)
 
 
         <Col xs = {12}>
-        <Form.Label ><span className="text-danger">*</span> Email</Form.Label>
+        <Form.Label ><span className="text-danger"></span> Email (kotisa soki olingi)</Form.Label>
         <InputGroup className="mb-3">
         <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
-        <Form.Control name="email_expediteur" value={values.email_expediteur} onBlur={handleBlur} onChange={handleChange} type="text" placeholder='Email' /> 
+        <Form.Control name="email_expediteur"  onBlur={handleBlur} onChange={handleChange} type="text" placeholder='Email' /> 
       </InputGroup>
-      <p className='text-danger'>{touched.email_expediteur && errors.email_expediteur}</p>
         </Col>
 
         <Col xs = {12}>

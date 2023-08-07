@@ -75,7 +75,8 @@ function ConfirmationRetraitInfoOperationLingala(props)
         const date_time = {
           date_heure_operation_retrait : new Date().toLocaleString(),
           date_operation_retrait : new Date().toLocaleString().slice(0,10),
-          month_year_operation_retrait : new Date().toLocaleString().slice(3,10)
+          month_year_operation_retrait : new Date().toLocaleString().slice(3,10),
+          year_operation_retrait : new Date().toLocaleString().slice(6,10)
         } 
         fetch('https://kobobsapi.herokuapp.com/api/payerCodeRetrait/'+props.envoie2.infoEnvoie.code_retrait+'/'+props.abonne.infoAbonne.agent_id+'/', {
                 method: 'PUT',

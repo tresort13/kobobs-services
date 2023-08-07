@@ -18,7 +18,7 @@ const useState = React.useState
 function YearlyRapportInfoEnvoiLingala(props)
 {
 
-    const [message,setMessage] = useState("Rapport yaba Envois ya mbula")
+    const [message,setMessage] = useState("Rapport yaba Envois ya mbula na mbula")
     const [couleur,setCouleur] = useState("text-dark")
     const [modalShow, setModalShow] = React.useState(false)
 
@@ -68,41 +68,41 @@ function YearlyRapportInfoEnvoiLingala(props)
 
      const detailTotal =()=>
      {
-      props.dataDetailEnvoieTotalTableau(props.monthlyRapport)
-      props.setRapportType("monthlyRapportEnvoi")
+      props.dataDetailEnvoieTotalTableau(props.yearlyRapport)
+      props.setRapportType("yearlyRapportEnvoi")
       props.setTitleEnglish("Rapport of all sendings")
       props.setTitleFrench("Rapport de tous les envois")
       props.setTitleLingala("Rapport yaba envois nionso")
       props.setMessage2("Rapport of all sendings")
-      navigate('/table_monthly_rapport_lingala')
+      navigate('/table_yearly_rapport_lingala')
      }
 
      const detailValide =()=>
      {
-      props.dataDetailEnvoieTotalTableau(props.monthlyRapport.filter((value)=>
+      props.dataDetailEnvoieTotalTableau(props.yearlyRapport.filter((value)=>
       {
         return value.status_retrait !== "code retrait en attente de validation"
       }))
-      props.setRapportType("monthlyRapportEnvoi")
+      props.setRapportType("yearlyRapportEnvoi")
       props.setTitleLingala("Rapport yaba envois validés")
       props.setTitleFrench("Rapport de envois validés")
       props.setTitleEnglish("Rapport of validated sendings")
       props.setMessage2("Rapport of validated sendings")
-      navigate('/table_monthly_rapport_lingala')
+      navigate('/table_yearly_rapport_lingala')
      }
 
      const detailNonValide =()=>
      {
-      props.dataDetailEnvoieTotalTableau(props.monthlyRapport.filter((value)=>
+      props.dataDetailEnvoieTotalTableau(props.yearlyRapport.filter((value)=>
       {
         return value.status_retrait === "code retrait en attente de validation"
       }))
-      props.setRapportType("monthlyRapportEnvoi")
+      props.setRapportType("yearlyRapportEnvoi")
       props.setTitleLingala("Rapport yaba envois non validés")
       props.setTitleEnglish("Rapport of non validated sendings")
       props.setTitleFrench("Rapport de envois non validés")
       props.setMessage2("Rapport of non validated sendings")
-      navigate('/table_monthly_rapport_lingala')
+      navigate('/table_yearly_rapport_lingala')
      }
      
     return (
@@ -129,8 +129,8 @@ function YearlyRapportInfoEnvoiLingala(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={12}>
-        <p className='text-dark'><b>Lolenge ya Rapport:</b> <b className='couleur2'>Mokolo na mokolo</b> </p>
-        <p className='text-dark'><b>Période ya :</b> <b className='couleur2'>{props.moisInfo}</b>  </p>
+        <p className='text-dark'><b>Lolenge ya Rapport:</b> <b className='couleur2'>Mbula na Mbula</b> </p>
+        <p className='text-dark'><b>Mbula :</b> <b className='couleur2'>{props.yearInfo}</b>  </p>
         
         
         </Col>
@@ -207,9 +207,9 @@ function YearlyRapportInfoEnvoiLingala(props)
       <p className='couleur2'><b><u></u></b> </p>
     </Row>
     <Row className='justify-content-center pb-3' >
-        <Col xs={12}>
-        <p className='text-dark'><b>Lolenge ya Rapport:</b> <b className='couleur2'>Mokolo na mokolo</b> </p>
-        <p className='text-dark'><b>Période ya :</b> <b className='couleur2'>{props.moisInfo}</b>  </p>
+    <Col xs={12}>
+        <p className='text-dark'><b>Lolenge ya Rapport:</b> <b className='couleur2'>Mbula na Mbula</b> </p>
+        <p className='text-dark'><b>Mbula :</b> <b className='couleur2'>{props.yearInfo}</b>  </p>
         
         
         </Col>
@@ -220,7 +220,7 @@ function YearlyRapportInfoEnvoiLingala(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <p className='text-dark'><b>total ya ba envois oyo esalemi :</b> <b className='couleur2'> {nombre_envoie_total}</b>  </p>
+        <p className='text-dark'><b>Envois nionso esalemi :</b> <b className='couleur2'> {nombre_envoie_total}</b>  </p>
          </Col>
 
          <Col xs={6}>
@@ -235,8 +235,8 @@ function YearlyRapportInfoEnvoiLingala(props)
 
         <Row>
           <Col>
-        <p className='text-dark'><b>Nombre ya ba envois validés :</b> <b className='couleur2'> {nombre_envoie_valide}</b> </p>
-        <p className='text-dark'><b>Nombre ya ba envois non validés : </b><b className='couleur2'> {nombre_envoie_nonvalide}</b></p>
+        <p className='text-dark'><b>Ba envois validés :</b> <b className='couleur2'> {nombre_envoie_valide}</b> </p>
+        <p className='text-dark'><b>Ba envois non validés : </b><b className='couleur2'> {nombre_envoie_nonvalide}</b></p>
         </Col>
 
        <Col xs={6}>
@@ -266,7 +266,6 @@ function YearlyRapportInfoEnvoiLingala(props)
 </Container>
 </div>
 }
-
 <Row className="mt-5">
           <Col md={12}>
             <p></p>

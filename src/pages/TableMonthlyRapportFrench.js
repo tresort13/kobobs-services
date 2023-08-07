@@ -13,6 +13,7 @@ import HeaderEnglish from './HeaderEnglish';
 import  './Header.css';
 import Form from 'react-bootstrap/Form';
 import HeaderFrench from './HeaderFrench';
+import { read, utils, writeFile } from 'xlsx';
 
 
 //import SessionOut from './SessionOut';
@@ -40,6 +41,8 @@ function TableMonthlyRapportFrench(props)
     }
 
 const operationDetailArray = []
+var dailyRecettes =[]
+var title=""
 
 const total_montant_beneficiaire = props.detailEnvoieTotalTableau.reduce((total,value)=>
 {
@@ -86,6 +89,110 @@ return total
 
 console.log(rapportLocation)
 
+const export_excel = ()=>{
+  
+  if(rapportLocation === "Rapport Angola et RD Congo")
+  {
+    dailyRecettes = props.detailEnvoieTotalTableau.map((value)=>{
+      return {
+        date : props.moisInfo,
+        withdrawal_code : value.code_retrait,
+        sender_name : value.prenom_expediteur+" "+value.nom_expediteur,
+        sender_mobile : value.numero_expediteur,
+        receiver_name : value.prenom_beneficiaire+" "+value.nom_beneficiaire,
+        receiver_country : value.pays_beneficiaire,
+        receiver_amount : value.montant_beneficiaire,
+       }
+     })
+     title = "Angola et RD Congo "+props.moisInfo.replaceAll('/','_')+""
+    console.log(title)
+    dailyRecettes.push({
+      date : "TOTAL",
+      withdrawal_code : "",
+      sender_name : "",
+      sender_mobile : "",
+      receiver_name : "",
+      receiver_country : "",
+      receiver_amount : Number(total_montant_beneficiaire).toFixed(2),
+   })
+  }
+
+  else if(rapportLocation === "Rapport RD Congo")
+  {
+    dailyRecettes = props.detailEnvoieTotalTableau.filter((value)=>{
+      return value.pays_beneficiaire ==="RD Congo"
+     }).map((value)=>{
+      return {
+        date : props.moisInfo,
+        withdrawal_code : value.code_retrait,
+        sender_name : value.prenom_expediteur+" "+value.nom_expediteur,
+        sender_mobile : value.numero_expediteur,
+        receiver_name : value.prenom_beneficiaire+" "+value.nom_beneficiaire,
+        receiver_country : value.pays_beneficiaire,
+        receiver_amount : value.montant_beneficiaire,
+       }
+     })
+     title = "RD Congo "+props.moisInfo.replaceAll('/','_')+""
+ console.log(title)
+ dailyRecettes.push({
+  date : "TOTAL",
+  withdrawal_code : "",
+  sender_name : "",
+  sender_mobile : "",
+  receiver_name : "",
+  receiver_country : "",
+  receiver_amount : Number(total_montant_beneficiaire_rdcongo).toFixed(2),
+})
+  }
+
+  else{
+
+    dailyRecettes = props.detailEnvoieTotalTableau.filter((value)=>{
+      return value.pays_beneficiaire ==="Angola"
+     }).map((value)=>{
+      return {
+        date : props.moisInfo,
+        withdrawal_code : value.code_retrait,
+        sender_name : value.prenom_expediteur+" "+value.nom_expediteur,
+        sender_mobile : value.numero_expediteur,
+        receiver_name : value.prenom_beneficiaire+" "+value.nom_beneficiaire,
+        receiver_country : value.pays_beneficiaire,
+        receiver_amount : value.montant_beneficiaire,
+       }
+     })
+     title = "Angola "+props.moisInfo.replaceAll('/','_')+""
+ console.log(title)
+ dailyRecettes.push({
+  date : "TOTAL",
+  withdrawal_code : "",
+  sender_name : "",
+  sender_mobile : "",
+  receiver_name : "",
+  receiver_country : "",
+  receiver_amount : Number(total_montant_beneficiaire_angola).toFixed(2),
+})
+  }
+
+ 
+ 
+ 
+ 
+ const worksheet = utils.json_to_sheet(dailyRecettes);
+ const max_width = dailyRecettes.reduce((w, r) => Math.max(w, r.sender_name.length), 10);
+ worksheet["!cols"] = [ { wch: max_width },{ wch: max_width },{ wch: max_width },{ wch: max_width },{ wch: max_width },{ wch: max_width },{ wch: 17 }];
+ 
+ console.log(worksheet)
+ const workbook = utils.book_new();
+ utils.book_append_sheet(workbook, worksheet,title);
+ 
+ /* fix headers */
+ utils.sheet_add_aoa(worksheet, [["Mois","Code de rétrait", "Noms Expéditeur","Numéro Expéditeur","Noms Bénéficiaire","Pays Bénéficiaire","Montant Bénéficiaire($)"]], { origin: "A1" });
+ 
+ /* create an XLSX file and try to save to Presidents.xlsx */
+ writeFile(workbook, ""+title+".xlsx", { compression: true });
+ 
+ }
+
     return (
         <>
             <HeaderFrench dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
@@ -117,7 +224,7 @@ console.log(rapportLocation)
         <Table striped bordered hover variant="light">
       <thead>
         <tr className='text-dark' style={{border:"2px solid white"}}>
-          <th>Date</th>
+          <th>Mois</th>
           <th>Nom Expéditeur</th>
           <th>Nom bénéficiaire</th>
           <th>Pays Bénéficiaire</th>
@@ -130,7 +237,7 @@ console.log(rapportLocation)
       {rapportLocation === "Rapport Angola et RD Congo" ? props.detailEnvoieTotalTableau.map((value)=>
         {
           return  <tr  style={{border:"2px solid white"}} >
-             <td><i ><b>{value.date_operation}</b></i></td>
+             <td><i ><b>{props.moisInfo}</b></i></td>
              <td><i><b className="text-dark">{value.prenom_expediteur} {value.nom_expediteur} {value.postnom_expediteur} </b></i></td>
              <td><i><b className="text-dark"> {value.prenom_beneficiaire} {value.nom_beneficiaire} {value.postnom_beneficiaire}</b></i></td>
              <td><i><b className="text-dark"> {value.pays_beneficiaire}</b></i></td>
@@ -151,7 +258,7 @@ console.log(rapportLocation)
         }).map((value)=>
         {
           return  <tr  style={{border:"2px solid white"}} >
-             <td><i ><b>{value.date_operation}</b></i></td>
+             <td><i ><b>{props.moisInfo}</b></i></td>
              <td><i><b className="text-dark">{value.prenom_expediteur} {value.nom_expediteur} {value.postnom_expediteur} </b></i></td>
              <td><i><b className="text-dark"> {value.prenom_beneficiaire} {value.nom_beneficiaire} {value.postnom_beneficiaire}</b></i></td>
              <td><i><b className="text-dark"> {value.pays_beneficiaire}</b></i></td>
@@ -171,7 +278,7 @@ console.log(rapportLocation)
          }).map((value)=>
         {
           return  <tr  style={{border:"2px solid white"}} >
-             <td><i ><b>{value.date_operation}</b></i></td>
+             <td><i ><b>{props.moisInfo}</b></i></td>
              <td><i><b className="text-dark">{value.prenom_expediteur} {value.nom_expediteur} {value.postnom_expediteur} </b></i></td>
              <td><i><b className="text-dark"> {value.prenom_beneficiaire} {value.nom_beneficiaire} {value.postnom_beneficiaire}</b></i></td>
              <td><i><b className="text-dark"> {value.pays_beneficiaire}</b></i></td>
@@ -216,15 +323,15 @@ console.log(rapportLocation)
         {props.rapportType === "dailyRapportRetrait" ? <p><Link to='/daily_rapport_retrait_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.rapportType === "monthlyRapportRetrait" ? <p><Link to='/monthly_rapport_retrait_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.rapportType === "yearlyRapportRetrait" ? <p><Link to='/yearly_rapport_retrait_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p>:  props.rapportType === "dailyRapportEnvoi" ? <p><Link to='/daily_rapport_envoi_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.rapportType === "monthlyRapportEnvoi" ? <p><Link to='/monthly_rapport_envoi_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p>: <p><Link to='/yearly_rapport_envoi_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p>}
         </Col>
 
-        <Col xs ={4} >
+        {props.message2 === "Rapport of withdrawals" ? <Col xs ={4} >
         <Link to="" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant="success" type="submit" onClick={message} >
+        <Button onClick={export_excel} variant="success" >
        <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-excel-fill" viewBox="0 0 16 16">
   <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM5.884 6.68 8 9.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 10l2.233 2.68a.5.5 0 0 1-.768.64L8 10.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 10 5.116 7.32a.5.5 0 1 1 .768-.64z"/>
 </svg></span> exporter en Excel 
         </Button>
         </Link>
-        </Col>
+        </Col>:<span></span>}
     </Row>
   
 
@@ -256,7 +363,7 @@ console.log(rapportLocation)
         <Table striped bordered hover variant="light">
       <thead>
         <tr className='text-dark' style={{border:"2px solid white"}}>
-          <th>Date</th>
+          <th>Mois</th>
           <th>Nom Expéditeur</th>
           <th>Nom bénéficiaire</th>
           <th>Pays Bénéficiaire</th>
@@ -269,7 +376,7 @@ console.log(rapportLocation)
       {rapportLocation === "Rapport Angola et RD Congo" ? props.detailEnvoieTotalTableau.map((value)=>
         {
           return  <tr  style={{border:"2px solid white"}} >
-             <td><i ><b>{value.date_operation}</b></i></td>
+             <td><i ><b>{props.moisInfo}</b></i></td>
              <td><i><b className="text-dark">{value.prenom_expediteur} {value.nom_expediteur} {value.postnom_expediteur} </b></i></td>
              <td><i><b className="text-dark"> {value.prenom_beneficiaire} {value.nom_beneficiaire} {value.postnom_beneficiaire}</b></i></td>
              <td><i><b className="text-dark"> {value.pays_beneficiaire}</b></i></td>
@@ -290,7 +397,7 @@ console.log(rapportLocation)
         }).map((value)=>
         {
           return  <tr  style={{border:"2px solid white"}} >
-             <td><i ><b>{value.date_operation}</b></i></td>
+             <td><i ><b>{props.moisInfo}</b></i></td>
              <td><i><b className="text-dark">{value.prenom_expediteur} {value.nom_expediteur} {value.postnom_expediteur} </b></i></td>
              <td><i><b className="text-dark"> {value.prenom_beneficiaire} {value.nom_beneficiaire} {value.postnom_beneficiaire}</b></i></td>
              <td><i><b className="text-dark"> {value.pays_beneficiaire}</b></i></td>
@@ -310,7 +417,7 @@ console.log(rapportLocation)
          }).map((value)=>
         {
           return  <tr  style={{border:"2px solid white"}} >
-             <td><i ><b>{value.date_operation}</b></i></td>
+             <td><i ><b>{props.moisInfo}</b></i></td>
              <td><i><b className="text-dark">{value.prenom_expediteur} {value.nom_expediteur} {value.postnom_expediteur} </b></i></td>
              <td><i><b className="text-dark"> {value.prenom_beneficiaire} {value.nom_beneficiaire} {value.postnom_beneficiaire}</b></i></td>
              <td><i><b className="text-dark"> {value.pays_beneficiaire}</b></i></td>
@@ -355,15 +462,15 @@ console.log(rapportLocation)
         {props.rapportType === "dailyRapportRetrait" ? <p><Link to='/daily_rapport_retrait_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.rapportType === "monthlyRapportRetrait" ? <p><Link to='/monthly_rapport_retrait_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.rapportType === "yearlyRapportRetrait" ? <p><Link to='/yearly_rapport_retrait_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p>:  props.rapportType === "dailyRapportEnvoi" ? <p><Link to='/daily_rapport_envoi_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.rapportType === "monthlyRapportEnvoi" ? <p><Link to='/monthly_rapport_envoi_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p>: <p><Link to='/yearly_rapport_envoi_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p>}
         </Col>
 
-        <Col xs ={6} >
+        {props.message2 === "Rapport of withdrawals" ? <Col xs ={6} >
         <Link to="" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant="success" type="submit" onClick={message} >
+        <Button onClick={export_excel} variant="success" >
        <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-excel-fill" viewBox="0 0 16 16">
   <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM5.884 6.68 8 9.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 10l2.233 2.68a.5.5 0 0 1-.768.64L8 10.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 10 5.116 7.32a.5.5 0 1 1 .768-.64z"/>
 </svg></span> exporter en Excel 
         </Button>
         </Link>
-        </Col>
+        </Col>:<span></span>}
     </Row>
   
 

@@ -12,6 +12,7 @@ import Table from 'react-bootstrap/Table';
 import HeaderEnglish from './HeaderEnglish';
 import  './Header.css';
 import Form from 'react-bootstrap/Form';
+import { read, utils, writeFile } from 'xlsx';
 
 
 
@@ -37,6 +38,8 @@ function TableMonthlyRapportLingala(props)
     }
 
 const operationDetailArray = []
+var dailyRecettes =[]
+var title=""
 
 const total_montant_beneficiaire = props.detailEnvoieTotalTableau.reduce((total,value)=>
 {
@@ -83,6 +86,108 @@ return total
 
 console.log(rapportLocation)
 
+const export_excel = ()=>{
+  
+  if(rapportLocation === "Rapport Angola et RD Congo")
+  {
+    dailyRecettes = props.detailEnvoieTotalTableau.map((value)=>{
+      return {
+        date : props.moisInfo,
+        withdrawal_code : value.code_retrait,
+        sender_name : value.prenom_expediteur+" "+value.nom_expediteur,
+        sender_mobile : value.numero_expediteur,
+        receiver_name : value.prenom_beneficiaire+" "+value.nom_beneficiaire,
+        receiver_country : value.pays_beneficiaire,
+        receiver_amount : value.montant_beneficiaire,
+       }
+     })
+     title = "Angola na RD Congo "+props.moisInfo.replaceAll('/','_')+""
+    console.log(title)
+    dailyRecettes.push({
+      date : "TOTAL",
+      withdrawal_code : "",
+      sender_name : "",
+      sender_mobile : "",
+      receiver_name : "",
+      receiver_country : "",
+      receiver_amount : Number(total_montant_beneficiaire).toFixed(2),
+   })
+  }
+
+  else if(rapportLocation === "Rapport RD Congo")
+  {
+    dailyRecettes = props.detailEnvoieTotalTableau.filter((value)=>{
+      return value.pays_beneficiaire ==="RD Congo"
+     }).map((value)=>{
+      return {
+        date : props.moisInfo,
+        withdrawal_code : value.code_retrait,
+        sender_name : value.prenom_expediteur+" "+value.nom_expediteur,
+        sender_mobile : value.numero_expediteur,
+        receiver_name : value.prenom_beneficiaire+" "+value.nom_beneficiaire,
+        receiver_country : value.pays_beneficiaire,
+        receiver_amount : value.montant_beneficiaire,
+       }
+     })
+     title = "RD Congo "+props.moisInfo.replaceAll('/','_')+""
+ console.log(title)
+ dailyRecettes.push({
+  date : "TOTAL",
+  withdrawal_code : "",
+  sender_name : "",
+  sender_mobile : "",
+  receiver_name : "",
+  receiver_country : "",
+  receiver_amount : Number(total_montant_beneficiaire_rdcongo).toFixed(2),
+})
+  }
+
+  else{
+
+    dailyRecettes = props.detailEnvoieTotalTableau.filter((value)=>{
+      return value.pays_beneficiaire ==="Angola"
+     }).map((value)=>{
+      return {
+        date : props.moisInfo,
+        withdrawal_code : value.code_retrait,
+        sender_name : value.prenom_expediteur+" "+value.nom_expediteur,
+        sender_mobile : value.numero_expediteur,
+        receiver_name : value.prenom_beneficiaire+" "+value.nom_beneficiaire,
+        receiver_country : value.pays_beneficiaire,
+        receiver_amount : value.montant_beneficiaire,
+       }
+     })
+     title = "Angola "+props.moisInfo.replaceAll('/','_')+""
+ console.log(title)
+ dailyRecettes.push({
+  date : "TOTAL",
+  withdrawal_code : "",
+  sender_name : "",
+  sender_mobile : "",
+  receiver_name : "",
+  receiver_country : "",
+  receiver_amount : Number(total_montant_beneficiaire_angola).toFixed(2),
+})
+  }
+
+ 
+ const worksheet = utils.json_to_sheet(dailyRecettes);
+ const max_width = dailyRecettes.reduce((w, r) => Math.max(w, r.sender_name.length), 10);
+ worksheet["!cols"] = [ { wch: max_width },{ wch: max_width },{ wch: max_width },{ wch: max_width },{ wch: max_width },{ wch: max_width },{ wch: 15 }];
+ 
+ console.log(worksheet)
+ const workbook = utils.book_new();
+ utils.book_append_sheet(workbook, worksheet,title);
+ 
+ /* fix headers */
+ utils.sheet_add_aoa(worksheet, [["Sanza","Code ya rétrait", "Kombo Motindi","Numéro ya Motindi","Kombo Mozui","Mboka Ya Mozui","Montant ya Mozui($)"]], { origin: "A1" });
+ 
+ /* create an XLSX file and try to save to Presidents.xlsx */
+ writeFile(workbook, ""+title+".xlsx", { compression: true });
+ 
+ }
+
+
 
     return (
         <>
@@ -113,7 +218,7 @@ console.log(rapportLocation)
         <Table striped bordered hover variant="light">
       <thead>
         <tr className='text-dark' style={{border:"2px solid white"}}>
-          <th>Dati</th>
+          <th>Sanza</th>
           <th>Kombo ya Motindi</th>
           <th>Kombo ya Mozui</th>
           <th>Mboka ya Mozui</th>
@@ -126,7 +231,7 @@ console.log(rapportLocation)
       {rapportLocation === "Rapport Angola et RD Congo" ? props.detailEnvoieTotalTableau.map((value)=>
         {
           return  <tr  style={{border:"2px solid white"}} >
-             <td><i ><b>{value.date_operation}</b></i></td>
+             <td><i ><b>{props.moisInfo}</b></i></td>
              <td><i><b className="text-dark">{value.prenom_expediteur} {value.nom_expediteur} {value.postnom_expediteur} </b></i></td>
              <td><i><b className="text-dark"> {value.prenom_beneficiaire} {value.nom_beneficiaire} {value.postnom_beneficiaire}</b></i></td>
              <td><i><b className="text-dark"> {value.pays_beneficiaire}</b></i></td>
@@ -147,7 +252,7 @@ console.log(rapportLocation)
         }).map((value)=>
         {
           return  <tr  style={{border:"2px solid white"}} >
-             <td><i ><b>{value.date_operation}</b></i></td>
+             <td><i ><b>{props.moisInfo}</b></i></td>
              <td><i><b className="text-dark">{value.prenom_expediteur} {value.nom_expediteur} {value.postnom_expediteur} </b></i></td>
              <td><i><b className="text-dark"> {value.prenom_beneficiaire} {value.nom_beneficiaire} {value.postnom_beneficiaire}</b></i></td>
              <td><i><b className="text-dark"> {value.pays_beneficiaire}</b></i></td>
@@ -155,7 +260,7 @@ console.log(rapportLocation)
              <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_total).toFixed(2))}</b></i></td>
              <td onClick={()=>{
                operationDetailArray.push(value)
-               props.setTableType("dailyRapport")
+               props.setTableType("monthlyRapport")
                console.log(operationDetailArray)
                props.dataDetailEnvoieTotal(operationDetailArray)
                navigate('/details_retraits_info_lingala')
@@ -167,7 +272,7 @@ console.log(rapportLocation)
          }).map((value)=>
         {
           return  <tr  style={{border:"2px solid white"}} >
-             <td><i ><b>{value.date_operation}</b></i></td>
+             <td><i ><b>{props.moisInfo}</b></i></td>
              <td><i><b className="text-dark">{value.prenom_expediteur} {value.nom_expediteur} {value.postnom_expediteur} </b></i></td>
              <td><i><b className="text-dark"> {value.prenom_beneficiaire} {value.nom_beneficiaire} {value.postnom_beneficiaire}</b></i></td>
              <td><i><b className="text-dark"> {value.pays_beneficiaire}</b></i></td>
@@ -215,7 +320,7 @@ console.log(rapportLocation)
 
         <Col xs ={4} >
         <Link to="" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant="success" type="submit" onClick={message} >
+        <Button onClick={export_excel} variant="success" >
        <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-excel-fill" viewBox="0 0 16 16">
   <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM5.884 6.68 8 9.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 10l2.233 2.68a.5.5 0 0 1-.768.64L8 10.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 10 5.116 7.32a.5.5 0 1 1 .768-.64z"/>
 </svg></span> Tinda na Excel 
@@ -251,7 +356,7 @@ console.log(rapportLocation)
         <Table striped bordered hover variant="light">
       <thead>
         <tr className='text-dark' style={{border:"2px solid white"}}>
-          <th>Dati</th>
+          <th>Sanza</th>
           <th>Kombo ya Motindi</th>
           <th>Kombo ya Mozui</th>
           <th>Mboka ya Mozui</th>
@@ -285,7 +390,7 @@ console.log(rapportLocation)
         }).map((value)=>
         {
           return  <tr  style={{border:"2px solid white"}} >
-             <td><i ><b>{value.date_operation}</b></i></td>
+             <td><i ><b>{props.moisInfo}</b></i></td>
              <td><i><b className="text-dark">{value.prenom_expediteur} {value.nom_expediteur} {value.postnom_expediteur} </b></i></td>
              <td><i><b className="text-dark"> {value.prenom_beneficiaire} {value.nom_beneficiaire} {value.postnom_beneficiaire}</b></i></td>
              <td><i><b className="text-dark"> {value.pays_beneficiaire}</b></i></td>
@@ -293,7 +398,7 @@ console.log(rapportLocation)
              <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_total).toFixed(2))}</b></i></td>
              <td onClick={()=>{
                operationDetailArray.push(value)
-               props.setTableType("dailyRapport")
+               props.setTableType("monthlyRapport")
                console.log(operationDetailArray)
                props.dataDetailEnvoieTotal(operationDetailArray)
                navigate('/details_retraits_info_lingala')
@@ -305,7 +410,7 @@ console.log(rapportLocation)
          }).map((value)=>
         {
           return  <tr  style={{border:"2px solid white"}} >
-             <td><i ><b>{value.date_operation}</b></i></td>
+             <td><i ><b>{props.moisInfo}</b></i></td>
              <td><i><b className="text-dark">{value.prenom_expediteur} {value.nom_expediteur} {value.postnom_expediteur} </b></i></td>
              <td><i><b className="text-dark"> {value.prenom_beneficiaire} {value.nom_beneficiaire} {value.postnom_beneficiaire}</b></i></td>
              <td><i><b className="text-dark"> {value.pays_beneficiaire}</b></i></td>
@@ -353,7 +458,7 @@ console.log(rapportLocation)
 
         <Col xs ={6} >
         <Link to="" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant="success" type="submit" onClick={message} >
+        <Button onClick={export_excel} variant="success" >
        <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-excel-fill" viewBox="0 0 16 16">
   <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM5.884 6.68 8 9.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 10l2.233 2.68a.5.5 0 0 1-.768.64L8 10.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 10 5.116 7.32a.5.5 0 1 1 .768-.64z"/>
 </svg></span> Tinda na Excel 

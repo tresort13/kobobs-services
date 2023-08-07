@@ -10,6 +10,8 @@ import { useMediaQuery } from 'react-responsive';
 import Footer from './Footer';
 import Table from 'react-bootstrap/Table';
 import HeaderFrench from './HeaderFrench';
+import { read, utils, writeFile } from 'xlsx';
+
 //import SessionOut from './SessionOut';
 
 
@@ -55,6 +57,53 @@ const total_montant = props.dailyRapport.reduce((total,value)=>
   total=total + parseFloat(value.montant_total)
   return total
 },0)
+
+
+const dailyRecettes = props.dailyRapport.map((value)=>{
+  return {
+    date : props.dateInfo,
+    withdrawal_code : value.code_retrait,
+    sender_name : value.prenom_expediteur+" "+value.nom_expediteur,
+    sender_mobile : value.numero_expediteur,
+    receiver_name : value.prenom_beneficiaire+" "+value.nom_beneficiaire,
+    receiver_country : value.pays_beneficiaire,
+    receiver_amount : value.montant_beneficiaire,
+    sending_fees : value.frais_envoie,
+    tva_fees : value.frais_tva,
+    total_amount_paid : value.montant_total
+   }
+ })
+ dailyRecettes.push({
+    date : "TOTAL",
+    withdrawal_code : "",
+    sender_name : "",
+    sender_mobile : "",
+    receiver_name : "",
+    receiver_country : "",
+    receiver_amount : Number(total_montant_beneficiaire).toFixed(2),
+    sending_fees : Number(total_frais_envoie).toFixed(2),
+    tva_fees : Number(total_frais_tva).toFixed(2),
+    total_amount_paid : Number(total_montant).toFixed(2)
+ })
+ const title = "Récettes Journalière "+props.dateInfo.replaceAll('/','_')+""
+ console.log(title)
+ 
+ const export_excel = ()=>{
+  /* generate worksheet and workbook */
+ const worksheet = utils.json_to_sheet(dailyRecettes);
+ const max_width = dailyRecettes.reduce((w, r) => Math.max(w, r.sender_name.length), 10);
+ worksheet["!cols"] = [ { wch: max_width },{ wch: max_width },{ wch: max_width },{ wch: max_width },{ wch: max_width },{ wch: max_width },{ wch: 17 },{ wch: max_width },{ wch: max_width },{ wch: max_width }];
+ 
+ console.log(worksheet)
+ const workbook = utils.book_new();
+ utils.book_append_sheet(workbook, worksheet,title);
+ 
+ /* fix headers */
+ utils.sheet_add_aoa(worksheet, [["Date","Code de rétrait", "Noms Expéditeur","Numéro Expéditeur","Noms Bénéficiaire","Pays Bénéficiaire","Montant Bénéficiaire($)","Frais Envoi(£)","Frais TVA(£)","Montant Total(£)"]], { origin: "A1" });
+ 
+ /* create an XLSX file and try to save to Presidents.xlsx */
+ writeFile(workbook, ""+title+".xlsx", { compression: true });
+ }
   
   
     return (
@@ -74,7 +123,7 @@ const total_montant = props.dailyRapport.reduce((total,value)=>
 <Row className='justify-content-center '>
         <Col xs = {12} className='text-center borders pt-2'>
         <div>
-        <h4 ><u><b><i className='couleur2'>Table des Récettes Journalières à la date du {props.dateInfo}</i></b></u></h4>
+        <h4 ><u><b><i className='couleur2'>Table des Récettes Journalière à la date du {props.dateInfo}</i></b></u></h4>
         </div>
         <div>
         <Table striped bordered hover variant="light">
@@ -82,7 +131,7 @@ const total_montant = props.dailyRapport.reduce((total,value)=>
         <tr className='text-dark' style={{border:"2px solid white"}}>
           <th>Date</th>
           <th>Montant Bénéficiaire ($)</th>
-          <th>Frais Envoie (£)</th>
+          <th>Frais Envoi (£)</th>
           <th>Frais TVA (£)</th>
           <th>Montant Total(£)</th>
           <th>Détails des opérations</th>
@@ -136,7 +185,7 @@ const total_montant = props.dailyRapport.reduce((total,value)=>
 
         <Col xs ={4} >
         <Link to="" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant="success" type="submit" onClick={message} >
+        <Button onClick={export_excel} variant="success" >
        <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-excel-fill" viewBox="0 0 16 16">
   <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM5.884 6.68 8 9.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 10l2.233 2.68a.5.5 0 0 1-.768.64L8 10.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 10 5.116 7.32a.5.5 0 1 1 .768-.64z"/>
 </svg></span> exporter en Excel 
@@ -160,7 +209,7 @@ const total_montant = props.dailyRapport.reduce((total,value)=>
 <Row className='justify-content-center '>
         <Col xs = {12} className='text-center borders pt-2'>
         <div>
-        <h4 ><u><b><i className='couleur2'>Table des Récettes Journalières à la date du {props.dateInfo}</i></b></u></h4>
+        <h4 ><u><b><i className='couleur2'>Table des Récettes Journalière à la date du {props.dateInfo}</i></b></u></h4>
         </div>
         <div>
         <Table striped bordered hover variant="light">
@@ -168,7 +217,7 @@ const total_montant = props.dailyRapport.reduce((total,value)=>
         <tr className='text-dark' style={{border:"2px solid white"}}>
           <th>Date</th>
           <th>Montant Bénéficiaire ($)</th>
-          <th>Frais Envoie (£)</th>
+          <th>Frais Envoi (£)</th>
           <th>Frais TVA (£)</th>
           <th>Montant Total(£)</th>
           <th>Détails des opérations</th>
@@ -222,7 +271,7 @@ const total_montant = props.dailyRapport.reduce((total,value)=>
 
         <Col xs ={6} >
         <Link to="" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant="success" type="submit" onClick={message} >
+        <Button onClick={export_excel} variant="success" >
        <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-excel-fill" viewBox="0 0 16 16">
   <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM5.884 6.68 8 9.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 10l2.233 2.68a.5.5 0 0 1-.768.64L8 10.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 10 5.116 7.32a.5.5 0 1 1 .768-.64z"/>
 </svg></span> exporter en Excel 

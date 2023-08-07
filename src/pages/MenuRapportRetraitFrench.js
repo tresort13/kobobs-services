@@ -58,8 +58,8 @@ function MenuRapportRetraitFrench(props)
 
     <Row className='justify-content-center pb-3'>
         <Col xs = {"auto"}>
-        <Link to="" style={{color:'white',textDecorationLine:'none'}}>
-        <Button onClick={()=>setModalShow3(true)} variant='btn--blue'  style={{width:400,height:80,border:"2px solid white"}} className='btn-lg btn--blue rounded-pill zoom py-4'>
+        <Link to="/select_year_form_retrait_french" style={{color:'white',textDecorationLine:'none'}}>
+        <Button  variant='btn--blue'  style={{width:400,height:80,border:"2px solid white"}} className='btn-lg btn--blue rounded-pill zoom py-4'>
         <b className='text-light'><pre>Rapport Annuel des Rétraits</pre></b>
         </Button>
         </Link>
@@ -100,8 +100,8 @@ function MenuRapportRetraitFrench(props)
 
     <Row className='justify-content-center pb-3'>
         <Col xs = {"auto"}>
-        <Link to="" style={{color:'white',textDecorationLine:'none'}}>
-        <Button onClick={()=>setModalShow3(true)} variant='btn--blue'  style={{width:400,height:80,border:"2px solid white"}} className='btn-lg btn--blue rounded-pill zoom py-4'>
+        <Link to="/select_year_form_retrait_french" style={{color:'white',textDecorationLine:'none'}}>
+        <Button  variant='btn--blue'  style={{width:400,height:80,border:"2px solid white"}} className='btn-lg btn--blue rounded-pill zoom py-4'>
         <b className='text-light'><pre>Rapport Annuel des Rétraits</pre></b>
         </Button>
         </Link>

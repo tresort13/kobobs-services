@@ -34,7 +34,7 @@ function FormEnvoiAbonne(props)
       numero_transfer : props.envoie.infoEnvoie.numero_transfer 
         }})
     const { Formik } = formik;
-
+ var data=[]
     const testValidation = yup.object().shape({
       nom_beneficiaire: yup.string().required('esengeli ko kotisa makomi'),
       prenom_beneficiaire: yup.string().required('esengeli ko kotisa makomi'),
@@ -59,7 +59,7 @@ function FormEnvoiAbonne(props)
         nom_expediteur : '',
         prenom_expediteur : '',
         adresse_expediteur : 'N/A',
-        email_expediteur : '',
+        email_expediteur : 'N/A',
         numero_expediteur: '',
         pays_expediteur : 'UK',
         nom_beneficiaire : '',
@@ -200,20 +200,7 @@ function FormEnvoiAbonne(props)
         <p ><i><b >Noms ya Abonné : </b><b className='couleur2'>{props.abonne.infoAbonne.prenom_expediteur} {props.abonne.infoAbonne.nom_expediteur}</b></i></p>
         </Col>
     </Row>
-{/*<Row className='justify-content-start py-2' >
-<Col xs={3}>
-        <i><b >Liste ya ba mozui nayo : </b></i>
-  </Col>
-  <Col xs={6} >
-  <div><Form.Select aria-label="Default select example">
-      <option>pona mozui</option>
-      <option value="1">felly ngoy</option>
-      <option value="2">shaloom bowa</option>
-      <option value="3">lionel mbunga</option>
-    </Form.Select>
-    </div> 
-    </Col>
-    </Row>*/}
+
 
 <Formik
       validationSchema={testValidation}
@@ -233,6 +220,29 @@ function FormEnvoiAbonne(props)
      {({handleSubmit, handleChange,handleBlur, values, touched, errors,setFieldValue
          })=>(
           <Form noValidate onSubmit={handleSubmit}>
+            {props.receiver.length > 0 ? <Row className='justify-content-start py-2' >
+<Col xs={3}>
+        <i><b >Liste ya ba mozui : </b></i>
+  </Col>
+  <Col xs={6} >
+  <div><Form.Select aria-label="Default select example" onChange={(e)=>{
+          data = props.receiver.filter((value)=>{
+            return value.nom_complet_beneficiaire === e.target.value
+          })
+             setFieldValue("nom_beneficiaire",data[0].nom_beneficiaire)
+             setFieldValue("prenom_beneficiaire",data[0].prenom_beneficiaire)
+             setFieldValue("pays_beneficiaire",data[0].pays_beneficiaire)
+             console.log(data)
+        }}>
+       <option>pona mozui</option>
+      {props.receiver.map((value)=>{
+         return <option value={value.nom_complet_beneficiaire}>{value.nom_complet_beneficiaire}</option>
+      })  }
+    </Form.Select>
+  </div> 
+    </Col>
+</Row> :
+<p></p>}
              <Row>
       <hr style={{color:"darkorange"}}></hr>
       <p className='couleur2'><b><u>Mozui ya sika </u></b></p>
@@ -384,6 +394,29 @@ function FormEnvoiAbonne(props)
      {({handleSubmit, handleChange,handleBlur, values, touched, errors,setFieldValue
          })=>(
           <Form noValidate onSubmit={handleSubmit}>
+             {props.receiver.length > 0 ? <Row className='justify-content-start py-2' >
+<Col xs={12}>
+        <i><b >Liste ya ba mozui : </b></i>
+  </Col>
+  <Col xs={12} >
+  <div><Form.Select aria-label="Default select example" onChange={(e)=>{
+          data = props.receiver.filter((value)=>{
+            return value.nom_complet_beneficiaire === e.target.value
+          })
+             setFieldValue("nom_beneficiaire",data[0].nom_beneficiaire)
+             setFieldValue("prenom_beneficiaire",data[0].prenom_beneficiaire)
+             setFieldValue("pays_beneficiaire",data[0].pays_beneficiaire)
+             console.log(data)
+        }}>
+       <option>pona mozui</option>
+      {props.receiver.map((value)=>{
+         return <option value={value.nom_complet_beneficiaire}>{value.nom_complet_beneficiaire}</option>
+      })  }
+    </Form.Select>
+  </div> 
+    </Col>
+</Row> :
+<p></p>}
              <Row>
       <hr style={{color:"darkorange"}}></hr>
       <p className='couleur2'><b><u>Mozui ya sika </u></b></p>

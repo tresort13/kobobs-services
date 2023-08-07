@@ -52,12 +52,12 @@ function SelectYearFormEnvoiFrench(props)
 
     const submitVol =(values)=>
     {
-     const values_replace = values.dateInfo.replace(/-/g,'/')
-     console.log(values_replace)
-     const year = values_replace.slice(0,4)
-     const mois = values_replace.slice(4,8)
-     const day = values_replace.slice(8,10)
-     const date = { "yearInfo": year}
+    // const values_replace = values.dateInfo.replace(/-/g,'/')
+   //  console.log(values_replace)
+   //  const year = values_replace.slice(0,4)
+   //  const mois = values_replace.slice(4,8)
+   //  const day = values_replace.slice(8,10)
+     const date = { "yearInfo": values.dateInfo}
     
       console.log(date)
       setModalShow2(true)
@@ -70,8 +70,8 @@ function SelectYearFormEnvoiFrench(props)
           .then(
             res => {   
                console.log(res)
-               props.setDailyRapport(res)
-               props.setDate(date.yearInfo)
+               props.dataYearlyRapport(res)
+               props.setYear(date.yearInfo)
                navigate('/yearly_rapport_envoi_french')
             }
           )
@@ -111,8 +111,8 @@ return (
     <Formik
       validationSchema={testValidation}
       onSubmit={(values)=>{
-      //  submitVol(values)
-      setModalShow3(true)
+       submitVol(values)
+     // setModalShow3(true)
       }}
       initialValues={{
         dateInfo:''
@@ -163,8 +163,8 @@ return (
     <Formik
       validationSchema={testValidation}
       onSubmit={(values)=>{
-      //  submitVol(values)
-      setModalShow3(true)
+        submitVol(values)
+        //setModalShow3(true)
       }}
       initialValues={{
         dateInfo:''
@@ -222,7 +222,7 @@ function MyVerticallyCenteredModal(props) {
         </Modal.Header>
         <Modal.Body>
           
-          <p className='text-danger'><b>Désolé pas de rapport d'envoi sur la date sélectionnée !!!</b>   
+          <p className='text-danger'><b>Désolé pas de rapport d'envoi sur l'année sélectionnée !!!</b>   
           </p>
         </Modal.Body>
         <Modal.Footer>

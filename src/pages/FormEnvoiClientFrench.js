@@ -46,7 +46,7 @@ function FormEnvoiClientFrench(props)
         nom_expediteur : '',
         prenom_expediteur : '',
         adresse_expediteur : 'N/A',
-        email_expediteur : '',
+        email_expediteur : 'N/A',
         numero_expediteur: '',
         pays_expediteur : 'UK',
         nom_beneficiaire : '',
@@ -73,7 +73,7 @@ function FormEnvoiClientFrench(props)
     nom_expediteur : yup.string().required('champs requis'),
     prenom_expediteur : yup.string().required('champs requis'),
     adresse_expediteur : yup.string().required('champs requis'),
-    email_expediteur : yup.string().required('champs requis'),
+   // email_expediteur : yup.string().required('champs requis'),
     numero_expediteur: yup.string().required('champs requis'),
     pays_expediteur : yup.string().required('champs requis'),
     nom_beneficiaire: yup.string().required('champs requis'),
@@ -280,12 +280,11 @@ function FormEnvoiClientFrench(props)
 
 
         <Col xs = {4}>
-        <Form.Label ><span className="text-danger">*</span> Email</Form.Label>
+        <Form.Label ><span className="text-danger"></span> Email (optionel)</Form.Label>
         <InputGroup className="mb-3">
         <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
-        <Form.Control name="email_expediteur" value={values.email_expediteur} onBlur={handleBlur} onChange={handleChange} type="text" placeholder='Email' /> 
+        <Form.Control name="email_expediteur"  onBlur={handleBlur} onChange={handleChange} type="text" placeholder='Email' /> 
       </InputGroup>
-      <p className='text-danger'>{touched.email_expediteur && errors.email_expediteur}</p>
         </Col>
 
         <Col xs = {4}>
@@ -364,7 +363,7 @@ function FormEnvoiClientFrench(props)
     <Row className='justify-content-center'>
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="validationFormik04" >
-        <Form.Label ><span className='text-danger'>*</span>combien voulez-vous que le destinataire reçoive en US($)</Form.Label>
+        <Form.Label ><span className='text-danger'>*</span>combien voulez-vous que le destinataire reçoit en US($)</Form.Label>
         <Form.Control name="montant_beneficiaire"  value={values.montant_beneficiaire} onBlur={handleBlur} onChange={handleChange} type="text" placeholder="entrer le montant à récevoir"  />
         <p className='text-danger'>{touched.montant_beneficiaire && errors.montant_beneficiaire}</p>
          </Form.Group>
@@ -495,12 +494,12 @@ function FormEnvoiClientFrench(props)
 
 
         <Col xs = {12}>
-        <Form.Label ><span className="text-danger">*</span> Email</Form.Label>
+        <Form.Label ><span className="text-danger"></span> Email (optionel)</Form.Label>
         <InputGroup className="mb-3">
         <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
-        <Form.Control name="email_expediteur" value={values.email_expediteur} onBlur={handleBlur} onChange={handleChange} type="text" placeholder='Email' /> 
+        <Form.Control name="email_expediteur"  onBlur={handleBlur} onChange={handleChange} type="text" placeholder='Email' /> 
       </InputGroup>
-      <p className='text-danger'>{touched.email_expediteur && errors.email_expediteur}</p>
+
         </Col>
 
         <Col xs = {12}>
@@ -579,7 +578,7 @@ function FormEnvoiClientFrench(props)
     <Row className='justify-content-center'>
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="validationFormik04" >
-        <Form.Label ><span className='text-danger'>*</span>combien voulez-vous que le destinataire reçoive en US($)</Form.Label>
+        <Form.Label ><span className='text-danger'>*</span>combien voulez-vous que le destinataire reçoit en US($)</Form.Label>
         <Form.Control name="montant_beneficiaire"  value={values.montant_beneficiaire} onBlur={handleBlur} onChange={handleChange} type="text" placeholder="entrer le montant à récevoir"  />
         <p className='text-danger'>{touched.montant_beneficiaire && errors.montant_beneficiaire}</p>
          </Form.Group>

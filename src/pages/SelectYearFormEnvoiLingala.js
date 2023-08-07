@@ -51,12 +51,12 @@ function SelectYearFormEnvoiLingala(props)
 
     const submitVol =(values)=>
     {
-     const values_replace = values.dateInfo.replace(/-/g,'/')
-     console.log(values_replace)
-     const year = values_replace.slice(0,4)
-     const mois = values_replace.slice(4,8)
-     const day = values_replace.slice(8,10)
-     const date = { "dateInfo":year}
+    // const values_replace = values.dateInfo.replace(/-/g,'/')
+   //  console.log(values_replace)
+   //  const year = values_replace.slice(0,4)
+   //  const mois = values_replace.slice(4,8)
+   //  const day = values_replace.slice(8,10)
+     const date = { "yearInfo": values.dateInfo}
     
       console.log(date)
       setModalShow2(true)
@@ -69,8 +69,8 @@ function SelectYearFormEnvoiLingala(props)
           .then(
             res => {   
                console.log(res)
-               props.setDailyRapport(res)
-               props.setDate(date.dateInfo)
+               props.dataYearlyRapport(res)
+               props.setYear(date.yearInfo)
                navigate('/yearly_rapport_envoi_lingala')
             }
           )
@@ -83,7 +83,6 @@ function SelectYearFormEnvoiLingala(props)
        
                 
     }
-
     const inputChanged = (event)=>
     {
          const cred = dateEnvoie.infodateEnvoie ;
@@ -110,8 +109,8 @@ return (
     <Formik
       validationSchema={testValidation}
       onSubmit={(values)=>{
-       // submitVol(values)
-       setModalShow3(true)
+       submitVol(values)
+     //  setModalShow3(true)
       }}
       initialValues={{
         dateInfo:''
@@ -221,7 +220,7 @@ function MyVerticallyCenteredModal(props) {
         </Modal.Header>
         <Modal.Body>
           
-          <p className='text-danger'><b>Mawa rapport eza te na date oyo oponi !!!</b>   
+          <p className='text-danger'><b>Mawa rapport eza te na mbula oyo oponi !!!</b>   
           </p>
         </Modal.Body>
         <Modal.Footer>

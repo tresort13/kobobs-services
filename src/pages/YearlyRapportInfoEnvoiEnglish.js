@@ -19,7 +19,7 @@ const useState = React.useState
 function YearlyRapportInfoEnvoiEnglish(props)
 {
 
-    const [message,setMessage] = useState("Monthly sending Report")
+    const [message,setMessage] = useState("Yearly sending Report")
     const [couleur,setCouleur] = useState("text-dark")
     const [modalShow, setModalShow] = React.useState(false)
 
@@ -35,16 +35,16 @@ function YearlyRapportInfoEnvoiEnglish(props)
       });
     
       const navigate = useNavigate()
-      console.log(props.monthlyRapport)
+      console.log(props.yearlyRapport)
      
-     const nombre_envoie_total =  props.monthlyRapport.reduce((total,value)=>
+     const nombre_envoie_total =  props.yearlyRapport.reduce((total,value)=>
      {
         total = total + 1
         return total
      },0)
 
 
-     const nombre_envoie_valide = props.monthlyRapport.filter((value)=>
+     const nombre_envoie_valide = props.yearlyRapport.filter((value)=>
      {
        return value.status_retrait !== "code retrait en attente de validation"
      }).reduce((total,value)=>
@@ -53,7 +53,7 @@ function YearlyRapportInfoEnvoiEnglish(props)
        return total
      },0)
 
-     const nombre_envoie_nonvalide = props.monthlyRapport.filter((value)=>
+     const nombre_envoie_nonvalide = props.yearlyRapport.filter((value)=>
      {
        return value.status_retrait === "code retrait en attente de validation"
      }).reduce((total,value)=>
@@ -69,41 +69,41 @@ function YearlyRapportInfoEnvoiEnglish(props)
 
      const detailTotal =()=>
      {
-      props.dataDetailEnvoieTotalTableau(props.monthlyRapport)
-      props.setRapportType("monthlyRapportEnvoi")
+      props.dataDetailEnvoieTotalTableau(props.yearlyRapport)
+      props.setRapportType("yearlyRapportEnvoi")
       props.setTitleEnglish("Rapport of all sendings")
       props.setTitleFrench("Rapport de tous les envois")
       props.setTitleLingala("Rapport yaba envois nionso")
       props.setMessage2("Rapport of all sendings")
-      navigate('/table_monthly_rapport_english')
+      navigate('/table_yearly_rapport_english')
      }
 
      const detailValide =()=>
      {
-      props.dataDetailEnvoieTotalTableau(props.monthlyRapport.filter((value)=>
+      props.dataDetailEnvoieTotalTableau(props.yearlyRapport.filter((value)=>
       {
         return value.status_retrait !== "code retrait en attente de validation"
       }))
-      props.setRapportType("monthlyRapportEnvoi")
+      props.setRapportType("yearlyRapportEnvoi")
       props.setTitleLingala("Rapport yaba envois validés")
       props.setTitleFrench("Rapport de envois validés")
       props.setTitleEnglish("Rapport of validated sendings")
       props.setMessage2("Rapport of validated sendings")
-      navigate('/table_monthly_rapport_english')
+      navigate('/table_yearly_rapport_english')
      }
 
      const detailNonValide =()=>
      {
-      props.dataDetailEnvoieTotalTableau(props.monthlyRapport.filter((value)=>
+      props.dataDetailEnvoieTotalTableau(props.yearlyRapport.filter((value)=>
       {
         return value.status_retrait === "code retrait en attente de validation"
       }))
-      props.setRapportType("monthlyRapportEnvoi")
+      props.setRapportType("yearlyRapportEnvoi")
       props.setTitleLingala("Rapport yaba envois non validés")
       props.setTitleEnglish("Rapport of non validated sendings")
       props.setTitleFrench("Rapport de envois non validés")
       props.setMessage2("Rapport of non validated sendings")
-      navigate('/table_monthly_rapport_english')
+      navigate('/table_yearly_rapport_english')
      }
      
     return (
@@ -113,7 +113,7 @@ function YearlyRapportInfoEnvoiEnglish(props)
 {isDesktop && <div className='justify-content-center text-center mb-5 text-light text-bold rounded'>
 <Row className='mt-3 px-5'>
         <Col xs={12} className="text-start text-light">
-            <p><Link to='/select_mois_form_envoi_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>
+            <p><Link to='/select_year_form_envoi_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>
         </Col>
     </Row>
    <Container className='bg-light text-dark rounded' style={{width:750}}>
@@ -131,7 +131,7 @@ function YearlyRapportInfoEnvoiEnglish(props)
     <Row className='justify-content-center pb-3' >
         <Col xs={12}>
         <p className='text-dark'><b>Type of Report :</b> <b className='couleur2'>Yearly</b> </p>
-        <p className='text-dark'><b>Period :</b> <b className='couleur2'>{props.moisInfo}</b>  </p>
+        <p className='text-dark'><b>Year :</b> <b className='couleur2'>{props.yearInfo}</b>  </p>
         
         </Col>
     </Row>
@@ -208,7 +208,7 @@ function YearlyRapportInfoEnvoiEnglish(props)
     <Row className='justify-content-center pb-3' >
         <Col xs={12}>
         <p className='text-dark'><b>Type of Report :</b> <b className='couleur2'>Yearly</b> </p>
-        <p className='text-dark'><b>Period :</b> <b className='couleur2'>{props.moisInfo}</b>  </p>
+        <p className='text-dark'><b>Year :</b> <b className='couleur2'>{props.yearInfo}</b>  </p>
         
         </Col>
     </Row>
@@ -218,7 +218,7 @@ function YearlyRapportInfoEnvoiEnglish(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <p className='text-dark py-2 text-center'><b>Number of total sendings made :</b> <b className='couleur2'> {nombre_envoie_total}</b>  </p>
+        <p className='text-dark py-2 text-center'><b>Total sendings made :</b> <b className='couleur2'> {nombre_envoie_total}</b>  </p>
          </Col>
 
          <Col xs={6}>
@@ -233,8 +233,8 @@ function YearlyRapportInfoEnvoiEnglish(props)
 
     <Row>
           <Col>
-        <p className='text-dark py-2 text-center'><b>Number of validated sendings :</b> <b className='couleur2'> {nombre_envoie_valide}</b> </p>
-        <p className='text-dark py-2 text-center'><b>Number of no validated sendings :</b> <b className='couleur2'> {nombre_envoie_nonvalide}</b></p>
+        <p className='text-dark py-2 text-center'><b>Validated sendings :</b> <b className='couleur2'> {nombre_envoie_valide}</b> </p>
+        <p className='text-dark py-2 text-center'><b>No validated sendings :</b> <b className='couleur2'> {nombre_envoie_nonvalide}</b></p>
         </Col>
 
        <Col xs={6}>
@@ -290,7 +290,7 @@ function MyVerticallyCenteredModal(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p className='couleur2'><b>No operation available for this month </b>   
+        <p className='couleur2'><b>No operation available for this year </b>   
         </p>
       </Modal.Body>
       <Modal.Footer>

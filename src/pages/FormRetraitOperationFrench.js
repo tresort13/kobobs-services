@@ -15,6 +15,8 @@ import ClipLoader from "react-spinners/ClipLoader";
 import  './Header.css';
 import HeaderFrench from './HeaderFrench';
 import HeaderEnglish from './HeaderEnglish';
+import * as formik from 'formik';
+import * as yup from 'yup';
 // import SessionOut from './SessionOut';
 
 
@@ -26,6 +28,8 @@ function FormRetraitOperationFrench(props)
         code_retrait :"",
     }})
 
+    const { Formik } = formik;
+
     const navigate = useNavigate()
     const [modalShow, setModalShow] = React.useState(false);
     const [modalShow2, setModalShow2] = React.useState(false);
@@ -33,6 +37,10 @@ function FormRetraitOperationFrench(props)
 
     const [message,setMessage] = useState("Veuillez entrer le code de retrait")
     const [couleur,setCouleur] = useState("text-dark")
+
+    const testValidation = yup.object().shape({
+      codeRetrait: yup.string().required('champs requis')
+    });
 
     const isDesktop = useMediaQuery({
         query: "(min-width: 1224px)"
@@ -45,11 +53,11 @@ function FormRetraitOperationFrench(props)
     
 
 
-    const submitcodeRetrait = (e)=>
+    const submitcodeRetrait = (values)=>
     {
-        e.preventDefault(e)  
+         
         setModalShow2(true)    
-        fetch('https://kobobsapi.herokuapp.com/api/getRetraitInfo/'+codeRetrait.infoCodeRetrait.code_retrait+'/', {
+        fetch('https://kobobsapi.herokuapp.com/api/getRetraitInfo/'+values.codeRetrait+'/', {
                 method:'GET',
                 headers: {'Content-Type': 'application/json'},
                // body: JSON.stringify(codeRetrait.infoCodeRetrait)
@@ -97,18 +105,29 @@ function FormRetraitOperationFrench(props)
 
 <Row className=' justify-content-center mb-3 pt-3' >
         <Col xs={12} className="rounded" style={{marginTop:100,width:750,border:"3px solid white"}}>
-        <p className="text-light"><i><b>{message}</b></i></p>
+        <p className="couleur2"><i><b>{message}</b></i></p>
 
    
     
-<Form onSubmit={submitcodeRetrait}>
-   
+        <Formik
+      validationSchema={testValidation}
+      onSubmit={(values)=>{
+        submitcodeRetrait(values)
+      }}
+      initialValues={{
+        codeRetrait : ''
+      }}
+    >
+     {({handleSubmit, handleChange,handleBlur, values, touched, errors
+         })=>(
 
+    <Form noValidate onSubmit={handleSubmit}>
     <Row className='justify-content-center'>
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Control name="code_retrait" value={codeRetrait.infoCodeRetrait.code_retrait} onChange={e=>inputChanged(e)} type="text" placeholder='Veuillez entrer code retrait' autoFocus   required/>
+        <Form.Control name="codeRetrait" value={values.codeRetrait} onChange={handleChange} onBlur={handleBlur} type="text" placeholder='Veuillez entrer le code de retrait' autoFocus/>
          </Form.Group>
+         <p className='text-danger'>{touched.codeRetrait && errors.codeRetrait}</p>
         </Col>
     </Row>
 
@@ -116,7 +135,7 @@ function FormRetraitOperationFrench(props)
    <Row className='pb-3'>
        <Col>
         <Button variant="warning" type="submit" >
-        Valider 
+        valider
         </Button>
         </Col>
     </Row>
@@ -124,6 +143,9 @@ function FormRetraitOperationFrench(props)
 
 
 </Form>
+   )
+  }
+</Formik>
 </Col>
 </Row>
 </Container>
@@ -138,18 +160,29 @@ function FormRetraitOperationFrench(props)
 
 <Row className=' justify-content-center mb-3 pt-3' >
         <Col xs={12} className="rounded" style={{marginTop:100,width:750,border:"3px solid white"}}>
-        <p className="text-light"><i><b>{message}</b></i></p>
+        <p className="couleur2"><i><b>{message}</b></i></p>
 
    
     
-<Form onSubmit={submitcodeRetrait}>
-   
+        <Formik
+      validationSchema={testValidation}
+      onSubmit={(values)=>{
+        submitcodeRetrait(values)
+      }}
+      initialValues={{
+        codeRetrait : ''
+      }}
+    >
+     {({handleSubmit, handleChange,handleBlur, values, touched, errors
+         })=>(
 
+    <Form noValidate onSubmit={handleSubmit}>
     <Row className='justify-content-center'>
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="formBasicText" >
-        <Form.Control name="code_retrait" value={codeRetrait.infoCodeRetrait.code_retrait} onChange={e=>inputChanged(e)} type="text" placeholder='Veuillez entrer code retrait' autoFocus   required/>
+        <Form.Control name="codeRetrait" value={values.codeRetrait} onChange={handleChange} onBlur={handleBlur} type="text" placeholder='Veuillez entrer le code de retrait' autoFocus/>
          </Form.Group>
+         <p className='text-danger'>{touched.codeRetrait && errors.codeRetrait}</p>
         </Col>
     </Row>
 
@@ -157,7 +190,7 @@ function FormRetraitOperationFrench(props)
    <Row className='pb-3'>
        <Col>
         <Button variant="warning" type="submit" >
-        Valider 
+        valider
         </Button>
         </Col>
     </Row>
@@ -165,6 +198,9 @@ function FormRetraitOperationFrench(props)
 
 
 </Form>
+   )
+  }
+</Formik>
 </Col>
 </Row>
 </Container>

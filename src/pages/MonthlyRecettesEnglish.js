@@ -10,6 +10,7 @@ import { useMediaQuery } from 'react-responsive';
 import Footer from './Footer';
 import Table from 'react-bootstrap/Table';
 import HeaderEnglish from './HeaderEnglish';
+import { read, utils, writeFile } from 'xlsx';
 
 
 
@@ -56,6 +57,53 @@ const total_montant = props.monthlyRapport.reduce((total,value)=>
   total=total + parseFloat(value.montant_total)
   return total
 },0)
+
+const monthlyRecettes = props.monthlyRapport.map((value)=>{
+  return {
+    date : props.moisInfo,
+    withdrawal_code : value.code_retrait,
+    sender_name : value.prenom_expediteur+" "+value.nom_expediteur,
+    sender_mobile : value.numero_expediteur,
+    receiver_name : value.prenom_beneficiaire+" "+value.nom_beneficiaire,
+    receiver_country : value.pays_beneficiaire,
+    receiver_amount : value.montant_beneficiaire,
+    sending_fees : value.frais_envoie,
+    tva_fees : value.frais_tva,
+    total_amount_paid : value.montant_total
+   }
+ })
+ monthlyRecettes.push({
+    date : "TOTAL",
+    withdrawal_code : "",
+    sender_name : "",
+    sender_mobile : "",
+    receiver_name : "",
+    receiver_country : "",
+    receiver_amount : Number(total_montant_beneficiaire).toFixed(2),
+    sending_fees : Number(total_frais_envoie).toFixed(2),
+    tva_fees : Number(total_frais_tva).toFixed(2),
+    total_amount_paid : Number(total_montant).toFixed(2)
+ })
+ const title = "Monthly Incomes "+props.moisInfo.replaceAll('/','_')+""
+ console.log(title)
+ 
+ const export_excel = ()=>{
+  /* generate worksheet and workbook */
+ const worksheet = utils.json_to_sheet(monthlyRecettes);
+ const max_width = monthlyRecettes.reduce((w, r) => Math.max(w, r.sender_name.length), 10);
+ worksheet["!cols"] = [ { wch: max_width },{ wch: max_width },{ wch: max_width },{ wch: max_width },{ wch: max_width },{ wch: max_width },{ wch: max_width },{ wch: max_width },{ wch: max_width },{ wch: max_width }];
+ 
+ console.log(worksheet)
+ const workbook = utils.book_new();
+ utils.book_append_sheet(workbook, worksheet,title);
+ 
+ /* fix headers */
+ utils.sheet_add_aoa(worksheet, [["Month","Code", "Sender Name","Sender Phone","Recipient Name","Recipient Country","Recipient Amount($)","Sending Fees(£)","TVA Fees(£)","Total Amount(£)"]], { origin: "A1" });
+ 
+ /* create an XLSX file and try to save to Presidents.xlsx */
+ writeFile(workbook, ""+title+".xlsx", { compression: true });
+ 
+ }
   
     return (
         <>
@@ -79,7 +127,7 @@ const total_montant = props.monthlyRapport.reduce((total,value)=>
       <thead>
         <tr className='text-dark' style={{border:"2px solid white"}}>
         <th>Period</th>
-          <th>Beneficiary Amount ($)</th>
+          <th>Recipient Amount ($)</th>
           <th>sending fees(£)</th>
           <th>TVA fees(£)</th>
           <th>Total Amount Paid (£)</th>
@@ -101,7 +149,7 @@ const total_montant = props.monthlyRapport.reduce((total,value)=>
                console.log(operationDetailArray)
                props.dataDetailEnvoieTotal(operationDetailArray)
                navigate('/details_retraits_info_english')
-             }} ><i className="text-primary" ><b><u>check details</u></b></i></td>
+             }} ><i className="text-primary btn" ><b><u>check details</u></b></i></td>
             </tr>     
         }) 
         }
@@ -131,6 +179,16 @@ const total_montant = props.monthlyRapport.reduce((total,value)=>
         </Link>
 
         </Col>
+
+        <Col xs ={4} >
+        <Link to="" style={{color:'white',textDecorationLine:'none'}}>
+        <Button onClick={export_excel} variant="success" >
+       <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-excel-fill" viewBox="0 0 16 16">
+  <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM5.884 6.68 8 9.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 10l2.233 2.68a.5.5 0 0 1-.768.64L8 10.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 10 5.116 7.32a.5.5 0 1 1 .768-.64z"/>
+</svg></span> export to Excel 
+        </Button>
+        </Link>
+        </Col>
     </Row>
   
 
@@ -153,12 +211,12 @@ const total_montant = props.monthlyRapport.reduce((total,value)=>
           <thead>
             <tr className='text-dark' style={{border:"2px solid white"}}>
             <th>Period</th>
-              <th>Beneficiary Amount ($)</th>
-              <th>sending fees(£)</th>
-              <th>TVA fees(£)</th>
-              <th>Total Amount Paid (£)</th>
-              <th>Operation details</th>
-            </tr>
+          <th>Recipient Amount ($)</th>
+          <th>sending fees(£)</th>
+          <th>TVA fees(£)</th>
+          <th>Total Amount Paid (£)</th>
+          <th>Operation details</th>
+        </tr>
           </thead>
           <tbody>
             {props.monthlyRapport.map((value)=>
@@ -175,7 +233,7 @@ const total_montant = props.monthlyRapport.reduce((total,value)=>
                    console.log(operationDetailArray)
                    props.dataDetailEnvoieTotal(operationDetailArray)
                    navigate('/details_retraits_info_english')
-                 }} ><i className="text-primary" ><b><u>check details</u></b></i></td>
+                 }} ><i className="text-primary btn" ><b><u>check details</u></b></i></td>
                 </tr>     
             }) 
             }
@@ -205,6 +263,16 @@ const total_montant = props.monthlyRapport.reduce((total,value)=>
             </Link>
     
             </Col>
+
+            <Col xs ={4} >
+        <Link to="" style={{color:'white',textDecorationLine:'none'}}>
+        <Button onClick={export_excel} variant="success" >
+       <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-excel-fill" viewBox="0 0 16 16">
+  <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM5.884 6.68 8 9.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 10l2.233 2.68a.5.5 0 0 1-.768.64L8 10.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 10 5.116 7.32a.5.5 0 1 1 .768-.64z"/>
+</svg></span> export to Excel 
+        </Button>
+        </Link>
+        </Col>
         </Row>
       
     

@@ -16,11 +16,12 @@ import HeaderFrench from './HeaderFrench';
 import { read, utils, writeFile } from 'xlsx';
 
 
+
 //import SessionOut from './SessionOut';
 
 
 
-function TableDailyRapportFrench(props)
+function TableYearlyRapportFrench(props)
 {
   const [rapportLocation, setRapportLocation] = useState("Rapport Angola et RD Congo");
   const isDesktop = useMediaQuery({
@@ -95,7 +96,7 @@ const export_excel = ()=>{
   {
     dailyRecettes = props.detailEnvoieTotalTableau.map((value)=>{
       return {
-        date : props.dateInfo,
+        date : props.yearInfo,
         withdrawal_code : value.code_retrait,
         sender_name : value.prenom_expediteur+" "+value.nom_expediteur,
         sender_mobile : value.numero_expediteur,
@@ -104,7 +105,7 @@ const export_excel = ()=>{
         receiver_amount : value.montant_beneficiaire,
        }
      })
-     title = "Angola et RD Congo "+props.dateInfo.replaceAll('/','_')+""
+     title = "Angola et RD Congo "+props.yearInfo+""
     console.log(title)
     dailyRecettes.push({
       date : "TOTAL",
@@ -123,7 +124,7 @@ const export_excel = ()=>{
       return value.pays_beneficiaire ==="RD Congo"
      }).map((value)=>{
       return {
-        date : props.dateInfo,
+        date : props.yearInfo,
         withdrawal_code : value.code_retrait,
         sender_name : value.prenom_expediteur+" "+value.nom_expediteur,
         sender_mobile : value.numero_expediteur,
@@ -132,7 +133,7 @@ const export_excel = ()=>{
         receiver_amount : value.montant_beneficiaire,
        }
      })
-     title = "RD Congo "+props.dateInfo.replaceAll('/','_')+""
+     title = "RD Congo "+props.yearInfo+""
  console.log(title)
  dailyRecettes.push({
   date : "TOTAL",
@@ -151,7 +152,7 @@ const export_excel = ()=>{
       return value.pays_beneficiaire ==="Angola"
      }).map((value)=>{
       return {
-        date : props.dateInfo,
+        date : props.yearInfo,
         withdrawal_code : value.code_retrait,
         sender_name : value.prenom_expediteur+" "+value.nom_expediteur,
         sender_mobile : value.numero_expediteur,
@@ -160,7 +161,7 @@ const export_excel = ()=>{
         receiver_amount : value.montant_beneficiaire,
        }
      })
-     title = "Angola "+props.dateInfo.replaceAll('/','_')+""
+     title = "Angola "+props.yearInfo+""
  console.log(title)
  dailyRecettes.push({
   date : "TOTAL",
@@ -186,7 +187,7 @@ const export_excel = ()=>{
  utils.book_append_sheet(workbook, worksheet,title);
  
  /* fix headers */
- utils.sheet_add_aoa(worksheet, [["Date","Code de rétrait", "Noms Expéditeur","Numéro Expéditeur","Noms Bénéficiaire","Pays Bénéficiaire","Montant Bénéficiaire($)"]], { origin: "A1" });
+ utils.sheet_add_aoa(worksheet, [["Année","Code de rétrait", "Noms Expéditeur","Numéro Expéditeur","Noms Bénéficiaire","Pays Bénéficiaire","Montant Bénéficiaire($)"]], { origin: "A1" });
  
  /* create an XLSX file and try to save to Presidents.xlsx */
  writeFile(workbook, ""+title+".xlsx", { compression: true });
@@ -207,7 +208,7 @@ const export_excel = ()=>{
 <Row className='justify-content-center '>
         <Col xs = {12} className='text-center borders pt-2'>
         <div>
-        <h4 ><u><b><i className='couleur2'>{props.titleFrench} {props.dateInfo}</i></b></u></h4>
+        <h4 ><u><b><i className='couleur2'>{props.titleFrench} {props.yearInfo}</i></b></u></h4>
         </div>
         <div>
         
@@ -224,7 +225,7 @@ const export_excel = ()=>{
         <Table striped bordered hover variant="light">
       <thead>
         <tr className='text-dark' style={{border:"2px solid white"}}>
-          <th>Date</th>
+          <th>Année</th>
           <th>Nom Expéditeur</th>
           <th>Nom bénéficiaire</th>
           <th>Pays Bénéficiaire</th>
@@ -237,7 +238,7 @@ const export_excel = ()=>{
       {rapportLocation === "Rapport Angola et RD Congo" ? props.detailEnvoieTotalTableau.map((value)=>
         {
           return  <tr  style={{border:"2px solid white"}} >
-             <td><i ><b>{value.date_operation}</b></i></td>
+             <td><i ><b>{props.yearInfo}</b></i></td>
              <td><i><b className="text-dark">{value.prenom_expediteur} {value.nom_expediteur} {value.postnom_expediteur} </b></i></td>
              <td><i><b className="text-dark"> {value.prenom_beneficiaire} {value.nom_beneficiaire} {value.postnom_beneficiaire}</b></i></td>
              <td><i><b className="text-dark"> {value.pays_beneficiaire}</b></i></td>
@@ -245,7 +246,7 @@ const export_excel = ()=>{
              <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_total).toFixed(2))}</b></i></td>
              <td onClick={()=>{
                operationDetailArray.push(value)
-               props.setTableType("dailyRapport")
+               props.setTableType("yearlyRapport")
                console.log(operationDetailArray)
                props.dataDetailEnvoieTotal(operationDetailArray)
                navigate('/details_retraits_info_french')
@@ -258,7 +259,7 @@ const export_excel = ()=>{
         }).map((value)=>
         {
           return  <tr  style={{border:"2px solid white"}} >
-             <td><i ><b>{value.date_operation}</b></i></td>
+             <td><i ><b>{props.yearInfo}</b></i></td>
              <td><i><b className="text-dark">{value.prenom_expediteur} {value.nom_expediteur} {value.postnom_expediteur} </b></i></td>
              <td><i><b className="text-dark"> {value.prenom_beneficiaire} {value.nom_beneficiaire} {value.postnom_beneficiaire}</b></i></td>
              <td><i><b className="text-dark"> {value.pays_beneficiaire}</b></i></td>
@@ -266,7 +267,7 @@ const export_excel = ()=>{
              <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_total).toFixed(2))}</b></i></td>
              <td onClick={()=>{
                operationDetailArray.push(value)
-               props.setTableType("dailyRapport")
+               props.setTableType("yearlyRapport")
                console.log(operationDetailArray)
                props.dataDetailEnvoieTotal(operationDetailArray)
                navigate('/details_retraits_info_french')
@@ -278,7 +279,7 @@ const export_excel = ()=>{
          }).map((value)=>
         {
           return  <tr  style={{border:"2px solid white"}} >
-             <td><i ><b>{value.date_operation}</b></i></td>
+             <td><i ><b>{props.yearInfo}</b></i></td>
              <td><i><b className="text-dark">{value.prenom_expediteur} {value.nom_expediteur} {value.postnom_expediteur} </b></i></td>
              <td><i><b className="text-dark"> {value.prenom_beneficiaire} {value.nom_beneficiaire} {value.postnom_beneficiaire}</b></i></td>
              <td><i><b className="text-dark"> {value.pays_beneficiaire}</b></i></td>
@@ -286,7 +287,7 @@ const export_excel = ()=>{
              <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_total).toFixed(2))}</b></i></td>
              <td onClick={()=>{
                operationDetailArray.push(value)
-               props.setTableType("dailyRapport")
+               props.setTableType("yearlyRapport")
                console.log(operationDetailArray)
                props.dataDetailEnvoieTotal(operationDetailArray)
                navigate('/details_retraits_info_french')
@@ -319,7 +320,7 @@ const export_excel = ()=>{
 
   
     <Row className='justify-content-center pb-3 pt-3'>
-        <Col xs ={4} >
+    <Col xs ={4} >
         {props.rapportType === "dailyRapportRetrait" ? <p><Link to='/daily_rapport_retrait_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.rapportType === "monthlyRapportRetrait" ? <p><Link to='/monthly_rapport_retrait_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.rapportType === "yearlyRapportRetrait" ? <p><Link to='/yearly_rapport_retrait_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p>:  props.rapportType === "dailyRapportEnvoi" ? <p><Link to='/daily_rapport_envoi_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.rapportType === "monthlyRapportEnvoi" ? <p><Link to='/monthly_rapport_envoi_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p>: <p><Link to='/yearly_rapport_envoi_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p>}
         </Col>
 
@@ -346,7 +347,7 @@ const export_excel = ()=>{
 <Row className='justify-content-center '>
         <Col xs = {12} className='text-center borders pt-2'>
         <div>
-        <h4 ><u><b><i className='couleur2'>{props.titleFrench} {props.dateInfo}</i></b></u></h4>
+        <h4 ><u><b><i className='couleur2'>{props.titleFrench} {props.yearInfo}</i></b></u></h4>
         </div>
         <div>
         
@@ -363,7 +364,7 @@ const export_excel = ()=>{
         <Table striped bordered hover variant="light">
       <thead>
         <tr className='text-dark' style={{border:"2px solid white"}}>
-          <th>Date</th>
+          <th>Année</th>
           <th>Nom Expéditeur</th>
           <th>Nom bénéficiaire</th>
           <th>Pays Bénéficiaire</th>
@@ -376,7 +377,7 @@ const export_excel = ()=>{
       {rapportLocation === "Rapport Angola et RD Congo" ? props.detailEnvoieTotalTableau.map((value)=>
         {
           return  <tr  style={{border:"2px solid white"}} >
-             <td><i ><b>{value.date_operation}</b></i></td>
+             <td><i ><b>{props.yearInfo}</b></i></td>
              <td><i><b className="text-dark">{value.prenom_expediteur} {value.nom_expediteur} {value.postnom_expediteur} </b></i></td>
              <td><i><b className="text-dark"> {value.prenom_beneficiaire} {value.nom_beneficiaire} {value.postnom_beneficiaire}</b></i></td>
              <td><i><b className="text-dark"> {value.pays_beneficiaire}</b></i></td>
@@ -384,7 +385,7 @@ const export_excel = ()=>{
              <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_total).toFixed(2))}</b></i></td>
              <td onClick={()=>{
                operationDetailArray.push(value)
-               props.setTableType("dailyRapport")
+               props.setTableType("yearlyRapport")
                console.log(operationDetailArray)
                props.dataDetailEnvoieTotal(operationDetailArray)
                navigate('/details_retraits_info_french')
@@ -397,7 +398,7 @@ const export_excel = ()=>{
         }).map((value)=>
         {
           return  <tr  style={{border:"2px solid white"}} >
-             <td><i ><b>{value.date_operation}</b></i></td>
+             <td><i ><b>{props.yearInfo}</b></i></td>
              <td><i><b className="text-dark">{value.prenom_expediteur} {value.nom_expediteur} {value.postnom_expediteur} </b></i></td>
              <td><i><b className="text-dark"> {value.prenom_beneficiaire} {value.nom_beneficiaire} {value.postnom_beneficiaire}</b></i></td>
              <td><i><b className="text-dark"> {value.pays_beneficiaire}</b></i></td>
@@ -405,7 +406,7 @@ const export_excel = ()=>{
              <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_total).toFixed(2))}</b></i></td>
              <td onClick={()=>{
                operationDetailArray.push(value)
-               props.setTableType("dailyRapport")
+               props.setTableType("yearlyRapport")
                console.log(operationDetailArray)
                props.dataDetailEnvoieTotal(operationDetailArray)
                navigate('/details_retraits_info_french')
@@ -417,7 +418,7 @@ const export_excel = ()=>{
          }).map((value)=>
         {
           return  <tr  style={{border:"2px solid white"}} >
-             <td><i ><b>{value.date_operation}</b></i></td>
+             <td><i ><b>{props.yearInfo}</b></i></td>
              <td><i><b className="text-dark">{value.prenom_expediteur} {value.nom_expediteur} {value.postnom_expediteur} </b></i></td>
              <td><i><b className="text-dark"> {value.prenom_beneficiaire} {value.nom_beneficiaire} {value.postnom_beneficiaire}</b></i></td>
              <td><i><b className="text-dark"> {value.pays_beneficiaire}</b></i></td>
@@ -425,7 +426,7 @@ const export_excel = ()=>{
              <td><i><b className="text-dark">{new Intl.NumberFormat().format(Number(value.montant_total).toFixed(2))}</b></i></td>
              <td onClick={()=>{
                operationDetailArray.push(value)
-               props.setTableType("dailyRapport")
+               props.setTableType("yearlyRapport")
                console.log(operationDetailArray)
                props.dataDetailEnvoieTotal(operationDetailArray)
                navigate('/details_retraits_info_french')
@@ -458,7 +459,7 @@ const export_excel = ()=>{
 
   
     <Row className='justify-content-center pb-3 pt-3'>
-        <Col xs ={6} >
+    <Col xs ={6} >
         {props.rapportType === "dailyRapportRetrait" ? <p><Link to='/daily_rapport_retrait_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.rapportType === "monthlyRapportRetrait" ? <p><Link to='/monthly_rapport_retrait_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.rapportType === "yearlyRapportRetrait" ? <p><Link to='/yearly_rapport_retrait_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p>:  props.rapportType === "dailyRapportEnvoi" ? <p><Link to='/daily_rapport_envoi_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.rapportType === "monthlyRapportEnvoi" ? <p><Link to='/monthly_rapport_envoi_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p>: <p><Link to='/yearly_rapport_envoi_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p>}
         </Col>
 
@@ -491,4 +492,4 @@ const export_excel = ()=>{
     )
 }
 
-export default TableDailyRapportFrench;
+export default TableYearlyRapportFrench;

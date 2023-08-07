@@ -35,6 +35,7 @@ function FormEnvoiAbonneFrench(props)
       numero_transfer : props.envoie.infoEnvoie.numero_transfer 
         }})
     const { Formik } = formik;
+    var data=[]
 
     const testValidation = yup.object().shape({
       nom_beneficiaire: yup.string().required('champs requis'),
@@ -60,7 +61,7 @@ function FormEnvoiAbonneFrench(props)
         nom_expediteur : '',
         prenom_expediteur : '',
         adresse_expediteur : 'N/A',
-        email_expediteur : '',
+        email_expediteur : 'N/A',
         numero_expediteur: '',
         pays_expediteur : 'UK',
         nom_beneficiaire : '',
@@ -235,6 +236,29 @@ function FormEnvoiAbonneFrench(props)
      {({handleSubmit, handleChange,handleBlur, values, touched, errors,setFieldValue
          })=>(
           <Form noValidate onSubmit={handleSubmit}>
+              {props.receiver.length > 0 ? <Row className='justify-content-start py-2' >
+<Col xs={6}>
+        <i><b >bénéficiaire(s) précédent(s) : </b></i>
+  </Col>
+  <Col xs={6} >
+  <div><Form.Select aria-label="Default select example" onChange={(e)=>{
+          data = props.receiver.filter((value)=>{
+            return value.nom_complet_beneficiaire === e.target.value
+          })
+             setFieldValue("nom_beneficiaire",data[0].nom_beneficiaire)
+             setFieldValue("prenom_beneficiaire",data[0].prenom_beneficiaire)
+             setFieldValue("pays_beneficiaire",data[0].pays_beneficiaire)
+             console.log(data)
+        }}>
+       <option>sélectionner un bénéficiaire</option>
+      {props.receiver.map((value)=>{
+         return <option value={value.nom_complet_beneficiaire}>{value.nom_complet_beneficiaire}</option>
+      })  }
+    </Form.Select>
+  </div> 
+    </Col>
+</Row> :
+<p></p>}
              <Row>
       <hr style={{color:"darkorange"}}></hr>
       <p className='couleur2'><b><u>Nouveau bénéficiaire</u></b></p>
@@ -286,7 +310,7 @@ function FormEnvoiAbonneFrench(props)
     <Row className='justify-content-center'>
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="validationFormik04" >
-        <Form.Label ><span className='text-danger'>*</span>combien voulez-vous que le destinataire reçoive en US($)</Form.Label>
+        <Form.Label ><span className='text-danger'>*</span>combien voulez-vous que le destinataire reçoit en US($)</Form.Label>
         <Form.Control name="montant_beneficiaire"  value={values.montant_beneficiaire} onBlur={handleBlur} onChange={handleChange} type="text" placeholder="entrer le montant à récevoir"  />
         <p className='text-danger'>{touched.montant_beneficiaire && errors.montant_beneficiaire}</p>
          </Form.Group>
@@ -385,6 +409,30 @@ function FormEnvoiAbonneFrench(props)
      {({handleSubmit, handleChange,handleBlur, values, touched, errors,setFieldValue
          })=>(
           <Form noValidate onSubmit={handleSubmit}>
+
+{props.receiver.length > 0 ? <Row className='justify-content-start py-2' >
+<Col xs={12}>
+        <i><b >bénéficiaire(s) précédent(s) : </b></i>
+  </Col>
+  <Col xs={12} >
+  <div><Form.Select aria-label="Default select example" onChange={(e)=>{
+          data = props.receiver.filter((value)=>{
+            return value.nom_complet_beneficiaire === e.target.value
+          })
+             setFieldValue("nom_beneficiaire",data[0].nom_beneficiaire)
+             setFieldValue("prenom_beneficiaire",data[0].prenom_beneficiaire)
+             setFieldValue("pays_beneficiaire",data[0].pays_beneficiaire)
+             console.log(data)
+        }}>
+       <option>sélectionner un bénéficiaire</option>
+      {props.receiver.map((value)=>{
+         return <option value={value.nom_complet_beneficiaire}>{value.nom_complet_beneficiaire}</option>
+      })  }
+    </Form.Select>
+  </div> 
+    </Col>
+</Row> :
+<p></p>}
              <Row>
       <hr style={{color:"darkorange"}}></hr>
       <p className='couleur2'><b><u>Nouveau bénéficiaire</u></b></p>
@@ -436,7 +484,7 @@ function FormEnvoiAbonneFrench(props)
     <Row className='justify-content-center'>
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="validationFormik04" >
-        <Form.Label ><span className='text-danger'>*</span>combien voulez-vous que le destinataire reçoive en US($)</Form.Label>
+        <Form.Label ><span className='text-danger'>*</span>combien voulez-vous que le destinataire reçoit en US($)</Form.Label>
         <Form.Control name="montant_beneficiaire"  value={values.montant_beneficiaire} onBlur={handleBlur} onChange={handleChange} type="text" placeholder="entrer le montant à récevoir"  />
         <p className='text-danger'>{touched.montant_beneficiaire && errors.montant_beneficiaire}</p>
          </Form.Group>

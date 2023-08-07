@@ -154,8 +154,8 @@ console.log(props.detailEnvoieTotal)
     {
     return <div className='justify-content-center text-center mb-5 text-light text-bold rounded'>
     <Row className='mt-3 px-5'>
-            <Col xs={12} className="text-start text-light">
-                {props.tableType === "dailyRapport" ? <p><Link to='/table_daily_rapport_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p> : props.tableType === "monthlyRapport" ? <p><Link to='/table_monthly_rapport_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p> : props.tableType === "dailyRapportRecette" ? <p><Link to='/daily_rapport_recette_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p> : props.tableType === "monthlyRapportRecette" ? <p><Link to='/monthly_rapport_recette_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p> : <p><Link to='/details_historic_info_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p>}
+    <Col xs={12} className="text-start text-light">
+                {props.tableType === "dailyRapport" ? <p><Link to='/table_daily_rapport_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p> : props.tableType === "monthlyRapport" ? <p><Link to='/table_monthly_rapport_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p> :props.tableType === "yearlyRapport" ? <p><Link to='/table_yearly_rapport_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p>  : props.tableType === "dailyRapportRecette" ? <p><Link to='/daily_rapport_recette_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p> : props.tableType === "monthlyRapportRecette" ? <p><Link to='/monthly_rapport_recette_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p> : props.tableType === "yearlyRapportRecette" ? <p><Link to='/yearly_rapport_recette_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p>:<p><Link to='/details_historic_info_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p>}
             </Col>
         </Row>
         <Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:50,width:1000}} >
@@ -172,12 +172,12 @@ console.log(props.detailEnvoieTotal)
     <Row className='justify-content-start text-start pb-3 mb-3' >
     <Col xs={6} className='justify-content-start'>
         <p className='text-dark'>Noms Expediteur: <b className='text-dark'>{value.nom_expediteur} {value.postnom_expediteur} {value.prenom_expediteur}</b> </p>
-        <p className='text-dark'>Noms Beneficiare: <b className='text-dark '>{value.nom_beneficiaire} {value.postnom_beneficiaire} {value.prenom_beneficiaire}</b> </p>
-        <p className='text-dark'>Pays Expediteur: <b className='text-dark '> {value.pays_expediteur}</b></p>
-        <p className='text-dark'>Numéro Expediteur: <b className='text-dark'> {value.numero_expediteur}</b></p>
-        <p className='text-dark'>Email Expediteur: <b className='text-dark '> {value.email_expediteur}</b></p>
-        <p className='text-dark'>Pays Beneficiare: <b className='text-dark '> {value.pays_beneficiaire}</b></p>
-        <p className='text-dark'>Montant à Recuperer: <b className='text-dark'>{Number(value.montant_beneficiaire).toFixed(2)} $</b> </p>
+        <p className='text-dark'>Noms Beneficiaire: <b className='text-dark '>{value.nom_beneficiaire} {value.postnom_beneficiaire} {value.prenom_beneficiaire}</b> </p>
+        <p className='text-dark'>Pays Expéditeur: <b className='text-dark '> {value.pays_expediteur}</b></p>
+        <p className='text-dark'>Numéro Expéditeur: <b className='text-dark'> {value.numero_expediteur}</b></p>
+        <p className='text-dark'>Email Expéditeur: <b className='text-dark '> {value.email_expediteur}</b></p>
+        <p className='text-dark'>Pays Bénéficiaire: <b className='text-dark '> {value.pays_beneficiaire}</b></p>
+        <p className='text-dark'>Montant à Récuperer: <b className='text-dark'>{Number(value.montant_beneficiaire).toFixed(2)} $</b> </p>
         
     </Col>
 
@@ -239,7 +239,7 @@ console.log(props.detailEnvoieTotal)
 
     <Row className='justify-content-center pb-3'>
     <Col xs={6}>
-    {props.tableType === "dailyRapport" ? <p><Link to='/table_daily_rapport_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.tableType === "monthlyRapport" ? <p><Link to='/table_monthly_rapport_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.tableType === "dailyRapportRecette" ? <p><Link to='/daily_rapport_recette_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.tableType === "monthlyRapportRecette" ? <p><Link to='/monthly_rapport_recette_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : <p><Link to='/details_historic_info_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p>}
+    {props.tableType === "dailyRapport" ? <p><Link to='/table_daily_rapport_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.tableType === "monthlyRapport" ? <p><Link to='/table_monthly_rapport_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.tableType === "yearlyRapport" ? <p><Link to='/table_yearly_rapport_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.tableType === "dailyRapportRecette" ? <p><Link to='/daily_rapport_recette_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.tableType === "monthlyRapportRecette" ? <p><Link to='/monthly_rapport_recette_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.tableType === "yearlyRapportRecette" ? <p><Link to='/yearly_rapport_recette_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p>  : <p><Link to='/details_historic_info_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p>}
      </Col>
     </Row>
    
@@ -261,7 +261,7 @@ console.log(props.detailEnvoieTotal)
     return <div className='justify-content-center text-center mb-5 text-light text-bold rounded'>
     <Row className='mt-3 px-5'>
             <Col xs={12} className="text-start text-light">
-                {props.tableType === "dailyRapport" ? <p><Link to='/table_daily_rapport_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p> : props.tableType === "monthlyRapport" ? <p><Link to='/table_monthly_rapport_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p> : props.tableType === "dailyRapportRecette" ? <p><Link to='/daily_rapport_recette_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p> : props.tableType === "monthlyRapportRecette" ? <p><Link to='/monthly_rapport_recette_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p> : <p><Link to='/details_historic_info_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p>}
+                {props.tableType === "dailyRapport" ? <p><Link to='/table_daily_rapport_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p> : props.tableType === "monthlyRapport" ? <p><Link to='/table_monthly_rapport_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p> :props.tableType === "yearlyRapport" ? <p><Link to='/table_yearly_rapport_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p>  : props.tableType === "dailyRapportRecette" ? <p><Link to='/daily_rapport_recette_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p> : props.tableType === "monthlyRapportRecette" ? <p><Link to='/monthly_rapport_recette_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p> : props.tableType === "yearlyRapportRecette" ? <p><Link to='/yearly_rapport_recette_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p>:<p><Link to='/details_historic_info_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u></b></Link></p>}
             </Col>
         </Row>
         <Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:50,width:"auto"}} >
@@ -277,13 +277,13 @@ console.log(props.detailEnvoieTotal)
         </Row>
     <Row className='justify-content-start text-start pb-3 mb-3' >
     <Col xs={12} className='justify-content-start'>
-        <p className='text-dark'>Noms Expediteur: <b className='text-dark'>{value.nom_expediteur} {value.postnom_expediteur} {value.prenom_expediteur}</b> </p>
-        <p className='text-dark'>Noms Beneficiare: <b className='text-dark '>{value.nom_beneficiaire} {value.postnom_beneficiaire} {value.prenom_beneficiaire}</b> </p>
-        <p className='text-dark'>Pays Expediteur: <b className='text-dark '> {value.pays_expediteur}</b></p>
-        <p className='text-dark'>Numéro Expediteur: <b className='text-dark'> {value.numero_expediteur}</b></p>
-        <p className='text-dark'>Email Expediteur: <b className='text-dark '> {value.email_expediteur}</b></p>
-        <p className='text-dark'>Pays Beneficiare: <b className='text-dark '> {value.pays_beneficiaire}</b></p>
-        <p className='text-dark'>Montant à Recuperer: <b className='text-dark'>{Number(value.montant_beneficiaire).toFixed(2)} $</b> </p>
+        <p className='text-dark'>Noms Expéditeur: <b className='text-dark'>{value.nom_expediteur} {value.postnom_expediteur} {value.prenom_expediteur}</b> </p>
+        <p className='text-dark'>Noms Bénéficiaire: <b className='text-dark '>{value.nom_beneficiaire} {value.postnom_beneficiaire} {value.prenom_beneficiaire}</b> </p>
+        <p className='text-dark'>Pays Expéditeur: <b className='text-dark '> {value.pays_expediteur}</b></p>
+        <p className='text-dark'>Numéro Expéditeur: <b className='text-dark'> {value.numero_expediteur}</b></p>
+        <p className='text-dark'>Email Expéditeur: <b className='text-dark '> {value.email_expediteur}</b></p>
+        <p className='text-dark'>Pays Bénéficiaire: <b className='text-dark '> {value.pays_beneficiaire}</b></p>
+        <p className='text-dark'>Montant à Récuperer: <b className='text-dark'>{Number(value.montant_beneficiaire).toFixed(2)} $</b> </p>
         
     </Col>
 
@@ -330,8 +330,8 @@ console.log(props.detailEnvoieTotal)
     <Col xs={12}>
      {props.tableType==="historic" ? props.messageFrench === "Historique de suppression" ? <div><p className='text-dark'>operation fait par : <b className='text-dark'>{value.deletion_executed_by_owner}</b> </p>
      <p className='text-dark'>Date et heure  de suppression: <b className='text-dark'> {value.date_heure_operation_deletion}</b></p><br></br>
-      <Button onClick={recoverOperation}  className='mx-5' variant='success'>Récupérer l'operation</Button>
-      <Button  onClick={()=>setModalShow6(true)}className='mx-5' variant='danger'>supprimer définitivement</Button></div>  :
+      <Button onClick={recoverOperation}  className='mx-2' variant='success'>Récupérer l'operation</Button>
+      <Button  onClick={()=>setModalShow6(true)}className='mx-2' variant='danger'>supprimer définitivement</Button></div>  :
     <p></p>:<p></p>}        
     </Col>
 
@@ -345,7 +345,7 @@ console.log(props.detailEnvoieTotal)
 
     <Row className='justify-content-center pb-3'>
     <Col xs={12}>
-    {props.tableType === "dailyRapport" ? <p><Link to='/table_daily_rapport_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.tableType === "monthlyRapport" ? <p><Link to='/table_monthly_rapport_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.tableType === "dailyRapportRecette" ? <p><Link to='/daily_rapport_recette_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.tableType === "monthlyRapportRecette" ? <p><Link to='/monthly_rapport_recette_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : <p><Link to='/details_historic_info_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p>}
+    {props.tableType === "dailyRapport" ? <p><Link to='/table_daily_rapport_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.tableType === "monthlyRapport" ? <p><Link to='/table_monthly_rapport_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.tableType === "yearlyRapport" ? <p><Link to='/table_yearly_rapport_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.tableType === "dailyRapportRecette" ? <p><Link to='/daily_rapport_recette_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.tableType === "monthlyRapportRecette" ? <p><Link to='/monthly_rapport_recette_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p> : props.tableType === "yearlyRapportRecette" ? <p><Link to='/yearly_rapport_recette_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p>  : <p><Link to='/details_historic_info_french' style={{textDecoration:"none",fontSize:20}}><Button variant='danger'>fermer</Button></Link></p>}
      </Col>
     </Row>
    

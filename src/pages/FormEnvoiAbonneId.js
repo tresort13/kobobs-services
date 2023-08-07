@@ -67,12 +67,15 @@ function FormEnvoiAbonneId(props)
 
                    props.setAbonne({infoAbonne : {
                     agent_id : props.abonne.infoAbonne.agent_id,
-                    nom_expediteur : res[0].nom_expediteur,
-                    prenom_expediteur : res[0].prenom_expediteur,
-                    email_expediteur : res[0].email_expediteur,
-                    numero_expediteur: res[0].numero_expediteur,
-                    pays_expediteur:res[0].pays_expediteur
+                    nom_expediteur : res.abonne[0].nom_expediteur,
+                    prenom_expediteur : res.abonne[0].prenom_expediteur,
+                    email_expediteur : res.abonne[0].email_expediteur,
+                    numero_expediteur: res.abonne[0].numero_expediteur,
+                    pays_expediteur:res.abonne[0].pays_expediteur
                     }})
+
+                    props.setReceiver(res.receiver)
+
                     console.log(props.abonne)
                      navigate('/form_envoie_abonne')
                   }

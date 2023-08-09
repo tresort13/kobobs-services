@@ -28,7 +28,7 @@ import FormRetraitEnglish from './pages/FormRetraitEnglish';
 import FormEnvoiAbonneEnglish from './pages/FormEnvoiAbonneEnglish'
 import FormCodeAbonneEnglish from  './pages/FormCodeAbonneEnglish'
 import FormFindCodeRetraitEnglish from './pages/FormFindCodeRetraitEnglish';
-import Login from './pages/Login';
+import LoginFrench from './pages/LoginFrench';
 
 
 
@@ -1037,7 +1037,7 @@ function App() {
         <Route path="/"  element={ language2 === "english" ? <HomeEnglish modalShowRetrait={modalShowRetrait} setModalShowRetrait={setModalShowRetrait} setDataValidation={setDataValidation}  modalShowEnvoi={modalShowEnvoi} setModalShowEnvoi={setModalShowEnvoi} dataAbonne={dataAbonne} dataUser={dataUser} envoie3={envoie3} isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/> : language2 === "lingala" ? <Navigate to='/home_lingala' /> : <Navigate to='/home_french' />} >
         </Route>
 
-        <Route path="/login_english"  element={<Login />} >
+        <Route path="/login_french"  element={<LoginFrench />} >
         </Route>
 
         <Route path="/form_envoie_client_english" element={username == "" ? <Navigate to='/' /> : language2 === "english" ? <FormEnvoiClientEnglish abonne={abonne} envoie={envoie} envoie3={envoie3} setEnvoie={setEnvoie} dataEnvoieAbonne={dataEnvoieAbonne} taux={taux} setTaux={setTaux} dataAbonne={dataAbonne}  isAdmin={isAdmin} isStaff={isStaff} language2={language2} modalShowPasswordChange={modalShowPasswordChange} setModalShowPasswordChange={setModalShowPasswordChange} modalShowContact={modalShowContact} setModalShowContact={setModalShowContact} modalShow={modalShow} modalShow4={modalShow4} setModalShow={setModalShow} setModalShow4={setModalShow4} setLanguage={setLanguage} setLanguage2={setLanguage2} uniqueNumber={uniqueNumber} setUniqueNumber={setUniqueNumber} setUsername={setUsername} setIsadmin={setIsadmin} setIsStaff={setIsStaff} setIsLogged={setIsLogged} isLogged={isLogged} username={username} language={language}/> : language2 === "lingala" ? <Navigate to='/form_envoie_client' /> : <Navigate to='/form_envoie_client_french' />} >

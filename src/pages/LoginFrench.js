@@ -20,7 +20,7 @@ import HeaderEnglish from './HeaderEnglish';
 const useState = React.useState
 
 
-function Login(props)
+function LoginFrench(props)
 {
   
    const [state,setState] = useState({
@@ -28,7 +28,7 @@ function Login(props)
             username : '',
             password : ''
         }})
-
+        const [visible,setVisible] = useState(false)
     const [message,setMessage] = useState("")
  
       const isDesktop = useMediaQuery({
@@ -113,42 +113,66 @@ yn
         </Col>
     </Row>
       
-<Form>
-    <Row className='justify-content-center'>
-        <Col xs={6} >
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Control type="email" placeholder="nom d'utilisateur"  name="username"
-        value ={state.credentials.username} onChange={inputChanged} autoFocus/>
-        
-         </Form.Group>
-        </Col>
-    </Row>
-  
-    <Row className='justify-content-center'>
-        <Col xs={6}>
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-         <Form.Control type="password" placeholder="mot de passe" name="password"
-         value ={state.credentials.password} onChange={inputChanged} />
-
-         </Form.Group>
-        </Col>
-    </Row>
-  
-    <Row className='justify-content-center pb-3'>
-        <Col  xs={12}>    
-        <Link to="" style={{color:'white',textDecorationLine:'none'}}> 
-        
-        <Button variant="outline-warning" type="submit" onClick={e=>connection(e)}>
-        <b>connexion</b>
-        </Button>
-        </Link>
-        </Col>
-    </Row>
+    <Form>
+      <Row className='justify-content-start'>
+          <Col xs={7} >
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Control type="email" placeholder="Email"  name="username"
+          value ={state.credentials.username} onChange={inputChanged} autoFocus/>
+          
+           </Form.Group>
+          </Col>
+      </Row>
+    
+      <Row className='justify-content-start'>
+         {visible===false ? <Col xs={7} >
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+           <Form.Control type="password" placeholder="Mot de passe" name="password"
+           value ={state.credentials.password} onChange={inputChanged} /> 
+           </Form.Group>
+          </Col> :
+          <Col xs={7} >
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+           <Form.Control type="text" placeholder="Mot de passe" name="password"
+           value ={state.credentials.password} onChange={inputChanged} /> 
+           </Form.Group>
+          </Col>
+          }
   
   
-
-
-</Form>
+  
+         { visible===false ? <Col xs={1} className='justify-content-start text-start' >
+         <span onClick={()=>setVisible(true)}>
+         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-eye-slash-fill text-dark" viewBox="0 0 16 16">
+          <path d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.029 7.029 0 0 0 2.79-.588zM5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.089z"/>
+          <path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12-.708.708z"/>
+          </svg>
+         </span>
+  
+          </Col> :
+          <Col xs={1} className='justify-content-start text-start' >
+          <span onClick={()=>setVisible(false)}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+          <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+          <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+          </svg>
+          </span>
+   
+           </Col>
+          }
+      </Row>
+    
+      <Row className='justify-content-start pb-3'>
+          <Col  xs={6}>    
+          <Link to="" style={{color:'white',textDecorationLine:'none'}}> 
+          
+          <Button variant="outline-warning" type="submit" onClick={e=>connection(e)}>
+          <b>connexion</b>
+          </Button>
+          </Link>
+          </Col>
+      </Row>
+  </Form>
 </Container> }
 
 {isMobileOrTablet && <Container className='bg-dark justify-content-center text-center pt-2 bordure mx-auto' style={{backgroundColor:'grey',height:450}} >
@@ -250,4 +274,4 @@ function MyVerticallyCenteredModal2(props) {
   );
 }
 
-export default Login;
+export default LoginFrench;

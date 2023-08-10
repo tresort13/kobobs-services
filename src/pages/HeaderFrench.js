@@ -249,7 +249,7 @@ function HeaderFrench(props)
         <NavDropdown.Divider />
         <Nav.Link href="/home_french"><b> <pre>Accueil</pre></b></Nav.Link>
           <NavDropdown.Divider />
-          <Nav.Link ><b onClick={showLogin}> <pre>envoyer l'argent</pre></b></Nav.Link>
+        {/*  <Nav.Link ><b onClick={showLogin}> <pre>envoyer l'argent</pre></b></Nav.Link>*/}
           <NavDropdown.Divider />
           <Nav.Link ><b onClick={contactUs} > <pre>Contacter nous</pre></b></Nav.Link>
         </Nav>     
@@ -291,13 +291,8 @@ function HeaderFrench(props)
           <Button onClick={logout} style={{marginLeft:10}}  className='btn--dark-orange btn2 rounded zoom btn-lg'>Deconnexion</Button>
           </Link>
         </Col> :
-        <Col xs={5} className="my-auto  my-auto text-end">
-        <Link to="" style={{textDecoration:"none"}}>
-          <Button onClick={showLogin}  className='btn2 btn--blue rounded zoom btn-lg '>Connexion </Button>
-          </Link>
-          <Link to="" onClick={()=>openRegister()} style={{textDecoration:"none",marginLeft:10}}>
-          <Button  className='btn--dark-orange btn2 rounded zoom btn-lg'>S'inscrire</Button>
-          </Link>
+       
+        <Col xs={5}>
         </Col>
         }
         
@@ -461,7 +456,7 @@ function HeaderFrench(props)
             </a>
            </div>
         
-        <div>
+       {/* <div>
         <Link to="" onClick={showLogin} style={{textDecoration:"none"}}>
                       <Button  className='btn2 btn--blue rounded zoom btn-lg '>Connexion</Button>
                       </Link>
@@ -469,7 +464,7 @@ function HeaderFrench(props)
                       <Link to="" onClick={()=>openRegister()} style={{textDecoration:"none",marginLeft:10}}>
                       <Button  className='btn--dark-orange btn2 rounded zoom btn-lg'>S'inscrire</Button>
            </Link>
-        </div>
+        </div>*/}
         
         
         
@@ -482,7 +477,7 @@ function HeaderFrench(props)
                 <NavDropdown.Divider />
                 <Nav.Link href="/home_french"><b><pre>Accueil</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link ><b onClick={showLogin}><pre>Envoyer de l'argent</pre></b></Nav.Link>
+                 {/* <Nav.Link ><b onClick={showLogin}><pre>Envoyer de l'argent</pre></b></Nav.Link>*/}
                   <NavDropdown.Divider />
                   <Nav.Link ><b onClick={contactUs} ><pre>Contacter nous</pre></b></Nav.Link>
                 </Nav>
@@ -520,7 +515,7 @@ function HeaderFrench(props)
            </Nav>
            </Offcanvas.Body>
       </Offcanvas>
-     {/* <SessionOutFrench isLogged={props.isLogged}/> */}
+    <SessionOutFrench isLogged={props.isLogged}/>
     <ChangePasswordBoxFrench modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} userID={props.userID} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber}/>
    <ContactBoxFrench language2={props.language2} setLanguage2={props.setLanguage2} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} language={props.language}/>
    <LoginBoxFrench dataUser={props.dataUser} dataAbonne={props.dataAbonne} language2={props.language2} setLanguage2={props.setLanguage2} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} modalShow={props.modalShow} modalShow4={props.modalShow4} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>

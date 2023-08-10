@@ -250,7 +250,7 @@ function Header(props)
                 <NavDropdown.Divider />
                   <Nav.Link href="/home_lingala"><b><pre>Nzonga na ebandeli</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link ><b onClick={showLogin}><pre>Tinda Mbongo</pre></b></Nav.Link>
+                 {/* <Nav.Link ><b onClick={showLogin}><pre>Tinda Mbongo</pre></b></Nav.Link>*/}
                   <NavDropdown.Divider />
                   <Nav.Link ><b onClick={contactUs} ><pre>tindela biso message</pre></b></Nav.Link>
                 </Nav>
@@ -291,15 +291,7 @@ function Header(props)
           <Button onClick={logout} style={{marginLeft:10}}  className='btn--dark-orange btn2 rounded zoom btn-lg'>Kobima</Button>
           </Col>
              :
-            <Col xs={5} className="my-auto  my-auto text-end">
-         
-            <Link to="" onClick={showLogin} style={{textDecoration:"none"}}>
-              <Button  className='btn2 btn--blue rounded zoom btn-lg '>Mikonecter</Button>
-              </Link>
-
-              <Link to="" onClick={()=>openRegister()} style={{textDecoration:"none",marginLeft:10}}>
-              <Button  className='btn--dark-orange btn2 rounded zoom btn-lg'>kokomisa</Button>
-              </Link>
+            <Col xs={5}>
             </Col>
             }
         
@@ -467,7 +459,7 @@ function Header(props)
     </a>
    </div>
 
-<div>
+{/* <div>
 <Link to="" onClick={showLogin} style={{textDecoration:"none"}}>
               <Button  className='btn2 btn--blue rounded zoom btn-lg '>Mikonecter</Button>
               </Link>
@@ -475,7 +467,7 @@ function Header(props)
               <Link to="" onClick={()=>openRegister()} style={{textDecoration:"none",marginLeft:10}}>
               <Button  className='btn--dark-orange btn2 rounded zoom btn-lg'>kokomisa</Button>
    </Link>
-</div>
+</div> */}
 
 
 
@@ -488,7 +480,7 @@ function Header(props)
         <NavDropdown.Divider />
         <Nav.Link href="/home_lingala"><b><pre>Nzonga na ebandeli</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link ><b onClick={showLogin}><pre>Tinda Mbongo</pre></b></Nav.Link>
+                  {/*<Nav.Link ><b onClick={showLogin}><pre>Tinda Mbongo</pre></b></Nav.Link>*/}
                   <NavDropdown.Divider />
              <Nav.Link ><b onClick={contactUs} ><pre>contacter biso </pre></b></Nav.Link>
         </Nav>
@@ -550,7 +542,7 @@ function Header(props)
            </Nav>
            </Offcanvas.Body>
       </Offcanvas>
-   {/* <SessionOutLingala isLogged={props.isLogged}/>*/}
+   <SessionOutLingala isLogged={props.isLogged}/>
     <ChangePasswordBoxLingala modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} userID={props.userID} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber}/>
    <ContactBoxLingala language2={props.language2} setLanguage2={props.setLanguage2} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} language={props.language}/>
    <LoginBoxLingala dataUser={props.dataUser} dataAbonne={props.dataAbonne} language2={props.language2} setLanguage2={props.setLanguage2} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} modalShow={props.modalShow} modalShow4={props.modalShow4} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>

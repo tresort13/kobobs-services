@@ -28,6 +28,10 @@ function HomeEnglish(props)
   const[resultMontant,setResultMontant] = useState("")
 const navigate = useNavigate()
 
+const connection = ()=>{
+  props.setModalShow(true)
+}
+
 const establishedUserStatusClient = ()=>
 {
   if(props.isLogged)
@@ -138,7 +142,8 @@ const establishedUserStatus = ()=>
     return (
 <>
 <HeaderEnglish isStaff={props.isStaff} dataUser={props.dataUser}  setDataValidation={props.setDataValidation} dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
-{isDesktop && <Container className='mb-5'> 
+{isDesktop &&   <Container className='mb-5'> 
+{props.isLogged === true ? <div>
   <Row className="text-center justify-content-center  mt-3 mb-3">
     <col md={2}>
     </col>
@@ -264,49 +269,35 @@ const establishedUserStatus = ()=>
 <div className='mt-5 mb-5'>
             </div>
   </Row>
-}
-
-
-</Container>
-}
-
-{isMobileOrTablet &&  <Container>
-    
-
-{/*
-      <Row className='justify-content-center pb-3 pt-5 mt-5'>
-        <Col xs = {"auto"}>
-        <Link to="/form_envoie_client_english" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='dark'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='text-light'><pre>First time to send money</pre></b>
-        </Button>
-        </Link>
-        </Col>
-</Row> 
   
+}
+</div>
+: 
+<Container className='bg-dark justify-content-center text-center pt-2 bordure rounded' style={{marginTop:"10%",backgroundColor:'grey',width:650}}>
+  <Row className='justify-content-center   py-5' >
+        <Col xs={12}>
+        <h1 className='couleur2'>
+          KOBO BUSINESS SERVICES
+        </h1>
+         </Col>
+          <Col  xs={12}>    
+          <Link to="" style={{color:'white',textDecorationLine:'none'}}> 
+          
+          <Button variant="outline-light my-3" type="submit" onClick={e=>connection(e)}>
+          <strong>Login</strong>
+          </Button>
+          </Link>
+          </Col>
+      </Row>
+  </Container>
+}
+</Container> 
+}
 
-
-    <Row className='justify-content-center pb-3 pt-5 mt-5'>
-        <Col xs = {"auto"}>
-        <Link to="/form_envoie_abonne_id_english" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='light'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='couleur2'><pre>I am already a subscriber</pre></b>
-        </Button>
-        </Link>
-        </Col>
-    </Row>
-
-    <Row className='justify-content-center pb-3'>
-        <Col xs = {"auto"}>
-        <Link to="/form_retrait_info_english" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant='dark'  style={{width:400,height:80}} className='btn-lg rounded-pill zoom'>
-        <b className='text-light'><pre>Track your transfer</pre></b>
-        </Button>
-        </Link>
-        </Col>
-    </Row>
-    */}
-
+{isMobileOrTablet && <Container>
+    
+  {props.isLogged === true ?
+  <div>
 <Row className="text-center justify-content-center  mt-2">
     
     <Col md={12} className="my-auto text-start">
@@ -340,7 +331,25 @@ const establishedUserStatus = ()=>
        </Button>
        </Col> }
     </Row>
-
+    </div> :
+    <Container className='bg-dark justify-content-center text-center pt-2 bordure rounded mt-5 my-5' style={{backgroundColor:'grey'}}>
+    <Row className='justify-content-center   py-5' >
+          <Col xs={12}>
+          <h1 className='couleur2'>
+            KOBO BUSINESS SERVICES
+          </h1>
+           </Col>
+            <Col  xs={12}>    
+            <Link to="" style={{color:'white',textDecorationLine:'none'}}> 
+            
+            <Button variant="outline-light my-3" type="submit" onClick={e=>connection(e)}>
+            <strong>Login</strong>
+            </Button>
+            </Link>
+            </Col>
+        </Row>
+    </Container>
+    }
   </Container>
   }
     <MyVerticallyCenteredModal2 show={props.modalShowRetrait} onHide={() => props.setModalShowRetrait(false)} />

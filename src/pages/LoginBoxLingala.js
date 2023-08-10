@@ -219,8 +219,8 @@ function MyVerticallyCenteredModal(props) {
           </Col>
       </Row>
   </Form>
-  <a href='https://kobobsapi.herokuapp.com/api/reset_password_lingala/'  className='text-dark'><strong> Obosani mot de passe na yo ?</strong></a>
-  <p className='text-dark mt-3'>ozali na compte te ? <span> <Link to='' onClick={()=>props.openRegister()}><strong> kokomisa</strong></Link> </span></p>
+  <a href='https://kobobsapi.herokuapp.com/api/reset_password_lingala/'  className='text-primary'><strong> Obosani mot de passe na yo ?</strong></a>
+ {/* <p className='text-dark mt-3'>ozali na compte te ? <span> <Link to='' onClick={()=>props.openRegister()}><strong> kokomisa</strong></Link> </span></p>*/}
         </Modal.Body>
         <Modal.Footer>
           <Button variant='warning' onClick={props.onHide}>kokanga</Button>

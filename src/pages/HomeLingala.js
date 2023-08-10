@@ -21,6 +21,11 @@ import SessionOutLingala from './SessionOutLingala';
 
 function HomeLingala(props)
 {
+  const connection = ()=>{
+    props.setModalShow(true)
+  }
+  
+
   const[montant,setMontant] = useState({infoMontant :{
     montantTopay:''
       }})
@@ -139,6 +144,7 @@ const establishedUserStatus = ()=>
 <>
 <Header isStaff={props.isStaff} dataUser={props.dataUser} setDataValidation={props.setDataValidation} dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
 {isDesktop && <Container>  
+  {props.isLogged === true ? <div>
   <Row className="text-center justify-content-center  mt-3 mb-3">
     <col md={2}>
     </col>
@@ -268,7 +274,26 @@ const establishedUserStatus = ()=>
    </div>
 </Row>
 }
+</div> :
 
+<Container className='bg-dark justify-content-center text-center pt-2 bordure rounded' style={{marginTop:"10%",backgroundColor:'grey',width:650}}>
+  <Row className='justify-content-center   py-5' >
+        <Col xs={12}>
+        <h1 className='couleur2'>
+          KOBO BUSINESS SERVICES
+        </h1>
+         </Col>
+          <Col  xs={12}>    
+          <Link to="" style={{color:'white',textDecorationLine:'none'}}> 
+          
+          <Button variant="outline-light my-3" type="submit" onClick={e=>connection(e)}>
+          <strong>Mikonecter</strong>
+          </Button>
+          </Link>
+          </Col>
+      </Row>
+  </Container>
+}
 </Container>}
 
 {isMobileOrTablet &&  <Container>
@@ -305,7 +330,8 @@ const establishedUserStatus = ()=>
         </Col>
     </Row>
 */} 
-
+{props.isLogged === true ?
+  <div>
 <Row className="text-center justify-content-center  mt-2">
     
     <Col md={12} className="my-auto text-start">
@@ -339,6 +365,27 @@ const establishedUserStatus = ()=>
        </Button>
        </Col> }
     </Row>
+    </div> 
+    :
+    <Container className='bg-dark justify-content-center text-center pt-2 bordure rounded mt-5 my-5' style={{backgroundColor:'grey'}}>
+  <Row className='justify-content-center   py-5' >
+        <Col xs={12}>
+        <h1 className='couleur2'>
+          KOBO BUSINESS SERVICES
+        </h1>
+         </Col>
+          <Col  xs={12}>    
+          <Link to="" style={{color:'white',textDecorationLine:'none'}}> 
+          
+          <Button variant="outline-light my-3" type="submit" onClick={e=>connection(e)}>
+          <strong>Mikonecter</strong>
+          </Button>
+          </Link>
+          </Col>
+      </Row>
+  </Container>
+}
+
   </Container>
   }
   <SessionOutLingala setIsadmin={props.setIsadmin}/>

@@ -252,7 +252,7 @@ function HeaderEnglish(props)
                 <NavDropdown.Divider />
                   <Nav.Link href="/"><b><pre>Home</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link ><b onClick={showLogin}><pre>Send Money</pre></b></Nav.Link>
+                 {/* <Nav.Link ><b onClick={showLogin}><pre>Send Money</pre></b></Nav.Link>*/}
                   <NavDropdown.Divider />
                   <Nav.Link ><b onClick={contactUs} ><pre>Contact us</pre></b></Nav.Link>
                 </Nav>
@@ -292,17 +292,10 @@ function HeaderEnglish(props)
           <Button onClick={logout} style={{marginLeft:10}}  className='btn--dark-orange btn2 rounded zoom btn-lg'>Logout</Button>
           </Col>
              :
-            <Col xs={5} className="my-auto  my-auto text-end">
-         
-            <Link to="" onClick={showLogin} style={{textDecoration:"none"}}>
-              <Button  className='btn2 btn--blue rounded zoom btn-lg '>Login</Button>
-              </Link>
 
-              <Link to="" onClick={()=>openRegister()} style={{textDecoration:"none",marginLeft:10}}>
-              <Button  className='btn--dark-orange btn2 rounded zoom btn-lg'>Sign Up</Button>
-              </Link>
-            </Col>
-            }
+        <Col xs={5}>
+        </Col>
+        }
         
         <Col xs={2} className="my-auto mx-auto text-end justify-content-center">
         <div className="text-end text-light">
@@ -469,7 +462,7 @@ function HeaderEnglish(props)
     </a>
    </div>
 
-<div>
+{/*<div>
 <Link to="" onClick={showLogin} style={{textDecoration:"none"}}>
               <Button  className='btn2 btn--blue rounded zoom btn-lg '>Login</Button>
               </Link>
@@ -477,7 +470,7 @@ function HeaderEnglish(props)
               <Link to="" onClick={()=>openRegister()} style={{textDecoration:"none",marginLeft:10}}>
               <Button  className='btn--dark-orange btn2 rounded zoom btn-lg'>Sign Up</Button>
    </Link>
-</div>
+</div>*/}
 
 
 
@@ -490,7 +483,7 @@ function HeaderEnglish(props)
                 <NavDropdown.Divider />
                   <Nav.Link href="/"><b><pre>Home</pre></b></Nav.Link>
                   <NavDropdown.Divider />
-                  <Nav.Link ><b onClick={showLogin}><pre>Send Money</pre></b></Nav.Link>
+                 {/* <Nav.Link ><b onClick={showLogin}><pre>Send Money</pre></b></Nav.Link>*/}
                   <NavDropdown.Divider />
                   <Nav.Link ><b onClick={contactUs} ><pre>Contact us</pre></b></Nav.Link>
                 </Nav>
@@ -552,7 +545,7 @@ function HeaderEnglish(props)
            </Nav>
            </Offcanvas.Body>
       </Offcanvas>
-    {/*  <SessionOutEnglish isLogged={props.isLogged}/>*/} 
+     <SessionOutEnglish isLogged={props.isLogged}/>
     <MyVerticallyCenteredModal4 show={modalShowNoValidDialog} onHide={() => setModalShowNoValidDialog(false)} />
     <ChangePasswordBoxEnglish modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} userID={props.userID} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber}/>
    <ContactBoxEnglish language2={props.language2} setLanguage2={props.setLanguage2} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} language={props.language}/>

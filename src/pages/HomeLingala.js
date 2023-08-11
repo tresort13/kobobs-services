@@ -367,7 +367,7 @@ const establishedUserStatus = ()=>
     </Row>
     </div> 
     :
-    <Container className='bg-dark justify-content-center text-center pt-2 bordure rounded mt-5 my-5' style={{backgroundColor:'grey'}}>
+    <Container className='bg-dark justify-content-center text-center pt-2 bordure rounded ' style={{backgroundColor:'grey',marginTop:130}}>
   <Row className='justify-content-center   py-5' >
         <Col xs={12}>
         <h1 className='couleur2'>

@@ -162,10 +162,10 @@ function MenuInfoAbonnesFrench(props)
                .then(
                  res => {  
                    
-                  console.log(res)
-                  if (res.length > 0)
+                  console.log(res.abonne)
+                  if (res.abonne.length > 0)
                   {
-                    setAbonne(res)
+                    setAbonne(res.abonne)
                     setModalShow3(false)
                   }
                   else{
@@ -335,7 +335,7 @@ function MenuInfoAbonnesFrench(props)
             <p><Link to='/menu_gestion_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Retourner</u>  </b></Link> </p>
         </Col>
     </Row>
-   <Container className='bg-light text-dark rounded' style={{width:1000}}>
+   <Container className='bg-light text-dark rounded' >
     
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={12}>
@@ -362,7 +362,7 @@ function MenuInfoAbonnesFrench(props)
     */}
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <p className='text-dark py-2 text-center'><strong>Nombre  total des abonnés :</strong> <b className='couleur2'>  {nombre_abonnes_total}</b>  </p>
+        <p className='text-dark py-2 text-center'><strong>Nombre total abonnés :</strong> <b className='couleur2'>  {nombre_abonnes_total}</b>  </p>
          </Col>
 
          <Col xs={6}>

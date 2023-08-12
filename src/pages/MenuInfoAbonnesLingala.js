@@ -162,10 +162,10 @@ function MenuInfoAbonnesLingala(props)
                .then(
                  res => {  
                    
-                  console.log(res)
-                  if (res.length > 0)
+                  console.log(res.abonne)
+                  if (res.abonne.length > 0)
                   {
-                    setAbonne(res)
+                    setAbonne(res.abonne)
                     setModalShow3(false)
                   }
                   else{
@@ -336,7 +336,7 @@ function MenuInfoAbonnesLingala(props)
             <p><Link to='/menu_gestion_lingala' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Zonga</u>  </b></Link> </p>
         </Col>
     </Row>
-   <Container className='bg-light text-dark rounded' style={{width:1000}}>
+   <Container className='bg-light text-dark rounded' >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={12}>
         <p className='text-dark'><i><b>{message}</b></i></p>
@@ -390,7 +390,7 @@ function MenuInfoAbonnesLingala(props)
          })=>(
     <Form noValidate onSubmit={handleSubmit}>
     <Row className='justify-content-center text-center mx-3 px-3 py-3' >
-        <Col xs={8} className='justify-content-end text-start '>
+        <Col xs={12} className='justify-content-end text-start '>
         <Form.Label htmlFor="basic-url" className='text-start'><strong>Luka abonné</strong></Form.Label>
         <InputGroup className="mb-3" controlId="formBasicText" >  
         <Form.Control name="numero_expediteur" value={values.numero_expediteur} onChange={handleChange} onBlur={handleBlur} type="text" placeholder='Numéro ya Téléphone'  />

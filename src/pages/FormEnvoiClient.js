@@ -48,13 +48,13 @@ function FormEnvoiClient(props)
     prenom_expediteur : yup.string().required('esengeli ko kotisa makomi'),
     adresse_expediteur : yup.string().required('esengeli ko kotisa makomi'),
    // email_expediteur : yup.string().required('esengeli ko kotisa makomi'),
-    numero_expediteur: yup.string().required('esengeli ko kotisa makomi'),
+    numero_expediteur: yup.string().min(9,"esengeli ko kotisa minimum 9 chiffres").max(10,"esengeli ko kotisa maximum 10 chiffres").required('esengeli ko kotisa makomi'),
     pays_expediteur : yup.string().required('esengeli ko kotisa makomi'),
     nom_beneficiaire: yup.string().required('esengeli ko kotisa makomi'),
     prenom_beneficiaire: yup.string().required('esengeli ko kotisa makomi'),
     pays_beneficiaire: yup.string().required('esengeli ko kotisa makomi'),
     montant_beneficiaire : yup.string().required('esengeli ko kotisa makomi'),
-    numero_transfer : yup.string().notRequired(),
+    numero_transfer : yup.string().min(9,"esengeli ko kotisa minimum 9 chiffres").max(10,"esengeli ko kotisa maximum 10 chiffres").notRequired(),
   });
  
   const navigate = useNavigate()
@@ -253,7 +253,7 @@ function FormEnvoiClient(props)
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label ><span className="text-danger">*</span> Kombo ya Mukristu </Form.Label>
         <Form.Control name="prenom_expediteur" value={values.prenom_expediteur} onBlur={handleBlur} onChange={handleChange} type="text" placeholder='Kombo ya Mukristu'  />
-        <p className='text-danger'>{touched.prenom_expediteur && errors.prenom_expediteur}</p>
+        <p className='text-danger'><strong>{touched.prenom_expediteur && errors.prenom_expediteur}</strong></p>
          </Form.Group>
         </Col>
 
@@ -262,7 +262,7 @@ function FormEnvoiClient(props)
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label ><span className="text-danger">*</span> Kombo Ya Libota </Form.Label>  
         <Form.Control name="nom_expediteur" value={values.nom_expediteur} onBlur={handleBlur} onChange={handleChange} type="text" placeholder='Kombo Ya Libota' />
-        <p className='text-danger'>{touched.nom_expediteur && errors.nom_expediteur}</p>
+        <p className='text-danger'><strong>{touched.nom_expediteur && errors.nom_expediteur}</strong></p>
          </Form.Group>
         </Col>
 
@@ -286,7 +286,7 @@ function FormEnvoiClient(props)
         <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
         <Form.Control name="email_expediteur"  onBlur={handleBlur} onChange={handleChange} type="text" placeholder='Email' /> 
       </InputGroup>
-      <p className='text-danger'>{touched.email_expediteur && errors.email_expediteur}</p>
+      <p className='text-danger'><strong>{touched.email_expediteur && errors.email_expediteur}</strong></p>
         </Col>
 
         <Col xs = {4}>
@@ -295,7 +295,7 @@ function FormEnvoiClient(props)
         <InputGroup.Text id="basic-addon1">+44</InputGroup.Text>
         <Form.Control name="numero_expediteur" value={values.numero_expediteur} onBlur={handleBlur} onChange={handleChange} type="text" placeholder='Numéro ya Tshombo' />
         </InputGroup>
-        
+        <p className='text-danger'><strong>{touched.numero_expediteur && errors.numero_expediteur}</strong></p>
         </Col>
 
         
@@ -329,7 +329,7 @@ function FormEnvoiClient(props)
                 onBlur={handleBlur}
                 placeholder="Kombo ya Mukristu"
               />
-              <p className='text-danger'>{touched.prenom_beneficiaire && errors.prenom_beneficiaire}</p>
+              <p className='text-danger'><strong>{touched.prenom_beneficiaire && errors.prenom_beneficiaire}</strong></p>
             </Form.Group>
             <Form.Group as={Col} md="6" controlId="validationFormik02">
               <Form.Label><span className="text-danger">*</span>Kombo Ya Libota</Form.Label>
@@ -341,7 +341,7 @@ function FormEnvoiClient(props)
                 onBlur={handleBlur}
                 placeholder="Kombo Ya Libota"
               />
-                       <p className='text-danger'>{touched.nom_beneficiaire && errors.nom_beneficiaire}</p>
+                       <p className='text-danger'><strong>{touched.nom_beneficiaire && errors.nom_beneficiaire}</strong></p>
             </Form.Group>
              </Row>
 
@@ -355,21 +355,21 @@ function FormEnvoiClient(props)
            <option value='RD Congo' >RD Congo</option> 
            <option value='Angola' >Angola</option> 
             </Form.Select>
-            <p className='text-danger'>{touched.pays_beneficiaire && errors.pays_beneficiaire}</p>
+            <p className='text-danger'><strong>{touched.pays_beneficiaire && errors.pays_beneficiaire}</strong></p>
              </Form.Group>
              </Col>
              </Row>
 
 <Row>
       <hr style={{color:"darkorange"}}></hr>
-      <p className='couleur2'><b><u> Money</u></b> </p>
+      <p className='couleur2'><b><u> Mbongo</u></b> </p>
     </Row>
     <Row className='justify-content-center'>
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="validationFormik04" >
         <Form.Label ><span className='text-danger'>*</span> Mbongo oyo olingi Mozui azwa na dollars ($)</Form.Label>
         <Form.Control name="montant_beneficiaire"  value={values.montant_beneficiaire} onBlur={handleBlur} onChange={handleChange} type="text" placeholder="Mbongo"  />
-        <p className='text-danger'>{touched.montant_beneficiaire && errors.montant_beneficiaire}</p>
+        <p className='text-danger'><strong>{touched.montant_beneficiaire && errors.montant_beneficiaire}</strong></p>
          </Form.Group>
         </Col>
 
@@ -389,12 +389,15 @@ function FormEnvoiClient(props)
         </Col>
       
         {values.type_service === "Kozwa na nzela ya tshombo(Mpesa,Orange money,Airtel Money)" ? <Col xs = {12}>
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Kotisa Numéro yako tinda mbongo  </Form.Label>
+        <Form.Label className='text-light'><span className="text-danger">*</span> Kotisa Numéro yako tinda mbongo  </Form.Label>
         <InputGroup className="mb-3" controlId="validationFormik06">
         <InputGroup.Text id="basic-addon1">+243</InputGroup.Text>
-        <Form.Control name="numero_transfer" value={values.numero_transfer}  onBlur={handleBlur}  onChange={handleChange} type="text" placeholder='numéro ya tshombo pona transfer'  />
+        <Form.Control name="numero_transfer" value={values.numero_transfer}  onBlur={handleBlur}  type="text" placeholder='numéro ya tshombo pona transfer'  onChange={(e)=>{
+             values.type_service ==="Kozwa na nzela ya tshombo(Mpesa,Orange money,Airtel Money)" ? testValidation.fields.numero_transfer = yup.string().min(9,"esengeli ko kotisa minimum 9 chiffres").max(10,"esengeli ko kotisa maximum 10 chiffres").required('esengeli ko kotisa makomi') :testValidation.fields.numero_transfer = yup.string().notRequired()
+             setFieldValue("numero_transfer",e.target.value)
+        }}/>
         </InputGroup>
-        <p className='text-danger'>{touched.numero_transfer && errors.numero_transfer}</p>
+        <p className='text-danger'><strong>{touched.numero_transfer && errors.numero_transfer}</strong></p>
         </Col> : <span></span>}
          
     </Row>
@@ -471,7 +474,7 @@ function FormEnvoiClient(props)
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label ><span className="text-danger">*</span> Kombo ya Mukristu </Form.Label>
         <Form.Control name="prenom_expediteur" value={values.prenom_expediteur} onBlur={handleBlur} onChange={handleChange} type="text" placeholder='Kombo ya Mukristu'  />
-        <p className='text-danger'>{touched.prenom_expediteur && errors.prenom_expediteur}</p>
+        <p className='text-danger'><strong>{touched.prenom_expediteur && errors.prenom_expediteur}</strong></p>
          </Form.Group>
         </Col>
 
@@ -480,7 +483,7 @@ function FormEnvoiClient(props)
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label ><span className="text-danger">*</span> Kombo Ya Libota </Form.Label>  
         <Form.Control name="nom_expediteur" value={values.nom_expediteur} onBlur={handleBlur} onChange={handleChange} type="text" placeholder='Kombo Ya Libota' />
-        <p className='text-danger'>{touched.nom_expediteur && errors.nom_expediteur}</p>
+        <p className='text-danger'><strong>{touched.nom_expediteur && errors.nom_expediteur}</strong></p>
          </Form.Group>
         </Col>
 
@@ -512,7 +515,7 @@ function FormEnvoiClient(props)
         <InputGroup.Text id="basic-addon1">+44</InputGroup.Text>
         <Form.Control name="numero_expediteur" value={values.numero_expediteur} onBlur={handleBlur} onChange={handleChange} type="text" placeholder='Numéro ya Tshombo' />
         </InputGroup>
-        <p className='text-danger'>{touched.numero_expediteur && errors.numero_expediteur}</p>
+        <p className='text-danger'><strong>{touched.numero_expediteur && errors.numero_expediteur}</strong></p>
         </Col>
 
         
@@ -546,7 +549,7 @@ function FormEnvoiClient(props)
                 onBlur={handleBlur}
                 placeholder="Kombo ya Mukristu"
               />
-              <p className='text-danger'>{touched.prenom_beneficiaire && errors.prenom_beneficiaire}</p>
+              <p className='text-danger'><strong>{touched.prenom_beneficiaire && errors.prenom_beneficiaire}</strong></p>
             </Form.Group>
             <Form.Group as={Col} md="6" controlId="validationFormik02">
               <Form.Label><span className="text-danger">*</span>Kombo Ya Libota</Form.Label>
@@ -558,7 +561,7 @@ function FormEnvoiClient(props)
                 onBlur={handleBlur}
                 placeholder="Kombo Ya Libota"
               />
-                       <p className='text-danger'>{touched.nom_beneficiaire && errors.nom_beneficiaire}</p>
+                       <p className='text-danger'><strong>{touched.nom_beneficiaire && errors.nom_beneficiaire}</strong></p>
             </Form.Group>
              </Row>
 
@@ -572,21 +575,21 @@ function FormEnvoiClient(props)
            <option value='RD Congo' >RD Congo</option> 
            <option value='Angola' >Angola</option> 
             </Form.Select>
-            <p className='text-danger'>{touched.pays_beneficiaire && errors.pays_beneficiaire}</p>
+            <p className='text-danger'><strong>{touched.pays_beneficiaire && errors.pays_beneficiaire}</strong></p>
              </Form.Group>
              </Col>
              </Row>
 
 <Row>
       <hr style={{color:"darkorange"}}></hr>
-      <p className='couleur2'><b><u> Money</u></b> </p>
+      <p className='couleur2'><b><u> Mbongo</u></b> </p>
     </Row>
     <Row className='justify-content-center'>
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="validationFormik04" >
         <Form.Label ><span className='text-danger'>*</span> Mbongo oyo olingi Mozui azwa na dollars ($)</Form.Label>
         <Form.Control name="montant_beneficiaire"  value={values.montant_beneficiaire} onBlur={handleBlur} onChange={handleChange} type="text" placeholder="Mbongo"  />
-        <p className='text-danger'>{touched.montant_beneficiaire && errors.montant_beneficiaire}</p>
+        <p className='text-danger'><strong>{touched.montant_beneficiaire && errors.montant_beneficiaire}</strong></p>
          </Form.Group>
         </Col>
 
@@ -606,12 +609,15 @@ function FormEnvoiClient(props)
         </Col>
       
         {values.type_service === "Kozwa na nzela ya tshombo(Mpesa,Orange money,Airtel Money)" ? <Col xs = {12}>
-        <Form.Label className='text-dark'><span className="text-danger">*</span> Kotisa Numéro yako tinda mbongo  </Form.Label>
+        <Form.Label className='text-light'><span className="text-danger">*</span> Kotisa Numéro yako tinda mbongo  </Form.Label>
         <InputGroup className="mb-3" controlId="validationFormik06">
         <InputGroup.Text id="basic-addon1">+243</InputGroup.Text>
-        <Form.Control name="numero_transfer" value={values.numero_transfer}  onBlur={handleBlur}  onChange={handleChange} type="text" placeholder='numéro ya tshombo pona transfer'  />
+        <Form.Control name="numero_transfer" value={values.numero_transfer}  onBlur={handleBlur}   type="text" placeholder='numéro ya tshombo pona transfer'  onChange={(e)=>{
+             values.type_service ==="Kozwa na nzela ya tshombo(Mpesa,Orange money,Airtel Money)" ? testValidation.fields.numero_transfer = yup.string().min(9,"esengeli ko kotisa minimum 9 chiffres").max(10,"esengeli ko kotisa maximum 10 chiffres").required('esengeli ko kotisa makomi') :testValidation.fields.numero_transfer = yup.string().notRequired()
+             setFieldValue("numero_transfer",e.target.value)
+        }}/>
         </InputGroup>
-        <p className='text-danger'>{touched.numero_transfer && errors.numero_transfer}</p>
+        <p className='text-danger'><strong>{touched.numero_transfer && errors.numero_transfer}</strong></p>
         </Col> : <span></span>}
          
     </Row>

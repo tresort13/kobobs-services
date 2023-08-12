@@ -74,13 +74,13 @@ function FormEnvoiClientFrench(props)
     prenom_expediteur : yup.string().required('champs requis'),
     adresse_expediteur : yup.string().required('champs requis'),
    // email_expediteur : yup.string().required('champs requis'),
-    numero_expediteur: yup.string().required('champs requis'),
+    numero_expediteur: yup.string().min(9,"9 chiffres minimum requis").max(10,"10 chiffres maximum requis").required('champs requis'),
     pays_expediteur : yup.string().required('champs requis'),
     nom_beneficiaire: yup.string().required('champs requis'),
     prenom_beneficiaire: yup.string().required('champs requis'),
     pays_beneficiaire: yup.string().required('champs requis'),
     montant_beneficiaire : yup.string().required('champs requis'),
-    numero_transfer : yup.string().notRequired()
+    numero_transfer : yup.string().min(9,"9 chiffres minimum requis").max(10,"10 chiffres maximum requis").notRequired()
   });
  
   const navigate = useNavigate()
@@ -252,7 +252,7 @@ function FormEnvoiClientFrench(props)
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label ><span className="text-danger">*</span> Prénom </Form.Label>
         <Form.Control name="prenom_expediteur" value={values.prenom_expediteur} onBlur={handleBlur} onChange={handleChange} type="text" placeholder='Prénom'  />
-        <p className='text-danger'>{touched.prenom_expediteur && errors.prenom_expediteur}</p>
+        <p className='text-danger'><strong>{touched.prenom_expediteur && errors.prenom_expediteur}</strong></p>
          </Form.Group>
         </Col>
 
@@ -261,7 +261,7 @@ function FormEnvoiClientFrench(props)
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label ><span className="text-danger">*</span> Nom de famille </Form.Label>  
         <Form.Control name="nom_expediteur" value={values.nom_expediteur} onBlur={handleBlur} onChange={handleChange} type="text" placeholder='Nom de famille' />
-        <p className='text-danger'>{touched.nom_expediteur && errors.nom_expediteur}</p>
+        <p className='text-danger'><strong>{touched.nom_expediteur && errors.nom_expediteur}</strong></p>
          </Form.Group>
         </Col>
 
@@ -293,7 +293,7 @@ function FormEnvoiClientFrench(props)
         <InputGroup.Text id="basic-addon1">+44</InputGroup.Text>
         <Form.Control name="numero_expediteur" value={values.numero_expediteur} onBlur={handleBlur} onChange={handleChange} type="text" placeholder='Numéro de télélephone' />
         </InputGroup>
-        <p className='text-danger'>{touched.numero_expediteur && errors.numero_expediteur}</p>
+        <p className='text-danger'><strong>{touched.numero_expediteur && errors.numero_expediteur}</strong></p>
         </Col>
 
         
@@ -326,7 +326,7 @@ function FormEnvoiClientFrench(props)
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-              <p className='text-danger'>{touched.prenom_beneficiaire && errors.prenom_beneficiaire}</p>
+              <p className='text-danger'><strong>{touched.prenom_beneficiaire && errors.prenom_beneficiaire}</strong></p>
             </Form.Group>
             <Form.Group as={Col} md="6" controlId="validationFormik02">
               <Form.Label><span className='text-danger'>*</span>Nom de famille</Form.Label>
@@ -337,7 +337,7 @@ function FormEnvoiClientFrench(props)
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-                       <p className='text-danger'>{touched.nom_beneficiaire && errors.nom_beneficiaire}</p>
+                       <p className='text-danger'><strong>{touched.nom_beneficiaire && errors.nom_beneficiaire}</strong></p>
             </Form.Group>
              </Row>
 
@@ -351,7 +351,7 @@ function FormEnvoiClientFrench(props)
            <option value='RD Congo' >RD Congo</option> 
            <option value='Angola' >Angola</option> 
             </Form.Select>
-            <p className='text-danger'>{touched.pays_beneficiaire && errors.pays_beneficiaire}</p>
+            <p className='text-danger'><strong>{touched.pays_beneficiaire && errors.pays_beneficiaire}</strong></p>
              </Form.Group>
              </Col>
              </Row>
@@ -365,7 +365,7 @@ function FormEnvoiClientFrench(props)
         <Form.Group className="mb-3" controlId="validationFormik04" >
         <Form.Label ><span className='text-danger'>*</span>combien voulez-vous que le destinataire reçoit en US($)</Form.Label>
         <Form.Control name="montant_beneficiaire"  value={values.montant_beneficiaire} onBlur={handleBlur} onChange={handleChange} type="text" placeholder="entrer le montant à récevoir"  />
-        <p className='text-danger'>{touched.montant_beneficiaire && errors.montant_beneficiaire}</p>
+        <p className='text-danger'><strong>{touched.montant_beneficiaire && errors.montant_beneficiaire}</strong></p>
          </Form.Group>
         </Col>
 
@@ -375,7 +375,7 @@ function FormEnvoiClientFrench(props)
         <Form.Group className="mb-3" controlId="validationFormik05">
         <Form.Label >Type de service </Form.Label>
         <Form.Select name="type_service"  value={values.type_service} aria-label="Default select example" onChange={(e)=>{
-             e.target.value ==="par transfert d'argent mobile (Mpesa, Orange Money, Airtel Money)" ? testValidation.fields.numero_transfer = yup.string().required('champs requis') :testValidation.fields.numero_transfer = yup.string().notRequired()
+             e.target.value ==="par transfert d'argent mobile (Mpesa, Orange Money, Airtel Money)" ? testValidation.fields.numero_transfer = yup.string().min(9,"9 chiffres minimum requis").max(10,"10 chiffres maximum requis").required('champs requis') :testValidation.fields.numero_transfer = yup.string().notRequired()
              setFieldValue("type_service",e.target.value)
         }} >
         <option value="En espèces (à l'agence)">En espèces (à l'agence)</option>
@@ -388,9 +388,12 @@ function FormEnvoiClientFrench(props)
         <Form.Label ><span className="text-danger">*</span> Entrez le numéro de téléphone portable pour transférer l'argent </Form.Label>
         <InputGroup className="mb-3" controlId="validationFormik06">
         <InputGroup.Text id="basic-addon1">+243</InputGroup.Text>
-        <Form.Control name="numero_transfer" value={values.numero_transfer}   onBlur={handleBlur}  onChange={handleChange} type="text" placeholder='numéro portable de transfert '  />
+        <Form.Control name="numero_transfer" value={values.numero_transfer}   onBlur={handleBlur} type="text" placeholder='numéro portable de transfert '  onChange={(e)=>{
+             values.type_service ==="par transfert d'argent mobile (Mpesa, Orange Money, Airtel Money)" ? testValidation.fields.numero_transfer = yup.string().min(9,"9 chiffres minimum requis").max(10,"10 chiffres maximum requis").required('champs requis') :testValidation.fields.numero_transfer = yup.string().notRequired()
+             setFieldValue("numero_transfer",e.target.value)
+        }}/>
         </InputGroup>
-        <p className='text-danger'>{touched.numero_transfer && errors.numero_transfer}</p>
+        <p className='text-danger'><strong>{touched.numero_transfer && errors.numero_transfer}</strong></p>
         </Col> : <span></span>}
          
     </Row>
@@ -466,7 +469,7 @@ function FormEnvoiClientFrench(props)
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label ><span className="text-danger">*</span> Prénom </Form.Label>
         <Form.Control name="prenom_expediteur" value={values.prenom_expediteur} onBlur={handleBlur} onChange={handleChange} type="text" placeholder='Prénom'  />
-        <p className='text-danger'>{touched.prenom_expediteur && errors.prenom_expediteur}</p>
+        <p className='text-danger'><strong>{touched.prenom_expediteur && errors.prenom_expediteur}</strong></p>
          </Form.Group>
         </Col>
 
@@ -475,7 +478,7 @@ function FormEnvoiClientFrench(props)
         <Form.Group className="mb-3" controlId="formBasicText" >
         <Form.Label ><span className="text-danger">*</span> Nom de famille </Form.Label>  
         <Form.Control name="nom_expediteur" value={values.nom_expediteur} onBlur={handleBlur} onChange={handleChange} type="text" placeholder='Nom de famille' />
-        <p className='text-danger'>{touched.nom_expediteur && errors.nom_expediteur}</p>
+        <p className='text-danger'><strong>{touched.nom_expediteur && errors.nom_expediteur}</strong></p>
          </Form.Group>
         </Col>
 
@@ -508,7 +511,7 @@ function FormEnvoiClientFrench(props)
         <InputGroup.Text id="basic-addon1">+44</InputGroup.Text>
         <Form.Control name="numero_expediteur" value={values.numero_expediteur} onBlur={handleBlur} onChange={handleChange} type="text" placeholder='Numéro de télélephone' />
         </InputGroup>
-        <p className='text-danger'>{touched.numero_expediteur && errors.numero_expediteur}</p>
+        <p className='text-danger'><strong>{touched.numero_expediteur && errors.numero_expediteur}</strong></p>
         </Col>
 
         
@@ -541,7 +544,7 @@ function FormEnvoiClientFrench(props)
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-              <p className='text-danger'>{touched.prenom_beneficiaire && errors.prenom_beneficiaire}</p>
+              <p className='text-danger'><strong>{touched.prenom_beneficiaire && errors.prenom_beneficiaire}</strong></p>
             </Form.Group>
             <Form.Group as={Col} md="6" controlId="validationFormik02">
               <Form.Label><span className='text-danger'>*</span>Nom de famille</Form.Label>
@@ -552,7 +555,7 @@ function FormEnvoiClientFrench(props)
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-                       <p className='text-danger'>{touched.nom_beneficiaire && errors.nom_beneficiaire}</p>
+                       <p className='text-danger'><strong>{touched.nom_beneficiaire && errors.nom_beneficiaire}</strong></p>
             </Form.Group>
              </Row>
 
@@ -566,7 +569,7 @@ function FormEnvoiClientFrench(props)
            <option value='RD Congo' >RD Congo</option> 
            <option value='Angola' >Angola</option> 
             </Form.Select>
-            <p className='text-danger'>{touched.pays_beneficiaire && errors.pays_beneficiaire}</p>
+            <p className='text-danger'><strong>{touched.pays_beneficiaire && errors.pays_beneficiaire}</strong></p>
              </Form.Group>
              </Col>
              </Row>
@@ -580,7 +583,7 @@ function FormEnvoiClientFrench(props)
         <Form.Group className="mb-3" controlId="validationFormik04" >
         <Form.Label ><span className='text-danger'>*</span>combien voulez-vous que le destinataire reçoit en US($)</Form.Label>
         <Form.Control name="montant_beneficiaire"  value={values.montant_beneficiaire} onBlur={handleBlur} onChange={handleChange} type="text" placeholder="entrer le montant à récevoir"  />
-        <p className='text-danger'>{touched.montant_beneficiaire && errors.montant_beneficiaire}</p>
+        <p className='text-danger'><strong>{touched.montant_beneficiaire && errors.montant_beneficiaire}</strong></p>
          </Form.Group>
         </Col>
 
@@ -590,7 +593,7 @@ function FormEnvoiClientFrench(props)
         <Form.Group className="mb-3" controlId="validationFormik05">
         <Form.Label >Type de service </Form.Label>
         <Form.Select name="type_service"  value={values.type_service} aria-label="Default select example" onChange={(e)=>{
-             e.target.value ==="par transfert d'argent mobile (Mpesa, Orange Money, Airtel Money)" ? testValidation.fields.numero_transfer = yup.string().required('champs requis') :testValidation.fields.numero_transfer = yup.string().notRequired()
+             e.target.value ==="par transfert d'argent mobile (Mpesa, Orange Money, Airtel Money)" ? testValidation.fields.numero_transfer = yup.string().min(9,"9 chiffres minimum requis").max(10,"10 chiffres maximum requis").required('champs requis') :testValidation.fields.numero_transfer = yup.string().notRequired()
              setFieldValue("type_service",e.target.value)
         }} >
         <option value="En espèces (à l'agence)">En espèces (à l'agence)</option>
@@ -603,9 +606,12 @@ function FormEnvoiClientFrench(props)
         <Form.Label ><span className="text-danger">*</span> Entrez le numéro de téléphone portable pour transférer l'argent </Form.Label>
         <InputGroup className="mb-3" controlId="validationFormik06">
         <InputGroup.Text id="basic-addon1">+243</InputGroup.Text>
-        <Form.Control name="numero_transfer" value={values.numero_transfer}   onBlur={handleBlur}  onChange={handleChange} type="text" placeholder='numéro portable de transfert '  />
+        <Form.Control name="numero_transfer" value={values.numero_transfer}   onBlur={handleBlur} type="text" placeholder='numéro portable de transfert ' onChange={(e)=>{
+             values.type_service ==="par transfert d'argent mobile (Mpesa, Orange Money, Airtel Money)" ? testValidation.fields.numero_transfer = yup.string().min(9,"9 chiffres minimum requis").max(10,"10 chiffres maximum requis").required('champs requis') :testValidation.fields.numero_transfer = yup.string().notRequired()
+             setFieldValue("numero_transfer",e.target.value)
+        }} />
         </InputGroup>
-        <p className='text-danger'>{touched.numero_transfer && errors.numero_transfer}</p>
+        <p className='text-danger'><strong>{touched.numero_transfer && errors.numero_transfer}</strong></p>
         </Col> : <span></span>}
          
     </Row>

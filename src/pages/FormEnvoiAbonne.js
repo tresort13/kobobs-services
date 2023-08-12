@@ -40,7 +40,7 @@ function FormEnvoiAbonne(props)
       prenom_beneficiaire: yup.string().required('esengeli ko kotisa makomi'),
       pays_beneficiaire: yup.string().required('esengeli ko kotisa makomi'),
       montant_beneficiaire : yup.string().required('esengeli ko kotisa makomi'),
-      numero_transfer : yup.string().notRequired(),
+      numero_transfer : yup.string().min(9,"esengeli ko kotisa minimum 9 chiffres").max(10,"esengeli ko kotisa maximum 10 chiffres").notRequired(),
     });
    
     const navigate = useNavigate()
@@ -268,7 +268,7 @@ function FormEnvoiAbonne(props)
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-                       <p className='text-danger'>{touched.nom_beneficiaire && errors.nom_beneficiaire}</p>
+                       <p className='text-danger'><strong>{touched.nom_beneficiaire && errors.nom_beneficiaire}</strong></p>
             </Form.Group>
              </Row>
 
@@ -282,7 +282,7 @@ function FormEnvoiAbonne(props)
     <option value='RD Congo' >RD Congo</option> 
     <option value='Angola' >Angola</option> 
     </Form.Select>
-    <p className='text-danger'>{touched.pays_beneficiaire && errors.pays_beneficiaire}</p>
+    <p className='text-danger'><strong>{touched.pays_beneficiaire && errors.pays_beneficiaire}</strong></p>
     </Form.Group>
    </Col>
 </Row>
@@ -296,7 +296,7 @@ function FormEnvoiAbonne(props)
         <Form.Group className="mb-3" controlId="validationFormik04" >
         <Form.Label ><span className='text-danger'>*</span> Mbongo oyo olingi Mozui azwa na dollars ($)</Form.Label>
         <Form.Control name="montant_beneficiaire"  value={values.montant_beneficiaire} onBlur={handleBlur} onChange={handleChange} type="text" placeholder="Kota montant olingi kotinda"  />
-        <p className='text-danger'>{touched.montant_beneficiaire && errors.montant_beneficiaire}</p>
+        <p className='text-danger'><strong>{touched.montant_beneficiaire && errors.montant_beneficiaire}</strong></p>
          </Form.Group>
         </Col>
 
@@ -319,9 +319,12 @@ function FormEnvoiAbonne(props)
         <Form.Label ><span className="text-danger">*</span> Kotisa Numéro yako tinda mbongo  </Form.Label>
         <InputGroup className="mb-3" controlId="validationFormik06">
         <InputGroup.Text id="basic-addon1">+243</InputGroup.Text>
-        <Form.Control name="numero_transfer" value={values.numero_transfer}  onBlur={handleBlur}  onChange={handleChange} type="text" placeholder='numéro ya tshombo pona transfer'  />
+        <Form.Control name="numero_transfer" value={values.numero_transfer}  onBlur={handleBlur} type="text" placeholder='numéro ya tshombo pona transfer'  onChange={(e)=>{
+             values.type_service==="Kozwa na nzela ya tshombo(Mpesa,Orange money,Airtel Money)" ? testValidation.fields.numero_transfer = yup.string().min(9,"esengeli ko kotisa minimum 9 chiffres").max(10,"esengeli ko kotisa maximum 10 chiffres").required('esengeli ko kotisa makomi') :testValidation.fields.numero_transfer = yup.string().notRequired()
+             setFieldValue("numero_transfer",e.target.value)
+        }}/>
         </InputGroup>
-        <p className='text-danger'>{touched.numero_transfer && errors.numero_transfer}</p>
+        <p className='text-danger'><strong>{touched.numero_transfer && errors.numero_transfer}</strong></p>
         </Col> : <span></span>}
          
     </Row>
@@ -442,7 +445,7 @@ function FormEnvoiAbonne(props)
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-                       <p className='text-danger'>{touched.nom_beneficiaire && errors.nom_beneficiaire}</p>
+                       <p className='text-danger'><strong>{touched.nom_beneficiaire && errors.nom_beneficiaire}</strong></p>
             </Form.Group>
              </Row>
 
@@ -456,7 +459,7 @@ function FormEnvoiAbonne(props)
     <option value='RD Congo' >RD Congo</option> 
     <option value='Angola' >Angola</option> 
     </Form.Select>
-    <p className='text-danger'>{touched.pays_beneficiaire && errors.pays_beneficiaire}</p>
+    <p className='text-danger'><strong>{touched.pays_beneficiaire && errors.pays_beneficiaire}</strong></p>
     </Form.Group>
    </Col>
 </Row>
@@ -470,7 +473,7 @@ function FormEnvoiAbonne(props)
         <Form.Group className="mb-3" controlId="validationFormik04" >
         <Form.Label ><span className='text-danger'>*</span> Mbongo oyo olingi Mozui azwa na dollars ($)</Form.Label>
         <Form.Control name="montant_beneficiaire"  value={values.montant_beneficiaire} onBlur={handleBlur} onChange={handleChange} type="text" placeholder="Kota montant olingi kotinda"  />
-        <p className='text-danger'>{touched.montant_beneficiaire && errors.montant_beneficiaire}</p>
+        <p className='text-danger'><strong>{touched.montant_beneficiaire && errors.montant_beneficiaire}</strong></p>
          </Form.Group>
         </Col>
 
@@ -493,9 +496,12 @@ function FormEnvoiAbonne(props)
         <Form.Label ><span className="text-danger">*</span> Kotisa Numéro yako tinda mbongo  </Form.Label>
         <InputGroup className="mb-3" controlId="validationFormik06">
         <InputGroup.Text id="basic-addon1">+243</InputGroup.Text>
-        <Form.Control name="numero_transfer" value={values.numero_transfer}  onBlur={handleBlur}  onChange={handleChange} type="text" placeholder='numéro ya tshombo pona transfer'  />
+        <Form.Control name="numero_transfer" value={values.numero_transfer}  onBlur={handleBlur}   type="text" placeholder='numéro ya tshombo pona transfer'  onChange={(e)=>{
+             values.type_service==="Kozwa na nzela ya tshombo(Mpesa,Orange money,Airtel Money)" ? testValidation.fields.numero_transfer = yup.string().min(9,"esengeli ko kotisa minimum 9 chiffres").max(10,"esengeli ko kotisa maximum 10 chiffres").required('esengeli ko kotisa makomi') :testValidation.fields.numero_transfer = yup.string().notRequired()
+             setFieldValue("numero_transfer",e.target.value)
+        }}/>
         </InputGroup>
-        <p className='text-danger'>{touched.numero_transfer && errors.numero_transfer}</p>
+        <p className='text-danger'><strong>{touched.numero_transfer && errors.numero_transfer}</strong></p>
         </Col> : <span></span>}
          
     </Row>

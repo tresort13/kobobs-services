@@ -375,7 +375,7 @@ function FormEnvoiClientEnglish(props)
 
         <Col xs ={6}>
         <Form.Group className="mb-3" controlId="validationFormik05">
-        <Form.Label >Type of service </Form.Label>
+        <Form.Label >Type of service to receive money</Form.Label>
         <Form.Select name="type_service"  value={values.type_service} aria-label="Default select example" onChange={(e)=>{
              e.target.value ==="by mobile money tranfer(Mpesa,Orange Money,Airtel Money)" ? testValidation.fields.numero_transfer = yup.string().min(9,"9 numbers minimum required").max(10,"10 numbers maximum required").required('required field') :testValidation.fields.numero_transfer = yup.string().notRequired()
              setFieldValue("type_service",e.target.value)
@@ -591,7 +591,7 @@ function FormEnvoiClientEnglish(props)
 
         <Col xs ={12}>
         <Form.Group className="mb-3" controlId="validationFormik05">
-        <Form.Label >Type of service </Form.Label>
+        <Form.Label >Type of service to receive money</Form.Label>
         <Form.Select name="type_service"  value={values.type_service} aria-label="Default select example" onChange={(e)=>{
              e.target.value ==="by mobile money tranfer(Mpesa,Orange Money,Airtel Money)" ? testValidation.fields.numero_transfer = yup.string().min(9,"9 numbers minimum required").max(10,"10 numbers maximum required").required('required field') :testValidation.fields.numero_transfer = yup.string().notRequired()
              setFieldValue("type_service",e.target.value)

@@ -55,6 +55,15 @@ function FormEnvoiAbonneEnglish(props)
     
       const closePage = ()=>
     {
+      props.setAbonne({infoAbonne : {
+        agent_id : props.abonne.infoAbonne.agent_id,
+        nom_expediteur : "",
+        prenom_expediteur : "",
+        email_expediteur : "",
+        numero_expediteur: "",
+        pays_expediteur:'UK'
+        }})
+
       props.setEnvoie({infoEnvoie :{
         agent_id:'',
         nom_expediteur : '',
@@ -76,8 +85,16 @@ function FormEnvoiAbonneEnglish(props)
         date_heure_operation : '',
         month_year_operation :''
         }})
+
+      if(props.isStaff === true)
+      {
+        navigate('/menu_operation_envoi_english')
+      }
+      else{
+        navigate('/form_envoie_abonne_id_english')
+      }
     
-    navigate('/menu_operation_envoi_english')
+    
     }
       
     
@@ -187,13 +204,23 @@ function FormEnvoiAbonneEnglish(props)
     return (
         
         <>
-<HeaderEnglish dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
+<HeaderEnglish dataAbonne={props.dataAbonne} abonne={props.abonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
 {isDesktop && <Container className='justify-content-center text-center mb-5 text-light text-bold' style={{width:1000}} >
-<Row className='mt-3'>
+{ props.isStaff === true ?  <Row className='mt-3'>
         <Col xs={12} className="text-start text-light">
-            {props.isStaff === true ? <p><Link to='/form_envoie_abonne_id_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p> : <p><Link to='/' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>}
+            {props.abonne.infoAbonne.numero_expediteur != "" ? <p><Link to='/form_envoie_abonne_id_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p> : <p><Link to='/' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>}
         </Col>
-    </Row>
+</Row> :
+<Row className='mt-3'>
+        <Col xs={6} className="text-start text-light">
+            {props.abonne.infoAbonne.numero_expediteur != "" ? <p><Link to='/form_envoie_abonne_id_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p> : <p><Link to='/' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>}
+        </Col>
+
+        <Col xs={6} className="text-end">
+            <Link to='/form_retrait_info_english' style={{textDecoration:"none"}}><Button variant='btn--blue' className='btn-lg btn--blue'><b className='text-light'>Track a transfer</b></Button></Link>
+        </Col>
+</Row>
+}
 <Row className='justify-content-start py-2' >
 <Row className='justify-content-center mb-3 pt-3' >
 <Col xs={6}>
@@ -271,6 +298,7 @@ function FormEnvoiAbonneEnglish(props)
                 value={values.prenom_beneficiaire}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                placeholder="First name"
               />
               <p className='text-danger'><strong>{touched.prenom_beneficiaire && errors.prenom_beneficiaire}</strong></p>
             </Form.Group>
@@ -282,6 +310,7 @@ function FormEnvoiAbonneEnglish(props)
                 value={values.nom_beneficiaire}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                placeholder="Last name"
               />
                        <p className='text-danger'><strong>{touched.nom_beneficiaire && errors.nom_beneficiaire}</strong></p>
             </Form.Group>
@@ -309,7 +338,7 @@ function FormEnvoiAbonneEnglish(props)
     <Row className='justify-content-center'>
         <Col xs = {6}>
         <Form.Group className="mb-3" controlId="validationFormik04" >
-        <Form.Label ><span className='text-danger'>*</span>The Amount you want the recipient to get in US($)</Form.Label>
+        <Form.Label ><span className='text-danger'>*</span>The Amount you want the recipient to pick up in US($)</Form.Label>
         <Form.Control name="montant_beneficiaire"  value={values.montant_beneficiaire} onBlur={handleBlur} onChange={handleChange} type="text" placeholder="Amount to send for the receiver"  />
         <p className='text-danger'><strong>{touched.montant_beneficiaire && errors.montant_beneficiaire}</strong></p>
          </Form.Group>
@@ -319,7 +348,7 @@ function FormEnvoiAbonneEnglish(props)
 
         <Col xs ={6}>
         <Form.Group className="mb-3" controlId="validationFormik05">
-        <Form.Label >Type of service </Form.Label>
+        <Form.Label >Type of service to receive money </Form.Label>
         <Form.Select name="type_service"  value={values.type_service} aria-label="Default select example" onChange={(e)=>{
              e.target.value ==="by mobile money tranfer(Mpesa,Orange Money,Airtel Money)" ? testValidation.fields.numero_transfer = yup.string().min(9,"9 numbers minimum required").max(10,"10 numbers maximum required").required('required field') :testValidation.fields.numero_transfer = yup.string().notRequired()
              setFieldValue("type_service",e.target.value)
@@ -366,11 +395,21 @@ function FormEnvoiAbonneEnglish(props)
 }
 
 {isMobileOrTablet &&   <Container className='justify-content-center text-center mb-5 text-light text-bold' style={{width:"auto"}} >
-<Row className='mt-3'>
+{ props.isStaff === true ?  <Row className='mt-3'>
         <Col xs={12} className="text-start text-light">
-            {props.isStaff === true ? <p><Link to='/form_envoie_abonne_id_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p> : <p><Link to='/' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>}
+            {props.abonne.infoAbonne.numero_expediteur != "" ? <p><Link to='/form_envoie_abonne_id_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p> : <p><Link to='/' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>}
         </Col>
-    </Row>
+</Row> :
+<Row className='mt-3'>
+        <Col xs={6} className="text-start text-light">
+            {props.abonne.infoAbonne.numero_expediteur != "" ? <p><Link to='/form_envoie_abonne_id_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p> : <p><Link to='/' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>}
+        </Col>
+
+        <Col xs={6} className="text-end">
+            <Link to='/form_retrait_info_english' style={{textDecoration:"none"}}><Button variant='btn--blue' className='btn-lg btn--blue'><b className='text-light'>Track a transfer</b></Button></Link>
+        </Col>
+</Row>
+}
 <Row className='justify-content-start py-2' >
 <Row className='justify-content-center mb-3 pt-3' >
 <Col xs={12}>
@@ -448,6 +487,7 @@ function FormEnvoiAbonneEnglish(props)
                 value={values.prenom_beneficiaire}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                placeholder="First name"
               />
               <p className='text-danger'><strong>{touched.prenom_beneficiaire && errors.prenom_beneficiaire}</strong></p>
             </Form.Group>
@@ -459,6 +499,7 @@ function FormEnvoiAbonneEnglish(props)
                 value={values.nom_beneficiaire}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                placeholder="Last name"
               />
                        <p className='text-danger'><strong>{touched.nom_beneficiaire && errors.nom_beneficiaire}</strong></p>
             </Form.Group>
@@ -486,7 +527,7 @@ function FormEnvoiAbonneEnglish(props)
     <Row className='justify-content-center'>
         <Col xs = {12}>
         <Form.Group className="mb-3" controlId="validationFormik04" >
-        <Form.Label ><span className='text-danger'>*</span>The Amount you want the recipient to get in US($)</Form.Label>
+        <Form.Label ><span className='text-danger'>*</span>The Amount you want the recipient to pick up in US($)</Form.Label>
         <Form.Control name="montant_beneficiaire"  value={values.montant_beneficiaire} onBlur={handleBlur} onChange={handleChange} type="text" placeholder="Amount to send for the receiver"  />
         <p className='text-danger'><strong>{touched.montant_beneficiaire && errors.montant_beneficiaire}</strong></p>
          </Form.Group>
@@ -496,7 +537,7 @@ function FormEnvoiAbonneEnglish(props)
 
         <Col xs ={12}>
         <Form.Group className="mb-3" controlId="validationFormik05">
-        <Form.Label >Type of service </Form.Label>
+        <Form.Label >Type of service to receive money</Form.Label>
         <Form.Select name="type_service"  value={values.type_service} aria-label="Default select example" onChange={(e)=>{
              e.target.value ==="by mobile money tranfer(Mpesa,Orange Money,Airtel Money)" ? testValidation.fields.numero_transfer = yup.string().min(9,"9 numbers minimum required").max(10,"10 numbers maximum required").required('required field') :testValidation.fields.numero_transfer = yup.string().notRequired()
              setFieldValue("type_service",e.target.value)

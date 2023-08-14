@@ -36,7 +36,13 @@ function ConfirmationRetraitInfoEnglish(props)
         
         <>
         <HeaderEnglish abonne={props.abonne} envoie2={props.envoie2} dataAbonne={props.dataAbonne} envoie3={props.envoie3} isAdmin={props.isAdmin} isStaff={props.isStaff} language2={props.language2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} setLanguage2={props.setLanguage2} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
-{isDesktop && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
+{isDesktop && <div className=' justify-content-center text-center mb-5 text-light text-bold rounded'>
+  <Row className='mt-3 px-5'>
+        <Col xs={12} className="text-start text-light">
+           <p><Link to='/form_retrait_info_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>
+        </Col>
+    </Row>
+ <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50,width:1000}} >
 <Row className='justify-content-center  pt-3' >
         <Col xs={6}>
         <p className='couleur2 '><i><b>{message}</b></i></p>
@@ -84,17 +90,30 @@ function ConfirmationRetraitInfoEnglish(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
-        <Link to="/" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant="warning"> 
-         ok
+       { props.isStaff === true ? <Link to="/" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant="danger"> 
+         close
+        </Button>
+        </Link> :
+        <Link to="/form_envoie_abonne_english" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant="danger"> 
+         close
         </Button>
         </Link>
+       }
         </Col>
     </Row>  
 </Container>
+</div>
 }
 
-{isMobileOrTablet && <Container className='bg-light justify-content-center text-center  mb-5' style={{marginTop:50}} >
+{isMobileOrTablet && <div className=' justify-content-center text-center mb-5 text-light text-bold rounded'>
+  <Row className='mt-3 px-5'>
+  <Col xs={12} className="text-start text-light">
+           <p><Link to='/form_retrait_info_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>
+        </Col>
+    </Row>
+ <Container className='bg-light justify-content-center text-center  mb-5 rounded' style={{marginTop:50}} >
 <Row className='justify-content-center  pt-3' >
         <Col xs={12}>
         <p className='couleur2 '><i><b>{message}</b></i></p>
@@ -142,14 +161,21 @@ function ConfirmationRetraitInfoEnglish(props)
     </Row>
     <Row className='justify-content-center pb-3' >
         <Col xs={12}>
-        <Link to="/" style={{color:'white',textDecorationLine:'none'}}>
-        <Button variant="warning"> 
-         ok
+       { props.isStaff === true ? <Link to="/" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant="danger"> 
+         close
+        </Button>
+        </Link> :
+        <Link to="/form_envoie_abonne_english" style={{color:'white',textDecorationLine:'none'}}>
+        <Button variant="danger"> 
+         close
         </Button>
         </Link>
+       }
         </Col>
     </Row>  
 </Container>
+</div>
 }
 <Row className="mt-5">
           <Col md={12}>

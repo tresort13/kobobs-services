@@ -126,6 +126,7 @@ const submitEnvoie = (e)=>
                     }
                     else
                     {
+                      setModalShow2(false)
                       props.setEnvoie({infoEnvoie:{
                         agent_id:'',
                         nom_expediteur : '',

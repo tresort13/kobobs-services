@@ -245,14 +245,14 @@ function HeaderFrench(props)
         </Offcanvas.Title>
       </Offcanvas.Header>
       <Offcanvas.Body>
-      <Nav className="justify-content-end flex-grow-1 pe-3">  
-        <NavDropdown.Divider />
-        <Nav.Link href="/home_french"><b> <pre>Accueil</pre></b></Nav.Link>
-          <NavDropdown.Divider />
-        {/*  <Nav.Link ><b onClick={showLogin}> <pre>envoyer l'argent</pre></b></Nav.Link>*/}
-          <NavDropdown.Divider />
-          <Nav.Link ><b onClick={contactUs} > <pre>Contacter nous</pre></b></Nav.Link>
-        </Nav>     
+      <Nav className="justify-content-end flex-grow-1 pe-3">
+                <NavDropdown.Divider />
+                 {props.isLogged === true ? <Nav.Link href="/home_french"><b><pre>Accueil</pre></b></Nav.Link>:<span></span>}
+                  <NavDropdown.Divider />
+                 {/* <Nav.Link ><b onClick={showLogin}><pre>Tinda Mbongo</pre></b></Nav.Link>*/}
+                  <NavDropdown.Divider />
+                  <Nav.Link ><b onClick={contactUs} ><pre>contacter nous</pre></b></Nav.Link>
+                </Nav>
       </Offcanvas.Body>
     </Navbar.Offcanvas>
   </Container>
@@ -262,11 +262,12 @@ function HeaderFrench(props)
 
         }
 
-<Col xs={2} className="pt-4 text-start">
+{props.isLogged === true ? <Col xs={2} className="pt-4 text-start">
 <p><Link to='/home_french' style={{textDecoration:"none",fontSize:20}}><b className='couleur2 '><span><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-house-door-fill" viewBox="0 0 16 16">
 <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z"/>
 </svg></span><span >Accueil</span></b></Link></p>
-</Col>
+</Col> :
+<Col xs={2}></Col>}
 
 
 { props.isLogged === true ? <Col xs={5} className="my-auto  my-auto text-end">
@@ -473,13 +474,13 @@ function HeaderFrench(props)
               </Offcanvas.Header>
               <Offcanvas.Body>
                 
-                <Nav className="justify-content-end flex-grow-1 pe-3">
+              <Nav className="justify-content-end flex-grow-1 pe-3">
                 <NavDropdown.Divider />
-                <Nav.Link href="/home_french"><b><pre>Accueil</pre></b></Nav.Link>
+                 {props.isLogged === true ? <Nav.Link href="/home_french"><b><pre>Accueil</pre></b></Nav.Link>:<span></span>}
                   <NavDropdown.Divider />
-                 {/* <Nav.Link ><b onClick={showLogin}><pre>Envoyer de l'argent</pre></b></Nav.Link>*/}
+                 {/* <Nav.Link ><b onClick={showLogin}><pre>Tinda Mbongo</pre></b></Nav.Link>*/}
                   <NavDropdown.Divider />
-                  <Nav.Link ><b onClick={contactUs} ><pre>Contacter nous</pre></b></Nav.Link>
+                  <Nav.Link ><b onClick={contactUs} ><pre>contacter nous</pre></b></Nav.Link>
                 </Nav>
                
               </Offcanvas.Body>
@@ -515,7 +516,7 @@ function HeaderFrench(props)
            </Nav>
            </Offcanvas.Body>
       </Offcanvas>
-     <SessionOutFrench isLogged={props.isLogged}/>
+     <SessionOutFrench abonne={props.abonne} isLogged={props.isLogged}/>
     <ChangePasswordBoxFrench modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} userID={props.userID} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber}/>
    <ContactBoxFrench language2={props.language2} setLanguage2={props.setLanguage2} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} language={props.language}/>
    <LoginBoxFrench dataUser={props.dataUser} dataAbonne={props.dataAbonne} language2={props.language2} setLanguage2={props.setLanguage2} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} modalShow={props.modalShow} modalShow4={props.modalShow4} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>

@@ -126,6 +126,7 @@ console.log(props.envoie.infoEnvoie)
                     }
                     else
                     {
+                      setModalShow2(false)
                       props.setEnvoie({infoEnvoie:{
                         agent_id:'',
                         nom_expediteur : '',
@@ -360,7 +361,7 @@ function MyVerticallyCenteredModal2(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body> 
-        <p className='text-danger'><b>Something went wrong with the server please try to send again !!!</b>   
+        <p className='text-danger'><b>Something went wrong with the server please try to send again or contact the technical support service !!!</b>   
       </p>
       </Modal.Body>
       <Modal.Footer>

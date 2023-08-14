@@ -107,7 +107,7 @@ function SessionOutFrench(props)
     const idleTimer = useIdleTimer({
       promptTimeout : 10 * 1000,
       onPrompt : ()=>{
-        if(props.isLogged ===true)
+        if((props.isLogged ===true) || (props.abonne.infoAbonne.numero_expediteur != ""))
         {
           open()
         } 
@@ -118,7 +118,7 @@ function SessionOutFrench(props)
       },
       timeout : 60 * 1000,
       onIdle : ()=>{
-        if(props.isLogged ===true)
+        if((props.isLogged ===true) || (props.abonne.infoAbonne.numero_expediteur != ""))
         {
           logout()
         }  

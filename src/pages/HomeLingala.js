@@ -142,7 +142,7 @@ const establishedUserStatus = ()=>
       });    
     return (
 <>
-<Header isStaff={props.isStaff} dataUser={props.dataUser} setDataValidation={props.setDataValidation} dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
+<Header isStaff={props.isStaff} dataUser={props.dataUser} abonne={props.abonne} setDataValidation={props.setDataValidation} dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
 {isDesktop && <Container>  
   {props.isLogged === true ? <div>
   <Row className="text-center justify-content-center  mt-3 mb-3">
@@ -276,7 +276,7 @@ const establishedUserStatus = ()=>
 }
 </div> :
 
-<Container className='bg-dark justify-content-center text-center pt-2 bordure rounded' style={{marginTop:"10%",backgroundColor:'grey',width:650}}>
+<Container className='bg-dark justify-content-center text-center pt-2  rounded' style={{marginTop:"10%",backgroundColor:'grey',width:650}}>
   <Row className='justify-content-center   py-5' >
         <Col xs={12}>
         <h1 className='couleur2'>
@@ -286,9 +286,15 @@ const establishedUserStatus = ()=>
           <Col  xs={12}>    
           <Link to="" style={{color:'white',textDecorationLine:'none'}}> 
           
-          <Button variant="outline-light my-3" type="submit" onClick={e=>connection(e)}>
+          <Button variant="light my-3" type="submit" onClick={e=>connection(e)}>
           <strong>Mikonecter</strong>
           </Button>
+          </Link>
+          </Col>
+
+          <Col  xs={12}>    
+          <Link to="/form_envoie_abonne_id" style={{color:'white',textDecorationLine:'none'}}> 
+          <u className='text-light'><p><strong>Est-ce que ozali abonné ou nanu te ? Fina awa </strong></p></u>
           </Link>
           </Col>
       </Row>
@@ -367,7 +373,7 @@ const establishedUserStatus = ()=>
     </Row>
     </div> 
     :
-    <Container className='bg-dark justify-content-center text-center pt-2 bordure rounded ' style={{backgroundColor:'grey',marginTop:130}}>
+    <Container className='bg-dark justify-content-center text-center pt-2 rounded ' style={{backgroundColor:'grey',marginTop:130}}>
   <Row className='justify-content-center   py-5' >
         <Col xs={12}>
         <h1 className='couleur2'>
@@ -377,9 +383,15 @@ const establishedUserStatus = ()=>
           <Col  xs={12}>    
           <Link to="" style={{color:'white',textDecorationLine:'none'}}> 
           
-          <Button variant="outline-light my-3" type="submit" onClick={e=>connection(e)}>
+          <Button variant="light my-3" type="submit" onClick={e=>connection(e)}>
           <strong>Mikonecter</strong>
           </Button>
+          </Link>
+          </Col>
+
+          <Col  xs={12}>    
+          <Link to="/form_envoie_abonne_id" style={{color:'white',textDecorationLine:'none'}}> 
+          <u className='text-light'><p><strong>Est-ce que ozali abonné ou nanu abonné te ? Fina awa </strong></p></u>
           </Link>
           </Col>
       </Row>

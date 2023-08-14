@@ -53,30 +53,48 @@ function FormEnvoiAbonne(props)
       });
     
       const closePage = ()=>
-    {
-      props.setEnvoie({infoEnvoie :{
-        agent_id:'',
-        nom_expediteur : '',
-        prenom_expediteur : '',
-        adresse_expediteur : 'N/A',
-        email_expediteur : 'N/A',
-        numero_expediteur: '',
-        pays_expediteur : 'UK',
-        nom_beneficiaire : '',
-        prenom_beneficiaire : '',
-        pays_beneficiaire : '',
-        montant_beneficiaire : '',
-        montant_pour_payer :'',
-        frais_envoie : '',
-        frais_tva : '',
-        type_service : '',
-        numero_transfer :'',
-        date_operation : '',
-        date_heure_operation : '',
-        month_year_operation :''
-        }})
-    navigate('/menu_operation_envoi_lingala')
-    }
+      {
+        props.setAbonne({infoAbonne : {
+          agent_id : props.abonne.infoAbonne.agent_id,
+          nom_expediteur : "",
+          prenom_expediteur : "",
+          email_expediteur : "",
+          numero_expediteur: "",
+          pays_expediteur:'UK'
+          }})
+  
+        props.setEnvoie({infoEnvoie :{
+          agent_id:'',
+          nom_expediteur : '',
+          prenom_expediteur : '',
+          adresse_expediteur : 'N/A',
+          email_expediteur : 'N/A',
+          numero_expediteur: '',
+          pays_expediteur : 'UK',
+          nom_beneficiaire : '',
+          prenom_beneficiaire : '',
+          pays_beneficiaire : '',
+          montant_beneficiaire : '',
+          montant_pour_payer :'',
+          frais_envoie : '',
+          frais_tva : '',
+          type_service : '',
+          numero_transfer :'',
+          date_operation : '',
+          date_heure_operation : '',
+          month_year_operation :''
+          }})
+  
+        if(props.isStaff === true)
+        {
+          navigate('/menu_operation_envoi_lingala')
+        }
+        else{
+          navigate('/form_envoie_abonne_id')
+        }
+      
+      
+      }
   
       
     
@@ -185,13 +203,23 @@ function FormEnvoiAbonne(props)
     return (
         
         <>
-<Header dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
+<Header dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} abonne={props.abonne} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
 {isDesktop && <Container className='justify-content-center text-center mb-5 text-light text-bold' style={{width:1000}} >
-<Row className='mt-3'>
+{ props.isStaff === true ?  <Row className='mt-3'>
         <Col xs={12} className="text-start text-light">
-        {props.isStaff === true ? <p><Link to='/form_envoie_abonne_id' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p> : <p><Link to='/home_lingala' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Zonga</u>  </b></Link> </p>}
+            {props.abonne.infoAbonne.numero_expediteur != "" ? <p><Link to='/form_envoie_abonne_id' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Zonga</u>  </b></Link> </p> : <p><Link to='/home_lingala' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Zonga</u>  </b></Link> </p>}
         </Col>
-    </Row>
+</Row> :
+<Row className='mt-3'>
+        <Col xs={6} className="text-start text-light">
+            {props.abonne.infoAbonne.numero_expediteur != "" ? <p><Link to='/form_envoie_abonne_id' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Zonga</u>  </b></Link> </p> : <p><Link to='/home_lingala' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Zonga</u>  </b></Link> </p>}
+        </Col>
+
+        <Col xs={6} className="text-end">
+            <Link to='/form_retrait_info' style={{textDecoration:"none"}}><Button variant='btn--blue' className='btn-lg btn--blue'><b className='text-light'>Landela transfert</b></Button></Link>
+        </Col>
+</Row>
+}
 <Row className='justify-content-center mb-3 pt-3' >
 <Col xs={6}>
         <p ><i><b >Numéro ya Abonné : </b><b className='couleur2'>{props.abonne.infoAbonne.numero_expediteur}</b></i></p>
@@ -256,6 +284,7 @@ function FormEnvoiAbonne(props)
                 value={values.prenom_beneficiaire}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                placeholder="Kombo ya Mukristu"
               />
               <p className='text-danger'>{touched.prenom_beneficiaire && errors.prenom_beneficiaire}</p>
             </Form.Group>
@@ -267,6 +296,7 @@ function FormEnvoiAbonne(props)
                 value={values.nom_beneficiaire}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                placeholder="Kombo Ya Libota"
               />
                        <p className='text-danger'><strong>{touched.nom_beneficiaire && errors.nom_beneficiaire}</strong></p>
             </Form.Group>
@@ -351,11 +381,21 @@ function FormEnvoiAbonne(props)
 }
 
 {isMobileOrTablet &&   <Container className='justify-content-center text-center mb-5 text-light text-bold' style={{width:"auto"}} >
-<Row className='mt-3'>
+{ props.isStaff === true ?  <Row className='mt-3'>
         <Col xs={12} className="text-start text-light">
-        {props.isStaff === true ? <p><Link to='/form_envoie_abonne_id' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p> : <p><Link to='/home_lingala' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Zonga</u>  </b></Link> </p>}
+            {props.abonne.infoAbonne.numero_expediteur != "" ? <p><Link to='/form_envoie_abonne_id' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Zonga</u>  </b></Link> </p> : <p><Link to='/home_lingala' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Zonga</u>  </b></Link> </p>}
         </Col>
-    </Row>
+</Row> :
+<Row className='mt-3'>
+        <Col xs={6} className="text-start text-light">
+            {props.abonne.infoAbonne.numero_expediteur != "" ? <p><Link to='/form_envoie_abonne_id' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Zonga</u>  </b></Link> </p> : <p><Link to='/home_lingala' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Zonga</u>  </b></Link> </p>}
+        </Col>
+
+        <Col xs={6} className="text-end">
+            <Link to='/form_retrait_info' style={{textDecoration:"none"}}><Button variant='btn--blue' className='btn-lg btn--blue'><b className='text-light'>Landela transfert</b></Button></Link>
+        </Col>
+</Row>
+}
 <Row className='justify-content-center mb-3 pt-3' >
 <Col xs={12}>
         <p ><i><b >Numéro ya Abonné : </b><b className='couleur2'>{props.abonne.infoAbonne.numero_expediteur}</b></i></p>
@@ -433,6 +473,7 @@ function FormEnvoiAbonne(props)
                 value={values.prenom_beneficiaire}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                placeholder="Kombo ya Mukristu"
               />
               <p className='text-danger'>{touched.prenom_beneficiaire && errors.prenom_beneficiaire}</p>
             </Form.Group>
@@ -444,6 +485,7 @@ function FormEnvoiAbonne(props)
                 value={values.nom_beneficiaire}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                placeholder="Kombo Ya Libota"
               />
                        <p className='text-danger'><strong>{touched.nom_beneficiaire && errors.nom_beneficiaire}</strong></p>
             </Form.Group>

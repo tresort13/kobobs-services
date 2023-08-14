@@ -34,11 +34,11 @@ function FormRetraitEnglish(props)
     const [modalShow, setModalShow] = React.useState(false);
     const [modalShow2, setModalShow2] = React.useState(false);
 
-    const [message,setMessage] = useState("Please enter  tracking number")
+    const [message,setMessage] = useState("Please enter the tracking number")
     const [couleur,setCouleur] = useState("text-dark")
 
     const testValidation = yup.object().shape({
-      codeRetrait: yup.string().required('field required')
+      codeRetrait: yup.string().min(9,"you must enter 9 digits numbers").max(9,"you must enter 9 digits numbers").required('field required')
     });
 
     const isDesktop = useMediaQuery({
@@ -94,14 +94,24 @@ function FormRetraitEnglish(props)
     return (
         
         <>
-        <HeaderEnglish dataEnvoie2={props.dataEnvoie2} envoie3={props.envoie3} dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} isStaff={props.isStaff} language2={props.language2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} setLanguage2={props.setLanguage2} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
-{isDesktop && <div className=' justify-content-center text-center mb-5 text-light text-bold rounded'>
-  <Row className='mt-3 px-5'>
+        <HeaderEnglish dataEnvoie2={props.dataEnvoie2} envoie3={props.envoie3} dataAbonne={props.dataAbonne} abonne={props.abonne} isAdmin={props.isAdmin} isStaff={props.isStaff} language2={props.language2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} setLanguage2={props.setLanguage2} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/>
+{isDesktop && <div className=' justify-content-center text-center mb-5 text-light text-bold rounded mx-5'>
+{ props.isStaff === true ?  <Row className='mt-3'>
         <Col xs={12} className="text-start text-light">
-            <p><Link to='/' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>
+          <p><Link to='/' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p> 
         </Col>
-    </Row>
-  <Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:100,width:750}} >
+</Row> :
+<Row className='mt-3'>
+        <Col xs={6} className="text-start text-light">
+            {props.abonne.infoAbonne.numero_expediteur != "" ? <p><Link to='/form_envoie_abonne_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p> : <p><Link to='/form_envoie_abonne_id_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>}
+        </Col>
+
+        <Col xs={6} className="text-end">
+            <Link to='' style={{textDecoration:"none"}}><Button onClick={()=>{props.setModalShowContact(true)}}  variant='btn--blue' className='btn-lg btn--blue'><b className='text-light'>Contact us</b></Button></Link>
+        </Col>
+</Row>
+}
+  <Container className='bg-light justify-content-center text-center mb-5 rounded' style={{marginTop:100,width:750}} >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={6}>
         <p className='text-dark'><i><b>{message}</b></i></p>
@@ -144,10 +154,8 @@ function FormRetraitEnglish(props)
     </Row>
   
     <Row className='pb-3'>
-       <Col>
-       
-       <p ><b className='couleur2'>in case you forgot your tracking number, <Link to="/my_profil_english" >check your historic</Link></b></p>
-
+       <Col>     
+     {props.isStaff === true ?  <p ><b className='couleur2'>in case you forgot your tracking number, <Link to="/my_profil_english" >check your historic</Link></b></p> : <p></p>}
         </Col>
     </Row>
 
@@ -159,13 +167,23 @@ function FormRetraitEnglish(props)
 </div>
 }
 
-{isMobileOrTablet &&  <div className=' justify-content-center text-center mb-5 text-light text-bold rounded'>
-  <Row className='mt-3 px-5'>
+{isMobileOrTablet &&  <div className=' justify-content-center text-center mb-5 text-light text-bold rounded mx-5'>
+{ props.isStaff === true ?  <Row className='mt-3'>
         <Col xs={12} className="text-start text-light">
-            <p><Link to='/' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>
+          <p><Link to='/' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p> 
         </Col>
-    </Row>
-  <Container className='bg-light justify-content-center text-center mb-5' style={{marginTop:20,width:"auto"}} >
+</Row> :
+<Row className='mt-3'>
+        <Col xs={6} className="text-start text-light">
+            {props.abonne.infoAbonne.numero_expediteur != "" ? <p><Link to='/form_envoie_abonne_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p> : <p><Link to='/form_envoie_abonne_id_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>}
+        </Col>
+
+        <Col xs={6} className="text-end">
+            <Link to='' style={{textDecoration:"none"}}><Button onClick={()=>{props.setModalShowContact(true)}}  variant='btn--blue' className='btn-lg btn--blue'><b className='text-light'>Contact us</b></Button></Link>
+        </Col>
+</Row>
+}
+  <Container className='bg-light justify-content-center text-center mb-5 rounded' style={{marginTop:20,width:"auto"}} >
 <Row className='justify-content-center mb-3 pt-3' >
         <Col xs={12}>
         <p className='text-dark'><i><b>{message}</b></i></p>
@@ -208,10 +226,8 @@ function FormRetraitEnglish(props)
     </Row>
   
     <Row className='pb-3'>
-       <Col>
-       
-       <p ><b className='couleur2'>in case you forgot your tracking number, <Link to="/my_profil_english" >check your historic</Link></b></p>
-
+    <Col>     
+     {props.isStaff === true ?  <p ><b className='couleur2'>in case you forgot your tracking number, <Link to="/my_profil_english" >check your historic</Link></b></p> : <p></p>}
         </Col>
     </Row>
 

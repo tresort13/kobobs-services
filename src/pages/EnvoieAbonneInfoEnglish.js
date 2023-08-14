@@ -86,29 +86,39 @@ const submitEnvoie = (e)=>
               console.log(res)
               console.log(props.envoie3.infoEnvoie.code_retrait)
                 setModalShow(false)
-                props.setEnvoie({infoEnvoie:{
-                  agent_id:'',
-                  nom_expediteur : '',
-                  prenom_expediteur : '',
-                  adresse_expediteur : 'N/A',
-                  email_expediteur : 'N/A',
-                  numero_expediteur: '',
-                  pays_expediteur : 'UK',
-                  nom_beneficiaire : '',
-                  prenom_beneficiaire : '',
-                  pays_beneficiaire : '',
-                  montant_beneficiaire : '',
-                  montant_pour_payer :'',
-                  frais_envoie : '',
-                  frais_tva : '',
-                  type_service : '',
-                  numero_transfer :'',
-                  date_operation : '',
-                  date_heure_operation : '',
-                  month_year_operation:'',
-                  year_operation :''
-                }})
-                navigate('/confirmation_envoie_info_english')
+               
+                
+                if(props.envoie3.infoEnvoie.code_retrait === undefined)
+                {
+                  setModalShow2(true)  
+                }
+                else
+                {
+                  setModalShow2(false)  
+                  props.setEnvoie({infoEnvoie:{
+                    agent_id:'',
+                    nom_expediteur : '',
+                    prenom_expediteur : '',
+                    adresse_expediteur : 'N/A',
+                    email_expediteur : 'N/A',
+                    numero_expediteur: '',
+                    pays_expediteur : 'UK',
+                    nom_beneficiaire : '',
+                    prenom_beneficiaire : '',
+                    pays_beneficiaire : '',
+                    montant_beneficiaire : '',
+                    montant_pour_payer :'',
+                    frais_envoie : '',
+                    frais_tva : '',
+                    type_service : '',
+                    numero_transfer :'',
+                    date_operation : '',
+                    date_heure_operation : '',
+                    month_year_operation:'',
+                    year_operation :''
+                  }})
+                  navigate('/confirmation_envoie_info_english')
+                }
               }
           )
           .catch( (error) =>
@@ -123,11 +133,11 @@ const submitEnvoie = (e)=>
     return (
         
         <>
-<HeaderEnglish dataAbonne={props.dataAbonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
+<HeaderEnglish dataAbonne={props.dataAbonne} abonne={props.abonne} isAdmin={props.isAdmin} language2={props.language2} setLanguage2={props.setLanguage2} modalShowPasswordChange={props.modalShowPasswordChange} setModalShowPasswordChange={props.setModalShowPasswordChange} modalShowContact={props.modalShowContact} setModalShowContact={props.setModalShowContact} modalShow={props.modalShow} modalShow4={props.modalShow4} setModalShow={props.setModalShow} setModalShow4={props.setModalShow4} setLanguage={props.setLanguage} uniqueNumber={props.uniqueNumber} setUniqueNumber={props.setUniqueNumber} setUsername={props.setUsername} setIsadmin={props.setIsadmin} setIsStaff={props.setIsStaff} setIsLogged={props.setIsLogged} isLogged={props.isLogged} username={props.username} language={props.language}/> 
 {isDesktop && <Container className=' justify-content-center text-center mb-5 text-light text-bold rounded'  >
 <Row className='mt-3'>
         <Col xs={12} className="text-start text-light">
-            <p><Link to='/form_envoie_client_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>
+            <p><Link to='/form_envoie_abonne_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>
         </Col>
     </Row>
   <Row className='justify-content-center mt-3'>
@@ -169,7 +179,7 @@ const submitEnvoie = (e)=>
         </Col>
 
         <Col xs={6} className="text-start">
-        <p className='text-light'>Type of service : <b className='text-light'>{props.envoie.infoEnvoie.type_service}</b> </p>
+        <p className='text-light'>Type of service to receive money : <b className='text-light'>{props.envoie.infoEnvoie.type_service}</b> </p>
         {props.envoie.infoEnvoie.numero_transfer==='' ? <p></p> : <p className='text-light'>Mobile Money Number: <b className='text-light'>{props.envoie.infoEnvoie.numero_transfer}</b> </p>}
         </Col>
     </Row>
@@ -178,7 +188,7 @@ const submitEnvoie = (e)=>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
         <Button variant="warning" type="submit" onClick={submitEnvoie}>
-        Validate Form
+        Submit Form
         </Button>
         </Col>
 
@@ -202,7 +212,7 @@ const submitEnvoie = (e)=>
 {isMobileOrTablet && <Container className=' justify-content-center text-center mb-5 text-light text-bold rounded'  >
 <Row className='mt-3'>
         <Col xs={12} className="text-start text-light">
-            <p><Link to='/form_envoie_client_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>
+            <p><Link to='/form_envoie_abonne_english' style={{textDecoration:"none",fontSize:20}}><b className='couleur2'>&#8592; <u>Back</u>  </b></Link> </p>
         </Col>
     </Row>
   <Row className='justify-content-center mt-3'>
@@ -244,7 +254,7 @@ const submitEnvoie = (e)=>
         </Col>
 
         <Col xs={12} className="text-start">
-        <p className='text-light'>Type of service : <b className='text-light'>{props.envoie.infoEnvoie.type_service}</b> </p>
+        <p className='text-light'>Type of service to receive money : <b className='text-light'>{props.envoie.infoEnvoie.type_service}</b> </p>
         {props.envoie.infoEnvoie.numero_transfer==='' ? <p></p> : <p className='text-light'>Mobile Money Number: <b className='text-light'>{props.envoie.infoEnvoie.numero_transfer}</b> </p>}
         </Col>
     </Row>
@@ -253,7 +263,7 @@ const submitEnvoie = (e)=>
     <Row className='justify-content-center pb-3' >
         <Col xs={6}>
         <Button variant="warning" type="submit" onClick={submitEnvoie}>
-        Validate Form
+        Submit Form
         </Button>
         </Col>
 
@@ -305,7 +315,7 @@ function MyVerticallyCenteredModal2(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body> 
-        <p className='text-danger'><b>Something went wrong with the server please try to send again !!!</b>   
+        <p className='text-danger'><b>Something went wrong with the server please try to send again or contact the technical support service !!!</b>   
       </p>
       </Modal.Body>
       <Modal.Footer>

@@ -35,11 +35,48 @@ function ConfirmationEnvoieInfoFrench(props)
     
   console.log(props.envoie3.infoEnvoie)
   const closePage = ()=>{
+    if(props.isStaff)
+    {
     props.setClientForm(false)
     props.setSaveAbonne('')
     props.setModalShowEnvoi(true)
+    /*props.setEnvoie3({infoEnvoie :{
+    nom_expediteur : '',
+    prenom_expediteur : '',
+    adresse_expediteur : 'N/A',
+    email_expediteur : '',
+    numero_expediteur: '',
+    pays_expediteur : 'UK',
+    nom_beneficiaire : '',
+    prenom_beneficiaire : '',
+    pays_beneficiaire : '',
+    montant_envoie_sans_frais : '',
+    montant_beneficiaire : '',
+    type_service : '',
+    frais_envoie : '',
+    frais_tva : '',
+    montant_total : '',
+    code_retrait : '',
+    data_operation : '',
+    date_heure_operation : '',
+    status_retrait : '',
+    numero_transfer:''
+    }})*/
     navigate('/home_french')
   }
+  else{
+    props.setAbonne({infoAbonne : {
+      agent_id : props.abonne.infoAbonne.agent_id,
+      nom_expediteur : "",
+      prenom_expediteur : "",
+      email_expediteur : "",
+      numero_expediteur: "",
+      pays_expediteur:'UK'
+      }})
+    navigate('/form_envoie_abonne_id_french')
+  }
+  }
+
 
   const closeSaveAbonne = ()=>{
     props.setSaveAbonne('')
@@ -62,9 +99,12 @@ function ConfirmationEnvoieInfoFrench(props)
 {isDesktop && <Container className=' justify-content-center text-center mb-5 text-light text-bold rounded'  >
 <Row className='mt-3'>
         <Col xs={12} className="text-start text-light">
-            <p> <Link to='/menu_operation_envoi_french' style={{textDecoration:"none",fontSize:20}}><b className='text-light mx-5'><span><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+        {props.isStaff === true ? <p> <Link to='/menu_operation_envoi_french' style={{textDecoration:"none",fontSize:20}}><b className='text-light mx-5'><span><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-plus-circle-fill" viewBox="0 0 16 16">
   <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-</svg></span> <u>Nouvel Envoi</u>  </b></Link></p>
+</svg></span> <u>Nouvel envoi</u>  </b></Link></p>:
+<p> <Link to='/form_envoie_abonne_french' style={{textDecoration:"none",fontSize:20}}><b className='text-light mx-5'><span><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+</svg></span> <u>Nouvel envoi</u>  </b></Link></p>}
         </Col>
     </Row>
   <Row className='justify-content-center mt-3'>
@@ -116,10 +156,13 @@ function ConfirmationEnvoieInfoFrench(props)
 
 {isMobileOrTablet && <Container className=' justify-content-center text-center mb-5 text-light text-bold rounded'  >
 <Row className='mt-3'>
-        <Col xs={12} className="text-start text-light">
-            <p> <Link to='/menu_operation_envoi_french' style={{textDecoration:"none",fontSize:20}}><b className='text-light mx-5'><span><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+<Col xs={12} className="text-start text-light">
+        {props.isStaff === true ? <p> <Link to='/menu_operation_envoi_french' style={{textDecoration:"none",fontSize:20}}><b className='text-light mx-5'><span><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-plus-circle-fill" viewBox="0 0 16 16">
   <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-</svg></span> <u>Nouvel Envoi</u>  </b></Link></p>
+</svg></span> <u>Nouvel envoi</u>  </b></Link></p>:
+<p> <Link to='/form_envoie_abonne_french' style={{textDecoration:"none",fontSize:20}}><b className='text-light mx-5'><span><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+</svg></span> <u>Nouvel envoi</u>  </b></Link></p>}
         </Col>
     </Row>
   <Row className='justify-content-center mt-3'>

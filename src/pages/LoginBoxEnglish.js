@@ -219,7 +219,7 @@ function MyVerticallyCenteredModal(props) {
           </Col>
       </Row>
   </Form>
-  <a href='https://kobobsapi.herokuapp.com/api/reset_password/'  className='text-primary'><strong> Forgot Password ?</strong></a>
+  <a href='https://kobobsapi.herokuapp.com/api/reset_password/'  className='text-primary'><strong onClick={()=>{props.setModalShow(false)}}> Forgot Password ?</strong></a>
   {/* <p className='text-dark mt-3'>Don't have an account ? <span> <Link to='' onClick={()=>props.openRegister()}><strong> Sign Up</strong></Link> </span></p>*/}
         </Modal.Body>
         <Modal.Footer>

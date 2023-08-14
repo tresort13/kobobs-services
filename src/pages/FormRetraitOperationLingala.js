@@ -37,7 +37,7 @@ function FormRetraitOperationLingala(props)
     const [couleur,setCouleur] = useState("text-dark")
 
     const testValidation = yup.object().shape({
-      codeRetrait: yup.string().required('Esengeli ko kotisa makomi')
+      codeRetrait: yup.string().min(9,"esengeli ko kotisa code ya 9 chiffres").max(9,"esengeli ko kotisa code ya 9 chiffres").required('esengeli okotisa makomi')
     });
 
     const isDesktop = useMediaQuery({

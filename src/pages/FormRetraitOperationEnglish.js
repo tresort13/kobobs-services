@@ -40,7 +40,7 @@ function FormRetraitOperationEnglish(props)
     const [couleur,setCouleur] = useState("text-dark")
 
     const testValidation = yup.object().shape({
-      codeRetrait: yup.string().required('field required')
+      codeRetrait: yup.string().min(9,"you must enter 9 digits numbers").max(9,"you must enter 9 digits numbers").required('field required')
     });
 
     const isDesktop = useMediaQuery({

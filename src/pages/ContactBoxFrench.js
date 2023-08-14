@@ -68,9 +68,9 @@ function MyVerticallyCenteredModal(props) {
     const { Formik } = formik;
 
     const testValidation = yup.object().shape({
-      firstname: yup.string().required('required field'),
-      email: yup.string().required('required field'),
-      message : yup.string().required('required field'),
+      firstname: yup.string().required('champs requis'),
+      email: yup.string().required('champs requis'),
+      message : yup.string().required('champs requis'),
     });
 
     

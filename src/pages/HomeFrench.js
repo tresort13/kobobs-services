@@ -292,7 +292,7 @@ const establishedUserStatus = ()=>
 
           <Col  xs={12}>    
           <Link to="/form_envoie_abonne_id_french" style={{color:'white',textDecorationLine:'none'}}> 
-          <u className='text'><p><strong>Êtes-vous abonné ou pas encore abonné ? Cliquez ici </strong></p></u>
+          <u className='text'><p><strong>Êtes-vous abonné ? Cliquez ici </strong></p></u>
           </Link>
           </Col>
       </Row>
@@ -389,7 +389,7 @@ const establishedUserStatus = ()=>
 
             <Col  xs={12}>    
           <Link to="/form_envoie_abonne_id_french" style={{color:'white',textDecorationLine:'none'}}> 
-          <u className='text'><p><strong>Êtes-vous abonné ou pas encore abonné ? Cliquez ici </strong></p></u>
+          <u className='text'><p><strong>Êtes-vous abonné ? Cliquez ici </strong></p></u>
           </Link>
           </Col>
         </Row>

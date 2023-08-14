@@ -294,7 +294,7 @@ const establishedUserStatus = ()=>
 
           <Col  xs={12}>    
           <Link to="/form_envoie_abonne_id" style={{color:'white',textDecorationLine:'none'}}> 
-          <u className='text-light'><p><strong>Est-ce que ozali abonné ou nanu te ? Fina awa </strong></p></u>
+          <u className='text-light'><p><strong>Est-ce que ozali abonné ? Fina awa </strong></p></u>
           </Link>
           </Col>
       </Row>
@@ -391,7 +391,7 @@ const establishedUserStatus = ()=>
 
           <Col  xs={12}>    
           <Link to="/form_envoie_abonne_id" style={{color:'white',textDecorationLine:'none'}}> 
-          <u className='text-light'><p><strong>Est-ce que ozali abonné ou nanu abonné te ? Fina awa </strong></p></u>
+          <u className='text-light'><p><strong>Est-ce que ozali abonné ? Fina awa </strong></p></u>
           </Link>
           </Col>
       </Row>

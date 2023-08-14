@@ -291,7 +291,7 @@ const establishedUserStatus = ()=>
 
           <Col  xs={12}>    
           <Link to="/form_envoie_abonne_id_english" style={{color:'white',textDecorationLine:'none'}}> 
-          <u className='text-light'><p><strong>Are you a subscriber or not yet a subscriber ? click here </strong></p></u>
+          <u className='text-light'><p><strong>Are you a subscriber ? click here </strong></p></u>
           </Link>
           </Col>
       </Row>
@@ -356,7 +356,7 @@ const establishedUserStatus = ()=>
 
             <Col  xs={12}>    
           <Link to="/form_envoie_abonne_id_english" style={{color:'white',textDecorationLine:'none'}}> 
-          <u className='text-light'><p><strong>Are you a subscriber or not yet a subscriber ? click here </strong></p></u>
+          <u className='text-light'><p><strong>Are you a subscriber ? click here </strong></p></u>
           </Link>
           </Col>
         </Row>
